@@ -1,0 +1,13 @@
+{
+  "name": "nawal",
+  "owner": {
+    "name": "Nawal"
+  },
+  "plugins": [
+    {
+      "name": "higgsfield",
+      "source": "./plugins/higgsfield",
+      "description": "Tulis prompt Higgsfield AI siap tampal: image-to-video dengan preset gerakan kamera, text-to-video, gambar Soul dan watak konsisten."
+    }
+  ]
+}

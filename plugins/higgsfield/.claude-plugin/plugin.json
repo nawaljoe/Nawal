@@ -1,0 +1,9 @@
+{
+  "name": "higgsfield",
+  "version": "1.0.0",
+  "description": "Tulis prompt Higgsfield AI siap tampal: image-to-video dengan preset gerakan kamera, text-to-video, gambar Soul dan watak konsisten.",
+  "author": {
+    "name": "Nawal"
+  },
+  "keywords": ["higgsfield", "ai-video", "prompt", "tiktok"]
+}
