@@ -18,10 +18,11 @@ Jawab dalam Bahasa Melayu santai, ringkas, praktikal.
 
 ## Langkah 2 — Analisis video
 
-Jalankan skrip analisis (perlu `ffmpeg` / `ffprobe`):
+Jalankan skrip analisis `scripts/analisis_video.sh` dalam folder skill ini
+(perlu `ffmpeg` / `ffprobe`):
 
 ```bash
-bash .claude/skills/tiktok-video-wow/scripts/analisis_video.sh <video> <folder_output>
+bash <folder_skill>/scripts/analisis_video.sh <video> <folder_output>
 ```
 
 Skrip ini menghasilkan:
@@ -81,6 +82,8 @@ Kenal pasti 1–3 babak yang jadi lebih "wow" dengan AI. Untuk setiap satu beri:
   subtle particles in the air, smooth camera motion, 9:16 vertical, photorealistic`
 - **Di mana letak** dalam timeline (biasanya hook atau klimaks) dan durasi (2–4 saat).
 - Elakkan mengubah wajah orang sebenar secara mengelirukan; kekalkan rupa asal.
+- Jika connector atau CLI Higgsfield disambung, guna skill `higgsfield` untuk jana
+  babak ini terus (semak kredit & minta kelulusan dahulu).
 
 ### 🔁 Penutup & engagement
 - Akhiri dengan loop (frame akhir sambung ke frame awal) supaya orang tonton semula.

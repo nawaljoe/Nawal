@@ -1,14 +1,16 @@
 {
   "name": "higgsfield",
-  "version": "1.1.0",
-  "description": "Jana gambar & video Higgsfield AI terus melalui connector/CLI Higgsfield, atau tulis prompt siap tampal: preset gerakan kamera, image-to-video, gambar Soul, watak konsisten.",
+  "version": "1.2.0",
+  "description": "Video TikTok & Higgsfield AI: kaji video mentah dan rancang suntingan TikTok yang \"wow\", serta jana gambar & video Higgsfield terus melalui connector/CLI (atau tulis prompt siap tampal).",
   "author": {
     "name": "Nawal"
   },
   "keywords": [
-    "higgsfield",
     "ai-video",
+    "capcut",
+    "higgsfield",
     "prompt",
-    "tiktok"
+    "tiktok",
+    "video-editing"
   ]
 }

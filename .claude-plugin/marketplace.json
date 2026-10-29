@@ -8,7 +8,7 @@
     {
       "name": "higgsfield",
       "source": "./plugins/higgsfield",
-      "description": "Jana gambar & video Higgsfield AI terus melalui connector/CLI Higgsfield, atau tulis prompt siap tampal: preset gerakan kamera, image-to-video, gambar Soul, watak konsisten."
+      "description": "Video TikTok & Higgsfield AI: kaji video mentah dan rancang suntingan TikTok yang \"wow\", serta jana gambar & video Higgsfield terus melalui connector/CLI (atau tulis prompt siap tampal)."
     }
   ]
 }

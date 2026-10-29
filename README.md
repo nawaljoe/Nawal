@@ -8,6 +8,7 @@
 ### 🔌 Plugin Claude Code
 - **higgsfield** — jana gambar & video Higgsfield AI terus (jika connector Higgsfield disambung), atau tulis prompt siap tampal.
   Sambung connector: claude.ai → Settings → Connectors → *Add custom connector* → URL `https://mcp.higgsfield.ai/mcp`.
+- **tiktok-video-wow** (dalam plugin `higgsfield`) — kaji video mentah dan hasilkan pelan suntingan TikTok (hook, timeline, CapCut, babak Higgsfield).
 
 Pasang dalam Claude Code:
 
