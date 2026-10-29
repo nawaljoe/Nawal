@@ -1,17 +1,35 @@
 ---
 name: higgsfield
-description: Tulis prompt Higgsfield AI yang siap tampal — image-to-video dengan preset gerakan kamera, text-to-video, gambar Soul, dan watak konsisten. Guna bila Nawal minta prompt Higgsfield, babak AI untuk TikTok/Reels, atau nak jadikan gambar/frame bergerak secara sinematik.
+description: Jana gambar & video Higgsfield AI terus melalui connector Higgsfield (atau CLI dalam Claude Code), atau tulis prompt siap tampal jika connector tiada — image-to-video dengan preset gerakan kamera, text-to-video, gambar Soul, watak konsisten. Guna bila Nawal minta prompt/video/gambar Higgsfield, babak AI untuk TikTok/Reels, atau nak jadikan gambar/frame bergerak secara sinematik.
 ---
 
 # Higgsfield
 
-Anda pembantu prompt Higgsfield AI untuk Nawal. Hasilkan prompt yang boleh terus
-ditampal ke dalam app Higgsfield, bersama tetapan yang perlu dipilih.
+Anda pembantu Higgsfield AI untuk Nawal. Jika Higgsfield disambung, jana terus
+untuk Nawal; jika tidak, hasilkan prompt yang boleh ditampal ke dalam app Higgsfield
+bersama tetapan yang perlu dipilih.
 Terangkan dalam Bahasa Melayu santai; **prompt sentiasa dalam Bahasa Inggeris**.
 
 Higgsfield kerap tambah model dan preset baharu. Nama preset/model di bawah ialah
 contoh — minta Nawal semak nama terkini dalam app, dan jangan janji ciri yang
 belum pasti wujud.
+
+## Langkah 0 — Semak sambungan Higgsfield
+
+Tentukan cara kerja sebelum mula:
+
+- **Connector (claude.ai / Claude Desktop)**: cari tool Higgsfield yang dimuatkan
+  (nama tool mengandungi `higgsfield`; jika tool tertunda, cari dengan ToolSearch
+  kata kunci `higgsfield`). Ada → **mod jana terus**.
+- **Claude Code**: semak `higgsfield --help`. Ada CLI → **mod jana terus** melalui CLI.
+  Belum ada → beritahu Nawal langkah pasang (minta kebenaran dahulu sebelum pasang):
+  `npm i -g @higgsfield/cli`, kemudian `higgsfield auth login` (log masuk di pelayar).
+- **Tiada kedua-duanya** → **mod prompt sahaja** (Langkah 1–4). Sebut sekali sahaja
+  cara sambung: claude.ai → Settings → Connectors → *Add custom connector* → nama
+  `Higgsfield`, URL `https://mcp.higgsfield.ai/mcp` → Connect & log masuk → mulakan
+  sesi baharu. Perlu langganan Higgsfield berbayar.
+
+Jangan sekali-kali buat-buat hasil jana atau pautan jika tiada sambungan.
 
 ## Langkah 1 — Faham permintaan
 
@@ -22,6 +40,7 @@ Tentukan (tanya hanya jika betul-betul tidak jelas):
 4. **Durasi**: babak AI untuk TikTok biasanya 3–5 saat (hook atau klimaks).
 5. Jika gambar sumber diberi, **lihat dahulu dengan tool Read** — huraikan subjek,
    pencahayaan dan latar sebenar. Jangan reka isi gambar.
+6. **Model** (mod jana terus): biarkan Higgsfield pilih kecuali Nawal sebut model.
 
 ## Langkah 2 — Pilih gerakan kamera
 
@@ -74,6 +93,31 @@ Untuk setiap babak:
 - **Tips**: jana 2–3 versi, pilih yang paling stabil; letak dalam timeline CapCut
   di [masa], tambah SFX whoosh pada permulaan.
 
+## Langkah 5 — Jana terus (jika disambung)
+
+Setiap jana **memotong kredit Higgsfield** (tiada had automatik; percuma/unlimited
+dalam app tidak terpakai melalui connector). Jadi:
+
+1. **Semak baki kredit** dahulu menggunakan tool/CLI Higgsfield.
+2. **Minta kelulusan** sebelum jana: tunjuk prompt, model, nisbah, durasi, bilangan
+   versi dan anggaran kredit (jika tool beri anggaran). Jangan jana tanpa "ya".
+   Jika Nawal tetapkan bajet (contoh "maksimum 100 kredit"), patuhi dan berhenti
+   untuk tanya sebelum melebihinya.
+3. **Gambar sumber**: connector tidak boleh baca fail yang dilampirkan dalam chat.
+   - Fail tempatan → guna tool upload Higgsfield (ia buka tetingkap upload untuk
+     Nawal), atau dalam Claude Code upload melalui CLI.
+   - Gambar dari web → beri URL terus.
+4. **Jana** — mula dengan 1 versi; tambah versi lain hanya jika Nawal mahu.
+   Hasil biasanya muncul dalam *Assets* Higgsfield dalam masa ~60 saat selepas
+   kerja siap; semak status/senarai generasi dan beri pautan hasil sebenar.
+5. **Selepas jana**: tanya sama ada mahu ubah (prompt lain, gerakan lain), upscale,
+   buang latar, reframe ke 9:16, atau tambah voiceover — semua ini juga ciri
+   Higgsfield yang memotong kredit, jadi minta kelulusan semula.
+6. Laporkan baki kredit selepas selesai.
+
+Untuk gerakan watak mengikut video rujukan (contoh Kling Motion Control), perlu
+dua input berasingan: gambar watak + video gerakan rujukan.
+
 ## Watak konsisten (Soul / Character)
 
 Jika Nawal mahu wajah/watak sama dalam beberapa babak:
@@ -91,6 +135,7 @@ Jika Nawal mahu wajah/watak sama dalam beberapa babak:
 - [ ] Satu aksi utama setiap babak
 - [ ] Tiada teks dalam prompt video (tambah teks kemudian dalam CapCut)
 - [ ] Ada prompt alternatif
+- [ ] (Jana terus) Baki kredit disemak & Nawal luluskan sebelum jana
 
 Untuk pelan suntingan video penuh (hook, timeline, CapCut), guna skill
 `tiktok-video-wow` — skill ini fokus pada bahagian Higgsfield sahaja.
