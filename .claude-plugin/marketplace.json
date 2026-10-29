@@ -3,6 +3,7 @@
   "owner": {
     "name": "Nawal"
   },
+  "description": "Plugin Claude Code peribadi Nawal untuk video dan kandungan AI.",
   "plugins": [
     {
       "name": "higgsfield",
