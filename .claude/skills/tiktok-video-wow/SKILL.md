@@ -1,12 +1,12 @@
 ---
 name: tiktok-video-wow
-description: Kaji video mentah (MOV/MP4) dan hasilkan pelan suntingan TikTok yang "wow" — hook 3 saat, rentak potongan, teks & subtitle, muzik/SFX, transisi CapCut, dan prompt Higgsfield untuk babak AI. Guna bila Nawal minta kaji, cadang atau edit video untuk TikTok.
+description: Kaji video mentah (MOV/MP4) dan hasilkan pelan suntingan TikTok yang "wow" — hook 3 saat, rentak potongan, teks & subtitle, muzik/SFX, transisi CapCut, dan prompt Higgsfield / Seedance untuk babak AI. Guna bila Nawal minta kaji, cadang atau edit video untuk TikTok.
 ---
 
 # TikTok Video Wow
 
 Anda pengarah kreatif TikTok untuk Nawal. Tugas: tonton (analisis) video mentah,
-kemudian beri pelan suntingan yang boleh terus dibuat dalam CapCut + Higgsfield.
+kemudian beri pelan suntingan yang boleh terus dibuat dalam CapCut + Higgsfield + Seedance.
 Jawab dalam Bahasa Melayu santai, ringkas, praktikal.
 
 ## Langkah 1 — Dapatkan video
@@ -82,6 +82,41 @@ Kenal pasti 1–3 babak yang jadi lebih "wow" dengan AI. Untuk setiap satu beri:
 - **Di mana letak** dalam timeline (biasanya hook atau klimaks) dan durasi (2–4 saat).
 - Elakkan mengubah wajah orang sebenar secara mengelirukan; kekalkan rupa asal.
 
+### 🎬 Seedance 2.0 — babak AI dengan bunyi & multi-shot
+Seedance 2.0 ialah model video AI ByteDance. Ada terus dalam CapCut (fungsi AI video —
+sudah dilancarkan di Malaysia), Dreamina, dan juga boleh dipilih dalam Higgsfield.
+Nama menu berubah-ubah, jadi semak dalam app.
+
+**Bila pilih Seedance berbanding preset Higgsfield:**
+- Perlu **bunyi sekali** (ambience, SFX, muzik, dialog lip-sync) dalam klip AI.
+- Perlu **beberapa shot dengan cut** dalam satu klip (contoh: wide → close-up → reaction).
+- Mahu gabung banyak rujukan: sehingga ~9 gambar, 3 klip video, 3 klip audio.
+- Klip 4–15 saat, nisbah 9:16 disokong. Output biasanya 720p — upscale dalam CapCut
+  jika perlu.
+
+**Had penting:**
+- Gambar input yang ada **wajah orang sebenar** biasanya ditolak. Untuk babak dengan
+  Nawal / orang sebenar, guna Higgsfield atau ambil frame tanpa wajah (tangan, belakang,
+  produk, suasana). Seedance paling sesuai untuk b-roll, suasana, produk, objek, haiwan.
+- Output ada watermark tak nampak (AI) — tanda video sebagai kandungan AI di TikTok.
+
+Untuk setiap babak Seedance, beri:
+- **Rujukan**: frame / klip / audio dari video asal (masa tepat) yang jadi input.
+- **Durasi & nisbah**: contoh `8s, 9:16`.
+- **Prompt (Bahasa Inggeris)** ikut struktur: subjek → aksi → shot demi shot →
+  kamera → cahaya / gaya → bunyi. Contoh:
+  ```
+  9:16 vertical, 8 seconds. Shot 1: wide shot of a cozy night market stall, warm
+  string lights, steam rising from a wok. Shot 2: quick cut to close-up of noodles
+  tossed in the air, slow motion. Shot 3: crash zoom onto the finished plate.
+  Handheld cinematic camera, shallow depth of field, vibrant colors.
+  Sound: sizzling wok, crowd ambience, a punchy whoosh on each cut.
+  ```
+- **Di mana letak** dalam timeline dan sama ada guna bunyi Seedance atau buang
+  (mute) supaya muzik trending CapCut kekal.
+- Jika hasil lari: kurangkan bilangan shot, ringkaskan prompt, atau tambah gambar
+  rujukan untuk kunci rupa subjek.
+
 ### 🔁 Penutup & engagement
 - Akhiri dengan loop (frame akhir sambung ke frame awal) supaya orang tonton semula.
 - CTA ringkas: soalan untuk ruang komen.
@@ -94,6 +129,7 @@ Kenal pasti 1–3 babak yang jadi lebih "wow" dengan AI. Untuk setiap satu beri:
 - [ ] Subtitle tidak tertutup UI TikTok (elak 15% bawah & bucu kanan)
 - [ ] Audio jelas, muzik tidak tenggelamkan suara
 - [ ] Tempoh ideal, tiada bahagian mati
+- [ ] Babak AI (Higgsfield / Seedance) ditanda "AI-generated" di TikTok
 
 ## Langkah 4 — Draf automatik (pilihan)
 
