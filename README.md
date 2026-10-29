@@ -10,10 +10,13 @@
   Sambung connector: claude.ai → Settings → Connectors → *Add custom connector* → URL `https://mcp.higgsfield.ai/mcp`.
 - **tiktok-video-wow** (dalam plugin `higgsfield`) — kaji video mentah dan hasilkan pelan suntingan TikTok (hook, timeline, CapCut, babak Higgsfield).
 
+- **hyperframes** — plugin rasmi [HyperFrames oleh HeyGen](https://github.com/heygen-com/hyperframes): tulis HTML, render jadi video (animasi GSAP, kapsyen, suara latar). Diambil terus dari repo HeyGen, jadi sentiasa versi terkini. Guna dengan `/hyperframes:hyperframes`.
+
 Pasang dalam Claude Code:
 
 ```
 /plugin install higgsfield --marketplace nawaljoe/Nawal
+/plugin install hyperframes --marketplace nawaljoe/Nawal
 ```
 
 ---
