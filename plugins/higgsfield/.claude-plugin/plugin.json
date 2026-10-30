@@ -1,7 +1,7 @@
 {
   "name": "higgsfield",
-  "version": "1.2.0",
-  "description": "Video TikTok & Higgsfield AI: kaji video mentah dan rancang suntingan TikTok yang \"wow\", serta jana gambar & video Higgsfield terus melalui connector/CLI (atau tulis prompt siap tampal).",
+  "version": "1.3.0",
+  "description": "Video TikTok & Higgsfield AI: kaji video mentah dan rancang suntingan TikTok yang \"wow\", katalog 20 efek video (snap zoom, orbit, green screen, liquid glass…), serta jana gambar & video Higgsfield terus melalui connector/CLI (atau tulis prompt siap tampal).",
   "author": {
     "name": "Nawal"
   },
@@ -11,6 +11,7 @@
     "higgsfield",
     "prompt",
     "tiktok",
-    "video-editing"
+    "video-editing",
+    "video-effects"
   ]
 }
