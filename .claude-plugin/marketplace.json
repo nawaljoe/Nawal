@@ -9,6 +9,16 @@
       "name": "higgsfield",
       "source": "./plugins/higgsfield",
       "description": "Video TikTok & Higgsfield AI: kaji video mentah dan rancang suntingan TikTok yang \"wow\", katalog 20 efek video (snap zoom, orbit, green screen, liquid glass…), serta jana gambar & video Higgsfield terus melalui connector/CLI (atau tulis prompt siap tampal)."
+    },
+    {
+      "name": "hyperframes",
+      "source": {
+        "source": "github",
+        "repo": "heygen-com/hyperframes"
+      },
+      "description": "HyperFrames oleh HeyGen: tulis HTML, render jadi video. Komposisi, animasi GSAP, kapsyen, suara latar, visual reaktif audio dan tangkapan laman web.",
+      "homepage": "https://hyperframes.heygen.com",
+      "license": "Apache-2.0"
     }
   ]
 }
