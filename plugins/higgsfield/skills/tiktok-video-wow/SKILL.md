@@ -69,6 +69,8 @@ Jadual: `Masa asal | Tindakan | Efek / Teks | Bunyi`.
 - Filter / Adjust: naikkan Contrast & Saturation sedikit, kurangkan Highlights,
   tambah sedikit Sharpen. Konsisten untuk semua klip.
 - Efek: Shake / Zoom Lens pada beat drop, Freeze Frame + teks pada momen klimaks.
+  Untuk efek bernama (snap zoom, zoom portal, headline storm, liquid glass, dll.)
+  rujuk skill `efek-video` dan nyatakan efek mana pada saat mana dalam timeline.
 - Audio: Noise Reduction untuk suara; muzik trending pada 15–25% volume jika ada
   percakapan; SFX "whoosh" pada transisi, "ding/pop" pada teks muncul.
 
