@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sediakan aset video "Amanah Seorang Pemimpin":
 #  - public/broll/*.mp4      : rakaman lapangan dari TikTok (perlu: pip install yt-dlp)
-#  - public/audio/amanah-ambient.wav : muzik latar dijana (scripts/gen_music.py)
+#  - public/audio/amanah-sound.wav   : muzik latar dari sound TikTok (scripts/build_sound.py)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 TMP=$(mktemp -d)
@@ -24,6 +24,12 @@ for k in "${!CLIPS[@]}"; do
 done
 
 
-[ -f public/audio/amanah-ambient.wav ] || python3 scripts/gen_music.py
+# Muzik: sound TikTok "Everything Works Out in the End (instrumental)", disambung ke 50s
+if [ ! -f public/audio/amanah-sound.wav ]; then
+  mkdir -p public/audio
+  yt-dlp -q -o "$TMP/snd.%(ext)s" https://vt.tiktok.com/ZSgwpaWRB/
+  ffmpeg -v error -y -i "$TMP"/snd.* -vn -ac 2 -ar 48000 "$TMP/snd.wav"
+  python3 scripts/build_sound.py "$TMP/snd.wav"
+fi
 rm -rf "$TMP"
 echo "Aset siap."

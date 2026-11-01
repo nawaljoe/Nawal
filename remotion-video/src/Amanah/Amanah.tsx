@@ -303,7 +303,7 @@ export const Amanah: React.FC<Props> = ({ music }) => {
           </Sequence>
         ))}
 
-        {music && <Audio src={staticFile("audio/amanah-ambient.wav")} />}
+        {music && <Audio src={staticFile("audio/amanah-sound.wav")} />}
 
         {/* grain filem halus */}
         <AbsoluteFill
