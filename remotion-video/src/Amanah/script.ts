@@ -26,7 +26,7 @@ export const CARDS: Card[] = [
   { text: "Kadang-kadang, kita *penat.*", broll: { src: "H.mp4", from: 6 } },
   { text: "Ada perkara yang kita usahakan, tetapi tidak semua orang *nampak.*", broll: { src: "H.mp4", from: 26 } },
   { text: "Ada keputusan yang kita buat, mungkin tidak semua orang *bersetuju.*", broll: { src: "H.mp4", from: 46 } },
-  { text: "Namun, saya selalu *percaya* satu perkara.", broll: { src: "B.mp4", from: 12 } },
+  { text: "Namun, kita *percaya* satu perkara.", broll: { src: "B.mp4", from: 12 } },
   { text: "Apabila kita diberikan *amanah,* jangan sesekali kita lupa kepada siapa kita perlu *bertanggungjawab.*", broll: { src: "B.mp4", from: 0 } },
   { text: "*Rakyat* meletakkan harapan, dan *Allah* akan mempersoalkan setiap amanah.", broll: { src: "B.mp4", from: 28.3 } },
   { text: "Sebab itu, selagi diberikan ruang dan kemampuan, kita teruskan *berkhidmat.*", broll: { src: "E.mp4", from: 4 } },
