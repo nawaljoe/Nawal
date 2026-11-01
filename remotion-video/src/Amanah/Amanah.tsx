@@ -31,8 +31,10 @@ export const amanahSchema = z.object({
 });
 type Props = z.infer<typeof amanahSchema>;
 
-// Zon teks di tengah skrin (logo jenama di atas ~y160-250, watermark FK ~y1530)
-const TEXT_ZONE = { top: 560, bottom: 1360 };
+// Zon teks "lower third": muka dalam rakaman kebanyakannya pada y 350-1000
+// (dikesan dengan YuNet), jadi teks diletak di bawah supaya tak tutup muka.
+// Watermark FK ~y1530, UI kapsyen TikTok bermula ~y1550.
+const TEXT_ZONE = { top: 1040, bottom: 1490 };
 const XFADE = 8; // frame silang antara klip
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -77,11 +79,11 @@ const BRollBackground: React.FC = () => {
           <BRollClip b={s.b} />
         </Sequence>
       ))}
-      {/* gelapkan supaya teks jelas, rakaman masih nampak */}
+      {/* muka kekal terang; jalur gelap di bawah untuk teks */}
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.5) 26%, rgba(0,0,0,0.62) 50%, rgba(0,0,0,0.5) 74%, rgba(0,0,0,0.3) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.12) 18%, rgba(0,0,0,0.10) 42%, rgba(0,0,0,0.55) 56%, rgba(0,0,0,0.78) 70%, rgba(0,0,0,0.78) 82%, rgba(0,0,0,0.55) 100%)",
         }}
       />
       {/* vignette */}
@@ -283,7 +285,7 @@ export const Amanah: React.FC<Props> = ({ music }) => {
               <PopText
                 text={c.text}
                 duration={c.duration}
-                fontSize={c.finale ? 72 : 66}
+                fontSize={c.finale ? 66 : 62}
               />
             </AbsoluteFill>
           </Sequence>
