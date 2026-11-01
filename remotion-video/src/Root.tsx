@@ -7,23 +7,12 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
-      {/* Kata-kata motivasi: latar alam + teks pop-up + rakaman lapangan di bawah */}
+      {/* Kata-kata motivasi: rakaman lapangan penuh skrin + teks pop-up + logo + outro FK */}
       <Composition
         id="Amanah"
         component={Amanah}
         schema={amanahSchema}
-        defaultProps={{ showBroll: true, music: true }}
-        durationInFrames={TOTAL_FRAMES}
-        fps={FPS}
-        width={1080}
-        height={1920}
-      />
-      {/* Versi tanpa rakaman: alam + teks sahaja */}
-      <Composition
-        id="AmanahAlam"
-        component={Amanah}
-        schema={amanahSchema}
-        defaultProps={{ showBroll: false, music: true }}
+        defaultProps={{ music: true }}
         durationInFrames={TOTAL_FRAMES}
         fps={FPS}
         width={1080}

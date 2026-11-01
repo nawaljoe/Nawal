@@ -1,11 +1,11 @@
 """Jana muzik latar ambient (piano + pad) untuk video Amanah.
-Jalankan: python3 scripts/gen_music.py [saat] [saat_finale]   (lalai 52.9 44.4)"""
+Jalankan: python3 scripts/gen_music.py [saat] [saat_finale]   (lalai 52.5 43.8)"""
 import sys, os, wave
 import numpy as np
 
 SR = 48000
-DUR = float(sys.argv[1]) if len(sys.argv) > 1 else 52.9
-FINALE = float(sys.argv[2]) if len(sys.argv) > 2 else 44.4
+DUR = float(sys.argv[1]) if len(sys.argv) > 1 else 52.5
+FINALE = float(sys.argv[2]) if len(sys.argv) > 2 else 43.8
 N = int(SR * DUR)
 rng = np.random.default_rng(3)
 L = np.zeros(N); R = np.zeros(N)
