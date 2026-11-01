@@ -145,7 +145,6 @@ const BRollClip: React.FC<{ b: BRoll; duration: number }> = ({
           objectFit: "cover",
           objectPosition: `50% ${(b.pos ?? 0.35) * 100}%`,
           transform: `scale(${push})`,
-          filter: "saturate(0.9) contrast(1.04) brightness(0.97)",
         }}
       />
     </AbsoluteFill>
