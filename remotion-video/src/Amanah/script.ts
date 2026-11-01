@@ -15,7 +15,7 @@ export type Card = {
 };
 
 // Pembukaan: tajuk "AMANAH SEORANG PEMIMPIN"
-export const TITLE_FRAMES = 78;
+export const TITLE_FRAMES = 72;
 export const INTRO_FRAMES = TITLE_FRAMES;
 export const INTRO_BROLL: BRoll = { src: "G.mp4", from: 4 };
 
@@ -40,15 +40,15 @@ export const CARDS: Card[] = [
 export const STAGGER = 2; // frame antara setiap perkataan muncul
 export const EXIT = 10; // frame untuk keluar
 export const TAIL_FRAMES = 12; // rehat selepas kad terakhir sebelum outro
-// Outro jenama FK (public/brand/fk-outro.mp4, 10s) — guna 7s pertama (animasi siap ~6s)
-export const OUTRO_FRAMES = 210;
+// Outro jenama FK (public/brand/fk-outro.mp4) — penuh 10s
+export const OUTRO_FRAMES = 300;
 export const OUTRO_XFADE = 12;
 
 const wordCount = (t: string) => t.split(/\s+/).filter(Boolean).length;
 
 export const cardDuration = (c: Card) => {
   const n = wordCount(c.text);
-  const hold = Math.max(52, n * 6 + 3);
+  const hold = Math.max(50, Math.round(n * 5.8));
   return n * STAGGER + hold + EXIT + (c.finale ? 36 : 0);
 };
 
