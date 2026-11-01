@@ -17,6 +17,10 @@ export type Card = {
 // Pembukaan: tajuk "AMANAH SEORANG PEMIMPIN"
 export const TITLE_FRAMES = 72;
 export const INTRO_FRAMES = TITLE_FRAMES;
+
+// Klip TikTok asal sudah ada logo Johor/Maju Johor + watermark FK.
+// Overlay logo hanya dipasang pada klip yang tiada logo (elak logo berganda).
+export const CLIPS_WITHOUT_LOGO = ["D.mp4"];
 export const INTRO_BROLL: BRoll = { src: "G.mp4", from: 4 };
 
 export const CARDS: Card[] = [

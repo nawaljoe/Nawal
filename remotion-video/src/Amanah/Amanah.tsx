@@ -17,6 +17,7 @@ import { fonts } from "./fonts";
 import { PopText } from "./PopText";
 import {
   BRoll,
+  CLIPS_WITHOUT_LOGO,
   INTRO_BROLL,
   INTRO_FRAMES,
   MAIN_FRAMES,
@@ -41,7 +42,7 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 /* ───────────── Latar: rakaman lapangan penuh skrin ─────────────
    Klip dipapar tepat 1:1 (tanpa zoom) supaya logo & watermark yang sudah
-   ada dalam klip asal jatuh tepat di bawah overlay logo — tiada logo berganda. */
+   ada dalam klip asal kekal di tempatnya; overlay hanya untuk klip tanpa logo. */
 const BRollClip: React.FC<{ b: BRoll }> = ({ b }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -54,6 +55,17 @@ const BRollClip: React.FC<{ b: BRoll }> = ({ b }) => {
         muted
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
       />
+      {CLIPS_WITHOUT_LOGO.includes(b.src) && (
+        <Img
+          src={staticFile("brand/logo-overlay.png")}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      )}
     </AbsoluteFill>
   );
 };
@@ -292,17 +304,6 @@ export const Amanah: React.FC<Props> = ({ music }) => {
         ))}
 
         {music && <Audio src={staticFile("audio/amanah-ambient.wav")} />}
-
-        {/* overlay logo jenama (Johor + Maju Johor + watermark FK) */}
-        <Img
-          src={staticFile("brand/logo-overlay.png")}
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        />
 
         {/* grain filem halus */}
         <AbsoluteFill
