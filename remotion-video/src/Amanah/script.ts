@@ -37,8 +37,7 @@ export const CARDS: Card[] = [
   { text: "Turun bertemu rakyat, dengar *keluhan* mereka dan usahakan apa sahaja yang termampu.", broll: { src: "C.mp4", from: 26.2 } },
   { text: "Kita mungkin tidak mampu menyelesaikan *semua* perkara,", broll: { src: "F.mp4", from: 44 } },
   { text: "tetapi jangan sampai ada perkara yang kita mampu lakukan, tetapi kita *abaikan.*", broll: { src: "C.mp4", from: 64 } },
-  { text: "Kerana akhirnya, *jawatan* itu akan berakhir,", broll: { src: "A.mp4", from: 40 }, finale: true },
-  { text: "tetapi setiap *amanah* dan *tanggungjawab* tetap akan *dihitung* di hadapan *Allah.*", broll: { src: "F.mp4", from: 66 }, finale: true },
+  { text: "Setiap *amanah* dan *tanggungjawab* tetap akan *dihitung* di hadapan *Allah.*", broll: { src: "F.mp4", from: 66 }, finale: true },
 ];
 
 export const STAGGER = 2; // frame antara setiap perkataan muncul
@@ -52,7 +51,7 @@ const wordCount = (t: string) => t.split(/\s+/).filter(Boolean).length;
 
 export const cardDuration = (c: Card) => {
   const n = wordCount(c.text);
-  const hold = Math.max(50, Math.round(n * 5.8));
+  const hold = Math.max(56, Math.round(n * 6.6));
   return n * STAGGER + hold + EXIT + (c.finale ? 36 : 0);
 };
 

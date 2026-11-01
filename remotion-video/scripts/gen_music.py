@@ -4,14 +4,14 @@ D minor, ~56 bpm. Progression disusun ke belakang dari hujung supaya chord
 terakhir ialah tonik (Dm) — lagu selesai dengan "pulang", tak tergantung —
 dan dibiar bergema sebelum outro FK masuk.
 
-Jalankan: python3 scripts/gen_music.py [saat] [saat_finale]   (lalai 50.0 41.6)
+Jalankan: python3 scripts/gen_music.py [saat] [saat_finale]   (lalai 49.95 45.1)
 """
 import sys, os, wave
 import numpy as np
 
 SR = 48000
-DUR = float(sys.argv[1]) if len(sys.argv) > 1 else 50.0
-FINALE = float(sys.argv[2]) if len(sys.argv) > 2 else 41.6
+DUR = float(sys.argv[1]) if len(sys.argv) > 1 else 49.95
+FINALE = float(sys.argv[2]) if len(sys.argv) > 2 else 45.1
 N = int(SR * DUR)
 rng = np.random.default_rng(5)
 L = np.zeros(N)
