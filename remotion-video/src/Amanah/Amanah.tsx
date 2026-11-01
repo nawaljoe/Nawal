@@ -3,6 +3,7 @@ import {
   AbsoluteFill,
   Audio,
   Easing,
+  Img,
   OffthreadVideo,
   Sequence,
   interpolate,
@@ -26,7 +27,9 @@ import {
   INTRO_FRAMES,
   TIMELINE,
   TITLE_FRAMES,
-  TOTAL_FRAMES,
+  MAIN_FRAMES,
+  OUTRO_FRAMES,
+  OUTRO_XFADE,
 } from "./script";
 
 export const amanahSchema = z.object({
@@ -37,19 +40,21 @@ type Props = z.infer<typeof amanahSchema>;
 
 // Susun atur (1080x1920, zon selamat TikTok diambil kira)
 const CARD = { x: 80, y: 960, w: 920, h: 640, r: 34 };
-const TEXT_ZONE = { top: 260, bottom: 920 };
+const TEXT_ZONE = { top: 330, bottom: 935 }; // logo jenama di atas (~y 160-250)
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 /* ───────────── Latar alam ───────────── */
 const NatureBackground: React.FC = () => {
   const frame = useCurrentFrame();
-  const zoom = interpolate(frame, [0, TOTAL_FRAMES], [1.0, 1.08]);
+  const zoom = interpolate(frame, [0, MAIN_FRAMES], [1.0, 1.08]);
   // Cahaya matahari berdenyut perlahan (matahari di kiri, ~y 47%)
   const pulse = 0.85 + 0.15 * Math.sin(frame / 45);
   return (
     <AbsoluteFill style={{ backgroundColor: "#0d1020" }}>
-      <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: "30% 50%" }}>
+      <AbsoluteFill
+        style={{ transform: `scale(${zoom})`, transformOrigin: "30% 50%" }}
+      >
         <OffthreadVideo
           src={staticFile("nature/sunset.mp4")}
           muted
@@ -74,7 +79,8 @@ const NatureBackground: React.FC = () => {
       {/* vignette */}
       <AbsoluteFill
         style={{
-          background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)",
+          background:
+            "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)",
         }}
       />
     </AbsoluteFill>
@@ -91,7 +97,9 @@ const Particles: React.FC = () => {
         const sx = random(`x${i}`) * width;
         const speed = 0.25 + random(`s${i}`) * 0.6;
         const size = 3 + random(`z${i}`) * 7;
-        const y = (random(`y${i}`) * height - frame * speed * 1.4 + height * 4) % (height + 40);
+        const y =
+          (random(`y${i}`) * height - frame * speed * 1.4 + height * 4) %
+          (height + 40);
         const x = sx + Math.sin(frame / (40 + random(`w${i}`) * 50) + i) * 26;
         const tw = 0.35 + 0.65 * Math.abs(Math.sin(frame / (25 + i) + i * 1.7));
         return (
@@ -104,7 +112,8 @@ const Particles: React.FC = () => {
               width: size,
               height: size,
               borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(255,226,160,1) 0%, rgba(255,190,90,0.6) 40%, rgba(255,170,60,0) 70%)",
+              background:
+                "radial-gradient(circle, rgba(255,226,160,1) 0%, rgba(255,190,90,0.6) 40%, rgba(255,170,60,0) 70%)",
               opacity: tw * 0.75,
               filter: size > 7 ? "blur(1.5px)" : undefined,
             }}
@@ -116,7 +125,10 @@ const Particles: React.FC = () => {
 };
 
 /* ───────────── Kad video (rakaman lapangan) ───────────── */
-const BRollClip: React.FC<{ b: BRoll; duration: number }> = ({ b, duration }) => {
+const BRollClip: React.FC<{ b: BRoll; duration: number }> = ({
+  b,
+  duration,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const fadeIn = interpolate(frame, [0, 10], [0, 1], clamp);
@@ -143,14 +155,27 @@ const BRollClip: React.FC<{ b: BRoll; duration: number }> = ({ b, duration }) =>
 const BRollCard: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const enter = spring({ frame: frame - 2, fps, config: { damping: 16, stiffness: 120 } });
-  const leave = interpolate(frame, [FINALE_START - 6, FINALE_START + 18], [0, 1], {
-    ...clamp,
-    easing: Easing.inOut(Easing.cubic),
+  const enter = spring({
+    frame: frame - 2,
+    fps,
+    config: { damping: 16, stiffness: 120 },
   });
+  const leave = interpolate(
+    frame,
+    [FINALE_START - 6, FINALE_START + 18],
+    [0, 1],
+    {
+      ...clamp,
+      easing: Easing.inOut(Easing.cubic),
+    },
+  );
   const segs = [
     { b: INTRO_BROLL, start: 0, duration: INTRO_FRAMES },
-    ...TIMELINE.filter((c) => c.broll).map((c) => ({ b: c.broll!, start: c.start, duration: c.duration })),
+    ...TIMELINE.filter((c) => c.broll).map((c) => ({
+      b: c.broll!,
+      start: c.start,
+      duration: c.duration,
+    })),
   ];
   return (
     <div
@@ -164,24 +189,34 @@ const BRollCard: React.FC = () => {
         overflow: "hidden",
         opacity: enter * (1 - leave),
         transform: `translateY(${(1 - enter) * 120 + leave * 60}px) scale(${0.94 + 0.06 * enter - leave * 0.06})`,
-        boxShadow: "0 30px 80px rgba(0,0,0,0.55), 0 0 0 2px rgba(255,214,140,0.55), 0 0 40px rgba(255,170,80,0.25)",
+        boxShadow:
+          "0 30px 80px rgba(0,0,0,0.55), 0 0 0 2px rgba(255,214,140,0.55), 0 0 40px rgba(255,170,80,0.25)",
         background: "#111",
       }}
     >
       {segs.map((s, i) => (
-        <Sequence key={i} from={s.start} durationInFrames={s.duration + 10} layout="none">
+        <Sequence
+          key={i}
+          from={s.start}
+          durationInFrames={s.duration + 10}
+          layout="none"
+        >
           <BRollClip b={s.b} duration={s.duration + 10} />
         </Sequence>
       ))}
       {/* tona hangat senada dengan senja */}
       <AbsoluteFill
         style={{
-          background: "linear-gradient(180deg, rgba(255,160,90,0.10), rgba(40,20,60,0.18))",
+          background:
+            "linear-gradient(180deg, rgba(255,160,90,0.10), rgba(40,20,60,0.18))",
           mixBlendMode: "soft-light",
         }}
       />
       <AbsoluteFill
-        style={{ boxShadow: "inset 0 0 60px rgba(0,0,0,0.45)", borderRadius: CARD.r }}
+        style={{
+          boxShadow: "inset 0 0 60px rgba(0,0,0,0.45)",
+          borderRadius: CARD.r,
+        }}
       />
     </div>
   );
@@ -204,7 +239,12 @@ const Hook: React.FC = () => {
       }}
     >
       <PopText text={HOOK_LINE1} duration={HOOK_FRAMES} fontSize={92} />
-      <PopText text={HOOK_LINE2} duration={HOOK_FRAMES} delay={HOOK_LINE2_AT} fontSize={58} />
+      <PopText
+        text={HOOK_LINE2}
+        duration={HOOK_FRAMES}
+        delay={HOOK_LINE2_AT}
+        fontSize={58}
+      />
     </AbsoluteFill>
   );
 };
@@ -214,9 +254,17 @@ const IntroTitle: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const letters = "AMANAH".split("");
-  const out = interpolate(frame, [TITLE_FRAMES - 14, TITLE_FRAMES], [0, 1], clamp);
+  const out = interpolate(
+    frame,
+    [TITLE_FRAMES - 14, TITLE_FRAMES],
+    [0, 1],
+    clamp,
+  );
   const sub = spring({ frame: frame - 26, fps, config: { damping: 16 } });
-  const line = interpolate(frame, [20, 50], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const line = interpolate(frame, [20, 50], [0, 1], {
+    ...clamp,
+    easing: Easing.out(Easing.cubic),
+  });
   return (
     <AbsoluteFill
       style={{
@@ -231,7 +279,11 @@ const IntroTitle: React.FC = () => {
     >
       <div style={{ display: "flex" }}>
         {letters.map((l, i) => {
-          const s = spring({ frame: frame - 4 - i * 4, fps, config: { damping: 10, stiffness: 150, mass: 0.7 } });
+          const s = spring({
+            frame: frame - 4 - i * 4,
+            fps,
+            config: { damping: 10, stiffness: 150, mass: 0.7 },
+          });
           return (
             <span
               key={i}
@@ -244,7 +296,8 @@ const IntroTitle: React.FC = () => {
                 color: "#FFD27A",
                 transform: `translateY(${(1 - s) * 70}px) scale(${0.3 + 0.7 * s})`,
                 opacity: Math.min(1, s * 1.5),
-                textShadow: "0 0 40px rgba(255,180,80,0.55), 0 6px 22px rgba(0,0,0,0.6)",
+                textShadow:
+                  "0 0 40px rgba(255,180,80,0.55), 0 6px 22px rgba(0,0,0,0.6)",
               }}
             >
               {l}
@@ -252,8 +305,16 @@ const IntroTitle: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 4 }}>
-        <div style={{ width: 120 * line, height: 2, background: "linear-gradient(90deg, rgba(255,210,122,0), #FFD27A)" }} />
+      <div
+        style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 4 }}
+      >
+        <div
+          style={{
+            width: 120 * line,
+            height: 2,
+            background: "linear-gradient(90deg, rgba(255,210,122,0), #FFD27A)",
+          }}
+        />
         <div
           style={{
             fontFamily: fonts.sans,
@@ -268,7 +329,13 @@ const IntroTitle: React.FC = () => {
         >
           SEORANG PEMIMPIN
         </div>
-        <div style={{ width: 120 * line, height: 2, background: "linear-gradient(90deg, #FFD27A, rgba(255,210,122,0))" }} />
+        <div
+          style={{
+            width: 120 * line,
+            height: 2,
+            background: "linear-gradient(90deg, #FFD27A, rgba(255,210,122,0))",
+          }}
+        />
       </div>
     </AbsoluteFill>
   );
@@ -277,13 +344,22 @@ const IntroTitle: React.FC = () => {
 const HeaderPill: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const s = spring({ frame: frame - INTRO_FRAMES + 4, fps, config: { damping: 18 } });
-  const out = interpolate(frame, [TOTAL_FRAMES - 30, TOTAL_FRAMES - 5], [0, 1], clamp);
+  const s = spring({
+    frame: frame - INTRO_FRAMES + 4,
+    fps,
+    config: { damping: 18 },
+  });
+  const out = interpolate(
+    frame,
+    [MAIN_FRAMES - 30, MAIN_FRAMES - 5],
+    [0, 1],
+    clamp,
+  );
   return (
     <div
       style={{
         position: "absolute",
-        top: 150,
+        top: 272,
         width: "100%",
         display: "flex",
         justifyContent: "center",
@@ -304,7 +380,15 @@ const HeaderPill: React.FC = () => {
         }}
       >
         <span style={{ color: "#FFD27A", fontSize: 22 }}>✦</span>
-        <span style={{ fontFamily: fonts.sans, fontWeight: 700, fontSize: 28, letterSpacing: 6, color: "white" }}>
+        <span
+          style={{
+            fontFamily: fonts.sans,
+            fontWeight: 700,
+            fontSize: 28,
+            letterSpacing: 6,
+            color: "white",
+          }}
+        >
           AMANAH SEORANG PEMIMPIN
         </span>
         <span style={{ color: "#FFD27A", fontSize: 22 }}>✦</span>
@@ -317,53 +401,98 @@ const HeaderPill: React.FC = () => {
 export const Amanah: React.FC<Props> = ({ showBroll, music }) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 3], [1, 0], clamp);
-  const fadeOut = interpolate(frame, [TOTAL_FRAMES - 25, TOTAL_FRAMES], [0, 1], clamp);
+  const outroIn = interpolate(
+    frame,
+    [MAIN_FRAMES - OUTRO_XFADE, MAIN_FRAMES],
+    [0, 1],
+    clamp,
+  );
 
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      <NatureBackground />
-      {showBroll && <BRollCard />}
+      <Sequence durationInFrames={MAIN_FRAMES} layout="none">
+        <NatureBackground />
+        {showBroll && <BRollCard />}
 
-      <Sequence durationInFrames={HOOK_FRAMES} layout="none">
-        <Hook />
-      </Sequence>
-      <Sequence from={HOOK_FRAMES} durationInFrames={TITLE_FRAMES} layout="none">
-        <IntroTitle />
-      </Sequence>
-      <HeaderPill />
+        <Sequence durationInFrames={HOOK_FRAMES} layout="none">
+          <Hook />
+        </Sequence>
+        <Sequence
+          from={HOOK_FRAMES}
+          durationInFrames={TITLE_FRAMES}
+          layout="none"
+        >
+          <IntroTitle />
+        </Sequence>
+        <HeaderPill />
 
-      {TIMELINE.map((c, i) => {
-        const centered = c.finale || !showBroll;
-        const zone = centered ? { top: 300, bottom: 1000 } : TEXT_ZONE;
-        const fontSize = c.finale ? 70 : centered ? 66 : 60;
-        return (
-          <Sequence key={i} from={c.start} durationInFrames={c.duration} layout="none">
-            <AbsoluteFill
-              style={{
-                top: zone.top,
-                height: zone.bottom - zone.top,
-                padding: "0 80px",
-                justifyContent: "center",
-              }}
+        {TIMELINE.map((c, i) => {
+          const centered = c.finale || !showBroll;
+          const zone = centered ? { top: 340, bottom: 1000 } : TEXT_ZONE;
+          const fontSize = c.finale ? 70 : centered ? 66 : 60;
+          return (
+            <Sequence
+              key={i}
+              from={c.start}
+              durationInFrames={c.duration}
+              layout="none"
             >
-              <PopText text={c.text} duration={c.duration} fontSize={fontSize} />
-            </AbsoluteFill>
-          </Sequence>
-        );
-      })}
+              <AbsoluteFill
+                style={{
+                  top: zone.top,
+                  height: zone.bottom - zone.top,
+                  padding: "0 80px",
+                  justifyContent: "center",
+                }}
+              >
+                <PopText
+                  text={c.text}
+                  duration={c.duration}
+                  fontSize={fontSize}
+                />
+              </AbsoluteFill>
+            </Sequence>
+          );
+        })}
 
-      {music && <Audio src={staticFile("audio/amanah-ambient.wav")} />}
+        {music && <Audio src={staticFile("audio/amanah-ambient.wav")} />}
 
-      {/* grain filem halus */}
-      <AbsoluteFill
-        style={{
-          backgroundImage: `url(${staticFile("nature/grain.png")})`,
-          backgroundPosition: `${(frame * 137) % 512}px ${(frame * 251) % 512}px`,
-          mixBlendMode: "overlay",
-          opacity: 0.18,
-        }}
-      />
-      <AbsoluteFill style={{ backgroundColor: "black", opacity: Math.max(fadeIn, fadeOut) }} />
+        {/* overlay logo jenama (Johor + Maju Johor + watermark FK) */}
+        <Img
+          src={staticFile("brand/logo-overlay.png")}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        />
+
+        {/* grain filem halus */}
+        <AbsoluteFill
+          style={{
+            backgroundImage: `url(${staticFile("nature/grain.png")})`,
+            backgroundPosition: `${(frame * 137) % 512}px ${(frame * 251) % 512}px`,
+            mixBlendMode: "overlay",
+            opacity: 0.18,
+          }}
+        />
+        <AbsoluteFill style={{ backgroundColor: "black", opacity: fadeIn }} />
+      </Sequence>
+
+      {/* Outro FK */}
+      <Sequence
+        from={MAIN_FRAMES - OUTRO_XFADE}
+        durationInFrames={OUTRO_FRAMES}
+        layout="none"
+      >
+        <AbsoluteFill style={{ opacity: outroIn }}>
+          <OffthreadVideo
+            src={staticFile("brand/fk-outro.mp4")}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </AbsoluteFill>
+      </Sequence>
     </AbsoluteFill>
   );
 };

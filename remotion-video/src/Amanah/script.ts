@@ -18,11 +18,11 @@ export type Card = {
 // HOOK (0-3.7s): buka "gap" — soalan apa? Jawapannya dibayar di kad "Allah akan mempersoalkan setiap amanah".
 export const HOOK_LINE1 = "Jawatan ini akan *berakhir.*";
 export const HOOK_LINE2 = "Tapi ada satu *soalan* yang tetap akan ditanya…";
-export const HOOK_FRAMES = 112;
-export const HOOK_LINE2_AT = 30;
-export const TITLE_FRAMES = 66;
+export const HOOK_FRAMES = 84;
+export const HOOK_LINE2_AT = 22;
+export const TITLE_FRAMES = 48;
 export const INTRO_FRAMES = HOOK_FRAMES + TITLE_FRAMES;
-export const INTRO_BROLL: BRoll = { src: "G.mp4", from: 4, pos: 0.12 };
+export const INTRO_BROLL: BRoll = { src: "G.mp4", from: 4, pos: 0.2 };
 
 export const CARDS: Card[] = [
   { text: "Menjadi seorang pemimpin ini bukan soal berapa tinggi *jawatan* yang kita pegang,", broll: { src: "A.mp4", from: 2 } },
@@ -42,16 +42,19 @@ export const CARDS: Card[] = [
   { text: "tetapi setiap *amanah* dan *tanggungjawab* tetap akan *dihitung* di hadapan *Allah.*", finale: true },
 ];
 
-export const STAGGER = 3; // frame antara setiap perkataan muncul
-export const EXIT = 12; // frame untuk keluar
-export const OUTRO_FRAMES = 45;
+export const STAGGER = 2; // frame antara setiap perkataan muncul
+export const EXIT = 10; // frame untuk keluar
+export const TAIL_FRAMES = 12; // rehat selepas kad terakhir sebelum outro
+// Outro jenama FK (public/brand/fk-outro.mp4, 10s) — guna 7s pertama (animasi siap ~6s)
+export const OUTRO_FRAMES = 210;
+export const OUTRO_XFADE = 12;
 
 const wordCount = (t: string) => t.split(/\s+/).filter(Boolean).length;
 
 export const cardDuration = (c: Card) => {
   const n = wordCount(c.text);
-  const hold = Math.max(66, Math.round(n * 0.3 * FPS));
-  return n * STAGGER + hold + EXIT + (c.finale ? 45 : 0);
+  const hold = Math.max(50, n * 6);
+  return n * STAGGER + hold + EXIT + (c.finale ? 36 : 0);
 };
 
 export type Timed = Card & { start: number; duration: number };
@@ -67,4 +70,5 @@ export const TIMELINE: Timed[] = (() => {
 })();
 
 export const FINALE_START = TIMELINE.find((c) => c.finale)!.start;
-export const TOTAL_FRAMES = TIMELINE[TIMELINE.length - 1].start + TIMELINE[TIMELINE.length - 1].duration + OUTRO_FRAMES;
+export const MAIN_FRAMES = TIMELINE[TIMELINE.length - 1].start + TIMELINE[TIMELINE.length - 1].duration + TAIL_FRAMES;
+export const TOTAL_FRAMES = MAIN_FRAMES - OUTRO_XFADE + OUTRO_FRAMES;
