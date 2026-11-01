@@ -1,10 +1,11 @@
 """Jana muzik latar ambient (piano + pad) untuk video Amanah.
-Jalankan: python3 scripts/gen_music.py [saat]   (lalai 73.8)"""
+Jalankan: python3 scripts/gen_music.py [saat] [saat_finale]   (lalai 76.3 63.4)"""
 import sys, os, wave
 import numpy as np
 
 SR = 48000
-DUR = float(sys.argv[1]) if len(sys.argv) > 1 else 73.8
+DUR = float(sys.argv[1]) if len(sys.argv) > 1 else 76.3
+FINALE = float(sys.argv[2]) if len(sys.argv) > 2 else 63.4
 N = int(SR * DUR)
 rng = np.random.default_rng(3)
 L = np.zeros(N); R = np.zeros(N)
@@ -50,7 +51,7 @@ def pad(notes, length, vel=0.5):
     return s * env * lfo * vel * 0.035
 
 bars = int(np.ceil(DUR / BAR))
-finale_bar = int((61.0) / BAR)
+finale_bar = int(FINALE / BAR)
 for b in range(bars):
     c = CHORDS[b % 4]
     t0 = b * BAR

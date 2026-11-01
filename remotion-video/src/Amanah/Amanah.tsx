@@ -18,9 +18,14 @@ import { PopText } from "./PopText";
 import {
   BRoll,
   FINALE_START,
+  HOOK_FRAMES,
+  HOOK_LINE1,
+  HOOK_LINE2,
+  HOOK_LINE2_AT,
   INTRO_BROLL,
   INTRO_FRAMES,
   TIMELINE,
+  TITLE_FRAMES,
   TOTAL_FRAMES,
 } from "./script";
 
@@ -138,7 +143,7 @@ const BRollClip: React.FC<{ b: BRoll; duration: number }> = ({ b, duration }) =>
 const BRollCard: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const enter = spring({ frame: frame - 12, fps, config: { damping: 18, stiffness: 90 } });
+  const enter = spring({ frame: frame - 2, fps, config: { damping: 16, stiffness: 120 } });
   const leave = interpolate(frame, [FINALE_START - 6, FINALE_START + 18], [0, 1], {
     ...clamp,
     easing: Easing.inOut(Easing.cubic),
@@ -182,12 +187,34 @@ const BRollCard: React.FC = () => {
   );
 };
 
+/* ───────────── Hook (3 saat pertama) ───────────── */
+const Hook: React.FC = () => {
+  const frame = useCurrentFrame();
+  // "punch" zoom halus sepanjang hook
+  const push = interpolate(frame, [0, HOOK_FRAMES], [1, 1.05]);
+  return (
+    <AbsoluteFill
+      style={{
+        top: TEXT_ZONE.top,
+        height: TEXT_ZONE.bottom - TEXT_ZONE.top,
+        padding: "0 70px",
+        justifyContent: "center",
+        gap: 34,
+        transform: `scale(${push})`,
+      }}
+    >
+      <PopText text={HOOK_LINE1} duration={HOOK_FRAMES} fontSize={92} />
+      <PopText text={HOOK_LINE2} duration={HOOK_FRAMES} delay={HOOK_LINE2_AT} fontSize={58} />
+    </AbsoluteFill>
+  );
+};
+
 /* ───────────── Tajuk ───────────── */
 const IntroTitle: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const letters = "AMANAH".split("");
-  const out = interpolate(frame, [INTRO_FRAMES - 14, INTRO_FRAMES], [0, 1], clamp);
+  const out = interpolate(frame, [TITLE_FRAMES - 14, TITLE_FRAMES], [0, 1], clamp);
   const sub = spring({ frame: frame - 26, fps, config: { damping: 16 } });
   const line = interpolate(frame, [20, 50], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
   return (
@@ -289,7 +316,7 @@ const HeaderPill: React.FC = () => {
 /* ───────────── Komposisi utama ───────────── */
 export const Amanah: React.FC<Props> = ({ showBroll, music }) => {
   const frame = useCurrentFrame();
-  const fadeIn = interpolate(frame, [0, 12], [1, 0], clamp);
+  const fadeIn = interpolate(frame, [0, 3], [1, 0], clamp);
   const fadeOut = interpolate(frame, [TOTAL_FRAMES - 25, TOTAL_FRAMES], [0, 1], clamp);
 
   return (
@@ -297,7 +324,10 @@ export const Amanah: React.FC<Props> = ({ showBroll, music }) => {
       <NatureBackground />
       {showBroll && <BRollCard />}
 
-      <Sequence durationInFrames={INTRO_FRAMES} layout="none">
+      <Sequence durationInFrames={HOOK_FRAMES} layout="none">
+        <Hook />
+      </Sequence>
+      <Sequence from={HOOK_FRAMES} durationInFrames={TITLE_FRAMES} layout="none">
         <IntroTitle />
       </Sequence>
       <HeaderPill />

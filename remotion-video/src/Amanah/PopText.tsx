@@ -20,7 +20,8 @@ export const PopText: React.FC<{
   duration: number;
   fontSize: number;
   align?: "center" | "left";
-}> = ({ text, duration, fontSize, align = "center" }) => {
+  delay?: number; // frame sebelum perkataan pertama muncul (ruang tetap ditempah)
+}> = ({ text, duration, fontSize, align = "center", delay = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const tokens = tokenize(text);
@@ -45,7 +46,7 @@ export const PopText: React.FC<{
       }}
     >
       {tokens.map((t, i) => {
-        const local = frame - i * STAGGER;
+        const local = frame - delay - i * STAGGER;
         const s = spring({
           frame: local,
           fps,

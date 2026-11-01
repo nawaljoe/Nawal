@@ -15,7 +15,13 @@ export type Card = {
   finale?: boolean;
 };
 
-export const INTRO_FRAMES = 105;
+// HOOK (0-3.7s): buka "gap" — soalan apa? Jawapannya dibayar di kad "Allah akan mempersoalkan setiap amanah".
+export const HOOK_LINE1 = "Jawatan ini akan *berakhir.*";
+export const HOOK_LINE2 = "Tapi ada satu *soalan* yang tetap akan ditanya…";
+export const HOOK_FRAMES = 112;
+export const HOOK_LINE2_AT = 30;
+export const TITLE_FRAMES = 66;
+export const INTRO_FRAMES = HOOK_FRAMES + TITLE_FRAMES;
 export const INTRO_BROLL: BRoll = { src: "G.mp4", from: 4, pos: 0.12 };
 
 export const CARDS: Card[] = [
