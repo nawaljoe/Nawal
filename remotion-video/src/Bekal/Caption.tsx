@@ -62,7 +62,12 @@ const CaptionInner: React.FC<Omit<Props, "start" | "end"> & { len: number }> = (
           color: "white",
           textShadow: warm
             ? "0 6px 24px rgba(90,30,0,0.65), 0 2px 4px rgba(0,0,0,0.5)"
-            : "0 4px 30px rgba(10,20,50,0.75), 0 1px 3px rgba(0,0,0,0.4)",
+            : "0 2px 18px rgba(5,10,30,0.9), 0 1px 3px rgba(0,0,0,0.6)",
+          // latar gelap lembut supaya kapsyen tenang jelas di atas latar terang
+          background: warm
+            ? undefined
+            : "radial-gradient(ellipse at center, rgba(8,16,40,0.6) 0%, rgba(8,16,40,0.35) 45%, rgba(8,16,40,0) 72%)",
+          padding: warm ? undefined : "50px 20px",
           opacity: interpolate(
             frame,
             [0, inDur, len - outDur, len],
