@@ -30,10 +30,11 @@ ff -t 78 -i "$SRC/IMG_7905.MOV" -vf "setpts=PTS/10,fps=30,$TM" -an $E $OUT/walk_
 ff -ss 8 -t 56 -i "$SRC/IMG_7897.MOV" -vf "setpts=PTS/12,fps=30,$TM" -an $E $OUT/food1_fast.mp4 &
 ff -t 30 -i "$SRC/IMG_7902.MOV" -vf "setpts=PTS/8,fps=30,$TM" -an $E $OUT/food2_fast.mp4 &
 wait
-ff -i "$SRC/IMG_0876.mov" -vf "fps=30,$TM" $E -c:a aac -b:a 128k $OUT/wudhu.mp4
-ff -i "$SRC/IMG_0904.MOV" -vf "fps=30,$TM" $E -c:a aac -b:a 128k $OUT/sujud.mp4
+# klip bekal akhirat ditajamkan untuk rupa "premium"
+ff -i "$SRC/IMG_0876.mov" -vf "fps=30,$TM,unsharp=5:5:0.7" $E -c:a aac -b:a 128k $OUT/wudhu.mp4
+ff -i "$SRC/IMG_0904.MOV" -vf "fps=30,$TM,unsharp=5:5:0.7" $E -c:a aac -b:a 128k $OUT/sujud.mp4
 for p in ed54:masjid_pintu 410c:masjid_dalam 322c:masjid_saf 81fd:masjid_qiyam; do
-  ff -i "$SRC/${p%%:*}.mp4" -vf "scale=1080:1920:flags=lanczos,fps=30" $E -c:a aac -b:a 128k "$OUT/${p##*:}.mp4"
+  ff -i "$SRC/${p%%:*}.mp4" -vf "hqdn3d=2:1.5:3:3,scale=1080:1920:flags=lanczos,unsharp=7:7:1.1:5:5:0.0,unsharp=3:3:0.4,fps=30" $E -c:a aac -b:a 128k "$OUT/${p##*:}.mp4"
 done
 ls -la $OUT
 

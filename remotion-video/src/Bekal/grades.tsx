@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
 
 /**
  * Gred warna "sunset / golden hour" untuk babak bekal dunia.
@@ -56,48 +56,46 @@ export const SunsetOverlay: React.FC<{ intensity?: number }> = ({
 };
 
 /**
- * Gred "subuh tenang" untuk babak bekal akhirat.
- * Kesan: kurang saturasi, kontras lembut, biru fajar ke ungu lembut,
- * kabus cahaya halus dan vignette lembut.
+ * Gred "premium sinematik" untuk babak bekal akhirat (rujukan: rupa podcast studio gelap).
+ * Kesan: hitam pekat & kontras tinggi, highlight hangat keemasan, bayang teal gelap,
+ * warna kaya tapi terkawal, vignette gelap yang kuat. Tiada kabus — kekal tajam.
  */
 export const DAWN_FILTER =
-  "saturate(0.72) contrast(0.9) brightness(1.04) sepia(0.06)";
+  "contrast(1.3) brightness(0.78) saturate(1.15) sepia(0.2)";
 
 export const DawnOverlay: React.FC<{ intensity?: number }> = ({
   intensity = 1,
 }) => {
-  const frame = useCurrentFrame();
-  const breathe = interpolate(Math.sin(frame / 60), [-1, 1], [0.05, 0.11]);
   return (
     <AbsoluteFill style={{ pointerEvents: "none", opacity: intensity }}>
+      {/* split-tone: bayang teal gelap */}
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(60,100,170,0.55) 0%, rgba(120,140,200,0.25) 50%, rgba(150,120,180,0.35) 100%)",
+            "linear-gradient(180deg, rgba(8,38,48,0.55) 0%, rgba(10,30,40,0.35) 55%, rgba(6,20,28,0.6) 100%)",
           mixBlendMode: "soft-light",
         }}
       />
-      {/* Kabus cahaya fajar dari atas */}
+      {/* highlight hangat keemasan (macam lampu tungsten) */}
       <AbsoluteFill
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(220,232,255,0.45) 0%, rgba(220,232,255,0) 60%)",
-          mixBlendMode: "screen",
+            "radial-gradient(ellipse at 60% 40%, rgba(255,176,96,0.30) 0%, rgba(255,150,70,0.10) 45%, rgba(0,0,0,0) 75%)",
+          mixBlendMode: "soft-light",
         }}
       />
-      <AbsoluteFill
-        style={{ backgroundColor: `rgba(225,235,255,${breathe})` }}
-      />
+      {/* gelapkan atas & bawah supaya fokus ke tengah */}
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(8,14,35,0.4) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.15) 26%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.55) 100%)",
         }}
       />
+      {/* vignette gelap kuat */}
       <AbsoluteFill
         style={{
           background:
-            "radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(8,14,35,0.55) 100%)",
+            "radial-gradient(ellipse 85% 70% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.72) 100%)",
         }}
       />
     </AbsoluteFill>

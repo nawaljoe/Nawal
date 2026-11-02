@@ -11,7 +11,7 @@ Video 9:16 (1080×1920, 30fps, 39.5 saat), suara panduan lelaki. Bekal makanan d
 | 3.8–5.0 | 2a | Jalan ke pejabat (timelapse 10x) | "Setiap hari," | 🌅 · whoosh |
 | 5.0–8.6 | 2b. Meja | Orang pertama letak bungkusan (sebenar) → **tangan-tangan lain yang kabur & pudar** datang letak bekal lain (dari seberang meja) | "kita bawak bekal untuk perut kita." | 🌅 · "pop" setiap bekal mendarat |
 | 8.6–10.2 | Detik renung | Bekal sekali lagi → pudar ke hitam | | 🌅 · riser, rentak berhenti 9.0s |
-| 10.2–14.2 | 3. Pusingan | Pintu masjid (doa masuk masjid), slow-mo | "Ini pun... **bekal**." | 🌙 Subuh tenang · soft boom, ambience tenang naik |
+| 10.2–14.2 | 3. Pusingan | Pintu masjid (doa masuk masjid), slow-mo | "Ini pun... **bekal**." | 🎬 Premium tenang · soft boom, ambience tenang naik |
 | 14.2–20.2 | 4 | Dalam masjid → saf, slow-mo | "Bekal utama kita, untuk kat 'sana' nanti." | 🌙 Tenang · crossfade perlahan |
 | 20.2–27.8 | 5 | Wudhu (bunyi air asal) → qiyam → sujud | "Jom... kita mulakan pagi kita dengan Solat Subuh berjemaah, sama-sama." | 🌙 Tenang |
 | 27.8–34.0 | 6. Banding | Split skrin: atas bekal (sunset) ✓, bawah sujud (subuh) ? | "Bekal dunia siap. Bekal akhirat... macam mana?" | ✓ switch · ? soft boom |
@@ -19,7 +19,7 @@ Video 9:16 (1080×1920, 30fps, 39.5 saat), suara panduan lelaki. Bekal makanan d
 
 **Dua mood visual** (`src/Bekal/grades.tsx`):
 - 🌅 **Sunset** (bekal dunia): sepia + saturasi tinggi, tona oren→magenta, cahaya matahari dari kanan atas, light leak bergerak, vignette hangat.
-- 🌙 **Subuh tenang** (bekal akhirat): saturasi rendah, kontras lembut, biru fajar→ungu lembut, kabus cahaya "bernafas", slow-mo 0.55–0.75x, crossfade 0.8 saat, kapsyen italik serif yang pudar masuk perlahan.
+- 🎬 **Premium sinematik** (bekal akhirat, rujukan rupa podcast studio gelap): hitam pekat & kontras tinggi, highlight hangat tungsten, bayang teal gelap, vignette kuat, footage ditajamkan (klip resolusi rendah dibuang noise + unsharp). Kekal tenang dengan slow-mo 0.55–0.75x, crossfade 0.8 saat dan kapsyen italik serif yang pudar masuk perlahan.
 
 **Audio**:
 - 🥁 **Bekal dunia (0–9s) — rancak**: rentak perkusi gaya kompang/rebana 150 BPM (tiada melodi), dijana oleh `scripts/bekal-rentak.py`. Setiap potongan klip jatuh tepat atas beat.
