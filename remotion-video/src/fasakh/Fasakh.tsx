@@ -211,7 +211,7 @@ export const Fasakh: React.FC = () => {
       <Chip at={src(238.8)} dur={6.2} kicker="KES ANDA" label="Diabaikan bertahun-tahun?" />
       <Chip at={src(256.07)} dur={6.0} kicker="KESIMPULAN" label="Ada jalan penyelesaian" />
 
-      <Captions hideBefore={0} hideRanges={[[END_AT, 9999]]} />
+      <Captions hideBefore={0} hideRanges={[[BEEP.out_start, BODY_START], [END_AT, 9999]]} />
 
       <Sequence from={sec(END_AT)} durationInFrames={sec(OUTRO_AT - END_AT)}>
         <EndCard dur={sec(OUTRO_AT - END_AT)} />
