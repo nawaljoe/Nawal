@@ -12,9 +12,10 @@ import {
 } from "remotion";
 import { Caption } from "./Caption";
 import { Shot } from "./Shot";
+import { GHOST_LANDINGS, MakananTambahan, MejaShot } from "./Meja";
 
 export const BEKAL_FPS = 30;
-export const BEKAL_DURATION_S = 40.5;
+export const BEKAL_DURATION_S = 39.5;
 
 export type BekalProps = {
   /** suara panduan AI: "perempuan" (Yasmin) atau "lelaki" (Osman). "tiada" = senyap, guna VO sendiri */
@@ -25,16 +26,19 @@ export type BekalProps = {
   seedanceBekal: string | null;
   /** klip Seedance masjid waktu subuh (ganti klip pintu masjid) */
   seedanceMasjid: string | null;
-  /** klip Seedance meja penuh pelbagai bekal (stop-motion) — ganti 2 klip bungkusan makanan, contoh "bekal/seedance/meja_bekal.mp4" */
+  /** klip Seedance meja penuh pelbagai bekal (stop-motion) — ganti babak meja, contoh "bekal/seedance/meja_bekal.mp4" */
   seedanceMeja: string | null;
+  /** makanan tambahan (PNG lut sinar) yang diletak oleh "tangan hantu" atas meja — sandwich, mi goreng, nasi goreng... */
+  makananTambahan: MakananTambahan[];
 };
 
 export const bekalDefaultProps: BekalProps = {
-  suara: "perempuan",
+  suara: "lelaki",
   voSendiri: null,
   seedanceBekal: null,
   seedanceMasjid: null,
   seedanceMeja: null,
+  makananTambahan: [],
 };
 
 const F = "bekal/footage/";
@@ -239,9 +243,9 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
           })}px`,
         }}
       >
-        <Shot name="Split: bekal dunia" src={bekalSrc} start={0} end={7.4} tail={0} grade="sunset" zoom={[1.05, 1.15]} position="50% 72%" rate={0.65} />
+        <Shot name="Split: bekal dunia" src={bekalSrc} start={0} end={6.6} tail={0} grade="sunset" zoom={[1.05, 1.15]} position="50% 72%" rate={0.65} />
         <Sequence from={Math.round(0.6 * fps)} layout="absolute-fill">
-          <Label text="Bekal dunia" mark="✓" markColor="#E8A23A" top={110} markAt={1.6} />
+          <Label text="Bekal dunia" mark="✓" markColor="#E8A23A" top={110} markAt={1.15} />
         </Sequence>
       </div>
       <div
@@ -255,9 +259,9 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
           })}px`,
         }}
       >
-        <Shot name="Split: bekal akhirat" src={F + "sujud.mp4"} start={0} end={7.4} tail={0} grade="dawn" rate={0.6} trim={0.2} zoom={[1.05, 1.12]} />
-        <Sequence from={Math.round(3.9 * fps)} layout="absolute-fill">
-          <Label text="Bekal akhirat" mark="?" markColor="#5B7BB5" top={110} markAt={1.25} calm />
+        <Shot name="Split: bekal akhirat" src={F + "sujud.mp4"} start={0} end={6.6} tail={0} grade="dawn" rate={0.6} trim={0.2} zoom={[1.05, 1.12]} />
+        <Sequence from={Math.round(3.28 * fps)} layout="absolute-fill">
+          <Label text="Bekal akhirat" mark="?" markColor="#5B7BB5" top={110} markAt={1.17} calm />
         </Sequence>
       </div>
       {/* garis pemisah lembut */}
@@ -284,8 +288,8 @@ const ambientVolume = (f: number) => {
   const s = f / BEKAL_FPS;
   return interpolate(
     s,
-    [0, 1, 9.4, 11.2, BEKAL_DURATION_S - 1.8, BEKAL_DURATION_S],
-    [0, 0.14, 0.14, 0.6, 0.6, 0],
+    [0, 9.0, 11.0, BEKAL_DURATION_S - 1.8, BEKAL_DURATION_S],
+    [0, 0, 0.6, 0.6, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 };
@@ -299,8 +303,8 @@ const VO: React.FC<{ suara: BekalProps["suara"] }> = ({ suara }) => {
     ["vo1.mp3", 0.4],
     ["vo2.mp3", 3.6],
     ["vo3.mp3", 10.9],
-    ["vo4.mp3", 14.2],
-    ["vo5.mp3", 20.0],
+    ["vo4.mp3", 14.4],
+    ["vo5.mp3", 20.2],
     ["vo6.mp3", 28.2],
   ];
   return (
@@ -314,33 +318,39 @@ const VO: React.FC<{ suara: BekalProps["suara"] }> = ({ suara }) => {
   );
 };
 
+// Babak meja: mula 5.0s; tangan hantu mula 0.8s kemudian, kelajuan 0.8
+const MEJA_START = 5.0;
+const GHOST_START = 0.8;
+const GHOST_SPEED = 0.8;
+
 export const Bekal: React.FC<BekalProps> = ({
   suara,
   voSendiri,
   seedanceBekal,
   seedanceMasjid,
   seedanceMeja,
+  makananTambahan,
 }) => {
   const { fps } = useVideoConfig();
   const bekalSrc = seedanceBekal ?? "bekal/bekal_foto.jpg";
   const masjidSrc = seedanceMasjid ?? F + "masjid_pintu.mp4";
+  const END = BEKAL_DURATION_S;
+  const ghostPops = GHOST_LANDINGS.map(
+    (i) => MEJA_START + GHOST_START + i / GHOST_SPEED / BEKAL_FPS,
+  );
 
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
-      {/* ===== BABAK 1 — BEKAL DUNIA (sunset) ===== */}
+      {/* ===== BABAK 1 — BEKAL DUNIA (sunset, rentak rancak 150 BPM: potongan atas beat) ===== */}
       <Shot name="1. Ini bekal (foto)" src={bekalSrc} start={0} end={2.2} grade="sunset" zoom={[1.12, 1.02]} position="50% 62%" />
-      <Shot name="1b. Beg bekal" src={F + "bag.mp4"} start={2.2} end={3.8} fadeIn={0.2} grade="sunset" trim={2} zoom={[1.0, 1.06]} volume={0.35} />
-      <Shot name="2a. Jalan ke pejabat" src={F + "walk_fast.mp4"} start={3.8} end={5.4} fadeIn={0.12} grade="sunset" trim={5} zoom={[1.04, 1.1]} />
+      <Shot name="1b. Beg bekal" src={F + "bag.mp4"} start={2.2} end={3.8} fadeIn={0.12} grade="sunset" trim={2} zoom={[1.0, 1.06]} volume={0.3} />
+      <Shot name="2a. Jalan ke pejabat" src={F + "walk_fast.mp4"} start={3.8} end={5.0} fadeIn={0.1} grade="sunset" trim={5.3} zoom={[1.04, 1.1]} />
       {seedanceMeja ? (
-        // Klip Seedance 5s dimainkan 1.2x supaya muat 3.4s (+ crossfade)
-        <Shot name="2b. Meja penuh bekal (Seedance)" src={seedanceMeja} start={5.4} end={8.8} fadeIn={0.12} grade="sunset" rate={1.2} zoom={[1.02, 1.1]} />
+        <Shot name="2b. Meja penuh bekal (Seedance)" src={seedanceMeja} start={MEJA_START} end={8.6} fadeIn={0.1} grade="sunset" rate={1.2} zoom={[1.02, 1.1]} />
       ) : (
-        <>
-          <Shot name="2b. Bungkus makanan 1" src={F + "food1_fast.mp4"} start={5.4} end={7.0} fadeIn={0.12} grade="sunset" trim={0.2} zoom={[1.05, 1.12]} />
-          <Shot name="2c. Bungkus makanan 2" src={F + "food2_fast.mp4"} start={7.0} end={8.8} fadeIn={0.12} grade="sunset" trim={0.3} rate={1.5} zoom={[1.55, 1.65]} origin="50% 4%" />
-        </>
+        <MejaShot start={MEJA_START} end={8.6} ghostStart={GHOST_START} ghostSpeed={GHOST_SPEED} tambahan={makananTambahan} />
       )}
-      <Shot name="2d. Bekal (detik renung)" src={bekalSrc} start={8.8} end={10.2} tail={0} fadeIn={0.4} grade="sunset" zoom={[1.02, 1.14]} position="50% 62%" />
+      <Shot name="2c. Bekal (detik renung)" src={bekalSrc} start={8.6} end={10.2} tail={0} fadeIn={0.4} grade="sunset" zoom={[1.02, 1.14]} position="50% 62%" />
       <Sequence name="Tajuk BEKAL" from={Math.round(0.3 * fps)} durationInFrames={Math.round(9.0 * fps)} layout="absolute-fill">
         <Kicker />
       </Sequence>
@@ -348,59 +358,62 @@ export const Bekal: React.FC<BekalProps> = ({
       <ToBlack from={9.5} to={10.2} />
 
       {/* ===== BABAK 2 — BEKAL AKHIRAT (tenang, subuh) ===== */}
-      <Shot name="3. Ini pun bekal (masjid)" src={masjidSrc} start={10.2} end={14.0} fadeIn={1.0} tail={0.8} grade="dawn" rate={0.75} zoom={[1.0, 1.08]} />
-      <Shot name="4a. Dalam masjid" src={F + "masjid_dalam.mp4"} start={14.0} end={17.4} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.65} trim={0.3} zoom={[1.02, 1.09]} />
-      <Shot name="4b. Saf" src={F + "masjid_saf.mp4"} start={17.4} end={20.0} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
-      <Shot name="5a. Wudhu" src={F + "wudhu.mp4"} start={20.0} end={22.6} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.75} trim={0.4} zoom={[1.03, 1.1]} volume={0.5} />
-      <Shot name="5b. Qiyam" src={F + "masjid_qiyam.mp4"} start={22.6} end={25.0} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
+      <Shot name="3. Ini pun bekal (masjid)" src={masjidSrc} start={10.2} end={14.2} fadeIn={1.0} tail={0.8} grade="dawn" rate={0.65} zoom={[1.0, 1.08]} />
+      <Shot name="4a. Dalam masjid" src={F + "masjid_dalam.mp4"} start={14.2} end={17.4} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.65} trim={0.3} zoom={[1.02, 1.09]} />
+      <Shot name="4b. Saf" src={F + "masjid_saf.mp4"} start={17.4} end={20.2} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
+      <Shot name="5a. Wudhu" src={F + "wudhu.mp4"} start={20.2} end={22.7} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.75} trim={0.4} zoom={[1.03, 1.1]} volume={0.5} />
+      <Shot name="5b. Qiyam" src={F + "masjid_qiyam.mp4"} start={22.7} end={25.0} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
       <Shot name="5c. Sujud" src={F + "sujud.mp4"} start={25.0} end={27.8} fadeIn={0.8} tail={0.6} grade="dawn" rate={0.75} trim={0.3} zoom={[1.02, 1.09]} volume={0.2} />
 
       {/* ===== BABAK 3 — PERBANDINGAN & CTA ===== */}
-      <Sequence name="6. Split dunia vs akhirat" from={Math.round(27.8 * fps)} durationInFrames={Math.round(7.4 * fps)} layout="absolute-fill">
+      <Sequence name="6. Split dunia vs akhirat" from={Math.round(27.8 * fps)} durationInFrames={Math.round(6.6 * fps)} layout="absolute-fill">
         <SplitScene bekalSrc={bekalSrc} />
       </Sequence>
-      <Shot name="7. CTA" src={F + "masjid_dalam.mp4"} start={34.6} end={BEKAL_DURATION_S} tail={0} fadeIn={0.8} grade="dawn" rate={0.55} trim={3.5} zoom={[1.0, 1.1]} />
-      <ToBlack from={BEKAL_DURATION_S - 1.0} to={BEKAL_DURATION_S} />
+      <Shot name="7. CTA" src={F + "masjid_dalam.mp4"} start={34.0} end={END} tail={0} fadeIn={0.6} grade="dawn" rate={0.55} trim={3.5} zoom={[1.0, 1.1]} />
+      <ToBlack from={END - 1.0} to={END} />
 
-      {/* ===== KAPSYEN ===== */}
-      <Caption variant="warm" text="Ini... bekal." highlight="bekal" start={0.6} end={2.2} />
-      <Caption variant="warm" text="Setiap hari," start={3.85} end={5.3} />
-      <Caption variant="warm" text="kita bawak bekal" highlight="bekal" start={5.3} end={6.65} />
-      <Caption variant="warm" text="untuk perut kita." start={6.7} end={8.6} />
-      <Caption variant="calm" text="Ini pun... bekal." highlight="bekal" start={11.1} end={13.9} y={0.66} size={84} />
-      <Caption variant="calm" text="Bekal utama kita," highlight="bekal" start={14.45} end={15.95} />
-      <Caption variant="calm" text="untuk kat 'sana'" highlight="sana" start={15.95} end={17.5} />
-      <Caption variant="calm" text="nanti." start={17.5} end={19.7} />
-      <Caption variant="calm" text="Jom... mulakan pagi kita" start={20.25} end={22.8} />
-      <Caption variant="calm" text="dengan Solat Subuh berjemaah" highlight="subuh" start={22.85} end={25.1} />
-      <Caption variant="calm" text="sama-sama." start={25.15} end={27.5} />
-      <Caption variant="calm" text="Jom Solat Subuh Berjemaah!" highlight="subuh" start={35.0} end={BEKAL_DURATION_S - 0.6} y={0.48} size={104} />
+      {/* ===== KAPSYEN (timing ikut suara lelaki) ===== */}
+      <Caption variant="warm" text="Ini... bekal." highlight="bekal" start={0.55} end={2.2} />
+      <Caption variant="warm" text="Setiap hari," start={3.8} end={4.9} />
+      <Caption variant="warm" text="kita bawak bekal" highlight="bekal" start={4.9} end={6.1} y={0.6} />
+      <Caption variant="warm" text="untuk perut kita." start={6.1} end={8.4} y={0.6} />
+      <Caption variant="calm" text="Ini pun... bekal." highlight="bekal" start={11.05} end={13.9} y={0.66} size={84} />
+      <Caption variant="calm" text="Bekal utama kita," highlight="bekal" start={14.55} end={16.05} />
+      <Caption variant="calm" text="untuk kat 'sana'" highlight="sana" start={16.05} end={17.2} />
+      <Caption variant="calm" text="nanti." start={17.2} end={19.8} />
+      <Caption variant="calm" text="Jom... kita mulakan pagi kita" start={20.35} end={22.75} />
+      <Caption variant="calm" text="dengan Solat Subuh berjemaah" highlight="subuh" start={22.75} end={24.9} />
+      <Caption variant="calm" text="sama-sama." start={24.9} end={27.5} />
+      <Caption variant="calm" text="Jom Solat Subuh Berjemaah!" highlight="subuh" start={34.15} end={END - 0.6} y={0.48} size={104} />
 
       {/* ===== AUDIO ===== */}
+      {/* Rentak rancak (perkusi gaya kompang) — babak bekal dunia, berhenti 9.0s */}
+      <Audio name="Rentak rancak" src={staticFile(SFX + "rentak_rancak.wav")} volume={0.5} />
+      {/* Ambience subuh tenang — naik bila masuk bekal akhirat */}
       <Audio name="Ambience subuh" src={staticFile(SFX + "ambient_dawn.wav")} volume={ambientVolume} />
       <VO suara={suara} />
       {voSendiri ? <Audio name="VO sendiri" src={staticFile(voSendiri)} volume={1} /> : null}
       <Sfx src="shutter-modern.wav" at={0} volume={0.55} />
-      <Sfx src="whoosh_soft.wav" at={2.0} volume={0.5} />
+      <Sfx src="whoosh_soft.wav" at={2.0} volume={0.45} />
       <Sfx src="whoosh.wav" at={3.75} volume={0.55} />
-      <Sfx src="whoosh.wav" at={5.35} volume={0.55} />
-      <Sfx src="whoosh.wav" at={6.95} volume={0.55} />
-      {/* bunyi "pop" setiap bekal muncul (hanya bila klip Seedance meja digunakan) */}
-      {seedanceMeja
-        ? [5.7, 6.15, 6.6, 7.05, 7.5, 7.95].map((t) => (
-            <Sfx key={t} src="switch.wav" at={t} volume={0.3} />
-          ))
-        : null}
-      <Sfx src="riser.wav" at={8.2} volume={0.45} />
+      <Sfx src="whoosh.wav" at={4.95} volume={0.55} />
+      {/* bunyi "pop" setiap bekal diletak tangan hantu */}
+      {(seedanceMeja ? [5.4, 5.85, 6.3, 6.75, 7.2, 7.65] : ghostPops).map((t) => (
+        <Sfx key={t} src="switch.wav" at={t} volume={0.3} />
+      ))}
+      {makananTambahan.map((m, i) => (
+        <Sfx key={`tambah-${i}`} src="switch.wav" at={MEJA_START + m.at} volume={0.3} />
+      ))}
+      <Sfx src="riser.wav" at={8.2} volume={0.4} />
       <Sfx src="soft_boom.wav" at={10.2} volume={0.9} />
-      <Sfx src="whoosh_soft.wav" at={13.8} volume={0.15} />
+      <Sfx src="whoosh_soft.wav" at={14.0} volume={0.15} />
       <Sfx src="whoosh_soft.wav" at={17.2} volume={0.15} />
-      <Sfx src="whoosh_soft.wav" at={22.4} volume={0.15} />
+      <Sfx src="whoosh_soft.wav" at={22.5} volume={0.15} />
       <Sfx src="whoosh_soft.wav" at={24.8} volume={0.15} />
       <Sfx src="whoosh_soft.wav" at={27.6} volume={0.45} />
-      <Sfx src="switch.wav" at={29.95} volume={0.5} />
-      <Sfx src="soft_boom.wav" at={33.0} volume={0.45} />
-      <Sfx src="ding.wav" at={35.9} volume={0.4} />
+      <Sfx src="switch.wav" at={29.55} volume={0.5} />
+      <Sfx src="soft_boom.wav" at={32.25} volume={0.45} />
+      <Sfx src="ding.wav" at={34.9} volume={0.4} />
     </AbsoluteFill>
   );
 };
