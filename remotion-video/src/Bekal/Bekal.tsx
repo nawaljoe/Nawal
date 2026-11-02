@@ -264,7 +264,7 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
           })}px`,
         }}
       >
-        <Shot name="Split: bekal akhirat" src={F + "sujud_prem.mp4"} start={0} end={6.6} tail={0} grade="dawn" rate={0.6} trim={0.2} zoom={[1.05, 1.12]} />
+        <Shot name="Split: bekal akhirat" src={F + "sujud.mp4"} start={0} end={6.6} tail={0} grade="dawn" rate={0.6} trim={0.2} zoom={[1.05, 1.12]} />
         <Sequence from={Math.round(3.0 * fps)} layout="absolute-fill">
           <Label text="Bekal akhirat" mark="?" markColor="#5B7BB5" top={110} markAt={1.34} calm />
         </Sequence>
@@ -408,17 +408,17 @@ export const Bekal: React.FC<BekalProps> = ({
 
       {/* ===== BABAK 2 — BEKAL AKHIRAT (tenang, subuh) ===== */}
       <Shot name="3. Ini pun bekal (masjid)" src={masjidSrc} start={10.2} end={14.2} fadeIn={1.0} tail={0.8} grade="dawn" rate={0.65} zoom={[1.0, 1.08]} />
-      <Shot name="4a. Dalam masjid" src={F + "masjid_dalam_prem.mp4"} start={14.2} end={17.4} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.65} trim={0.3} zoom={[1.02, 1.09]} />
-      <Shot name="4b. Saf" src={F + "masjid_saf_prem.mp4"} start={17.4} end={20.2} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
-      <Shot name="5a. Wudhu" src={F + "wudhu_prem.mp4"} start={20.2} end={22.7} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.75} trim={0.4} zoom={[1.03, 1.1]} volume={0.5} />
-      <Shot name="5b. Qiyam" src={F + "masjid_qiyam_prem.mp4"} start={22.7} end={25.0} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
-      <Shot name="5c. Sujud" src={F + "sujud_prem.mp4"} start={25.0} end={27.8} fadeIn={0.8} tail={0.6} grade="dawn" rate={0.75} trim={0.3} zoom={[1.02, 1.09]} volume={0.2} />
+      <Shot name="4a. Dalam masjid" src={F + "masjid_dalam.mp4"} start={14.2} end={17.4} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.65} trim={0.3} zoom={[1.02, 1.09]} />
+      <Shot name="4b. Saf" src={F + "masjid_saf.mp4"} start={17.4} end={20.2} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
+      <Shot name="5a. Wudhu" src={F + "wudhu.mp4"} start={20.2} end={22.7} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.75} trim={0.4} zoom={[1.03, 1.1]} volume={0.5} />
+      <Shot name="5b. Qiyam" src={F + "masjid_qiyam.mp4"} start={22.7} end={25.0} fadeIn={0.8} tail={0.8} grade="dawn" rate={0.7} trim={0.2} zoom={[1.02, 1.08]} />
+      <Shot name="5c. Sujud" src={F + "sujud.mp4"} start={25.0} end={27.8} fadeIn={0.8} tail={0.6} grade="dawn" rate={0.75} trim={0.3} zoom={[1.02, 1.09]} volume={0.2} />
 
       {/* ===== BABAK 3 — PERBANDINGAN & CTA ===== */}
       <Sequence name="6. Split dunia vs akhirat" from={Math.round(27.8 * fps)} durationInFrames={Math.round(6.6 * fps)} layout="absolute-fill">
         <SplitScene bekalSrc={bekalSrc} />
       </Sequence>
-      <Shot name="7. CTA" src={F + "masjid_dalam_prem.mp4"} start={34.0} end={END} tail={0} fadeIn={0.6} grade="dawn" rate={0.55} trim={3.5} zoom={[1.0, 1.1]} />
+      <Shot name="7. CTA" src={F + "masjid_dalam.mp4"} start={34.0} end={END} tail={0} fadeIn={0.6} grade="dawn" rate={0.55} trim={3.5} zoom={[1.0, 1.1]} />
       <ToBlack from={END - 1.0} to={END} />
 
       {/* ===== KAPSYEN (timing ikut suara lelaki) ===== */}
