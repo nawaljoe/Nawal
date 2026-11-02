@@ -1,0 +1,171 @@
+import React from "react";
+import {
+  AbsoluteFill,
+  Audio,
+  OffthreadVideo,
+  Sequence,
+  interpolate,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
+import cuts from "./cuts.json";
+import { Captions } from "./Captions";
+import { Checklist, EndCard, InfoCard, LightLayer, SectionChip } from "./Overlays";
+import { C, sec } from "./theme";
+
+type Keep = { src_start: number; src_end: number; out_start: number; after_cut: string };
+const KEEPS = (cuts as { keeps: Keep[] }).keeps;
+const LAST = KEEPS[KEEPS.length - 1];
+const VOICE_END = LAST.out_start + (LAST.src_end - LAST.src_start);
+
+/** Map a time in the raw recording to the edited timeline, so overlays stay locked to the words after re-cuts. */
+const src = (t: number) => {
+  for (const k of KEEPS) {
+    if (t < k.src_start) return k.out_start;
+    if (t <= k.src_end) return k.out_start + (t - k.src_start);
+  }
+  return VOICE_END;
+};
+
+const END_AT = src(278.52); // "iaitu dinamakan cerai fasakh"
+export const FASAKH_DURATION_S = Math.ceil(VOICE_END + 4.2);
+const HOOK_LEN = 7.2;
+
+/** Alternating framing per segment hides each jump cut; slow push-in keeps the frame alive. */
+const useCameraScale = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  let i = KEEPS.length - 1;
+  for (let k = 0; k < KEEPS.length; k++) {
+    const end = KEEPS[k].out_start + (KEEPS[k].src_end - KEEPS[k].src_start);
+    if (t < end) {
+      i = k;
+      break;
+    }
+  }
+  const seg = KEEPS[i];
+  const len = seg.src_end - seg.src_start;
+  const p = Math.min(Math.max((t - seg.out_start) / len, 0), 1);
+  const base = i % 2 === 0 ? 1.0 : 1.1;
+  return base + 0.035 * p;
+};
+
+const Footage: React.FC = () => {
+  const scale = useCameraScale();
+  return (
+    <AbsoluteFill style={{ transform: `scale(${scale})`, transformOrigin: "50% 40%" }}>
+      <OffthreadVideo src={staticFile("fasakh/base_video.mp4")} muted />
+    </AbsoluteFill>
+  );
+};
+
+const Sfx: React.FC<{ at: number; file: string; vol: number }> = ({ at, file, vol }) => (
+  <Sequence from={sec(at)} layout="none">
+    <Audio src={staticFile(`fasakh/sfx/${file}.wav`)} volume={vol} />
+  </Sequence>
+);
+
+const Chip: React.FC<{ at: number; dur: number; kicker: string; label: string }> = ({ at, dur, kicker, label }) => (
+  <>
+    <Sequence from={sec(at)} durationInFrames={sec(dur)} layout="none">
+      <SectionChip kicker={kicker} label={label} dur={sec(dur)} />
+    </Sequence>
+    <Sfx at={at} file="whoosh_soft" vol={0.2} />
+  </>
+);
+
+const GROUNDS_AT = src(165.2);
+const GROUNDS = [
+  { text: "Suami hilang lebih 1 tahun", at: src(178.0) },
+  { text: "Suami cuai, tidak beri nafkah", at: src(193.0) },
+  { text: "Tidak tunaikan nafkah batin tanpa sebab munasabah", at: src(200.03) },
+  { text: "Suami menganiaya / menyakiti isteri", at: src(216.8) },
+];
+
+export const Fasakh: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = frame / fps;
+  // Voice fades out under the end card's final hold.
+  const voiceVol = interpolate(t, [0, 0.15], [0, 1], { extrapolateRight: "clamp" });
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: "#07080A" }}>
+      <Footage />
+      <LightLayer />
+
+      {/* Hook title — built and rendered in HyperFrames (GSAP), composited here with alpha */}
+      <Sequence from={0} durationInFrames={sec(HOOK_LEN)}>
+        <OffthreadVideo src={staticFile("fasakh/hook.mov")} transparent muted />
+      </Sequence>
+
+      <Chip at={src(11.77)} dur={4.6} kicker="TUJUAN" label="Perkahwinan dalam Islam" />
+      <Chip at={src(37.17)} dur={5.2} kicker="BILA MUDARAT" label="Islam beri jalan keluar" />
+      <Chip at={src(71.7)} dur={4.9} kicker="PERCERAIAN" label="Ada beberapa jenis" />
+
+      <Sequence from={sec(src(82.93))} durationInFrames={sec(src(101.63) - src(82.93))} layout="none">
+        <InfoCard
+          dur={sec(src(101.63) - src(82.93))}
+          kicker="JENIS 1"
+          title="Talak"
+          body="Suami bersetuju melepaskan atau menceraikan isteri."
+        />
+      </Sequence>
+      <Sfx at={src(82.93)} file="swipe_soft" vol={0.24} />
+
+      <Sequence from={sec(src(119.13))} durationInFrames={sec(src(143.33) - src(119.13))} layout="none">
+        <InfoCard
+          dur={sec(src(143.33) - src(119.13))}
+          kicker="JENIS 2"
+          title={
+            <span>
+              <span style={{ color: C.gold }}>Fasakh</span>
+            </span>
+          }
+          body={
+            <>
+              Perintah <b style={{ color: C.gold }}>Mahkamah Syariah</b> untuk membubarkan perkahwinan — apabila suami
+              tidak mahu menceraikan.
+            </>
+          }
+        />
+      </Sequence>
+      <Sfx at={src(119.13)} file="swipe_soft" vol={0.24} />
+      <Sfx at={src(119.33)} file="chime_soft" vol={0.12} />
+
+      <Chip at={src(143.43)} dur={7.4} kicker="TETAPI" label="Ada syarat-syaratnya" />
+
+      <Sequence from={sec(GROUNDS_AT)} durationInFrames={sec(src(228.9) - GROUNDS_AT)} layout="none">
+        <Checklist
+          dur={sec(src(228.9) - GROUNDS_AT)}
+          title="Antara alasan fasakh"
+          items={GROUNDS.map((g) => ({ text: g.text, at: g.at - GROUNDS_AT }))}
+        />
+      </Sequence>
+      <Sfx at={GROUNDS_AT} file="swipe_soft" vol={0.24} />
+      {GROUNDS.map((g) => (
+        <Sfx key={g.at} at={g.at} file="tick_soft" vol={0.3} />
+      ))}
+
+      <Chip at={src(238.8)} dur={6.2} kicker="KES ANDA" label="Diabaikan bertahun-tahun?" />
+      <Chip at={src(256.07)} dur={6.0} kicker="KESIMPULAN" label="Ada jalan penyelesaian" />
+
+      <Captions hideBefore={HOOK_LEN - 0.85} hideRanges={[[END_AT, 9999]]} />
+
+      <Sequence from={sec(END_AT)} durationInFrames={sec(FASAKH_DURATION_S - END_AT)}>
+        <EndCard dur={sec(FASAKH_DURATION_S - END_AT)} />
+      </Sequence>
+
+      {/* Audio: cleaned voice + soft SFX (kept well under the voice) */}
+      <Audio src={staticFile("fasakh/voice.wav")} volume={voiceVol} />
+      <Sfx at={0.0} file="impact_soft" vol={0.32} />
+      <Sfx at={2.35} file="riser_soft" vol={0.14} />
+      <Sfx at={3.95} file="chime_soft" vol={0.18} />
+      <Sfx at={6.2} file="whoosh_soft" vol={0.2} />
+      <Sfx at={END_AT} file="impact_soft" vol={0.26} />
+      <Sfx at={END_AT + 0.25} file="chime_soft" vol={0.2} />
+    </AbsoluteFill>
+  );
+};

@@ -1,0 +1,240 @@
+{
+ "keeps": [
+  {
+   "src_start": 3.9,
+   "src_end": 11.3,
+   "after_cut": "trim",
+   "out_start": 0
+  },
+  {
+   "src_start": 12.1333,
+   "src_end": 13.5,
+   "after_cut": "stutter",
+   "out_start": 7.4
+  },
+  {
+   "src_start": 14.1,
+   "src_end": 54.8667,
+   "after_cut": "pause",
+   "out_start": 8.767
+  },
+  {
+   "src_start": 55.8,
+   "src_end": 56.9,
+   "after_cut": "pause",
+   "out_start": 49.533
+  },
+  {
+   "src_start": 59.5,
+   "src_end": 64.1,
+   "after_cut": "stutter",
+   "out_start": 50.633
+  },
+  {
+   "src_start": 66.2,
+   "src_end": 72.3333,
+   "after_cut": "stutter",
+   "out_start": 55.233
+  },
+  {
+   "src_start": 78.5667,
+   "src_end": 99.0667,
+   "after_cut": "stutter",
+   "out_start": 61.367
+  },
+  {
+   "src_start": 101.4333,
+   "src_end": 121.1333,
+   "after_cut": "stutter",
+   "out_start": 81.867
+  },
+  {
+   "src_start": 122.2333,
+   "src_end": 154.8,
+   "after_cut": "stutter",
+   "out_start": 101.567
+  },
+  {
+   "src_start": 156.5,
+   "src_end": 160.9667,
+   "after_cut": "stutter",
+   "out_start": 134.133
+  },
+  {
+   "src_start": 164.8333,
+   "src_end": 167.2667,
+   "after_cut": "stutter",
+   "out_start": 138.6
+  },
+  {
+   "src_start": 177.0,
+   "src_end": 185.8667,
+   "after_cut": "stutter",
+   "out_start": 141.033
+  },
+  {
+   "src_start": 187.9333,
+   "src_end": 197.9,
+   "after_cut": "stutter",
+   "out_start": 149.9
+  },
+  {
+   "src_start": 199.3333,
+   "src_end": 203.7333,
+   "after_cut": "pause",
+   "out_start": 159.867
+  },
+  {
+   "src_start": 204.4333,
+   "src_end": 208.5,
+   "after_cut": "pause",
+   "out_start": 164.267
+  },
+  {
+   "src_start": 209.8,
+   "src_end": 211.7333,
+   "after_cut": "pause",
+   "out_start": 168.334
+  },
+  {
+   "src_start": 216.4,
+   "src_end": 221.4333,
+   "after_cut": "stutter",
+   "out_start": 170.267
+  },
+  {
+   "src_start": 221.7333,
+   "src_end": 244.9667,
+   "after_cut": "pause",
+   "out_start": 175.3
+  },
+  {
+   "src_start": 246.1333,
+   "src_end": 281.4667,
+   "after_cut": "stutter",
+   "out_start": 198.534
+  }
+ ],
+ "removed": [
+  {
+   "a": 0.0,
+   "b": 3.9,
+   "why": "lead-in: untuk ceraikan, aaa",
+   "type": "trim"
+  },
+  {
+   "a": 11.3,
+   "b": 12.120000000000001,
+   "why": "eee",
+   "type": "stutter"
+  },
+  {
+   "a": 13.488,
+   "b": 14.088,
+   "why": "jeda 1.00s",
+   "type": "pause"
+  },
+  {
+   "a": 54.864,
+   "b": 55.784,
+   "why": "jeda 1.32s",
+   "type": "pause"
+  },
+  {
+   "a": 56.910000000000004,
+   "b": 59.49,
+   "why": "boleh membuat, ataupun",
+   "type": "stutter"
+  },
+  {
+   "a": 64.11,
+   "b": 66.2,
+   "why": "ulang: Boleh meneruskan perceraian",
+   "type": "stutter"
+  },
+  {
+   "a": 72.35000000000001,
+   "b": 78.56,
+   "why": "salah mula: Dan perceraian ni pula ada dua",
+   "type": "stutter"
+  },
+  {
+   "a": 99.06,
+   "b": 101.43,
+   "why": "ulang: Dan sekiranya",
+   "type": "stutter"
+  },
+  {
+   "a": 121.15,
+   "b": 122.24000000000001,
+   "why": "jeda fasakh",
+   "type": "stutter"
+  },
+  {
+   "a": 154.8,
+   "b": 156.49,
+   "why": "apa tu",
+   "type": "stutter"
+  },
+  {
+   "a": 160.97,
+   "b": 164.84,
+   "why": "eh, kalau tengok di sini, contoh + jeda 0.97s",
+   "type": "stutter"
+  },
+  {
+   "a": 167.28,
+   "b": 177.0,
+   "why": "salah mula: Kurungan 1, mana-mana... Baik, Seksyen 53 + jeda 2.60s",
+   "type": "stutter"
+  },
+  {
+   "a": 185.85,
+   "b": 187.94,
+   "why": "yang, maknanya + jeda 0.81s",
+   "type": "stutter"
+  },
+  {
+   "a": 197.904,
+   "b": 199.336,
+   "why": "jeda 1.83s",
+   "type": "pause"
+  },
+  {
+   "a": 203.728,
+   "b": 204.424,
+   "why": "jeda 1.10s",
+   "type": "pause"
+  },
+  {
+   "a": 208.496,
+   "b": 209.8,
+   "why": "jeda 1.70s",
+   "type": "pause"
+  },
+  {
+   "a": 211.73000000000002,
+   "b": 216.41,
+   "why": "isteri telah, ataupun disebut di sini",
+   "type": "stutter"
+  },
+  {
+   "a": 221.424,
+   "b": 221.736,
+   "why": "jeda 0.71s",
+   "type": "pause"
+  },
+  {
+   "a": 244.96,
+   "b": 246.13,
+   "why": "apa itu",
+   "type": "stutter"
+  },
+  {
+   "a": 281.45,
+   "b": 283.56,
+   "why": "tail",
+   "type": "trim"
+  }
+ ]
+}
