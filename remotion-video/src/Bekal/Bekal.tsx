@@ -25,6 +25,8 @@ export type BekalProps = {
   seedanceBekal: string | null;
   /** klip Seedance masjid waktu subuh (ganti klip pintu masjid) */
   seedanceMasjid: string | null;
+  /** klip Seedance meja penuh pelbagai bekal (stop-motion) — ganti 2 klip bungkusan makanan, contoh "bekal/seedance/meja_bekal.mp4" */
+  seedanceMeja: string | null;
 };
 
 export const bekalDefaultProps: BekalProps = {
@@ -32,6 +34,7 @@ export const bekalDefaultProps: BekalProps = {
   voSendiri: null,
   seedanceBekal: null,
   seedanceMasjid: null,
+  seedanceMeja: null,
 };
 
 const F = "bekal/footage/";
@@ -316,6 +319,7 @@ export const Bekal: React.FC<BekalProps> = ({
   voSendiri,
   seedanceBekal,
   seedanceMasjid,
+  seedanceMeja,
 }) => {
   const { fps } = useVideoConfig();
   const bekalSrc = seedanceBekal ?? "bekal/bekal_foto.jpg";
@@ -327,8 +331,15 @@ export const Bekal: React.FC<BekalProps> = ({
       <Shot name="1. Ini bekal (foto)" src={bekalSrc} start={0} end={2.2} grade="sunset" zoom={[1.12, 1.02]} position="50% 62%" />
       <Shot name="1b. Beg bekal" src={F + "bag.mp4"} start={2.2} end={3.8} fadeIn={0.2} grade="sunset" trim={2} zoom={[1.0, 1.06]} volume={0.35} />
       <Shot name="2a. Jalan ke pejabat" src={F + "walk_fast.mp4"} start={3.8} end={5.4} fadeIn={0.12} grade="sunset" trim={5} zoom={[1.04, 1.1]} />
-      <Shot name="2b. Bungkus makanan 1" src={F + "food1_fast.mp4"} start={5.4} end={7.0} fadeIn={0.12} grade="sunset" trim={0.2} zoom={[1.05, 1.12]} />
-      <Shot name="2c. Bungkus makanan 2" src={F + "food2_fast.mp4"} start={7.0} end={8.8} fadeIn={0.12} grade="sunset" trim={0.3} rate={1.5} zoom={[1.55, 1.65]} origin="50% 4%" />
+      {seedanceMeja ? (
+        // Klip Seedance 5s dimainkan 1.2x supaya muat 3.4s (+ crossfade)
+        <Shot name="2b. Meja penuh bekal (Seedance)" src={seedanceMeja} start={5.4} end={8.8} fadeIn={0.12} grade="sunset" rate={1.2} zoom={[1.02, 1.1]} />
+      ) : (
+        <>
+          <Shot name="2b. Bungkus makanan 1" src={F + "food1_fast.mp4"} start={5.4} end={7.0} fadeIn={0.12} grade="sunset" trim={0.2} zoom={[1.05, 1.12]} />
+          <Shot name="2c. Bungkus makanan 2" src={F + "food2_fast.mp4"} start={7.0} end={8.8} fadeIn={0.12} grade="sunset" trim={0.3} rate={1.5} zoom={[1.55, 1.65]} origin="50% 4%" />
+        </>
+      )}
       <Shot name="2d. Bekal (detik renung)" src={bekalSrc} start={8.8} end={10.2} tail={0} fadeIn={0.4} grade="sunset" zoom={[1.02, 1.14]} position="50% 62%" />
       <Sequence name="Tajuk BEKAL" from={Math.round(0.3 * fps)} durationInFrames={Math.round(9.0 * fps)} layout="absolute-fill">
         <Kicker />
@@ -374,6 +385,12 @@ export const Bekal: React.FC<BekalProps> = ({
       <Sfx src="whoosh.wav" at={3.75} volume={0.55} />
       <Sfx src="whoosh.wav" at={5.35} volume={0.55} />
       <Sfx src="whoosh.wav" at={6.95} volume={0.55} />
+      {/* bunyi "pop" setiap bekal muncul (hanya bila klip Seedance meja digunakan) */}
+      {seedanceMeja
+        ? [5.7, 6.15, 6.6, 7.05, 7.5, 7.95].map((t) => (
+            <Sfx key={t} src="switch.wav" at={t} volume={0.3} />
+          ))
+        : null}
       <Sfx src="riser.wav" at={8.2} volume={0.45} />
       <Sfx src="soft_boom.wav" at={10.2} volume={0.9} />
       <Sfx src="whoosh_soft.wav" at={13.8} volume={0.15} />

@@ -40,6 +40,7 @@ npx remotion render Bekal out/Bekal.mp4 --crf=18
 | `voSendiri` | Rakam VO sendiri, letak dalam `public/bekal/vo/`, contoh `"bekal/vo/vo_nawal.mp3"` (set `suara: "tiada"`) |
 | `seedanceBekal` | Klip Seedance bekal sunset — ganti foto bekal (hook, detik renung, split) |
 | `seedanceMasjid` | Klip Seedance masjid waktu subuh — ganti klip pintu masjid |
+| `seedanceMeja` | Klip Seedance meja penuh pelbagai bekal (stop-motion) — ganti 2 klip bungkusan makanan, siap dengan bunyi "pop" |
 
 > Kalau rakam VO sendiri, ikut timing baris dalam storyboard (atau rakam satu baris satu fail dan tukar fail `public/bekal/vo/vo1.mp3`…`vo6.mp3` — nama sama, timing automatik).
 
@@ -57,7 +58,25 @@ Slow dolly in toward the red-lid floral lunch box on a wooden office desk, warm 
 Slow crane up revealing a Malaysian mosque with a white dome and a tall minaret at Subuh dawn, deep blue hour sky with a thin soft pink glow on the horizon, warm lights glowing from inside the mosque, a few men in baju melayu and kopiah walking calmly toward the entrance, light morning mist, peaceful and serene, cinematic, photorealistic, smooth motion, 9:16
 ```
 
-**3. (Bonus) langit fajar untuk CTA — text-to-video**
+**3. `meja_bekal.mp4` — meja penuh pelbagai bekal (2 langkah)**
+
+Frame rujukan sedia ada dalam `public/bekal/seedance-rujukan/`:
+`meja_kosong.jpg` (meja kosong) dan `meja_akhir.jpg` (meja dengan bungkusan makanan sebenar).
+
+*Langkah A — edit gambar* (Nano Banana / Seedream / Higgsfield edit), muat naik `meja_akhir.jpg`:
+```
+Using this top-down photo of a light wooden office table as the base, add an assortment of homemade Malaysian lunch boxes arranged neatly across the empty areas of the table: a white plastic container with a red lid and a small red floral print, a three-tier stainless steel tiffin carrier, a pastel blue bento box with the lid open showing rice, fried egg and vegetables, a glass container of fried noodles, a small thermos flask, and a folded cloth napkin with a spoon and fork. Keep the existing food packs, the wood grain, the overhead camera angle, framing and lighting exactly the same. Photorealistic, natural soft shadows matching the overhead light. No text, no logos. 9:16.
+```
+
+*Langkah B — Seedance first & last frame*: frame pertama `meja_kosong.jpg`, frame terakhir = gambar hasil Langkah A:
+```
+Static top-down camera, stop-motion style: lunch boxes and food containers appear one by one on the wooden table, each one popping into place with a quick snap and a tiny bounce, until the whole table is filled, consistent overhead lighting, photorealistic, smooth, 9:16
+```
+Simpan sebagai `public/bekal/seedance/meja_bekal.mp4`, kemudian set `seedanceMeja: "bekal/seedance/meja_bekal.mp4"`.
+
+> Alternatif tanpa AI: susun bekal sebenar (tupperware, mangkuk tingkat, termos) atas meja yang sama, rakam top-down dari sudut sama, kemudian ganti `public/bekal/footage/food2_fast.mp4`.
+
+**4. (Bonus) langit fajar untuk CTA — text-to-video**
 ```
 Static wide shot, time-lapse of the sky over a mosque silhouette changing from deep night blue to soft dawn pink and gold, last stars fading, slow drifting clouds, tranquil, cinematic, photorealistic, 9:16
 ```
