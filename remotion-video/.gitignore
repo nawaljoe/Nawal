@@ -5,3 +5,6 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Footage Bekal (besar) — jana semula dengan scripts/bekal-prep.sh
+public/bekal/footage
