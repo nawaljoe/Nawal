@@ -36,3 +36,7 @@ for p in ed54:masjid_pintu 410c:masjid_dalam 322c:masjid_saf 81fd:masjid_qiyam; 
   ff -i "$SRC/${p%%:*}.mp4" -vf "scale=1080:1920:flags=lanczos,fps=30" $E -c:a aac -b:a 128k "$OUT/${p##*:}.mp4"
 done
 ls -la $OUT
+
+# latar POV tanpa bahagian dalam lif
+ffmpeg -nostdin -v error -y -i $OUT/walk_fast.mp4 -vf "select='between(t,0,2.3)+between(t,4.7,7.8)',setpts=N/30/TB" -an $E $OUT/walk_nolift.mp4
+echo "Seterusnya: python3 scripts/bekal-ghost.py && python3 scripts/bekal-bagkey.py"

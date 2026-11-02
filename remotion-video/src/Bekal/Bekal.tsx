@@ -13,6 +13,7 @@ import {
 import { Caption } from "./Caption";
 import { Shot } from "./Shot";
 import { GHOST_LANDINGS, MakananTambahan, MejaShot } from "./Meja";
+import { BawaShot } from "./Bawa";
 
 export const BEKAL_FPS = 30;
 export const BEKAL_DURATION_S = 39.5;
@@ -343,8 +344,8 @@ export const Bekal: React.FC<BekalProps> = ({
     <AbsoluteFill style={{ backgroundColor: "black" }}>
       {/* ===== BABAK 1 — BEKAL DUNIA (sunset, rentak rancak 150 BPM: potongan atas beat) ===== */}
       <Shot name="1. Ini bekal (foto)" src={bekalSrc} start={0} end={2.2} grade="sunset" zoom={[1.12, 1.02]} position="50% 62%" />
-      <Shot name="1b. Beg bekal" src={F + "bag.mp4"} start={2.2} end={3.8} fadeIn={0.12} grade="sunset" trim={2} zoom={[1.0, 1.06]} volume={0.3} />
-      <Shot name="2a. Jalan ke pejabat" src={F + "walk_fast.mp4"} start={3.8} end={5.0} fadeIn={0.1} grade="sunset" trim={5.3} zoom={[1.04, 1.1]} />
+      {/* POV: tangan pegang beg bekal, timelapse jalan masuk bangunan di belakang */}
+      <BawaShot start={2.2} end={MEJA_START} bgRate={1.65} />
       {seedanceMeja ? (
         <Shot name="2b. Meja penuh bekal (Seedance)" src={seedanceMeja} start={MEJA_START} end={8.6} fadeIn={0.1} grade="sunset" rate={1.2} zoom={[1.02, 1.1]} />
       ) : (
@@ -374,7 +375,7 @@ export const Bekal: React.FC<BekalProps> = ({
 
       {/* ===== KAPSYEN (timing ikut suara lelaki) ===== */}
       <Caption variant="warm" text="Ini... bekal." highlight="bekal" start={0.55} end={2.2} />
-      <Caption variant="warm" text="Setiap hari," start={3.7} end={4.75} />
+      <Caption variant="warm" text="Setiap hari," start={3.7} end={4.75} y={0.3} />
       <Caption variant="warm" text="kita bawak bekal" highlight="bekal" start={4.75} end={6.0} y={0.6} />
       <Caption variant="warm" text="untuk perut kita." start={6.0} end={8.4} y={0.6} />
       <Caption variant="calm" text="Ini pun... bekal." highlight="bekal" start={11.0} end={13.9} y={0.66} size={84} />
@@ -395,7 +396,6 @@ export const Bekal: React.FC<BekalProps> = ({
       {voSendiri ? <Audio name="VO sendiri" src={staticFile(voSendiri)} volume={1} /> : null}
       <Sfx src="shutter-modern.wav" at={0} volume={0.55} />
       <Sfx src="whoosh_soft.wav" at={2.0} volume={0.45} />
-      <Sfx src="whoosh.wav" at={3.75} volume={0.55} />
       <Sfx src="whoosh.wav" at={4.95} volume={0.55} />
       {/* bunyi "pop" setiap bekal diletak tangan hantu */}
       {(seedanceMeja ? [5.4, 5.85, 6.3, 6.75, 7.2, 7.65] : ghostPops).map((t) => (
