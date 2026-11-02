@@ -1,9 +1,10 @@
 import React from "react";
-import { Audio } from "@remotion/media";
+import { Audio, Video } from "@remotion/media";
 import { poppins } from "./fonts";
 import {
   AbsoluteFill,
   Easing,
+  Img,
   interpolate,
   Sequence,
   staticFile,
@@ -17,6 +18,9 @@ import { BawaShot } from "./Bawa";
 
 export const BEKAL_FPS = 30;
 export const BEKAL_DURATION_S = 39.5;
+/** outro jenama (FK) disambung selepas video utama */
+export const OUTRO_S = 10.0;
+export const BEKAL_TOTAL_S = BEKAL_DURATION_S + OUTRO_S;
 
 export type BekalProps = {
   /** suara panduan AI: "perempuan" (Yasmin) atau "lelaki" (Osman). "tiada" = senyap, guna VO sendiri */
@@ -125,7 +129,7 @@ const Kicker: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   return (
-    <AbsoluteFill style={{ alignItems: "center", paddingTop: 170 }}>
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: 300 }}>
       <div
         style={{
           fontFamily: poppins,
@@ -246,7 +250,7 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
       >
         <Shot name="Split: bekal dunia" src={bekalSrc} start={0} end={6.6} tail={0} grade="sunset" zoom={[1.05, 1.15]} position="50% 72%" rate={0.65} />
         <Sequence from={Math.round(0.6 * fps)} layout="absolute-fill">
-          <Label text="Bekal dunia" mark="✓" markColor="#E8A23A" top={110} markAt={1.02} />
+          <Label text="Bekal dunia" mark="✓" markColor="#E8A23A" top={300} markAt={1.02} />
         </Sequence>
       </div>
       <div
@@ -279,6 +283,50 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
             }),
           }}
         />
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+/** Logo jenama (lambang Johor + Maju Johor di atas, FK di bawah) sepanjang video utama */
+const LogoOverlay: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <Img
+        src={staticFile("bekal/brand/logo_overlay.png")}
+        style={{
+          width: "100%",
+          height: "100%",
+          opacity: interpolate(
+            frame,
+            [0, 0.4 * fps, durationInFrames - 1.0 * fps, durationInFrames],
+            [0, 1, 1, 0],
+            { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+          ),
+          filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.45))",
+        }}
+      />
+    </AbsoluteFill>
+  );
+};
+
+/** Outro jenama: pudar masuk dari hitam */
+const Outro: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <AbsoluteFill style={{ backgroundColor: "black" }}>
+      <AbsoluteFill
+        style={{
+          opacity: interpolate(frame, [0, 0.5 * fps], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          }),
+        }}
+      >
+        <Video src={staticFile("bekal/brand/outro_fk.mp4")} volume={0.75} objectFit="cover" style={{ width: "100%", height: "100%" }} />
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -386,6 +434,14 @@ export const Bekal: React.FC<BekalProps> = ({
       <Caption variant="calm" text="dengan Solat Subuh berjemaah" highlight="subuh" start={22.9} end={25.05} />
       <Caption variant="calm" text="sama-sama." start={25.05} end={27.5} />
       <Caption variant="calm" text="Jom Solat Subuh Berjemaah!" highlight="subuh" start={34.0} end={END - 0.6} y={0.48} size={104} />
+
+      {/* ===== LOGO & OUTRO ===== */}
+      <Sequence name="Logo jenama" durationInFrames={Math.round(END * fps)} layout="absolute-fill">
+        <LogoOverlay />
+      </Sequence>
+      <Sequence name="Outro FK" from={Math.round(END * fps)} durationInFrames={Math.round(OUTRO_S * fps)} layout="absolute-fill">
+        <Outro />
+      </Sequence>
 
       {/* ===== AUDIO ===== */}
       {/* Rentak rancak (perkusi gaya kompang) — babak bekal dunia, berhenti 9.0s */}

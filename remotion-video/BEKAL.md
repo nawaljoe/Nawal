@@ -1,6 +1,6 @@
 # 🍱 BEKAL — Konten Solat Subuh Berjemaah (Remotion)
 
-Video 9:16 (1080×1920, 30fps, 39.5 saat), suara panduan lelaki. Bekal makanan dijadikan metafora: **bekal dunia** untuk perut, **bekal akhirat** untuk "sana" nanti.
+Video 9:16 (1080×1920, 30fps, 39.5 saat + outro FK 10 saat = 49.5 saat), suara panduan lelaki. Logo (lambang Johor + Maju Johor di atas, FK di bawah) sepanjang video utama — `public/bekal/brand/`. Bekal makanan dijadikan metafora: **bekal dunia** untuk perut, **bekal akhirat** untuk "sana" nanti.
 
 ## Storyboard
 
@@ -15,6 +15,7 @@ Video 9:16 (1080×1920, 30fps, 39.5 saat), suara panduan lelaki. Bekal makanan d
 | 14.2–20.2 | 4 | Dalam masjid → saf, slow-mo | "Bekal utama kita, untuk kat 'sana' nanti." | 🌙 Tenang · crossfade perlahan |
 | 20.2–27.8 | 5 | Wudhu (bunyi air asal) → qiyam → sujud | "Jom... kita mulakan pagi kita dengan Solat Subuh berjemaah, sama-sama." | 🌙 Tenang |
 | 27.8–34.0 | 6. Banding | Split skrin: atas bekal (sunset) ✓, bawah sujud (subuh) ? | "Bekal dunia siap. Bekal akhirat... macam mana?" | ✓ switch · ? soft boom |
+| 39.5–49.5 | 8. Outro | Animasi logo FK (`brand/outro_fk.mp4`), pudar masuk dari hitam | | bunyi outro asal |
 | 34.0–39.5 | 7. CTA | Dalam masjid, slow-mo | **Jom Solat Subuh Berjemaah!** | 🌙 Tenang · ding · fade hitam |
 
 **Dua mood visual** (`src/Bekal/grades.tsx`):
