@@ -1,6 +1,6 @@
 import json, re
 T=json.load(open("transcript_verbatim.json")); C=json.load(open("cuts.json"))
-K=C["keeps"]
+K=[k for k in C["keeps"] if not k.get("beep")]
 def map_all(t):
     return [k["out_start"]+min(max(t-k["src_start"],0),k["src_end"]-k["src_start"]) for k in K if k["src_start"]-0.03<=t<=k["src_end"]+0.03]
 FIX={"fasa":"fasakh","fasah":"fasakh","tutup":"tuntut","peceraian":"perceraian","persetaman":"persefahaman",

@@ -13,3 +13,10 @@ Langkah (jalankan dari folder kerja yang ada `src/video.mp4`):
 9. `master.sh` — master akhir -14 LUFS.
 
 Media besar (`public/fasakh/`) tidak disimpan dalam git.
+
+## Hook, beep, logo & outro
+
+- Hook (cold open) dan beep bar warna dimasukkan dalam `cuts.json` (`hook: true`, `beep: true`).
+- Segmen beep: `beep.mp4` → skala/crop 1080x1920, dipad ke 63 bingkai; audio beep → `sfx/beep_bars.wav` (-19 LUFS).
+- `public/fasakh/logos.png` (overlay penuh 1080x1920) dipapar dari mula isi hingga outro.
+- `public/fasakh/outro.mp4` (outro FK, 10 s) disambung selepas kad penutup.

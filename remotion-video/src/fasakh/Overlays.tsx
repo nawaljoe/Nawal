@@ -19,7 +19,7 @@ export const SectionChip: React.FC<{ kicker: string; label: string; dur: number 
     <div
       style={{
         position: "absolute",
-        top: 150,
+        top: 292,
         left: 0,
         right: 0,
         display: "flex",
@@ -76,10 +76,10 @@ export const InfoCard: React.FC<{ kicker: string; title: React.ReactNode; body: 
     <div
       style={{
         position: "absolute",
-        top: 130,
+        top: 288,
         left: 90,
         right: 90,
-        padding: "40px 48px 44px",
+        padding: "30px 42px 34px",
         borderRadius: 34,
         background: "linear-gradient(160deg, rgba(18,20,28,0.80), rgba(10,12,16,0.66))",
         border: "1.5px solid rgba(242,196,109,0.45)",
@@ -90,17 +90,17 @@ export const InfoCard: React.FC<{ kicker: string; title: React.ReactNode; body: 
       }}
     >
       <div style={{ color: C.gold, fontWeight: 800, fontSize: 26, letterSpacing: "0.22em" }}>{kicker}</div>
-      <div style={{ color: C.ink, fontWeight: 900, fontSize: 64, marginTop: 12, lineHeight: 1.05 }}>{title}</div>
+      <div style={{ color: C.ink, fontWeight: 900, fontSize: 56, marginTop: 8, lineHeight: 1.05 }}>{title}</div>
       <div
         style={{
           height: 4,
           width: `${rule * 100}%`,
-          margin: "22px 0 20px",
+          margin: "16px 0 14px",
           borderRadius: 2,
           background: `linear-gradient(90deg, ${C.gold}, rgba(242,196,109,0))`,
         }}
       />
-      <div style={{ color: "rgba(255,255,255,0.92)", fontWeight: 600, fontSize: 38, lineHeight: 1.3 }}>{body}</div>
+      <div style={{ color: "rgba(255,255,255,0.92)", fontWeight: 600, fontSize: 34, lineHeight: 1.28 }}>{body}</div>
     </div>
   );
 };
@@ -119,10 +119,10 @@ export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: n
     <div
       style={{
         position: "absolute",
-        top: 120,
-        left: 80,
-        right: 80,
-        padding: "34px 44px 30px",
+        top: 282,
+        left: 90,
+        right: 90,
+        padding: "24px 36px 16px",
         borderRadius: 34,
         background: "linear-gradient(160deg, rgba(18,20,28,0.82), rgba(10,12,16,0.68))",
         border: "1.5px solid rgba(242,196,109,0.45)",
@@ -133,7 +133,7 @@ export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: n
       }}
     >
       <div style={{ color: C.gold, fontWeight: 800, fontSize: 26, letterSpacing: "0.2em" }}>SEKSYEN 53</div>
-      <div style={{ color: C.ink, fontWeight: 900, fontSize: 50, margin: "8px 0 18px" }}>{title}</div>
+      <div style={{ color: C.ink, fontWeight: 900, fontSize: 42, margin: "4px 0 8px" }}>{title}</div>
       {items.map((it, i) => {
         const f = frame - Math.round(it.at * fps);
         const p = spring({ frame: f, fps, config: { damping: 16, stiffness: 200 } });
@@ -146,7 +146,7 @@ export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: n
               display: "flex",
               alignItems: "center",
               gap: 22,
-              padding: "14px 0",
+              padding: "9px 0",
               borderTop: i ? "1px solid rgba(255,255,255,0.10)" : "none",
               opacity: shown ? interpolate(p, [0, 1], [0, 1]) : 0.0,
               transform: `translateX(${shown ? interpolate(p, [0, 1], [-30, 0]) : -30}px)`,
@@ -154,9 +154,9 @@ export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: n
           >
             <div
               style={{
-                flex: "0 0 52px",
-                height: 52,
-                borderRadius: 26,
+                flex: "0 0 44px",
+                height: 44,
+                borderRadius: 22,
                 border: `3px solid ${C.gold}`,
                 background: `rgba(242,196,109,${0.9 * tick})`,
                 display: "flex",
@@ -177,7 +177,7 @@ export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: n
                 />
               </svg>
             </div>
-            <div style={{ color: C.ink, fontWeight: 700, fontSize: 38, lineHeight: 1.2 }}>{it.text}</div>
+            <div style={{ color: C.ink, fontWeight: 700, fontSize: 33, lineHeight: 1.2 }}>{it.text}</div>
           </div>
         );
       })}

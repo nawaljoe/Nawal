@@ -47,6 +47,8 @@ for k in keeps:
     k["src_start"]=round(round(k["src_start"]*30)/30,4); k["src_end"]=round(round(k["src_end"]*30)/30,4)
 HOOK=(248.05,255.80)  # cold open: jawapan ustaz
 keeps.insert(0,{"src_start":HOOK[0],"src_end":HOOK[1],"after_cut":"trim","hook":True})
+BEEP_LEN=2.1  # colour-bars beep transition after the hook (frame-exact: 63 frames)
+keeps.insert(1,{"src_start":-1,"src_end":-1+BEEP_LEN,"after_cut":"trim","beep":True})
 for k in keeps:
     k["src_start"]=round(round(k["src_start"]*30)/30,4); k["src_end"]=round(round(k["src_end"]*30)/30,4)
 total=sum(k["src_end"]-k["src_start"] for k in keeps)

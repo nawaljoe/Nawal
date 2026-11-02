@@ -57,7 +57,7 @@ export const Captions: React.FC<{ hideBefore: number; hideRanges: [number, numbe
         position: "absolute",
         left: 70,
         right: 70,
-        top: 1370,
+        bottom: 430, // stays clear of the Fared Khalid watermark
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
