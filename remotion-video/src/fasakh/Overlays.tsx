@@ -205,10 +205,9 @@ export const EndCard: React.FC<{ dur: number }> = ({ dur }) => {
   const s = spring({ frame: frame - 4, fps, config: { damping: 24, stiffness: 110 } });
   const dim = interpolate(frame, [0, 24], [0, 0.62], { extrapolateRight: "clamp" });
   const sub = interpolate(frame, [26, 44], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const tail = interpolate(frame, [dur - 30, dur], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const glint = interpolate(frame, [20, 60], [-60, 160], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
-    <AbsoluteFill style={{ opacity: tail }}>
+    <AbsoluteFill>
       <AbsoluteFill style={{ background: `rgba(6,7,10,${dim})` }} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", fontFamily: montserrat }}>
         <div style={{ textAlign: "center", transform: `scale(${interpolate(s, [0, 1], [1.12, 1])})`, opacity: s }}>

@@ -105,6 +105,13 @@ const Logos: React.FC<{ dur: number }> = ({ dur }) => {
   );
 };
 
+/** Outro dissolves in over the end card (no flash of the talk in between). */
+const OutroFadeIn: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const frame = useCurrentFrame();
+  const o = interpolate(frame, [0, 8], [0, 1], { extrapolateRight: "clamp" });
+  return <AbsoluteFill style={{ backgroundColor: "#F4F4F4", opacity: o }}>{children}</AbsoluteFill>;
+};
+
 const Sfx: React.FC<{ at: number; file: string; vol: number }> = ({ at, file, vol }) => (
   <Sequence from={sec(at)} layout="none">
     <Audio src={staticFile(`fasakh/sfx/${file}.wav`)} volume={vol} />
@@ -278,21 +285,23 @@ export const Fasakh: React.FC = () => {
         />
       </Sequence>
 
-      <Sequence from={sec(BODY_START)} durationInFrames={sec(OUTRO_AT - BODY_START)} layout="none">
-        <Logos dur={sec(OUTRO_AT - BODY_START)} />
-      </Sequence>
-
       <Captions hideBefore={0} hideRanges={[[BEEP.out_start, BODY_START], [END_AT, 9999]]} />
 
-      <Sequence from={sec(END_AT)} durationInFrames={sec(OUTRO_AT - END_AT)}>
-        <EndCard dur={sec(OUTRO_AT - END_AT)} />
+      {/* Held 12 frames past OUTRO_AT so the outro dissolves over the card, not over the talk */}
+      <Sequence from={sec(END_AT)} durationInFrames={sec(OUTRO_AT - END_AT) + 12}>
+        <EndCard dur={sec(OUTRO_AT - END_AT) + 12} />
       </Sequence>
 
       {/* Fared Khalid outro */}
       <Sequence from={sec(OUTRO_AT)}>
-        <AbsoluteFill style={{ backgroundColor: "#F4F4F4" }}>
+        <OutroFadeIn>
           <OffthreadVideo src={staticFile("fasakh/outro.mp4")} volume={0.72} />
-        </AbsoluteFill>
+        </OutroFadeIn>
+      </Sequence>
+
+      {/* Brand logos: from the start of the talk through to the end of the FK outro */}
+      <Sequence from={sec(BODY_START)} layout="none">
+        <Logos dur={sec(FASAKH_DURATION_S - BODY_START)} />
       </Sequence>
 
       {/* Audio: cleaned voice + soft SFX (kept well under the voice) */}
