@@ -1,125 +1,132 @@
 {
  "keeps": [
   {
-   "src_start": 3.9,
+   "src_start": 248.0667,
+   "src_end": 255.8,
+   "after_cut": "trim",
+   "hook": true,
+   "out_start": 0
+  },
+  {
+   "src_start": 10.3,
    "src_end": 11.3,
    "after_cut": "trim",
-   "out_start": 0
+   "out_start": 7.733
   },
   {
    "src_start": 12.1333,
    "src_end": 13.5,
    "after_cut": "stutter",
-   "out_start": 7.4
+   "out_start": 8.733
   },
   {
    "src_start": 14.1,
    "src_end": 54.8667,
    "after_cut": "pause",
-   "out_start": 8.767
+   "out_start": 10.1
   },
   {
    "src_start": 55.8,
    "src_end": 56.9,
    "after_cut": "pause",
-   "out_start": 49.533
+   "out_start": 50.867
   },
   {
    "src_start": 59.5,
    "src_end": 64.1,
    "after_cut": "stutter",
-   "out_start": 50.633
+   "out_start": 51.967
   },
   {
    "src_start": 66.2,
    "src_end": 72.3333,
    "after_cut": "stutter",
-   "out_start": 55.233
+   "out_start": 56.567
   },
   {
    "src_start": 78.5667,
    "src_end": 99.0667,
    "after_cut": "stutter",
-   "out_start": 61.367
+   "out_start": 62.7
   },
   {
    "src_start": 101.4333,
    "src_end": 121.1333,
    "after_cut": "stutter",
-   "out_start": 81.867
+   "out_start": 83.2
   },
   {
    "src_start": 122.2333,
    "src_end": 154.8,
    "after_cut": "stutter",
-   "out_start": 101.567
+   "out_start": 102.9
   },
   {
    "src_start": 156.5,
    "src_end": 160.9667,
    "after_cut": "stutter",
-   "out_start": 134.133
+   "out_start": 135.467
   },
   {
    "src_start": 164.8333,
    "src_end": 167.2667,
    "after_cut": "stutter",
-   "out_start": 138.6
+   "out_start": 139.933
   },
   {
    "src_start": 177.0,
    "src_end": 185.8667,
    "after_cut": "stutter",
-   "out_start": 141.033
+   "out_start": 142.367
   },
   {
    "src_start": 187.9333,
    "src_end": 197.9,
    "after_cut": "stutter",
-   "out_start": 149.9
+   "out_start": 151.233
   },
   {
    "src_start": 199.3333,
    "src_end": 203.7333,
    "after_cut": "pause",
-   "out_start": 159.867
+   "out_start": 161.2
   },
   {
    "src_start": 204.4333,
    "src_end": 208.5,
    "after_cut": "pause",
-   "out_start": 164.267
+   "out_start": 165.6
   },
   {
    "src_start": 209.8,
    "src_end": 211.7333,
    "after_cut": "pause",
-   "out_start": 168.334
+   "out_start": 169.667
   },
   {
    "src_start": 216.4,
    "src_end": 221.4333,
    "after_cut": "stutter",
-   "out_start": 170.267
+   "out_start": 171.6
   },
   {
    "src_start": 221.7333,
    "src_end": 244.9667,
    "after_cut": "pause",
-   "out_start": 175.3
+   "out_start": 176.633
   },
   {
    "src_start": 246.1333,
    "src_end": 281.4667,
    "after_cut": "stutter",
-   "out_start": 198.534
+   "out_start": 199.867
   }
  ],
  "removed": [
   {
    "a": 0.0,
-   "b": 3.9,
-   "why": "lead-in: untuk ceraikan, aaa",
+   "b": 10.3,
+   "why": "suara penanya (soalan) dibuang",
    "type": "trim"
   },
   {

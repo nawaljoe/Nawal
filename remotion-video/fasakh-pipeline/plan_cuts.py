@@ -22,7 +22,7 @@ R=[
  (245.12,246.14,"apa itu"),
 ]
 rem=[(snap(a),snap(b),l,"stutter") for a,b,l in R]
-rem.append((0.0,3.90,"lead-in: untuk ceraikan, aaa","trim"))
+rem.append((0.0,10.30,"suara penanya (soalan) dibuang","trim"))
 rem.append((END,283.56,"tail","trim"))
 # pause compression from Silero VAD gaps: gaps > 0.7s shrink to ~0.4s
 sp=json.load(open("vad.json"))
@@ -43,6 +43,10 @@ for a,b,l,typ in M:
     if a>t+0.05: keeps.append({"src_start":round(t,3),"src_end":round(a,3),"after_cut":prevtype})
     t=b;prevtype=typ
 total=sum(k["src_end"]-k["src_start"] for k in keeps)
+for k in keeps:
+    k["src_start"]=round(round(k["src_start"]*30)/30,4); k["src_end"]=round(round(k["src_end"]*30)/30,4)
+HOOK=(248.05,255.80)  # cold open: jawapan ustaz
+keeps.insert(0,{"src_start":HOOK[0],"src_end":HOOK[1],"after_cut":"trim","hook":True})
 for k in keeps:
     k["src_start"]=round(round(k["src_start"]*30)/30,4); k["src_end"]=round(round(k["src_end"]*30)/30,4)
 total=sum(k["src_end"]-k["src_start"] for k in keeps)

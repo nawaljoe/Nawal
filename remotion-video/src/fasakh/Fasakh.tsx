@@ -14,7 +14,7 @@ import { Captions } from "./Captions";
 import { Checklist, EndCard, InfoCard, LightLayer, SectionChip } from "./Overlays";
 import { C, sec } from "./theme";
 
-type Keep = { src_start: number; src_end: number; out_start: number; after_cut: string };
+type Keep = { src_start: number; src_end: number; out_start: number; after_cut: string; hook?: boolean };
 const KEEPS = (cuts as { keeps: Keep[] }).keeps;
 const LAST = KEEPS[KEEPS.length - 1];
 const VOICE_END = LAST.out_start + (LAST.src_end - LAST.src_start);
@@ -22,6 +22,7 @@ const VOICE_END = LAST.out_start + (LAST.src_end - LAST.src_start);
 /** Map a time in the raw recording to the edited timeline, so overlays stay locked to the words after re-cuts. */
 const src = (t: number) => {
   for (const k of KEEPS) {
+    if (k.hook) continue; // cold-open clip is a repeat; map body times only
     if (t < k.src_start) return k.out_start;
     if (t <= k.src_end) return k.out_start + (t - k.src_start);
   }
@@ -30,7 +31,8 @@ const src = (t: number) => {
 
 const END_AT = src(278.52); // "iaitu dinamakan cerai fasakh"
 export const FASAKH_DURATION_S = Math.ceil(VOICE_END + 4.2);
-const HOOK_LEN = 7.2;
+const HOOK_LEN = 7.9; // HyperFrames overlay length
+const HOOK_CUT = KEEPS[0].src_end - KEEPS[0].src_start; // cold open → "Baik. Dalam Islam..."
 
 /** Alternating framing per segment hides each jump cut; slow push-in keeps the frame alive. */
 const useCameraScale = () => {
@@ -48,7 +50,7 @@ const useCameraScale = () => {
   const seg = KEEPS[i];
   const len = seg.src_end - seg.src_start;
   const p = Math.min(Math.max((t - seg.out_start) / len, 0), 1);
-  const base = i % 2 === 0 ? 1.0 : 1.1;
+  const base = seg.hook ? 1.12 : i % 2 === 1 ? 1.0 : 1.1;
   return base + 0.035 * p;
 };
 
@@ -58,6 +60,21 @@ const Footage: React.FC = () => {
     <AbsoluteFill style={{ transform: `scale(${scale})`, transformOrigin: "50% 40%" }}>
       <OffthreadVideo src={staticFile("fasakh/base_video.mp4")} muted />
     </AbsoluteFill>
+  );
+};
+
+/** Brief warm light bloom that hides the cut from the cold open into the talk. */
+const WarmFlash: React.FC = () => {
+  const frame = useCurrentFrame();
+  const o = interpolate(frame, [0, 3, 10], [0, 0.42, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <AbsoluteFill
+      style={{
+        background: "radial-gradient(ellipse 900px 1300px at 50% 42%, rgba(255,226,180,1) 0%, rgba(255,200,140,0.6) 60%, rgba(255,190,120,0) 100%)",
+        opacity: o,
+        mixBlendMode: "screen",
+      }}
+    />
   );
 };
 
@@ -99,6 +116,10 @@ export const Fasakh: React.FC = () => {
       {/* Hook title — built and rendered in HyperFrames (GSAP), composited here with alpha */}
       <Sequence from={0} durationInFrames={sec(HOOK_LEN)}>
         <OffthreadVideo src={staticFile("fasakh/hook.mov")} transparent muted />
+      </Sequence>
+
+      <Sequence from={sec(HOOK_CUT - 0.12)} durationInFrames={10} layout="none">
+        <WarmFlash />
       </Sequence>
 
       <Chip at={src(11.77)} dur={4.6} kicker="TUJUAN" label="Perkahwinan dalam Islam" />
@@ -152,7 +173,7 @@ export const Fasakh: React.FC = () => {
       <Chip at={src(238.8)} dur={6.2} kicker="KES ANDA" label="Diabaikan bertahun-tahun?" />
       <Chip at={src(256.07)} dur={6.0} kicker="KESIMPULAN" label="Ada jalan penyelesaian" />
 
-      <Captions hideBefore={HOOK_LEN - 0.85} hideRanges={[[END_AT, 9999]]} />
+      <Captions hideBefore={0} hideRanges={[[END_AT, 9999]]} />
 
       <Sequence from={sec(END_AT)} durationInFrames={sec(FASAKH_DURATION_S - END_AT)}>
         <EndCard dur={sec(FASAKH_DURATION_S - END_AT)} />
@@ -161,9 +182,10 @@ export const Fasakh: React.FC = () => {
       {/* Audio: cleaned voice + soft SFX (kept well under the voice) */}
       <Audio src={staticFile("fasakh/voice.wav")} volume={voiceVol} />
       <Sfx at={0.0} file="impact_soft" vol={0.32} />
-      <Sfx at={2.35} file="riser_soft" vol={0.14} />
-      <Sfx at={3.95} file="chime_soft" vol={0.18} />
-      <Sfx at={6.2} file="whoosh_soft" vol={0.2} />
+      <Sfx at={2.28} file="tick_soft" vol={0.32} />
+      <Sfx at={2.3} file="chime_soft" vol={0.16} />
+      <Sfx at={HOOK_CUT - 1.55} file="riser_soft" vol={0.1} />
+      <Sfx at={HOOK_CUT - 0.35} file="whoosh_soft" vol={0.22} />
       <Sfx at={END_AT} file="impact_soft" vol={0.26} />
       <Sfx at={END_AT + 0.25} file="chime_soft" vol={0.2} />
     </AbsoluteFill>

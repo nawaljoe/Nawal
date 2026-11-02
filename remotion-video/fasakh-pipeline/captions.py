@@ -1,11 +1,8 @@
 import json, re
 T=json.load(open("transcript_verbatim.json")); C=json.load(open("cuts.json"))
 K=C["keeps"]
-def map_t(t):
-    for k in K:
-        if k["src_start"]-0.03<=t<=k["src_end"]+0.03:
-            return k["out_start"]+min(max(t-k["src_start"],0),k["src_end"]-k["src_start"])
-    return None
+def map_all(t):
+    return [k["out_start"]+min(max(t-k["src_start"],0),k["src_end"]-k["src_start"]) for k in K if k["src_start"]-0.03<=t<=k["src_end"]+0.03]
 FIX={"fasa":"fasakh","fasah":"fasakh","tutup":"tuntut","peceraian":"perceraian","persetaman":"persefahaman",
  "perbualan":"pembubaran","pembaharan":"pembubaran","pembumbaran":"pembubaran","enamment":"Enakmen","pertabiran":"Pentadbiran",
  "kurangan":"kurungan","kemudatan":"kemudaratan","isi":"isteri","pembunuhan":"permohonan","carai":"cerai","dihidup":"dia hidup",
@@ -18,15 +15,14 @@ for s in T:
         core=re.sub(r"[^\w\-]","",raw); low=core.lower()
         if not core or low in DROP: continue
         mid=(w["s"]+w["e"])/2
-        a=map_t(mid)
-        if a is None: continue
-        # clamp word start/end into output
-        st=map_t(max(w["s"],mid-0.6)) or a; en=map_t(min(w["e"],mid+0.6)) or a
         txt=FIX.get(low,core)
-        if low=="fasa" or low=="fasah": txt="fasakh"
-        if core[:1].isupper() and txt[:1].islower() and low not in FIX: pass
         punct=re.sub(r"[\w\-]","",raw)
-        words.append({"t":txt,"s":round(st,3),"e":round(en,3),"p":punct})
+        ws_=max(w["s"],mid-0.6); we_=min(w["e"],mid+0.6)
+        for k in K:
+            if not (k["src_start"]-0.03<=mid<=k["src_end"]+0.03): continue
+            f=lambda t: k["out_start"]+min(max(t-k["src_start"],0),k["src_end"]-k["src_start"])
+            words.append({"t":txt,"s":round(f(ws_),3),"e":round(f(we_),3),"p":punct})
+words.sort(key=lambda w:w["s"])
 # context fixes
 for i,w in enumerate(words):
     prev=words[i-1]["t"].lower() if i else ""
