@@ -19,7 +19,7 @@ Video 9:16 (1080×1920, 30fps, 39.5 saat), suara panduan lelaki. Bekal makanan d
 
 **Dua mood visual** (`src/Bekal/grades.tsx`):
 - 🌅 **Sunset** (bekal dunia): sepia + saturasi tinggi, tona oren→magenta, cahaya matahari dari kanan atas, light leak bergerak, vignette hangat.
-- 🎬 **Premium sinematik** (bekal akhirat, rujukan rupa podcast studio gelap): hitam pekat & kontras tinggi, highlight hangat tungsten, bayang teal gelap, vignette kuat, footage ditajamkan (klip resolusi rendah dibuang noise + unsharp). Kekal tenang dengan slow-mo 0.55–0.75x, crossfade 0.8 saat dan kapsyen italik serif yang pudar masuk perlahan.
+- 🎬 **Premium sinematik** (bekal akhirat, rujukan rupa podcast studio gelap): hitam pekat & kontras tinggi, highlight hangat tungsten, bayang teal gelap, vignette kuat, footage ditajamkan (klip resolusi rendah dibuang noise + unsharp). Dalam babak orang solat, **latar belakang (siling/dinding) dikaburkan & digelapkan** manakala jemaah kekal tajam — macam latar studio gelap (`scripts/bekal-premium-bg.py`, segmentasi rembg + keutamaan kedalaman). Kekal tenang dengan slow-mo 0.55–0.75x, crossfade 0.8 saat dan kapsyen italik serif yang pudar masuk perlahan.
 
 **Audio**:
 - 🥁 **Bekal dunia (0–9s) — rancak**: rentak perkusi gaya kompang/rebana 150 BPM (tiada melodi), dijana oleh `scripts/bekal-rentak.py`. Setiap potongan klip jatuh tepat atas beat.
@@ -35,6 +35,8 @@ cd remotion-video
 npm i
 bash scripts/bekal-prep.sh        # muat turun & sediakan footage dari Google Drive (sekali sahaja)
 python3 scripts/bekal-ghost.py    # jana lapisan "tangan hantu" (perlu numpy + Pillow)
+python3 scripts/bekal-bagkey.py   # buang latar klip pegang beg (perlu rembg)
+python3 scripts/bekal-premium-bg.py  # latar gelap & kabur untuk babak solat (perlu rembg)
 npm run dev                       # buka Remotion Studio → pilih "Bekal"
 npx remotion render Bekal out/Bekal.mp4 --crf=18
 ```

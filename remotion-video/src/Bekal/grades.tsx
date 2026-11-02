@@ -61,7 +61,7 @@ export const SunsetOverlay: React.FC<{ intensity?: number }> = ({
  * warna kaya tapi terkawal, vignette gelap yang kuat. Tiada kabus — kekal tajam.
  */
 export const DAWN_FILTER =
-  "contrast(1.3) brightness(0.78) saturate(1.15) sepia(0.2)";
+  "contrast(1.3) brightness(0.88) saturate(1.15) sepia(0.2)";
 
 export const DawnOverlay: React.FC<{ intensity?: number }> = ({
   intensity = 1,
