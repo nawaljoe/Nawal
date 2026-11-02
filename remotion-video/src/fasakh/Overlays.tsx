@@ -106,15 +106,27 @@ export const InfoCard: React.FC<{ kicker: string; title: React.ReactNode; body: 
 };
 
 /** Grounds for fasakh — items tick in one by one, timed to the ustaz. */
-export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: number; title: string }> = ({
-  items,
-  dur,
-  title,
-}) => {
+export const Checklist: React.FC<{
+  items: { text: string; at: number }[];
+  dur: number;
+  title: string;
+  /** [start, end] in frames (relative) where the card moves to centre stage while the ustaz reads. */
+  focus?: [number, number][];
+}> = ({ items, dur, title, focus = [] }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = spring({ frame, fps, config: { damping: 22, stiffness: 140 } });
   const o = fadeInOut(frame, dur, 12, 20);
+  const f = Math.max(
+    0,
+    ...focus.map(([a, b]) =>
+      interpolate(frame, [a, a + 14, b - 12, b], [0, 1, 1, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+        easing: Easing.inOut(Easing.cubic),
+      }),
+    ),
+  );
   return (
     <div
       style={{
@@ -123,13 +135,14 @@ export const Checklist: React.FC<{ items: { text: string; at: number }[]; dur: n
         left: 90,
         right: 90,
         padding: "24px 36px 16px",
+        transformOrigin: "50% 0%",
         borderRadius: 34,
         background: "linear-gradient(160deg, rgba(18,20,28,0.82), rgba(10,12,16,0.68))",
         border: "1.5px solid rgba(242,196,109,0.45)",
         boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
         fontFamily: montserrat,
         opacity: o,
-        transform: `translateY(${interpolate(s, [0, 1], [40, 0])}px)`,
+        transform: `translateY(${interpolate(s, [0, 1], [40, 0]) + 330 * f}px) scale(${1 + 0.16 * f})`,
       }}
     >
       <div style={{ color: C.gold, fontWeight: 800, fontSize: 26, letterSpacing: "0.2em" }}>SEKSYEN 53</div>
@@ -248,37 +261,144 @@ export const EndCard: React.FC<{ dur: number }> = ({ dur }) => {
   );
 };
 
-/** Premium light: slow warm key glow + edge falloff, layered over the graded footage. */
-export const LightLayer: React.FC = () => {
+/** Podcast-style finish: firm vignette and a caption floor — no haze or glow. */
+export const LightLayer: React.FC = () => (
+  <>
+    <AbsoluteFill
+      style={{
+        background: "radial-gradient(ellipse 760px 1150px at 50% 44%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%)",
+      }}
+    />
+    <AbsoluteFill
+      style={{
+        background: "linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.42) 82%, rgba(0,0,0,0.58) 100%)",
+      }}
+    />
+  </>
+);
+
+/** Blurred, dimmed footage behind a popup — hides the ustaz looking down at his notes. */
+export const FocusBackdrop: React.FC<{ dur: number }> = ({ dur }) => {
   const frame = useCurrentFrame();
-  const drift = Math.sin(frame / 140) * 40;
-  const breathe = 0.13 + 0.03 * Math.sin(frame / 90);
+  const p = interpolate(frame, [0, 10, dur - 10, dur], [0, 1, 1, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  return (
+    <AbsoluteFill
+      style={{
+        backdropFilter: `blur(${18 * p}px)`,
+        WebkitBackdropFilter: `blur(${18 * p}px)`,
+        background: `rgba(8,9,12,${0.5 * p})`,
+      }}
+    />
+  );
+};
+
+/** Podcast "key point" popup: blurred backdrop + solid charcoal card, gold accent line. */
+export const KeyPopup: React.FC<{
+  dur: number;
+  kicker: string;
+  lines: string[];
+  accent: string;
+  accentDelay?: number; // frames
+}> = ({ dur, kicker, lines, accent, accentDelay = 8 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame, fps, config: { damping: 20, stiffness: 170 } });
+  const out = interpolate(frame, [dur - 10, dur], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const acc = spring({ frame: frame - accentDelay, fps, config: { damping: 18, stiffness: 160 } });
+  const bar = interpolate(frame, [6, 26], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   return (
     <>
-      <AbsoluteFill
-        style={{
-          background: `radial-gradient(ellipse 620px 720px at ${560 + drift}px 820px, rgba(255,214,160,${breathe}) 0%, rgba(255,200,140,0) 70%)`,
-          mixBlendMode: "screen",
-        }}
-      />
-      <AbsoluteFill
-        style={{
-          background:
-            "radial-gradient(ellipse 820px 1200px at 50% 46%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.38) 100%)",
-        }}
-      />
-      <AbsoluteFill
-        style={{
-          background: `linear-gradient(115deg, rgba(255,190,120,0) 30%, rgba(255,190,120,${0.05 + 0.02 * Math.sin(frame / 70)}) 45%, rgba(255,190,120,0) 60%)`,
-          mixBlendMode: "screen",
-        }}
-      />
-      {/* Caption floor: soft dark gradient so captions read on the desk */}
-      <AbsoluteFill
-        style={{
-          background: "linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,0.42) 82%, rgba(0,0,0,0.55) 100%)",
-        }}
-      />
+      <FocusBackdrop dur={dur} />
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: out }}>
+        <div
+          style={{
+            width: 900,
+            padding: "46px 56px 52px",
+            borderRadius: 28,
+            background: "#121418",
+            border: "1.5px solid rgba(242,196,109,0.55)",
+            boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
+            fontFamily: montserrat,
+            opacity: s,
+            transform: `translateY(${interpolate(s, [0, 1], [60, 0])}px) scale(${interpolate(s, [0, 1], [0.94, 1])})`,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ width: 54 * bar, height: 4, background: C.gold, borderRadius: 2 }} />
+            <div style={{ color: C.gold, fontWeight: 800, fontSize: 28, letterSpacing: "0.24em" }}>{kicker}</div>
+          </div>
+          <div style={{ marginTop: 22, color: C.ink, fontWeight: 800, fontSize: 60, lineHeight: 1.12 }}>
+            {lines.map((l, i) => (
+              <div key={i}>{l}</div>
+            ))}
+          </div>
+          <div
+            style={{
+              marginTop: 10,
+              color: C.gold,
+              fontWeight: 900,
+              fontSize: 72,
+              lineHeight: 1.08,
+              opacity: acc,
+              transform: `translateY(${interpolate(acc, [0, 1], [24, 0])}px)`,
+            }}
+          >
+            {accent}
+          </div>
+        </div>
+      </AbsoluteFill>
     </>
+  );
+};
+
+/** Name super for the speaker — podcast lower third. */
+export const LowerThird: React.FC<{ dur: number; name: string; role: string; org: string }> = ({ dur, name, role, org }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame, fps, config: { damping: 22, stiffness: 150 } });
+  const out = interpolate(frame, [dur - 14, dur], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const bar = interpolate(frame, [0, 14], [0, 1], { extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const t2 = spring({ frame: frame - 6, fps, config: { damping: 22, stiffness: 150 } });
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 56,
+        top: 1112,
+        display: "flex",
+        gap: 22,
+        opacity: out,
+        fontFamily: montserrat,
+      }}
+    >
+      <div style={{ width: 7, borderRadius: 4, background: C.gold, transform: `scaleY(${bar})`, transformOrigin: "50% 0%" }} />
+      <div
+        style={{
+          padding: "18px 30px 20px 24px",
+          borderRadius: 14,
+          background: "linear-gradient(90deg, rgba(12,13,16,0.86), rgba(12,13,16,0.62))",
+          clipPath: `inset(0 ${100 - 100 * s}% 0 0)`,
+        }}
+      >
+        <div style={{ color: C.ink, fontWeight: 800, fontSize: 44, lineHeight: 1.1 }}>{name}</div>
+        <div
+          style={{
+            marginTop: 8,
+            color: "rgba(255,255,255,0.86)",
+            fontWeight: 600,
+            fontSize: 25,
+            lineHeight: 1.3,
+            whiteSpace: "pre-line",
+            opacity: t2,
+          }}
+        >
+          {role}
+        </div>
+        <div style={{ marginTop: 4, color: C.gold, fontWeight: 700, fontSize: 25, opacity: t2 }}>{org}</div>
+      </div>
+    </div>
   );
 };

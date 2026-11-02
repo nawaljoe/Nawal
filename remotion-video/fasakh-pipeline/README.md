@@ -20,3 +20,11 @@ Media besar (`public/fasakh/`) tidak disimpan dalam git.
 - Segmen beep: `beep.mp4` → skala/crop 1080x1920, dipad ke 63 bingkai; audio beep → `sfx/beep_bars.wav` (-19 LUFS).
 - `public/fasakh/logos.png` (overlay penuh 1080x1920) dipapar dari mula isi hingga outro.
 - `public/fasakh/outro.mp4` (outro FK, 10 s) disambung selepas kad penutup.
+
+## Gaya podcast: popup bila ustaz tunduk, soundtrack, nama
+
+- `lookdown.py` — MediaPipe Face Landmarker (blendshape `eyeLookDown`) pada `base_video.mp4`; selang
+  > 0.6 selama ≥ 2 s dijadikan popup (`POPUPS` dalam `Fasakh.tsx`), bacaan Seksyen 53 → senarai semak mod fokus.
+- `music.py` — soundtrack calm disintesis (pad + piano lembut + sub, reverb), kemudian ducking:
+  `sidechaincompress` dengan `voice.wav`, senyap semasa beep, -28 LUFS → `public/fasakh/music_bed.wav`.
+- Lower-third nama ustaz dipapar semasa hook.

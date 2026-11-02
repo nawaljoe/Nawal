@@ -12,7 +12,7 @@ import {
 } from "remotion";
 import cuts from "./cuts.json";
 import { Captions } from "./Captions";
-import { Checklist, EndCard, InfoCard, LightLayer, SectionChip } from "./Overlays";
+import { Checklist, EndCard, FocusBackdrop, InfoCard, KeyPopup, LightLayer, LowerThird, SectionChip } from "./Overlays";
 import { C, sec } from "./theme";
 
 type Keep = {
@@ -120,7 +120,47 @@ const Chip: React.FC<{ at: number; dur: number; kicker: string; label: string }>
   </>
 );
 
+/**
+ * Popups placed where the ustaz looks down at his notes for 2 s or more
+ * (MediaPipe eye-look-down > 0.6, see fasakh-pipeline/lookdown.py). Times are in the edited timeline.
+ */
+const POPUPS: { from: number; to: number; kicker: string; lines: string[]; accent: string; accentDelay?: number }[] = [
+  { from: 16.5, to: 18.9, kicker: "TUJUAN PERKAHWINAN", lines: ["Kebaikan untuk"], accent: "kedua-dua pihak" },
+  { from: 29.4, to: 32.0, kicker: "TETAPI", lines: ["Bila perkahwinan", "membawa"], accent: "mudarat" },
+  {
+    from: 48.3,
+    to: 54.0,
+    kicker: "JALAN TERAKHIR",
+    lines: ["Setelah berusaha", "selamatkan perkahwinan…"],
+    accent: "perceraian dibenarkan",
+    accentDelay: 75,
+  },
+  { from: 85.9, to: 88.3, kicker: "KES INI", lines: ["Isteri mohon cerai,"], accent: "suami tak mahu" },
+  {
+    from: 104.9,
+    to: 116.6,
+    kicker: "RUJUKAN UNDANG-UNDANG",
+    lines: ["Seksyen 53", "Fasakh ialah perintah"],
+    accent: "membubarkan perkahwinan",
+    accentDelay: 150,
+  },
+  {
+    from: 133.0,
+    to: 141.0,
+    kicker: "SYARATNYA",
+    lines: ["Hanya dalam", "keadaan tertentu —"],
+    accent: "diharuskan hukum syarak",
+    accentDelay: 120,
+  },
+  { from: 196.7, to: 202.2, kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentDelay: 60 },
+];
+
 const GROUNDS_AT = src(165.2);
+/** Checklist moves centre-stage over a blurred frame while the ustaz reads Seksyen 53 aloud. */
+const GROUNDS_FOCUS: [number, number][] = [
+  [GROUNDS_AT, 150.5],
+  [155.5, 183.6],
+];
 const GROUNDS = [
   { text: "Suami hilang lebih 1 tahun", at: src(178.0) },
   { text: "Suami cuai, tidak beri nafkah", at: src(193.0) },
@@ -154,10 +194,6 @@ export const Fasakh: React.FC = () => {
       <Sfx at={BEEP.out_start} file="beep_bars" vol={1} />
       <Sequence from={sec(BODY_START - 0.05)} durationInFrames={10} layout="none">
         <WarmFlash />
-      </Sequence>
-
-      <Sequence from={sec(BODY_START)} durationInFrames={sec(OUTRO_AT - BODY_START)} layout="none">
-        <Logos dur={sec(OUTRO_AT - BODY_START)} />
       </Sequence>
 
       <Chip at={src(11.77)} dur={4.6} kicker="TUJUAN" label="Perkahwinan dalam Islam" />
@@ -196,8 +232,14 @@ export const Fasakh: React.FC = () => {
 
       <Chip at={src(143.43)} dur={7.4} kicker="TETAPI" label="Ada syarat-syaratnya" />
 
+      {GROUNDS_FOCUS.map(([a, b]) => (
+        <Sequence key={a} from={sec(a)} durationInFrames={sec(b - a)} layout="none">
+          <FocusBackdrop dur={sec(b - a)} />
+        </Sequence>
+      ))}
       <Sequence from={sec(GROUNDS_AT)} durationInFrames={sec(src(228.9) - GROUNDS_AT)} layout="none">
         <Checklist
+          focus={GROUNDS_FOCUS.map(([a, b]) => [sec(a - GROUNDS_AT), sec(b - GROUNDS_AT)])}
           dur={sec(src(228.9) - GROUNDS_AT)}
           title="Antara alasan fasakh"
           items={GROUNDS.map((g) => ({ text: g.text, at: g.at - GROUNDS_AT }))}
@@ -208,8 +250,37 @@ export const Fasakh: React.FC = () => {
         <Sfx key={g.at} at={g.at} file="tick_soft" vol={0.3} />
       ))}
 
-      <Chip at={src(238.8)} dur={6.2} kicker="KES ANDA" label="Diabaikan bertahun-tahun?" />
       <Chip at={src(256.07)} dur={6.0} kicker="KESIMPULAN" label="Ada jalan penyelesaian" />
+
+      {POPUPS.map((p) => (
+        <React.Fragment key={p.from}>
+          <Sequence from={sec(p.from)} durationInFrames={sec(p.to - p.from)} layout="none">
+            <KeyPopup
+              dur={sec(p.to - p.from)}
+              kicker={p.kicker}
+              lines={p.lines}
+              accent={p.accent}
+              accentDelay={p.accentDelay}
+            />
+          </Sequence>
+          <Sfx at={p.from} file="swipe_soft" vol={0.22} />
+          <Sfx at={p.from + (p.accentDelay ?? 8) / 30} file="tick_soft" vol={0.18} />
+        </React.Fragment>
+      ))}
+
+      {/* Speaker name — up front, during the cold open */}
+      <Sequence from={sec(0.5)} durationInFrames={sec(HOOK_CUT - 0.7)} layout="none">
+        <LowerThird
+          dur={sec(HOOK_CUT - 0.7)}
+          name="Ustaz Mohd Hafiz Abdul Rahman"
+          role={"Penolong Pengarah\nBahagian Undang-undang Syariah Negeri Johor"}
+          org="Jabatan Agama Islam Negeri Johor (JAINJ)"
+        />
+      </Sequence>
+
+      <Sequence from={sec(BODY_START)} durationInFrames={sec(OUTRO_AT - BODY_START)} layout="none">
+        <Logos dur={sec(OUTRO_AT - BODY_START)} />
+      </Sequence>
 
       <Captions hideBefore={0} hideRanges={[[BEEP.out_start, BODY_START], [END_AT, 9999]]} />
 
@@ -226,6 +297,8 @@ export const Fasakh: React.FC = () => {
 
       {/* Audio: cleaned voice + soft SFX (kept well under the voice) */}
       <Audio src={staticFile("fasakh/voice.wav")} volume={voiceVol} />
+      {/* Calm bed, pre-ducked under the voice and silent through the beep (fasakh-pipeline/music.py) */}
+      <Audio src={staticFile("fasakh/music_bed.wav")} />
       <Sfx at={0.0} file="impact_soft" vol={0.32} />
       <Sfx at={2.28} file="tick_soft" vol={0.32} />
       <Sfx at={2.3} file="chime_soft" vol={0.16} />
