@@ -28,3 +28,9 @@ Media besar (`public/fasakh/`) tidak disimpan dalam git.
 - `music.py` — soundtrack calm disintesis (pad + piano lembut + sub, reverb), kemudian ducking:
   `sidechaincompress` dengan `voice.wav`, senyap semasa beep, -28 LUFS → `public/fasakh/music_bed.wav`.
 - Lower-third nama ustaz dipapar semasa hook.
+
+## Latar kabur (mod potret)
+
+- `bg_blur.py base_video.mp4 selfie_multiclass_256x256.tflite base_video_blur.mp4` — segmentasi orang
+  MediaPipe; ustaz dan meja (bawah y≈1312) kekal tajam, latar dikaburkan (normalised-convolution supaya
+  tiada halo). Frame beep (232–295) tidak disentuh. Hasil disalin sebagai `public/fasakh/base_video.mp4`.
