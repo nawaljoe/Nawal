@@ -245,7 +245,7 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
       >
         <Shot name="Split: bekal dunia" src={bekalSrc} start={0} end={6.6} tail={0} grade="sunset" zoom={[1.05, 1.15]} position="50% 72%" rate={0.65} />
         <Sequence from={Math.round(0.6 * fps)} layout="absolute-fill">
-          <Label text="Bekal dunia" mark="✓" markColor="#E8A23A" top={110} markAt={1.15} />
+          <Label text="Bekal dunia" mark="✓" markColor="#E8A23A" top={110} markAt={1.02} />
         </Sequence>
       </div>
       <div
@@ -260,8 +260,8 @@ const SplitScene: React.FC<{ bekalSrc: string }> = ({ bekalSrc }) => {
         }}
       >
         <Shot name="Split: bekal akhirat" src={F + "sujud.mp4"} start={0} end={6.6} tail={0} grade="dawn" rate={0.6} trim={0.2} zoom={[1.05, 1.12]} />
-        <Sequence from={Math.round(3.28 * fps)} layout="absolute-fill">
-          <Label text="Bekal akhirat" mark="?" markColor="#5B7BB5" top={110} markAt={1.17} calm />
+        <Sequence from={Math.round(3.0 * fps)} layout="absolute-fill">
+          <Label text="Bekal akhirat" mark="?" markColor="#5B7BB5" top={110} markAt={1.34} calm />
         </Sequence>
       </div>
       {/* garis pemisah lembut */}
@@ -374,17 +374,17 @@ export const Bekal: React.FC<BekalProps> = ({
 
       {/* ===== KAPSYEN (timing ikut suara lelaki) ===== */}
       <Caption variant="warm" text="Ini... bekal." highlight="bekal" start={0.55} end={2.2} />
-      <Caption variant="warm" text="Setiap hari," start={3.8} end={4.9} />
-      <Caption variant="warm" text="kita bawak bekal" highlight="bekal" start={4.9} end={6.1} y={0.6} />
-      <Caption variant="warm" text="untuk perut kita." start={6.1} end={8.4} y={0.6} />
-      <Caption variant="calm" text="Ini pun... bekal." highlight="bekal" start={11.05} end={13.9} y={0.66} size={84} />
-      <Caption variant="calm" text="Bekal utama kita," highlight="bekal" start={14.55} end={16.05} />
-      <Caption variant="calm" text="untuk kat 'sana'" highlight="sana" start={16.05} end={17.2} />
-      <Caption variant="calm" text="nanti." start={17.2} end={19.8} />
-      <Caption variant="calm" text="Jom... kita mulakan pagi kita" start={20.35} end={22.75} />
-      <Caption variant="calm" text="dengan Solat Subuh berjemaah" highlight="subuh" start={22.75} end={24.9} />
-      <Caption variant="calm" text="sama-sama." start={24.9} end={27.5} />
-      <Caption variant="calm" text="Jom Solat Subuh Berjemaah!" highlight="subuh" start={34.15} end={END - 0.6} y={0.48} size={104} />
+      <Caption variant="warm" text="Setiap hari," start={3.7} end={4.75} />
+      <Caption variant="warm" text="kita bawak bekal" highlight="bekal" start={4.75} end={6.0} y={0.6} />
+      <Caption variant="warm" text="untuk perut kita." start={6.0} end={8.4} y={0.6} />
+      <Caption variant="calm" text="Ini pun... bekal." highlight="bekal" start={11.0} end={13.9} y={0.66} size={84} />
+      <Caption variant="calm" text="Bekal utama kita," highlight="bekal" start={14.5} end={16.2} />
+      <Caption variant="calm" text="untuk kat 'sana'" highlight="sana" start={16.2} end={17.5} />
+      <Caption variant="calm" text="nanti." start={17.5} end={19.8} />
+      <Caption variant="calm" text="Jom... kita mulakan pagi kita" start={20.3} end={22.9} />
+      <Caption variant="calm" text="dengan Solat Subuh berjemaah" highlight="subuh" start={22.9} end={25.05} />
+      <Caption variant="calm" text="sama-sama." start={25.05} end={27.5} />
+      <Caption variant="calm" text="Jom Solat Subuh Berjemaah!" highlight="subuh" start={34.0} end={END - 0.6} y={0.48} size={104} />
 
       {/* ===== AUDIO ===== */}
       {/* Rentak rancak (perkusi gaya kompang) — babak bekal dunia, berhenti 9.0s */}
@@ -411,9 +411,9 @@ export const Bekal: React.FC<BekalProps> = ({
       <Sfx src="whoosh_soft.wav" at={22.5} volume={0.15} />
       <Sfx src="whoosh_soft.wav" at={24.8} volume={0.15} />
       <Sfx src="whoosh_soft.wav" at={27.6} volume={0.45} />
-      <Sfx src="switch.wav" at={29.55} volume={0.5} />
-      <Sfx src="soft_boom.wav" at={32.25} volume={0.45} />
-      <Sfx src="ding.wav" at={34.9} volume={0.4} />
+      <Sfx src="switch.wav" at={29.42} volume={0.5} />
+      <Sfx src="soft_boom.wav" at={32.14} volume={0.45} />
+      <Sfx src="ding.wav" at={34.65} volume={0.4} />
     </AbsoluteFill>
   );
 };
