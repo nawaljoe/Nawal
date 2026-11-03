@@ -22,19 +22,22 @@ R=[
  (245.12,246.14,"apa itu"),
 ]
 rem=[(snap(a),snap(b),l,"stutter") for a,b,l in R]
-# Filled pauses ("aaa", "uhh") found acoustically (filled_pauses.py) + checked on spectrograms; frame-exact, no snapping
+# Filled pauses / slips ("aaa", "eee", "haa", "fas, eh", repeated "ada"): found acoustically (filled_pauses.py),
+# confirmed by spectrogram + re-transcription of each join; frame-exact, no snapping
 FILLERS=[
  (45.3667,45.9),
  (60.4663,61.0997),
- (62.133,62.6997),
+ (61.8663,63.3997),
+ (66.233,66.6663),
  (87.5667,87.9334),
  (129.2333,129.8666),
  (130.6333,130.9666),
+ (160.033,160.733),
  (165.167,165.6003),
- (178.833,179.333),
+ (166.2003,166.5336),
  (240.6336,241.3336),
+ (256.7663,257.633),
  (258.5996,259.1996),
- (266.8663,267.2996),
 ]
 rem+=[(a,b,"isian aaa","stutter") for a,b in FILLERS]
 rem.append((0.0,10.30,"suara penanya (soalan) dibuang","trim"))
