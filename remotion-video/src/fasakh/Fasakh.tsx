@@ -46,7 +46,7 @@ const OUTRO_AT = VOICE_END + 4.2; // end card holds, then the FK outro
 const OUTRO_LEN = 10.0;
 export const FASAKH_DURATION_S = Math.ceil(OUTRO_AT + OUTRO_LEN);
 
-/** Alternating framing per segment hides each jump cut; slow push-in keeps the frame alive. */
+/** Alternating framing per segment hides each jump cut; eased slow push-in keeps the frame alive. */
 const useCameraScale = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -63,8 +63,12 @@ const useCameraScale = () => {
   const len = seg.src_end - seg.src_start;
   const p = Math.min(Math.max((t - seg.out_start) / len, 0), 1);
   if (seg.beep) return 1;
-  const base = seg.hook ? 1.12 : i % 2 === 0 ? 1.0 : 1.1;
-  return base + 0.035 * p;
+  // Ease-in-out (sine) so every move starts and settles gently — no linear creep, no snap.
+  const ease = (x: number) => 0.5 - 0.5 * Math.cos(Math.PI * x);
+  // Hook: one continuous slow push-in, 100% → 115%, across the whole cold open.
+  if (seg.hook) return 1.0 + 0.15 * ease(p);
+  const base = i % 2 === 0 ? 1.0 : 1.1;
+  return base + 0.035 * ease(p);
 };
 
 const Footage: React.FC = () => {
