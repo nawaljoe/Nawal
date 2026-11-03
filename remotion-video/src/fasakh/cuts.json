@@ -172,33 +172,27 @@
   },
   {
    "src_start": 221.7333,
-   "src_end": 240.6333,
+   "src_end": 244.9667,
    "after_cut": "pause",
    "out_start": 171.667
-  },
-  {
-   "src_start": 241.3333,
-   "src_end": 244.9667,
-   "after_cut": "stutter",
-   "out_start": 190.567
   },
   {
    "src_start": 246.1333,
    "src_end": 256.7667,
    "after_cut": "stutter",
-   "out_start": 194.2
+   "out_start": 194.9
   },
   {
    "src_start": 257.6333,
    "src_end": 258.6,
    "after_cut": "stutter",
-   "out_start": 204.834
+   "out_start": 205.534
   },
   {
    "src_start": 259.2,
    "src_end": 281.4667,
    "after_cut": "stutter",
-   "out_start": 205.8
+   "out_start": 206.5
   }
  ],
  "removed": [
@@ -369,12 +363,6 @@
    "b": 221.736,
    "why": "jeda 0.71s",
    "type": "pause"
-  },
-  {
-   "a": 240.6336,
-   "b": 241.3336,
-   "why": "isian aaa",
-   "type": "stutter"
   },
   {
    "a": 244.96,
