@@ -135,7 +135,15 @@ const Chip: React.FC<{ at: number; dur: number; kicker: string; label: string }>
  * Popups placed where the ustaz looks down at his notes for 2 s or more
  * (MediaPipe eye-look-down > 0.6, see fasakh-pipeline/lookdown.py). Times are in the edited timeline.
  */
-const POPUPS: { from: number; to: number; kicker: string; lines: string[]; accent: string; accentDelay?: number }[] = [
+const POPUPS: {
+  from: number;
+  to: number;
+  kicker: string;
+  lines: string[];
+  accent: string;
+  accentDelay?: number;
+  backdrop?: boolean;
+}[] = [
   { from: 16.5, to: 18.9, kicker: "TUJUAN PERKAHWINAN", lines: ["Kebaikan untuk"], accent: "kedua-dua pihak" },
   { from: 29.4, to: 32.0, kicker: "TETAPI", lines: ["Bila perkahwinan", "membawa"], accent: "mudarat" },
   {
@@ -156,20 +164,29 @@ const POPUPS: { from: number; to: number; kicker: string; lines: string[]; accen
     accentDelay: 150,
   },
   {
+    // Hands over to the "Antara alasan fasakh" list on "...contoh, kalau tengok Seksyen 53"
+    // under one continuous blurred backdrop (SYARAT_FOCUS), so nothing pops in between.
     from: 133.0,
-    to: 141.0,
+    to: 142.7,
     kicker: "SYARATNYA",
     lines: ["Hanya dalam", "keadaan tertentu —"],
     accent: "diharuskan hukum syarak",
     accentDelay: 120,
+    backdrop: false,
   },
-  { from: 196.7, to: 202.2, kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentDelay: 60 },
+  // Lands on "...diberikan, contohlah"; accent on "bertahun-tahun"
+  { from: 199.6, to: 203.8, kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentDelay: 84 },
 ];
 
 const GROUNDS_AT = src(165.2);
 /** Checklist moves centre-stage over a blurred frame while the ustaz reads Seksyen 53 aloud. */
 const GROUNDS_FOCUS: [number, number][] = [
-  [GROUNDS_AT, 150.5],
+  [GROUNDS_AT - 1, 150.5], // already centre-stage when it fades in (continues from the SYARATNYA popup)
+  [155.5, 183.6],
+];
+/** Blurred backdrops: one unbroken span from the SYARATNYA popup through the first list reading. */
+const FOCUS_BACKDROPS: [number, number][] = [
+  [133.0, 150.5],
   [155.5, 183.6],
 ];
 const GROUNDS = [
@@ -243,7 +260,7 @@ export const Fasakh: React.FC = () => {
 
       <Chip at={src(143.43)} dur={7.4} kicker="TETAPI" label="Ada syarat-syaratnya" />
 
-      {GROUNDS_FOCUS.map(([a, b]) => (
+      {FOCUS_BACKDROPS.map(([a, b]) => (
         <Sequence key={a} from={sec(a)} durationInFrames={sec(b - a)} layout="none">
           <FocusBackdrop dur={sec(b - a)} />
         </Sequence>
@@ -272,6 +289,7 @@ export const Fasakh: React.FC = () => {
               lines={p.lines}
               accent={p.accent}
               accentDelay={p.accentDelay}
+              backdrop={p.backdrop}
             />
           </Sequence>
           <Sfx at={p.from} file="swipe_soft" vol={0.22} />

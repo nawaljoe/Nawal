@@ -301,7 +301,8 @@ export const KeyPopup: React.FC<{
   lines: string[];
   accent: string;
   accentDelay?: number; // frames
-}> = ({ dur, kicker, lines, accent, accentDelay = 8 }) => {
+  backdrop?: boolean; // false when a shared backdrop spans several popups
+}> = ({ dur, kicker, lines, accent, accentDelay = 8, backdrop = true }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = spring({ frame, fps, config: { damping: 20, stiffness: 170 } });
@@ -310,7 +311,7 @@ export const KeyPopup: React.FC<{
   const bar = interpolate(frame, [6, 26], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   return (
     <>
-      <FocusBackdrop dur={dur} />
+      {backdrop ? <FocusBackdrop dur={dur} /> : null}
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: out }}>
         <div
           style={{
