@@ -41,3 +41,11 @@ Media besar (`public/fasakh/`) tidak disimpan dalam git.
   bahagian bersuara ≥ 0.3 s dengan nada mendatar dan spektrum stabil. Calon disemak pada spektrogram;
   yang terasing (senyap sebelum & selepas) dimasukkan ke `FILLERS` dalam `plan_cuts.py` (masa sumber, tepat bingkai).
 - Masa popup dalam `Fasakh.tsx` ditulis dalam saat rakaman asal melalui `src()`, jadi kekal tepat bila senarai potongan berubah.
+
+## Buang bunyi kipas & versi tanpa muzik
+
+- `cut_voice_to_timeline.py voice_raw.wav raw_b4.wav` — suara mentah (sebelum kompresor) dipotong ikut `cuts.json`.
+- `denoise_fan.py raw_b4.wav raw_b4_dn.wav` — profil bunyi kipas dari jeda, spectral gating (noisereduce);
+  lantai bunyi dalam jeda turun ~23 dB.
+- `voice_clean.sh raw_b4_dn.wav voice.wav` — highpass 85 Hz, expander lembut, EQ, kompresor, -15 LUFS.
+- Render tanpa muzik: `npx remotion render Fasakh out.mp4 --props='{"withMusic":false}'`.

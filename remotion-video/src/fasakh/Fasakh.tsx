@@ -197,7 +197,9 @@ const GROUNDS = [
   { text: "Suami menganiaya / menyakiti isteri", at: src(216.8) },
 ];
 
-export const Fasakh: React.FC = () => {
+export type FasakhProps = { withMusic: boolean };
+
+export const Fasakh: React.FC<FasakhProps> = ({ withMusic }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -330,7 +332,7 @@ export const Fasakh: React.FC = () => {
       {/* Audio: cleaned voice + soft SFX (kept well under the voice) */}
       <Audio src={staticFile("fasakh/voice.wav")} volume={voiceVol} />
       {/* Calm bed, pre-ducked under the voice and silent through the beep (fasakh-pipeline/music.py) */}
-      <Audio src={staticFile("fasakh/music_bed.wav")} />
+      {withMusic ? <Audio src={staticFile("fasakh/music_bed.wav")} /> : null}
       <Sfx at={0.0} file="impact_soft" vol={0.32} />
       <Sfx at={2.28} file="tick_soft" vol={0.32} />
       <Sfx at={2.3} file="chime_soft" vol={0.16} />

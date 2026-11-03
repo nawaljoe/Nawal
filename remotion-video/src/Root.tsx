@@ -9,6 +9,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Fasakh"
         component={Fasakh}
+        defaultProps={{ withMusic: true }}
         durationInFrames={FASAKH_DURATION_S * 30}
         fps={30}
         width={1080}
