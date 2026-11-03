@@ -17,7 +17,7 @@ Media besar (`public/fasakh/`) tidak disimpan dalam git.
 ## Hook, beep, logo & outro
 
 - Hook (cold open) dan beep bar warna dimasukkan dalam `cuts.json` (`hook: true`, `beep: true`).
-- Segmen beep: `beep.mp4` → skala/crop 1080x1920, dipad ke 63 bingkai; audio beep → `sfx/beep_bars.wav` (-19 LUFS).
+- Segmen beep: 1.0 s pertama `beep.mp4` (30 bingkai, satu beep) → skala/crop 1080x1920; audio → `sfx/beep_bars.wav` (-19 LUFS, beep kedua dibuang). Isi bermula terus selepas beep.
 - `public/fasakh/logos.png` (overlay penuh 1080x1920) dipapar dari mula isi hingga outro.
 - `public/fasakh/outro.mp4` (outro FK, 10 s) disambung selepas kad penutup.
 

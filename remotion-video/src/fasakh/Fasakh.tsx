@@ -42,6 +42,8 @@ const HOOK_CUT = KEEPS[0].src_end - KEEPS[0].src_start; // end of cold open
 const BEEP = KEEPS.find((k) => k.beep)!;
 const BEEP_LEN = BEEP.src_end - BEEP.src_start;
 const BODY_START = BEEP.out_start + BEEP_LEN; // "Baik. Dalam Islam..."
+/** Hand-placed times below were measured on the earlier 2.1 s beep; shift them to the current beep length. */
+const T = (t: number) => t - (2.1 - BEEP_LEN);
 const OUTRO_AT = VOICE_END + 4.2; // end card holds, then the FK outro
 const OUTRO_LEN = 10.0;
 export const FASAKH_DURATION_S = Math.ceil(OUTRO_AT + OUTRO_LEN);
@@ -144,20 +146,20 @@ const POPUPS: {
   accentDelay?: number;
   backdrop?: boolean;
 }[] = [
-  { from: 16.5, to: 18.9, kicker: "TUJUAN PERKAHWINAN", lines: ["Kebaikan untuk"], accent: "kedua-dua pihak" },
-  { from: 29.4, to: 32.0, kicker: "TETAPI", lines: ["Bila perkahwinan", "membawa"], accent: "mudarat" },
+  { from: T(16.5), to: T(18.9), kicker: "TUJUAN PERKAHWINAN", lines: ["Kebaikan untuk"], accent: "kedua-dua pihak" },
+  { from: T(29.4), to: T(32.0), kicker: "TETAPI", lines: ["Bila perkahwinan", "membawa"], accent: "mudarat" },
   {
-    from: 48.3,
-    to: 54.0,
+    from: T(48.3),
+    to: T(54.0),
     kicker: "JALAN TERAKHIR",
     lines: ["Setelah berusaha", "selamatkan perkahwinan…"],
     accent: "perceraian dibenarkan",
     accentDelay: 75,
   },
-  { from: 85.9, to: 88.3, kicker: "KES INI", lines: ["Isteri mohon cerai,"], accent: "suami tak mahu" },
+  { from: T(85.9), to: T(88.3), kicker: "KES INI", lines: ["Isteri mohon cerai,"], accent: "suami tak mahu" },
   {
-    from: 104.9,
-    to: 116.6,
+    from: T(104.9),
+    to: T(116.6),
     kicker: "RUJUKAN UNDANG-UNDANG",
     lines: ["Seksyen 53", "Fasakh ialah perintah"],
     accent: "membubarkan perkahwinan",
@@ -166,8 +168,8 @@ const POPUPS: {
   {
     // Hands over to the "Antara alasan fasakh" list on "...contoh, kalau tengok Seksyen 53"
     // under one continuous blurred backdrop (SYARAT_FOCUS), so nothing pops in between.
-    from: 133.0,
-    to: 142.7,
+    from: T(133.0),
+    to: T(142.7),
     kicker: "SYARATNYA",
     lines: ["Hanya dalam", "keadaan tertentu —"],
     accent: "diharuskan hukum syarak",
@@ -175,19 +177,19 @@ const POPUPS: {
     backdrop: false,
   },
   // Lands on "...diberikan, contohlah"; accent on "bertahun-tahun"
-  { from: 199.6, to: 203.8, kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentDelay: 84 },
+  { from: T(199.6), to: T(203.8), kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentDelay: 84 },
 ];
 
 const GROUNDS_AT = src(165.2);
 /** Checklist moves centre-stage over a blurred frame while the ustaz reads Seksyen 53 aloud. */
 const GROUNDS_FOCUS: [number, number][] = [
-  [GROUNDS_AT - 1, 150.5], // already centre-stage when it fades in (continues from the SYARATNYA popup)
-  [155.5, 183.6],
+  [GROUNDS_AT - 1, T(150.5)], // already centre-stage when it fades in (continues from the SYARATNYA popup)
+  [T(155.5), T(183.6)],
 ];
 /** Blurred backdrops: one unbroken span from the SYARATNYA popup through the first list reading. */
 const FOCUS_BACKDROPS: [number, number][] = [
-  [133.0, 150.5],
-  [155.5, 183.6],
+  [T(133.0), T(150.5)],
+  [T(155.5), T(183.6)],
 ];
 const GROUNDS = [
   { text: "Suami hilang lebih 1 tahun", at: src(178.0) },
