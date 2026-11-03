@@ -42,8 +42,6 @@ const HOOK_CUT = KEEPS[0].src_end - KEEPS[0].src_start; // end of cold open
 const BEEP = KEEPS.find((k) => k.beep)!;
 const BEEP_LEN = BEEP.src_end - BEEP.src_start;
 const BODY_START = BEEP.out_start + BEEP_LEN; // "Baik. Dalam Islam..."
-/** Hand-placed times below were measured on the earlier 2.1 s beep; shift them to the current beep length. */
-const T = (t: number) => t - (2.1 - BEEP_LEN);
 const OUTRO_AT = VOICE_END + 4.2; // end card holds, then the FK outro
 const OUTRO_LEN = 10.0;
 export const FASAKH_DURATION_S = Math.ceil(OUTRO_AT + OUTRO_LEN);
@@ -135,7 +133,8 @@ const Chip: React.FC<{ at: number; dur: number; kicker: string; label: string }>
 
 /**
  * Popups placed where the ustaz looks down at his notes for 2 s or more
- * (MediaPipe eye-look-down > 0.6, see fasakh-pipeline/lookdown.py). Times are in the edited timeline.
+ * (MediaPipe eye-look-down > 0.6, see fasakh-pipeline/lookdown.py). Times are raw-recording seconds via src(),
+ * so they stay locked to the words whenever the cut list changes.
  */
 const POPUPS: {
   from: number;
@@ -143,53 +142,53 @@ const POPUPS: {
   kicker: string;
   lines: string[];
   accent: string;
-  accentDelay?: number;
+  accentAt?: number; // edited-timeline time the gold accent line lands
   backdrop?: boolean;
 }[] = [
-  { from: T(16.5), to: T(18.9), kicker: "TUJUAN PERKAHWINAN", lines: ["Kebaikan untuk"], accent: "kedua-dua pihak" },
-  { from: T(29.4), to: T(32.0), kicker: "TETAPI", lines: ["Bila perkahwinan", "membawa"], accent: "mudarat" },
+  { from: src(18.4), to: src(20.8), kicker: "TUJUAN PERKAHWINAN", lines: ["Kebaikan untuk"], accent: "kedua-dua pihak" },
+  { from: src(31.3), to: src(33.9), kicker: "TETAPI", lines: ["Bila perkahwinan", "membawa"], accent: "mudarat" },
   {
-    from: T(48.3),
-    to: T(54.0),
+    from: src(50.2),
+    to: src(56.83),
     kicker: "JALAN TERAKHIR",
     lines: ["Setelah berusaha", "selamatkan perkahwinan…"],
     accent: "perceraian dibenarkan",
-    accentDelay: 75,
+    accentAt: src(52.7),
   },
-  { from: T(85.9), to: T(88.3), kicker: "KES INI", lines: ["Isteri mohon cerai,"], accent: "suami tak mahu" },
+  { from: src(102.03), to: src(104.43), kicker: "KES INI", lines: ["Isteri mohon cerai,"], accent: "suami tak mahu" },
   {
-    from: T(104.9),
-    to: T(116.6),
+    from: src(121.03),
+    to: src(133.83),
     kicker: "RUJUKAN UNDANG-UNDANG",
     lines: ["Seksyen 53", "Fasakh ialah perintah"],
     accent: "membubarkan perkahwinan",
-    accentDelay: 150,
+    accentAt: src(127.13),
   },
   {
     // Hands over to the "Antara alasan fasakh" list on "...contoh, kalau tengok Seksyen 53"
     // under one continuous blurred backdrop (SYARAT_FOCUS), so nothing pops in between.
-    from: T(133.0),
-    to: T(142.7),
+    from: src(150.23),
+    to: src(165.95),
     kicker: "SYARATNYA",
     lines: ["Hanya dalam", "keadaan tertentu —"],
     accent: "diharuskan hukum syarak",
-    accentDelay: 120,
+    accentAt: src(154.23),
     backdrop: false,
   },
   // Lands on "...diberikan, contohlah"; accent on "bertahun-tahun"
-  { from: T(199.6), to: T(203.8), kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentDelay: 84 },
+  { from: src(242.6), to: src(247.97), kicker: "CONTOH", lines: ["Suami abaikan isteri"], accent: "bertahun-tahun", accentAt: src(246.57) },
 ];
 
 const GROUNDS_AT = src(165.2);
 /** Checklist moves centre-stage over a blurred frame while the ustaz reads Seksyen 53 aloud. */
 const GROUNDS_FOCUS: [number, number][] = [
-  [GROUNDS_AT - 1, T(150.5)], // already centre-stage when it fades in (continues from the SYARATNYA popup)
-  [T(155.5), T(183.6)],
+  [GROUNDS_AT - 1, src(183.03)], // already centre-stage when it fades in (continues from the SYARATNYA popup)
+  [src(190.1), src(226.6)],
 ];
 /** Blurred backdrops: one unbroken span from the SYARATNYA popup through the first list reading. */
 const FOCUS_BACKDROPS: [number, number][] = [
-  [T(133.0), T(150.5)],
-  [T(155.5), T(183.6)],
+  [src(150.23), src(183.03)],
+  [src(190.1), src(226.6)],
 ];
 const GROUNDS = [
   { text: "Suami hilang lebih 1 tahun", at: src(178.0) },
@@ -290,12 +289,12 @@ export const Fasakh: React.FC = () => {
               kicker={p.kicker}
               lines={p.lines}
               accent={p.accent}
-              accentDelay={p.accentDelay}
+              accentDelay={p.accentAt ? sec(p.accentAt - p.from) : undefined}
               backdrop={p.backdrop}
             />
           </Sequence>
           <Sfx at={p.from} file="swipe_soft" vol={0.22} />
-          <Sfx at={p.from + (p.accentDelay ?? 8) / 30} file="tick_soft" vol={0.18} />
+          <Sfx at={p.accentAt ?? p.from + 8 / 30} file="tick_soft" vol={0.18} />
         </React.Fragment>
       ))}
 

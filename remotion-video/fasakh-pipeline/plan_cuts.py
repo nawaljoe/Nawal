@@ -22,6 +22,21 @@ R=[
  (245.12,246.14,"apa itu"),
 ]
 rem=[(snap(a),snap(b),l,"stutter") for a,b,l in R]
+# Filled pauses ("aaa", "uhh") found acoustically (filled_pauses.py) + checked on spectrograms; frame-exact, no snapping
+FILLERS=[
+ (45.3667,45.9),
+ (60.4663,61.0997),
+ (62.133,62.6997),
+ (87.5667,87.9334),
+ (129.2333,129.8666),
+ (130.6333,130.9666),
+ (165.167,165.6003),
+ (178.833,179.333),
+ (240.6336,241.3336),
+ (258.5996,259.1996),
+ (266.8663,267.2996),
+]
+rem+=[(a,b,"isian aaa","stutter") for a,b in FILLERS]
 rem.append((0.0,10.30,"suara penanya (soalan) dibuang","trim"))
 rem.append((END,283.56,"tail","trim"))
 # pause compression from Silero VAD gaps: gaps > 0.7s shrink to ~0.4s

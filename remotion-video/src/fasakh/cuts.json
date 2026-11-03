@@ -28,105 +28,171 @@
   },
   {
    "src_start": 14.1,
-   "src_end": 54.8667,
+   "src_end": 45.3667,
    "after_cut": "pause",
    "out_start": 11.1
+  },
+  {
+   "src_start": 45.9,
+   "src_end": 54.8667,
+   "after_cut": "stutter",
+   "out_start": 42.367
   },
   {
    "src_start": 55.8,
    "src_end": 56.9,
    "after_cut": "pause",
-   "out_start": 51.867
+   "out_start": 51.333
   },
   {
    "src_start": 59.5,
+   "src_end": 60.4667,
+   "after_cut": "stutter",
+   "out_start": 52.433
+  },
+  {
+   "src_start": 61.1,
+   "src_end": 62.1333,
+   "after_cut": "stutter",
+   "out_start": 53.4
+  },
+  {
+   "src_start": 62.7,
    "src_end": 64.1,
    "after_cut": "stutter",
-   "out_start": 52.967
+   "out_start": 54.433
   },
   {
    "src_start": 66.2,
    "src_end": 72.3333,
    "after_cut": "stutter",
-   "out_start": 57.567
+   "out_start": 55.833
   },
   {
    "src_start": 78.5667,
+   "src_end": 87.5667,
+   "after_cut": "stutter",
+   "out_start": 61.967
+  },
+  {
+   "src_start": 87.9333,
    "src_end": 99.0667,
    "after_cut": "stutter",
-   "out_start": 63.7
+   "out_start": 70.967
   },
   {
    "src_start": 101.4333,
    "src_end": 121.1333,
    "after_cut": "stutter",
-   "out_start": 84.2
+   "out_start": 82.1
   },
   {
    "src_start": 122.2333,
+   "src_end": 129.2333,
+   "after_cut": "stutter",
+   "out_start": 101.8
+  },
+  {
+   "src_start": 129.8667,
+   "src_end": 130.6333,
+   "after_cut": "stutter",
+   "out_start": 108.8
+  },
+  {
+   "src_start": 130.9667,
    "src_end": 154.8,
    "after_cut": "stutter",
-   "out_start": 103.9
+   "out_start": 109.567
   },
   {
    "src_start": 156.5,
    "src_end": 160.9667,
    "after_cut": "stutter",
-   "out_start": 136.467
+   "out_start": 133.4
   },
   {
    "src_start": 164.8333,
+   "src_end": 165.1667,
+   "after_cut": "stutter",
+   "out_start": 137.867
+  },
+  {
+   "src_start": 165.6,
    "src_end": 167.2667,
    "after_cut": "stutter",
-   "out_start": 140.933
+   "out_start": 138.2
   },
   {
    "src_start": 177.0,
+   "src_end": 178.8333,
+   "after_cut": "stutter",
+   "out_start": 139.867
+  },
+  {
+   "src_start": 179.3333,
    "src_end": 185.8667,
    "after_cut": "stutter",
-   "out_start": 143.367
+   "out_start": 141.7
   },
   {
    "src_start": 187.9333,
    "src_end": 197.9,
    "after_cut": "stutter",
-   "out_start": 152.233
+   "out_start": 148.233
   },
   {
    "src_start": 199.3333,
    "src_end": 203.7333,
    "after_cut": "pause",
-   "out_start": 162.2
+   "out_start": 158.2
   },
   {
    "src_start": 204.4333,
    "src_end": 208.5,
    "after_cut": "pause",
-   "out_start": 166.6
+   "out_start": 162.6
   },
   {
    "src_start": 209.8,
    "src_end": 211.7333,
    "after_cut": "pause",
-   "out_start": 170.667
+   "out_start": 166.667
   },
   {
    "src_start": 216.4,
    "src_end": 221.4333,
    "after_cut": "stutter",
-   "out_start": 172.6
+   "out_start": 168.6
   },
   {
    "src_start": 221.7333,
-   "src_end": 244.9667,
+   "src_end": 240.6333,
    "after_cut": "pause",
-   "out_start": 177.633
+   "out_start": 173.633
+  },
+  {
+   "src_start": 241.3333,
+   "src_end": 244.9667,
+   "after_cut": "stutter",
+   "out_start": 192.533
   },
   {
    "src_start": 246.1333,
+   "src_end": 258.6,
+   "after_cut": "stutter",
+   "out_start": 196.167
+  },
+  {
+   "src_start": 259.2,
+   "src_end": 266.8667,
+   "after_cut": "stutter",
+   "out_start": 208.634
+  },
+  {
+   "src_start": 267.3,
    "src_end": 281.4667,
    "after_cut": "stutter",
-   "out_start": 200.867
+   "out_start": 216.3
   }
  ],
  "removed": [
@@ -149,6 +215,12 @@
    "type": "pause"
   },
   {
+   "a": 45.3667,
+   "b": 45.9,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
    "a": 54.864,
    "b": 55.784,
    "why": "jeda 1.32s",
@@ -158,6 +230,18 @@
    "a": 56.910000000000004,
    "b": 59.49,
    "why": "boleh membuat, ataupun",
+   "type": "stutter"
+  },
+  {
+   "a": 60.4663,
+   "b": 61.0997,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
+   "a": 62.133,
+   "b": 62.6997,
+   "why": "isian aaa",
    "type": "stutter"
   },
   {
@@ -173,6 +257,12 @@
    "type": "stutter"
   },
   {
+   "a": 87.5667,
+   "b": 87.9334,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
    "a": 99.06,
    "b": 101.43,
    "why": "ulang: Dan sekiranya",
@@ -182,6 +272,18 @@
    "a": 121.15,
    "b": 122.24000000000001,
    "why": "jeda fasakh",
+   "type": "stutter"
+  },
+  {
+   "a": 129.2333,
+   "b": 129.8666,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
+   "a": 130.6333,
+   "b": 130.9666,
+   "why": "isian aaa",
    "type": "stutter"
   },
   {
@@ -197,9 +299,21 @@
    "type": "stutter"
   },
   {
+   "a": 165.167,
+   "b": 165.6003,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
    "a": 167.28,
    "b": 177.0,
    "why": "salah mula: Kurungan 1, mana-mana... Baik, Seksyen 53 + jeda 2.60s",
+   "type": "stutter"
+  },
+  {
+   "a": 178.833,
+   "b": 179.333,
+   "why": "isian aaa",
    "type": "stutter"
   },
   {
@@ -239,9 +353,27 @@
    "type": "pause"
   },
   {
+   "a": 240.6336,
+   "b": 241.3336,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
    "a": 244.96,
    "b": 246.13,
    "why": "apa itu",
+   "type": "stutter"
+  },
+  {
+   "a": 258.5996,
+   "b": 259.1996,
+   "why": "isian aaa",
+   "type": "stutter"
+  },
+  {
+   "a": 266.8663,
+   "b": 267.2996,
+   "why": "isian aaa",
    "type": "stutter"
   },
   {

@@ -34,3 +34,10 @@ Media besar (`public/fasakh/`) tidak disimpan dalam git.
 - `bg_blur.py base_video.mp4 selfie_multiclass_256x256.tflite base_video_blur.mp4` — segmentasi orang
   MediaPipe; ustaz dan meja (bawah y≈1312) kekal tajam, latar dikaburkan (normalised-convolution supaya
   tiada halo). Frame beep (232–295) tidak disentuh. Hasil disalin sebagai `public/fasakh/base_video.mp4`.
+
+## Buang bunyi isian ("aaa", "uhh")
+
+- Whisper membersihkan bunyi isian, jadi `filled_pauses.py` mengesannya secara akustik (librosa pYIN):
+  bahagian bersuara ≥ 0.3 s dengan nada mendatar dan spektrum stabil. Calon disemak pada spektrogram;
+  yang terasing (senyap sebelum & selepas) dimasukkan ke `FILLERS` dalam `plan_cuts.py` (masa sumber, tepat bingkai).
+- Masa popup dalam `Fasakh.tsx` ditulis dalam saat rakaman asal melalui `src()`, jadi kekal tepat bila senarai potongan berubah.
