@@ -19,5 +19,10 @@ Pasang dalam Claude Code:
 /plugin install hyperframes --marketplace nawaljoe/Nawal
 ```
 
+### ⚙️ Instalasi Otomatis (sesi Claude Code cloud)
+Setiap sesi cloud menjalankan `.claude/hooks/session-start.sh` yang memastikan alat berikut tersedia:
+Node.js 22+ & npm, Python 3 & pip/uv, FFprobe/FFmpeg, yt-dlp, ElevenLabs SDK (Python & Node), serta dependensi `remotion-video`.
+Untuk ElevenLabs, tambahkan `ELEVENLABS_API_KEY` sebagai secret di pengaturan environment.
+
 ---
 *Profil ini dibina khas untuk rujukan pembantu AI saya (Claude).*
