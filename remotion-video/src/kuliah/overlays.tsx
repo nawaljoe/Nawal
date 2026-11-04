@@ -252,13 +252,13 @@ export const FilmLook: React.FC = () => {
       <AbsoluteFill
         style={{
           background:
-            "radial-gradient(ellipse 85% 70% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)",
+            "radial-gradient(ellipse 85% 70% at 50% 45%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.42) 100%)",
         }}
       />
       <svg
         width="100%"
         height="100%"
-        style={{ position: "absolute", opacity: 0.11, mixBlendMode: "overlay" }}
+        style={{ position: "absolute", opacity: 0.05, mixBlendMode: "overlay" }}
       >
         <filter id="grain">
           <feTurbulence

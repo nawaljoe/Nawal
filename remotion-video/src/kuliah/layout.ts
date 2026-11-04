@@ -1,7 +1,10 @@
 import timeline from "./timeline.json";
 
+export type TransitionType = "blur" | "glow" | "dip";
+
 export type Segment = (typeof timeline.segments)[number] & {
-  overlapIn?: number;
+  transition?: TransitionType;
+  transitionSec?: number;
 };
 
 export type PlacedSegment = Segment & {
@@ -9,29 +12,41 @@ export type PlacedSegment = Segment & {
   start: number;
   /** Length on the film timeline, in frames. */
   length: number;
-  /** Frames this segment dissolves in over the previous one. */
-  fadeIn: number;
+  /** How this shot comes in (the join before it). Half the transition plays on each side of the cut. */
+  inType: TransitionType | null;
+  inFrames: number;
+  /** How this shot goes out (the join after it). */
+  outType: TransitionType | null;
+  outFrames: number;
 };
 
 export const FPS = timeline.fps;
 export const sec = (s: number) => Math.round(s * FPS);
 
 /**
- * Lays segments end to end, each one dissolving over the tail of the previous
- * one. Shared with scripts/bina_kapsyen.py, which repeats the same arithmetic.
+ * Lays segments end to end with no overlap, so the ustaz's voice never plays
+ * over itself. Transitions are "through" transitions: the outgoing shot
+ * softens out and the incoming shot resolves in, meeting at the cut.
+ * scripts/bina_kapsyen.py repeats the same arithmetic.
  */
 export const placeSegments = (): PlacedSegment[] => {
-  const placed: PlacedSegment[] = [];
+  const segs = timeline.segments as Segment[];
   let cursor = 0;
-  timeline.segments.forEach((seg, i) => {
-    const s = seg as Segment;
-    const overlap = i === 0 ? 0 : (s.overlapIn ?? timeline.overlap);
-    const start = i === 0 ? 0 : cursor - sec(overlap);
-    const length = sec(s.to - s.from);
-    placed.push({ ...s, start, length, fadeIn: sec(overlap) });
-    cursor = start + length;
+  return segs.map((s, i) => {
+    const next = segs[i + 1];
+    const half = (x?: number) => sec((x ?? 0) / 2);
+    const placed: PlacedSegment = {
+      ...s,
+      start: cursor,
+      length: sec(s.to - s.from),
+      inType: i === 0 ? null : (s.transition ?? null),
+      inFrames: i === 0 ? 0 : half(s.transitionSec),
+      outType: next?.transition ?? null,
+      outFrames: next ? half(next.transitionSec) : 0,
+    };
+    cursor += placed.length;
+    return placed;
   });
-  return placed;
 };
 
 export const totalFrames = (): number => {

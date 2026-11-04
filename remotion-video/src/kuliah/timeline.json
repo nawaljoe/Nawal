@@ -2,33 +2,184 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "overlap": 0.5,
+  "overlap": 0,
   "segments": [
-    { "id": "intro", "src": "media/intro.mp4", "from": 0, "to": 6, "audio": null, "framing": "card" },
-    { "id": "m1", "src": "media/m1.mp4", "audio": "audio/m1.m4a", "from": 0.2, "to": 14.5, "framing": "close", "overlapIn": 1.0 },
-    { "id": "m2", "src": "media/m2.mp4", "audio": "audio/m2.m4a", "from": 0, "to": 21.3, "framing": "wide" },
-    { "id": "m4", "src": "media/m4.mp4", "audio": "audio/m4.m4a", "from": 0, "to": 35.95, "framing": "wide" },
-    { "id": "m7", "src": "media/m7.mp4", "audio": "audio/m7.m4a", "from": 0, "to": 60.6, "framing": "wide" },
-    { "id": "m5", "src": "media/m5.mp4", "audio": "audio/m5.m4a", "from": 0, "to": 39.0, "framing": "close" },
-    { "id": "m3", "src": "media/m3.mp4", "audio": "audio/m3.m4a", "from": 0, "to": 24.0, "framing": "close" },
-    { "id": "m6", "src": "media/m6.mp4", "audio": "audio/m6.m4a", "from": 0, "to": 64.55, "framing": "close" },
-    { "id": "outro", "src": "media/outro.mp4", "from": 0, "to": 7, "audio": null, "framing": "card", "overlapIn": 1.0 }
+    {
+      "id": "intro",
+      "src": "media/intro.mp4",
+      "from": 0,
+      "to": 6,
+      "audio": null,
+      "framing": "card"
+    },
+    {
+      "id": "m1",
+      "src": "media/m1.mp4",
+      "audio": "audio/m1.m4a",
+      "from": 0.0,
+      "to": 14.2,
+      "framing": "close",
+      "transition": "glow",
+      "transitionSec": 1.2
+    },
+    {
+      "id": "m2",
+      "src": "media/m2.mp4",
+      "audio": "audio/m2.m4a",
+      "from": 0.0,
+      "to": 21.3,
+      "framing": "wide",
+      "transition": "blur",
+      "transitionSec": 0.8
+    },
+    {
+      "id": "m4",
+      "src": "media/m4.mp4",
+      "audio": "audio/m4.m4a",
+      "from": 0.0,
+      "to": 35.0,
+      "framing": "wide",
+      "transition": "blur",
+      "transitionSec": 0.8
+    },
+    {
+      "id": "m7",
+      "src": "media/m7.mp4",
+      "audio": "audio/m7.m4a",
+      "from": 0.0,
+      "to": 60.5,
+      "framing": "wide",
+      "transition": "glow",
+      "transitionSec": 1.2
+    },
+    {
+      "id": "m5",
+      "src": "media/m5.mp4",
+      "audio": "audio/m5.m4a",
+      "from": 0.0,
+      "to": 38.9,
+      "framing": "close",
+      "transition": "glow",
+      "transitionSec": 1.2
+    },
+    {
+      "id": "m3",
+      "src": "media/m3.mp4",
+      "audio": "audio/m3.m4a",
+      "from": 0.45,
+      "to": 24.0,
+      "framing": "close",
+      "transition": "blur",
+      "transitionSec": 0.8
+    },
+    {
+      "id": "m6",
+      "src": "media/m6.mp4",
+      "audio": "audio/m6.m4a",
+      "from": 0.2,
+      "to": 64.4,
+      "framing": "close",
+      "transition": "blur",
+      "transitionSec": 0.8
+    },
+    {
+      "id": "outro",
+      "src": "media/outro.mp4",
+      "from": 0,
+      "to": 7,
+      "audio": null,
+      "framing": "card",
+      "transition": "dip",
+      "transitionSec": 1.6
+    }
   ],
   "broll": [
-    { "seg": "m2", "at": 6.5, "dur": 5.5, "src": "media/b5.mp4", "from": 0.2 },
-    { "seg": "m4", "at": 11.0, "dur": 5.5, "src": "media/b3.mp4", "from": 0.2 },
-    { "seg": "m4", "at": 25.0, "dur": 5.0, "src": "media/b2.mp4", "from": 0.2 },
-    { "seg": "m7", "at": 38.0, "dur": 5.5, "src": "media/b6.mp4", "from": 0.2 },
-    { "seg": "m7", "at": 50.0, "dur": 5.8, "src": "media/b7.mp4", "from": 0.2 },
-    { "seg": "m5", "at": 15.0, "dur": 5.5, "src": "media/b4.mp4", "from": 0.2 },
-    { "seg": "m3", "at": 17.0, "dur": 6.0, "src": "media/b10.mp4", "from": 1.0 },
-    { "seg": "m6", "at": 9.0, "dur": 6.0, "src": "media/b8.mp4", "from": 0.2 },
-    { "seg": "m6", "at": 56.5, "dur": 7.5, "src": "media/b9.mp4", "from": 0.5 }
+    {
+      "seg": "m2",
+      "at": 6.5,
+      "dur": 5.5,
+      "src": "media/b5.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m4",
+      "at": 11.0,
+      "dur": 5.5,
+      "src": "media/b3.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m4",
+      "at": 25.0,
+      "dur": 5.0,
+      "src": "media/b2.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m7",
+      "at": 38.0,
+      "dur": 5.5,
+      "src": "media/b6.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m7",
+      "at": 50.0,
+      "dur": 5.8,
+      "src": "media/b7.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m5",
+      "at": 15.0,
+      "dur": 5.5,
+      "src": "media/b4.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m3",
+      "at": 16.55,
+      "dur": 6.0,
+      "src": "media/b10.mp4",
+      "from": 1.0
+    },
+    {
+      "seg": "m6",
+      "at": 8.8,
+      "dur": 6.0,
+      "src": "media/b8.mp4",
+      "from": 0.2
+    },
+    {
+      "seg": "m6",
+      "at": 56.3,
+      "dur": 7.5,
+      "src": "media/b9.mp4",
+      "from": 0.5
+    }
   ],
   "chapters": [
-    { "seg": "m7", "at": 3.8, "dur": 4.8, "label": "Amalan Pertama", "title": "Puasa" },
-    { "seg": "m5", "at": 0.6, "dur": 4.8, "label": "Amalan Kedua", "title": "Sabar" },
-    { "seg": "m6", "at": 35.3, "dur": 4.8, "label": "Amalan Ketiga", "title": "Memaafkan" }
+    {
+      "seg": "m7",
+      "at": 3.8,
+      "dur": 4.8,
+      "label": "Amalan Pertama",
+      "title": "Puasa"
+    },
+    {
+      "seg": "m5",
+      "at": 0.6,
+      "dur": 4.8,
+      "label": "Amalan Kedua",
+      "title": "Sabar"
+    },
+    {
+      "seg": "m6",
+      "at": 35.1,
+      "dur": 4.8,
+      "label": "Amalan Ketiga",
+      "title": "Memaafkan"
+    }
   ],
   "quotes": [
     {
@@ -41,7 +192,7 @@
     },
     {
       "seg": "m3",
-      "at": 9.4,
+      "at": 8.95,
       "dur": 7.6,
       "arabic": null,
       "text": "Dapat nikmat, bersyukur — baik.\nDitimpa musibah, bersabar — pun baik.",
@@ -49,7 +200,7 @@
     },
     {
       "seg": "m6",
-      "at": 43.8,
+      "at": 43.6,
       "dur": 12.2,
       "arabic": "فَمَنْ عَفَا وَأَصْلَحَ فَأَجْرُهُ عَلَى اللَّهِ",
       "text": "Sesiapa yang memaafkan dan berbuat baik, maka pahalanya ditanggung oleh Allah.",

@@ -31,25 +31,37 @@ for k in "${!MAIN[@]}"; do [ -s "$WORK/src/$k.mp4" ] || dl "$WORK/src/$k.mp4" "$
 for k in "${!BROLL[@]}"; do [ -s "$WORK/src/$k.mp4" ] || dl "$WORK/src/$k.mp4" "${BROLL[$k]}"; done
 
 # Gred "tenang": kontras lembut, kurang tepu, highlight hangat, bayang sedikit biru
-GRADE="eq=contrast=1.04:saturation=0.82:gamma=1.02,colorbalance=rs=-0.02:bs=0.03:rm=0.01:bm=-0.01:rh=0.04:gh=0.015:bh=-0.03,curves=all='0/0.035 0.5/0.5 1/0.97'"
+GRADE="eq=contrast=1.04:saturation=0.84:gamma=1.02,colorbalance=rs=-0.02:bs=0.03:rm=0.01:bm=-0.01:rh=0.04:gh=0.015:bh=-0.03,curves=all='0/0.03 0.5/0.5 1/0.975'"
+# Tajam & jelas: buang bising mampatan, besarkan dengan spline, tajamkan secara adaptif (CAS)
+SHARP="hqdn3d=1.2:1.0:4:3,scale=1080:1920:flags=spline+accurate_rnd+full_chroma_int,setsar=1,cas=strength=0.85,unsharp=5:5:0.55:3:3:0"
 video() { # $1 masuk, $2 penapis putaran, $3 keluar
-  ffmpeg -v error -y -i "$1" -an -vf "$2,scale=1080:1920:flags=lanczos,setsar=1,unsharp=5:5:0.4,$GRADE,fps=30,format=yuv420p" \
-    -c:v libx264 -preset medium -crf 18 -g 30 "$3"
+  ffmpeg -v error -y -i "$1" -an -vf "$2,$SHARP,$GRADE,fps=30,format=yuv420p" \
+    -c:v libx264 -preset medium -crf 15 -tune film -g 30 "$3"
 }
 # m1, m3, m5, m6 dirakam menegak tapi tersimpan mengiring: putar 90° lawan jam
 for k in m1 m3 m5 m6; do video "$WORK/src/$k.mp4" "transpose=2" "public/media/$k.mp4"; done
 for k in m2 m4 m7 b1 b2 b3 b4 b5 b6 b7 b8 b9 b10; do video "$WORK/src/$k.mp4" "null" "public/media/$k.mp4"; done
 
-# Suara ustaz: buang dengung kipas & bising, tonjolkan kejelasan, ratakan kenyaringan
-VOICE="highpass=f=90,lowpass=f=8000,afftdn=nr=18:nf=-32:tn=1,equalizer=f=250:t=q:w=1.2:g=-3,equalizer=f=3000:t=q:w=1.5:g=3,acompressor=threshold=-24dB:ratio=3:attack=10:release=200:makeup=4,alimiter=limit=0.95"
+# Suara ustaz: ElevenLabs Voice Isolator jika ada kunci, jika tidak DeepFilterNet3 (lokal).
+# Kemudian EQ (kurangkan "berdengung", tambah kejelasan), de-esser, kompresor, -14 LUFS.
+POST="highpass=f=75,equalizer=f=220:t=q:w=1.0:g=-2.5,equalizer=f=3200:t=q:w=1.4:g=2.5,highshelf=f=8000:g=1.5,deesser=i=0.35,acompressor=threshold=-22dB:ratio=2.5:attack=8:release=180:makeup=3,loudnorm=I=-14:TP=-1.2:LRA=8,alimiter=limit=0.93"
+DFN_MODEL="$WORK/DeepFilterNet3"
+if [ -z "${ELEVENLABS_API_KEY:-}" ] && [ ! -s "$DFN_MODEL/model.safetensors" ]; then
+  mkdir -p "$DFN_MODEL"
+  for f in config.ini model.safetensors; do
+    curl -sSL -o "$DFN_MODEL/$f" "https://huggingface.co/fal/DeepFilterNet3/resolve/main/$f"
+  done
+fi
 for k in m1 m2 m3 m4 m5 m6 m7; do
+  ffmpeg -v error -y -i "$WORK/src/$k.mp4" -vn -ac 1 -ar 48000 "$WORK/clean/${k}_in.wav"
   if [ -n "${ELEVENLABS_API_KEY:-}" ]; then
-    python3 ../voiceover/jernihkan_suara.py "$WORK/src/$k.mp4" "$WORK/clean/$k.mp3"
-    ffmpeg -v error -y -i "$WORK/clean/$k.mp3" -af "highpass=f=80,loudnorm=I=-15:TP=-1.5:LRA=9" -ar 48000 -ac 2 -c:a aac -b:a 192k "public/audio/$k.m4a"
+    python3 ../voiceover/jernihkan_suara.py "$WORK/clean/${k}_in.wav" "$WORK/clean/$k.mp3"
+    ffmpeg -v error -y -i "$WORK/clean/$k.mp3" -ar 48000 "$WORK/clean/${k}_bersih.wav"
     python3 ../voiceover/transkrip_scribe.py "$WORK/clean/$k.mp3" "$WORK/transkrip/$k.json"
   else
-    ffmpeg -v error -y -i "$WORK/src/$k.mp4" -vn -af "$VOICE,loudnorm=I=-15:TP=-1.5:LRA=9" -ar 48000 -ac 2 -c:a aac -b:a 192k "public/audio/$k.m4a"
+    python3 ../voiceover/jernihkan_dfn.py "$WORK/clean/${k}_in.wav" "$WORK/clean/${k}_bersih.wav" 35 "$DFN_MODEL"
   fi
+  ffmpeg -v error -y -i "$WORK/clean/${k}_bersih.wav" -af "$POST" -ar 48000 -ac 2 -c:a aac -b:a 256k "public/audio/$k.m4a"
 done
 if [ -n "${ELEVENLABS_API_KEY:-}" ]; then
   python3 scripts/bina_kapsyen.py "$WORK/transkrip"
