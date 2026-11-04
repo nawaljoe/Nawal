@@ -36,8 +36,12 @@ def main() -> None:
 
     captions = []
     for seg in place(timeline):
-        path = os.path.join(folder, f"{seg['id']}.json")
-        if not seg.get("audio") or not os.path.exists(path):
+        # transkrip dinamakan ikut klip asal (m7.json), satu klip boleh dipotong jadi beberapa segmen
+        if not seg.get("audio") or not seg["audio"].startswith("audio/"):
+            continue
+        clip = os.path.splitext(os.path.basename(seg["audio"]))[0]
+        path = os.path.join(folder, f"{clip}.json")
+        if not os.path.exists(path):
             continue
         offset = seg["start"] / fps - seg["from"]
         for w in json.load(open(path, encoding="utf-8"))["words"]:

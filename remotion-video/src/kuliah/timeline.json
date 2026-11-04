@@ -28,93 +28,100 @@
       "id": "intro",
       "src": "media/intro.mp4",
       "from": 0,
-      "to": 6,
+      "to": 6.0,
       "audio": null,
       "framing": "card",
       "ambient": 1.0
     },
     {
-      "id": "m1",
-      "src": "media/m1.mp4",
-      "audio": "audio/m1.m4a",
-      "from": 0.0,
-      "to": 14.2,
-      "framing": "close",
-      "transition": "glow",
-      "transitionSec": 1.2,
-      "ambient": 0.3
-    },
-    {
-      "id": "m2",
+      "id": "m2a",
       "src": "media/m2.mp4",
       "audio": "audio/m2.m4a",
       "from": 0.0,
-      "to": 21.3,
+      "to": 5.61,
       "framing": "wide",
-      "transition": "blur",
-      "transitionSec": 0.8,
+      "ambient": 0.3,
+      "transition": "glow",
+      "transitionSec": 1.2
+    },
+    {
+      "id": "m2b",
+      "src": "media/m2.mp4",
+      "audio": "audio/m2.m4a",
+      "from": 12.65,
+      "to": 19.11,
+      "framing": "wide",
       "ambient": 0.3
     },
     {
-      "id": "m4",
+      "id": "m4c",
       "src": "media/m4.mp4",
       "audio": "audio/m4.m4a",
-      "from": 0.0,
-      "to": 35.0,
+      "from": 22.47,
+      "to": 27.2,
       "framing": "wide",
+      "ambient": 0.3,
       "transition": "blur",
-      "transitionSec": 0.8,
-      "ambient": 0.3
+      "transitionSec": 0.8
     },
     {
-      "id": "m7",
+      "id": "m7a",
       "src": "media/m7.mp4",
       "audio": "audio/m7.m4a",
-      "from": 0.0,
-      "to": 60.5,
+      "from": 4.0,
+      "to": 8.77,
       "framing": "wide",
+      "ambient": 0.3,
       "transition": "glow",
-      "transitionSec": 1.2,
+      "transitionSec": 1.2
+    },
+    {
+      "id": "m7b",
+      "src": "media/m7.mp4",
+      "audio": "audio/m7.m4a",
+      "from": 11.23,
+      "to": 26.32,
+      "framing": "wide",
       "ambient": 0.3
     },
     {
-      "id": "m5",
+      "id": "m5a",
       "src": "media/m5.mp4",
       "audio": "audio/m5.m4a",
       "from": 0.0,
-      "to": 38.9,
+      "to": 9.87,
       "framing": "close",
+      "ambient": 0.3,
       "transition": "glow",
-      "transitionSec": 1.2,
-      "ambient": 0.3
+      "transitionSec": 1.2
     },
     {
-      "id": "m3",
+      "id": "m3a",
       "src": "media/m3.mp4",
       "audio": "audio/m3.m4a",
-      "from": 0.45,
-      "to": 24.0,
+      "from": 8.05,
+      "to": 17.16,
       "framing": "close",
+      "ambient": 0.3,
       "transition": "blur",
-      "transitionSec": 0.8,
-      "ambient": 0.3
+      "transitionSec": 0.8
     },
     {
-      "id": "m6",
+      "id": "m6a",
       "src": "media/m6.mp4",
       "audio": "audio/m6.m4a",
-      "from": 0.2,
+      "from": 35.64,
       "to": 64.4,
       "framing": "close",
-      "transition": "blur",
-      "transitionSec": 0.8,
-      "ambient": 0.3
+      "ambient": 0.3,
+      "transition": "glow",
+      "transitionSec": 1.2
     },
     {
       "id": "outro",
       "src": "media/outro.mp4",
       "from": 0,
-      "to": 7,
+      "to": 8.5333,
       "audio": null,
       "framing": "card",
       "transition": "dip",
@@ -137,112 +144,77 @@
   ],
   "broll": [
     {
-      "seg": "m2",
-      "at": 6.5,
+      "seg": "m2a",
+      "at": 4.6,
       "dur": 5.5,
       "src": "media/b5.mp4",
       "from": 0.2
     },
     {
-      "seg": "m4",
-      "at": 11.0,
-      "dur": 5.5,
-      "src": "media/b3.mp4",
-      "from": 0.2
-    },
-    {
-      "seg": "m4",
-      "at": 25.0,
+      "seg": "m7a",
+      "at": 4.0,
       "dur": 5.0,
-      "src": "media/b2.mp4",
-      "from": 0.2
-    },
-    {
-      "seg": "m7",
-      "at": 38.0,
-      "dur": 5.5,
       "src": "media/b6.mp4",
       "from": 0.2
     },
     {
-      "seg": "m7",
-      "at": 50.0,
-      "dur": 5.8,
-      "src": "media/b7.mp4",
-      "from": 0.2
-    },
-    {
-      "seg": "m5",
-      "at": 15.0,
-      "dur": 5.5,
+      "seg": "m5a",
+      "at": 5.0,
+      "dur": 4.4,
       "src": "media/b4.mp4",
       "from": 0.2
     },
     {
-      "seg": "m3",
-      "at": 16.55,
-      "dur": 6.0,
-      "src": "media/b10.mp4",
-      "from": 1.0
-    },
-    {
-      "seg": "m6",
-      "at": 8.8,
-      "dur": 6.0,
-      "src": "media/b8.mp4",
-      "from": 0.2
-    },
-    {
-      "seg": "m6",
-      "at": 56.3,
-      "dur": 7.5,
+      "seg": "m6a",
+      "at": 20.4,
+      "dur": 7.6,
       "src": "media/b9.mp4",
       "from": 0.5
     }
   ],
   "chapters": [
     {
-      "seg": "m7",
-      "at": 3.8,
-      "dur": 4.8,
+      "seg": "m7a",
+      "at": 0.3,
+      "dur": 4.4,
       "label": "Amalan Pertama",
       "title": "Puasa"
     },
     {
-      "seg": "m5",
-      "at": 0.6,
-      "dur": 4.8,
+      "seg": "m5a",
+      "at": 0.5,
+      "dur": 4.5,
       "label": "Amalan Kedua",
       "title": "Sabar"
     },
     {
-      "seg": "m6",
-      "at": 35.1,
-      "dur": 4.8,
+      "seg": "m6a",
+      "at": 0.6,
+      "dur": 4.6,
       "label": "Amalan Ketiga",
       "title": "Memaafkan"
     }
   ],
   "quotes": [
     {
-      "seg": "m7",
-      "at": 16.6,
-      "dur": 19.4,
+      "seg": "m7b",
+      "at": 5.6,
+      "dur": 9.4,
       "arabic": "كُلُّ عَمَلِ ابْنِ آدَمَ لَهُ إِلَّا الصِّيَامَ، فَإِنَّهُ لِي وَأَنَا أَجْزِي بِهِ",
       "text": "Setiap amalan anak Adam untuk dirinya, kecuali puasa. Sesungguhnya puasa itu untuk-Ku, dan Akulah yang membalasnya.",
       "source": "Hadis Qudsi · Riwayat al-Bukhari & Muslim"
     },
     {
-      "seg": "m3",
-      "at": 8.95,
-      "dur": 7.6,
+      "seg": "m3a",
+      "at": 1.9,
+      "dur": 7.1,
       "arabic": null,
       "text": "Dapat nikmat, bersyukur — baik.\nDitimpa musibah, bersabar — pun baik.",
       "source": null
     },
     {
-      "seg": "m6",
-      "at": 43.6,
+      "seg": "m6a",
+      "at": 7.96,
       "dur": 12.2,
       "arabic": "فَمَنْ عَفَا وَأَصْلَحَ فَأَجْرُهُ عَلَى اللَّهِ",
       "text": "Sesiapa yang memaafkan dan berbuat baik, maka pahalanya ditanggung oleh Allah.",
