@@ -71,6 +71,13 @@ fi
 ffmpeg -v error -y -f lavfi -i "aevalsrc='0.10*sin(2*PI*73.42*t)*(0.6+0.4*sin(2*PI*t/23))+0.07*sin(2*PI*110*t)*(0.6+0.4*sin(2*PI*t/17+1))+0.05*sin(2*PI*146.83*t)*(0.5+0.5*sin(2*PI*t/29+2))+0.035*sin(2*PI*220.0*t)*(0.5+0.5*sin(2*PI*t/19+3))+0.025*sin(2*PI*277.18*t)*(0.5+0.5*sin(2*PI*t/31+4))+0.02*sin(2*PI*369.99*t)*(0.5+0.5*sin(2*PI*t/37+5))|0.10*sin(2*PI*73.6*t)*(0.6+0.4*sin(2*PI*t/21))+0.07*sin(2*PI*110.3*t)*(0.6+0.4*sin(2*PI*t/18+1))+0.05*sin(2*PI*147.1*t)*(0.5+0.5*sin(2*PI*t/27+2))+0.035*sin(2*PI*220.4*t)*(0.5+0.5*sin(2*PI*t/23+3))+0.025*sin(2*PI*277.5*t)*(0.5+0.5*sin(2*PI*t/33+4))+0.02*sin(2*PI*370.4*t)*(0.5+0.5*sin(2*PI*t/41+5))':s=48000:d=300" \
   -af "lowpass=f=900,aecho=0.8:0.85:120|240:0.35|0.25,loudnorm=I=-30:TP=-6" -c:a aac -b:a 160k public/audio/ambient.m4a
 
+# Jenama: logo overlay, peralihan glitch (hook -> intro) dan outro FK
+ffmpeg -v error -y -i public/brand/logo-overlay-asal.png -vf "scale=1080:1920:flags=lanczos" public/brand/logo-overlay.png
+ffmpeg -v error -y -i public/brand/glitch-asal.mp4 -map 0:v -map 0:a -vf "scale=-2:1920:flags=lanczos,crop=1080:1920,fps=30,format=yuv420p" \
+  -c:v libx264 -crf 16 -af "loudnorm=I=-20:TP=-3" -ar 48000 -ac 2 -c:a aac -b:a 192k public/media/glitch.mp4
+ffmpeg -v error -y -i public/brand/FK_OUTRO.mp4 -map 0:v -map 0:a -vf "fps=30,format=yuv420p" \
+  -c:v libx264 -crf 15 -af "loudnorm=I=-16:TP=-1.5" -ar 48000 -ac 2 -c:a aac -b:a 256k public/media/fk_outro.mp4
+
 # Intro & outro dari HyperFrames
 cp public/media/b8.mp4 ../hyperframes-kuliah/assets/bg-intro.mp4
 cp public/media/b1.mp4 ../hyperframes-kuliah/assets/bg-outro.mp4

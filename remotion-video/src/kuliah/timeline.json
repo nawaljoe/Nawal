@@ -5,12 +5,33 @@
   "overlap": 0,
   "segments": [
     {
+      "id": "hook",
+      "src": "media/m7.mp4",
+      "audio": "audio/m7.m4a",
+      "from": 26.75,
+      "to": 35.72,
+      "framing": "wide",
+      "ambient": 0.35
+    },
+    {
+      "id": "glitch",
+      "src": "media/glitch.mp4",
+      "audio": "media/glitch.mp4",
+      "volume": 0.45,
+      "from": 0,
+      "to": 2.1,
+      "framing": "card",
+      "ambient": 0,
+      "logo": false
+    },
+    {
       "id": "intro",
       "src": "media/intro.mp4",
       "from": 0,
       "to": 6,
       "audio": null,
-      "framing": "card"
+      "framing": "card",
+      "ambient": 1.0
     },
     {
       "id": "m1",
@@ -20,7 +41,8 @@
       "to": 14.2,
       "framing": "close",
       "transition": "glow",
-      "transitionSec": 1.2
+      "transitionSec": 1.2,
+      "ambient": 0.3
     },
     {
       "id": "m2",
@@ -30,7 +52,8 @@
       "to": 21.3,
       "framing": "wide",
       "transition": "blur",
-      "transitionSec": 0.8
+      "transitionSec": 0.8,
+      "ambient": 0.3
     },
     {
       "id": "m4",
@@ -40,7 +63,8 @@
       "to": 35.0,
       "framing": "wide",
       "transition": "blur",
-      "transitionSec": 0.8
+      "transitionSec": 0.8,
+      "ambient": 0.3
     },
     {
       "id": "m7",
@@ -50,7 +74,8 @@
       "to": 60.5,
       "framing": "wide",
       "transition": "glow",
-      "transitionSec": 1.2
+      "transitionSec": 1.2,
+      "ambient": 0.3
     },
     {
       "id": "m5",
@@ -60,7 +85,8 @@
       "to": 38.9,
       "framing": "close",
       "transition": "glow",
-      "transitionSec": 1.2
+      "transitionSec": 1.2,
+      "ambient": 0.3
     },
     {
       "id": "m3",
@@ -70,7 +96,8 @@
       "to": 24.0,
       "framing": "close",
       "transition": "blur",
-      "transitionSec": 0.8
+      "transitionSec": 0.8,
+      "ambient": 0.3
     },
     {
       "id": "m6",
@@ -80,7 +107,8 @@
       "to": 64.4,
       "framing": "close",
       "transition": "blur",
-      "transitionSec": 0.8
+      "transitionSec": 0.8,
+      "ambient": 0.3
     },
     {
       "id": "outro",
@@ -90,7 +118,21 @@
       "audio": null,
       "framing": "card",
       "transition": "dip",
-      "transitionSec": 1.6
+      "transitionSec": 1.6,
+      "ambient": 1.0
+    },
+    {
+      "id": "fk_outro",
+      "src": "media/fk_outro.mp4",
+      "audio": "media/fk_outro.mp4",
+      "volume": 0.9,
+      "from": 0,
+      "to": 10.0,
+      "framing": "card",
+      "ambient": 0,
+      "logo": false,
+      "transition": "dip",
+      "transitionSec": 0.8
     }
   ],
   "broll": [
@@ -206,5 +248,20 @@
       "text": "Sesiapa yang memaafkan dan berbuat baik, maka pahalanya ditanggung oleh Allah.",
       "source": "Surah asy-Syura · ayat 40"
     }
-  ]
+  ],
+  "hook": {
+    "seg": "hook",
+    "lines": [
+      {
+        "at": 0.25,
+        "text": "Ada amalan yang\npahalanya tidak disebut…",
+        "tone": "ink"
+      },
+      {
+        "at": 2.6,
+        "text": "…kerana Allah sendiri\nyang membalasnya.",
+        "tone": "gold"
+      }
+    ]
+  }
 }

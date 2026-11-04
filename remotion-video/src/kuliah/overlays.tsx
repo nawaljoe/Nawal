@@ -45,14 +45,14 @@ export const ChapterCard: React.FC<{
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(7,9,12,0) 38%, rgba(7,9,12,0.72) 62%, rgba(7,9,12,0.85) 100%)",
+            "linear-gradient(180deg, rgba(7,9,12,0) 36%, rgba(7,9,12,0.7) 58%, rgba(7,9,12,0.82) 100%)",
         }}
       />
       <AbsoluteFill
         style={{
           justifyContent: "flex-end",
           alignItems: "center",
-          paddingBottom: 430,
+          paddingBottom: 470,
           translate: `0px ${rise}px`,
           filter: `blur(${blur}px)`,
         }}
@@ -115,14 +115,14 @@ export const QuoteCard: React.FC<{
       <AbsoluteFill
         style={{
           background:
-            "linear-gradient(180deg, rgba(7,9,12,0) 30%, rgba(7,9,12,0.78) 55%, rgba(7,9,12,0.9) 100%)",
+            "linear-gradient(180deg, rgba(7,9,12,0) 26%, rgba(7,9,12,0.76) 48%, rgba(7,9,12,0.88) 100%)",
         }}
       />
       <AbsoluteFill
         style={{
           justifyContent: "flex-end",
           alignItems: "center",
-          padding: "0 92px 330px",
+          padding: "0 84px 470px",
           textAlign: "center",
         }}
       >
@@ -130,8 +130,8 @@ export const QuoteCard: React.FC<{
           <div
             style={{
               fontFamily: arabic,
-              fontSize: 64,
-              lineHeight: 1.75,
+              fontSize: arabicText.length > 50 ? 50 : 58,
+              lineHeight: 1.7,
               color: palette.gold,
               direction: "rtl",
               marginBottom: 34,
@@ -147,7 +147,7 @@ export const QuoteCard: React.FC<{
             fontFamily: serif,
             fontStyle: "italic",
             fontWeight: 500,
-            fontSize: arabicText ? 50 : 58,
+            fontSize: arabicText ? 48 : 58,
             lineHeight: 1.32,
             color: palette.ink,
             whiteSpace: "pre-line",
@@ -169,6 +169,63 @@ export const QuoteCard: React.FC<{
             {source}
           </div>
         ) : null}
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+/** Opening hook: lines build up over the ustaz's soundbite. */
+export const HookText: React.FC<{
+  lines: { at: number; text: string; tone: string }[];
+}> = ({ lines }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(7,9,12,0) 34%, rgba(7,9,12,0.72) 56%, rgba(7,9,12,0.85) 100%)",
+          opacity: interpolate(frame, [0, 0.5 * fps], [0, 1], clamp),
+        }}
+      />
+      <AbsoluteFill
+        style={{
+          justifyContent: "flex-end",
+          alignItems: "center",
+          padding: "0 80px 470px",
+          textAlign: "center",
+          gap: 26,
+        }}
+      >
+        {lines.map((l) => {
+          const local = frame - l.at * fps;
+          const o = interpolate(local, [0, 0.7 * fps], [0, 1], {
+            ...clamp,
+            easing: calm,
+          });
+          const gold = l.tone === "gold";
+          return (
+            <div
+              key={l.text}
+              style={{
+                opacity: o,
+                translate: `0px ${(1 - o) * 22}px`,
+                filter: `blur(${(1 - o) * 10}px)`,
+                fontFamily: serif,
+                fontWeight: gold ? 500 : 600,
+                fontStyle: gold ? "italic" : "normal",
+                fontSize: gold ? 74 : 80,
+                lineHeight: 1.08,
+                color: gold ? palette.gold : palette.ink,
+                whiteSpace: "pre-line",
+                textShadow: "0 6px 36px rgba(0,0,0,0.55)",
+              }}
+            >
+              {l.text}
+            </div>
+          );
+        })}
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -203,7 +260,7 @@ export const Captions: React.FC<{
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        padding: "0 90px 360px",
+        padding: "0 90px 470px",
       }}
     >
       <div

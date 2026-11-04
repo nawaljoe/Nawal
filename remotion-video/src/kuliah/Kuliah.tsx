@@ -4,6 +4,7 @@ import React from "react";
 import {
   AbsoluteFill,
   Easing,
+  Img,
   interpolate,
   Sequence,
   staticFile,
@@ -20,7 +21,13 @@ import {
   totalFrames,
   type PlacedSegment,
 } from "./layout";
-import { Captions, ChapterCard, FilmLook, QuoteCard } from "./overlays";
+import {
+  Captions,
+  ChapterCard,
+  FilmLook,
+  HookText,
+  QuoteCard,
+} from "./overlays";
 
 const clamp = {
   extrapolateLeft: "clamp",
@@ -132,6 +139,7 @@ const Voice: React.FC<{ seg: PlacedSegment }> = ({ seg }) => {
   }
   const edgeIn = sec(0.08);
   const edgeOut = sec(0.15);
+  const gain = seg.volume ?? 1;
   return (
     <Audio
       src={staticFile(seg.audio)}
@@ -140,7 +148,7 @@ const Voice: React.FC<{ seg: PlacedSegment }> = ({ seg }) => {
         interpolate(
           f,
           [0, edgeIn, seg.length - edgeOut, seg.length],
-          [0, 1, 1, 0],
+          [0, gain, gain, 0],
           clamp,
         )
       }
@@ -184,33 +192,73 @@ const BRoll: React.FC<{ src: string; from: number; dur: number }> = ({
   );
 };
 
-/** Soft ambient pad: present under the title cards, far below the voice during the talk. */
-const Ambient: React.FC<{ voiceFrom: number; voiceTo: number }> = ({
-  voiceFrom,
-  voiceTo,
-}) => {
-  const end = KULIAH_DURATION;
+/**
+ * Soft ambient pad. Each segment sets its own level (full under title cards,
+ * low under the ustaz, silent under clips that bring their own sound); the
+ * level glides between segments instead of jumping.
+ */
+const Ambient: React.FC<{ segments: PlacedSegment[] }> = ({ segments }) => {
+  const ramp = sec(0.6);
+  const xs: number[] = [];
+  const ys: number[] = [];
+  segments.forEach((seg) => {
+    const level = seg.ambient ?? 0.3;
+    const a = seg.start + Math.min(ramp, Math.floor(seg.length / 3));
+    const b = seg.start + seg.length - Math.min(ramp, Math.floor(seg.length / 3));
+    xs.push(a, b);
+    ys.push(level, level);
+  });
   return (
     <Audio
       src={staticFile("audio/ambient.m4a")}
-      volume={(f) =>
-        interpolate(
-          f,
-          [0, sec(1.5), voiceFrom, voiceFrom + sec(2), voiceTo - sec(1), voiceTo + sec(1), end - sec(1.5), end],
-          [0, 1, 1, 0.3, 0.3, 1, 1, 0],
-          clamp,
-        )
-      }
+      volume={(f) => interpolate(f, xs, ys, clamp)}
     />
   );
 };
 
+/** Johor crest, Maju Johor and FK watermark over every branded stretch of the film. */
+const LogoOverlay: React.FC<{ dur: number; fadeIn: boolean }> = ({
+  dur,
+  fadeIn,
+}) => {
+  const frame = useCurrentFrame();
+  const edge = sec(0.4);
+  const opacity = interpolate(
+    frame,
+    [0, edge, dur - edge, dur],
+    [fadeIn ? 0 : 1, 1, 1, 0],
+    clamp,
+  );
+  return (
+    <AbsoluteFill style={{ opacity, pointerEvents: "none" }}>
+      <Img
+        src={staticFile("brand/logo-overlay.png")}
+        style={{ width: "100%", height: "100%" }}
+      />
+    </AbsoluteFill>
+  );
+};
+
+/** Contiguous stretches of segments that carry the logo (not the glitch or the FK outro). */
+const brandedRanges = (segments: PlacedSegment[]): [number, number][] => {
+  const ranges: [number, number][] = [];
+  segments.forEach((seg) => {
+    if (seg.logo === false) {
+      return;
+    }
+    const last = ranges[ranges.length - 1];
+    if (last && last[1] === seg.start) {
+      last[1] = seg.start + seg.length;
+    } else {
+      ranges.push([seg.start, seg.start + seg.length]);
+    }
+  });
+  return ranges;
+};
+
 export const Kuliah: React.FC = () => {
   const segments = placeSegments();
-  const speech = segments.filter((s) => s.audio);
-  const voiceFrom = speech[0].start;
-  const lastVoice = speech[speech.length - 1];
-  const voiceTo = lastVoice.start + lastVoice.length;
+  const branded = brandedRanges(segments);
 
   const quoteWindows: [number, number][] = [
     ...timeline.quotes,
@@ -261,7 +309,19 @@ export const Kuliah: React.FC = () => {
         </Sequence>
       ))}
 
-      <FilmLook />
+      {branded.map(([a, b]) => (
+        <Sequence key={`look-${a}`} name="Rupa filem" from={a} durationInFrames={b - a}>
+          <FilmLook />
+        </Sequence>
+      ))}
+
+      <Sequence
+        name="Hook"
+        from={segmentStart(timeline.hook.seg)}
+        durationInFrames={placeSegments().find((x) => x.id === timeline.hook.seg)!.length}
+      >
+        <HookText lines={timeline.hook.lines} />
+      </Sequence>
 
       {timeline.chapters.map((c) => (
         <Sequence
@@ -306,7 +366,13 @@ export const Kuliah: React.FC = () => {
           <Voice seg={seg} />
         </Sequence>
       ))}
-      <Ambient voiceFrom={voiceFrom} voiceTo={voiceTo} />
+      <Ambient segments={segments} />
+
+      {branded.map(([a, b]) => (
+        <Sequence key={`logo-${a}`} name="Logo" from={a} durationInFrames={b - a}>
+          <LogoOverlay dur={b - a} fadeIn={a > 0} />
+        </Sequence>
+      ))}
     </AbsoluteFill>
   );
 };

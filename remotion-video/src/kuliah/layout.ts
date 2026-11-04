@@ -5,6 +5,12 @@ export type TransitionType = "blur" | "glow" | "dip";
 export type Segment = (typeof timeline.segments)[number] & {
   transition?: TransitionType;
   transitionSec?: number;
+  /** Gain for the segment's own sound (1 = as mastered). */
+  volume?: number;
+  /** Ambient pad level under this segment (0 = silent). */
+  ambient?: number;
+  /** false hides the logo overlay and film look (glitch, FK outro). */
+  logo?: boolean;
 };
 
 export type PlacedSegment = Segment & {
