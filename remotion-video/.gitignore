@@ -5,3 +5,9 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Media kuliah dijana semula dengan scripts/siapkan_media.sh
+public/media/
+public/audio/
+.kerja/
+out-render.log
