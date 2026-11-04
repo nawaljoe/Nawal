@@ -320,7 +320,11 @@ export const Kuliah: React.FC = () => {
         from={segmentStart(timeline.hook.seg)}
         durationInFrames={placeSegments().find((x) => x.id === timeline.hook.seg)!.length}
       >
-        <HookText lines={timeline.hook.lines} />
+        <HookText
+          kicker={timeline.hook.kicker}
+          place={timeline.hook.place}
+          lines={timeline.hook.lines}
+        />
       </Sequence>
 
       {timeline.chapters.map((c) => (

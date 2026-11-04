@@ -176,12 +176,73 @@ export const QuoteCard: React.FC<{
 
 /** Opening hook: lines build up over the ustaz's soundbite. */
 export const HookText: React.FC<{
+  kicker: string;
+  place: string;
   lines: { at: number; text: string; tone: string }[];
-}> = ({ lines }) => {
+}> = ({ kicker, place, lines }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  // full strength from frame 0 so the programme name is on the thumbnail
+  const head = 1;
+  const rule = interpolate(frame, [0, 1.0 * fps], [0.35, 1], {
+    ...clamp,
+    easing: Easing.inOut(Easing.cubic),
+  });
   return (
     <AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(7,9,12,0.7) 0%, rgba(7,9,12,0.35) 22%, rgba(7,9,12,0) 34%)",
+          opacity: head,
+        }}
+      />
+      <AbsoluteFill
+        style={{
+          justifyContent: "flex-start",
+          alignItems: "center",
+          paddingTop: 286,
+          textAlign: "center",
+          opacity: head,
+          translate: `0px ${(1 - head) * -12}px`,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: sans,
+            fontWeight: 500,
+            fontSize: 42,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: palette.gold,
+            textShadow: "0 3px 18px rgba(0,0,0,0.6)",
+          }}
+        >
+          {kicker}
+        </div>
+        <div
+          style={{
+            width: 300,
+            height: 2,
+            background: palette.gold,
+            opacity: 0.8,
+            margin: "18px 0 16px",
+            scale: `${rule} 1`,
+          }}
+        />
+        <div
+          style={{
+            fontFamily: serif,
+            fontStyle: "italic",
+            fontWeight: 500,
+            fontSize: 46,
+            color: palette.ink,
+            textShadow: "0 3px 18px rgba(0,0,0,0.6)",
+          }}
+        >
+          {place}
+        </div>
+      </AbsoluteFill>
       <AbsoluteFill
         style={{
           background:

@@ -251,6 +251,8 @@
   ],
   "hook": {
     "seg": "hook",
+    "kicker": "Program Semarak Subuh 2026",
+    "place": "Masjid Batu 10, Skudai",
     "lines": [
       {
         "at": 0.25,
