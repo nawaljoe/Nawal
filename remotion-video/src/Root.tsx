@@ -1,20 +1,30 @@
 import { Composition } from "remotion";
 import { MyComposition } from "./Composition";
-import { IsbatPart1 } from "./isbat/IsbatPart1";
-import timeline from "./isbat/timeline.json";
+import { IsbatVideo, type Timeline } from "./isbat/IsbatVideo";
+import part1 from "./isbat/timeline.json";
+import penuh from "./isbat/timeline_penuh.json";
+
+const comps: { id: string; tl: Timeline }[] = [
+  { id: "IsbatPart1", tl: part1 as unknown as Timeline },
+  { id: "IsbatPenuh", tl: penuh as unknown as Timeline },
+];
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <MyComposition />
-      <Composition
-        id="IsbatPart1"
-        component={IsbatPart1}
-        durationInFrames={Math.round(timeline.duration * timeline.fps)}
-        fps={timeline.fps}
-        width={timeline.width}
-        height={timeline.height}
-      />
+      {comps.map(({ id, tl }) => (
+        <Composition
+          key={id}
+          id={id}
+          component={IsbatVideo}
+          defaultProps={{ timeline: tl }}
+          durationInFrames={Math.round(tl.duration * tl.fps)}
+          fps={tl.fps}
+          width={tl.width}
+          height={tl.height}
+        />
+      ))}
     </>
   );
 };

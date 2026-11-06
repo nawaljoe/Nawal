@@ -31,3 +31,12 @@ npx --yes hyperframes@0.9.19 render -o renders/IsbatPart1_hyperframes.mp4 --qual
 
 ## Status `check`
 0 ralat. Kontras 21/21 lulus WCAG AA. Motion dan Craft 0 amaran. Baki amaran hanyalah cadangan struktur, iaitu memecahkan komposisi kepada sub-komposisi (`nested_structure_needs_subcomposition`, `timeline_track_too_dense`). Ia tidak menjejaskan hasil render.
+
+## Versi penuh (tanpa hook, 1:51)
+Versi penuh disimpan dalam folder `penuh/`, kerana setiap projek HyperFrames hanya boleh ada satu `index.html` root. Folder ini berkongsi aset dan penjana yang sama.
+```bash
+cd penuh
+node ../scripts/build.mjs ../../remotion-video/src/isbat/timeline_penuh.json index.html
+npx --yes hyperframes@0.9.19 check
+npx --yes hyperframes@0.9.19 render -o renders/IsbatPenuh_hyperframes.mp4
+```

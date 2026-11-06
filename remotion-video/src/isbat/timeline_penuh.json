@@ -1,0 +1,3394 @@
+{
+ "_note": "Versi penuh ISBAT (semua isi raw utama, tanpa hook). Dijana oleh make_penuh.py; masa dalam saat.",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "duration": 111.05,
+ "palette": {
+  "navy": "#0B2A5B",
+  "navyDeep": "#061634",
+  "gold": "#F0BE46",
+  "white": "#FFFFFF"
+ },
+ "source": {
+  "contentTop": 248,
+  "contentBottom": 1672,
+  "faceX": 550,
+  "faceY": 960
+ },
+ "shots": [
+  {
+   "id": "U1",
+   "type": "ustaz",
+   "start": 0.0,
+   "end": 3.34,
+   "mediaStart": 0.06,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     0,
+     1.06
+    ],
+    [
+     3.34,
+     1.12,
+     "linear"
+    ]
+   ]
+  },
+  {
+   "id": "B1-dewan",
+   "start": 3.34,
+   "end": 5.94,
+   "mediaStart": 0.3,
+   "zoom": [
+    [
+     3.34,
+     1.28
+    ],
+    [
+     3.74,
+     1.165,
+     "out3"
+    ],
+    [
+     5.94,
+     1.21,
+     "linear"
+    ]
+   ],
+   "center": [
+    [
+     3.34,
+     560,
+     1180
+    ]
+   ],
+   "type": "broll"
+  },
+  {
+   "id": "U2",
+   "type": "ustaz",
+   "start": 5.94,
+   "end": 7.55,
+   "mediaStart": 7.46,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     3.34,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U3",
+   "type": "ustaz",
+   "start": 7.55,
+   "end": 10.36,
+   "mediaStart": 11.05,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     7.55,
+     1.14
+    ]
+   ]
+  },
+  {
+   "id": "U4",
+   "type": "ustaz",
+   "start": 10.36,
+   "end": 11.37,
+   "mediaStart": 13.97,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     10.36,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U5",
+   "type": "ustaz",
+   "start": 11.37,
+   "end": 12.2,
+   "mediaStart": 16.66,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     11.37,
+     1.22
+    ]
+   ]
+  },
+  {
+   "id": "B2-closeup",
+   "start": 12.2,
+   "end": 14.85,
+   "mediaStart": 5.0,
+   "zoom": [
+    [
+     12.2,
+     1.86
+    ],
+    [
+     12.6,
+     1.725,
+     "out3"
+    ],
+    [
+     14.85,
+     1.78,
+     "linear"
+    ]
+   ],
+   "center": [
+    [
+     11.8,
+     697,
+     1330
+    ],
+    [
+     13.2,
+     548,
+     1330
+    ],
+    [
+     14.5,
+     536,
+     1330
+    ]
+   ],
+   "type": "broll"
+  },
+  {
+   "id": "U6",
+   "type": "ustaz",
+   "start": 14.85,
+   "end": 16.45,
+   "mediaStart": 20.16,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     14.85,
+     1.06
+    ],
+    [
+     15.92,
+     1.06
+    ],
+    [
+     16.12,
+     1.26,
+     "out3"
+    ],
+    [
+     16.74,
+     1.28,
+     "linear"
+    ]
+   ]
+  },
+  {
+   "id": "U6-freeze",
+   "type": "still",
+   "start": 16.45,
+   "end": 16.74,
+   "src": "ustaz_freeze.jpg",
+   "zoom": [
+    [
+     14.85,
+     1.06
+    ],
+    [
+     15.92,
+     1.06
+    ],
+    [
+     16.12,
+     1.26,
+     "out3"
+    ],
+    [
+     16.74,
+     1.28,
+     "linear"
+    ]
+   ]
+  },
+  {
+   "id": "U7",
+   "type": "ustaz",
+   "start": 16.74,
+   "end": 20.27,
+   "mediaStart": 23.34,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     16.74,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U8.1",
+   "type": "ustaz",
+   "start": 20.27,
+   "end": 22.44,
+   "mediaStart": 26.97,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     20.27,
+     1.06
+    ]
+   ]
+  },
+  {
+   "id": "B3-baca",
+   "start": 22.44,
+   "end": 25.84,
+   "mediaStart": 0.45,
+   "zoom": [
+    [
+     22.44,
+     1.9
+    ],
+    [
+     22.84,
+     1.78,
+     "out3"
+    ],
+    [
+     25.84,
+     1.84,
+     "linear"
+    ]
+   ],
+   "center": [
+    [
+     22.44,
+     780,
+     1450
+    ]
+   ],
+   "type": "broll"
+  },
+  {
+   "id": "U8.2",
+   "type": "ustaz",
+   "start": 25.84,
+   "end": 26.06,
+   "mediaStart": 32.54,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     20.27,
+     1.06
+    ]
+   ]
+  },
+  {
+   "id": "U9",
+   "type": "ustaz",
+   "start": 26.06,
+   "end": 27.62,
+   "mediaStart": 33.0,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     26.06,
+     1.16
+    ]
+   ]
+  },
+  {
+   "id": "U10",
+   "type": "ustaz",
+   "start": 27.62,
+   "end": 28.52,
+   "mediaStart": 35.13,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     27.62,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U11",
+   "type": "ustaz",
+   "start": 28.52,
+   "end": 31.12,
+   "mediaStart": 36.8,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     28.52,
+     1.14
+    ]
+   ]
+  },
+  {
+   "id": "U12",
+   "type": "ustaz",
+   "start": 31.12,
+   "end": 34.08,
+   "mediaStart": 39.66,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     31.12,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U13",
+   "type": "ustaz",
+   "start": 34.08,
+   "end": 36.2,
+   "mediaStart": 42.86,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     34.08,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U14",
+   "type": "ustaz",
+   "start": 36.2,
+   "end": 37.98,
+   "mediaStart": 45.7,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     36.2,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "U15",
+   "type": "ustaz",
+   "start": 37.98,
+   "end": 39.61,
+   "mediaStart": 47.8,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     37.98,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U16",
+   "type": "ustaz",
+   "start": 39.61,
+   "end": 42.66,
+   "mediaStart": 49.35,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     39.61,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "B4-panel",
+   "start": 42.66,
+   "end": 45.47,
+   "mediaStart": 5.6,
+   "zoom": [
+    [
+     42.66,
+     1.82
+    ],
+    [
+     43.06,
+     1.7,
+     "out3"
+    ],
+    [
+     45.47,
+     1.76,
+     "linear"
+    ]
+   ],
+   "center": [
+    [
+     42.66,
+     760,
+     1210
+    ]
+   ],
+   "type": "broll"
+  },
+  {
+   "id": "U17",
+   "type": "ustaz",
+   "start": 45.47,
+   "end": 45.71,
+   "mediaStart": 55.58,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     42.72,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U18",
+   "type": "ustaz",
+   "start": 45.71,
+   "end": 46.57,
+   "mediaStart": 55.8,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     45.71,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "U19",
+   "type": "ustaz",
+   "start": 46.57,
+   "end": 47.73,
+   "mediaStart": 57.05,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     46.57,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U20",
+   "type": "ustaz",
+   "start": 47.73,
+   "end": 49.44,
+   "mediaStart": 58.18,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     47.73,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "U21",
+   "type": "ustaz",
+   "start": 49.44,
+   "end": 50.58,
+   "mediaStart": 59.9,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     49.44,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U22",
+   "type": "ustaz",
+   "start": 50.58,
+   "end": 51.32,
+   "mediaStart": 61.56,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     50.58,
+     1.22
+    ]
+   ]
+  },
+  {
+   "id": "U23",
+   "type": "ustaz",
+   "start": 51.32,
+   "end": 54.4,
+   "mediaStart": 63.7,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     51.32,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U24",
+   "type": "ustaz",
+   "start": 54.4,
+   "end": 60.12,
+   "mediaStart": 66.88,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     54.4,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "B5-panel",
+   "start": 60.12,
+   "end": 61.65,
+   "mediaStart": 6.5,
+   "zoom": [
+    [
+     60.12,
+     1.62
+    ],
+    [
+     60.52,
+     1.55,
+     "out3"
+    ],
+    [
+     61.65,
+     1.58,
+     "linear"
+    ]
+   ],
+   "center": [
+    [
+     60.12,
+     740,
+     1200
+    ]
+   ],
+   "type": "broll"
+  },
+  {
+   "id": "U25",
+   "type": "ustaz",
+   "start": 61.65,
+   "end": 61.75,
+   "mediaStart": 73.95,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     60.3,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U26",
+   "type": "ustaz",
+   "start": 61.75,
+   "end": 64.6,
+   "mediaStart": 75.38,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     61.75,
+     1.06
+    ]
+   ]
+  },
+  {
+   "id": "U27",
+   "type": "ustaz",
+   "start": 64.6,
+   "end": 67.1,
+   "mediaStart": 80.28,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     64.6,
+     1.16
+    ]
+   ]
+  },
+  {
+   "id": "U28",
+   "type": "ustaz",
+   "start": 67.1,
+   "end": 67.52,
+   "mediaStart": 83.36,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     67.1,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U29",
+   "type": "ustaz",
+   "start": 67.52,
+   "end": 69.43,
+   "mediaStart": 84.26,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     67.52,
+     1.14
+    ]
+   ]
+  },
+  {
+   "id": "U30",
+   "type": "ustaz",
+   "start": 69.43,
+   "end": 72.14,
+   "mediaStart": 86.15,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     69.43,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "U31",
+   "type": "ustaz",
+   "start": 72.14,
+   "end": 77.88,
+   "mediaStart": 89.14,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     72.14,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U32",
+   "type": "ustaz",
+   "start": 77.88,
+   "end": 80.21,
+   "mediaStart": 95.1,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     77.88,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U33",
+   "type": "ustaz",
+   "start": 80.21,
+   "end": 83.13,
+   "mediaStart": 98.18,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     80.21,
+     1.22
+    ]
+   ]
+  },
+  {
+   "id": "U34",
+   "type": "ustaz",
+   "start": 83.13,
+   "end": 85.73,
+   "mediaStart": 101.1,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     83.13,
+     1.06
+    ]
+   ]
+  },
+  {
+   "id": "U35",
+   "type": "ustaz",
+   "start": 85.73,
+   "end": 91.05,
+   "mediaStart": 103.98,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     85.73,
+     1.0
+    ]
+   ]
+  },
+  {
+   "id": "U36.1",
+   "type": "ustaz",
+   "start": 91.05,
+   "end": 94.4,
+   "mediaStart": 112.08,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     91.05,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "B6-dewan",
+   "start": 94.4,
+   "end": 98.82,
+   "mediaStart": 2.0,
+   "zoom": [
+    [
+     94.4,
+     1.3
+    ],
+    [
+     94.8,
+     1.15,
+     "out3"
+    ],
+    [
+     98.82,
+     1.24,
+     "linear"
+    ]
+   ],
+   "center": [
+    [
+     94.4,
+     600,
+     1250
+    ]
+   ],
+   "type": "broll"
+  },
+  {
+   "id": "U36.2",
+   "type": "ustaz",
+   "start": 98.82,
+   "end": 99.12,
+   "mediaStart": 119.85,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     91.05,
+     1.05
+    ]
+   ]
+  },
+  {
+   "id": "U37",
+   "type": "ustaz",
+   "start": 99.12,
+   "end": 99.94,
+   "mediaStart": 120.34,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     99.12,
+     1.16
+    ]
+   ]
+  },
+  {
+   "id": "U38",
+   "type": "ustaz",
+   "start": 99.94,
+   "end": 104.06,
+   "mediaStart": 121.62,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     99.94,
+     1.02
+    ],
+    [
+     102.38,
+     1.04,
+     "linear"
+    ],
+    [
+     102.6,
+     1.18,
+     "out3"
+    ],
+    [
+     105.35,
+     1.22,
+     "linear"
+    ]
+   ]
+  },
+  {
+   "id": "U39",
+   "type": "ustaz",
+   "start": 104.06,
+   "end": 105.35,
+   "mediaStart": 126.06,
+   "src": "ustaz_full.mp4",
+   "zoom": [
+    [
+     99.94,
+     1.02
+    ],
+    [
+     102.38,
+     1.04,
+     "linear"
+    ],
+    [
+     102.6,
+     1.18,
+     "out3"
+    ],
+    [
+     105.35,
+     1.22,
+     "linear"
+    ]
+   ]
+  },
+  {
+   "id": "E-endcard",
+   "type": "endcard",
+   "start": 105.05,
+   "end": 111.05,
+   "mediaStart": 2.0,
+   "fadeIn": 0.3
+  }
+ ],
+ "seriesTag": {
+  "start": 0.4,
+  "end": 105.05,
+  "hide": [
+   [
+    12.2,
+    14.85
+   ],
+   [
+    15.92,
+    19.95
+   ],
+   [
+    34.87,
+    39.75
+   ],
+   [
+    45.449999999999996,
+    50.45
+   ],
+   [
+    52.36,
+    60.45
+   ],
+   [
+    69.36999999999999,
+    77.6
+   ],
+   [
+    87.96,
+    94.75
+   ]
+  ],
+  "text": "ELAUN ISBAT",
+  "badge": "PART 1"
+ },
+ "subtitles": {
+  "y": 1335,
+  "size": 76,
+  "maxWidth": 900,
+  "hide": [
+   [
+    15.92,
+    16.74
+   ],
+   [
+    12.2,
+    14.85
+   ]
+  ],
+  "chunks": [
+   {
+    "start": 0.03,
+    "end": 0.96,
+    "words": [
+     [
+      "Asalnya",
+      0.03
+     ],
+     [
+      "dinamakan",
+      0.54
+     ]
+    ]
+   },
+   {
+    "start": 0.96,
+    "end": 1.94,
+    "words": [
+     [
+      "Elaun",
+      0.96,
+      "key"
+     ],
+     [
+      "Galakan",
+      1.5,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 1.94,
+    "end": 3.04,
+    "words": [
+     [
+      "Menghafaz",
+      1.94,
+      "key"
+     ],
+     [
+      "al-Quran.",
+      2.48,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 3.04,
+    "end": 4.12,
+    "words": [
+     [
+      "Dia",
+      3.04
+     ],
+     [
+      "tak",
+      3.46
+     ],
+     [
+      "semestinya",
+      3.64
+     ]
+    ]
+   },
+   {
+    "start": 4.12,
+    "end": 5.01,
+    "words": [
+     [
+      "dia",
+      4.12
+     ],
+     [
+      "masuk",
+      4.24
+     ],
+     [
+      "madrasah",
+      4.44
+     ]
+    ]
+   },
+   {
+    "start": 5.01,
+    "end": 5.96,
+    "words": [
+     [
+      "untuk",
+      5.01
+     ],
+     [
+      "menghafal,",
+      5.46
+     ]
+    ]
+   },
+   {
+    "start": 5.96,
+    "end": 6.54,
+    "words": [
+     [
+      "tapi",
+      5.96
+     ],
+     [
+      "kalau",
+      6.18
+     ],
+     [
+      "dia",
+      6.38
+     ]
+    ]
+   },
+   {
+    "start": 6.54,
+    "end": 7.38,
+    "words": [
+     [
+      "menghafal",
+      6.54
+     ],
+     [
+      "sendiri,",
+      6.88
+     ]
+    ]
+   },
+   {
+    "start": 7.38,
+    "end": 8.36,
+    "words": [
+     [
+      "ada",
+      7.38
+     ],
+     [
+      "jugalah",
+      7.62
+     ],
+     [
+      "guru,",
+      8.08
+     ]
+    ]
+   },
+   {
+    "start": 8.36,
+    "end": 9.3,
+    "words": [
+     [
+      "mungkin",
+      8.36
+     ],
+     [
+      "bapaknya,",
+      8.58
+     ]
+    ]
+   },
+   {
+    "start": 9.3,
+    "end": 10.06,
+    "words": [
+     [
+      "ibunya",
+      9.3
+     ],
+     [
+      "kan.",
+      9.69
+     ]
+    ]
+   },
+   {
+    "start": 10.06,
+    "end": 10.76,
+    "words": [
+     [
+      "Dan",
+      10.06
+     ],
+     [
+      "dia",
+      10.52
+     ]
+    ]
+   },
+   {
+    "start": 10.76,
+    "end": 11.28,
+    "words": [
+     [
+      "dah",
+      10.76
+     ],
+     [
+      "menghafaz,",
+      10.92,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 11.28,
+    "end": 12.2,
+    "words": [
+     [
+      "dia",
+      11.28
+     ],
+     [
+      "boleh",
+      11.52
+     ],
+     [
+      "memohon.",
+      11.76
+     ]
+    ]
+   },
+   {
+    "start": 12.2,
+    "end": 12.82,
+    "words": [
+     [
+      "Sebab",
+      12.2
+     ],
+     [
+      "tu",
+      12.34
+     ],
+     [
+      "namanya",
+      12.44
+     ]
+    ]
+   },
+   {
+    "start": 12.82,
+    "end": 13.44,
+    "words": [
+     [
+      "Elaun",
+      12.82,
+      "key"
+     ],
+     [
+      "Galakan",
+      13.14,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 13.44,
+    "end": 14.12,
+    "words": [
+     [
+      "Menghafaz",
+      13.44,
+      "key"
+     ],
+     [
+      "al-Quran",
+      13.9,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 14.12,
+    "end": 14.72,
+    "words": [
+     [
+      "Negeri",
+      14.12
+     ],
+     [
+      "Johor.",
+      14.22
+     ]
+    ]
+   },
+   {
+    "start": 14.72,
+    "end": 16.46,
+    "words": [
+     [
+      "Ataupun",
+      14.72
+     ],
+     [
+      "istilahnya",
+      15.23
+     ],
+     [
+      "ISBAT.",
+      15.92,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 16.46,
+    "end": 17.34,
+    "words": [
+     [
+      "ISBAT",
+      16.46,
+      "key"
+     ],
+     [
+      "tu",
+      16.94
+     ],
+     [
+      "nak",
+      17.14
+     ]
+    ]
+   },
+   {
+    "start": 17.34,
+    "end": 18.92,
+    "words": [
+     [
+      "mengesahkan",
+      17.34
+     ],
+     [
+      "yang",
+      18.73
+     ]
+    ]
+   },
+   {
+    "start": 18.92,
+    "end": 19.34,
+    "words": [
+     [
+      "dia",
+      18.92
+     ],
+     [
+      "tu",
+      19.12
+     ]
+    ]
+   },
+   {
+    "start": 19.34,
+    "end": 19.98,
+    "words": [
+     [
+      "dah",
+      19.34
+     ],
+     [
+      "hafaz.",
+      19.5
+     ]
+    ]
+   },
+   {
+    "start": 19.98,
+    "end": 21.28,
+    "words": [
+     [
+      "Cuma",
+      19.98
+     ],
+     [
+      "kita",
+      20.46
+     ],
+     [
+      "taklah,",
+      20.7
+     ]
+    ]
+   },
+   {
+    "start": 21.28,
+    "end": 22.63,
+    "words": [
+     [
+      "bila",
+      21.28
+     ],
+     [
+      "nak",
+      21.54
+     ],
+     [
+      "mengesahkan",
+      21.7
+     ]
+    ]
+   },
+   {
+    "start": 26.92,
+    "end": 27.17,
+    "words": [
+     [
+      "tu,",
+      26.92
+     ],
+     [
+      "dia",
+      22.44
+     ],
+     [
+      "kena",
+      22.87
+     ],
+     [
+      "baca",
+      23.18
+     ]
+    ]
+   },
+   {
+    "start": 23.64,
+    "end": 24.32,
+    "words": [
+     [
+      "contoh",
+      23.64
+     ],
+     [
+      "surah",
+      24.02
+     ]
+    ]
+   },
+   {
+    "start": 24.32,
+    "end": 24.82,
+    "words": [
+     [
+      "al-Baqarah",
+      24.32
+     ],
+     [
+      "daripada",
+      24.62
+     ]
+    ]
+   },
+   {
+    "start": 24.82,
+    "end": 26.07,
+    "words": [
+     [
+      "ayat",
+      24.82
+     ],
+     [
+      "1",
+      25.02
+     ],
+     [
+      "sampai",
+      25.24
+     ]
+    ]
+   },
+   {
+    "start": 26.1,
+    "end": 26.87,
+    "words": [
+     [
+      "habis",
+      26.1
+     ],
+     [
+      "juzuk",
+      26.45
+     ],
+     [
+      "3",
+      26.72
+     ]
+    ]
+   },
+   {
+    "start": 26.92,
+    "end": 27.17,
+    "words": [
+     [
+      "tu,",
+      26.92
+     ],
+     [
+      "tak.",
+      27.1
+     ]
+    ]
+   },
+   {
+    "start": 27.64,
+    "end": 29.3,
+    "words": [
+     [
+      "Kita",
+      27.64
+     ],
+     [
+      "akan",
+      27.98
+     ],
+     [
+      "soal",
+      28.54
+     ],
+     [
+      "dia",
+      29.1
+     ]
+    ]
+   },
+   {
+    "start": 29.3,
+    "end": 30.38,
+    "words": [
+     [
+      "mengikut",
+      29.3
+     ],
+     [
+      "kaedah",
+      29.82
+     ]
+    ]
+   },
+   {
+    "start": 30.38,
+    "end": 30.98,
+    "words": [
+     [
+      "yang",
+      30.38
+     ],
+     [
+      "telah",
+      30.56
+     ]
+    ]
+   },
+   {
+    "start": 30.98,
+    "end": 31.88,
+    "words": [
+     [
+      "diluluskan",
+      30.98
+     ],
+     [
+      "oleh",
+      31.64
+     ]
+    ]
+   },
+   {
+    "start": 31.88,
+    "end": 33.26,
+    "words": [
+     [
+      "pihak",
+      31.88
+     ],
+     [
+      "Majlis",
+      32.47
+     ],
+     [
+      "Agama.",
+      32.81
+     ]
+    ]
+   },
+   {
+    "start": 33.26,
+    "end": 33.86,
+    "words": [
+     [
+      "Contohnya,",
+      33.26
+     ]
+    ]
+   },
+   {
+    "start": 33.86,
+    "end": 35.02,
+    "words": [
+     [
+      "kalau",
+      33.86
+     ],
+     [
+      "dia",
+      34.2
+     ],
+     [
+      "mohon",
+      34.5
+     ]
+    ]
+   },
+   {
+    "start": 35.02,
+    "end": 36.06,
+    "words": [
+     [
+      "baru",
+      35.02
+     ],
+     [
+      "10",
+      35.22,
+      "key"
+     ],
+     [
+      "juzuk,",
+      35.5
+     ]
+    ]
+   },
+   {
+    "start": 36.06,
+    "end": 36.96,
+    "words": [
+     [
+      "maka",
+      36.06
+     ],
+     [
+      "dia",
+      36.82
+     ]
+    ]
+   },
+   {
+    "start": 36.96,
+    "end": 37.99,
+    "words": [
+     [
+      "akan",
+      36.96
+     ],
+     [
+      "ada",
+      37.15
+     ]
+    ]
+   },
+   {
+    "start": 38.0,
+    "end": 39.28,
+    "words": [
+     [
+      "20",
+      38.0,
+      "key"
+     ],
+     [
+      "soalan.",
+      38.52
+     ]
+    ]
+   },
+   {
+    "start": 39.28,
+    "end": 40.36,
+    "words": [
+     [
+      "20",
+      39.28,
+      "key"
+     ],
+     [
+      "soalan",
+      39.78
+     ],
+     [
+      "ni",
+      40.2
+     ]
+    ]
+   },
+   {
+    "start": 40.36,
+    "end": 41.32,
+    "words": [
+     [
+      "maksudnya",
+      40.36
+     ],
+     [
+      "berkisar",
+      40.78
+     ]
+    ]
+   },
+   {
+    "start": 41.32,
+    "end": 42.84,
+    "words": [
+     [
+      "tentang",
+      41.32
+     ],
+     [
+      "ayat",
+      41.66
+     ],
+     [
+      "yang",
+      42.66
+     ]
+    ]
+   },
+   {
+    "start": 42.84,
+    "end": 43.76,
+    "words": [
+     [
+      "panel",
+      42.84
+     ],
+     [
+      "akan",
+      43.16
+     ],
+     [
+      "minta",
+      43.36
+     ]
+    ]
+   },
+   {
+    "start": 43.76,
+    "end": 44.74,
+    "words": [
+     [
+      "untuk",
+      43.76
+     ],
+     [
+      "disambung",
+      44.02
+     ]
+    ]
+   },
+   {
+    "start": 44.74,
+    "end": 45.73,
+    "words": [
+     [
+      "bacaannya.",
+      44.74
+     ]
+    ]
+   },
+   {
+    "start": 45.75,
+    "end": 46.68,
+    "words": [
+     [
+      "Sekitar",
+      45.75
+     ],
+     [
+      "2",
+      46.34,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 46.68,
+    "end": 47.66,
+    "words": [
+     [
+      "minit",
+      46.68,
+      "key"
+     ],
+     [
+      "bacaan,",
+      47.12
+     ]
+    ]
+   },
+   {
+    "start": 47.66,
+    "end": 48.94,
+    "words": [
+     [
+      "ataupun",
+      47.66
+     ],
+     [
+      "8",
+      48.06,
+      "key"
+     ],
+     [
+      "baris,",
+      48.56,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 48.94,
+    "end": 50.55,
+    "words": [
+     [
+      "ataupun",
+      48.94
+     ],
+     [
+      "9",
+      49.08,
+      "key"
+     ],
+     [
+      "baris.",
+      49.54,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 50.6,
+    "end": 51.24,
+    "words": [
+     [
+      "Tertakluklah,",
+      50.6
+     ]
+    ]
+   },
+   {
+    "start": 51.24,
+    "end": 52.18,
+    "words": [
+     [
+      "ikut",
+      51.24
+     ],
+     [
+      "panel",
+      51.76
+     ],
+     [
+      "lah",
+      52.04
+     ]
+    ]
+   },
+   {
+    "start": 52.18,
+    "end": 52.66,
+    "words": [
+     [
+      "nak",
+      52.18
+     ],
+     [
+      "menilai.",
+      52.3
+     ]
+    ]
+   },
+   {
+    "start": 52.66,
+    "end": 53.32,
+    "words": [
+     [
+      "Mungkin",
+      52.66
+     ],
+     [
+      "dia",
+      52.96
+     ],
+     [
+      "akan",
+      53.16
+     ]
+    ]
+   },
+   {
+    "start": 53.32,
+    "end": 53.94,
+    "words": [
+     [
+      "mula",
+      53.32
+     ],
+     [
+      "dengan",
+      53.68
+     ]
+    ]
+   },
+   {
+    "start": 53.94,
+    "end": 55.02,
+    "words": [
+     [
+      "awal",
+      53.94
+     ],
+     [
+      "surah,",
+      54.66
+     ]
+    ]
+   },
+   {
+    "start": 55.02,
+    "end": 56.42,
+    "words": [
+     [
+      "mungkin",
+      55.02
+     ],
+     [
+      "awal",
+      55.36
+     ],
+     [
+      "maqra',",
+      55.78
+     ]
+    ]
+   },
+   {
+    "start": 56.42,
+    "end": 57.56,
+    "words": [
+     [
+      "mungkin",
+      56.42
+     ],
+     [
+      "tengah",
+      56.8
+     ]
+    ]
+   },
+   {
+    "start": 57.56,
+    "end": 58.46,
+    "words": [
+     [
+      "muka",
+      57.56
+     ],
+     [
+      "surat,",
+      57.96
+     ]
+    ]
+   },
+   {
+    "start": 58.46,
+    "end": 59.38,
+    "words": [
+     [
+      "mungkin",
+      58.46
+     ],
+     [
+      "hujung",
+      58.88
+     ]
+    ]
+   },
+   {
+    "start": 59.38,
+    "end": 60.12,
+    "words": [
+     [
+      "muka",
+      59.38
+     ],
+     [
+      "surat.",
+      59.6
+     ]
+    ]
+   },
+   {
+    "start": 60.12,
+    "end": 61.2,
+    "words": [
+     [
+      "Itu",
+      60.12
+     ],
+     [
+      "bergantung",
+      60.64
+     ]
+    ]
+   },
+   {
+    "start": 61.2,
+    "end": 62.54,
+    "words": [
+     [
+      "kepada",
+      61.2
+     ],
+     [
+      "kebijakan",
+      61.58
+     ]
+    ]
+   },
+   {
+    "start": 62.54,
+    "end": 63.32,
+    "words": [
+     [
+      "panel",
+      62.54
+     ],
+     [
+      "lah",
+      62.9
+     ],
+     [
+      "nak",
+      63.16
+     ]
+    ]
+   },
+   {
+    "start": 63.32,
+    "end": 64.28,
+    "words": [
+     [
+      "menilai",
+      63.32
+     ],
+     [
+      "sama",
+      63.9
+     ],
+     [
+      "ada",
+      64.06
+     ]
+    ]
+   },
+   {
+    "start": 64.28,
+    "end": 65.5,
+    "words": [
+     [
+      "pemohon",
+      64.28
+     ],
+     [
+      "ini",
+      64.94
+     ],
+     [
+      "ataupun",
+      65.08
+     ]
+    ]
+   },
+   {
+    "start": 65.5,
+    "end": 66.09,
+    "words": [
+     [
+      "yang",
+      65.5
+     ],
+     [
+      "nak",
+      65.68
+     ],
+     [
+      "menerima",
+      65.81
+     ]
+    ]
+   },
+   {
+    "start": 66.09,
+    "end": 66.94,
+    "words": [
+     [
+      "elaun",
+      66.09,
+      "key"
+     ],
+     [
+      "ni",
+      66.36
+     ],
+     [
+      "layak",
+      66.58
+     ]
+    ]
+   },
+   {
+    "start": 66.94,
+    "end": 67.95,
+    "words": [
+     [
+      "untuk",
+      66.94
+     ],
+     [
+      "menerima",
+      67.36
+     ]
+    ]
+   },
+   {
+    "start": 67.95,
+    "end": 68.68,
+    "words": [
+     [
+      "elaun",
+      67.95,
+      "key"
+     ],
+     [
+      "tu",
+      68.16
+     ],
+     [
+      "tadi.",
+      68.38
+     ]
+    ]
+   },
+   {
+    "start": 68.68,
+    "end": 69.72,
+    "words": [
+     [
+      "InsyaAllah.",
+      68.68
+     ],
+     [
+      "Cumanya,",
+      69.09
+     ]
+    ]
+   },
+   {
+    "start": 69.72,
+    "end": 70.48,
+    "words": [
+     [
+      "satu",
+      69.72
+     ],
+     [
+      "juzuk",
+      69.88
+     ],
+     [
+      "tu",
+      70.38
+     ]
+    ]
+   },
+   {
+    "start": 70.48,
+    "end": 71.26,
+    "words": [
+     [
+      "biasanya",
+      70.48
+     ],
+     [
+      "akan",
+      70.81
+     ],
+     [
+      "ada",
+      71.02
+     ]
+    ]
+   },
+   {
+    "start": 71.26,
+    "end": 71.94,
+    "words": [
+     [
+      "2",
+      71.26,
+      "key"
+     ],
+     [
+      "soalan.",
+      71.5
+     ]
+    ]
+   },
+   {
+    "start": 71.94,
+    "end": 72.66,
+    "words": [
+     [
+      "2",
+      71.94,
+      "key"
+     ],
+     [
+      "soalan",
+      72.19
+     ],
+     [
+      "ni",
+      72.44
+     ]
+    ]
+   },
+   {
+    "start": 72.66,
+    "end": 73.59,
+    "words": [
+     [
+      "berkisar",
+      72.66
+     ],
+     [
+      "tentang",
+      72.98
+     ]
+    ]
+   },
+   {
+    "start": 73.59,
+    "end": 74.59,
+    "words": [
+     [
+      "soalan",
+      73.59
+     ],
+     [
+      "pertama,",
+      74.02
+     ]
+    ]
+   },
+   {
+    "start": 74.59,
+    "end": 75.86,
+    "words": [
+     [
+      "4",
+      74.59,
+      "key"
+     ],
+     [
+      "maqra'",
+      75.12
+     ],
+     [
+      "awal,",
+      75.4
+     ]
+    ]
+   },
+   {
+    "start": 75.86,
+    "end": 76.66,
+    "words": [
+     [
+      "soalan",
+      75.86
+     ],
+     [
+      "kedua,",
+      76.23
+     ]
+    ]
+   },
+   {
+    "start": 76.66,
+    "end": 77.58,
+    "words": [
+     [
+      "4",
+      76.66,
+      "key"
+     ],
+     [
+      "maqra'",
+      76.9
+     ],
+     [
+      "akhir.",
+      77.18
+     ]
+    ]
+   },
+   {
+    "start": 77.58,
+    "end": 78.19,
+    "words": [
+     [
+      "Cumanya,",
+      77.58
+     ]
+    ]
+   },
+   {
+    "start": 78.19,
+    "end": 79.04,
+    "words": [
+     [
+      "terpulanglah",
+      78.19
+     ],
+     [
+      "pada",
+      78.81
+     ]
+    ]
+   },
+   {
+    "start": 79.04,
+    "end": 79.81,
+    "words": [
+     [
+      "panel",
+      79.04
+     ],
+     [
+      "sama",
+      79.31
+     ],
+     [
+      "ada",
+      79.56
+     ]
+    ]
+   },
+   {
+    "start": 79.81,
+    "end": 80.76,
+    "words": [
+     [
+      "nak",
+      79.81
+     ],
+     [
+      "tanya",
+      79.95
+     ],
+     [
+      "awal",
+      80.48
+     ]
+    ]
+   },
+   {
+    "start": 80.76,
+    "end": 81.28,
+    "words": [
+     [
+      "surah",
+      80.76
+     ],
+     [
+      "ke,",
+      80.95
+     ]
+    ]
+   },
+   {
+    "start": 81.28,
+    "end": 82.0,
+    "words": [
+     [
+      "awal",
+      81.28
+     ],
+     [
+      "maqra'",
+      81.45
+     ],
+     [
+      "ke,",
+      81.7
+     ]
+    ]
+   },
+   {
+    "start": 82.0,
+    "end": 82.44,
+    "words": [
+     [
+      "nak",
+      82.0
+     ],
+     [
+      "tebuk",
+      82.14
+     ]
+    ]
+   },
+   {
+    "start": 82.44,
+    "end": 83.24,
+    "words": [
+     [
+      "tengah-tengah",
+      82.44
+     ],
+     [
+      "ke,",
+      83.04
+     ]
+    ]
+   },
+   {
+    "start": 83.24,
+    "end": 83.82,
+    "words": [
+     [
+      "bawah",
+      83.24
+     ],
+     [
+      "ke.",
+      83.62
+     ]
+    ]
+   },
+   {
+    "start": 83.82,
+    "end": 84.74,
+    "words": [
+     [
+      "Tapi",
+      83.82
+     ],
+     [
+      "kebanyakan",
+      84.16
+     ],
+     [
+      "ni",
+      84.43
+     ]
+    ]
+   },
+   {
+    "start": 84.74,
+    "end": 85.48,
+    "words": [
+     [
+      "biasanya",
+      84.74
+     ],
+     [
+      "lah,",
+      85.22
+     ]
+    ]
+   },
+   {
+    "start": 85.48,
+    "end": 86.58,
+    "words": [
+     [
+      "elaun",
+      85.48,
+      "key"
+     ],
+     [
+      "ni",
+      85.95
+     ],
+     [
+      "biasanya",
+      86.42
+     ]
+    ]
+   },
+   {
+    "start": 86.58,
+    "end": 86.94,
+    "words": [
+     [
+      "dia",
+      86.58
+     ],
+     [
+      "akan",
+      86.7
+     ]
+    ]
+   },
+   {
+    "start": 86.94,
+    "end": 88.25,
+    "words": [
+     [
+      "tebuk",
+      86.94
+     ],
+     [
+      "lah.",
+      87.7
+     ]
+    ]
+   },
+   {
+    "start": 88.26,
+    "end": 89.22,
+    "words": [
+     [
+      "Jarang-jarang",
+      88.26
+     ],
+     [
+      "kalau",
+      89.08
+     ]
+    ]
+   },
+   {
+    "start": 89.22,
+    "end": 90.08,
+    "words": [
+     [
+      "dia",
+      89.22
+     ],
+     [
+      "tanya",
+      89.42
+     ],
+     [
+      "awal",
+      89.84
+     ]
+    ]
+   },
+   {
+    "start": 90.08,
+    "end": 90.76,
+    "words": [
+     [
+      "surah",
+      90.08
+     ],
+     [
+      "tu.",
+      90.26
+     ]
+    ]
+   },
+   {
+    "start": 90.76,
+    "end": 91.6,
+    "words": [
+     [
+      "Awal",
+      90.76
+     ],
+     [
+      "surah,",
+      91.24
+     ]
+    ]
+   },
+   {
+    "start": 91.6,
+    "end": 92.22,
+    "words": [
+     [
+      "awal",
+      91.6
+     ],
+     [
+      "juzuk",
+      91.8
+     ],
+     [
+      "tu",
+      92.14
+     ]
+    ]
+   },
+   {
+    "start": 92.22,
+    "end": 93.34,
+    "words": [
+     [
+      "biasanya",
+      92.22
+     ],
+     [
+      "jarang-jarang,",
+      92.68
+     ]
+    ]
+   },
+   {
+    "start": 93.34,
+    "end": 94.4,
+    "words": [
+     [
+      "sebab",
+      93.34
+     ],
+     [
+      "itu",
+      93.64
+     ],
+     [
+      "permulaan.",
+      93.84
+     ]
+    ]
+   },
+   {
+    "start": 94.4,
+    "end": 94.78,
+    "words": [
+     [
+      "Sebab",
+      94.4
+     ],
+     [
+      "kita",
+      94.64
+     ]
+    ]
+   },
+   {
+    "start": 94.78,
+    "end": 95.62,
+    "words": [
+     [
+      "nak",
+      94.78
+     ],
+     [
+      "random,",
+      95.1,
+      "key"
+     ]
+    ]
+   },
+   {
+    "start": 95.62,
+    "end": 96.2,
+    "words": [
+     [
+      "maksudnya",
+      95.62
+     ],
+     [
+      "nak",
+      96.1
+     ]
+    ]
+   },
+   {
+    "start": 96.2,
+    "end": 97.1,
+    "words": [
+     [
+      "pastikan",
+      96.2
+     ],
+     [
+      "mereka",
+      96.66
+     ],
+     [
+      "ni",
+      96.84
+     ]
+    ]
+   },
+   {
+    "start": 97.1,
+    "end": 97.9,
+    "words": [
+     [
+      "memang",
+      97.1
+     ],
+     [
+      "dah",
+      97.34
+     ],
+     [
+      "hafaz",
+      97.56
+     ]
+    ]
+   },
+   {
+    "start": 97.9,
+    "end": 98.88,
+    "words": [
+     [
+      "dan",
+      97.9
+     ],
+     [
+      "jaga.",
+      98.14
+     ]
+    ]
+   },
+   {
+    "start": 98.88,
+    "end": 100.04,
+    "words": [
+     [
+      "Bila",
+      98.88
+     ],
+     [
+      "mana",
+      99.36
+     ],
+     [
+      "kita",
+      99.52
+     ]
+    ]
+   },
+   {
+    "start": 100.04,
+    "end": 100.96,
+    "words": [
+     [
+      "soal",
+      100.04
+     ],
+     [
+      "kaedah",
+      100.52
+     ]
+    ]
+   },
+   {
+    "start": 100.96,
+    "end": 101.4,
+    "words": [
+     [
+      "macam",
+      100.96
+     ],
+     [
+      "tu,",
+      101.1
+     ]
+    ]
+   },
+   {
+    "start": 101.4,
+    "end": 102.38,
+    "words": [
+     [
+      "insyaAllah",
+      101.4
+     ],
+     [
+      "itu",
+      101.76
+     ],
+     [
+      "dah",
+      102.04
+     ]
+    ]
+   },
+   {
+    "start": 102.38,
+    "end": 103.36,
+    "words": [
+     [
+      "membuktikan",
+      102.38
+     ],
+     [
+      "lah",
+      103.18
+     ]
+    ]
+   },
+   {
+    "start": 103.36,
+    "end": 104.16,
+    "words": [
+     [
+      "mereka",
+      103.36
+     ],
+     [
+      "ni",
+      103.6
+     ],
+     [
+      "dah",
+      103.92
+     ]
+    ]
+   },
+   {
+    "start": 104.16,
+    "end": 105.1,
+    "words": [
+     [
+      "menghafaz",
+      104.16,
+      "key"
+     ],
+     [
+      "al-Quran.",
+      104.53,
+      "key"
+     ]
+    ]
+   }
+  ]
+ },
+ "titles": [
+  {
+   "start": 12.2,
+   "end": 14.85,
+   "exitAt": 14.72,
+   "lines": [
+    {
+     "at": 12.2,
+     "y": 760,
+     "size": 50,
+     "runs": [
+      [
+       "Sebab tu namanya",
+       "semibold",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 12.82,
+     "y": 880,
+     "size": 112,
+     "runs": [
+      [
+       "ELAUN GALAKAN",
+       "black",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 13.44,
+     "y": 1005,
+     "size": 82,
+     "runs": [
+      [
+       "MENGHAFAZ AL-QURAN",
+       "black",
+       "gold"
+      ]
+     ]
+    },
+    {
+     "at": 14.12,
+     "y": 1125,
+     "size": 50,
+     "runs": [
+      [
+       "NEGERI JOHOR",
+       "extrabold",
+       "navyDeep",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 14.32,
+     "y": 1225,
+     "size": 42,
+     "runs": [
+      [
+       "galakan buat ",
+       "semibold",
+       "white"
+      ],
+      [
+       "PARA HUFFAZ",
+       "black",
+       "gold"
+      ]
+     ]
+    }
+   ]
+  }
+ ],
+ "panels": [
+  {
+   "start": 35.07,
+   "end": 39.75,
+   "exitAt": 39.57,
+   "top": 206,
+   "bottom": 528,
+   "width": 940,
+   "lines": [
+    {
+     "at": 35.17,
+     "y": 282,
+     "size": 34,
+     "runs": [
+      [
+       "CONTOH",
+       "extrabold",
+       "gold"
+      ]
+     ],
+     "tracking": 6
+    },
+    {
+     "at": 35.22,
+     "y": 375,
+     "size": 84,
+     "runs": [
+      [
+       "10 JUZUK",
+       "black",
+       "white"
+      ]
+     ],
+     "pop": true
+    },
+    {
+     "at": 38.0,
+     "y": 470,
+     "size": 84,
+     "runs": [
+      [
+       "= ",
+       "black",
+       "white"
+      ],
+      [
+       "20 SOALAN",
+       "black",
+       "gold"
+      ]
+     ],
+     "pop": true
+    }
+   ]
+  },
+  {
+   "start": 45.65,
+   "end": 50.45,
+   "exitAt": 50.27,
+   "top": 206,
+   "bottom": 528,
+   "width": 940,
+   "lines": [
+    {
+     "at": 45.75,
+     "y": 282,
+     "size": 34,
+     "runs": [
+      [
+       "SAMBUNG BACAAN",
+       "extrabold",
+       "gold"
+      ]
+     ],
+     "tracking": 6
+    },
+    {
+     "at": 46.34,
+     "y": 375,
+     "size": 84,
+     "runs": [
+      [
+       "± 2 MINIT",
+       "black",
+       "white"
+      ]
+     ],
+     "pop": true
+    },
+    {
+     "at": 48.06,
+     "y": 470,
+     "size": 70,
+     "runs": [
+      [
+       "8 – 9 BARIS",
+       "black",
+       "gold"
+      ]
+     ],
+     "pop": true
+    }
+   ]
+  },
+  {
+   "start": 52.56,
+   "end": 60.45,
+   "exitAt": 60.27,
+   "top": 206,
+   "bottom": 568,
+   "width": 940,
+   "lines": [
+    {
+     "at": 52.66,
+     "y": 268,
+     "size": 34,
+     "runs": [
+      [
+       "SOALAN MUNGKIN BERMULA DI",
+       "extrabold",
+       "gold"
+      ]
+     ],
+     "tracking": 4
+    },
+    {
+     "at": 53.94,
+     "y": 336,
+     "size": 46,
+     "runs": [
+      [
+       "① ",
+       "black",
+       "gold"
+      ],
+      [
+       "AWAL SURAH",
+       "black",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 55.36,
+     "y": 398,
+     "size": 46,
+     "runs": [
+      [
+       "② ",
+       "black",
+       "gold"
+      ],
+      [
+       "AWAL MAQRA'",
+       "black",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 56.8,
+     "y": 460,
+     "size": 46,
+     "runs": [
+      [
+       "③ ",
+       "black",
+       "gold"
+      ],
+      [
+       "TENGAH MUKA SURAT",
+       "black",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 58.88,
+     "y": 522,
+     "size": 46,
+     "runs": [
+      [
+       "④ ",
+       "black",
+       "gold"
+      ],
+      [
+       "HUJUNG MUKA SURAT",
+       "black",
+       "white"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "start": 69.57,
+   "end": 77.6,
+   "exitAt": 77.42,
+   "top": 206,
+   "bottom": 528,
+   "width": 940,
+   "lines": [
+    {
+     "at": 69.72,
+     "y": 292,
+     "size": 70,
+     "runs": [
+      [
+       "1 JUZUK = ",
+       "black",
+       "white"
+      ],
+      [
+       "2 SOALAN",
+       "black",
+       "gold"
+      ]
+     ],
+     "pop": true
+    },
+    {
+     "at": 73.59,
+     "y": 398,
+     "size": 44,
+     "runs": [
+      [
+       "Soalan 1  →  ",
+       "extrabold",
+       "white"
+      ],
+      [
+       "4 maqra' awal",
+       "black",
+       "gold"
+      ]
+     ]
+    },
+    {
+     "at": 75.86,
+     "y": 466,
+     "size": 44,
+     "runs": [
+      [
+       "Soalan 2  →  ",
+       "extrabold",
+       "white"
+      ],
+      [
+       "4 maqra' akhir",
+       "black",
+       "gold"
+      ]
+     ]
+    }
+   ],
+   "rules": [
+    350
+   ]
+  },
+  {
+   "start": 88.16,
+   "end": 94.75,
+   "exitAt": 94.57,
+   "top": 206,
+   "bottom": 528,
+   "width": 940,
+   "lines": [
+    {
+     "at": 88.26,
+     "y": 300,
+     "size": 70,
+     "runs": [
+      [
+       "JARANG DITANYA",
+       "black",
+       "gold"
+      ]
+     ],
+     "pop": true
+    },
+    {
+     "at": 90.76,
+     "y": 400,
+     "size": 48,
+     "runs": [
+      [
+       "Awal surah  •  Awal juzuk",
+       "black",
+       "white"
+      ]
+     ]
+    },
+    {
+     "at": 93.34,
+     "y": 468,
+     "size": 40,
+     "runs": [
+      [
+       "sebab itu permulaan",
+       "semibold",
+       "white"
+      ]
+     ]
+    }
+   ],
+   "rules": [
+    352
+   ]
+  }
+ ],
+ "isbat": {
+  "revealAt": 15.92,
+  "moveAt": 16.74,
+  "end": 19.95,
+  "exitAt": 19.8,
+  "bigY": 1290,
+  "bigSize": 250,
+  "labelY": 292,
+  "labelScale": 0.44,
+  "card": {
+   "top": 206,
+   "bottom": 528,
+   "width": 940,
+   "at": 16.81
+  },
+  "lines": [
+   {
+    "at": 17.1,
+    "y": 422,
+    "size": 50,
+    "runs": [
+     [
+      "Mengesahkan bahawa pemohon",
+      "extrabold",
+      "white"
+     ]
+    ]
+   },
+   {
+    "at": 17.25,
+    "y": 484,
+    "size": 50,
+    "runs": [
+     [
+      "telah ",
+      "extrabold",
+      "white"
+     ],
+     [
+      "MENGHAFAZ AL-QURAN",
+      "black",
+      "gold"
+     ]
+    ]
+   }
+  ],
+  "ruleY": 370,
+  "ruleAt": 17.1
+ },
+ "endCard": {
+  "start": 105.05,
+  "lines": [
+   {
+    "at": 105.27,
+    "y": 640,
+    "size": 34,
+    "tracking": 4,
+    "runs": [
+     [
+      "ELAUN ISBAT  •  PART 1",
+      "extrabold",
+      "gold"
+     ]
+    ]
+   },
+   {
+    "at": 105.4,
+    "y": 770,
+    "size": 104,
+    "runs": [
+     [
+      "SIAPA YANG",
+      "black",
+      "white"
+     ]
+    ]
+   },
+   {
+    "at": 105.6,
+    "y": 895,
+    "size": 104,
+    "runs": [
+     [
+      "LAYAK MENERIMA",
+      "black",
+      "white"
+     ]
+    ]
+   },
+   {
+    "at": 105.85,
+    "y": 1045,
+    "size": 140,
+    "pop": true,
+    "glow": true,
+    "runs": [
+     [
+      "ELAUN ISBAT?",
+      "black",
+      "gold"
+     ]
+    ]
+   },
+   {
+    "at": 108.05,
+    "y": 1290,
+    "size": 58,
+    "runs": [
+     [
+      "Ikuti ",
+      "extrabold",
+      "white"
+     ],
+     [
+      "PART 2",
+      "black",
+      "navyDeep",
+      "gold"
+     ],
+     [
+      " untuk mengetahui",
+      "extrabold",
+      "white"
+     ]
+    ]
+   },
+   {
+    "at": 108.23,
+    "y": 1378,
+    "size": 58,
+    "runs": [
+     [
+      "syarat kelayakannya.",
+      "extrabold",
+      "white"
+     ]
+    ]
+   }
+  ],
+  "ruleAt": 107.9,
+  "ruleY": 1185
+ },
+ "gradientUntil": 105.05,
+ "audio": {
+  "dialog": {
+   "file": "penuh_dialog.wav",
+   "volume": 1
+  },
+  "music": {
+   "file": "penuh_music.m4a",
+   "volume": 1
+  },
+  "ambience": {
+   "file": "penuh_ambience.m4a",
+   "volume": 1
+  },
+  "sfx": [
+   {
+    "at": 2.84,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0371
+   },
+   {
+    "at": 11.7,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0371
+   },
+   {
+    "at": 15.62,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.033
+   },
+   {
+    "at": 15.9,
+    "file": "sfx_impact_soft.wav",
+    "volume": 0.0587
+   },
+   {
+    "at": 21.94,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0371
+   },
+   {
+    "at": 34.77,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.0294
+   },
+   {
+    "at": 42.16,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0371
+   },
+   {
+    "at": 45.35,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.0294
+   },
+   {
+    "at": 52.26,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.0294
+   },
+   {
+    "at": 59.62,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0371
+   },
+   {
+    "at": 69.27,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.0294
+   },
+   {
+    "at": 87.86,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.0294
+   },
+   {
+    "at": 93.9,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0371
+   },
+   {
+    "at": 102.38,
+    "file": "sfx_impact_soft.wav",
+    "volume": 0.0466
+   },
+   {
+    "at": 104.63,
+    "file": "sfx_whoosh.wav",
+    "volume": 0.0416
+   },
+   {
+    "at": 105.83,
+    "file": "sfx_impact.wav",
+    "volume": 0.0659
+   },
+   {
+    "at": 107.77,
+    "file": "sfx_whoosh_short.wav",
+    "volume": 0.0294
+   }
+  ]
+ }
+}

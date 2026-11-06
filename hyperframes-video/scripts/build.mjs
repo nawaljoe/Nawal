@@ -5,7 +5,11 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const T = JSON.parse(readFileSync(join(here, "../../remotion-video/src/isbat/timeline.json"), "utf8"));
+// node scripts/build.mjs [timeline.json] [output.html]
+const SRC = process.argv[2] ?? join(here, "../../remotion-video/src/isbat/timeline.json");
+const OUT = process.argv[3] ?? join(here, "../index.html");
+const T = JSON.parse(readFileSync(SRC, "utf8"));
+const inRanges = (t, r) => !!r?.some(([a, b]) => t >= a && t < b);
 const W = T.width, H = T.height, FPS = T.fps;
 const P = T.palette;
 const col = (c) => (c ? P[c] ?? c : null);
@@ -77,8 +81,8 @@ const GRADE_B = "contrast(1.06) saturate(0.98) brightness(0.96)";
 const step = 2 / FPS;
 let z = 1;
 for (const s of T.shots) {
-  const dur = s.end - s.start, vid = `shot-${s.id}`;
-  z++;
+  const dur = s.end - s.start, vid = `shot-${s.id.replace(/[^\w-]/g, "_")}`;
+  z = s.type === "endcard" ? 14 : s.type === "still" ? 12 : 10; // footage sentiasa di bawah overlay (z 40+)
   if (s.type === "endcard") {
     html.push(`<video id="${vid}" class="clip media" src="assets/broll.mp4" muted playsinline data-start="${s.start}" data-duration="${r3(dur)}" data-media-start="${s.mediaStart}" data-track-index="1" style="z-index:${z};opacity:0;transform:scale(1.15);transform-origin:50% 50%;filter:blur(18px) ${GRADE_B}"></video>`);
     html.push(layer("endcard-ov", s.start, dur, 2, z + 1, "", undefined, `data-layout-allow-overlap`).replace('style="', 'style="opacity:0;background:linear-gradient(180deg,rgba(6,22,52,.55) 0%,rgba(6,22,52,.80) 100%);'));
@@ -89,7 +93,7 @@ for (const s of T.shots) {
   if (s.type === "still")
     html.push(`<img id="${vid}" class="clip media" src="assets/${s.src}" data-start="${s.start}" data-duration="${r3(dur)}" data-track-index="1" style="z-index:${z};filter:${grade}">`);
   else
-    html.push(`<video id="${vid}" class="clip media" src="assets/${s.type === "ustaz" ? "ustaz" : "broll"}.mp4" muted playsinline data-start="${s.start}" data-duration="${r3(dur)}" data-media-start="${s.mediaStart}" data-track-index="1" style="z-index:${z};filter:${grade}"></video>`);
+    html.push(`<video id="${vid}" class="clip media" src="assets/${s.type === "ustaz" ? (s.src ?? "ustaz.mp4") : "broll.mp4"}" muted playsinline data-start="${s.start}" data-duration="${r3(dur)}" data-media-start="${s.mediaStart}" data-track-index="1" style="z-index:${z};filter:${grade}"></video>`);
   // laluan zoom/crop: disampel setiap 2 frame sebagai segmen linear => lengkung sama seperti Remotion
   const tf = (t) => (s.type === "broll" ? broll(keyframes(t, s.zoom), ...center(t, s.center)) : ustaz(keyframes(t, s.zoom)));
   const f0 = tf(s.start);
@@ -105,12 +109,12 @@ for (const s of T.shots) {
 
 /* ---------------- look overlays ---------------- */
 html.push(layer("vignette", 0, T.duration, 2, 40, "").replace('style="', 'style="background:radial-gradient(ellipse 75% 60% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.38) 100%);'));
-html.push(layer("grad", 0, 20.3, 2, 41, "").replace('style="', 'style="background:linear-gradient(180deg,rgba(6,22,52,.43) 0px,rgba(6,22,52,0) 360px,rgba(6,22,52,0) 980px,rgba(6,22,52,.69) 1920px);'));
-js.push(`tl.to("#grad",{opacity:0,duration:0.3,ease:"none"},20.0);`);
+html.push(layer("grad", 0, T.gradientUntil + 0.3, 2, 41, "").replace('style="', 'style="background:linear-gradient(180deg,rgba(6,22,52,.43) 0px,rgba(6,22,52,0) 360px,rgba(6,22,52,0) 980px,rgba(6,22,52,.69) 1920px);'));
+js.push(`tl.to("#grad",{opacity:0,duration:0.3,ease:"none"},${T.gradientUntil});`);
 
 /* ---------------- hook ---------------- */
 const Hk = T.hook;
-for (const l of Hk.lines) {
+for (const l of Hk?.lines ?? []) {
   const i = id("hook");
   html.push(layer(i, l.at, Hk.end - l.at, 3, 60, row(l.y, l.size, l.runs, { stroke: l.pop ? 0 : 3 }), `540px ${l.y}px`));
   if (l.pop) js.push(`tl.fromTo("#${i}",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.24,ease:"back.out(1.7)"},${l.at});`);
@@ -118,27 +122,55 @@ for (const l of Hk.lines) {
   js.push(`tl.to("#${i}",{opacity:0,duration:0.16,ease:"none"},${Hk.exitAt});`);
 }
 
-/* ---------------- b-roll 2 title ---------------- */
-const B = T.brollTitle;
-html.push(layer("b2-ov", B.start, B.end - B.start, 3, 50, "").replace('style="', 'style="opacity:0;background:linear-gradient(180deg,rgba(6,22,52,.47) 0px,rgba(6,22,52,.47) 500px,rgba(6,22,52,.59) 1500px);'));
-js.push(`tl.to("#b2-ov",{opacity:1,duration:0.25,ease:"none"},${B.start});`, `tl.to("#b2-ov",{opacity:0,duration:0.13},${B.exitAt});`);
-for (const l of B.lines) {
-  const i = id("b2");
-  const tr = l.runs[0][0] === "NEGERI JOHOR" ? 6 : 0;
-  html.push(layer(i, l.at, B.end - l.at, 4, 60, row(l.y, l.size, l.runs, { stroke: l.size > 60 ? 2 : 0 }, tr), `540px ${l.y}px`));
-  js.push(`tl.fromTo("#${i}",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},${l.at});`,
-    `tl.to("#${i}",{opacity:0,duration:0.13},${B.exitAt});`);
-}
+/* ---------------- title stacks (tajuk atas b-roll) ---------------- */
+(T.titles ?? []).forEach((B, k) => {
+  if (B.overlay !== false) {
+    html.push(layer(`ttl${k}-ov`, B.start, B.end - B.start, 3, 50, "").replace('style="', 'style="opacity:0;background:linear-gradient(180deg,rgba(6,22,52,.47) 0px,rgba(6,22,52,.47) 500px,rgba(6,22,52,.59) 1500px);'));
+    js.push(`tl.to("#ttl${k}-ov",{opacity:1,duration:0.25,ease:"none"},${B.start});`, `tl.to("#ttl${k}-ov",{opacity:0,duration:0.13},${B.exitAt});`);
+  }
+  for (const l of B.lines) {
+    const i = id("ttl");
+    html.push(layer(i, l.at, B.end - l.at, 4, 60, row(l.y, l.size, l.runs, { stroke: l.size > 60 ? 2 : 0 }, l.tracking ?? 0), `540px ${l.y}px`));
+    js.push(`tl.fromTo("#${i}",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},${l.at});`,
+      `tl.to("#${i}",{opacity:0,duration:0.13},${B.exitAt});`);
+  }
+});
+
+/* ---------------- info panels (kad fakta) ---------------- */
+(T.panels ?? []).forEach((Pn, k) => {
+  const mid = (Pn.top + Pn.bottom) / 2;
+  html.push(layer(`panel${k}`, Pn.start, Pn.end - Pn.start, 6, 75,
+    `<div style="position:absolute;left:${(W - Pn.width) / 2}px;width:${Pn.width}px;top:${Pn.top}px;height:${Pn.bottom - Pn.top}px;border-radius:34px;background:rgba(11,42,91,.89);border:4px solid ${P.gold};box-shadow:0 18px 40px rgba(0,8,25,.45)"></div>`,
+    `540px ${mid}px`, "data-layout-allow-overlap"));
+  js.push(`tl.fromTo("#panel${k}",{scaleY:0},{scaleY:1,duration:0.32,ease:"power2.out"},${Pn.start});`, `tl.to("#panel${k}",{opacity:0,duration:0.18},${Pn.exitAt});`);
+  (Pn.rules ?? []).forEach((ry, j) => {
+    html.push(layer(`panel${k}-r${j}`, Pn.start + 0.2, Pn.end - Pn.start - 0.2, 7, 78,
+      `<div style="position:absolute;left:${W / 2 - 130}px;width:260px;top:${ry - 2}px;height:4px;background:${P.gold}"></div>`, `540px ${ry}px`));
+    js.push(`tl.fromTo("#panel${k}-r${j}",{scaleX:0},{scaleX:1,duration:0.3,ease:"power2.out"},${r3(Pn.start + 0.2)});`, `tl.to("#panel${k}-r${j}",{opacity:0,duration:0.18},${Pn.exitAt});`);
+  });
+  for (const l of Pn.lines) {
+    const i = id("pl");
+    html.push(layer(i, l.at, Pn.end - l.at, 7, 78, row(l.y, l.size, l.runs, { shadow: false }, l.tracking ?? 0, "data-layout-allow-overlap"), `540px ${l.y}px`));
+    if (l.pop) js.push(`tl.fromTo("#${i}",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.7)"},${l.at});`);
+    else js.push(`tl.fromTo("#${i}",{opacity:0,y:14},{opacity:1,y:0,duration:0.3,ease:"power2.out"},${l.at});`);
+    js.push(`tl.to("#${i}",{opacity:0,duration:0.18},${Pn.exitAt});`);
+  }
+});
 
 /* ---------------- series tag ---------------- */
 const S = T.seriesTag;
-const tagInner = `<div class="tag"><span style="font-weight:800;color:#fff;text-shadow:0 3px 12px rgba(0,8,25,.7)">${S.text}</span><span style="font-weight:900;color:${P.navyDeep};background:${P.gold};border-radius:8px;padding:6px 10px 3px">${S.badge}</span></div>`;
-html.push(layer("tag-a", S.start, S.hideFrom - S.start, 5, 70, tagInner));
-html.push(layer("tag-b", S.hideTo, S.end - S.hideTo, 5, 70, tagInner));
-js.push(`tl.fromTo("#tag-a",{opacity:0},{opacity:1,duration:0.3,ease:"none"},${S.start});`, `tl.to("#tag-b",{opacity:0,duration:0.19,ease:"none"},${r3(S.end - 0.19)});`);
+if (S) {
+  const tagInner = `<div class="tag"><span style="font-weight:800;color:#fff;text-shadow:0 3px 12px rgba(0,8,25,.7)">${S.text}</span><span style="font-weight:900;color:${P.navyDeep};background:${P.gold};border-radius:8px;padding:6px 10px 3px">${S.badge}</span></div>`;
+  const segs = []; let cur = S.start;
+  for (const [h0, h1] of [...(S.hide ?? [])].sort((x, y) => x[0] - y[0])) { if (h0 > cur) segs.push([cur, h0]); cur = Math.max(cur, h1); }
+  if (S.end > cur) segs.push([cur, S.end]);
+  segs.forEach(([a0, a1], k) => html.push(layer(`tag-${k}`, a0, a1 - a0, 5, 70, tagInner)));
+  js.push(`tl.fromTo("#tag-0",{opacity:0},{opacity:1,duration:0.3,ease:"none"},${S.start});`, `tl.to("#tag-${segs.length - 1}",{opacity:0,duration:0.19,ease:"none"},${r3(S.end - 0.19)});`);
+}
 
 /* ---------------- ISBAT reveal + card ---------------- */
 const I = T.isbat;
+if (I) {
 const cardMid = (I.card.top + I.card.bottom) / 2;
 html.push(layer("isbat-card", I.card.at, I.end - I.card.at, 6, 75,
   `<div style="position:absolute;left:${(W - I.card.width) / 2}px;width:${I.card.width}px;top:${I.card.top}px;height:${I.card.bottom - I.card.top}px;border-radius:34px;background:rgba(11,42,91,.89);border:4px solid ${P.gold};box-shadow:0 18px 40px rgba(0,8,25,.45)"></div>`,
@@ -151,20 +183,22 @@ js.push(
   `tl.fromTo("#isbat-word",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.24,ease:"back.out(1.7)"},${I.revealAt});`,
   `tl.to("#isbat-word",{y:${I.labelY - I.bigY},scale:${I.labelScale},duration:0.38,ease:"sine.inOut"},${I.moveAt});`,
   `tl.to("#isbat-word",{opacity:0,duration:0.15},${I.exitAt});`);
-html.push(layer("isbat-rule", 17.15, I.end - 17.15, 7, 78,
+html.push(layer("isbat-rule", I.ruleAt, I.end - 17.15, 7, 78,
   `<div style="position:absolute;left:${W / 2 - 130}px;width:260px;top:${I.ruleY - 2}px;height:4px;background:${P.gold}"></div>`, `540px ${I.ruleY}px`));
-js.push(`tl.fromTo("#isbat-rule",{scaleX:0},{scaleX:1,duration:0.3,ease:"power2.out"},17.15);`, `tl.to("#isbat-rule",{opacity:0,duration:0.15},${I.exitAt});`);
+js.push(`tl.fromTo("#isbat-rule",{scaleX:0},{scaleX:1,duration:0.3,ease:"power2.out"},${I.ruleAt});`, `tl.to("#isbat-rule",{opacity:0,duration:0.15},${I.exitAt});`);
 for (const l of I.lines) {
   const i = id("card");
   html.push(layer(i, l.at, I.end - l.at, 7, 78, row(l.y, l.size, l.runs, { shadow: false }, 0, "data-layout-allow-overlap"), `540px ${l.y}px`));
   js.push(`tl.fromTo("#${i}",{opacity:0,y:14},{opacity:1,y:0,duration:0.3,ease:"power2.out"},${l.at});`, `tl.to("#${i}",{opacity:0,duration:0.15},${I.exitAt});`);
 }
 
+}
+
 /* ---------------- subtitles: satu klip setiap ayat; highlight perkataan = GSAP set "--on" ---------------- */
 const SU = T.subtitles;
 SU.chunks.forEach((c, ci) => {
   let a = c.start, b = c.end;
-  if (a < I.moveAt && b > I.revealAt) b = Math.min(b, I.revealAt); // sembunyi semasa ISBAT besar
+  for (const [h0, h1] of SU.hide ?? []) { if (a < h1 && b > h0) { if (a >= h0) a = h1; else b = Math.min(b, h0); } }
   if (b - a <= 0.001) return;
   const cid = `sub-${ci + 1}`;
   const spans = c.words.map(([w, , kind], i) => {
@@ -186,6 +220,7 @@ SU.chunks.forEach((c, ci) => {
 
 /* ---------------- end card ---------------- */
 const E = T.endCard;
+if (E) {
 for (const l of E.lines) {
   const i = id("end");
   const o = `540px ${l.y}px`;
@@ -199,11 +234,12 @@ for (const l of E.lines) {
     continue;
   }
   html.push(layer(i, l.at, T.duration - l.at, 10, 91, row(l.y, l.size, l.runs, { stroke: l.size > 90 ? 2 : 0 }, l.tracking ?? 0), o));
-  js.push(`tl.fromTo("#${i}",{opacity:0,y:${l.at >= 23 ? 24 : 34}},{opacity:1,y:0,duration:0.28,ease:"power2.out"},${l.at});`);
+  js.push(`tl.fromTo("#${i}",{opacity:0,y:${l.at >= E.ruleAt ? 24 : 34}},{opacity:1,y:0,duration:0.28,ease:"power2.out"},${l.at});`);
 }
 html.push(layer("end-rule", E.ruleAt, T.duration - E.ruleAt, 10, 91,
   `<div style="position:absolute;left:${W / 2 - 150}px;width:300px;top:${E.ruleY - 2.5}px;height:5px;background:${P.gold}"></div>`, `540px ${E.ruleY}px`));
 js.push(`tl.fromTo("#end-rule",{scaleX:0},{scaleX:1,duration:0.4,ease:"power2.out"},${E.ruleAt});`);
+}
 
 /* ---------------- audio: setiap stem / SFX pada lorong sendiri ---------------- */
 const A = T.audio;
@@ -260,5 +296,5 @@ const out = `<!doctype html>
   </body>
 </html>
 `;
-writeFileSync(join(here, "../index.html"), out);
-console.log(`index.html: ${html.length} clips, ${audio.length} audio, ${js.length} tweens`);
+writeFileSync(OUT, out);
+console.log(`${OUT}: ${html.length} clips, ${audio.length} audio, ${js.length} tweens`);
