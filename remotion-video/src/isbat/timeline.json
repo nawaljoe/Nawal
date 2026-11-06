@@ -1,0 +1,118 @@
+{
+  "_note": "Satu sumber data untuk ISBAT Part 1. Dipakai oleh Remotion (src/isbat) dan HyperFrames (hyperframes-video/scripts/build.mjs). Masa dalam saat.",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "duration": 26,
+  "palette": {
+    "navy": "#0B2A5B",
+    "navyDeep": "#061634",
+    "gold": "#F0BE46",
+    "white": "#FFFFFF"
+  },
+  "source": {
+    "contentTop": 248,
+    "contentBottom": 1672,
+    "faceX": 550,
+    "faceY": 960
+  },
+  "shots": [
+    { "id": "U1-hook", "type": "ustaz", "start": 0.0, "end": 3.34, "mediaStart": 0.06,
+      "zoom": [[0, 1.0], [0.22, 1.27, "out3"], [3.34, 1.31, "linear"]] },
+    { "id": "B1-dewan", "type": "broll", "start": 3.34, "end": 5.94, "mediaStart": 0.3,
+      "zoom": [[3.34, 1.28], [3.74, 1.165, "out3"], [5.94, 1.21, "linear"]],
+      "center": [[3.34, 560, 1180]] },
+    { "id": "U2", "type": "ustaz", "start": 5.94, "end": 7.55, "mediaStart": 7.46, "zoom": [[5.94, 1.0]] },
+    { "id": "U3", "type": "ustaz", "start": 7.55, "end": 10.36, "mediaStart": 11.05, "zoom": [[7.55, 1.14]] },
+    { "id": "U4", "type": "ustaz", "start": 10.36, "end": 11.37, "mediaStart": 13.97, "zoom": [[10.36, 1.0]] },
+    { "id": "U5", "type": "ustaz", "start": 11.37, "end": 12.18, "mediaStart": 16.66, "zoom": [[11.37, 1.12]] },
+    { "id": "B2-closeup", "type": "broll", "start": 12.18, "end": 14.85, "mediaStart": 5.0,
+      "zoom": [[12.18, 1.86], [12.58, 1.725, "out3"], [14.85, 1.78, "linear"]],
+      "center": [[11.78, 697, 1330], [13.18, 548, 1330], [14.48, 536, 1330]] },
+    { "id": "U6-isbat", "type": "ustaz", "start": 14.85, "end": 16.45, "mediaStart": 20.16,
+      "zoom": [[14.85, 1.06], [15.92, 1.06], [16.12, 1.26, "out3"], [16.79, 1.28, "linear"]] },
+    { "id": "U6-freeze", "type": "still", "start": 16.45, "end": 16.79, "src": "ustaz_freeze.jpg",
+      "zoom": [[14.85, 1.06], [15.92, 1.06], [16.12, 1.26, "out3"], [16.79, 1.28, "linear"]] },
+    { "id": "U7", "type": "ustaz", "start": 16.79, "end": 20.3, "mediaStart": 23.34,
+      "zoom": [[16.79, 1.0], [19.99, 1.05, "linear"]] },
+    { "id": "E-endcard", "type": "endcard", "start": 20.0, "end": 26.0, "mediaStart": 2.0, "fadeIn": 0.3 }
+  ],
+  "hook": {
+    "start": 0.0, "end": 3.34, "exitAt": 3.18,
+    "lines": [
+      { "at": 0.03, "y": 1150, "size": 100, "runs": [["ANDA TAHU TAK,", "black", "white"]] },
+      { "at": 0.5, "y": 1262, "size": 64, "runs": [["di Johor ada ", "extrabold", "white"], ["ELAUN KHAS", "black", "gold"]] },
+      { "at": 1.05, "y": 1342, "size": 64, "runs": [["untuk mereka yang", "extrabold", "white"]] },
+      { "at": 1.96, "y": 1462, "size": 80, "pop": true, "runs": [["MENGHAFAZ AL-QURAN?", "black", "navyDeep", "gold"]] }
+    ]
+  },
+  "seriesTag": { "start": 3.34, "end": 16.79, "hideFrom": 12.18, "hideTo": 14.85, "text": "ELAUN ISBAT", "badge": "PART 1" },
+  "subtitles": {
+    "y": 1335, "size": 76, "maxWidth": 900,
+    "chunks": [
+      { "start": 3.34, "end": 4.14, "words": [["Dia", 3.34], ["tak", 3.5], ["semestinya", 3.66]] },
+      { "start": 4.14, "end": 5.04, "words": [["dia", 4.14], ["masuk", 4.26], ["madrasah", 4.46]] },
+      { "start": 5.04, "end": 5.94, "words": [["untuk", 5.04], ["menghafal,", 5.46]] },
+      { "start": 5.94, "end": 6.54, "words": [["tapi", 5.94], ["kalau", 6.18], ["dia", 6.38]] },
+      { "start": 6.54, "end": 7.55, "words": [["menghafal", 6.54], ["sendiri,", 6.9]] },
+      { "start": 7.55, "end": 8.44, "words": [["ada", 7.55], ["jugalah", 7.7], ["guru,", 8.08]] },
+      { "start": 8.44, "end": 9.3, "words": [["mungkin", 8.44], ["bapaknya,", 8.62]] },
+      { "start": 9.3, "end": 10.36, "words": [["ibunya", 9.3], ["kan.", 9.72]] },
+      { "start": 10.36, "end": 11.37, "words": [["Dan", 10.36], ["dia", 10.55], ["dah", 10.76], ["menghafaz,", 10.92]] },
+      { "start": 11.37, "end": 12.18, "words": [["dia", 11.37], ["boleh", 11.52], ["memohon.", 11.76]] },
+      { "start": 14.85, "end": 15.92, "words": [["Ataupun", 14.85], ["istilahnya", 15.22]] },
+      { "start": 16.79, "end": 17.4, "words": [["ISBAT", 16.79, "key"], ["tu", 17.04], ["nak", 17.18]] },
+      { "start": 17.4, "end": 18.8, "words": [["mengesahkan", 17.4]] },
+      { "start": 18.8, "end": 19.36, "words": [["yang", 18.8], ["dia", 18.96], ["tu", 19.18]] },
+      { "start": 19.36, "end": 20.05, "words": [["dah", 19.36], ["hafaz.", 19.5]] }
+    ]
+  },
+  "brollTitle": {
+    "start": 12.18, "end": 14.85, "exitAt": 14.72,
+    "lines": [
+      { "at": 12.18, "y": 760, "size": 50, "runs": [["Sebab tu namanya", "semibold", "white"]] },
+      { "at": 12.82, "y": 880, "size": 112, "runs": [["ELAUN GALAKAN", "black", "white"]] },
+      { "at": 13.44, "y": 1005, "size": 82, "runs": [["MENGHAFAZ AL-QURAN", "black", "gold"]] },
+      { "at": 14.08, "y": 1125, "size": 50, "runs": [["NEGERI JOHOR", "extrabold", "navyDeep", "white"]] },
+      { "at": 14.28, "y": 1225, "size": 42, "runs": [["galakan buat ", "semibold", "white"], ["PARA HUFFAZ", "black", "gold"]] }
+    ]
+  },
+  "isbat": {
+    "revealAt": 15.92, "moveAt": 16.79, "end": 20.0, "exitAt": 19.85,
+    "bigY": 1290, "bigSize": 250, "labelY": 292, "labelScale": 0.44,
+    "card": { "top": 206, "bottom": 528, "width": 940, "at": 16.86 },
+    "lines": [
+      { "at": 17.15, "y": 422, "size": 50, "runs": [["Mengesahkan bahawa pemohon", "extrabold", "white"]] },
+      { "at": 17.3, "y": 484, "size": 50, "runs": [["telah ", "extrabold", "white"], ["MENGHAFAZ AL-QURAN", "black", "gold"]] }
+    ],
+    "ruleY": 370
+  },
+  "endCard": {
+    "start": 20.0,
+    "lines": [
+      { "at": 20.22, "y": 640, "size": 34, "tracking": 4, "runs": [["ELAUN ISBAT  •  PART 1", "extrabold", "gold"]] },
+      { "at": 20.35, "y": 770, "size": 104, "runs": [["SIAPA YANG", "black", "white"]] },
+      { "at": 20.55, "y": 895, "size": 104, "runs": [["LAYAK MENERIMA", "black", "white"]] },
+      { "at": 20.8, "y": 1045, "size": 140, "pop": true, "glow": true, "runs": [["ELAUN ISBAT?", "black", "gold"]] },
+      { "at": 23.0, "y": 1290, "size": 58, "runs": [["Ikuti ", "extrabold", "white"], ["PART 2", "black", "navyDeep", "gold"], [" untuk mengetahui", "extrabold", "white"]] },
+      { "at": 23.18, "y": 1378, "size": 58, "runs": [["syarat kelayakannya.", "extrabold", "white"]] }
+    ],
+    "ruleAt": 22.85, "ruleY": 1185
+  },
+  "audio": {
+    "dialog": { "file": "dialog.wav", "start": 0, "volume": 1 },
+    "music": { "file": "music.m4a", "start": 0, "volume": 1 },
+    "ambience": { "file": "ambience.m4a", "start": 0, "volume": 1 },
+    "sfx": [
+      { "at": 0.0, "file": "sfx_impact.wav", "volume": 0.0782 },
+      { "at": 1.88, "file": "sfx_whoosh_short.wav", "volume": 0.0311 },
+      { "at": 2.84, "file": "sfx_whoosh.wav", "volume": 0.0392 },
+      { "at": 11.68, "file": "sfx_whoosh.wav", "volume": 0.0392 },
+      { "at": 15.62, "file": "sfx_whoosh_short.wav", "volume": 0.0349 },
+      { "at": 15.9, "file": "sfx_impact_soft.wav", "volume": 0.0621 },
+      { "at": 19.58, "file": "sfx_whoosh.wav", "volume": 0.044 },
+      { "at": 20.78, "file": "sfx_impact.wav", "volume": 0.0697 },
+      { "at": 22.72, "file": "sfx_whoosh_short.wav", "volume": 0.0311 }
+    ]
+  }
+}

@@ -1,0 +1,411 @@
+<!doctype html>
+<!-- DIJANA oleh scripts/build.mjs daripada remotion-video/src/isbat/timeline.json — sunting data itu, bukan fail ini. -->
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>ISBAT Part 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "InterDisplay"; src: url("assets/fonts/InterDisplay-SemiBold.otf"); font-weight: 600; }
+      @font-face { font-family: "InterDisplay"; src: url("assets/fonts/InterDisplay-ExtraBold.otf"); font-weight: 800; }
+      @font-face { font-family: "InterDisplay"; src: url("assets/fonts/InterDisplay-Black.otf"); font-weight: 900; }
+      :root { --navy: #0B2A5B; --navy-deep: #061634; --gold: #F0BE46; --ink: #fff; --font-display: "InterDisplay", sans-serif; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font-display); }
+      .layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      .media { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: fill; }
+      .row { position: absolute; left: 0; width: 1080px; height: 0; display: flex; justify-content: center; align-items: center; white-space: pre; line-height: 1; }
+      .tag { position: absolute; left: 70px; top: 205px; height: 0; display: flex; align-items: center; gap: 12px; font-size: 36px; line-height: 1; white-space: pre; }
+      .sub { position: absolute; left: 90px; width: 900px; top: 1335px; height: 0; display: flex; flex-wrap: wrap;
+             justify-content: center; align-content: center; align-items: center; column-gap: 19.76px; row-gap: 9.12px;
+             font-weight: 900; font-size: 76px; line-height: 1.1; }
+      .sub span { border-radius: 16.72px; padding: 6.08px 12.16px 3.04px; margin: 0 -12.16px;
+                  text-shadow: 0 4px 16px rgba(0,8,25,.75); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="26" data-width="1080" data-height="1920" data-fps="30">
+      <video id="shot-U1-hook" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="0" data-duration="3.34" data-media-start="0.06" data-track-index="1" style="z-index:2;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <video id="shot-B1-dewan" class="clip media" src="assets/broll.mp4" muted playsinline data-start="3.34" data-duration="2.6" data-media-start="0.3" data-track-index="1" style="z-index:3;filter:contrast(1.06) saturate(0.98) brightness(0.96)"></video>
+      <video id="shot-U2" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="5.94" data-duration="1.61" data-media-start="7.46" data-track-index="1" style="z-index:4;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <video id="shot-U3" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="7.55" data-duration="2.81" data-media-start="11.05" data-track-index="1" style="z-index:5;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <video id="shot-U4" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="10.36" data-duration="1.01" data-media-start="13.97" data-track-index="1" style="z-index:6;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <video id="shot-U5" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="11.37" data-duration="0.81" data-media-start="16.66" data-track-index="1" style="z-index:7;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <video id="shot-B2-closeup" class="clip media" src="assets/broll.mp4" muted playsinline data-start="12.18" data-duration="2.67" data-media-start="5" data-track-index="1" style="z-index:8;filter:contrast(1.06) saturate(0.98) brightness(0.96)"></video>
+      <video id="shot-U6-isbat" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="14.85" data-duration="1.6" data-media-start="20.16" data-track-index="1" style="z-index:9;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <img id="shot-U6-freeze" class="clip media" src="assets/ustaz_freeze.jpg" data-start="16.45" data-duration="0.34" data-track-index="1" style="z-index:10;filter:contrast(1.06) saturate(1.07) brightness(0.99)">
+      <video id="shot-U7" class="clip media" src="assets/ustaz.mp4" muted playsinline data-start="16.79" data-duration="3.51" data-media-start="23.34" data-track-index="1" style="z-index:11;filter:contrast(1.06) saturate(1.07) brightness(0.99)"></video>
+      <video id="shot-E-endcard" class="clip media" src="assets/broll.mp4" muted playsinline data-start="20" data-duration="6" data-media-start="2" data-track-index="1" style="z-index:12;opacity:0;transform:scale(1.15);transform-origin:50% 50%;filter:blur(18px) contrast(1.06) saturate(0.98) brightness(0.96)"></video>
+      <div id="endcard-ov" class="clip layer" data-start="20" data-duration="6" data-track-index="2" data-layout-allow-overlap style="opacity:0;background:linear-gradient(180deg,rgba(6,22,52,.55) 0%,rgba(6,22,52,.80) 100%);z-index:13;transform-origin:540px 960px"></div>
+      <div id="vignette" class="clip layer" data-start="0" data-duration="26" data-track-index="2" style="background:radial-gradient(ellipse 75% 60% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.38) 100%);z-index:40;transform-origin:540px 960px"></div>
+      <div id="grad" class="clip layer" data-start="0" data-duration="20.3" data-track-index="2" style="background:linear-gradient(180deg,rgba(6,22,52,.43) 0px,rgba(6,22,52,0) 360px,rgba(6,22,52,0) 980px,rgba(6,22,52,.69) 1920px);z-index:41;transform-origin:540px 960px"></div>
+      <div id="hook-1" class="clip layer" data-start="0.03" data-duration="3.31" data-track-index="3" style="z-index:60;transform-origin:540px 1150px"><div class="row" style="top:1150px;font-size:100px;letter-spacing:0px"><span style="font-weight:900;color:#FFFFFF;-webkit-text-stroke:3px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">ANDA TAHU TAK,</span></div></div>
+      <div id="hook-2" class="clip layer" data-start="0.5" data-duration="2.84" data-track-index="3" style="z-index:60;transform-origin:540px 1262px"><div class="row" style="top:1262px;font-size:64px;letter-spacing:0px"><span style="font-weight:800;color:#FFFFFF;-webkit-text-stroke:3px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">di Johor ada </span><span style="font-weight:900;color:#F0BE46;-webkit-text-stroke:3px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">ELAUN KHAS</span></div></div>
+      <div id="hook-3" class="clip layer" data-start="1.05" data-duration="2.29" data-track-index="3" style="z-index:60;transform-origin:540px 1342px"><div class="row" style="top:1342px;font-size:64px;letter-spacing:0px"><span style="font-weight:800;color:#FFFFFF;-webkit-text-stroke:3px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">untuk mereka yang</span></div></div>
+      <div id="hook-4" class="clip layer" data-start="1.96" data-duration="1.38" data-track-index="3" style="z-index:60;transform-origin:540px 1462px"><div class="row" style="top:1462px;font-size:80px;letter-spacing:0px"><span style="font-weight:900;color:#061634;background:#F0BE46;border-radius:17.6px;padding:8px 14.4px 4.8px;margin:0 8px;text-shadow:0 4px 16px rgba(0,8,25,.75);box-shadow:0 6px 18px rgba(0,8,25,.45)">MENGHAFAZ AL-QURAN?</span></div></div>
+      <div id="b2-ov" class="clip layer" data-start="12.18" data-duration="2.67" data-track-index="3" style="opacity:0;background:linear-gradient(180deg,rgba(6,22,52,.47) 0px,rgba(6,22,52,.47) 500px,rgba(6,22,52,.59) 1500px);z-index:50;transform-origin:540px 960px"></div>
+      <div id="b2-5" class="clip layer" data-start="12.18" data-duration="2.67" data-track-index="4" style="z-index:60;transform-origin:540px 760px"><div class="row" style="top:760px;font-size:50px;letter-spacing:0px"><span style="font-weight:600;color:#FFFFFF;text-shadow:0 4px 16px rgba(0,8,25,.75)">Sebab tu namanya</span></div></div>
+      <div id="b2-6" class="clip layer" data-start="12.82" data-duration="2.03" data-track-index="4" style="z-index:60;transform-origin:540px 880px"><div class="row" style="top:880px;font-size:112px;letter-spacing:0px"><span style="font-weight:900;color:#FFFFFF;-webkit-text-stroke:2px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">ELAUN GALAKAN</span></div></div>
+      <div id="b2-7" class="clip layer" data-start="13.44" data-duration="1.41" data-track-index="4" style="z-index:60;transform-origin:540px 1005px"><div class="row" style="top:1005px;font-size:82px;letter-spacing:0px"><span style="font-weight:900;color:#F0BE46;-webkit-text-stroke:2px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">MENGHAFAZ AL-QURAN</span></div></div>
+      <div id="b2-8" class="clip layer" data-start="14.08" data-duration="0.77" data-track-index="4" style="z-index:60;transform-origin:540px 1125px"><div class="row" style="top:1125px;font-size:50px;letter-spacing:6px"><span style="font-weight:800;color:#061634;background:#FFFFFF;border-radius:11px;padding:5px 9px 3px;margin:0 5px;text-shadow:0 4px 16px rgba(0,8,25,.75);box-shadow:0 6px 18px rgba(0,8,25,.45)">NEGERI JOHOR</span></div></div>
+      <div id="b2-9" class="clip layer" data-start="14.28" data-duration="0.57" data-track-index="4" style="z-index:60;transform-origin:540px 1225px"><div class="row" style="top:1225px;font-size:42px;letter-spacing:0px"><span style="font-weight:600;color:#FFFFFF;text-shadow:0 4px 16px rgba(0,8,25,.75)">galakan buat </span><span style="font-weight:900;color:#F0BE46;text-shadow:0 4px 16px rgba(0,8,25,.75)">PARA HUFFAZ</span></div></div>
+      <div id="tag-a" class="clip layer" data-start="3.34" data-duration="8.84" data-track-index="5" style="z-index:70;transform-origin:540px 960px"><div class="tag"><span style="font-weight:800;color:#fff;text-shadow:0 3px 12px rgba(0,8,25,.7)">ELAUN ISBAT</span><span style="font-weight:900;color:#061634;background:#F0BE46;border-radius:8px;padding:6px 10px 3px">PART 1</span></div></div>
+      <div id="tag-b" class="clip layer" data-start="14.85" data-duration="1.94" data-track-index="5" style="z-index:70;transform-origin:540px 960px"><div class="tag"><span style="font-weight:800;color:#fff;text-shadow:0 3px 12px rgba(0,8,25,.7)">ELAUN ISBAT</span><span style="font-weight:900;color:#061634;background:#F0BE46;border-radius:8px;padding:6px 10px 3px">PART 1</span></div></div>
+      <div id="isbat-card" class="clip layer" data-start="16.86" data-duration="3.14" data-track-index="6" data-layout-allow-overlap style="z-index:75;transform-origin:540px 367px"><div style="position:absolute;left:70px;width:940px;top:206px;height:322px;border-radius:34px;background:rgba(11,42,91,.89);border:4px solid #F0BE46;box-shadow:0 18px 40px rgba(0,8,25,.45)"></div></div>
+      <div id="isbat-glow" class="clip layer" data-start="15.92" data-duration="0.87" data-track-index="6" data-layout-allow-overlap style="filter:blur(28px);z-index:76;transform-origin:540px 1290px"><div class="row" data-layout-allow-overlap style="top:1290px;font-size:250px;letter-spacing:0px"><span style="font-weight:900;color:#F0BE46;-webkit-text-stroke:6px #061634;paint-order:stroke fill">ISBAT</span></div></div>
+      <div id="isbat-word" class="clip layer" data-start="15.92" data-duration="4.08" data-track-index="7" style="z-index:77;transform-origin:540px 1290px"><div class="row" data-layout-allow-overlap style="top:1290px;font-size:250px;letter-spacing:0px"><span style="font-weight:900;color:#F0BE46;-webkit-text-stroke:6px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">ISBAT</span></div></div>
+      <div id="isbat-rule" class="clip layer" data-start="17.15" data-duration="2.85" data-track-index="7" style="z-index:78;transform-origin:540px 370px"><div style="position:absolute;left:410px;width:260px;top:368px;height:4px;background:#F0BE46"></div></div>
+      <div id="card-10" class="clip layer" data-start="17.15" data-duration="2.85" data-track-index="7" style="z-index:78;transform-origin:540px 422px"><div class="row" data-layout-allow-overlap style="top:422px;font-size:50px;letter-spacing:0px"><span style="font-weight:800;color:#FFFFFF">Mengesahkan bahawa pemohon</span></div></div>
+      <div id="card-11" class="clip layer" data-start="17.3" data-duration="2.7" data-track-index="7" style="z-index:78;transform-origin:540px 484px"><div class="row" data-layout-allow-overlap style="top:484px;font-size:50px;letter-spacing:0px"><span style="font-weight:800;color:#FFFFFF">telah </span><span style="font-weight:900;color:#F0BE46">MENGHAFAZ AL-QURAN</span></div></div>
+      <div id="sub-1" class="clip layer" data-start="3.34" data-duration="0.8" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-1-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">Dia</span><span id="sub-1-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">tak</span><span id="sub-1-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">semestinya</span></div></div>
+      <div id="sub-2" class="clip layer" data-start="4.14" data-duration="0.9" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-2-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dia</span><span id="sub-2-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">masuk</span><span id="sub-2-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">madrasah</span></div></div>
+      <div id="sub-3" class="clip layer" data-start="5.04" data-duration="0.9" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-3-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">untuk</span><span id="sub-3-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">menghafal,</span></div></div>
+      <div id="sub-4" class="clip layer" data-start="5.94" data-duration="0.6" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-4-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">tapi</span><span id="sub-4-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">kalau</span><span id="sub-4-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dia</span></div></div>
+      <div id="sub-5" class="clip layer" data-start="6.54" data-duration="1.01" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-5-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">menghafal</span><span id="sub-5-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">sendiri,</span></div></div>
+      <div id="sub-6" class="clip layer" data-start="7.55" data-duration="0.89" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-6-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">ada</span><span id="sub-6-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">jugalah</span><span id="sub-6-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">guru,</span></div></div>
+      <div id="sub-7" class="clip layer" data-start="8.44" data-duration="0.86" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-7-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">mungkin</span><span id="sub-7-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">bapaknya,</span></div></div>
+      <div id="sub-8" class="clip layer" data-start="9.3" data-duration="1.06" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-8-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">ibunya</span><span id="sub-8-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">kan.</span></div></div>
+      <div id="sub-9" class="clip layer" data-start="10.36" data-duration="1.01" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-9-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">Dan</span><span id="sub-9-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dia</span><span id="sub-9-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dah</span><span id="sub-9-w3" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">menghafaz,</span></div></div>
+      <div id="sub-10" class="clip layer" data-start="11.37" data-duration="0.81" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-10-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dia</span><span id="sub-10-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">boleh</span><span id="sub-10-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">memohon.</span></div></div>
+      <div id="sub-11" class="clip layer" data-start="14.85" data-duration="1.07" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-11-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">Ataupun</span><span id="sub-11-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">istilahnya</span></div></div>
+      <div id="sub-12" class="clip layer" data-start="16.79" data-duration="0.61" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-12-w0" style="--on:1;color:color-mix(in srgb, #061634 calc(var(--on) * 100%), #F0BE46);background:color-mix(in srgb, #F0BE46 calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">ISBAT</span><span id="sub-12-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">tu</span><span id="sub-12-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">nak</span></div></div>
+      <div id="sub-13" class="clip layer" data-start="17.4" data-duration="1.4" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-13-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">mengesahkan</span></div></div>
+      <div id="sub-14" class="clip layer" data-start="18.8" data-duration="0.56" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-14-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">yang</span><span id="sub-14-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dia</span><span id="sub-14-w2" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">tu</span></div></div>
+      <div id="sub-15" class="clip layer" data-start="19.36" data-duration="0.69" data-track-index="8" style="z-index:80;transform-origin:540px 1335px"><div class="sub"><span id="sub-15-w0" style="--on:1;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">dah</span><span id="sub-15-w1" style="--on:0;color:color-mix(in srgb, #fff calc(var(--on) * 100%), #fff);background:color-mix(in srgb, #0B2A5B calc(var(--on) * 100%), transparent);-webkit-text-stroke:calc((1 - var(--on)) * 3px) #061634;paint-order:stroke fill">hafaz.</span></div></div>
+      <div id="end-12" class="clip layer" data-start="20.22" data-duration="5.78" data-track-index="10" style="z-index:91;transform-origin:540px 640px"><div class="row" style="top:640px;font-size:34px;letter-spacing:4px"><span style="font-weight:800;color:#F0BE46;text-shadow:0 4px 16px rgba(0,8,25,.75)">ELAUN ISBAT  •  PART 1</span></div></div>
+      <div id="end-13" class="clip layer" data-start="20.35" data-duration="5.65" data-track-index="10" style="z-index:91;transform-origin:540px 770px"><div class="row" style="top:770px;font-size:104px;letter-spacing:0px"><span style="font-weight:900;color:#FFFFFF;-webkit-text-stroke:2px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">SIAPA YANG</span></div></div>
+      <div id="end-14" class="clip layer" data-start="20.55" data-duration="5.45" data-track-index="10" style="z-index:91;transform-origin:540px 895px"><div class="row" style="top:895px;font-size:104px;letter-spacing:0px"><span style="font-weight:900;color:#FFFFFF;-webkit-text-stroke:2px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">LAYAK MENERIMA</span></div></div>
+      <div id="end-15-g" class="clip layer" data-start="20.8" data-duration="5.2" data-track-index="9" data-layout-allow-overlap style="filter:blur(26px);z-index:90;transform-origin:540px 1045px"><div class="row" data-layout-allow-overlap style="top:1045px;font-size:140px;letter-spacing:0px"><span style="font-weight:900;color:#F0BE46;-webkit-text-stroke:4px #061634;paint-order:stroke fill">ELAUN ISBAT?</span></div></div>
+      <div id="end-15" class="clip layer" data-start="20.8" data-duration="5.2" data-track-index="10" style="z-index:91;transform-origin:540px 1045px"><div class="row" data-layout-allow-overlap style="top:1045px;font-size:140px;letter-spacing:0px"><span style="font-weight:900;color:#F0BE46;-webkit-text-stroke:4px #061634;paint-order:stroke fill;text-shadow:0 4px 16px rgba(0,8,25,.75)">ELAUN ISBAT?</span></div></div>
+      <div id="end-16" class="clip layer" data-start="23" data-duration="3" data-track-index="10" style="z-index:91;transform-origin:540px 1290px"><div class="row" style="top:1290px;font-size:58px;letter-spacing:0px"><span style="font-weight:800;color:#FFFFFF;text-shadow:0 4px 16px rgba(0,8,25,.75)">Ikuti </span><span style="font-weight:900;color:#061634;background:#F0BE46;border-radius:12.76px;padding:5.8px 10.44px 3.48px;margin:0 5.8px;text-shadow:0 4px 16px rgba(0,8,25,.75);box-shadow:0 6px 18px rgba(0,8,25,.45)">PART 2</span><span style="font-weight:800;color:#FFFFFF;text-shadow:0 4px 16px rgba(0,8,25,.75)"> untuk mengetahui</span></div></div>
+      <div id="end-17" class="clip layer" data-start="23.18" data-duration="2.82" data-track-index="10" style="z-index:91;transform-origin:540px 1378px"><div class="row" style="top:1378px;font-size:58px;letter-spacing:0px"><span style="font-weight:800;color:#FFFFFF;text-shadow:0 4px 16px rgba(0,8,25,.75)">syarat kelayakannya.</span></div></div>
+      <div id="end-rule" class="clip layer" data-start="22.85" data-duration="3.15" data-track-index="10" style="z-index:91;transform-origin:540px 1185px"><div style="position:absolute;left:390px;width:300px;top:1182.5px;height:5px;background:#F0BE46"></div></div>
+      <audio id="a-dialog" src="assets/dialog.wav" data-start="0" data-duration="12.99" data-volume="1" data-track-index="20"></audio>
+      <audio id="a-music" src="assets/music.m4a" data-start="0" data-duration="26" data-volume="1" data-track-index="21"></audio>
+      <audio id="a-amb" src="assets/ambience.m4a" data-start="0" data-duration="26" data-volume="1" data-track-index="22"></audio>
+      <audio id="a-sfx-0" src="assets/sfx_impact.wav" data-start="0" data-duration="1.19" data-volume="0.0782" data-track-index="23"></audio>
+      <audio id="a-sfx-1" src="assets/sfx_whoosh_short.wav" data-start="1.88" data-duration="0.44" data-volume="0.0311" data-track-index="24"></audio>
+      <audio id="a-sfx-2" src="assets/sfx_whoosh.wav" data-start="2.84" data-duration="0.69" data-volume="0.0392" data-track-index="25"></audio>
+      <audio id="a-sfx-3" src="assets/sfx_whoosh.wav" data-start="11.68" data-duration="0.69" data-volume="0.0392" data-track-index="26"></audio>
+      <audio id="a-sfx-4" src="assets/sfx_whoosh_short.wav" data-start="15.62" data-duration="0.44" data-volume="0.0349" data-track-index="27"></audio>
+      <audio id="a-sfx-5" src="assets/sfx_impact_soft.wav" data-start="15.9" data-duration="0.99" data-volume="0.0621" data-track-index="28"></audio>
+      <audio id="a-sfx-6" src="assets/sfx_whoosh.wav" data-start="19.58" data-duration="0.69" data-volume="0.044" data-track-index="29"></audio>
+      <audio id="a-sfx-7" src="assets/sfx_impact.wav" data-start="20.78" data-duration="1.19" data-volume="0.0697" data-track-index="30"></audio>
+      <audio id="a-sfx-8" src="assets/sfx_whoosh_short.wav" data-start="22.72" data-duration="0.44" data-volume="0.0311" data-track-index="31"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#shot-U1-hook",{x:-201.573,y:-334.382,scale:1.348,transformOrigin:"0 0"},0);
+      tl.to("#shot-U1-hook",{x:-334.45,y:-703.925,scale:1.59,duration:0.067,ease:"none"},0);
+      tl.to("#shot-U1-hook",{x:-389.415,y:-854.252,scale:1.69,duration:0.066,ease:"none"},0.067);
+      tl.to("#shot-U1-hook",{x:-401.647,y:-875.603,scale:1.712,duration:0.067,ease:"none"},0.133);
+      tl.to("#shot-U1-hook",{x:-402.245,y:-876.645,scale:1.713,duration:0.067,ease:"none"},0.2);
+      tl.to("#shot-U1-hook",{x:-402.872,y:-877.74,scale:1.714,duration:0.066,ease:"none"},0.267);
+      tl.to("#shot-U1-hook",{x:-403.509,y:-878.852,scale:1.715,duration:0.067,ease:"none"},0.333);
+      tl.to("#shot-U1-hook",{x:-404.146,y:-879.964,scale:1.717,duration:0.067,ease:"none"},0.4);
+      tl.to("#shot-U1-hook",{x:-404.774,y:-881.059,scale:1.718,duration:0.066,ease:"none"},0.467);
+      tl.to("#shot-U1-hook",{x:-405.411,y:-882.171,scale:1.719,duration:0.066,ease:"none"},0.533);
+      tl.to("#shot-U1-hook",{x:-406.048,y:-883.283,scale:1.72,duration:0.067,ease:"none"},0.6);
+      tl.to("#shot-U1-hook",{x:-406.675,y:-884.378,scale:1.721,duration:0.065,ease:"none"},0.667);
+      tl.to("#shot-U1-hook",{x:-407.312,y:-885.49,scale:1.722,duration:0.067,ease:"none"},0.733);
+      tl.to("#shot-U1-hook",{x:-407.949,y:-886.602,scale:1.724,duration:0.066,ease:"none"},0.8);
+      tl.to("#shot-U1-hook",{x:-408.576,y:-887.697,scale:1.725,duration:0.066,ease:"none"},0.867);
+      tl.to("#shot-U1-hook",{x:-409.213,y:-888.809,scale:1.726,duration:0.066,ease:"none"},0.933);
+      tl.to("#shot-U1-hook",{x:-409.85,y:-889.921,scale:1.727,duration:0.066,ease:"none"},1);
+      tl.to("#shot-U1-hook",{x:-410.478,y:-891.016,scale:1.728,duration:0.066,ease:"none"},1.067);
+      tl.to("#shot-U1-hook",{x:-411.115,y:-892.128,scale:1.729,duration:0.066,ease:"none"},1.133);
+      tl.to("#shot-U1-hook",{x:-411.752,y:-893.24,scale:1.73,duration:0.066,ease:"none"},1.2);
+      tl.to("#shot-U1-hook",{x:-412.379,y:-894.335,scale:1.732,duration:0.066,ease:"none"},1.267);
+      tl.to("#shot-U1-hook",{x:-413.016,y:-895.447,scale:1.733,duration:0.066,ease:"none"},1.333);
+      tl.to("#shot-U1-hook",{x:-413.653,y:-896.559,scale:1.734,duration:0.067,ease:"none"},1.4);
+      tl.to("#shot-U1-hook",{x:-414.281,y:-897.654,scale:1.735,duration:0.065,ease:"none"},1.467);
+      tl.to("#shot-U1-hook",{x:-414.918,y:-898.766,scale:1.736,duration:0.067,ease:"none"},1.533);
+      tl.to("#shot-U1-hook",{x:-415.555,y:-899.878,scale:1.737,duration:0.066,ease:"none"},1.6);
+      tl.to("#shot-U1-hook",{x:-416.182,y:-900.973,scale:1.739,duration:0.066,ease:"none"},1.667);
+      tl.to("#shot-U1-hook",{x:-416.819,y:-902.085,scale:1.74,duration:0.066,ease:"none"},1.733);
+      tl.to("#shot-U1-hook",{x:-417.456,y:-903.197,scale:1.741,duration:0.066,ease:"none"},1.8);
+      tl.to("#shot-U1-hook",{x:-418.084,y:-904.292,scale:1.742,duration:0.066,ease:"none"},1.867);
+      tl.to("#shot-U1-hook",{x:-418.721,y:-905.404,scale:1.743,duration:0.066,ease:"none"},1.933);
+      tl.to("#shot-U1-hook",{x:-419.358,y:-906.515,scale:1.744,duration:0.067,ease:"none"},2);
+      tl.to("#shot-U1-hook",{x:-419.985,y:-907.611,scale:1.745,duration:0.065,ease:"none"},2.067);
+      tl.to("#shot-U1-hook",{x:-420.622,y:-908.723,scale:1.747,duration:0.067,ease:"none"},2.133);
+      tl.to("#shot-U1-hook",{x:-421.259,y:-909.834,scale:1.748,duration:0.066,ease:"none"},2.2);
+      tl.to("#shot-U1-hook",{x:-421.887,y:-910.93,scale:1.749,duration:0.066,ease:"none"},2.267);
+      tl.to("#shot-U1-hook",{x:-422.524,y:-912.041,scale:1.75,duration:0.066,ease:"none"},2.333);
+      tl.to("#shot-U1-hook",{x:-423.161,y:-913.153,scale:1.751,duration:0.067,ease:"none"},2.4);
+      tl.to("#shot-U1-hook",{x:-423.788,y:-914.249,scale:1.752,duration:0.065,ease:"none"},2.467);
+      tl.to("#shot-U1-hook",{x:-424.425,y:-915.36,scale:1.754,duration:0.067,ease:"none"},2.533);
+      tl.to("#shot-U1-hook",{x:-425.062,y:-916.472,scale:1.755,duration:0.066,ease:"none"},2.6);
+      tl.to("#shot-U1-hook",{x:-425.69,y:-917.568,scale:1.756,duration:0.066,ease:"none"},2.667);
+      tl.to("#shot-U1-hook",{x:-426.327,y:-918.679,scale:1.757,duration:0.066,ease:"none"},2.733);
+      tl.to("#shot-U1-hook",{x:-426.964,y:-919.791,scale:1.758,duration:0.067,ease:"none"},2.8);
+      tl.to("#shot-U1-hook",{x:-427.591,y:-920.886,scale:1.759,duration:0.065,ease:"none"},2.867);
+      tl.to("#shot-U1-hook",{x:-428.228,y:-921.998,scale:1.76,duration:0.067,ease:"none"},2.933);
+      tl.to("#shot-U1-hook",{x:-428.865,y:-923.11,scale:1.762,duration:0.067,ease:"none"},3);
+      tl.to("#shot-U1-hook",{x:-429.493,y:-924.205,scale:1.763,duration:0.065,ease:"none"},3.067);
+      tl.to("#shot-U1-hook",{x:-430.13,y:-925.317,scale:1.764,duration:0.067,ease:"none"},3.133);
+      tl.to("#shot-U1-hook",{x:-430.767,y:-926.429,scale:1.765,duration:0.066,ease:"none"},3.2);
+      tl.to("#shot-U1-hook",{x:-431.394,y:-927.524,scale:1.766,duration:0.066,ease:"none"},3.267);
+      tl.set("#shot-B1-dewan",{x:-176.8,y:-537.6,scale:1.28,transformOrigin:"0 0"},3.34);
+      tl.to("#shot-B1-dewan",{x:-149.557,y:-444.195,scale:1.231,duration:0.067,ease:"none"},3.34);
+      tl.to("#shot-B1-dewan",{x:-131.553,y:-382.468,scale:1.199,duration:0.065,ease:"none"},3.407);
+      tl.to("#shot-B1-dewan",{x:-120.45,y:-344.4,scale:1.179,duration:0.067,ease:"none"},3.473);
+      tl.to("#shot-B1-dewan",{x:-114.767,y:-324.917,scale:1.169,duration:0.067,ease:"none"},3.54);
+      tl.to("#shot-B1-dewan",{x:-112.703,y:-317.838,scale:1.166,duration:0.065,ease:"none"},3.607);
+      tl.to("#shot-B1-dewan",{x:-112.4,y:-316.8,scale:1.165,duration:0.067,ease:"none"},3.673);
+      tl.to("#shot-B1-dewan",{x:-113.167,y:-319.431,scale:1.166,duration:0.066,ease:"none"},3.74);
+      tl.to("#shot-B1-dewan",{x:-113.923,y:-322.023,scale:1.168,duration:0.066,ease:"none"},3.807);
+      tl.to("#shot-B1-dewan",{x:-114.691,y:-324.655,scale:1.169,duration:0.066,ease:"none"},3.873);
+      tl.to("#shot-B1-dewan",{x:-115.458,y:-327.286,scale:1.17,duration:0.066,ease:"none"},3.94);
+      tl.to("#shot-B1-dewan",{x:-116.214,y:-329.878,scale:1.172,duration:0.066,ease:"none"},4.007);
+      tl.to("#shot-B1-dewan",{x:-116.982,y:-332.509,scale:1.173,duration:0.066,ease:"none"},4.073);
+      tl.to("#shot-B1-dewan",{x:-117.749,y:-335.14,scale:1.175,duration:0.067,ease:"none"},4.14);
+      tl.to("#shot-B1-dewan",{x:-118.505,y:-337.732,scale:1.176,duration:0.065,ease:"none"},4.207);
+      tl.to("#shot-B1-dewan",{x:-119.273,y:-340.364,scale:1.177,duration:0.067,ease:"none"},4.273);
+      tl.to("#shot-B1-dewan",{x:-120.04,y:-342.995,scale:1.179,duration:0.067,ease:"none"},4.34);
+      tl.to("#shot-B1-dewan",{x:-120.796,y:-345.587,scale:1.18,duration:0.065,ease:"none"},4.407);
+      tl.to("#shot-B1-dewan",{x:-121.564,y:-348.218,scale:1.181,duration:0.067,ease:"none"},4.473);
+      tl.to("#shot-B1-dewan",{x:-122.331,y:-350.849,scale:1.183,duration:0.067,ease:"none"},4.54);
+      tl.to("#shot-B1-dewan",{x:-123.087,y:-353.441,scale:1.184,duration:0.065,ease:"none"},4.607);
+      tl.to("#shot-B1-dewan",{x:-123.855,y:-356.073,scale:1.185,duration:0.067,ease:"none"},4.673);
+      tl.to("#shot-B1-dewan",{x:-124.622,y:-358.704,scale:1.187,duration:0.067,ease:"none"},4.74);
+      tl.to("#shot-B1-dewan",{x:-125.378,y:-361.296,scale:1.188,duration:0.065,ease:"none"},4.807);
+      tl.to("#shot-B1-dewan",{x:-126.145,y:-363.927,scale:1.19,duration:0.067,ease:"none"},4.873);
+      tl.to("#shot-B1-dewan",{x:-126.913,y:-366.559,scale:1.191,duration:0.066,ease:"none"},4.94);
+      tl.to("#shot-B1-dewan",{x:-127.669,y:-369.151,scale:1.192,duration:0.066,ease:"none"},5.007);
+      tl.to("#shot-B1-dewan",{x:-128.436,y:-371.782,scale:1.194,duration:0.066,ease:"none"},5.073);
+      tl.to("#shot-B1-dewan",{x:-129.204,y:-374.413,scale:1.195,duration:0.067,ease:"none"},5.14);
+      tl.to("#shot-B1-dewan",{x:-129.96,y:-377.005,scale:1.196,duration:0.065,ease:"none"},5.207);
+      tl.to("#shot-B1-dewan",{x:-130.727,y:-379.636,scale:1.198,duration:0.067,ease:"none"},5.273);
+      tl.to("#shot-B1-dewan",{x:-131.495,y:-382.268,scale:1.199,duration:0.067,ease:"none"},5.34);
+      tl.to("#shot-B1-dewan",{x:-132.251,y:-384.86,scale:1.2,duration:0.065,ease:"none"},5.407);
+      tl.to("#shot-B1-dewan",{x:-133.018,y:-387.491,scale:1.202,duration:0.067,ease:"none"},5.473);
+      tl.to("#shot-B1-dewan",{x:-133.786,y:-390.122,scale:1.203,duration:0.067,ease:"none"},5.54);
+      tl.to("#shot-B1-dewan",{x:-134.542,y:-392.714,scale:1.205,duration:0.065,ease:"none"},5.607);
+      tl.to("#shot-B1-dewan",{x:-135.309,y:-395.345,scale:1.206,duration:0.067,ease:"none"},5.673);
+      tl.to("#shot-B1-dewan",{x:-136.077,y:-397.977,scale:1.207,duration:0.067,ease:"none"},5.74);
+      tl.to("#shot-B1-dewan",{x:-136.833,y:-400.569,scale:1.209,duration:0.065,ease:"none"},5.807);
+      tl.to("#shot-B1-dewan",{x:-137.6,y:-403.2,scale:1.21,duration:0.067,ease:"none"},5.873);
+      tl.set("#shot-U2",{x:-201.573,y:-334.382,scale:1.348,transformOrigin:"0 0"},5.94);
+      tl.set("#shot-U3",{x:-305.393,y:-623.116,scale:1.537,transformOrigin:"0 0"},7.55);
+      tl.set("#shot-U4",{x:-201.573,y:-334.382,scale:1.348,transformOrigin:"0 0"},10.36);
+      tl.set("#shot-U5",{x:-290.562,y:-581.868,scale:1.51,transformOrigin:"0 0"},11.37);
+      tl.set("#shot-B2-closeup",{x:-677.237,y:-1513.8,scale:1.86,transformOrigin:"0 0"},12.18);
+      tl.to("#shot-B2-closeup",{x:-627.007,y:-1437.845,scale:1.803,duration:0.067,ease:"none"},12.18);
+      tl.to("#shot-B2-closeup",{x:-590.179,y:-1387.65,scale:1.765,duration:0.066,ease:"none"},12.247);
+      tl.to("#shot-B2-closeup",{x:-562.856,y:-1356.694,scale:1.742,duration:0.067,ease:"none"},12.313);
+      tl.to("#shot-B2-closeup",{x:-542.978,y:-1340.85,scale:1.73,duration:0.066,ease:"none"},12.38);
+      tl.to("#shot-B2-closeup",{x:-528.147,y:-1335.094,scale:1.726,duration:0.066,ease:"none"},12.447);
+      tl.to("#shot-B2-closeup",{x:-515.454,y:-1334.25,scale:1.725,duration:0.067,ease:"none"},12.513);
+      tl.to("#shot-B2-closeup",{x:-504.135,y:-1336.409,scale:1.727,duration:0.067,ease:"none"},12.58);
+      tl.to("#shot-B2-closeup",{x:-492.962,y:-1338.536,scale:1.728,duration:0.065,ease:"none"},12.647);
+      tl.to("#shot-B2-closeup",{x:-481.598,y:-1340.695,scale:1.73,duration:0.067,ease:"none"},12.713);
+      tl.to("#shot-B2-closeup",{x:-470.21,y:-1342.854,scale:1.731,duration:0.067,ease:"none"},12.78);
+      tl.to("#shot-B2-closeup",{x:-458.969,y:-1344.981,scale:1.733,duration:0.066,ease:"none"},12.847);
+      tl.to("#shot-B2-closeup",{x:-447.535,y:-1347.14,scale:1.735,duration:0.067,ease:"none"},12.913);
+      tl.to("#shot-B2-closeup",{x:-436.078,y:-1349.299,scale:1.736,duration:0.067,ease:"none"},12.98);
+      tl.to("#shot-B2-closeup",{x:-424.769,y:-1351.426,scale:1.738,duration:0.065,ease:"none"},13.047);
+      tl.to("#shot-B2-closeup",{x:-413.267,y:-1353.585,scale:1.74,duration:0.067,ease:"none"},13.113);
+      tl.to("#shot-B2-closeup",{x:-413.079,y:-1355.744,scale:1.741,duration:0.067,ease:"none"},13.18);
+      tl.to("#shot-B2-closeup",{x:-412.893,y:-1357.871,scale:1.743,duration:0.066,ease:"none"},13.247);
+      tl.to("#shot-B2-closeup",{x:-412.702,y:-1360.03,scale:1.744,duration:0.067,ease:"none"},13.313);
+      tl.to("#shot-B2-closeup",{x:-412.508,y:-1362.189,scale:1.746,duration:0.066,ease:"none"},13.38);
+      tl.to("#shot-B2-closeup",{x:-412.316,y:-1364.316,scale:1.748,duration:0.066,ease:"none"},13.447);
+      tl.to("#shot-B2-closeup",{x:-412.119,y:-1366.475,scale:1.749,duration:0.067,ease:"none"},13.513);
+      tl.to("#shot-B2-closeup",{x:-411.92,y:-1368.634,scale:1.751,duration:0.067,ease:"none"},13.58);
+      tl.to("#shot-B2-closeup",{x:-411.721,y:-1370.761,scale:1.752,duration:0.065,ease:"none"},13.647);
+      tl.to("#shot-B2-closeup",{x:-411.518,y:-1372.92,scale:1.754,duration:0.067,ease:"none"},13.713);
+      tl.to("#shot-B2-closeup",{x:-411.313,y:-1375.079,scale:1.756,duration:0.067,ease:"none"},13.78);
+      tl.to("#shot-B2-closeup",{x:-411.109,y:-1377.205,scale:1.757,duration:0.066,ease:"none"},13.847);
+      tl.to("#shot-B2-closeup",{x:-410.9,y:-1379.365,scale:1.759,duration:0.067,ease:"none"},13.913);
+      tl.to("#shot-B2-closeup",{x:-410.688,y:-1381.524,scale:1.761,duration:0.067,ease:"none"},13.98);
+      tl.to("#shot-B2-closeup",{x:-410.478,y:-1383.65,scale:1.762,duration:0.065,ease:"none"},14.047);
+      tl.to("#shot-B2-closeup",{x:-410.263,y:-1385.809,scale:1.764,duration:0.067,ease:"none"},14.113);
+      tl.to("#shot-B2-closeup",{x:-410.046,y:-1387.969,scale:1.765,duration:0.067,ease:"none"},14.18);
+      tl.to("#shot-B2-closeup",{x:-409.83,y:-1390.095,scale:1.767,duration:0.066,ease:"none"},14.247);
+      tl.to("#shot-B2-closeup",{x:-409.609,y:-1392.254,scale:1.769,duration:0.067,ease:"none"},14.313);
+      tl.to("#shot-B2-closeup",{x:-409.386,y:-1394.413,scale:1.77,duration:0.066,ease:"none"},14.38);
+      tl.to("#shot-B2-closeup",{x:-409.703,y:-1396.54,scale:1.772,duration:0.066,ease:"none"},14.447);
+      tl.to("#shot-B2-closeup",{x:-410.574,y:-1398.699,scale:1.773,duration:0.067,ease:"none"},14.513);
+      tl.to("#shot-B2-closeup",{x:-411.444,y:-1400.858,scale:1.775,duration:0.067,ease:"none"},14.58);
+      tl.to("#shot-B2-closeup",{x:-412.301,y:-1402.985,scale:1.777,duration:0.065,ease:"none"},14.647);
+      tl.to("#shot-B2-closeup",{x:-413.171,y:-1405.144,scale:1.778,duration:0.067,ease:"none"},14.713);
+      tl.to("#shot-B2-closeup",{x:-414.041,y:-1407.303,scale:1.78,duration:0.067,ease:"none"},14.78);
+      tl.set("#shot-U6-isbat",{x:-246.067,y:-458.125,scale:1.429,transformOrigin:"0 0"},14.85);
+      tl.to("#shot-U6-isbat",{x:-346.711,y:-738.024,scale:1.612,duration:0.066,ease:"none"},15.917);
+      tl.to("#shot-U6-isbat",{x:-388.023,y:-851.822,scale:1.687,duration:0.067,ease:"none"},15.983);
+      tl.to("#shot-U6-isbat",{x:-394.382,y:-862.92,scale:1.699,duration:0.067,ease:"none"},16.05);
+      tl.to("#shot-U6-isbat",{x:-395.777,y:-865.356,scale:1.701,duration:0.065,ease:"none"},16.117);
+      tl.to("#shot-U6-isbat",{x:-397.26,y:-867.944,scale:1.704,duration:0.067,ease:"none"},16.183);
+      tl.to("#shot-U6-isbat",{x:-398.743,y:-870.533,scale:1.707,duration:0.067,ease:"none"},16.25);
+      tl.to("#shot-U6-isbat",{x:-400.204,y:-873.083,scale:1.709,duration:0.065,ease:"none"},16.317);
+      tl.to("#shot-U6-isbat",{x:-401.687,y:-875.672,scale:1.712,duration:0.067,ease:"none"},16.383);
+      tl.set("#shot-U6-freeze",{x:-401.687,y:-875.672,scale:1.712,transformOrigin:"0 0"},16.45);
+      tl.to("#shot-U6-freeze",{x:-403.17,y:-878.261,scale:1.715,duration:0.067,ease:"none"},16.45);
+      tl.to("#shot-U6-freeze",{x:-404.631,y:-880.811,scale:1.718,duration:0.065,ease:"none"},16.517);
+      tl.to("#shot-U6-freeze",{x:-406.114,y:-883.4,scale:1.72,duration:0.067,ease:"none"},16.583);
+      tl.to("#shot-U6-freeze",{x:-407.598,y:-885.988,scale:1.723,duration:0.067,ease:"none"},16.65);
+      tl.to("#shot-U6-freeze",{x:-409.059,y:-888.539,scale:1.726,duration:0.066,ease:"none"},16.717);
+      tl.set("#shot-U7",{x:-201.573,y:-334.382,scale:1.348,transformOrigin:"0 0"},16.79);
+      tl.to("#shot-U7",{x:-202.349,y:-336.541,scale:1.35,duration:0.067,ease:"none"},16.79);
+      tl.to("#shot-U7",{x:-203.114,y:-338.668,scale:1.351,duration:0.065,ease:"none"},16.857);
+      tl.to("#shot-U7",{x:-203.89,y:-340.827,scale:1.353,duration:0.067,ease:"none"},16.923);
+      tl.to("#shot-U7",{x:-204.667,y:-342.986,scale:1.354,duration:0.067,ease:"none"},16.99);
+      tl.to("#shot-U7",{x:-205.432,y:-345.113,scale:1.355,duration:0.066,ease:"none"},17.057);
+      tl.to("#shot-U7",{x:-206.208,y:-347.272,scale:1.357,duration:0.067,ease:"none"},17.123);
+      tl.to("#shot-U7",{x:-206.984,y:-349.431,scale:1.358,duration:0.067,ease:"none"},17.19);
+      tl.to("#shot-U7",{x:-207.749,y:-351.558,scale:1.36,duration:0.065,ease:"none"},17.257);
+      tl.to("#shot-U7",{x:-208.525,y:-353.717,scale:1.361,duration:0.067,ease:"none"},17.323);
+      tl.to("#shot-U7",{x:-209.302,y:-355.876,scale:1.362,duration:0.067,ease:"none"},17.39);
+      tl.to("#shot-U7",{x:-210.066,y:-358.003,scale:1.364,duration:0.065,ease:"none"},17.457);
+      tl.to("#shot-U7",{x:-210.843,y:-360.162,scale:1.365,duration:0.067,ease:"none"},17.523);
+      tl.to("#shot-U7",{x:-211.619,y:-362.321,scale:1.367,duration:0.067,ease:"none"},17.59);
+      tl.to("#shot-U7",{x:-212.384,y:-364.448,scale:1.368,duration:0.065,ease:"none"},17.657);
+      tl.to("#shot-U7",{x:-213.16,y:-366.607,scale:1.369,duration:0.067,ease:"none"},17.723);
+      tl.to("#shot-U7",{x:-213.936,y:-368.766,scale:1.371,duration:0.067,ease:"none"},17.79);
+      tl.to("#shot-U7",{x:-214.701,y:-370.893,scale:1.372,duration:0.065,ease:"none"},17.857);
+      tl.to("#shot-U7",{x:-215.478,y:-373.052,scale:1.374,duration:0.067,ease:"none"},17.923);
+      tl.to("#shot-U7",{x:-216.254,y:-375.211,scale:1.375,duration:0.067,ease:"none"},17.99);
+      tl.to("#shot-U7",{x:-217.019,y:-377.338,scale:1.376,duration:0.066,ease:"none"},18.057);
+      tl.to("#shot-U7",{x:-217.795,y:-379.497,scale:1.378,duration:0.067,ease:"none"},18.123);
+      tl.to("#shot-U7",{x:-218.571,y:-381.656,scale:1.379,duration:0.067,ease:"none"},18.19);
+      tl.to("#shot-U7",{x:-219.336,y:-383.783,scale:1.381,duration:0.065,ease:"none"},18.257);
+      tl.to("#shot-U7",{x:-220.112,y:-385.942,scale:1.382,duration:0.067,ease:"none"},18.323);
+      tl.to("#shot-U7",{x:-220.889,y:-388.101,scale:1.383,duration:0.067,ease:"none"},18.39);
+      tl.to("#shot-U7",{x:-221.653,y:-390.227,scale:1.385,duration:0.065,ease:"none"},18.457);
+      tl.to("#shot-U7",{x:-222.43,y:-392.387,scale:1.386,duration:0.067,ease:"none"},18.523);
+      tl.to("#shot-U7",{x:-223.206,y:-394.546,scale:1.388,duration:0.067,ease:"none"},18.59);
+      tl.to("#shot-U7",{x:-223.971,y:-396.672,scale:1.389,duration:0.065,ease:"none"},18.657);
+      tl.to("#shot-U7",{x:-224.747,y:-398.831,scale:1.39,duration:0.067,ease:"none"},18.723);
+      tl.to("#shot-U7",{x:-225.524,y:-400.991,scale:1.392,duration:0.067,ease:"none"},18.79);
+      tl.to("#shot-U7",{x:-226.288,y:-403.117,scale:1.393,duration:0.065,ease:"none"},18.857);
+      tl.to("#shot-U7",{x:-227.065,y:-405.276,scale:1.395,duration:0.067,ease:"none"},18.923);
+      tl.to("#shot-U7",{x:-227.841,y:-407.435,scale:1.396,duration:0.067,ease:"none"},18.99);
+      tl.to("#shot-U7",{x:-228.606,y:-409.562,scale:1.397,duration:0.066,ease:"none"},19.057);
+      tl.to("#shot-U7",{x:-229.382,y:-411.721,scale:1.399,duration:0.067,ease:"none"},19.123);
+      tl.to("#shot-U7",{x:-230.158,y:-413.88,scale:1.4,duration:0.067,ease:"none"},19.19);
+      tl.to("#shot-U7",{x:-230.923,y:-416.007,scale:1.402,duration:0.065,ease:"none"},19.257);
+      tl.to("#shot-U7",{x:-231.699,y:-418.166,scale:1.403,duration:0.067,ease:"none"},19.323);
+      tl.to("#shot-U7",{x:-232.476,y:-420.325,scale:1.405,duration:0.067,ease:"none"},19.39);
+      tl.to("#shot-U7",{x:-233.241,y:-422.452,scale:1.406,duration:0.065,ease:"none"},19.457);
+      tl.to("#shot-U7",{x:-234.017,y:-424.611,scale:1.407,duration:0.067,ease:"none"},19.523);
+      tl.to("#shot-U7",{x:-234.793,y:-426.77,scale:1.409,duration:0.067,ease:"none"},19.59);
+      tl.to("#shot-U7",{x:-235.558,y:-428.897,scale:1.41,duration:0.065,ease:"none"},19.657);
+      tl.to("#shot-U7",{x:-236.334,y:-431.056,scale:1.412,duration:0.067,ease:"none"},19.723);
+      tl.to("#shot-U7",{x:-237.111,y:-433.215,scale:1.413,duration:0.067,ease:"none"},19.79);
+      tl.to("#shot-U7",{x:-237.875,y:-435.342,scale:1.414,duration:0.065,ease:"none"},19.857);
+      tl.to("#shot-U7",{x:-238.652,y:-437.501,scale:1.416,duration:0.067,ease:"none"},19.923);
+      tl.to(["#shot-E-endcard","#endcard-ov"],{opacity:1,duration:0.3,ease:"sine.inOut"},20);
+      tl.to("#grad",{opacity:0,duration:0.3,ease:"none"},20.0);
+      tl.fromTo("#hook-1",{opacity:0,y:30},{opacity:1,y:0,duration:0.22,ease:"power2.out"},0.03);
+      tl.to("#hook-1",{opacity:0,duration:0.16,ease:"none"},3.18);
+      tl.fromTo("#hook-2",{opacity:0,y:30},{opacity:1,y:0,duration:0.22,ease:"power2.out"},0.5);
+      tl.to("#hook-2",{opacity:0,duration:0.16,ease:"none"},3.18);
+      tl.fromTo("#hook-3",{opacity:0,y:30},{opacity:1,y:0,duration:0.22,ease:"power2.out"},1.05);
+      tl.to("#hook-3",{opacity:0,duration:0.16,ease:"none"},3.18);
+      tl.fromTo("#hook-4",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.24,ease:"back.out(1.7)"},1.96);
+      tl.to("#hook-4",{opacity:0,duration:0.16,ease:"none"},3.18);
+      tl.to("#b2-ov",{opacity:1,duration:0.25,ease:"none"},12.18);
+      tl.to("#b2-ov",{opacity:0,duration:0.13},14.72);
+      tl.fromTo("#b2-5",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},12.18);
+      tl.to("#b2-5",{opacity:0,duration:0.13},14.72);
+      tl.fromTo("#b2-6",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},12.82);
+      tl.to("#b2-6",{opacity:0,duration:0.13},14.72);
+      tl.fromTo("#b2-7",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},13.44);
+      tl.to("#b2-7",{opacity:0,duration:0.13},14.72);
+      tl.fromTo("#b2-8",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},14.08);
+      tl.to("#b2-8",{opacity:0,duration:0.13},14.72);
+      tl.fromTo("#b2-9",{opacity:0,y:26,scale:0.92},{opacity:1,y:0,scale:1,duration:0.25,ease:"power2.out"},14.28);
+      tl.to("#b2-9",{opacity:0,duration:0.13},14.72);
+      tl.fromTo("#tag-a",{opacity:0},{opacity:1,duration:0.3,ease:"none"},3.34);
+      tl.to("#tag-b",{opacity:0,duration:0.19,ease:"none"},16.6);
+      tl.fromTo("#isbat-card",{scaleY:0},{scaleY:1,duration:0.32,ease:"power2.out"},16.86);
+      tl.to("#isbat-card",{opacity:0,duration:0.15},19.85);
+      tl.fromTo("#isbat-glow",{opacity:0,scale:0.6},{opacity:0.55,scale:1,duration:0.24,ease:"back.out(1.7)"},15.92);
+      tl.fromTo("#isbat-word",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.24,ease:"back.out(1.7)"},15.92);
+      tl.to("#isbat-word",{y:-998,scale:0.44,duration:0.38,ease:"sine.inOut"},16.79);
+      tl.to("#isbat-word",{opacity:0,duration:0.15},19.85);
+      tl.fromTo("#isbat-rule",{scaleX:0},{scaleX:1,duration:0.3,ease:"power2.out"},17.15);
+      tl.to("#isbat-rule",{opacity:0,duration:0.15},19.85);
+      tl.fromTo("#card-10",{opacity:0,y:14},{opacity:1,y:0,duration:0.3,ease:"power2.out"},17.15);
+      tl.to("#card-10",{opacity:0,duration:0.15},19.85);
+      tl.fromTo("#card-11",{opacity:0,y:14},{opacity:1,y:0,duration:0.3,ease:"power2.out"},17.3);
+      tl.to("#card-11",{opacity:0,duration:0.15},19.85);
+      tl.fromTo("#sub-1",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},3.34);
+      tl.set("#sub-1-w0",{"--on":0},3.48);
+      tl.set("#sub-1-w1",{"--on":1},3.48);
+      tl.set("#sub-1-w1",{"--on":0},3.64);
+      tl.set("#sub-1-w2",{"--on":1},3.64);
+      tl.fromTo("#sub-2",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},4.14);
+      tl.set("#sub-2-w0",{"--on":0},4.24);
+      tl.set("#sub-2-w1",{"--on":1},4.24);
+      tl.set("#sub-2-w1",{"--on":0},4.44);
+      tl.set("#sub-2-w2",{"--on":1},4.44);
+      tl.fromTo("#sub-3",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},5.04);
+      tl.set("#sub-3-w0",{"--on":0},5.44);
+      tl.set("#sub-3-w1",{"--on":1},5.44);
+      tl.fromTo("#sub-4",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},5.94);
+      tl.set("#sub-4-w0",{"--on":0},6.16);
+      tl.set("#sub-4-w1",{"--on":1},6.16);
+      tl.set("#sub-4-w1",{"--on":0},6.36);
+      tl.set("#sub-4-w2",{"--on":1},6.36);
+      tl.fromTo("#sub-5",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},6.54);
+      tl.set("#sub-5-w0",{"--on":0},6.88);
+      tl.set("#sub-5-w1",{"--on":1},6.88);
+      tl.fromTo("#sub-6",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},7.55);
+      tl.set("#sub-6-w0",{"--on":0},7.68);
+      tl.set("#sub-6-w1",{"--on":1},7.68);
+      tl.set("#sub-6-w1",{"--on":0},8.06);
+      tl.set("#sub-6-w2",{"--on":1},8.06);
+      tl.fromTo("#sub-7",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},8.44);
+      tl.set("#sub-7-w0",{"--on":0},8.6);
+      tl.set("#sub-7-w1",{"--on":1},8.6);
+      tl.fromTo("#sub-8",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},9.3);
+      tl.set("#sub-8-w0",{"--on":0},9.7);
+      tl.set("#sub-8-w1",{"--on":1},9.7);
+      tl.fromTo("#sub-9",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},10.36);
+      tl.set("#sub-9-w0",{"--on":0},10.53);
+      tl.set("#sub-9-w1",{"--on":1},10.53);
+      tl.set("#sub-9-w1",{"--on":0},10.74);
+      tl.set("#sub-9-w2",{"--on":1},10.74);
+      tl.set("#sub-9-w2",{"--on":0},10.9);
+      tl.set("#sub-9-w3",{"--on":1},10.9);
+      tl.fromTo("#sub-10",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},11.37);
+      tl.set("#sub-10-w0",{"--on":0},11.5);
+      tl.set("#sub-10-w1",{"--on":1},11.5);
+      tl.set("#sub-10-w1",{"--on":0},11.74);
+      tl.set("#sub-10-w2",{"--on":1},11.74);
+      tl.fromTo("#sub-11",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},14.85);
+      tl.set("#sub-11-w0",{"--on":0},15.2);
+      tl.set("#sub-11-w1",{"--on":1},15.2);
+      tl.fromTo("#sub-12",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},16.79);
+      tl.set("#sub-12-w0",{"--on":0},17.02);
+      tl.set("#sub-12-w1",{"--on":1},17.02);
+      tl.set("#sub-12-w1",{"--on":0},17.16);
+      tl.set("#sub-12-w2",{"--on":1},17.16);
+      tl.fromTo("#sub-13",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},17.4);
+      tl.fromTo("#sub-14",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},18.8);
+      tl.set("#sub-14-w0",{"--on":0},18.94);
+      tl.set("#sub-14-w1",{"--on":1},18.94);
+      tl.set("#sub-14-w1",{"--on":0},19.16);
+      tl.set("#sub-14-w2",{"--on":1},19.16);
+      tl.fromTo("#sub-15",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.16,ease:"back.out(1.7)"},19.36);
+      tl.set("#sub-15-w0",{"--on":0},19.48);
+      tl.set("#sub-15-w1",{"--on":1},19.48);
+      tl.fromTo("#end-12",{opacity:0,y:34},{opacity:1,y:0,duration:0.28,ease:"power2.out"},20.22);
+      tl.fromTo("#end-13",{opacity:0,y:34},{opacity:1,y:0,duration:0.28,ease:"power2.out"},20.35);
+      tl.fromTo("#end-14",{opacity:0,y:34},{opacity:1,y:0,duration:0.28,ease:"power2.out"},20.55);
+      tl.fromTo("#end-15-g",{opacity:0,scale:0.7},{opacity:0.45,scale:1,duration:0.3,ease:"back.out(1.7)"},20.8);
+      tl.fromTo("#end-15",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.3,ease:"back.out(1.7)"},20.8);
+      tl.to(["#end-15","#end-15-g"],{scale:1.012,duration:1.43,ease:"sine.inOut",yoyo:true,repeat:2},21.1);
+      tl.fromTo("#end-16",{opacity:0,y:24},{opacity:1,y:0,duration:0.28,ease:"power2.out"},23);
+      tl.fromTo("#end-17",{opacity:0,y:24},{opacity:1,y:0,duration:0.28,ease:"power2.out"},23.18);
+      tl.fromTo("#end-rule",{scaleX:0},{scaleX:1,duration:0.4,ease:"power2.out"},22.85);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

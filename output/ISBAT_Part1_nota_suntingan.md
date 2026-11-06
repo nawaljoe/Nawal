@@ -1,6 +1,16 @@
 # ISBAT – Elaun Galakan Menghafaz al-Quran (Part 1) — Nota Suntingan
 
-**Fail akhir:** `ISBAT_Part1_TikTok.mp4` · 1080×1920 · 30 fps · H.264 · ~26 s · audio AAC 48 kHz, −14 LUFS, true peak −1 dBFS
+**Fail akhir:** `ISBAT_Part1_TikTok.mp4` (dirender dengan **Remotion**) · 1080×1920 · 30 fps · H.264 · 26.0 s · audio AAC 48 kHz, −14.2 LUFS, puncak −1.1 dBFS
+
+## 0. Projek kod (boleh disunting)
+Video ini boleh dibina semula sepenuhnya daripada kod, melalui dua enjin yang berkongsi satu fail data, `remotion-video/src/isbat/timeline.json`.
+
+| Enjin | Lokasi | Render |
+|---|---|---|
+| **Remotion** (React) | `remotion-video/src/isbat/`, komposisi `IsbatPart1` | `npx remotion render IsbatPart1` → fail akhir di atas |
+| **HyperFrames** (HTML + GSAP) | `hyperframes-video/` (`scripts/build.mjs` → `index.html`) | `npx hyperframes render` |
+
+Untuk menukar teks, masa, warna, zoom atau aras SFX, sunting `timeline.json`. Selepas itu render semula dengan Remotion, atau jalankan `node scripts/build.mjs` untuk HyperFrames.
 **Sumber:** `1106 (1).mp4` (raw ustaz, 2:07) + `Broll/IMG_1491.MOV` (8.5 s). Folder `Main 1` di Drive kosong, jadi raw di folder utama yang digunakan.
 
 ## 1. Skrip akhir (ucapan ustaz selepas dibersihkan)
