@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- SCENES 3–5 — chapter keyword reveal (PUASA / SABAR / MEMAAFKAN).
+     The label lands when the ustaz says the ordinal; the keyword is revealed through a mask on its own beat.
+     mood: "puasa" = clean left-to-right wipe with a gold leading edge
+           "sabar" = slower reveal opening from the centre (more emotional)
+           "maaf"  = soft letter-by-letter resolve (reflective) -->
+<html lang="ms" data-composition-variables='[
+  {"id":"num","type":"string","label":"Numeral","default":"01"},
+  {"id":"label","type":"string","label":"Label","default":"AMALAN PERTAMA"},
+  {"id":"word","type":"string","label":"Keyword","default":"PUASA"},
+  {"id":"mood","type":"string","label":"puasa | sabar | maaf","default":"puasa"},
+  {"id":"tWord","type":"number","label":"Keyword reveal time","default":0.35},
+  {"id":"dur","type":"number","label":"Duration","default":2.6}
+]'>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <script src="gsap.min.js"></script>
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    .shade { background: radial-gradient(ellipse 90% 26% at 50% 50%, rgba(11,11,12,0.72) 0%, rgba(11,11,12,0.38) 60%, rgba(11,11,12,0) 100%); }
+    .pat { position: absolute; left: 90px; top: 700px; width: 900px; height: 520px;
+      -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, rgba(0,0,0,0.5) 50%, transparent 78%);
+              mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 0%, rgba(0,0,0,0.5) 50%, transparent 78%); }
+    .block { position: absolute; left: 0; width: 1080px; top: 760px; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .num { font: italic 600 54px/1 "Cormorant"; color: var(--gold-lt); }
+    .lab { margin-top: 10px; }
+    .wordwrap { position: relative; margin-top: 18px; padding: 6px 10px; }
+    .word { font: 700 150px/1 "Cinzel"; letter-spacing: 0.05em; white-space: nowrap; filter: drop-shadow(0 6px 26px rgba(0,0,0,0.55)); }
+    .word.long { font-size: 112px; }
+    .word .ch { display: inline-block; }
+    .edge { position: absolute; top: -6px; bottom: -6px; width: 3px; left: 0; background: linear-gradient(180deg, rgba(230,205,148,0), var(--gold-lt), rgba(230,205,148,0)); box-shadow: 0 0 18px rgba(230,205,148,0.55); }
+    .rule { width: 420px; margin-top: 26px; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="8" data-width="1080" data-height="1920">
+    <div class="full shade clip" id="shade" data-start="0" data-duration="8" data-track-index="0"></div>
+    <svg class="pat clip" id="pat" data-start="0" data-duration="8" data-track-index="1" viewBox="0 0 900 520">
+      <defs>
+        <pattern id="khatam" width="90" height="90" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke="#c9a45c" stroke-width="1.1" transform="translate(45,45)">
+            <rect x="-24" y="-24" width="48" height="48" />
+            <rect x="-24" y="-24" width="48" height="48" transform="rotate(45)" />
+            <circle r="9" />
+          </g>
+          <path d="M0,45 H11 M79,45 H90 M45,0 V11 M45,79 V90" stroke="#c9a45c" stroke-width="1.1" />
+        </pattern>
+      </defs>
+      <rect id="patrect" x="0" y="0" width="900" height="520" fill="url(#khatam)" />
+    </svg>
+    <div class="block clip" id="block" data-start="0" data-duration="8" data-track-index="2">
+      <div class="num" id="num"></div>
+      <div class="label lab" id="lab"></div>
+      <div class="wordwrap" id="wrap"><div class="word goldfill" id="word"></div><i class="edge" id="edge"></i></div>
+      <div class="rule" id="rule"></div>
+    </div>
+  </div>
+  <script>
+    const V = window.__hyperframes.getVariables();
+    const dur = Number(V.dur), tw = Number(V.tWord), mood = V.mood;
+    document.getElementById("num").textContent = V.num;
+    document.getElementById("lab").textContent = V.label;
+    const w = document.getElementById("word");
+    if (V.word.length > 7) w.classList.add("long");
+    if (mood === "maaf") { w.classList.remove("goldfill"); V.word.split("").forEach((c) => { const s = document.createElement("span"); s.className = "ch goldfill"; s.textContent = c; w.appendChild(s); }); }
+    else w.textContent = V.word;
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#shade", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
+    tl.fromTo("#pat", { opacity: 0, scale: 1.06 }, { opacity: 0.16, scale: 1.0, duration: 1.4, ease: "power2.out" }, 0);
+    tl.fromTo("#num", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 0.0);
+    tl.fromTo("#lab", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 0.08);
+    gsap.set("#edge", { opacity: 0 });
+    if (mood === "puasa") {
+      tl.fromTo("#word", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "power3.inOut" }, tw);
+      tl.set("#edge", { opacity: 1 }, tw);
+      tl.fromTo("#edge", { x: 0 }, { x: () => document.getElementById("word").offsetWidth, duration: 0.7, ease: "power3.inOut" }, tw);
+      tl.to("#edge", { opacity: 0, duration: 0.2 }, tw + 0.7);
+    } else if (mood === "sabar") {
+      tl.fromTo("#word", { clipPath: "inset(0% 50% 0% 50%)", opacity: 0.4 }, { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.1, ease: "power2.inOut" }, tw);
+    } else {
+      tl.fromTo("#word .ch", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.out", stagger: 0.07 }, tw);
+    }
+    tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, tw + 0.25);
+    tl.to("#block", { opacity: 0, scale: 0.97, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, dur - 0.3);
+    tl.to(["#shade", "#pat"], { opacity: 0, duration: 0.3, ease: "power2.in" }, dur - 0.3);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>

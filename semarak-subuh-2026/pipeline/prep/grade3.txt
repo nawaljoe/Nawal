@@ -1,0 +1,1 @@
+eq=contrast=1.07:saturation=0.9:gamma=1.0,curves=master='0/0.035 0.22/0.19 0.5/0.505 0.78/0.81 1/0.97',colorbalance=rs=-0.05:gs=0.0:bs=0.05:rm=0.035:gm=0.005:bm=-0.025:rh=-0.01:gh=0.0:bh=0.015,selectivecolor=reds='0 0 0.04 0':yellows='0 -0.03 0.05 0':whites='0.02 0 -0.02 0':neutrals='0 0 0 0',vignette=angle=PI/5.5

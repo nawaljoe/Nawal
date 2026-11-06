@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ms" data-composition-variables='[
+  {"id":"label","type":"string","label":"Label","default":"HADIS QUDSI"},
+  {"id":"source","type":"string","label":"Sumber","default":"Riwayat al-Bukhari & Muslim"},
+  {"id":"lines","type":"string","label":"Lines JSON","default":"[{\"t\":0.25,\"text\":\"كُلُّ عَمَلِ ابْنِ آدَمَ لَهُ\"},{\"t\":2.2,\"text\":\"إِلَّا الصِّيَامَ\"},{\"t\":3.6,\"text\":\"فَإِنَّهُ لِي وَأَنَا أَجْزِي بِهِ\"}]"},
+  {"id":"dur","type":"number","label":"Duration","default":6.2}
+]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <link rel="stylesheet" href="common.css" />
+    
+    <style>
+      .dim { background: radial-gradient(ellipse 75% 45% at 50% 52%, rgba(4,6,10,0.55) 0%, rgba(4,6,10,0.25) 60%, rgba(4,6,10,0.12) 100%); }
+      .card { position: absolute; left: 70px; width: 940px; top: 760px; padding: 40px 44px 34px; border-radius: 30px;
+        background: linear-gradient(180deg, rgba(24,24,27,0.88) 0%, rgba(11,11,12,0.86) 100%);
+        border: 1.5px solid rgba(201,164,92,0.6);
+        box-shadow: 0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,240,205,0.12); text-align: center; }
+      .card .corner { position: absolute; width: 26px; height: 26px; border: 2px solid var(--gold); opacity: 0.9; }
+      .c1 { top: 14px; left: 14px; border-right: none; border-bottom: none; border-radius: 10px 0 0 0; }
+      .c2 { top: 14px; right: 14px; border-left: none; border-bottom: none; border-radius: 0 10px 0 0; }
+      .c3 { bottom: 14px; left: 14px; border-right: none; border-top: none; border-radius: 0 0 0 10px; }
+      .c4 { bottom: 14px; right: 14px; border-left: none; border-top: none; border-radius: 0 0 10px 0; }
+      .eyebrow { display: flex; align-items: center; justify-content: center; gap: 18px; }
+      .eyebrow .ln { height: 1.5px; width: 120px; background: linear-gradient(90deg, rgba(201,164,92,0), var(--gold)); }
+      .eyebrow .ln.r { background: linear-gradient(270deg, rgba(201,164,92,0), var(--gold)); }
+      .eyebrow span { display: inline-block; font: 600 22px "Montserrat"; letter-spacing: 0.45em; margin-right: -0.45em; color: var(--gold); }
+      .lines { margin-top: 22px; }
+      .line { font: 400 70px/1.75 "AmiriQuran"; color: #f5efe2; direction: rtl; text-shadow: 0 2px 16px rgba(0,0,0,0.5); }
+      .line .hl { position: absolute; }
+      .src { margin-top: 30px; font: 500 21px "Montserrat"; letter-spacing: 0.18em; color: rgba(251,247,238,0.66); }
+      .star { width: 22px; height: 22px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="12" data-width="1080" data-height="1920">
+      <div class="scrim dim clip" id="dim" data-start="0" data-duration="12" data-track-index="0"></div>
+      <div class="card clip" id="card" data-start="0" data-duration="12" data-track-index="1">
+        <i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+        <div class="eyebrow"><div class="ln"></div>
+          <svg class="star" viewBox="-50 -50 100 100"><g fill="#c9a45c"><rect x="-30" y="-30" width="60" height="60"/><rect x="-30" y="-30" width="60" height="60" transform="rotate(45)"/></g><circle r="13" fill="#18181b"/></svg>
+          <span id="label"></span>
+          <svg class="star" viewBox="-50 -50 100 100"><g fill="#c9a45c"><rect x="-30" y="-30" width="60" height="60"/><rect x="-30" y="-30" width="60" height="60" transform="rotate(45)"/></g><circle r="13" fill="#18181b"/></svg>
+          <div class="ln r"></div></div>
+        <div class="lines" id="lines"></div>
+        <div class="src" id="src"></div>
+      </div>
+    </div>
+    <script>
+      const V = window.__hyperframes.getVariables();
+      const lines = JSON.parse(V.lines); const dur = Number(V.dur);
+      document.getElementById("label").textContent = V.label;
+      document.getElementById("src").textContent = V.source;
+      const box = document.getElementById("lines");
+      lines.forEach((l, i) => { const d = document.createElement("div"); d.className = "line"; d.id = "l" + i; d.textContent = l.text; box.appendChild(d); });
+      const card = document.getElementById("card");
+      // vertically centre the card around y=1000 whatever the line count
+      card.style.top = (1000 - card.offsetHeight / 2) + "px";
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#dim", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" }, 0);
+      tl.fromTo("#card", { opacity: 0, scale: 0.9, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(1.5)" }, 0);
+      lines.forEach((l, i) => {
+        tl.fromTo("#l" + i, { opacity: 0, y: 26, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power3.out" }, Math.max(0.12, l.t));
+        tl.fromTo("#l" + i, { color: "#f5efe2" }, { color: "#e6cd94", duration: 0.25, ease: "none" }, Math.max(0.12, l.t));
+        const next = i + 1 < lines.length ? lines[i + 1].t : dur;
+        if (i + 1 < lines.length) tl.to("#l" + i, { color: "#f5efe2", opacity: 0.72, duration: 0.3, ease: "none" }, next);
+      });
+      tl.fromTo("#src", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0.5);
+      tl.to("#card", { opacity: 0, scale: 0.96, y: -26, filter: "blur(6px)", duration: 0.45, ease: "power2.in" }, dur - 0.45);
+      tl.to("#dim", { opacity: 0, duration: 0.45, ease: "power2.in" }, dur - 0.4);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

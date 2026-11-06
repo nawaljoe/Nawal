@@ -1,0 +1,17 @@
+/* Semarak Subuh 2026 — shared design tokens (Fared Khalid identity: black, charcoal, antique gold, warm white) */
+@font-face { font-family: "Cinzel"; src: url(assets/fonts/Cinzel-700.woff2) format("woff2"); font-weight: 400 900; }
+@font-face { font-family: "Montserrat"; src: url(assets/fonts/Montserrat-500.woff2) format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Cormorant"; src: url(assets/fonts/CormorantGaramond-500i.woff2) format("woff2"); font-style: italic; font-weight: 300 700; }
+@font-face { font-family: "AmiriQuran"; src: url(assets/fonts/AmiriQuran-arabic.woff2) format("woff2"); }
+:root {
+  --black: #0b0b0c; --charcoal: #18181b; --gold: #c9a45c; --gold-lt: #e6cd94; --gold-dk: #9b7a3c; --white: #f5efe2;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+#root { position: relative; width: 1080px; height: 1920px; }
+.full { position: absolute; inset: 0; }
+.label { font: 600 24px "Montserrat"; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; }
+.rule { height: 1.5px; background: linear-gradient(90deg, rgba(201,164,92,0), var(--gold) 30%, var(--gold) 70%, rgba(201,164,92,0)); }
+.goldfill { background: linear-gradient(180deg, #f7e6bd 0%, #e2c27d 42%, #b8893e 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.mask { overflow: hidden; display: block; }
+.mask > span { display: inline-block; }

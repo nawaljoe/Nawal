@@ -1,0 +1,20 @@
+{
+  "_rule": "Source-time captions. Only lines confirmed by multi-model ASR consensus (ms-turbo + large-v3, 2 audio versions, 4-8 hypotheses each). 'kw' words render in gold.",
+  "items": [
+    {"s": 6.42, "e": 8.62, "text": "Ibadah yang dipanggil puasa,", "kw": ["puasa"]},
+    {"s": 10.98, "e": 12.82, "text": "yang disebut dalam sebuah hadis:", "kw": ["hadis"]},
+    {"s": 21.38, "e": 23.6, "text": "Setiap amalan anak Adam pun, bagi dia,", "kw": []},
+    {"s": 23.95, "e": 26.3, "text": "kecuali namanya ibadah puasa.", "kw": ["puasa"]},
+    {"s": 37.13, "e": 38.92, "text": "Hadis ini sangat menarik.", "kw": []},
+    {"s": 39.37, "e": 42.25, "text": "Dan hadis ini dipanggil sebagai hadis qudsi.", "kw": ["hadis qudsi"]},
+    {"s": 62.95, "e": 65.15, "text": "Apa yang namanya? Bersabar.", "kw": ["bersabar"]},
+    {"s": 135.45, "e": 138.55, "text": "Dapat rezeki, dapat nikmat, sungguh baik.", "kw": ["rezeki", "nikmat"]},
+    {"s": 140.18, "e": 141.95, "text": "Dapat musibah, sama!", "kw": ["musibah"]},
+    {"s": 113.93, "e": 114.95, "text": "Yang ketiga,", "kw": []},
+    {"s": 118.3, "e": 121.2, "text": "kita boleh memaafkan orang lain,", "kw": ["memaafkan"]},
+    {"s": 121.85, "e": 124.15, "text": "dan terus melakukan kebaikan.", "kw": ["kebaikan"]},
+    {"s": 211.95, "e": 213.5, "text": "Maka, pada pagi ini,", "kw": []},
+    {"s": 216.85, "e": 219.25, "text": "untuk memberi semangat kepada kita", "kw": []},
+    {"s": 219.25, "e": 222.1, "text": "untuk terus melakukan kebaikan itu.", "kw": ["kebaikan"]}
+  ]
+}

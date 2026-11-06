@@ -1,0 +1,21 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# media (large / private) — see README "Media"
+public/scenes/
+public/broll/
+public/photos/
+public/voice/
+public/music/
+public/hf/
+public/outro.mp4
+.cache/
+hyperframes/test/
+hyperframes/.media/
+hyperframes/.hyperframes/
+hyperframes/renders/

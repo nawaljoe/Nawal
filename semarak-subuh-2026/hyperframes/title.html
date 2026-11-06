@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- SCENE 2 — programme + topic title. A khatam star draws itself, "3 AMALAN" rises through a mask,
+     the subtitle resolves, then everything clears in one move. -->
+<html lang="ms" data-composition-variables='[
+  {"id":"dur","type":"number","label":"Duration","default":3.9}
+]'>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <script src="gsap.min.js"></script>
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    .shade { background: radial-gradient(ellipse 85% 40% at 50% 50%, rgba(11,11,12,0.78) 0%, rgba(11,11,12,0.5) 55%, rgba(11,11,12,0.15) 100%); }
+    .block { position: absolute; left: 0; width: 1080px; top: 640px; height: 620px; display: flex; flex-direction: column; align-items: center; }
+    .star { width: 92px; height: 92px; }
+    .star path { fill: none; stroke: var(--gold); stroke-width: 2.2; }
+    .prog { margin-top: 26px; }
+    .big { margin-top: 18px; font: 700 138px/1 "Cinzel"; letter-spacing: 0.03em; }
+    .big .n { font-size: 160px; margin-right: 20px; }
+    .sub { margin-top: 18px; font: italic 600 52px/1.15 "Cormorant"; color: var(--white); text-align: center; }
+    .rule { width: 600px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+    <div class="full shade clip" id="shade" data-start="0" data-duration="5" data-track-index="0"></div>
+    <div class="block clip" id="block" data-start="0" data-duration="5" data-track-index="1">
+      <svg class="star" viewBox="-50 -50 100 100">
+        <path id="sq1" d="M-34,-34 H34 V34 H-34 Z" />
+        <path id="sq2" d="M0,-48 L48,0 L0,48 L-48,0 Z" />
+        <path id="ring" d="M0,-14 A14,14 0 1,1 -0.01,-14" />
+      </svg>
+      <div class="label prog" id="prog">Program Semarak Subuh Johor 2026</div>
+      <div class="mask" style="padding:6px 0"><span class="big goldfill" id="big"><span class="n">3</span>AMALAN</span></div>
+      <div class="mask"><span class="sub" id="sub">yang tidak terhitung banyaknya</span></div>
+      <div class="rule" id="rule"></div>
+    </div>
+  </div>
+  <script>
+    const dur = Number(window.__hyperframes.getVariables().dur);
+    const tl = gsap.timeline({ paused: true });
+    ["#sq1", "#sq2", "#ring"].forEach((id) => { const p = document.querySelector(id); const L = p.getTotalLength(); gsap.set(p, { strokeDasharray: L, strokeDashoffset: L }); });
+    tl.fromTo("#shade", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" }, 0);
+    tl.to(["#sq1", "#sq2"], { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut", stagger: 0.12 }, 0.05);
+    tl.to("#ring", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 0.45);
+    tl.fromTo("#prog", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0.25);
+    tl.fromTo("#big", { yPercent: 100 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 0.4);
+    tl.fromTo("#sub", { yPercent: 110 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, 0.8);
+    tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 0.9);
+    tl.to("#block", { opacity: 0, y: -20, filter: "blur(8px)", duration: 0.32, ease: "power3.in" }, dur - 0.32);
+    tl.to("#shade", { opacity: 0, duration: 0.32, ease: "power2.in" }, dur - 0.3);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>

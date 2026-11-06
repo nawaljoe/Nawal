@@ -1,0 +1,236 @@
+{
+ "s3_puasa": {
+  "frames": 621,
+  "parts": [
+   {
+    "src": [
+     5.9,
+     6.3
+    ],
+    "frame": 0,
+    "frames": 12,
+    "muted": true
+   },
+   {
+    "src": [
+     6.3,
+     8.733333333333333
+    ],
+    "frame": 12,
+    "frames": 73,
+    "muted": false
+   },
+   {
+    "src": [
+     10.933333333333334,
+     12.833333333333334
+    ],
+    "frame": 85,
+    "frames": 57,
+    "muted": false
+   },
+   {
+    "src": [
+     13.266666666666667,
+     15.466666666666667
+    ],
+    "frame": 142,
+    "frames": 66,
+    "muted": false
+   },
+   {
+    "src": [
+     17.433333333333334,
+     18.733333333333334
+    ],
+    "frame": 208,
+    "frames": 39,
+    "muted": false
+   },
+   {
+    "src": [
+     19.0,
+     21.266666666666666
+    ],
+    "frame": 247,
+    "frames": 68,
+    "muted": false
+   },
+   {
+    "src": [
+     21.333333333333332,
+     26.333333333333332
+    ],
+    "frame": 315,
+    "frames": 150,
+    "muted": false
+   },
+   {
+    "src": [
+     37.1,
+     38.93333333333333
+    ],
+    "frame": 465,
+    "frames": 55,
+    "muted": false
+   },
+   {
+    "src": [
+     39.333333333333336,
+     42.3
+    ],
+    "frame": 520,
+    "frames": 89,
+    "muted": false
+   },
+   {
+    "src": [
+     42.3,
+     42.7
+    ],
+    "frame": 609,
+    "frames": 12,
+    "muted": true
+   }
+  ]
+ },
+ "s4_sabar": {
+  "frames": 255,
+  "parts": [
+   {
+    "src": [
+     62.1,
+     62.5
+    ],
+    "frame": 0,
+    "frames": 12,
+    "muted": true
+   },
+   {
+    "src": [
+     62.5,
+     65.2
+    ],
+    "frame": 12,
+    "frames": 81,
+    "muted": false
+   },
+   {
+    "src": [
+     135.43333333333334,
+     138.6
+    ],
+    "frame": 93,
+    "frames": 95,
+    "muted": false
+   },
+   {
+    "src": [
+     140.16666666666666,
+     142.0
+    ],
+    "frame": 188,
+    "frames": 55,
+    "muted": false
+   },
+   {
+    "src": [
+     142.0,
+     142.4
+    ],
+    "frame": 243,
+    "frames": 12,
+    "muted": true
+   }
+  ]
+ },
+ "s5_maaf": {
+  "frames": 233,
+  "parts": [
+   {
+    "src": [
+     113.5,
+     113.9
+    ],
+    "frame": 0,
+    "frames": 12,
+    "muted": true
+   },
+   {
+    "src": [
+     113.9,
+     114.93333333333334
+    ],
+    "frame": 12,
+    "frames": 31,
+    "muted": false
+   },
+   {
+    "src": [
+     118.26666666666667,
+     124.2
+    ],
+    "frame": 43,
+    "frames": 178,
+    "muted": false
+   },
+   {
+    "src": [
+     124.2,
+     124.6
+    ],
+    "frame": 221,
+    "frames": 12,
+    "muted": true
+   }
+  ]
+ },
+ "s6_tutup": {
+  "frames": 235,
+  "parts": [
+   {
+    "src": [
+     211.5,
+     211.9
+    ],
+    "frame": 0,
+    "frames": 12,
+    "muted": true
+   },
+   {
+    "src": [
+     211.9,
+     213.53333333333333
+    ],
+    "frame": 12,
+    "frames": 49,
+    "muted": false
+   },
+   {
+    "src": [
+     216.73333333333332,
+     222.13333333333333
+    ],
+    "frame": 61,
+    "frames": 162,
+    "muted": false
+   },
+   {
+    "src": [
+     222.13333333333333,
+     222.53333333333333
+    ],
+    "frame": 223,
+    "frames": 12,
+    "muted": true
+   }
+  ]
+ },
+ "openingVoice": {
+  "src": [
+   0.2,
+   3.2666666666666666
+  ],
+  "frames": 92
+ }
+}

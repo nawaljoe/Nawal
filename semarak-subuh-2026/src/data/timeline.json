@@ -1,0 +1,677 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "total": 1868,
+ "order": [
+  "s1_open",
+  "s2_title",
+  "s3_puasa",
+  "s4_sabar",
+  "s5_maaf",
+  "s6_tutup",
+  "s7_closing",
+  "s8_outro"
+ ],
+ "scenes": {
+  "s1_open": {
+   "start": 0,
+   "dur": 150,
+   "transitionIn": null,
+   "overlays": [
+    {
+     "src": "hf/opening.webm",
+     "from": 0,
+     "dur": 147
+    }
+   ],
+   "broll": [],
+   "captions": [],
+   "segs": []
+  },
+  "s2_title": {
+   "start": 150,
+   "dur": 117,
+   "transitionIn": [
+    "lightleak",
+    36
+   ],
+   "overlays": [
+    {
+     "src": "hf/title.webm",
+     "from": 0,
+     "dur": 116
+    }
+   ],
+   "broll": [],
+   "captions": [],
+   "segs": []
+  },
+  "s3_puasa": {
+   "start": 252,
+   "dur": 621,
+   "transitionIn": [
+    "dissolve",
+    15
+   ],
+   "overlays": [
+    {
+     "src": "hf/kw_puasa.webm",
+     "from": 13,
+     "dur": 96
+    },
+    {
+     "src": "hf/ayat_qudsi.webm",
+     "from": 138,
+     "dur": 181
+    }
+   ],
+   "broll": [
+    {
+     "from": 85,
+     "to": 142,
+     "kind": "video",
+     "src": "broll/b01.mp4",
+     "at": 1.0,
+     "rate": 0.85
+    },
+    {
+     "from": 465,
+     "to": 521,
+     "kind": "video",
+     "src": "broll/b06.mp4",
+     "at": 0.6,
+     "rate": 0.8
+    }
+   ],
+   "captions": [
+    {
+     "from": 16,
+     "to": 82,
+     "text": "Ibadah yang dipanggil puasa,",
+     "kw": [
+      "puasa"
+     ]
+    },
+    {
+     "from": 86,
+     "to": 142,
+     "text": "yang disebut dalam sebuah hadis:",
+     "kw": [
+      "hadis"
+     ]
+    },
+    {
+     "from": 316,
+     "to": 383,
+     "text": "Setiap amalan anak Adam pun, bagi dia,",
+     "kw": []
+    },
+    {
+     "from": 394,
+     "to": 464,
+     "text": "kecuali namanya ibadah puasa.",
+     "kw": [
+      "puasa"
+     ]
+    },
+    {
+     "from": 466,
+     "to": 520,
+     "text": "Hadis ini sangat menarik.",
+     "kw": []
+    },
+    {
+     "from": 521,
+     "to": 607,
+     "text": "Dan hadis ini dipanggil sebagai hadis qudsi.",
+     "kw": [
+      "hadis qudsi"
+     ]
+    }
+   ],
+   "segs": [
+    {
+     "from": 0,
+     "to": 12,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 12,
+     "to": 85,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 85,
+     "to": 142,
+     "s0": 1.06,
+     "s1": 1.078
+    },
+    {
+     "from": 142,
+     "to": 208,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 208,
+     "to": 247,
+     "s0": 1.06,
+     "s1": 1.078
+    },
+    {
+     "from": 247,
+     "to": 315,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 315,
+     "to": 465,
+     "s0": 1.0,
+     "s1": 1.085
+    },
+    {
+     "from": 465,
+     "to": 520,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 520,
+     "to": 609,
+     "s0": 1.06,
+     "s1": 1.078
+    },
+    {
+     "from": 609,
+     "to": 621,
+     "s0": 1.0,
+     "s1": 1.018
+    }
+   ]
+  },
+  "s4_sabar": {
+   "start": 857,
+   "dur": 255,
+   "transitionIn": [
+    "linearBlur",
+    16
+   ],
+   "overlays": [
+    {
+     "src": "hf/kw_sabar.webm",
+     "from": 13,
+     "dur": 89
+    }
+   ],
+   "broll": [
+    {
+     "from": 93,
+     "to": 198,
+     "kind": "photo",
+     "src": "photos/p36.jpg",
+     "fx": 0.42,
+     "move": "push",
+     "holdOut": true
+    },
+    {
+     "from": 188,
+     "to": 255,
+     "kind": "photo",
+     "src": "photos/p09.jpg",
+     "fx": 0.6,
+     "move": "pull",
+     "holdOut": true
+    }
+   ],
+   "captions": [
+    {
+     "from": 26,
+     "to": 92,
+     "text": "Apa yang namanya? Bersabar.",
+     "kw": [
+      "bersabar"
+     ]
+    },
+    {
+     "from": 93,
+     "to": 187,
+     "text": "Dapat rezeki, dapat nikmat, sungguh baik.",
+     "kw": [
+      "rezeki",
+      "nikmat"
+     ]
+    },
+    {
+     "from": 188,
+     "to": 241,
+     "text": "Dapat musibah, sama!",
+     "kw": [
+      "musibah"
+     ]
+    }
+   ],
+   "segs": [
+    {
+     "from": 0,
+     "to": 12,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 12,
+     "to": 93,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 93,
+     "to": 188,
+     "s0": 1.045,
+     "s1": 1.063
+    },
+    {
+     "from": 188,
+     "to": 243,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 243,
+     "to": 255,
+     "s0": 1.045,
+     "s1": 1.063
+    }
+   ]
+  },
+  "s5_maaf": {
+   "start": 1092,
+   "dur": 233,
+   "transitionIn": [
+    "fade",
+    20
+   ],
+   "overlays": [
+    {
+     "src": "hf/kw_maaf.webm",
+     "from": 19,
+     "dur": 94
+    }
+   ],
+   "broll": [
+    {
+     "from": 43,
+     "to": 147,
+     "kind": "photo",
+     "src": "photos/p05.jpg",
+     "fx": 0.3,
+     "move": "push",
+     "holdOut": true
+    },
+    {
+     "from": 137,
+     "to": 233,
+     "kind": "video",
+     "src": "broll/b02.mp4",
+     "at": 0.3,
+     "rate": 0.8,
+     "holdOut": true
+    }
+   ],
+   "captions": [
+    {
+     "from": 13,
+     "to": 43,
+     "text": "Yang ketiga,",
+     "kw": []
+    },
+    {
+     "from": 44,
+     "to": 131,
+     "text": "kita boleh memaafkan orang lain,",
+     "kw": [
+      "memaafkan"
+     ]
+    },
+    {
+     "from": 150,
+     "to": 220,
+     "text": "dan terus melakukan kebaikan.",
+     "kw": [
+      "kebaikan"
+     ]
+    }
+   ],
+   "segs": [
+    {
+     "from": 0,
+     "to": 12,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 12,
+     "to": 43,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 43,
+     "to": 221,
+     "s0": 1.045,
+     "s1": 1.063
+    },
+    {
+     "from": 221,
+     "to": 233,
+     "s0": 1.0,
+     "s1": 1.018
+    }
+   ]
+  },
+  "s6_tutup": {
+   "start": 1309,
+   "dur": 235,
+   "transitionIn": [
+    "blurSlide",
+    16
+   ],
+   "overlays": [],
+   "broll": [
+    {
+     "from": 0,
+     "to": 62,
+     "kind": "video",
+     "src": "broll/b05.mp4",
+     "at": 0.4,
+     "rate": 0.85,
+     "holdIn": true
+    },
+    {
+     "from": 137,
+     "to": 235,
+     "kind": "video",
+     "src": "broll/b08.mp4",
+     "at": 0.5,
+     "rate": 0.8,
+     "holdOut": true
+    }
+   ],
+   "captions": [
+    {
+     "from": 13,
+     "to": 60,
+     "text": "Maka, pada pagi ini,",
+     "kw": []
+    },
+    {
+     "from": 65,
+     "to": 137,
+     "text": "untuk memberi semangat kepada kita",
+     "kw": []
+    },
+    {
+     "from": 137,
+     "to": 222,
+     "text": "untuk terus melakukan kebaikan itu.",
+     "kw": [
+      "kebaikan"
+     ]
+    }
+   ],
+   "segs": [
+    {
+     "from": 0,
+     "to": 12,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 12,
+     "to": 61,
+     "s0": 1.0,
+     "s1": 1.018
+    },
+    {
+     "from": 61,
+     "to": 223,
+     "s0": 1.06,
+     "s1": 1.078
+    },
+    {
+     "from": 223,
+     "to": 235,
+     "s0": 1.0,
+     "s1": 1.018
+    }
+   ]
+  },
+  "s7_closing": {
+   "start": 1526,
+   "dur": 162,
+   "transitionIn": [
+    "dissolve",
+    18
+   ],
+   "overlays": [
+    {
+     "src": "hf/closing.webm",
+     "from": 0,
+     "dur": 156
+    }
+   ],
+   "broll": [],
+   "captions": [],
+   "segs": []
+  },
+  "s8_outro": {
+   "start": 1673,
+   "dur": 195,
+   "transitionIn": [
+    "fade",
+    15
+   ],
+   "overlays": [],
+   "broll": [],
+   "captions": [],
+   "segs": []
+  }
+ },
+ "openingVoice": {
+  "from": 30,
+  "dur": 92
+ },
+ "sfx": [
+  {
+   "src": "sfx/whoosh-cinematic.mp3",
+   "from": 82,
+   "vol": 0.42
+  },
+  {
+   "src": "sfx/impact-bass-1.mp3",
+   "from": 167,
+   "vol": 0.32
+  },
+  {
+   "src": "sfx/whoosh-short.mp3",
+   "from": 255,
+   "vol": 0.3
+  },
+  {
+   "src": "sfx/riser.mp3",
+   "from": 206,
+   "vol": 0.12
+  },
+  {
+   "src": "sfx/whoosh-low.mp3",
+   "from": 774,
+   "vol": 0.38
+  },
+  {
+   "src": "sfx/riser.mp3",
+   "from": 818,
+   "vol": 0.14
+  },
+  {
+   "src": "sfx/whoosh-short.mp3",
+   "from": 1098,
+   "vol": 0.26
+  },
+  {
+   "src": "sfx/whoosh-cinematic.mp3",
+   "from": 1243,
+   "vol": 0.3
+  },
+  {
+   "src": "sfx/riser.mp3",
+   "from": 1437,
+   "vol": 0.3
+  },
+  {
+   "src": "sfx/impact-swell.mp3",
+   "from": 1481,
+   "vol": 0.34
+  },
+  {
+   "src": "sfx/impact-swell.mp3",
+   "from": 0,
+   "vol": 0.38,
+   "trimBefore": 51
+  }
+ ],
+ "speech": [
+  [
+   30,
+   122
+  ],
+  [
+   264,
+   337
+  ],
+  [
+   337,
+   394
+  ],
+  [
+   394,
+   460
+  ],
+  [
+   460,
+   499
+  ],
+  [
+   499,
+   567
+  ],
+  [
+   567,
+   717
+  ],
+  [
+   717,
+   772
+  ],
+  [
+   772,
+   861
+  ],
+  [
+   869,
+   950
+  ],
+  [
+   950,
+   1045
+  ],
+  [
+   1045,
+   1100
+  ],
+  [
+   1104,
+   1135
+  ],
+  [
+   1135,
+   1313
+  ],
+  [
+   1321,
+   1370
+  ],
+  [
+   1370,
+   1532
+  ]
+ ],
+ "music": {
+  "src": "music/bed.wav",
+  "to": 1693,
+  "env": [
+   [
+    0,
+    0.55
+   ],
+   [
+    24,
+    0.55
+   ],
+   [
+    34,
+    0.3
+   ],
+   [
+    122,
+    0.3
+   ],
+   [
+    150,
+    0.85
+   ],
+   [
+    256,
+    0.85
+   ],
+   [
+    268,
+    0.3
+   ],
+   [
+    853,
+    0.3
+   ],
+   [
+    871,
+    0.4
+   ],
+   [
+    1102,
+    0.4
+   ],
+   [
+    1118,
+    0.3
+   ],
+   [
+    1520,
+    0.3
+   ],
+   [
+    1536,
+    0.85
+   ],
+   [
+    1673,
+    0.68
+   ],
+   [
+    1693,
+    0.0
+   ]
+  ]
+ }
+}

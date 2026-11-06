@@ -1,0 +1,15 @@
+{
+  "video": "/home/user/work/main/graded.mp4",
+  "voice": "/home/user/work/main/a_final.wav",
+  "openingVoice": [0.2, 3.25],
+  "scenes": [
+    {"id": "s3_puasa", "pieces": [[6.3, 8.75], [10.95, 12.84], [13.28, 15.48], [17.42, 18.75], [19.0, 21.25], [21.35, 26.35], [37.1, 38.95], [39.35, 42.3]]},
+    {"id": "s4_sabar", "pieces": [[62.5, 65.2], [135.42, 138.6], [140.16, 142.0]]},
+    {"id": "s5_maaf", "pieces": [[113.9, 114.95], [118.28, 124.2]]},
+    {"id": "s6_tutup", "pieces": [[211.9, 213.55], [216.75, 222.12]]}
+  ],
+  "notes": {
+    "removed": "16.6-17.42 throat-clear; 26.88-36.36 repeated hadith + unverified translation; 138.6-140.16 repeated 'dapat'; 213.55-216.75 unclear words + throat-clear; first ordinal word at 62.5 is uncaptioned (unclear)",
+    "captions": "Only lines with multi-model ASR consensus are captioned (see captions.json)"
+  }
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- SCENE 1 — opening statement: "Ada amalan yang ganjarannya tidak terhitung..."
+     Lines are revealed through masks; "tidak terhitung" lands in gold on the ustaz's own words. -->
+<html lang="ms" data-composition-variables='[
+  {"id":"t1","type":"number","label":"Line 1 reveal","default":0.15},
+  {"id":"t2","type":"number","label":"Line 2 reveal","default":0.75},
+  {"id":"t3","type":"number","label":"Gold line reveal (spoken: tidak terhitung)","default":1.6},
+  {"id":"dur","type":"number","label":"Duration","default":5.0}
+]'>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <script src="gsap.min.js"></script>
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    .shade { background: linear-gradient(180deg, rgba(11,11,12,0) 30%, rgba(11,11,12,0.55) 52%, rgba(11,11,12,0.7) 68%, rgba(11,11,12,0) 92%); }
+    .block { position: absolute; left: 0; width: 1080px; top: 880px; text-align: center; }
+    .l1, .l2 { font: italic 600 74px/1.12 "Cormorant"; color: var(--white); text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
+    .l3 { margin-top: 14px; font: 700 84px/1.1 "Cinzel"; letter-spacing: 0.03em; filter: drop-shadow(0 6px 24px rgba(0,0,0,0.55)); }
+    .rule { width: 520px; margin: 34px auto 0; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="6" data-width="1080" data-height="1920">
+    <div class="full shade clip" id="shade" data-start="0" data-duration="6" data-track-index="0"></div>
+    <div class="block clip" id="block" data-start="0" data-duration="6" data-track-index="1">
+      <div class="mask"><span class="l1" id="l1">Ada amalan</span></div>
+      <div class="mask"><span class="l2" id="l2">yang ganjarannya</span></div>
+      <div class="mask" style="padding-bottom:8px"><span class="l3 goldfill" id="l3">tidak terhitung…</span></div>
+      <div class="rule" id="rule"></div>
+    </div>
+  </div>
+  <script>
+    const V = window.__hyperframes.getVariables();
+    const t1 = Number(V.t1), t2 = Number(V.t2), t3 = Number(V.t3), dur = Number(V.dur);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#shade", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+    // masked rise: text travels up from below its own mask edge
+    tl.fromTo("#l1", { yPercent: 105 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, t1);
+    tl.fromTo("#l2", { yPercent: 105 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, t2);
+    tl.fromTo("#l3", { yPercent: 110, filter: "blur(6px)" }, { yPercent: 0, filter: "blur(0px)", duration: 0.85, ease: "expo.out" }, t3);
+    tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "power2.inOut" }, t3 + 0.25);
+    // exit: blur-out, short and clean
+    tl.to("#block", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, dur - 0.3);
+    tl.to("#shade", { opacity: 0, duration: 0.3, ease: "power2.in" }, dur - 0.3);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>

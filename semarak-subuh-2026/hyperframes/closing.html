@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- SCENE 6 — the three keywords come together, then one reflection line drawn from the ustaz's
+     closing words ("...untuk terus melakukan kebaikan"). Lands on the riser's peak. -->
+<html lang="ms" data-composition-variables='[
+  {"id":"reflect","type":"string","label":"Reflection line","default":"Teruskan melakukan kebaikan."},
+  {"id":"dur","type":"number","label":"Duration","default":5.2}
+]'>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <script src="gsap.min.js"></script>
+  <link rel="stylesheet" href="common.css" />
+  <style>
+    .shade { background: radial-gradient(ellipse 95% 38% at 50% 50%, rgba(11,11,12,0.82) 0%, rgba(11,11,12,0.55) 60%, rgba(11,11,12,0.2) 100%); }
+    .block { position: absolute; left: 0; width: 1080px; top: 620px; height: 680px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .top { margin-bottom: 30px; }
+    .row { display: flex; align-items: center; gap: 22px; }
+    .kw { font: 700 50px/1 "Cinzel"; letter-spacing: 0.02em; display: inline-block; }
+    .sep { width: 1.5px; height: 50px; background: linear-gradient(180deg, rgba(201,164,92,0), var(--gold), rgba(201,164,92,0)); }
+    .rule { width: 680px; margin-top: 38px; }
+    .reflect { margin-top: 34px; font: italic 600 64px/1.15 "Cormorant"; color: var(--white); text-shadow: 0 4px 26px rgba(0,0,0,0.6); }
+    .reflect .w { display: inline-block; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="7" data-width="1080" data-height="1920">
+    <div class="full shade clip" id="shade" data-start="0" data-duration="7" data-track-index="0"></div>
+    <div class="block clip" id="block" data-start="0" data-duration="7" data-track-index="1">
+      <div class="label top" id="top" style="letter-spacing:0.32em;font-size:22px">3 Amalan Tidak Terhitung</div>
+      <div class="row">
+        <div class="mask"><span class="kw goldfill" id="k1">PUASA</span></div><i class="sep" id="s1"></i>
+        <div class="mask"><span class="kw goldfill" id="k2">SABAR</span></div><i class="sep" id="s2"></i>
+        <div class="mask"><span class="kw goldfill" id="k3">MEMAAFKAN</span></div>
+      </div>
+      <div class="rule" id="rule"></div>
+      <div class="reflect" id="reflect"></div>
+    </div>
+  </div>
+  <script>
+    const V = window.__hyperframes.getVariables(); const dur = Number(V.dur);
+    const r = document.getElementById("reflect");
+    V.reflect.split(" ").forEach((x, i, a) => { const s = document.createElement("span"); s.className = "w"; s.textContent = x + (i < a.length - 1 ? " " : ""); r.appendChild(s); });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#shade", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#top", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 0.1);
+    ["#k1", "#k2", "#k3"].forEach((id, i) => tl.fromTo(id, { yPercent: 105 }, { yPercent: 0, duration: 0.7, ease: "expo.out" }, 0.3 + i * 0.32));
+    tl.fromTo(["#s1", "#s2"], { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out", stagger: 0.32 }, 0.55);
+    tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 1.25);
+    tl.fromTo("#reflect .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out", stagger: 0.09 }, 1.65);
+    tl.to("#block", { opacity: 0, filter: "blur(8px)", duration: 0.35, ease: "power2.in" }, dur - 0.35);
+    tl.to("#shade", { opacity: 0, duration: 0.35, ease: "power2.in" }, dur - 0.3);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>
