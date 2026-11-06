@@ -1,7 +1,8 @@
 import React from "react";
-import { Audio } from "@remotion/media";
+import { Audio, Video } from "@remotion/media";
 import { AbsoluteFill, interpolate, Sequence, staticFile } from "remotion";
 import { Background } from "./components/Background";
+import { BrandOverlay } from "./components/BrandOverlay";
 import { Subtitles } from "./components/Subtitles";
 import { Scene1Hook } from "./scenes/Scene1Hook";
 import { Scene2Story } from "./scenes/Scene2Story";
@@ -49,8 +50,26 @@ export const ZakatVideo: React.FC = () => {
         <Scene5Cta />
       </Sequence>
       <Subtitles />
+      <BrandOverlay />
       <Audio name="Voice-over" src={staticFile("audio/vo.wav")} volume={1} />
       <Audio name="Music" src={staticFile("audio/music.wav")} volume={musicVolume} />
     </AbsoluteFill>
   );
 };
+
+/** Outro supplied by the client (10 s, already 1080x1920 @ 30 fps). */
+export const OUTRO_FRAMES = 10 * FPS;
+/** -4.8 dB so the outro sits at the same loudness as the main mix. */
+const OUTRO_VOLUME = 0.58;
+
+/** Full upload: the 60-second video followed by the Fared Khalid outro. */
+export const ZakatVideoWithOutro: React.FC = () => (
+  <AbsoluteFill style={{ backgroundColor: "white" }}>
+    <Sequence name="Zakat video" durationInFrames={60 * FPS}>
+      <ZakatVideo />
+    </Sequence>
+    <Sequence name="FK outro" from={60 * FPS} durationInFrames={OUTRO_FRAMES}>
+      <Video src={staticFile("brand/fk-outro.mp4")} volume={OUTRO_VOLUME} />
+    </Sequence>
+  </AbsoluteFill>
+);

@@ -17,7 +17,7 @@ const GROUND = 1300;
 const ZakatTitle: React.FC<{ frame: number; at: number; dockAt: number }> = ({ frame, at, dockAt }) => {
   const dock = settle(frame, dockAt, 20);
   const letters = "ZAKAT".split("");
-  const top = 500 + (250 - 500) * dock;
+  const top = 520 + (290 - 520) * dock;
   const size = 260 + (150 - 260) * dock;
   const line = tween(frame, [at + 10, at + 24], [0, 1]);
   return (
@@ -193,7 +193,7 @@ export const Scene3Twist: React.FC = () => {
         </Camera>
 
         <ZakatTitle frame={frame} at={fZakat - 2} dockAt={fKita} />
-        <div style={{ position: "absolute", top: 450, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
+        <div style={{ position: "absolute", top: 500, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
           {frame >= fRezeki - 2 && frame < fPendapatan && (
             <MaskReveal at={fRezeki - 2} out={fPendapatan - 10}>
               <div style={{ fontFamily: BODY, fontWeight: 700, fontSize: 52, color: C.blue, textAlign: "center" }}>

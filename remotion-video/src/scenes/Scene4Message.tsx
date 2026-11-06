@@ -169,7 +169,7 @@ export const Scene4Message: React.FC = () => {
         </Camera>
 
         {/* headline area */}
-        <div style={{ position: "absolute", top: 230, left: 80, right: 160, display: "flex", justifyContent: "center", opacity: 1 - dimTop }}>
+        <div style={{ position: "absolute", top: 290, left: 80, right: 160, display: "flex", justifyContent: "center", opacity: 1 - dimTop }}>
           {frame < fTapi && <PopWords text="Sibuk *MENGIRA..." times={[fSibuk, cue(S, "mengira")]} size={96} out={fTapi - 6} />}
           <KeyWord frame={frame} at={fTapi + 2} out={fWajib - 8} text="AMANAH" />
           <KeyWord frame={frame} at={fWajib - 2} out={fZakat - 8} text="WAJIB" gold />
@@ -181,7 +181,7 @@ export const Scene4Message: React.FC = () => {
           </div>
         )}
         {frame >= fBukan - 2 && (
-          <div style={{ position: "absolute", top: 230, left: 80, right: 160, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+          <div style={{ position: "absolute", top: 290, left: 80, right: 160, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
             <StrikeText text="Bukan tunggu ada lebihan" at={fBukan - 2} strikeAt={fLebih + 4} size={54} />
             <StrikeText text="Bukan tunggu rasa senang" at={fBukan2 - 2} strikeAt={fSenang + 2} size={54} />
           </div>

@@ -9,8 +9,11 @@ dengan **Remotion** (React) — boleh disunting semula sepenuhnya.
 ```console
 npm i                                   # pasang dependensi
 npm run dev                             # Remotion Studio (pratonton & sunting)
-npm run render                          # render akhir -> out/zakat-tiktok.mp4
+npm run render                          # 60 s      -> out/zakat-tiktok.mp4
+npm run render:outro                    # 60 s + outro FK 10 s -> out/zakat-tiktok-dengan-outro.mp4
 ```
+
+Fail siap: `deliverables/zakat-tiktok-60s.mp4` dan `deliverables/zakat-tiktok-70s-dengan-outro.mp4`.
 
 Studio memaparkan komposisi `ZakatVideo` (video penuh) dan folder `Scenes/` dengan
 setiap babak sebagai komposisi tersendiri (connected compositions).
@@ -31,6 +34,7 @@ jadi masa visual ikut secara automatik.
 ```
 src/
   ZakatVideo.tsx          video penuh: 5 babak + sari kata + VO + muzik (ducking automatik)
+                          + ZakatVideoWithOutro (60 s + outro FK)
   Root.tsx                pendaftaran komposisi
   theme.ts                palet 4 warna, font, safe zone TikTok
   timing.ts / timing.json masa babak & perkataan (dijana oleh prepare_vo.py)
@@ -67,9 +71,14 @@ assets/voiceover-original.m4a   rakaman asal
 
 Tiada audio pihak ketiga digunakan, jadi tiada isu hak cipta semasa muat naik.
 
-## Nota
+## Aset jenama (`public/brand/`)
 
-- Identiti MAINJ pada end card ialah *wordmark* tipografi (`MainjBadge` dalam
-  `scenes/Scene5Cta.tsx`). Untuk logo rasmi, letak fail di `public/brand/mainj-logo.png`
-  dan hantar `logo="brand/mainj-logo.png"` kepada `MainjBadge`.
+- `mainj-logo.png` — logo rasmi MAINJ (end card & skrin telefon pembayaran).
+- `overlay-johor-fk.png` — overlay telus 9:16 (jata Johor + Maju Johor di atas,
+  tera air Fared Khalid) dipaparkan sepanjang video oleh `components/BrandOverlay.tsx`.
+  Tajuk bermula pada y = 290 px supaya tidak bertindih dengan logo.
+- `fk-outro.mp4` — outro 10 s, disambung selepas video dalam komposisi
+  `ZakatVideoWithOutro` (volum 0.58 supaya sama kuat dengan video utama).
+
+## Nota
 - Skrin pembayaran menunjukkan contoh RM 106.25 (2.5% daripada gaji contoh RM 4,250).

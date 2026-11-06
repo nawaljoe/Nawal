@@ -33,7 +33,8 @@
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
     "render": "remotion render ZakatVideo out/zakat-raw.mp4 --codec=h264 --crf=18 && bash scripts/master.sh out/zakat-raw.mp4 out/zakat-tiktok.mp4",
-    "audio": "python3 scripts/prepare_vo.py && python3 scripts/make_audio.py"
+    "audio": "python3 scripts/prepare_vo.py && python3 scripts/make_audio.py",
+    "render:outro": "remotion render ZakatVideoWithOutro out/zakat-outro-raw.mp4 --codec=h264 --crf=18 && bash scripts/master.sh out/zakat-outro-raw.mp4 out/zakat-tiktok-dengan-outro.mp4 70"
   },
   "allowScripts": {
     "esbuild": false

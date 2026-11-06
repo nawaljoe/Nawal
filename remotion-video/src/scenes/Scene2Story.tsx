@@ -258,7 +258,7 @@ export const Scene2Story: React.FC = () => {
           </Stage>
         </Camera>
 
-        <div style={{ position: "absolute", top: 230, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
+        <div style={{ position: "absolute", top: 290, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
           {live < fKita && <PopWords text="Tapi... pelik juga kan?" times={[fTapi, cue(S, "pelik"), cue(S, "juga"), cue(S, "kan...")]} size={84} out={fKita - 8} />}
           {live >= fKita && live < fTapi2 && (
             <PopWords text="Ingat semua *KOMITMEN" times={[fKita, cue(S, "ingat"), fKomit]} size={84} out={fTapi2 - 8} />

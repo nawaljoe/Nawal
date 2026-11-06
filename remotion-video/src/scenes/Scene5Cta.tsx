@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
-import { bob, pop, settle, tween } from "../anim";
+import { bob, pop, tween } from "../anim";
 import { BookIcon, Burst, CheckIcon, FoodIcon, ZakatIcon } from "../components/Icons";
 import { Camera, Ground, SceneShell, Stage } from "../components/SceneShell";
 import { Sfx } from "../components/Sfx";
@@ -13,48 +13,29 @@ import { cue } from "../timing";
 const S = 5;
 const GROUND = 1300;
 
-/**
- * MAINJ identity block. This is a typographic stand-in; drop the official
- * logo at public/brand/mainj-logo.png and set `logo` to use it instead.
- */
-export const MainjBadge: React.FC<{ frame: number; at: number; logo?: string }> = ({ frame, at, logo }) => {
+/** MAINJ identity: the official logo (public/brand/mainj-logo.png) with its name. */
+export const MainjBadge: React.FC<{ frame: number; at: number }> = ({ frame, at }) => {
   const s = pop(frame, at, 170, 11);
-  const sweep = tween(frame, [at + 8, at + 30], [-0.3, 1.3]);
   return (
     <div
       style={{
-        position: "relative",
-        overflow: "hidden",
-        background: C.ink,
-        borderRadius: 34,
-        padding: "22px 54px 26px",
-        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         scale: `${0.4 + 0.6 * s}`,
         opacity: frame >= at ? Math.min(1, s * 2) : 0,
       }}
     >
-      {logo ? (
-        <Img src={staticFile(logo)} style={{ height: 150 }} />
-      ) : (
-        <>
-          <div style={{ fontFamily: HEAD, fontWeight: 800, fontSize: 132, lineHeight: 1, color: C.gold, letterSpacing: "0.04em" }}>MAINJ</div>
-          <div style={{ fontFamily: BODY, fontWeight: 500, fontSize: 28, color: C.bg, marginTop: 8, letterSpacing: "0.02em" }}>
-            Majlis Agama Islam Negeri Johor
-          </div>
-        </>
-      )}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          width: 120,
-          left: `${sweep * 100}%`,
-          background: "rgba(245,241,232,0.22)",
-          rotate: "18deg",
-          scale: "1 2",
-        }}
-      />
+      <div style={{ position: "relative", width: 300, height: 300, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <svg width={420} height={420} viewBox="-210 -210 420 420" style={{ position: "absolute", left: -60, top: -60 }}>
+          <circle r={150} fill="none" stroke={C.gold} strokeWidth={4} opacity={0.5 * Math.min(1, s)} strokeDasharray="4 14" strokeLinecap="round" transform={`rotate(${frame * 0.6})`} />
+          <Burst x={0} y={0} r={170} t={(frame - at) / 16} />
+        </svg>
+        <Img src={staticFile("brand/mainj-logo.png")} style={{ height: 276, position: "relative" }} />
+      </div>
+      <div style={{ fontFamily: BODY, fontWeight: 700, fontSize: 34, color: C.ink, marginTop: 10, letterSpacing: "0.03em" }}>
+        MAJLIS AGAMA ISLAM NEGERI JOHOR
+      </div>
     </div>
   );
 };
@@ -97,8 +78,9 @@ const PayPhone: React.FC<{ frame: number; at: number; typeAt: number; pressAt: n
         Bayar Zakat
       </div>
       <div style={{ padding: "26px 30px", fontFamily: BODY }}>
-        <div style={{ fontWeight: 700, fontSize: 30, color: C.ink }}>
-          <span style={{ color: C.gold, background: C.ink, borderRadius: 8, padding: "0 10px" }}>MAINJ</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, fontWeight: 700, fontSize: 30, color: C.ink }}>
+          <Img src={staticFile("brand/mainj-logo.png")} style={{ height: 64 }} />
+          MAINJ
         </div>
         <div style={{ fontWeight: 500, fontSize: 24, color: C.blue, marginTop: 26 }}>Zakat pendapatan</div>
         <div
@@ -168,7 +150,7 @@ const EndCard: React.FC<{ frame: number; at: number; kira: number; bayar: number
         backgroundColor: C.bg,
         clipPath: `circle(${wipe * 130}% at 50% 55%)`,
         alignItems: "center",
-        paddingTop: 360,
+        paddingTop: 300,
       }}
     >
       <AbsoluteFill
@@ -178,16 +160,13 @@ const EndCard: React.FC<{ frame: number; at: number; kira: number; bayar: number
           opacity: 0.08,
         }}
       />
-      <svg width={250} height={250} viewBox="0 0 200 200" style={{ scale: `${settle(frame, at + 4, 16)}` }}>
-        <ZakatIcon x={100} y={100} size={190} draw={tween(frame, [at + 4, at + 22], [0, 1])} />
-      </svg>
-      <div style={{ marginTop: 24 }}>
+      <div>
         <PopWords text="Tunaikan zakat anda" at={at + 8} stagger={4} size={104} maxWidth={860} />
       </div>
-      <div style={{ fontFamily: BODY, fontWeight: 500, fontSize: 44, color: C.blue, marginTop: 26, opacity: tween(frame, [mainjAt - 6, mainjAt], [0, 1]) }}>
+      <div style={{ fontFamily: BODY, fontWeight: 500, fontSize: 44, color: C.blue, marginTop: 20, opacity: tween(frame, [mainjAt - 6, mainjAt], [0, 1]) }}>
         melalui
       </div>
-      <div style={{ marginTop: 12 }}>
+      <div style={{ marginTop: 6 }}>
         <MainjBadge frame={frame} at={mainjAt} />
       </div>
       <div
@@ -196,7 +175,7 @@ const EndCard: React.FC<{ frame: number; at: number; kira: number; bayar: number
           fontWeight: 700,
           fontSize: 56,
           color: C.ink,
-          marginTop: 44,
+          marginTop: 34,
           opacity: tween(frame, [mainjAt + 10, mainjAt + 18], [0, 1]),
           translate: `0 ${(1 - tween(frame, [mainjAt + 10, mainjAt + 18], [0, 1])) * 30}px`,
         }}
@@ -294,7 +273,7 @@ export const Scene5Cta: React.FC = () => {
           <PayPhone frame={frame} at={fJom - 2} typeAt={fTunai} pressAt={fMainj} doneAt={fMainj + 8} outAt={fBersih - 6} />
         </Camera>
 
-        <div style={{ position: "absolute", top: 230, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
+        <div style={{ position: "absolute", top: 290, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
           {frame < fBersih && <PopWords text="Jom, *TUNAIKAN *ZAKAT!" times={[fJom, fTunai, fZakat]} size={84} out={fBersih - 6} />}
           {frame >= fBersih && frame < fEnd && (
             <PopWords text="Bersihkan harta, bantu yang memerlukan" font="body" weight={700} size={60} times={[fBersih, cue(S, "harta"), fBantu, fBantu + 6, fPerlu]} />

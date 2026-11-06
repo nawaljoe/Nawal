@@ -166,7 +166,7 @@ export const Scene1Hook: React.FC = () => {
   // --- tidy the icons into a "plan" row at the end
   const tidy = tween(frame, [fPlan, fPlan + 14], [0, 1]);
   const row = (i: number) => 300 + i * 160;
-  const rowY = 500;
+  const rowY = 565;
 
   const cam = [
     { f: 0, x: 600, y: 1040, s: 1.28 },
@@ -213,7 +213,7 @@ export const Scene1Hook: React.FC = () => {
         </Camera>
 
         {/* kinetic typography */}
-        <div style={{ position: "absolute", top: 230, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
+        <div style={{ position: "absolute", top: 290, left: 80, right: 160, display: "flex", justifyContent: "center" }}>
           {frame < fBuzz + 2 && (
             <PopWords
               text="Pernah tak korang perasan?"

@@ -7,7 +7,7 @@ import { Scene4Message } from "./scenes/Scene4Message";
 import { Scene5Cta } from "./scenes/Scene5Cta";
 import { FPS, H, W } from "./theme";
 import { sceneSeq, TOTAL_FRAMES } from "./timing";
-import { ZakatVideo } from "./ZakatVideo";
+import { OUTRO_FRAMES, ZakatVideo, ZakatVideoWithOutro } from "./ZakatVideo";
 
 const scenes: [string, React.FC][] = [
   ["Scene1-Hook", Scene1Hook],
@@ -23,6 +23,14 @@ export const RemotionRoot: React.FC = () => (
       id="ZakatVideo"
       component={ZakatVideo}
       durationInFrames={TOTAL_FRAMES}
+      fps={FPS}
+      width={W}
+      height={H}
+    />
+    <Composition
+      id="ZakatVideoWithOutro"
+      component={ZakatVideoWithOutro}
+      durationInFrames={TOTAL_FRAMES + OUTRO_FRAMES}
       fps={FPS}
       width={W}
       height={H}

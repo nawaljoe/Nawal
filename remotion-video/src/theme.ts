@@ -23,3 +23,6 @@ loadFont({ family: BODY, url: staticFile("fonts/poppins-latin-700-normal.woff2")
 
 /** TikTok safe zone (px in a 1080x1920 frame). */
 export const SAFE = { top: 200, bottom: 420, left: 80, right: 160 };
+
+/** Headlines start below the Johor / Maju Johor logos of the brand overlay. */
+export const HEADLINE_TOP = 290;
