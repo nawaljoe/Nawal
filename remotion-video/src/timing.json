@@ -1,0 +1,987 @@
+{
+ "tempo": 1.0707,
+ "scenes": [
+  {
+   "index": 1,
+   "start": 0.0,
+   "end": 10.99,
+   "startFrame": 0,
+   "endFrame": 330
+  },
+  {
+   "index": 2,
+   "start": 10.99,
+   "end": 22.664,
+   "startFrame": 330,
+   "endFrame": 680
+  },
+  {
+   "index": 3,
+   "start": 22.664,
+   "end": 35.88,
+   "startFrame": 680,
+   "endFrame": 1076
+  },
+  {
+   "index": 4,
+   "start": 35.88,
+   "end": 48.498,
+   "startFrame": 1076,
+   "endFrame": 1455
+  },
+  {
+   "index": 5,
+   "start": 48.498,
+   "end": 60.0,
+   "startFrame": 1455,
+   "endFrame": 1800
+  }
+ ],
+ "words": [
+  {
+   "text": "Pernah",
+   "start": 0.3,
+   "end": 0.638,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "tak",
+   "start": 0.639,
+   "end": 0.808,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "korang",
+   "start": 0.808,
+   "end": 1.146,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "perasan?",
+   "start": 1.147,
+   "end": 1.654,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "Bila",
+   "start": 1.897,
+   "end": 2.239,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "gaji",
+   "start": 2.24,
+   "end": 2.582,
+   "scene": 1,
+   "hl": true
+  },
+  {
+   "text": "masuk,",
+   "start": 2.582,
+   "end": 2.924,
+   "scene": 1,
+   "hl": true
+  },
+  {
+   "text": "kita",
+   "start": 3.167,
+   "end": 3.746,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "cepat-cepat",
+   "start": 3.746,
+   "end": 5.147,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "kira.",
+   "start": 5.147,
+   "end": 5.726,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "Nak",
+   "start": 5.969,
+   "end": 6.108,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "bayar",
+   "start": 6.108,
+   "end": 6.385,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "kereta,",
+   "start": 6.385,
+   "end": 6.8,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "bayar",
+   "start": 7.034,
+   "end": 7.363,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "bil,",
+   "start": 7.363,
+   "end": 7.528,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "nak",
+   "start": 7.528,
+   "end": 7.692,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "shopping",
+   "start": 7.693,
+   "end": 8.022,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "lagi,",
+   "start": 8.022,
+   "end": 8.351,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "nak",
+   "start": 8.528,
+   "end": 8.717,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "makan",
+   "start": 8.717,
+   "end": 9.094,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "sedap.",
+   "start": 9.094,
+   "end": 9.472,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "Semua",
+   "start": 9.659,
+   "end": 9.979,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 9.979,
+   "end": 10.299,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "dah",
+   "start": 10.299,
+   "end": 10.459,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "rancang.",
+   "start": 10.459,
+   "end": 10.779,
+   "scene": 1,
+   "hl": false
+  },
+  {
+   "text": "Tapi,",
+   "start": 11.2,
+   "end": 11.788,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "pelik",
+   "start": 12.031,
+   "end": 12.352,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "juga",
+   "start": 12.352,
+   "end": 12.673,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "kan...",
+   "start": 12.673,
+   "end": 12.834,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "Kita",
+   "start": 13.077,
+   "end": 13.408,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "boleh",
+   "start": 13.408,
+   "end": 13.74,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "ingat",
+   "start": 13.74,
+   "end": 14.071,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "setiap",
+   "start": 14.072,
+   "end": 14.403,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "komitmen",
+   "start": 14.403,
+   "end": 14.9,
+   "scene": 2,
+   "hl": true
+  },
+  {
+   "text": "bulanan",
+   "start": 14.901,
+   "end": 15.398,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "kita.",
+   "start": 15.398,
+   "end": 15.729,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "Boleh",
+   "start": 15.972,
+   "end": 16.28,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "ingat",
+   "start": 16.28,
+   "end": 16.588,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "tarikh",
+   "start": 16.589,
+   "end": 16.897,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "bayaran",
+   "start": 16.897,
+   "end": 17.359,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "tu,",
+   "start": 17.359,
+   "end": 17.513,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "tarikh",
+   "start": 17.747,
+   "end": 18.067,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "bayaran",
+   "start": 18.067,
+   "end": 18.548,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "ni.",
+   "start": 18.548,
+   "end": 18.709,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "Tapi",
+   "start": 18.952,
+   "end": 19.235,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "ada",
+   "start": 19.235,
+   "end": 19.761,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "satu",
+   "start": 19.761,
+   "end": 20.045,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "tanggungjawab",
+   "start": 20.045,
+   "end": 20.612,
+   "scene": 2,
+   "hl": true
+  },
+  {
+   "text": "yang",
+   "start": 20.612,
+   "end": 20.753,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "kadang-kadang",
+   "start": 20.753,
+   "end": 21.32,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 21.32,
+   "end": 21.604,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "terlupa",
+   "start": 21.604,
+   "end": 22.029,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "nak",
+   "start": 22.029,
+   "end": 22.17,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "semak.",
+   "start": 22.171,
+   "end": 22.454,
+   "scene": 2,
+   "hl": false
+  },
+  {
+   "text": "Zakat.",
+   "start": 22.874,
+   "end": 23.341,
+   "scene": 3,
+   "hl": true
+  },
+  {
+   "text": "Kita",
+   "start": 24.042,
+   "end": 24.385,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "selalu",
+   "start": 24.385,
+   "end": 25.385,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "sebut",
+   "start": 25.385,
+   "end": 25.728,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "rezeki",
+   "start": 25.728,
+   "end": 26.243,
+   "scene": 3,
+   "hl": true
+  },
+  {
+   "text": "tu",
+   "start": 26.243,
+   "end": 26.414,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "datang",
+   "start": 26.415,
+   "end": 26.758,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "daripada",
+   "start": 26.758,
+   "end": 27.444,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "Allah.",
+   "start": 27.444,
+   "end": 27.787,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "Kita",
+   "start": 28.03,
+   "end": 28.309,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "bersyukur",
+   "start": 28.309,
+   "end": 28.727,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "bila",
+   "start": 28.727,
+   "end": 29.006,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "pendapatan",
+   "start": 29.006,
+   "end": 29.563,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "bertambah,",
+   "start": 29.564,
+   "end": 29.982,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "bila",
+   "start": 30.225,
+   "end": 30.505,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "perniagaan",
+   "start": 30.505,
+   "end": 30.925,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "semakin",
+   "start": 30.925,
+   "end": 31.345,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "maju.",
+   "start": 31.346,
+   "end": 31.626,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "Tapi,",
+   "start": 31.869,
+   "end": 32.153,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "adakah",
+   "start": 32.153,
+   "end": 32.823,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 32.823,
+   "end": 33.108,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "turut",
+   "start": 33.108,
+   "end": 33.392,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "ingat",
+   "start": 33.392,
+   "end": 33.677,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "tanggungjawab",
+   "start": 33.677,
+   "end": 34.246,
+   "scene": 3,
+   "hl": true
+  },
+  {
+   "text": "kita",
+   "start": 34.246,
+   "end": 34.531,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "terhadap",
+   "start": 34.531,
+   "end": 34.958,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "harta",
+   "start": 34.958,
+   "end": 35.243,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "tersebut?",
+   "start": 35.243,
+   "end": 35.67,
+   "scene": 3,
+   "hl": false
+  },
+  {
+   "text": "Jangan",
+   "start": 36.09,
+   "end": 36.364,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "sampai",
+   "start": 36.364,
+   "end": 36.638,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 36.638,
+   "end": 36.912,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "terlalu",
+   "start": 36.912,
+   "end": 37.323,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "sibuk",
+   "start": 37.323,
+   "end": 37.737,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "mengira",
+   "start": 37.737,
+   "end": 38.148,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "apa",
+   "start": 38.148,
+   "end": 38.422,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "yang",
+   "start": 38.422,
+   "end": 38.559,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 38.559,
+   "end": 38.833,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "dapat,",
+   "start": 38.833,
+   "end": 39.107,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "tapi",
+   "start": 39.35,
+   "end": 39.681,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "terlupa",
+   "start": 39.681,
+   "end": 40.178,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "apa",
+   "start": 40.178,
+   "end": 40.509,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "yang",
+   "start": 40.509,
+   "end": 40.675,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "wajib",
+   "start": 40.675,
+   "end": 41.006,
+   "scene": 4,
+   "hl": true
+  },
+  {
+   "text": "kita",
+   "start": 41.006,
+   "end": 41.337,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "tunaikan.",
+   "start": 41.337,
+   "end": 41.834,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "Bila",
+   "start": 42.077,
+   "end": 42.341,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "cukup",
+   "start": 42.342,
+   "end": 42.606,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "syarat,",
+   "start": 42.606,
+   "end": 42.871,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "zakat",
+   "start": 43.114,
+   "end": 43.5,
+   "scene": 4,
+   "hl": true
+  },
+  {
+   "text": "itu",
+   "start": 43.5,
+   "end": 43.887,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "wajib",
+   "start": 43.887,
+   "end": 44.273,
+   "scene": 4,
+   "hl": true
+  },
+  {
+   "text": "ditunaikan.",
+   "start": 44.274,
+   "end": 45.047,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "Bukan",
+   "start": 45.29,
+   "end": 45.578,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "tunggu",
+   "start": 45.578,
+   "end": 45.867,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "ada",
+   "start": 45.867,
+   "end": 46.155,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "lebihan,",
+   "start": 46.155,
+   "end": 46.588,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "bukan",
+   "start": 46.738,
+   "end": 47.047,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "tunggu",
+   "start": 47.048,
+   "end": 47.357,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 47.358,
+   "end": 47.668,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "rasa",
+   "start": 47.668,
+   "end": 47.978,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "senang.",
+   "start": 47.978,
+   "end": 48.288,
+   "scene": 4,
+   "hl": false
+  },
+  {
+   "text": "Jom!",
+   "start": 48.708,
+   "end": 49.119,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "Tunaikan",
+   "start": 49.399,
+   "end": 49.742,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "zakat",
+   "start": 49.742,
+   "end": 49.97,
+   "scene": 5,
+   "hl": true
+  },
+  {
+   "text": "melalui",
+   "start": 49.97,
+   "end": 50.312,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "MAINJ.",
+   "start": 50.313,
+   "end": 50.427,
+   "scene": 5,
+   "hl": true
+  },
+  {
+   "text": "Sama-sama",
+   "start": 50.548,
+   "end": 51.353,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "kita",
+   "start": 51.353,
+   "end": 51.998,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "bersihkan",
+   "start": 51.998,
+   "end": 52.602,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "harta",
+   "start": 52.602,
+   "end": 53.004,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "dan",
+   "start": 53.005,
+   "end": 53.206,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "bantu",
+   "start": 53.206,
+   "end": 53.608,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "mereka",
+   "start": 53.608,
+   "end": 54.212,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "yang",
+   "start": 54.212,
+   "end": 54.413,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "memerlukan.",
+   "start": 54.413,
+   "end": 55.218,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "Barakah",
+   "start": 55.638,
+   "end": 56.076,
+   "scene": 5,
+   "hl": true
+  },
+  {
+   "text": "Zakat",
+   "start": 56.076,
+   "end": 56.368,
+   "scene": 5,
+   "hl": true
+  },
+  {
+   "text": "2026.",
+   "start": 56.369,
+   "end": 57.245,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "Kira.",
+   "start": 57.488,
+   "end": 57.861,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "Bayar.",
+   "start": 58.104,
+   "end": 58.552,
+   "scene": 5,
+   "hl": false
+  },
+  {
+   "text": "Berkat.",
+   "start": 58.795,
+   "end": 59.15,
+   "scene": 5,
+   "hl": true
+  }
+ ]
+}

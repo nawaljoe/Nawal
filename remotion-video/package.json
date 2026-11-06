@@ -1,7 +1,7 @@
 {
-  "name": "remotion-video",
+  "name": "zakat-stickman-video",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "ZAKAT \u2013 Jangan Lupa Tanggungjawab Kita: minimalist stickman TikTok animation (Remotion)",
   "repository": {},
   "license": "UNLICENSED",
   "engines": {
@@ -9,7 +9,12 @@
   },
   "private": true,
   "dependencies": {
+    "@remotion/captions": "4.0.539",
     "@remotion/cli": "4.0.539",
+    "@remotion/fonts": "4.0.539",
+    "@remotion/install-whisper-cpp": "4.0.539",
+    "@remotion/media": "4.0.539",
+    "@remotion/transitions": "4.0.539",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.539"
@@ -26,7 +31,9 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render": "remotion render ZakatVideo out/zakat-raw.mp4 --codec=h264 --crf=18 && bash scripts/master.sh out/zakat-raw.mp4 out/zakat-tiktok.mp4",
+    "audio": "python3 scripts/prepare_vo.py && python3 scripts/make_audio.py"
   },
   "allowScripts": {
     "esbuild": false
