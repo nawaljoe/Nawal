@@ -1,0 +1,944 @@
+{
+ "name": "TEPAK_ROUGHCUT_v1",
+ "fps": 30,
+ "video": [
+  {
+   "label": "h1",
+   "clip": "1846",
+   "in": 4.0,
+   "out": 5.0,
+   "amb_db": -15,
+   "note": "CU daun teh dalam uncang terbuka (push-in)"
+  },
+  {
+   "label": "h2",
+   "clip": "1875",
+   "in": 7.0,
+   "out": 8.0,
+   "amb_db": -15,
+   "note": "Uncang bulat jatuh dari conveyor"
+  },
+  {
+   "label": "h3",
+   "clip": "1934",
+   "in": 2.8,
+   "out": 3.8,
+   "amb_db": -24,
+   "note": "Conveyor menyusun uncang"
+  },
+  {
+   "label": "h4",
+   "clip": "1845",
+   "in": 32.0,
+   "out": 33.0,
+   "amb_db": -24,
+   "note": "Hopper mengisi daun teh"
+  },
+  {
+   "label": "h5",
+   "clip": "1873",
+   "in": 12.6,
+   "out": 14.95,
+   "amb_db": null,
+   "note": "YB CU: 'Perasan tak, ada teh yang bulat?'"
+  },
+  {
+   "label": "h6",
+   "clip": "1875",
+   "in": 8.0,
+   "out": 9.5,
+   "amb_db": -15,
+   "note": "Jawapan visual: uncang bulat jatuh"
+  },
+  {
+   "label": "t1",
+   "clip": "1726",
+   "in": 2.0,
+   "out": 5.0,
+   "amb_db": -18,
+   "note": "Logo Tepak (pan) + TAJUK"
+  },
+  {
+   "label": "i1",
+   "clip": "1777",
+   "in": 0.0,
+   "out": 3.25,
+   "amb_db": null,
+   "note": "YB turun tangga, sapa kamera (sync)"
+  },
+  {
+   "label": "i2",
+   "clip": "1729",
+   "in": 1.0,
+   "out": 3.8,
+   "amb_db": -18,
+   "note": "Bangunan & papan tanda Tepak"
+  },
+  {
+   "label": "i3",
+   "clip": "1731",
+   "in": 1.8,
+   "out": 4.2,
+   "amb_db": -18,
+   "note": "Tilt-down ke bendera Malaysia & Johor"
+  },
+  {
+   "label": "i4",
+   "clip": "1890",
+   "in": 8.4,
+   "out": 11.4,
+   "amb_db": -24,
+   "note": "Pekerja dengan pek Lipton (flash-forward)"
+  },
+  {
+   "label": "i5",
+   "clip": "1732",
+   "in": 1.9,
+   "out": 4.4,
+   "amb_db": -18,
+   "note": "Ketibaan YB, bersalam"
+  },
+  {
+   "label": "i6",
+   "clip": "1752",
+   "in": 2.0,
+   "out": 4.9,
+   "amb_db": -18,
+   "note": "CU cawan teh susu di meja taklimat"
+  },
+  {
+   "label": "i7",
+   "clip": "1777",
+   "in": 22.6,
+   "out": 28.3,
+   "amb_db": null,
+   "note": "YB: 'kita berada di kilang ... Jom!' (sync)"
+  },
+  {
+   "label": "b1",
+   "clip": "1743",
+   "in": 4.0,
+   "out": 7.0,
+   "amb_db": -24,
+   "note": "Suasana taklimat / sarapan"
+  },
+  {
+   "label": "b2",
+   "clip": "1768",
+   "in": 0.5,
+   "out": 2.5,
+   "amb_db": -24,
+   "note": "Pengacara: atur cara lawatan"
+  },
+  {
+   "label": "b3",
+   "clip": "1776",
+   "in": 3.0,
+   "out": 5.5,
+   "amb_db": -24,
+   "note": "YB mendengar taklimat"
+  },
+  {
+   "label": "p1",
+   "clip": "1805",
+   "in": 1.3,
+   "out": 5.8,
+   "amb_db": -24,
+   "note": "YB memakai coverall"
+  },
+  {
+   "label": "p2",
+   "clip": "1805",
+   "in": 9.0,
+   "out": 10.5,
+   "amb_db": -24,
+   "note": "Delegasi memakai shoe cover"
+  },
+  {
+   "label": "p3",
+   "clip": "1817",
+   "in": 0.0,
+   "out": 3.0,
+   "amb_db": -24,
+   "note": "Masuk ke dalam: pallet produk (dolly)"
+  },
+  {
+   "label": "f1",
+   "clip": "1828",
+   "in": 5.0,
+   "out": 8.5,
+   "amb_db": null,
+   "note": "Wakil syarikat menerangkan proses (sync)"
+  },
+  {
+   "label": "f2",
+   "clip": "1838",
+   "in": 2.0,
+   "out": 5.5,
+   "amb_db": -15,
+   "note": "Mesin & conveyor ke blending"
+  },
+  {
+   "label": "f3",
+   "clip": "1970",
+   "in": 0.0,
+   "out": 2.5,
+   "amb_db": -24,
+   "note": "Guni teh 'Produce of Kenya / Indonesia'"
+  },
+  {
+   "label": "f4",
+   "clip": "1829",
+   "in": 1.0,
+   "out": 3.75,
+   "amb_db": -24,
+   "note": "Wakil syarikat tunjuk mesin (ambien)"
+  },
+  {
+   "label": "m1",
+   "clip": "1876",
+   "in": 7.0,
+   "out": 10.0,
+   "amb_db": -24,
+   "note": "YB & delegasi di mesin uncang"
+  },
+  {
+   "label": "m2",
+   "clip": "1873",
+   "in": 0.0,
+   "out": 2.3,
+   "amb_db": -24,
+   "note": "Uncang bulat di conveyor"
+  },
+  {
+   "label": "m3",
+   "clip": "1934",
+   "in": 3.8,
+   "out": 6.2,
+   "amb_db": -15,
+   "note": "Conveyor penuh uncang"
+  },
+  {
+   "label": "m4",
+   "clip": "1938",
+   "in": 0.0,
+   "out": 2.0,
+   "amb_db": -15,
+   "note": "Pekerja di mesin pembungkus"
+  },
+  {
+   "label": "k1",
+   "clip": "1842",
+   "in": 8.6,
+   "out": 12.9,
+   "amb_db": -24,
+   "note": "Masuk melalui tirai: bilik pembungkusan"
+  },
+  {
+   "label": "k2",
+   "clip": "1844",
+   "in": 0.0,
+   "out": 3.0,
+   "amb_db": -24,
+   "note": "Pekerja mengisi uncang"
+  },
+  {
+   "label": "k3",
+   "clip": "1845",
+   "in": 26.0,
+   "out": 29.5,
+   "amb_db": -15,
+   "note": "Pekerja menimbang & menutup"
+  },
+  {
+   "label": "k4",
+   "clip": "1846",
+   "in": 5.0,
+   "out": 6.5,
+   "amb_db": -15,
+   "note": "CU uncang berisi daun teh"
+  },
+  {
+   "label": "k5",
+   "clip": "1845",
+   "in": 17.9,
+   "out": 23.2,
+   "amb_db": null,
+   "note": "'Berapa, dik, dia punya berat?' (sync)"
+  },
+  {
+   "label": "k6",
+   "clip": "1893",
+   "in": 0.0,
+   "out": 3.5,
+   "amb_db": -15,
+   "note": "Pek Lipton di talian pembungkusan"
+  },
+  {
+   "label": "k7",
+   "clip": "1890",
+   "in": 15.5,
+   "out": 17.0,
+   "amb_db": -24,
+   "note": "Timbang pek Lipton"
+  },
+  {
+   "label": "l1",
+   "clip": "1913",
+   "in": 0.0,
+   "out": 4.5,
+   "amb_db": -18,
+   "note": "Papan tanda LAB ROOM (push-in)"
+  },
+  {
+   "label": "l2",
+   "clip": "1916",
+   "in": 18.0,
+   "out": 23.0,
+   "amb_db": -24,
+   "note": "Sampel teh untuk ujian rasa"
+  },
+  {
+   "label": "l3",
+   "clip": "1914",
+   "in": 4.0,
+   "out": 7.0,
+   "amb_db": -18,
+   "note": "Pekerja makmal"
+  },
+  {
+   "label": "y1",
+   "clip": "1901",
+   "in": 0.0,
+   "out": 8.9,
+   "amb_db": null,
+   "note": "YB periksa pek Lipton (sync)"
+  },
+  {
+   "label": "y2",
+   "clip": "1901",
+   "in": 15.2,
+   "out": 22.5,
+   "amb_db": null,
+   "note": "'Logo halal pun ada' + thumbs up (sync)"
+  },
+  {
+   "label": "s1",
+   "clip": "1872",
+   "in": 35.6,
+   "out": 38.6,
+   "amb_db": null,
+   "note": "Wakil syarikat kepada YB (sync)"
+  },
+  {
+   "label": "s2",
+   "clip": "1969",
+   "in": 3.0,
+   "out": 7.0,
+   "amb_db": -24,
+   "note": "Gudang: sweep rak"
+  },
+  {
+   "label": "s3",
+   "clip": "1976",
+   "in": 0.0,
+   "out": 3.0,
+   "amb_db": -24,
+   "note": "Pallet produk siap"
+  },
+  {
+   "label": "s4",
+   "clip": "1956",
+   "in": 4.0,
+   "out": 6.5,
+   "amb_db": -24,
+   "note": "YB di gudang"
+  },
+  {
+   "label": "c1",
+   "clip": "1971",
+   "in": 1.5,
+   "out": 5.5,
+   "amb_db": -24,
+   "note": "Delegasi berjalan di gudang"
+  },
+  {
+   "label": "c2",
+   "clip": "1959",
+   "in": 29.3,
+   "out": 35.5,
+   "amb_db": null,
+   "note": "YB ke kamera, thumbs up (muzik sahaja)"
+  },
+  {
+   "label": "c3",
+   "clip": "1726",
+   "in": 3.0,
+   "out": 7.2,
+   "amb_db": -18,
+   "note": "Logo Tepak + kad akhir"
+  }
+ ],
+ "dialog": [
+  {
+   "clip": "1873",
+   "in": 12.6,
+   "out": 14.95,
+   "at": 4.0,
+   "subs": [
+    [
+     0.05,
+     2.35,
+     "Perasan tak,\\Nada teh yang bulat?"
+    ]
+   ]
+  },
+  {
+   "clip": "1777",
+   "in": 0.0,
+   "out": 3.25,
+   "at": 10.833,
+   "subs": [
+    [
+     0.0,
+     1.9,
+     "Assalamualaikum."
+    ],
+    [
+     2.0,
+     3.25,
+     "Awak tahu saya dekat mana?"
+    ]
+   ]
+  },
+  {
+   "clip": "1777",
+   "in": 3.4,
+   "out": 6.2,
+   "at": 14.15,
+   "subs": [
+    [
+     0.05,
+     2.8,
+     "Saya dekat Tepak Marketing."
+    ]
+   ]
+  },
+  {
+   "clip": "1777",
+   "in": 11.55,
+   "out": 17.75,
+   "at": 17.15,
+   "subs": [
+    [
+     0.05,
+     3.9,
+     "Rupa-rupanya semua\\Nproduk Lipton"
+    ],
+    [
+     3.9,
+     6.2,
+     "dibungkus di sini."
+    ]
+   ]
+  },
+  {
+   "clip": "1777",
+   "in": 18.35,
+   "out": 22.6,
+   "at": 23.4,
+   "subs": [
+    [
+     0.05,
+     4.25,
+     "Siapa peminat teh,\\Npeminat Lipton terutamanya…"
+    ]
+   ]
+  },
+  {
+   "clip": "1777",
+   "in": 22.6,
+   "out": 28.3,
+   "at": 27.7,
+   "subs": [
+    [
+     0.3,
+     2.4,
+     "Kita berada di kilang"
+    ],
+    [
+     2.4,
+     4.95,
+     "yang membungkus\\Nteh kegemaran anda."
+    ],
+    [
+     4.95,
+     5.7,
+     "Jom!"
+    ]
+   ]
+  },
+  {
+   "clip": "1828",
+   "in": 5.0,
+   "out": 15.25,
+   "at": 49.9,
+   "subs": [
+    [
+     0.0,
+     1.45,
+     "Kita mula dekat sini."
+    ],
+    [
+     1.45,
+     4.6,
+     "Kita punya proses,\\Nbahan mentah"
+    ],
+    [
+     4.6,
+     7.2,
+     "kita masuk daripada sebelah,"
+    ],
+    [
+     7.2,
+     10.25,
+     "dia akan bawa ke sini\\Nuntuk proses blending."
+    ]
+   ]
+  },
+  {
+   "clip": "1835",
+   "in": 42.0,
+   "out": 51.25,
+   "at": 62.433,
+   "subs": [
+    [
+     0.0,
+     2.0,
+     "Kita ada uncang-uncang\\Nbulat tu,"
+    ],
+    [
+     2.0,
+     5.7,
+     "output mesin tu\\Nterlampau laju,"
+    ],
+    [
+     5.7,
+     9.25,
+     "satu minit boleh buat\\N1,000 hingga 1,200 uncang."
+    ]
+   ]
+  },
+  {
+   "clip": "1842",
+   "in": 0.6,
+   "out": 12.6,
+   "at": 72.033,
+   "subs": [
+    [
+     0.05,
+     4.6,
+     "Kita dapat pastikan setiap pek\\Ntimbangannya betul."
+    ],
+    [
+     4.7,
+     7.9,
+     "Kita ikut Akta Makanan,"
+    ],
+    [
+     8.0,
+     12.0,
+     "tak boleh kurang daripada\\Nyang dibenarkan."
+    ]
+   ]
+  },
+  {
+   "clip": "1845",
+   "in": 17.9,
+   "out": 23.2,
+   "at": 84.133,
+   "subs": [
+    [
+     0.05,
+     1.6,
+     "Berapa, dik, dia punya berat?"
+    ],
+    [
+     2.9,
+     5.3,
+     "252 sampai 253, selalu."
+    ]
+   ]
+  },
+  {
+   "clip": "1890",
+   "in": 14.45,
+   "out": 18.4,
+   "at": 89.433,
+   "subs": [
+    [
+     0.05,
+     2.6,
+     "Setiap sejam, kita akan ada\\Nquality control,"
+    ],
+    [
+     2.6,
+     3.95,
+     "cek dari printing."
+    ]
+   ]
+  },
+  {
+   "clip": "1916",
+   "in": 6.7,
+   "out": 9.65,
+   "at": 96.633,
+   "subs": [
+    [
+     0.0,
+     1.3,
+     "Kita akan compare dengan"
+    ],
+    [
+     1.3,
+     2.95,
+     "Master Blend\\Natau Master Sample."
+    ]
+   ]
+  },
+  {
+   "clip": "1916",
+   "in": 12.45,
+   "out": 18.55,
+   "at": 99.733,
+   "subs": [
+    [
+     0.03,
+     1.45,
+     "Dengan production sekarang,"
+    ],
+    [
+     1.45,
+     5.0,
+     "match tak dengan\\NMaster Sample."
+    ],
+    [
+     5.0,
+     6.1,
+     "Hari-hari kena rasa."
+    ]
+   ]
+  },
+  {
+   "clip": "1901",
+   "in": 0.0,
+   "out": 8.9,
+   "at": 106.933,
+   "subs": [
+    [
+     0.0,
+     1.4,
+     "Lipton yang dah dibungkus,"
+    ],
+    [
+     1.4,
+     4.9,
+     "40 uncang sepaket,"
+    ],
+    [
+     4.9,
+     8.9,
+     "siap dengan tarikh\\Nakhir penggunaan."
+    ]
+   ]
+  },
+  {
+   "clip": "1901",
+   "in": 15.2,
+   "out": 22.5,
+   "at": 115.833,
+   "subs": [
+    [
+     0.15,
+     2.6,
+     "Logo halal pun ada."
+    ],
+    [
+     3.7,
+     5.9,
+     "Lipton memang nama\\Nyang terkenal."
+    ]
+   ]
+  },
+  {
+   "clip": "1872",
+   "in": 35.6,
+   "out": 44.3,
+   "at": 123.133,
+   "subs": [
+    [
+     0.04,
+     3.5,
+     "Dia target hanya\\N10 tan setahun."
+    ],
+    [
+     3.6,
+     5.8,
+     "Tapi Alhamdulillah, tahun\\Npertama kita launch,"
+    ],
+    [
+     5.8,
+     7.4,
+     "dapat 30 tan."
+    ],
+    [
+     7.4,
+     8.7,
+     "Maksudnya, 3 kali ganda."
+    ]
+   ]
+  },
+  {
+   "clip": "1948",
+   "in": 21.0,
+   "out": 24.3,
+   "at": 133.133,
+   "subs": [
+    [
+     0.1,
+     3.3,
+     "Alhamdulillah, kita dah\\Nmencapai 1,400 tan setahun."
+    ]
+   ]
+  }
+ ],
+ "text": [
+  {
+   "style": "title",
+   "start": 7.983,
+   "end": 11.833,
+   "lines": [
+    "LAWATAN PREMIS\\NDIPERSIJILKAN HALAL",
+    "TEPAK MARKETING",
+    "SDN. BHD."
+   ],
+   "y": 860
+  },
+  {
+   "style": "caption",
+   "start": 9.433,
+   "end": 11.833,
+   "lines": [
+    "PASIR GUDANG, JOHOR  ·  10 NOVEMBER 2026"
+   ],
+   "y": 1180
+  },
+  {
+   "style": "lower",
+   "start": 11.933,
+   "end": 14.133,
+   "lines": [
+    "YB [NAMA YB]",
+    "Exco Hal Ehwal Agama Islam Negeri Johor"
+   ],
+   "y": 1150
+  },
+  {
+   "style": "caption",
+   "start": 41.2,
+   "end": 45.2,
+   "lines": [
+    "PAKAIAN PELINDUNG SEBELUM\\NMEMASUKI KAWASAN\\NPEMPROSESAN"
+   ]
+  },
+  {
+   "style": "lower",
+   "start": 50.2,
+   "end": 53.300000000000004,
+   "lines": [
+    "[NAMA WAKIL SYARIKAT]",
+    "[Jawatan], Tepak Marketing Sdn. Bhd."
+   ],
+   "y": 1150
+  },
+  {
+   "style": "caption",
+   "start": 53.6,
+   "end": 56.2,
+   "lines": [
+    "PROSES BLENDING"
+   ]
+  },
+  {
+   "style": "caption",
+   "start": 65.133,
+   "end": 67.333,
+   "lines": [
+    "MESIN UNCANG TEH"
+   ]
+  },
+  {
+   "style": "caption",
+   "start": 76.133,
+   "end": 78.93299999999999,
+   "lines": [
+    "PEMBUNGKUSAN & TIMBANGAN"
+   ]
+  },
+  {
+   "style": "caption",
+   "start": 99.133,
+   "end": 102.133,
+   "lines": [
+    "KAWALAN KUALITI"
+   ]
+  },
+  {
+   "style": "caption",
+   "start": 116.133,
+   "end": 118.73299999999999,
+   "lines": [
+    "LOGO HALAL PADA PEMBUNGKUSAN"
+   ]
+  },
+  {
+   "style": "end",
+   "start": 146.233,
+   "end": 150.03300000000002,
+   "lines": [
+    "BERSAMA MEMPERKUKUH\\NINDUSTRI HALAL JOHOR",
+    "TEPAK MARKETING",
+    "SDN. BHD."
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "type": "hit",
+   "at": 0.0,
+   "gain_db": -2
+  },
+  {
+   "type": "whoosh",
+   "at": 1.0,
+   "gain_db": -6
+  },
+  {
+   "type": "whoosh",
+   "at": 2.0,
+   "gain_db": -8
+  },
+  {
+   "type": "whoosh",
+   "at": 3.0,
+   "gain_db": -8
+  },
+  {
+   "type": "impact",
+   "at": 7.983,
+   "gain_db": 0
+  },
+  {
+   "type": "riser",
+   "at": 10.833,
+   "gain_db": -6
+  },
+  {
+   "type": "whoosh",
+   "at": 46.9,
+   "gain_db": -4
+  },
+  {
+   "type": "whoosh",
+   "at": 53.4,
+   "gain_db": -10
+  },
+  {
+   "type": "riser",
+   "at": 71.833,
+   "gain_db": -4
+  },
+  {
+   "type": "whoosh",
+   "at": 71.833,
+   "gain_db": -4
+  },
+  {
+   "type": "whoosh",
+   "at": 94.433,
+   "gain_db": -6
+  },
+  {
+   "type": "hit",
+   "at": 116.133,
+   "gain_db": 0
+  },
+  {
+   "type": "riser",
+   "at": 135.633,
+   "gain_db": -4
+  },
+  {
+   "type": "impact",
+   "at": 146.233,
+   "gain_db": -2
+  }
+ ],
+ "flash": [
+  7.833,
+  46.9,
+  71.833,
+  94.433,
+  135.633
+ ],
+ "starts": {
+  "h1": 0.0,
+  "h2": 1.0,
+  "h3": 2.0,
+  "h4": 3.0,
+  "h5": 4.0,
+  "h6": 6.333333333333333,
+  "t1": 7.833333333333333,
+  "i1": 10.833333333333334,
+  "i2": 14.1,
+  "i3": 16.9,
+  "i4": 19.3,
+  "i5": 22.3,
+  "i6": 24.8,
+  "i7": 27.7,
+  "b1": 33.4,
+  "b2": 36.4,
+  "b3": 38.4,
+  "p1": 40.9,
+  "p2": 45.4,
+  "p3": 46.9,
+  "f1": 49.9,
+  "f2": 53.4,
+  "f3": 56.9,
+  "f4": 59.4,
+  "m1": 62.13333333333333,
+  "m2": 65.13333333333334,
+  "m3": 67.43333333333334,
+  "m4": 69.83333333333333,
+  "k1": 71.83333333333333,
+  "k2": 76.13333333333334,
+  "k3": 79.13333333333334,
+  "k4": 82.63333333333334,
+  "k5": 84.13333333333334,
+  "k6": 89.43333333333334,
+  "k7": 92.93333333333334,
+  "l1": 94.43333333333334,
+  "l2": 98.93333333333334,
+  "l3": 103.93333333333334,
+  "y1": 106.93333333333334,
+  "y2": 115.83333333333333,
+  "s1": 123.13333333333334,
+  "s2": 126.13333333333334,
+  "s3": 130.13333333333333,
+  "s4": 133.13333333333333,
+  "c1": 135.63333333333333,
+  "c2": 139.63333333333333,
+  "c3": 145.83333333333334
+ },
+ "duration": 150.03333333333333
+}

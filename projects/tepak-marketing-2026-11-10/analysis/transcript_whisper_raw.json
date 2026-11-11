@@ -1,0 +1,3498 @@
+{
+ "IMG_1726": [],
+ "IMG_1729": [],
+ "IMG_1731": [],
+ "IMG_1732": [
+  {
+   "s": 9.01,
+   "e": 9.57,
+   "t": "apa yang anda lakukan?",
+   "p": -0.96,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1734": [
+  {
+   "s": 1.33,
+   "e": 3.23,
+   "t": "Umbil, Umbil, Umbil.",
+   "p": -0.96,
+   "ns": 0.0
+  },
+  {
+   "s": 3.47,
+   "e": 4.11,
+   "t": "Apa itu?",
+   "p": -0.96,
+   "ns": 0.0
+  },
+  {
+   "s": 4.21,
+   "e": 4.99,
+   "t": "Cuma ke sini, kan?",
+   "p": -0.96,
+   "ns": 0.0
+  },
+  {
+   "s": 5.47,
+   "e": 6.03,
+   "t": "Ya, lihat.",
+   "p": -0.96,
+   "ns": 0.0
+  },
+  {
+   "s": 6.35,
+   "e": 7.01,
+   "t": "Ada yang tak mungkin.",
+   "p": -0.96,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1743": [
+  {
+   "s": 0.0,
+   "e": 0.78,
+   "t": "Sebab beramah",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 0.78,
+   "e": 2.56,
+   "t": "Bos juga menjawab",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 3.46,
+   "e": 4.34,
+   "t": "Pelawa pun tidak",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 5.4,
+   "e": 6.62,
+   "t": "Letih juga ke aku kini",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 6.62,
+   "e": 8.48,
+   "t": "Kalau orang semerah tak macam ni",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 8.48,
+   "e": 10.12,
+   "t": "Dia orang-orang tengok makan-makan gitu",
+   "p": -0.31,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1752": [
+  {
+   "s": 0.91,
+   "e": 1.87,
+   "t": "Baik, baik.",
+   "p": -0.64,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1764": [
+  {
+   "s": 0.0,
+   "e": 3.44,
+   "t": "Macam TNB kan, sepanjang kat kampung saya tu, semua tu kopi.",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 5.51,
+   "e": 6.17,
+   "t": "Tapi tu lah.",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 7.05,
+   "e": 8.67,
+   "t": "Saya kata, bang, awak proses dekat mana?",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 8.97,
+   "e": 10.43,
+   "t": "Lalu habis saya proses sini, lepas tu saya...",
+   "p": -0.34,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1768": [
+  {
+   "s": 0.46,
+   "e": 5.18,
+   "t": "yang berkenaan atur cara lawatan ke kawasan komposesan kawasan tempat masing-masing penyawasan.",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1771": [
+  {
+   "s": 0.0,
+   "e": 9.08,
+   "t": "Saya wakil safety, saya cuba untuk menjalankan perjalanan tarifi macam kita dah",
+   "p": -0.67,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1776": [
+  {
+   "s": 0.02,
+   "e": 2.2,
+   "t": "Addict dengan semua sains-sains",
+   "p": -0.66,
+   "ns": 0.0
+  },
+  {
+   "s": 3.84,
+   "e": 4.82,
+   "t": "Fire system",
+   "p": -0.66,
+   "ns": 0.0
+  },
+  {
+   "s": 6.02,
+   "e": 8.5,
+   "t": "Untuk setakat ni ada pertanyaan",
+   "p": -0.66,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1777": [
+  {
+   "s": 0.0,
+   "e": 3.02,
+   "t": "Assalamualaikum, awak tahu saya dekat mana?",
+   "p": -0.2,
+   "ns": 0.0
+  },
+  {
+   "s": 3.38,
+   "e": 6.24,
+   "t": "Saya dekat Teepak Marketing",
+   "p": -0.2,
+   "ns": 0.0
+  },
+  {
+   "s": 6.24,
+   "e": 11.66,
+   "t": "Ataupun bahasa lantunan yang betulnya Teepak Marketing",
+   "p": -0.2,
+   "ns": 0.0
+  },
+  {
+   "s": 11.66,
+   "e": 17.42,
+   "t": "Rupa-rupanya semua produk Lipton dibungkus di sini",
+   "p": -0.2,
+   "ns": 0.0
+  },
+  {
+   "s": 17.42,
+   "e": 22.94,
+   "t": "Siapa peminat teh, peminat Lipton terutamanya",
+   "p": -0.2,
+   "ns": 0.0
+  },
+  {
+   "s": 22.94,
+   "e": 27.58,
+   "t": "Kita berada di Kelang yang membungkus teh kegemaran anda",
+   "p": -0.2,
+   "ns": 0.0
+  },
+  {
+   "s": 27.58,
+   "e": 28.32,
+   "t": "Jom",
+   "p": -0.2,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1778": [
+  {
+   "s": 0.0,
+   "e": 1.28,
+   "t": "Dia ada berapa blok tu kan?",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 1.48,
+   "e": 2.7,
+   "t": "Berapa blok dia punya ni?",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 4.1,
+   "e": 4.54,
+   "t": "Oh",
+   "p": -0.42,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1804": [
+  {
+   "s": 1.1,
+   "e": 3.74,
+   "t": "Terima kasih kerana menonton",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1805": [
+  {
+   "s": 3.82,
+   "e": 5.28,
+   "t": "Ini sarung dari luar eh?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 6.06,
+   "e": 6.68,
+   "t": "Sarung gitu?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 7.0,
+   "e": 8.56,
+   "t": "Ya, dia memang kena masuk",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 8.56,
+   "e": 10.02,
+   "t": "Haa, memang kena masuk ni",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 10.86,
+   "e": 11.48,
+   "t": "Betul eh?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 11.86,
+   "e": 12.24,
+   "t": "Gini eh?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 13.74,
+   "e": 16.3,
+   "t": "Eh, sekejap, buat bimbingnya nanti kita bagi dengan lain, sorry",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 16.3,
+   "e": 16.94,
+   "t": "Tak apalah",
+   "p": -0.46,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1817": [
+  {
+   "s": 1.64,
+   "e": 3.6,
+   "t": "Untuk test benda tu, moisture",
+   "p": -0.7,
+   "ns": 0.0
+  },
+  {
+   "s": 3.6,
+   "e": 7.62,
+   "t": "Untuk teh punya moisture, dia punya dari segi",
+   "p": -0.7,
+   "ns": 0.0
+  },
+  {
+   "s": 8.52,
+   "e": 9.36,
+   "t": "Kualiti dia",
+   "p": -0.7,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1818": [
+  {
+   "s": 0.0,
+   "e": 8.78,
+   "t": "Sebab kita pun hantar pada Unilever punya wakil yang akan validakan kita",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 8.78,
+   "e": 13.74,
+   "t": "Sama ada lulus untuk dipaket sebagai barang siap atau tidak",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 13.74,
+   "e": 15.06,
+   "t": "Haa okey okey",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 15.06,
+   "e": 15.68,
+   "t": "Ini just untuk",
+   "p": -0.38,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1822": [
+  {
+   "s": 0.0,
+   "e": 7.14,
+   "t": "Dari segi macam, dari segi dia punya macam micro test tu semua kita hantar pada terpati lab lah. Kita tak ada fasilitas kat sini.",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 7.42,
+   "e": 10.36,
+   "t": "Tapi kita hantar pada terpati lab untuk mereka.",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1824": [
+  {
+   "s": 0.0,
+   "e": 3.22,
+   "t": "daripada teh datang sampai lah sempurna packaging",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 4.02,
+   "e": 7.34,
+   "t": "mungkin kita boleh melawat tempat pada proses penerimaan teh",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 7.34,
+   "e": 12.14,
+   "t": "dalam proses awal kita terima daripada setawalan dulu apa dekat sana lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 12.14,
+   "e": 15.16,
+   "t": "tapi kita akan setakat semua production kita akan buat blending dulu lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 15.16,
+   "e": 16.54,
+   "t": "kita pergi jauh pilih blending",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 16.54,
+   "e": 17.36,
+   "t": "boleh boleh boleh",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 17.36,
+   "e": 18.72,
+   "t": "awak buat depan",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 26.82,
+   "e": 28.66,
+   "t": "tengah-tengah hacking tu?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 28.88,
+   "e": 29.58,
+   "t": "tengah-tengah hacking tu?",
+   "p": -0.46,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1825": [
+  {
+   "s": 0.3,
+   "e": 4.24,
+   "t": "Sebab tu dia orang punya yang kerja kat situ pun kita bekalkan",
+   "p": -0.56,
+   "ns": 0.0
+  },
+  {
+   "s": 4.24,
+   "e": 5.02,
+   "t": "Dia maaf lah",
+   "p": -0.56,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1826": [
+  {
+   "s": 0.0,
+   "e": 3.04,
+   "t": "Sebab dia memang saya boleh teruskan",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 3.04,
+   "e": 5.76,
+   "t": "Sebab dia orang pakai benda tu, dia pakai boto dia",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 6.34,
+   "e": 8.12,
+   "t": "Dia untuk jugakan benda tu",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 8.12,
+   "e": 9.52,
+   "t": "Sebab tidak nanti teh tu",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 9.52,
+   "e": 11.18,
+   "t": "Serbuk teh tu tak jatuh",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 11.86,
+   "e": 14.02,
+   "t": "Sebab tu kalau dia letak dekat-dekat dia punya",
+   "p": -0.44,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1827": [
+  {
+   "s": 0.0,
+   "e": 5.96,
+   "t": "bahawa apa-apa teh yang masuk tu tak ada bertampur dengan material yang tidak diperlukan.",
+   "p": -0.61,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1828": [
+  {
+   "s": 0.0,
+   "e": 2.92,
+   "t": "besar daripada ada saiz lah.",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 3.2,
+   "e": 4.42,
+   "t": "Jadi dia mula dekat mana ni?",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 4.54,
+   "e": 4.96,
+   "t": "Mula kat sini?",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 5.14,
+   "e": 6.2,
+   "t": "Kita mula dekat sini.",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 6.4,
+   "e": 7.34,
+   "t": "Kita punya proses,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 7.48,
+   "e": 9.6,
+   "t": "kita bawa bahan mentas",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 9.6,
+   "e": 10.66,
+   "t": "kita masuk daripada sebelah,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 10.96,
+   "e": 11.7,
+   "t": "rehal sebelah.",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 12.06,
+   "e": 13.1,
+   "t": "Akan masuk sini,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 13.28,
+   "e": 14.28,
+   "t": "dia akan bawa kat sini",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 14.28,
+   "e": 15.28,
+   "t": "untuk proses blending.",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 16.08,
+   "e": 17.24,
+   "t": "Blending tu sebenarnya",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 17.24,
+   "e": 18.32,
+   "t": "kita lebih kepada,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 18.64,
+   "e": 20.38,
+   "t": "kita mixing lah antara",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 20.38,
+   "e": 21.98,
+   "t": "macam taste salon,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 22.67,
+   "e": 23.34,
+   "t": "taste lelang,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 23.5,
+   "e": 24.86,
+   "t": "dekat sini lah ni.",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 25.18,
+   "e": 25.72,
+   "t": "Tepinya,",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 26.44,
+   "e": 27.4,
+   "t": "lepas tu taste penyalaya",
+   "p": -0.49,
+   "ns": 0.0
+  },
+  {
+   "s": 27.4,
+   "e": 27.76,
+   "t": "Indonesia.",
+   "p": -0.49,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1829": [
+  {
+   "s": 0.0,
+   "e": 3.98,
+   "t": "Di sini pun ada proses penjagaan dia punya kualiti juga lah kat sini.",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 4.5,
+   "e": 8.38,
+   "t": "Maknanya benda-benda yang lebih besar daripada sieve ni, dia tak akan terlepas lah.",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 8.82,
+   "e": 11.94,
+   "t": "Contoh lah, jika dia lepas, kadang-kadang proses ni dia guna.",
+   "p": -0.37,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1835": [
+  {
+   "s": 0.0,
+   "e": 1.44,
+   "t": "semua-semua kita akan blend kat sini.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 1.86,
+   "e": 4.08,
+   "t": "Semua ini bila masih kita proses nak bungkus",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 4.08,
+   "e": 5.9,
+   "t": "baru kita pindahkan itu bergantung pada",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 5.9,
+   "e": 7.96,
+   "t": "bukti. So, daripada sini dia naik",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 7.96,
+   "e": 8.9,
+   "t": "ke sana? Dia akan naik",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 9.48,
+   "e": 11.78,
+   "t": "conveyor tu. Dia akan masuk blending drum tu.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 11.96,
+   "e": 13.08,
+   "t": "Dia blending tu.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 13.08,
+   "e": 14.76,
+   "t": "Masuk blending tu, maknanya dia bungkus",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 14.76,
+   "e": 17.24,
+   "t": "dan langsung naik. Dia pastikan",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 17.24,
+   "e": 19.12,
+   "t": "dia campuran tu terbati lah.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 20.28,
+   "e": 21.38,
+   "t": "Dia campuran terbati.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 21.58,
+   "e": 23.06,
+   "t": "Dia akan keluarkan daripada",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 23.06,
+   "e": 24.08,
+   "t": "diskette tu.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 25.34,
+   "e": 26.96,
+   "t": "Dia akan timbal.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 27.3,
+   "e": 28.5,
+   "t": "Dia akan campurkan dalam tu lah.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 28.5,
+   "e": 33.58,
+   "t": "Dia masukkan yang lentong ni lah ni",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 38.88,
+   "e": 41.16,
+   "t": "Teng-teng untang simpanan",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 41.16,
+   "e": 43.56,
+   "t": "Pasal kita ada untang-untang mula tu",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 43.56,
+   "e": 47.16,
+   "t": "Pasal dia punya output mesin tu terlampau laju",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 47.16,
+   "e": 50.94,
+   "t": "Satu minute dia boleh buat 1000 hingga 1200 untang",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 50.94,
+   "e": 52.08,
+   "t": "Satu minute",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 52.08,
+   "e": 55.44,
+   "t": "Memang dia punya teknologi tu teknologi Itali lah",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 55.44,
+   "e": 56.6,
+   "t": "Kita beli dekat Itali",
+   "p": -0.28,
+   "ns": 0.0
+  },
+  {
+   "s": 57.96,
+   "e": 59.56,
+   "t": "Maknanya satu hari",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 59.56,
+   "e": 60.78,
+   "t": "Untuk satu hari",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 60.78,
+   "e": 61.6,
+   "t": "Untuk satu mesin",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 61.6,
+   "e": 62.42,
+   "t": "Nanti kita akan tengok",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 62.42,
+   "e": 63.68,
+   "t": "Dekat seluruh mesin",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 63.68,
+   "e": 64.78,
+   "t": "Okey, okey",
+   "p": -0.35,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1838": [
+  {
+   "s": 0.0,
+   "e": 0.62,
+   "t": "Yang ini mesin apa?",
+   "p": -0.56,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1839": [
+  {
+   "s": 0.0,
+   "e": 3.84,
+   "t": "Kita terpaksa hantar macam kita panggil table blend, kita ambil hand code siapa tu.",
+   "p": -0.61,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1840": [
+  {
+   "s": 0.0,
+   "e": 0.76,
+   "t": "kalau di blend from Malaysia dah",
+   "p": -0.69,
+   "ns": 0.0
+  },
+  {
+   "s": 0.76,
+   "e": 2.52,
+   "t": "kalau di blend from Malaysia",
+   "p": -0.69,
+   "ns": 0.0
+  },
+  {
+   "s": 3.94,
+   "e": 5.3,
+   "t": "contoh mungkin",
+   "p": -0.69,
+   "ns": 0.0
+  },
+  {
+   "s": 6.0,
+   "e": 8.46,
+   "t": "kita pakai 10 beg",
+   "p": -0.69,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1841": [
+  {
+   "s": 0.0,
+   "e": 1.5,
+   "t": "1.20",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 1.5,
+   "e": 3.22,
+   "t": "1.20 tu",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 3.22,
+   "e": 4.48,
+   "t": "Nanti kita punya",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 5.6,
+   "e": 6.64,
+   "t": "Supervisor tahulah",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 6.64,
+   "e": 7.42,
+   "t": "1.20 tu",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 7.42,
+   "e": 8.36,
+   "t": "Dia akan digunakan",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 8.36,
+   "e": 9.48,
+   "t": "Untuk produk teh apa",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 9.48,
+   "e": 11.02,
+   "t": "Sebab kita banyak",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 11.02,
+   "e": 11.76,
+   "t": "Kat sini kita ada",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 11.76,
+   "e": 12.44,
+   "t": "2.21",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 13.32,
+   "e": 14.34,
+   "t": "3.28",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 14.34,
+   "e": 15.0,
+   "t": "3.29",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 15.0,
+   "e": 15.6,
+   "t": "Maknanya",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 15.6,
+   "e": 17.24,
+   "t": "Pekerja-pekerja tu",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 17.24,
+   "e": 18.18,
+   "t": "Yang tahulah",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 18.18,
+   "e": 18.98,
+   "t": "Kita dah",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 18.98,
+   "e": 19.62,
+   "t": "Memang dah train",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 19.62,
+   "e": 19.86,
+   "t": "Jadi orang",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 19.86,
+   "e": 20.92,
+   "t": "Jadi dia masuk sini bukan",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 20.92,
+   "e": 21.9,
+   "t": "Dia akan masuk sini",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 21.9,
+   "e": 23.02,
+   "t": "Salah satu produk",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 23.02,
+   "e": 23.54,
+   "t": "Yang kita buat",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 24.32,
+   "e": 24.88,
+   "t": "Untuk",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 24.88,
+   "e": 25.52,
+   "t": "Penambungan",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 25.52,
+   "e": 26.3,
+   "t": "Untuk produk sebelah",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 26.3,
+   "e": 26.96,
+   "t": "Ini paket tea",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 26.96,
+   "e": 27.6,
+   "t": "Paket tea",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 27.6,
+   "e": 29.04,
+   "t": "Yang hari ni",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 29.04,
+   "e": 29.78,
+   "t": "Kita jalan",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 29.78,
+   "e": 30.66,
+   "t": "Paket ini berapa ni?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 31.52,
+   "e": 32.36,
+   "t": "Cuyasa 250",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 32.36,
+   "e": 36.2,
+   "t": "Cuyasa 250 tu maknanya untuk eksport market dekat New Zealand",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 36.82,
+   "e": 38.94,
+   "t": "Tapi dia paket juga lah, berbetul paket lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 38.94,
+   "e": 43.32,
+   "t": "Kalau eksport New Zealand, kita terus eksport New Zealand kan ada pelalui pengusaha lain?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 43.64,
+   "e": 46.26,
+   "t": "Maknanya disimpan dia dengan kilang leper sendiri tu",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 46.26,
+   "e": 50.6,
+   "t": "Maknanya biasa kita memang kita simpan dari ni, kita hantar direct pergi port lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 50.6,
+   "e": 51.98,
+   "t": "Kita hantar ke New Zealand port lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 52.6,
+   "e": 54.06,
+   "t": "Kita punya customer",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 54.84,
+   "e": 56.72,
+   "t": "Ok ok, jom kita lepas tu",
+   "p": -0.46,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1842": [
+  {
+   "s": 0.08,
+   "e": 5.06,
+   "t": "Tapi kita dapat pastikan setiap pack tu dia punya pimpangan dia betul lah",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 5.06,
+   "e": 8.42,
+   "t": "Kita berpengaruh mengikut akta makanan",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 8.42,
+   "e": 12.7,
+   "t": "Dia tak boleh berkurang daripada yang dibenarkan",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 12.7,
+   "e": 13.9,
+   "t": "Yang tertulis kat situ",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 13.9,
+   "e": 14.78,
+   "t": "Maksudnya dari segitu",
+   "p": -0.5,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1843": [
+  {
+   "s": 0.9,
+   "e": 3.02,
+   "t": "Baking jing yang telah diletakkan saiz ni ni?",
+   "p": -0.62,
+   "ns": 0.0
+  },
+  {
+   "s": 3.12,
+   "e": 5.18,
+   "t": "Haa, saiz ni tanya gini. Dia 250g.",
+   "p": -0.62,
+   "ns": 0.0
+  },
+  {
+   "s": 6.7,
+   "e": 8.32,
+   "t": "Satu bag ni 250g.",
+   "p": -0.62,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1844": [
+  {
+   "s": 0.56,
+   "e": 2.76,
+   "t": "Untuk kita masukkan dalam kotak kecil.",
+   "p": -0.39,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1845": [
+  {
+   "s": 0.08,
+   "e": 2.56,
+   "t": "So, rasa ini masih banyak benda manual.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 2.72,
+   "e": 4.22,
+   "t": "Banyak benda manual lah.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 4.4,
+   "e": 9.3,
+   "t": "Kita takkan, kita nak cari juga.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 9.56,
+   "e": 11.46,
+   "t": "Dan masukkan rasa dia yang betul.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 18.18,
+   "e": 19.6,
+   "t": "Berapa dik dia punya berat?",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 21.18,
+   "e": 23.14,
+   "t": "252 sampai 253 selalu.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 30.25,
+   "e": 32.63,
+   "t": "Awak ni kira macam mencukupkan je lah eh?",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 32.79,
+   "e": 34.69,
+   "t": "Yang sana pun dah masukkan sepagung eh?",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 34.79,
+   "e": 36.95,
+   "t": "Dia masukkan tapi kadang-kadang masukkan tu tak tetap.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 37.03,
+   "e": 37.89,
+   "t": "Ada masa kurang.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 38.09,
+   "e": 39.43,
+   "t": "Kalau kurang tu kena tambah lah.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 39.43,
+   "e": 41.89,
+   "t": "Oh..",
+   "p": -1.02,
+   "ns": 0.0
+  },
+  {
+   "s": 41.89,
+   "e": 43.55,
+   "t": "Oh..",
+   "p": -1.02,
+   "ns": 0.0
+  },
+  {
+   "s": 45.15,
+   "e": 45.29,
+   "t": "Oh..",
+   "p": -1.02,
+   "ns": 0.0
+  },
+  {
+   "s": 45.29,
+   "e": 45.33,
+   "t": "Oh..",
+   "p": -1.02,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1846": [
+  {
+   "s": 2.02,
+   "e": 3.5,
+   "t": "Selepas ini kita tengok akan habis.",
+   "p": -0.7,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1850": [
+  {
+   "s": 0.92,
+   "e": 3.1,
+   "t": "Sebelum kita dapat kontrak",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 3.1,
+   "e": 4.84,
+   "t": "Untuk packing untuk New Zealand ni",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 4.84,
+   "e": 7.34,
+   "t": "Kita dengar-dengar brand ni macam tu",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 9.4,
+   "e": 11.52,
+   "t": "Produk ni akan pergi ke New Zealand",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 12.42,
+   "e": 14.08,
+   "t": "Tak ada dibungkus di",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 14.08,
+   "e": 15.3,
+   "t": "Teh Choy Sa",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 15.3,
+   "e": 15.78,
+   "t": "Tak ada",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 20.58,
+   "e": 21.18,
+   "t": "Pembungkusannya",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 22.1,
+   "e": 23.3,
+   "t": "Di Tipak",
+   "p": -0.45,
+   "ns": 0.0
+  },
+  {
+   "s": 26.5,
+   "e": 27.1,
+   "t": "Jumabaru",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1851": [
+  {
+   "s": 0.08,
+   "e": 1.6,
+   "t": "So kalau di New Zealand tu",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 2.28,
+   "e": 4.22,
+   "t": "Ada syarikat yang untuk product choice",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 4.22,
+   "e": 4.66,
+   "t": "Memang adalah",
+   "p": -0.35,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1858": [
+  {
+   "s": 0.0,
+   "e": 6.12,
+   "t": "marketing tapi yang untuk export ni pasal dia baru kita baru dua tahun makna dari segi dia punya",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 6.12,
+   "e": 13.38,
+   "t": "design tu dia orang kalau nak ubah dia punya dia punya apa nama tu dia punya cetak dia tu",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 13.38,
+   "e": 15.86,
+   "t": "memang akan ada cost kat situ lah mungkin dia",
+   "p": -0.34,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1861": [
+  {
+   "s": 0.08,
+   "e": 2.1,
+   "t": "Sebab kadang-kadang teh ni rasa sedap",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 2.1,
+   "e": 3.36,
+   "t": "Teh ni macam lain sikit",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 3.36,
+   "e": 5.56,
+   "t": "Maknanya fermentasi tu just untuk colour",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 6.3,
+   "e": 7.6,
+   "t": "Maknanya kalau macam teh",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 7.6,
+   "e": 8.76,
+   "t": "Dia punya origin tu sendiri",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 8.76,
+   "e": 11.64,
+   "t": "Kalau macam Sri Lanka, Kenya",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 11.64,
+   "e": 13.26,
+   "t": "Maknanya dari segi paste tu",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 13.26,
+   "e": 14.08,
+   "t": "Memang akan lebih",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 14.08,
+   "e": 16.08,
+   "t": "Tapi cumanya bila masih kita",
+   "p": -0.23,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1862": [
+  {
+   "s": 0.0,
+   "e": 1.98,
+   "t": "Memang tak mampu lah",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 1.98,
+   "e": 2.56,
+   "t": "Untuk muli",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 2.56,
+   "e": 5.32,
+   "t": "Kalau ikut negara, tim mana yang paling bagus?",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 5.58,
+   "e": 6.94,
+   "t": "Memang Sri Lanka dan Kenya",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 6.94,
+   "e": 7.98,
+   "t": "Sri Lanka",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 8.8,
+   "e": 9.84,
+   "t": "Dan Kenya",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 9.84,
+   "e": 13.8,
+   "t": "Negara-negara yang kering lah",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 13.8,
+   "e": 14.16,
+   "t": "Biasa",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 15.4,
+   "e": 17.38,
+   "t": "Kalau beza kita kan Meron, negara sejuk",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 17.38,
+   "e": 18.16,
+   "t": "Negara sejuk",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 20.1,
+   "e": 21.58,
+   "t": "Dia memang kering",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 22.2,
+   "e": 24.1,
+   "t": "Sejuk tu, dia macam lalang juga",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 24.1,
+   "e": 25.56,
+   "t": "Kalau dia punya",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 26.22,
+   "e": 27.76,
+   "t": "Lalang tu kan tumbuh",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 27.76,
+   "e": 29.5,
+   "t": "Lepas hujan dia kira agak aktif",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 29.5,
+   "e": 31.42,
+   "t": "Tapi di sini kuali.",
+   "p": -1.31,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1863": [
+  {
+   "s": 2.64,
+   "e": 4.4,
+   "t": "Terima kasih kerana menonton!",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1865": [],
+ "IMG_1866": [
+  {
+   "s": 0.11,
+   "e": 1.71,
+   "t": "Yang ni yang paling",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 1.71,
+   "e": 4.13,
+   "t": "Bagi kita yang paling interesting lah",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 4.13,
+   "e": 5.11,
+   "t": "Oh",
+   "p": -0.5,
+   "ns": 0.0
+  },
+  {
+   "s": 5.11,
+   "e": 7.09,
+   "t": "Oh ni",
+   "p": -0.5,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1867": [
+  {
+   "s": 0.05,
+   "e": 4.75,
+   "t": "Maknanya daripada asal kita wujudkan produk ini dekat majlis.",
+   "p": -0.36,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1868": [
+  {
+   "s": 0.0,
+   "e": 4.0,
+   "t": "Dia punya technical director. Dia orang Perancis. Nama dia Jacks Blaine.",
+   "p": -0.23,
+   "ns": 0.0
+  },
+  {
+   "s": 4.64,
+   "e": 9.6,
+   "t": "Bila masa dia datang dekat kelan kita, dia nampak ada satu besing lebih kurang macam ni.",
+   "p": -0.23,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1872": [
+  {
+   "s": 0.69,
+   "e": 10.59,
+   "t": "Pasal selain daripada, sebab kita, kita pun memang ada, ada ladang kejahat dekat jalan keluar mesin.",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 11.01,
+   "e": 16.67,
+   "t": "Kita ada buat produk mana tu, brand dia, golden plan, peninsula lah.",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 17.41,
+   "e": 20.63,
+   "t": "Kita ada buat ucang, pasal benda tu volume dia tak banyak.",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 21.03,
+   "e": 23.29,
+   "t": "Kita sekali jalan, mungkin boleh tahan sebulan.",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 23.69,
+   "e": 24.93,
+   "t": "Lepas tu kita dudukkan situ.",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 25.13,
+   "e": 29.29,
+   "t": "Tapi bila masa pihak Ripton datang, kita tengok, inilah yang kita nak tengok.",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 29.29,
+   "e": 30.73,
+   "t": "Waktu yang dia introduce dekat Macam",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 30.73,
+   "e": 33.13,
+   "t": "Tahun pertama, tahun 1995",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 33.13,
+   "e": 34.99,
+   "t": "Kita introduce dalam makanan Malaysia",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 34.99,
+   "e": 36.61,
+   "t": "Dia target",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 36.61,
+   "e": 37.71,
+   "t": "Hanya 10 tan",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 37.71,
+   "e": 38.93,
+   "t": "10 tan setahun",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 38.93,
+   "e": 41.11,
+   "t": "Tapi Alhamdulillah tahun pertama kita launch",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 41.11,
+   "e": 42.69,
+   "t": "Dapat 30 tan",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 42.69,
+   "e": 44.29,
+   "t": "Hanya 3 kali ganda",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 44.29,
+   "e": 47.09,
+   "t": "Tapi tahun ke tahun kita dapat",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 47.09,
+   "e": 48.49,
+   "t": "Peningkatan tu",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 48.49,
+   "e": 49.73,
+   "t": "Alhamdulillah",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 49.73,
+   "e": 51.73,
+   "t": "Tahun kemudian kita mencetak",
+   "p": -0.41,
+   "ns": 0.0
+  },
+  {
+   "s": 51.73,
+   "e": 53.39,
+   "t": "24 tan",
+   "p": -0.41,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1873": [
+  {
+   "s": 2.0,
+   "e": 4.04,
+   "t": "Oh, dia terus masuk, kan?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 4.2,
+   "e": 5.52,
+   "t": "Dia terus masuk dalam nyelak.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 5.68,
+   "e": 6.28,
+   "t": "Dia punya cup dia.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 6.68,
+   "e": 8.58,
+   "t": "Dia punya mall punya dalam nyelak.",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 12.74,
+   "e": 14.9,
+   "t": "Perasan tak ada teh yang bulat?",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 16.52,
+   "e": 17.58,
+   "t": "Rombongkusan dia kat sini.",
+   "p": -0.46,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1875": [],
+ "IMG_1876": [
+  {
+   "s": 1.58,
+   "e": 4.64,
+   "t": "Kita tahu kita dalam UK",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 5.28,
+   "e": 7.12,
+   "t": "Tapi, biasanya tetes-tes",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 7.12,
+   "e": 8.3,
+   "t": "Lama juga lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 8.3,
+   "e": 10.2,
+   "t": "Dia punya capacity pun",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 10.2,
+   "e": 12.84,
+   "t": "Dalam 400 hingga 500",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 12.84,
+   "e": 14.0,
+   "t": "Puncak seminit",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 14.0,
+   "e": 16.56,
+   "t": "Tapi, bila masa",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 17.04,
+   "e": 18.9,
+   "t": "Ujung tahun 2010-2011",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 18.9,
+   "e": 21.38,
+   "t": "Kita ada masalah capacity lah",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 21.38,
+   "e": 23.5,
+   "t": "Sampaikan tak ada satu tahap",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 24.54,
+   "e": 25.18,
+   "t": "Unilever",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 25.18,
+   "e": 26.82,
+   "t": "Dia tarik satu STU",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 26.82,
+   "e": 28.74,
+   "t": "Macam satu stu tu maknanya satu jenis produk",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 29.2,
+   "e": 31.52,
+   "t": "Puncak 20, pasal kita tak boleh nak cook",
+   "p": -0.46,
+   "ns": 0.0
+  },
+  {
+   "s": 32.62,
+   "e": 35.5,
+   "t": "Dia tarik balik perlahan tu, dia suruh Indonesia yang bikin.",
+   "p": -0.47,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1880": [
+  {
+   "s": 1.36,
+   "e": 10.09,
+   "t": "Terima kasih kerana menonton!",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1886": [
+  {
+   "s": 0.24,
+   "e": 2.64,
+   "t": "Apa bang?",
+   "p": -0.67,
+   "ns": 0.0
+  },
+  {
+   "s": 3.46,
+   "e": 4.42,
+   "t": "Baik-baik",
+   "p": -0.67,
+   "ns": 0.0
+  },
+  {
+   "s": 4.42,
+   "e": 8.0,
+   "t": "Dalam setiap",
+   "p": -0.67,
+   "ns": 0.0
+  },
+  {
+   "s": 8.0,
+   "e": 10.3,
+   "t": "Ada 40 uncang",
+   "p": -0.67,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1887": [
+  {
+   "s": 0.0,
+   "e": 0.64,
+   "t": "Benda ada kat situ lah",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 0.64,
+   "e": 1.2,
+   "t": "Tempat makhati",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 1.2,
+   "e": 2.1,
+   "t": "Ada-ada",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 2.1,
+   "e": 2.86,
+   "t": "Tidak yang packing",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 2.86,
+   "e": 4.02,
+   "t": "Yang untuk New Zealand tu tak ada",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 4.46,
+   "e": 5.3,
+   "t": "Benda tu produk",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 5.3,
+   "e": 6.42,
+   "t": "Pasal dia punya",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 6.42,
+   "e": 7.38,
+   "t": "Dia tak nak tukar",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 7.38,
+   "e": 8.78,
+   "t": "Dia punya cetak",
+   "p": -0.42,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1890": [
+  {
+   "s": 0.0,
+   "e": 1.34,
+   "t": "Kalau terlebih, kenapa terlebih?",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 1.74,
+   "e": 2.76,
+   "t": "Kami rasa kita akan timbang.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 3.1,
+   "e": 3.68,
+   "t": "Oh, timbang.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 3.72,
+   "e": 6.16,
+   "t": "InsyaAllah memang kita dah ada range.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 6.7,
+   "e": 7.62,
+   "t": "Takkan itulah eh.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 7.74,
+   "e": 8.58,
+   "t": "You tak kira eh.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 8.9,
+   "e": 9.98,
+   "t": "Memang boleh kuat eh.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 10.1,
+   "e": 12.18,
+   "t": "Sebab dia dah tahu dia punya range dia berapa banyak.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 12.24,
+   "e": 13.18,
+   "t": "Tapi dia akan berjaya dekat.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 14.52,
+   "e": 16.94,
+   "t": "Setiap sejam, kita akan ada kualiti control.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 17.06,
+   "e": 19.24,
+   "t": "Akan cek dari dia punya printing.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 20.26,
+   "e": 22.5,
+   "t": "Ada kemungkinan boleh terlebih atau kurang?",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 22.92,
+   "e": 27.3,
+   "t": "Itu boleh kalau uncang setiap satu tu kurang daripada 2 gram.",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 28.06,
+   "e": 28.84,
+   "t": "Lebih tak apa?",
+   "p": -0.44,
+   "ns": 0.0
+  },
+  {
+   "s": 28.84,
+   "e": 30.28,
+   "t": "Lebih bagi kita",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 30.28,
+   "e": 32.08,
+   "t": "Bagi-bagi kita okey lah",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 32.08,
+   "e": 33.08,
+   "t": "Cuma dari segi",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 33.08,
+   "e": 34.22,
+   "t": "Business-wise",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 34.22,
+   "e": 35.02,
+   "t": "Kita tak boleh lah",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 35.02,
+   "e": 35.54,
+   "t": "Terlebih banyak",
+   "p": -0.35,
+   "ns": 0.0
+  },
+  {
+   "s": 35.54,
+   "e": 36.82,
+   "t": "Bagi kita",
+   "p": -0.35,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1892": [
+  {
+   "s": 1.38,
+   "e": 3.1,
+   "t": "Dan dia pula ringan kan",
+   "p": -0.42,
+   "ns": 0.0
+  },
+  {
+   "s": 3.1,
+   "e": 4.3,
+   "t": "Dia ringan betul",
+   "p": -0.42,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1893": [
+  {
+   "s": 2.61,
+   "e": 3.81,
+   "t": "Jangan lupa like, share dan subscribe",
+   "p": -0.76,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1899": [
+  {
+   "s": 0.88,
+   "e": 5.14,
+   "t": "Itu kosong, menarik juga ni.",
+   "p": -0.29,
+   "ns": 0.0
+  },
+  {
+   "s": 8.69,
+   "e": 11.99,
+   "t": "Daripada tak ada tarik, dekat mesin bulat ni akan ada tarik.",
+   "p": -0.29,
+   "ns": 0.0
+  },
+  {
+   "s": 12.23,
+   "e": 12.71,
+   "t": "Nampak tengok.",
+   "p": -0.29,
+   "ns": 0.0
+  },
+  {
+   "s": 13.47,
+   "e": 15.83,
+   "t": "Yang tu tak ada tarik, di lalu situ je dia keluar ada tarik.",
+   "p": -0.29,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1901": [
+  {
+   "s": 0.0,
+   "e": 1.4,
+   "t": "Lipton yang dah dipungkus",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 1.4,
+   "e": 4.14,
+   "t": "40 mincang",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 4.14,
+   "e": 5.02,
+   "t": "sepaket",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 5.02,
+   "e": 7.06,
+   "t": "siap dengan tarikh",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 7.06,
+   "e": 8.9,
+   "t": "akhir penggunaan",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 9.64,
+   "e": 11.14,
+   "t": "baru ni, hari ni",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 11.14,
+   "e": 14.02,
+   "t": "dia akan tamat pada 6 Mei 2029",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 15.32,
+   "e": 16.74,
+   "t": "logo halal pun ada",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 18.28,
+   "e": 20.88,
+   "t": "Lipton memang je nama yang terkenal",
+   "p": -0.27,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1902": [
+  {
+   "s": 0.0,
+   "e": 1.06,
+   "t": "Kereta ni kita buat kat sini lah",
+   "p": -0.29,
+   "ns": 0.0
+  },
+  {
+   "s": 1.06,
+   "e": 3.2,
+   "t": "Tapi benda tu maknanya dia",
+   "p": -0.29,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1903": [
+  {
+   "s": 1.3,
+   "e": 4.18,
+   "t": "Ini daripada awal, kalau gini shift ke apa ni?",
+   "p": -0.65,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1907": [
+  {
+   "s": 1.02,
+   "e": 2.3,
+   "t": "packaging mana yang",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 2.3,
+   "e": 3.64,
+   "t": "yang lagi murah",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 3.64,
+   "e": 5.62,
+   "t": "yang macam return kan dia jenis bag",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 5.62,
+   "e": 7.62,
+   "t": "plastik eh, dia kan kotak eh",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 7.62,
+   "e": 8.96,
+   "t": "mana yang lebih ekonomi",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 8.96,
+   "e": 11.14,
+   "t": "sebenarnya kalau ikutkan dia punya tu",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 11.14,
+   "e": 13.22,
+   "t": "kalau mana flexible packaging tu rasa satu",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 13.22,
+   "e": 14.4,
+   "t": "pasal kita beli pun dalam",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 15.42,
+   "e": 17.18,
+   "t": "kira dalam kuantiti yang banyak",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 17.82,
+   "e": 19.16,
+   "t": "macam tu kita dalam",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 19.16,
+   "e": 20.8,
+   "t": "mungkin 20 sen hingga 30 sen",
+   "p": -0.27,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1908": [
+  {
+   "s": 0.0,
+   "e": 16.42,
+   "t": "Homeworld lebih kurang macam RM50 macam tu lah, dia tak sampai RM10, harga satu kotak tu, tapi bila masih kita Homeworld kali 4, lebih kurang RM50 lah lebih kurang, mana agak mahal sikit.",
+   "p": -0.56,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1913": [],
+ "IMG_1914": [
+  {
+   "s": 0.94,
+   "e": 1.74,
+   "t": "Dia rasalah",
+   "p": -1.06,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1915": [
+  {
+   "s": 2.0,
+   "e": 6.08,
+   "t": "Hari-harilah awak minum teh, uberdua ni.",
+   "p": -0.67,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1916": [
+  {
+   "s": 2.9,
+   "e": 3.88,
+   "t": "Selain visual, tasty",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 4.86,
+   "e": 6.08,
+   "t": "Tasty itu kena rasa lah",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 6.72,
+   "e": 8.62,
+   "t": "Kita akan compare dengan Master Blend",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 8.62,
+   "e": 9.72,
+   "t": "Master Sample",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 10.28,
+   "e": 11.72,
+   "t": "Kita tak ada Master Sample",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 11.72,
+   "e": 13.92,
+   "t": "Dengan tu, dengan sekarang punya production",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 13.92,
+   "e": 16.78,
+   "t": "Kita akan match tak dengan Master Sample",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 17.64,
+   "e": 18.76,
+   "t": "Hari-hari kena rasa lah",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 18.76,
+   "e": 20.72,
+   "t": "Hari-hari kena rasa ni",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 20.72,
+   "e": 22.1,
+   "t": "Orang fisik kena puasa",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 22.88,
+   "e": 24.72,
+   "t": "Kena tak boleh makan, especially yang pedas-pedas",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 24.72,
+   "e": 26.26,
+   "t": "Kena gelidah",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 26.82,
+   "e": 27.62,
+   "t": "Kena gelidah lah",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 27.62,
+   "e": 29.72,
+   "t": "Kena gelidah, kalau nak makan lepas",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 29.72,
+   "e": 35.16,
+   "t": "Terima kasih kerana menonton!",
+   "p": -0.54,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1922": [
+  {
+   "s": 0.0,
+   "e": 2.0,
+   "t": "pasal dia dah di-recover",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 2.0,
+   "e": 3.74,
+   "t": "dengan dia punya tu, apa-apa pun",
+   "p": -0.27,
+   "ns": 0.0
+  },
+  {
+   "s": 3.74,
+   "e": 5.06,
+   "t": "kita memang dah tak nampak lah",
+   "p": -0.27,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1923": [
+  {
+   "s": 2.64,
+   "e": 3.54,
+   "t": "Kelembapan dia",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 14.96,
+   "e": 16.02,
+   "t": "Untuk base tu lah",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 16.02,
+   "e": 17.22,
+   "t": "Untuk base tu",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 17.22,
+   "e": 21.32,
+   "t": "Kita ambil sampel dia lah",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 22.58,
+   "e": 23.98,
+   "t": "Mungkin daripada satu",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 23.98,
+   "e": 26.18,
+   "t": "Kita ambil enam sampel",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 26.18,
+   "e": 27.36,
+   "t": "Daripada enam tu",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 27.36,
+   "e": 28.98,
+   "t": "Bimbang setiap satu",
+   "p": -0.39,
+   "ns": 0.0
+  },
+  {
+   "s": 28.98,
+   "e": 29.38,
+   "t": "Cukup tak?",
+   "p": -0.36,
+   "ns": 0.0
+  },
+  {
+   "s": 29.64,
+   "e": 33.26,
+   "t": "Cukup bimbangan tu kalau ikut dia punya standar tu",
+   "p": -0.36,
+   "ns": 0.0
+  },
+  {
+   "s": 33.84,
+   "e": 36.16,
+   "t": "Lagi satu daripada 6 tu dikoyakkan satu",
+   "p": -0.36,
+   "ns": 0.0
+  },
+  {
+   "s": 36.16,
+   "e": 37.82,
+   "t": "Untuk kira fizikal dalam tu",
+   "p": -0.36,
+   "ns": 0.0
+  },
+  {
+   "s": 37.82,
+   "e": 38.78,
+   "t": "Maksudnya cukup atau tidak",
+   "p": -0.36,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1929": [
+  {
+   "s": 1.58,
+   "e": 7.67,
+   "t": "Terima kasih kerana menonton!",
+   "p": -0.14,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1930": [
+  {
+   "s": 0.0,
+   "e": 5.82,
+   "t": "Ini ada 3000 jam. Ini untuk produk Australia.",
+   "p": -0.87,
+   "ns": 0.0
+  },
+  {
+   "s": 7.85,
+   "e": 8.24,
+   "t": "Baiklah!",
+   "p": -0.87,
+   "ns": 0.0
+  },
+  {
+   "s": 8.84,
+   "e": 11.84,
+   "t": "Ini untuk produk Australia.",
+   "p": -0.87,
+   "ns": 0.0
+  },
+  {
+   "s": 12.26,
+   "e": 13.1,
+   "t": "Ini untuk produk Australia.",
+   "p": -0.87,
+   "ns": 0.0
+  },
+  {
+   "s": 13.1,
+   "e": 13.48,
+   "t": "Ini untuk produk Australia.",
+   "p": -0.87,
+   "ns": 0.0
+  },
+  {
+   "s": 14.74,
+   "e": 16.56,
+   "t": "Ini untuk keteri ini.",
+   "p": -0.87,
+   "ns": 0.0
+  },
+  {
+   "s": 16.76,
+   "e": 17.96,
+   "t": "Dalamnya ada 3000.",
+   "p": -0.87,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1934": [
+  {
+   "s": 1.47,
+   "e": 3.19,
+   "t": "Ini kurang wastage",
+   "p": -0.95,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1935": [
+  {
+   "s": 1.03,
+   "e": 4.53,
+   "t": "Maknanya terbuang lah, maknanya kita pun dari segi itu, kita akan memang cepat terbuang lah.",
+   "p": -0.57,
+   "ns": 0.0
+  },
+  {
+   "s": 4.85,
+   "e": 8.59,
+   "t": "Tapi kita tak boleh lari pesan sucikel, pasal dia punya...",
+   "p": -0.57,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1936": [
+  {
+   "s": 0.72,
+   "e": 4.3,
+   "t": "Untuk lekatkan dia memang dia pakai",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 5.52,
+   "e": 7.18,
+   "t": "Pakai maknanya dia pemanasan",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 7.18,
+   "e": 8.82,
+   "t": "Untuk lekatkan antara",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 8.82,
+   "e": 10.92,
+   "t": "Antara dua ketak",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 10.92,
+   "e": 13.5,
+   "t": "Mula-mula kat situ dua ketak yang membeza",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 13.5,
+   "e": 14.82,
+   "t": "Bila masa kita dah lekatkan",
+   "p": -0.34,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1938": [
+  {
+   "s": 2.32,
+   "e": 3.24,
+   "t": "Ya, betul.",
+   "p": -0.48,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1939": [
+  {
+   "s": 0.0,
+   "e": 1.52,
+   "t": "belit ataupun kita ikut",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 1.52,
+   "e": 4.06,
+   "t": "dia punya kategori-kategori tu",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 4.06,
+   "e": 6.0,
+   "t": "maknanya satu hari kita mungkin",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 6.0,
+   "e": 7.9,
+   "t": "maksimum berkata boleh jalan 4",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 7.9,
+   "e": 9.9,
+   "t": "hingga 5 produk yang berbeza",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 10.68,
+   "e": 12.44,
+   "t": "kalau esok ada permintaan yang lain",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 12.44,
+   "e": 13.82,
+   "t": "mungkin yang uncang 40",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 13.82,
+   "e": 15.8,
+   "t": "kita tukar kepada uncang 20",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 15.8,
+   "e": 17.42,
+   "t": "ataupun uncang 80",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 17.42,
+   "e": 18.56,
+   "t": "itu kita ada",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 20.16,
+   "e": 21.38,
+   "t": "ataupun yang uncang",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 21.38,
+   "e": 23.52,
+   "t": "untuk export kita ada round",
+   "p": -0.3,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1948": [
+  {
+   "s": 0.0,
+   "e": 5.74,
+   "t": "Kalau lebih daripada penggunaan dia 85%, kita dah kena berfikir untuk invest lagi satu mesin.",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 6.58,
+   "e": 10.16,
+   "t": "Untuk cater pendambang kemintaan lah.",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 10.48,
+   "e": 13.52,
+   "t": "Sebab itu kita nampaklah benda tu kira sukses story pada syarikat.",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 14.18,
+   "e": 20.32,
+   "t": "Asalnya kita punya masa penuh, masa kita launch produk tu asal daripada 30 tan.",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 21.08,
+   "e": 24.62,
+   "t": "Alhamdulillah kita dah mencapai 1,400 tan setahun.",
+   "p": -0.3,
+   "ns": 0.0
+  },
+  {
+   "s": 24.82,
+   "e": 25.28,
+   "t": "Banyak.",
+   "p": -0.3,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1949": [
+  {
+   "s": 0.0,
+   "e": 7.2,
+   "t": "lebih kurang 100 ton lebih. Alhamdulillah lah kat situ kita",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 7.2,
+   "e": 10.88,
+   "t": "dapat macam yang kalau yang macam paket itu ada turun naik.",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 11.4,
+   "e": 16.42,
+   "t": "Mungkin dalam tahun itu dalam 400-500 ton. Mungkin tahun itu",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 16.42,
+   "e": 18.58,
+   "t": "kurang, tahun berikutnya akan naik. Tapi yang macam itu",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 18.58,
+   "e": 21.32,
+   "t": "sumpah akan dapat dia punya trend meningkat lah. Tinggi itu.",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 21.56,
+   "e": 24.98,
+   "t": "Pengguna penggunaannya lagi mudah lah. Macam semua",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 24.98,
+   "e": 28.44,
+   "t": "masing-masing bekerja. Maksudnya tak perlu nak tapis-tapis",
+   "p": -0.37,
+   "ns": 0.0
+  },
+  {
+   "s": 28.44,
+   "e": 31.98,
+   "t": "Yalah, kena tapis",
+   "p": -0.69,
+   "ns": 0.0
+  },
+  {
+   "s": 33.82,
+   "e": 35.28,
+   "t": "Ngesih kan",
+   "p": -0.69,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1953": [
+  {
+   "s": 10.68,
+   "e": 21.62,
+   "t": "Terima kasih kerana menonton!",
+   "p": -0.45,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1956": [
+  {
+   "s": 0.0,
+   "e": 3.9,
+   "t": "Dia punya nature of product tu dia memang very hygroscopic",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 3.9,
+   "e": 8.3,
+   "t": "Memang dia senang menyerap bau, menyerap kelembapan",
+   "p": -0.34,
+   "ns": 0.0
+  },
+  {
+   "s": 8.94,
+   "e": 10.38,
+   "t": "Sebab tu dalam tu dia kena",
+   "p": -0.34,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1959": [
+  {
+   "s": 0.0,
+   "e": 1.98,
+   "t": "average. Cuma ada tahun 2024",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 1.98,
+   "e": 3.96,
+   "t": "tu bila masih ada transition daripada",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 3.96,
+   "e": 5.74,
+   "t": "Unilever kepada Ekatera, daripada",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 5.74,
+   "e": 7.72,
+   "t": "Lipton Limited",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 8.24,
+   "e": 10.02,
+   "t": "kat situ ada peningkatan melonjak",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 10.02,
+   "e": 11.3,
+   "t": "sampai 2,700 stand",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 11.98,
+   "e": 13.64,
+   "t": "Boleh lagi ni, boleh tinggi lagi",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 13.64,
+   "e": 15.4,
+   "t": "Kita boleh lagi. Maksudnya kita pun nak",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 15.4,
+   "e": 17.86,
+   "t": "pelbagaikan. Cari wrecking ni pun",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 17.86,
+   "e": 19.42,
+   "t": "ada sebahagian yang memang kita",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 20.38,
+   "e": 21.34,
+   "t": "wrecking pasal dia",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 21.98,
+   "e": 23.46,
+   "t": "pasal dia tak boleh nak",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 24.72,
+   "e": 25.72,
+   "t": "nak tinggi",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 25.72,
+   "e": 27.86,
+   "t": "kita nak wreck tinggi sebab kita pakai wrecking",
+   "p": -0.26,
+   "ns": 0.0
+  },
+  {
+   "s": 27.86,
+   "e": 29.52,
+   "t": "kepada abang-abang",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 29.52,
+   "e": 30.46,
+   "t": "tambi di luar sana",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 30.46,
+   "e": 32.22,
+   "t": "jangan kecil hati",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 32.22,
+   "e": 33.62,
+   "t": "ada teh",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 34.76,
+   "e": 35.64,
+   "t": "tambi",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 35.64,
+   "e": 36.66,
+   "t": "amat",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 38.9,
+   "e": 39.9,
+   "t": "atas tu",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 39.9,
+   "e": 40.62,
+   "t": "zoom-zoom",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 40.62,
+   "e": 41.18,
+   "t": "tambi",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 41.18,
+   "e": 42.02,
+   "t": "tambi ti",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 43.08,
+   "e": 45.0,
+   "t": "tambi tu Kenya ke?",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 45.2,
+   "e": 45.7,
+   "t": "Indonesia",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 45.7,
+   "e": 47.92,
+   "t": "dia origin daripada Indonesia",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 47.92,
+   "e": 48.96,
+   "t": "tambi ti",
+   "p": -0.33,
+   "ns": 0.0
+  },
+  {
+   "s": 48.96,
+   "e": 50.22,
+   "t": "tambi ti",
+   "p": -0.33,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1960": [
+  {
+   "s": 0.0,
+   "e": 2.12,
+   "t": "Jangan ingat Tambi hanya di India",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 2.12,
+   "e": 4.76,
+   "t": "Tambi dari Indonesia",
+   "p": -0.38,
+   "ns": 0.0
+  },
+  {
+   "s": 4.76,
+   "e": 5.8,
+   "t": "Hama",
+   "p": -0.38,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1969": [
+  {
+   "s": 2.83,
+   "e": 4.07,
+   "t": "Lagi panas pakai tu?",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 4.45,
+   "e": 5.63,
+   "t": "Lagi panas pakai yang ni eh?",
+   "p": -0.31,
+   "ns": 0.0
+  },
+  {
+   "s": 6.43,
+   "e": 7.55,
+   "t": "Yang ni kurang sikit",
+   "p": -0.31,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1970": [
+  {
+   "s": 0.02,
+   "e": 2.14,
+   "t": "Itu yang akan dihantar.",
+   "p": -0.58,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1971": [
+  {
+   "s": 2.7,
+   "e": 3.98,
+   "t": "Oh, ni lawan ni teh ni.",
+   "p": -0.84,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1972": [
+  {
+   "s": 0.0,
+   "e": 0.34,
+   "t": "Yang tebal saja?",
+   "p": -0.82,
+   "ns": 0.0
+  },
+  {
+   "s": 0.54,
+   "e": 1.94,
+   "t": "Yang tebal ni?",
+   "p": -0.82,
+   "ns": 0.0
+  },
+  {
+   "s": 2.0,
+   "e": 4.48,
+   "t": "Ini untuk packaging tadi lah untuk jambulak tadi",
+   "p": -0.82,
+   "ns": 0.0
+  },
+  {
+   "s": 9.07,
+   "e": 9.95,
+   "t": "Ok ok",
+   "p": -0.82,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1976": [
+  {
+   "s": 0.0,
+   "e": 2.84,
+   "t": "Cukup-cukup untuk mungkin 2-3 hari sebelum produk share",
+   "p": -0.22,
+   "ns": 0.0
+  },
+  {
+   "s": 2.84,
+   "e": 3.3,
+   "t": "Kita akan",
+   "p": -0.22,
+   "ns": 0.0
+  },
+  {
+   "s": 4.0,
+   "e": 5.36,
+   "t": "Kita tak simpan lama lah",
+   "p": -0.22,
+   "ns": 0.0
+  },
+  {
+   "s": 5.36,
+   "e": 7.22,
+   "t": "Biasa kalau lepas kita buat macam ni",
+   "p": -0.22,
+   "ns": 0.0
+  }
+ ],
+ "IMG_1977": [
+  {
+   "s": 0.0,
+   "e": 1.04,
+   "t": "kita dah deliver pada Singapore",
+   "p": -0.66,
+   "ns": 0.0
+  },
+  {
+   "s": 1.04,
+   "e": 2.76,
+   "t": "hmm betul betul",
+   "p": -0.66,
+   "ns": 0.0
+  },
+  {
+   "s": 2.76,
+   "e": 5.06,
+   "t": "pada Singapore kita deliver guna",
+   "p": -0.66,
+   "ns": 0.0
+  }
+ ]
+}

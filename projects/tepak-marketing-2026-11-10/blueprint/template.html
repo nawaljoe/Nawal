@@ -1,0 +1,421 @@
+<title>Blueprint Lawatan Tepak Marketing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single editorial column for decisions, with full-width bands for the timeline strip and the EDL table. Type mirrors the on-screen graphics (Montserrat titles). */
+:root{
+  --bg:#F5F6F2; --surface:#FFFFFF; --ink:#17201B; --muted:#5D6A62; --line:#DCE1DA;
+  --leaf:#2F6B4F; --gold:#A7801F; --navy:#0B1F3A; --chip:#E9EEE8;
+  --warn:#B4541A; --warn-bg:#FBEBDD; --ok:#2F6B4F; --ok-bg:#E2EFE7; --crit:#A3262A; --crit-bg:#F8E1E1;
+  --display:"Montserrat",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --s1:#3E7C5E; --s2:#5A8F6E; --s3:#8A9A62; --s4:#B49642; --s5:#C27B3A; --s6:#B4613F;
+  --s7:#8E5A7A; --s8:#5B6FA3; --s9:#A7801F; --s10:#4C8A8A; --s11:#2B4A6B;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1412; --surface:#161D1A; --ink:#E5ECE7; --muted:#9AA9A0; --line:#2A3530;
+  --leaf:#7DBF9C; --gold:#D9B45A; --navy:#9FB6D9; --chip:#1F2924;
+  --warn:#F0A066; --warn-bg:#3A2616; --ok:#7DBF9C; --ok-bg:#16301F; --crit:#F08A8D; --crit-bg:#3A1A1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1412; --surface:#161D1A; --ink:#E5ECE7; --muted:#9AA9A0; --line:#2A3530;
+  --leaf:#7DBF9C; --gold:#D9B45A; --navy:#9FB6D9; --chip:#1F2924;
+  --warn:#F0A066; --warn-bg:#3A2616; --ok:#7DBF9C; --ok-bg:#16301F; --crit:#F08A8D; --crit-bg:#3A1A1B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body);margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(28px,4.4vw,44px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:700;margin-bottom:14px}
+h3{font-size:16px;font-weight:700}
+p{margin:0;max-width:68ch}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.lede{color:var(--muted);font-size:16px;margin-top:10px}
+header{display:grid;gap:14px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:6px}
+.stat{display:grid}
+.stat b{font:700 22px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted);letter-spacing:.04em}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+nav.toc a{font-size:13px;color:var(--ink);text-decoration:none;background:var(--chip);padding:4px 10px;border-radius:999px}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--leaf);color:var(--bg);outline:none}
+section{padding-top:44px;display:grid;gap:14px}
+section>p.note{color:var(--muted)}
+.strip{display:flex;height:64px;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.strip a{display:block;height:100%;min-width:0;border-right:1px solid var(--bg);position:relative}
+.strip a:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.strip a img{width:100%;height:100%;object-fit:cover;opacity:.9;display:block}
+.strip a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--sc)}
+.ruler{display:flex;justify-content:space-between;font:12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--sc)}
+.flags{display:grid;gap:10px}
+.flag{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.flag .tag{grid-row:span 2;align-self:start;font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:4px;white-space:nowrap}
+.tag.crit{background:var(--crit-bg);color:var(--crit)} .tag.warn{background:var(--warn-bg);color:var(--warn)} .tag.ok{background:var(--ok-bg);color:var(--ok)}
+.flag h3{font-size:15px}
+.flag p{color:var(--muted);font-size:14px}
+.scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.scene{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px;border-top:4px solid var(--sc)}
+.scene .t{font:600 12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.scene p{font-size:13.5px;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font:600 11px/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--chip);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td.tc,td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.thumb{width:52px} td.thumb img{width:44px;height:78px;object-fit:cover;border-radius:3px;display:block;border-bottom:4px solid var(--sc)}
+tr.target td{background:var(--ok-bg)}
+.edl td:nth-child(5){min-width:200px} .edl td:nth-child(6){min-width:220px}
+.sub{color:var(--leaf);font-weight:500}
+.mini{font-size:12px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:8px;min-width:0}
+.card ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:14px}
+.kv dt{color:var(--muted)} .kv dd{margin:0;font-family:var(--mono);font-size:13px}
+.lt{background:var(--navy);color:#fff;border-left:6px solid var(--gold);padding:10px 14px;border-radius:2px;max-width:420px}
+:root[data-theme="dark"] .lt{background:#0B1F3A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .lt{background:#0B1F3A}}
+.lt b{display:block;font:600 17px var(--body)} .lt span{color:#E2C46B;font-size:13px}
+code{font-family:var(--mono);font-size:12.5px;background:var(--chip);padding:1px 5px;border-radius:3px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 12px var(--mono);background:var(--chip);padding:3px 8px;border-radius:4px}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media (max-width:520px){.flag{grid-template-columns:1fr}.flag .tag{grid-row:auto;justify-self:start}}
+@media (prefers-reduced-motion:no-preference){tr.target td{transition:background .6s}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Blueprint pasca-produksi · 9:16 · 2 min 30 s</span>
+  <h1>Lawatan Premis Dipersijilkan Halal: Tepak Marketing Sdn. Bhd.</h1>
+  <p class="lede">Lawatan YB Exco Hal Ehwal Agama Islam Johor ke kilang pembungkusan teh di Pasir Gudang, 10 November 2026. Semua keputusan di bawah berdasarkan footage yang telah ditonton dan ditranskripsi; tiada dialog, fakta atau visual direka.</p>
+  <div class="stats" id="stats"></div>
+  <nav class="toc" aria-label="Kandungan">
+    <a href="#semak">Perlu disemak</a><a href="#alat">Alat</a><a href="#cerita">Struktur</a><a href="#edl">EDL</a>
+    <a href="#bunyi">Bunyi &amp; muzik</a><a href="#transisi">Transisi</a><a href="#teks">Teks</a><a href="#subtitle">Subtitle</a>
+    <a href="#warna">Warna</a><a href="#footage">Footage</a><a href="#eksport">Eksport</a>
+  </nav>
+</header>
+
+<section aria-labelledby="tl-h">
+  <h2 id="tl-h">Timeline 0:00 – 2:30</h2>
+  <div class="strip" id="strip"></div>
+  <div class="ruler"><span>0:00</span><span>0:30</span><span>1:00</span><span>1:30</span><span>2:00</span><span>2:30</span></div>
+  <div class="legend" id="legend"></div>
+</section>
+
+<section id="semak" aria-labelledby="semak-h">
+  <h2 id="semak-h">Perlu disemak sebelum diterbitkan</h2>
+  <div class="flags">
+    <div class="flag"><span class="tag crit">Fakta</span><h3>"Kilang pembuatan teh Lipton" tidak disokong footage</h3>
+      <p>YB sendiri berkata <i>"semua produk Lipton <b>dibungkus</b> di sini"</i> (IMG_1777, 0:11). Footage menunjukkan proses blending, pengisian uncang dan pembungkusan, bukan penanaman atau pembuatan teh. Kilang ini juga membungkus jenama lain: kotak <b>Bushells</b> (IMG_1930, IMG_1936), kotak kuning untuk eksport New Zealand (IMG_1850, IMG_1862) dan kotak hijau (IMG_1907). Cadangan tajuk: <b>"Kilang Pembungkusan Teh Lipton"</b>, atau sahkan istilah dengan Tepak Marketing.</p></div>
+    <div class="flag"><span class="tag crit">Footage tiada</span><h3>Tiada rakaman penyampaian sijil, cenderahati atau foto berkumpulan</h3>
+      <p>Ke-113 fail dalam folder Drive (85 klip unik) tidak mengandungi babak ini. Klip terakhir (IMG_1977, 10:42 pagi) ialah perbualan di gudang. Penyelesaian: minta 2–3 gambar sebenar daripada jurugambar rasmi (beberapa jurugambar DSLR kelihatan dalam IMG_1862, IMG_1866, IMG_1913) dan letak di slot 2:15–2:25 dengan gerakan Ken Burns perlahan. Jika tiada, penutup semasa (YB thumbs up + logo + mesej) sudah lengkap.</p></div>
+    <div class="flag"><span class="tag warn">Nama</span><h3>Nama dan jawatan dalam lower third masih placeholder</h3>
+      <p><code>YB [NAMA YB]</code> dan <code>[NAMA WAKIL SYARIKAT] / [Jawatan]</code>. Nama tidak disebut dengan jelas dalam footage, jadi tidak diteka.</p></div>
+    <div class="flag"><span class="tag warn">Angka</span><h3>Angka dalam soundbite ialah kenyataan wakil syarikat</h3>
+      <p>"1,000 hingga 1,200 uncang seminit" (IMG_1835), "target 10 tan setahun … dapat 30 tan" (IMG_1872), "1,400 tan setahun" (IMG_1948). Ia dikekalkan sebagai petikan sahaja, tidak dijadikan teks grafik. Sahkan dengan syarikat sebelum terbit.</p></div>
+    <div class="flag"><span class="tag warn">Sensitiviti</span><h3>Gurauan "Tambi" tidak dimasukkan</h3>
+      <p>IMG_1959 (0:27–0:36) dan IMG_1960: YB bergurau tentang guni teh berjenama Tambi. Ia menarik untuk TikTok tetapi boleh disalah tafsir. Visual IMG_1959 (YB berjalan ke kamera, thumbs up) digunakan tanpa audio di penutup. Guna audio hanya selepas diluluskan pejabat YB.</p></div>
+    <div class="flag"><span class="tag warn">Transkrip</span><h3>Perkataan yang ditanda [SEMAK]</h3>
+      <p>Subtitle disunting daripada transkrip mesin (Whisper) dan perlu didengar semula: "kilang" (IMG_1777 0:24, mesin dengar "Kelang"), "Kita ikut Akta Makanan" (IMG_1842 0:05, mesin dengar "berguna mengikut"), "bahan mentah" (IMG_1828 0:07), dan siapa yang bertanya "Berapa, dik…" (IMG_1845 0:18, suara luar kamera).</p></div>
+    <div class="flag"><span class="tag ok">Disahkan</span><h3>Jenama, logo halal dan tarikh</h3>
+      <p>Label "Lipton Uncang Teko Teh" jelas kelihatan (IMG_1890 0:09, IMG_1901). YB menyebut "logo halal pun ada" sambil memegang pek (IMG_1901 0:15). Metadata klip menunjukkan 10 November 2026, 9:05–10:42 pagi.</p></div>
+  </div>
+</section>
+
+<section id="alat" aria-labelledby="alat-h">
+  <h2 id="alat-h">Alat yang digunakan</h2>
+  <p class="note">Tiada integrasi CapCut atau Premiere dalam sesi ini. ffmpeg dan model transkripsi tempatan boleh digunakan, jadi rough cut 9:16 sebenar telah dirender untuk semakan. Suntingan akhir (muzik berlesen, speed ramp optical flow, transisi gerakan) dibuat dalam CapCut atau Premiere menggunakan fail di bawah.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Keperluan</th><th>Alat</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Muat turun footage</td><td>Google Drive connector + muat turun terus folder awam</td><td>113 fail, 85 unik (28 pendua antara folder "Main video" dan "B-roll"). Folder "Additional broll" kosong.</td></tr>
+      <tr><td>Analisis &amp; pengesanan babak</td><td>ffprobe + contact sheet setiap klip (Pillow)</td><td>Semua 85 klip ditonton melalui frame berlabel; shot utama disemak setiap 0.5 s</td></tr>
+      <tr><td>Transkripsi &amp; subtitle</td><td>faster-whisper large-v3-turbo (BM), cap masa per perkataan</td><td>Semua klip; subtitle disunting manual. Halusinasi mesin ("Terima kasih kerana menonton") dibuang.</td></tr>
+      <tr><td>Trim &amp; timeline</td><td>ffmpeg (EDL dari <code>timeline.json</code>)</td><td>Rough cut 150.0 s, 47 shot, potongan pada frame tepat</td></tr>
+      <tr><td>Audio</td><td>ffmpeg: highpass, afftdn, compressor, sidechain ducking, loudnorm −14 LUFS</td><td>Dalam rough cut. SFX disintesis sementara; tiada muzik.</td></tr>
+      <tr><td>Motion graphics</td><td>libass (ASS): tajuk, lower third, kapsyen, kad akhir, flash</td><td>Dalam rough cut. Font Montserrat + Poppins.</td></tr>
+      <tr><td>Colour grade</td><td>ffmpeg eq + curves + colortemperature</td><td>Grade asas dalam rough cut. Padanan akhir dibuat dalam CapCut/Lumetri.</td></tr>
+      <tr><td>Import ke Premiere</td><td>EDL CMX3600 (30 fps, NDF) + SRT</td><td>Sedia. File → Import → .edl, kemudian relink ke folder footage asal.</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="cerita" aria-labelledby="cerita-h">
+  <h2 id="cerita-h">Struktur cerita</h2>
+  <p class="note">Tulang belakang cerita ialah piece-to-camera YB sendiri (IMG_1777), diikuti perjalanan dari luar ke dalam: taklimat, pakaian pelindung, blending, mesin uncang, pembungkusan, makmal, produk siap dengan logo halal, dan gudang. Masa babak dalam brief (5–15, 15–40, 65–90 s) diskalakan kepada 150 s.</p>
+  <div class="scenes" id="scenes"></div>
+</section>
+
+<section id="edl" aria-labelledby="edl-h">
+  <h2 id="edl-h">EDL &amp; timeline terperinci</h2>
+  <p class="note">IN/OUT ialah saat dalam klip sumber. Laju 100% dalam rough cut; cadangan speed ramp ada dalam lajur transisi. Klik petak pada timeline di atas untuk melompat ke baris shot.</p>
+  <div class="tbl"><table class="edl">
+    <thead><tr><th></th><th>Masa</th><th>Klip</th><th>IN – OUT</th><th>Visual</th><th>Audio / dialog</th><th>Transisi &amp; efek</th><th>Teks / SFX</th></tr></thead>
+    <tbody id="edlbody"></tbody></table></div>
+</section>
+
+<section id="bunyi" aria-labelledby="bunyi-h">
+  <h2 id="bunyi-h">Bunyi &amp; muzik</h2>
+  <div class="grid2">
+    <div class="card"><h3>Muzik</h3>
+      <p class="mini">Instrumental cinematic corporate documentary, 95–110 BPM, piano + strings + pulse ringan, tanpa vokal. Cari dalam CapCut (Audio → Music, label "Commercial") dengan kata kunci <i>corporate documentary</i>, <i>inspiring cinematic</i>, <i>technology documentary</i>; atau Artlist / Epidemic / YouTube Audio Library. Semak lesen komersial untuk Facebook.</p>
+      <ul>
+        <li><b>0:00–0:08</b> suspense: pulse rendah + tick, belum ada melodi</li>
+        <li><b>0:08</b> drop kecil serentak tajuk (impact)</li>
+        <li><b>0:11–0:33</b> rentak ringan di bawah suara YB (−24 dB)</li>
+        <li><b>0:33–0:50</b> lebih tenang (taklimat, persiapan)</li>
+        <li><b>0:50–1:47</b> pulse stabil; potong ikut beat pada b-roll</li>
+        <li><b>1:47–2:03</b> angkat emosi, tetap rendah di bawah YB</li>
+        <li><b>2:15–2:30</b> build penuh, resolve pada kad akhir 2:26</li>
+      </ul></div>
+    <div class="card"><h3>Paras mix</h3>
+      <dl class="kv">
+        <dt>Dialog</dt><dd>−14 LUFS integrated, puncak −1 dBTP</dd>
+        <dt>Muzik di bawah dialog</dt><dd>−24 hingga −28 dB</dd>
+        <dt>Muzik tanpa dialog</dt><dd>−16 hingga −18 dB</dd>
+        <dt>Ambien mesin</dt><dd>−15 dB (−24 jika ada perbualan latar)</dd>
+        <dt>SFX</dt><dd>−6 hingga −12 dB, tidak melebihi dialog</dd>
+      </dl>
+      <h3>Bersihkan suara</h3>
+      <ul>
+        <li>CapCut: Audio → <i>Reduce noise</i> + <i>Voice enhance</i> pada setiap klip dialog</li>
+        <li>Premiere: Essential Sound → Dialogue → <i>Enhance Speech</i> 40–60%, Reduce Noise 30%, EQ "Podcast Voice"</li>
+        <li>High-pass 80–90 Hz; compressor 3:1</li>
+        <li>Rough cut sudah buang jeda dan pengulangan ("ataupun bahasa… Teepak Marketing" dalam IMG_1777 0:06–0:11)</li>
+      </ul></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Babak</th><th>SFX disyorkan</th></tr></thead>
+    <tbody>
+      <tr><td>Hook 0:00–0:08</td><td>Light hit pada shot pertama; whoosh pendek setiap potongan (0:01, 0:02, 0:03); bunyi mesin asal kekal; subtle impact + reverb tail pada tajuk 0:08</td></tr>
+      <tr><td>Pengenalan 0:08–0:33</td><td>Soft riser masuk ke YB (0:09–0:11); angin luar / ambien halaman rendah; tiada SFX di bawah suara YB</td></tr>
+      <tr><td>Taklimat 0:33–0:41</td><td>Room tone, dentingan cawan halus (opsyenal)</td></tr>
+      <tr><td>Persiapan 0:41–0:50</td><td>Bunyi plastik coverall (asal); whoosh + pintu/tirai PVC pada 0:47</td></tr>
+      <tr><td>Proses 0:50–1:35</td><td>Mechanical ambience (conveyor, hopper) dari perpustakaan pada −18 dB; whoosh ke blending 0:53; riser lembut 1:10–1:12 masuk bilik pembungkusan</td></tr>
+      <tr><td>Makmal 1:34–1:47</td><td>Whoosh lembut pada papan "LAB ROOM"; dentingan kaca halus</td></tr>
+      <tr><td>Klimaks 1:47–2:03</td><td>Light hit pada "logo halal" (1:56); selain itu biar suara YB sahaja</td></tr>
+      <tr><td>Penutup 2:03–2:30</td><td>Ambien gudang; riser 2:14–2:16; impact lembut pada kad akhir 2:26</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="transisi" aria-labelledby="tr-h">
+  <h2 id="tr-h">Transisi</h2>
+  <div class="grid2">
+    <div class="card"><h3>Digunakan</h3><ul>
+      <li><b>Hard cut ikut beat</b>: kebanyakan potongan; paling kemas untuk korporat</li>
+      <li><b>Match cut bulat → bulat</b>: soalan YB "teh yang bulat?" terus ke uncang bulat jatuh (0:06)</li>
+      <li><b>J-cut</b>: suara YB mula sebelum wajahnya (0:14–0:27), dan suara wakil syarikat di atas b-roll</li>
+      <li><b>Walk-through tirai PVC</b>: IMG_1842 masuk bilik pembungkusan (1:12) ialah transisi semula jadi; tambah motion blur ringan</li>
+      <li><b>Flash putih 0.3 s</b>: pada 0:08, 0:47, 1:12, 1:34, 2:16 sahaja</li>
+      <li><b>Smooth zoom</b>: push-in pada papan "LAB ROOM" (1:34)</li>
+      <li><b>Fade ke kad akhir</b>: 2:26</li>
+    </ul></div>
+    <div class="card"><h3>Speed ramp (CapCut → Speed → Curve)</h3><ul>
+      <li>Hook 0:00–0:04: <i>Montage</i>, 100% → 60% → 100%</li>
+      <li>Uncang jatuh 0:06 (IMG_1875): 60% dengan optical flow</li>
+      <li>Daun teh dalam uncang 1:22 (IMG_1846): 50% slow-mo</li>
+      <li>YB ke kamera 2:19 (IMG_1959): <i>Hero</i>, perlahan pada thumbs up</li>
+      <li>Jika slow-mo, pendekkan OUT sumber supaya durasi timeline kekal</li>
+      <li>Elak whip pan berlebihan; sumber dirakam dengan telefon pegang tangan</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="teks" aria-labelledby="teks-h">
+  <h2 id="teks-h">Teks, typography &amp; lower third</h2>
+  <div class="grid2">
+    <div class="card"><h3>Gaya</h3>
+      <dl class="kv">
+        <dt>Tajuk</dt><dd>Montserrat ExtraBold, 82 px, putih</dd>
+        <dt>Kicker</dt><dd>Montserrat Bold, 40 px, emas #C9A227, jarak huruf +6</dd>
+        <dt>Lower third</dt><dd>Poppins SemiBold 54 / Medium 36</dd>
+        <dt>Panel</dt><dd>#0B1F3A, 78% legap, bar emas 10 px</dd>
+        <dt>Subtitle</dt><dd>Poppins SemiBold 56 px, outline 3.6 px</dd>
+        <dt>Kapsyen babak</dt><dd>Montserrat Bold 46 px, putih, bayang lembut</dd>
+        <dt>Animasi</dt><dd>fade + naik 40 px, 12–14 frame, ease-out</dd>
+        <dt>Safe zone</dt><dd>atas 220 px, bawah 380 px, kanan 120 px</dd>
+      </dl></div>
+    <div class="card"><h3>Lower third</h3>
+      <div class="lt"><b>YB [NAMA YB]</b><span>Exco Hal Ehwal Agama Islam Negeri Johor</span></div>
+      <p class="mini">0:12–0:14, ketika YB menyapa kamera di tangga.</p>
+      <div class="lt"><b>[NAMA WAKIL SYARIKAT]</b><span>[Jawatan], Tepak Marketing Sdn. Bhd.</span></div>
+      <p class="mini">0:50–0:53, kali pertama wakil syarikat bercakap. Pegawai JAINJ: tambah hanya jika ada shot mereka bercakap (tiada dalam suntingan ini).</p></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Masa</th><th>Teks</th><th>Jenis</th></tr></thead>
+    <tbody id="textbody"></tbody></table></div>
+</section>
+
+<section id="subtitle" aria-labelledby="sub-h">
+  <h2 id="sub-h">Subtitle petikan</h2>
+  <p class="note">Perkataan sebenar penutur. Filler, jeda dan pengulangan dibuang dengan jump cut; maksud tidak diubah. Maksimum 2 baris; setiap baris muat dalam 940 px pada 56 px. Fail: <code>TEPAK_ROUGHCUT_v1.srt</code>.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Masa</th><th>Penutur</th><th>Sumber</th><th>Subtitle</th></tr></thead>
+    <tbody id="subbody"></tbody></table></div>
+</section>
+
+<section id="warna" aria-labelledby="w-h">
+  <h2 id="w-h">Colour grading</h2>
+  <p class="note">Natural, sedikit hangat, kontras seimbang. Semua klip dirakam dengan satu iPhone, jadi padanan mudah; cabaran utama ialah lampu kalimantang hijau di bilik pemprosesan berbanding cahaya siang di luar. Kuning Lipton dan merah lantai dikekalkan seperti asal.</p>
+  <div class="grid2">
+    <div class="card"><h3>CapCut (Adjust)</h3><dl class="kv">
+      <dt>Temperature</dt><dd>+6 (dalam kilang +10)</dd><dt>Tint</dt><dd>+4 dalam kilang (buang hijau)</dd>
+      <dt>Contrast</dt><dd>+8</dd><dt>Highlights</dt><dd>−12</dd><dt>Shadows</dt><dd>+4</dd>
+      <dt>Saturation</dt><dd>+4</dd><dt>Sharpen</dt><dd>+8</dd><dt>Vignette</dt><dd>+6 (opsyenal)</dd></dl>
+      <p class="mini">Simpan sebagai preset dan guna pada semua klip; laraskan Tint hanya untuk shot bilik pemprosesan.</p></div>
+    <div class="card"><h3>Premiere (Lumetri)</h3><dl class="kv">
+      <dt>Basic</dt><dd>Temp +6, Tint +4, Contrast +8</dd><dt>Highlights / Whites</dt><dd>−15 / −8</dd>
+      <dt>Shadows / Blacks</dt><dd>+5 / −4</dd><dt>Creative</dt><dd>Vibrance +6, Saturation 102</dd>
+      <dt>Curves</dt><dd>S-curve ringan, hue-vs-sat kuning tidak disentuh</dd><dt>Skin</dt><dd>semak dengan vectorscope (skin line)</dd></dl></div>
+    <div class="card"><h3>Rough cut (ffmpeg)</h3>
+      <p class="mini"><code>eq=contrast=1.06:brightness=-0.01:saturation=1.04:gamma=0.98, curves=master='0/0.02 0.25/0.23 0.75/0.78 1/0.96', colortemperature=6000:mix=0.5</code></p></div>
+  </div>
+</section>
+
+<section id="footage" aria-labelledby="f-h">
+  <h2 id="f-h">Footage</h2>
+  <div class="grid2">
+    <div class="card"><h3>Terbaik mengikut kategori</h3><ul>
+      <li><b>Establishing</b>: 1726 (pan logo), 1729 (bangunan), 1731 (tilt ke bendera)</li>
+      <li><b>Ketibaan</b>: 1732 (YB bersalam, stabil)</li>
+      <li><b>Piece-to-camera YB</b>: 1777 (tangga), 1873 (teh bulat), 1901 (pek Lipton + logo halal)</li>
+      <li><b>Taklimat</b>: 1743, 1768, 1776, 1752 (CU cawan teh)</li>
+      <li><b>Persiapan</b>: 1805, 1804 (coverall, shoe cover)</li>
+      <li><b>Lawatan / penerangan</b>: 1828, 1829, 1872, 1876, 1956</li>
+      <li><b>Proses</b>: 1846, 1875, 1934, 1845, 1844, 1873, 1938, 1890, 1893, 1916, 1913</li>
+      <li><b>Gudang</b>: 1969, 1976, 1970, 1971</li>
+    </ul></div>
+    <div class="card"><h3>Simpanan (alternatif)</h3><ul>
+      <li>1929: staf makmal tersenyum (human moment)</li>
+      <li>1850, 1851, 1862: kotak kuning eksport New Zealand (bukan Lipton)</li>
+      <li>1936: pembungkusan kotak Bushells + timbang</li>
+      <li>1907, 1908: Finish Goods Area, kotak hijau</li>
+      <li>1972, 1977: YB &amp; wakil syarikat di gudang (penutup alternatif)</li>
+      <li>1818: "hantar pada Unilever punya wakil yang akan validasikan kita" (kawalan kualiti)</li>
+      <li>1959 / 1960: gurauan Tambi (perlu kelulusan)</li>
+      <li>1835 0:58–1:04, 1876 0:17–0:35: sejarah kapasiti mesin</li>
+    </ul></div>
+    <div class="card"><h3>Tidak digunakan</h3><ul>
+      <li><b>Goyang / kabur</b>: 1824 (0:14–0:34), 1826, 1863, 1865, 1880, 1886 (0:00–0:06), 1930, 1953</li>
+      <li><b>Terhalang</b>: 1866 (kamera jurugambar), 1902, 1915 (belakang kepala), 1922</li>
+      <li><b>Penerangan panjang berulang</b>: 1835, 1840, 1841, 1858, 1861, 1868, 1887, 1892, 1899, 1903, 1923, 1939, 1949</li>
+      <li><b>Protokol / bersalam berulang</b>: 1734, 1764, 1771, 1778</li>
+      <li><b>Maklumat perniagaan (kos pembungkusan)</b>: 1907 audio, 1908 audio</li>
+      <li>1817 (0:05–0:09), 1822, 1827, 1839, 1843, 1867, 1914 (0:00–0:03): shot serupa yang lebih baik sudah dipilih</li>
+    </ul></div>
+  </div>
+  <div class="card"><h3>Kekurangan footage &amp; cara atasi tanpa mereka</h3><ul>
+    <li><b>Sijil, cenderahati, foto berkumpulan</b>: tiada. Dapatkan gambar sebenar daripada jurugambar rasmi atau unit media; jika tiada, kekalkan penutup semasa.</li>
+    <li><b>Wawancara formal</b>: tiada. Soundbite diambil daripada piece-to-camera YB dan penerangan semasa lawatan. Jika boleh, rakam pernyataan 15–20 s daripada YB atau syarikat sebagai pick-up.</li>
+    <li><b>Ambien mesin bersih</b>: kebanyakan klip ada perbualan latar. Guna bunyi "factory conveyor ambience" daripada perpustakaan bunyi.</li>
+    <li><b>Shot luar yang luas / drone</b>: tiada. 1726 dan 1729 mencukupi; jangan guna stok kilang lain.</li>
+  </ul></div>
+</section>
+
+<section id="eksport" aria-labelledby="e-h">
+  <h2 id="e-h">Tetapan eksport</h2>
+  <div class="grid2">
+    <div class="card"><dl class="kv">
+      <dt>Resolusi</dt><dd>1080 × 1920 (9:16)</dd><dt>Frame rate</dt><dd>30 fps (ikut sumber)</dd>
+      <dt>Codec</dt><dd>H.264 High, yuv420p</dd><dt>Bitrate</dt><dd>16–20 Mbps VBR 2-pass</dd>
+      <dt>Audio</dt><dd>AAC 320 kbps, 48 kHz, stereo</dd><dt>Kekuatan</dt><dd>−14 LUFS, puncak −1 dBTP</dd>
+      <dt>CapCut</dt><dd>1080p · 30 fps · Recommended / Higher</dd></dl></div>
+    <div class="card"><h3>Muat naik</h3><ul>
+      <li>TikTok, Facebook Reels, Instagram Reels: muat naik berasingan (jangan kongsi silang)</li>
+      <li>Cover: frame YB dengan pek Lipton (1:47) + tajuk</li>
+      <li>Subtitle dibakar (burned-in); muat naik SRT juga untuk Facebook</li>
+      <li>Semak safe zone: tiada teks di bawah 1540 px</li>
+    </ul></div>
+  </div>
+  <div class="card"><h3>Fail yang disediakan</h3><div class="chips">
+    <span class="chip">TEPAK_ROUGHCUT_v1_1080x1920.mp4</span><span class="chip">TEPAK_ROUGHCUT_v1_preview_720p.mp4</span>
+    <span class="chip">TEPAK_ROUGHCUT_v1.edl</span><span class="chip">TEPAK_ROUGHCUT_v1.srt</span><span class="chip">TEPAK_ROUGHCUT_v1_graphics.ass</span>
+    <span class="chip">timeline.json</span><span class="chip">skill: johor-corporate-documentary</span></div>
+    <p class="mini">Rough cut: tiada muzik, SFX sementara (disintesis), laju 100%. Untuk semakan struktur dan masa sahaja; bukan versi akhir.</p></div>
+</section>
+
+<footer>Disediakan daripada 85 klip unik (25 min 47 s) dalam folder Google Drive program. Transkripsi mesin disemak secara manual; perkara bertanda perlu disahkan sebelum diterbitkan.</footer>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const FPS = 30, T = D.duration;
+  const SC = {h:['Hook','--s1'],t:['Tajuk','--s1'],i:['Pengenalan (VO YB)','--s2'],b:['Taklimat','--s3'],p:['Persiapan','--s4'],
+    f:['Blending','--s5'],m:['Mesin uncang','--s6'],k:['Pembungkusan & timbangan','--s7'],l:['Makmal','--s8'],y:['Klimaks: YB & produk','--s9'],
+    s:['Kisah kejayaan & gudang','--s10'],c:['Penutup','--s11']};
+  const PURPOSE = {
+    h:'Lima potongan pantas proses + soalan YB "teh yang bulat?", dijawab oleh uncang bulat jatuh.',
+    t:'Tajuk di atas pan logo Tepak, dengan lokasi dan tarikh.',
+    i:'YB memperkenalkan lokasi dengan kata-katanya sendiri: Tepak Marketing, tempat Lipton dibungkus.',
+    b:'Tiga shot pendek suasana taklimat; tidak berlama pada protokol.',
+    p:'Coverall, hairnet dan shoe cover: penonton "masuk" bersama delegasi.',
+    f:'Wakil syarikat menerangkan bahan mentah masuk ke proses blending.',
+    m:'Mesin uncang berkelajuan tinggi; suara wakil syarikat di atas b-roll.',
+    k:'Tangan pekerja, timbangan dan pek Lipton; dialog sebenar tentang berat.',
+    l:'Ujian rasa harian berbanding Master Sample.',
+    y:'YB memeriksa pek Lipton: 40 uncang, tarikh luput, logo halal. Thumbs up.',
+    s:'Pertumbuhan syarikat menurut wakilnya, di atas visual gudang.',
+    c:'Delegasi di gudang, YB ke kamera, logo dan mesej penutup.'};
+  const TRANS = {h1:'Buka terus pada CU; light hit',h2:'Hard cut ikut beat; speed ramp',h3:'Hard cut ikut beat',h4:'Hard cut ikut beat',
+    h5:'Hard cut ke CU YB (sync)',h6:'Match cut bulat → bulat; slow-mo 60%',t1:'Flash putih + impact; pan logo',i1:'Riser masuk; sync',
+    i2:'J-cut: suara YB di atas bangunan',i3:'Tilt-down ke bendera',i4:'Flash-forward ke pek Lipton',i5:'Hard cut',i6:'CU cawan teh pada "peminat teh"',
+    i7:'Kembali sync, YB ajak "Jom!"',b1:'Hard cut, muzik turun',b2:'Hard cut',b3:'Hard cut',p1:'Hard cut',p2:'Hard cut',p3:'Flash + whoosh; dolly ke dalam',
+    f1:'Hard cut (sync)',f2:'Whoosh; suara berterusan',f3:'Hard cut pada "bahan mentah"',f4:'Hard cut',m1:'Hard cut',m2:'Hard cut; slow-mo 60%',m3:'Hard cut',m4:'Hard cut',
+    k1:'Walk-through tirai PVC + flash',k2:'Hard cut',k3:'Hard cut',k4:'Slow-mo 50%',k5:'Hard cut (sync)',k6:'Hard cut',k7:'Hard cut',
+    l1:'Flash; smooth zoom-in papan LAB ROOM',l2:'Hard cut',l3:'Hard cut',y1:'Hard cut (sync)',y2:'Jump cut (sync); light hit',
+    s1:'Hard cut (sync)',s2:'Hard cut; suara berterusan',s3:'Hard cut',s4:'Hard cut',c1:'Riser + flash',c2:'Speed ramp Hero; muzik sahaja',c3:'Fade ke kad akhir'};
+  const fmt = s => { const m=Math.floor(s/60), x=s-60*m; return m+':'+x.toFixed(1).padStart(4,'0'); };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const scOf = lab => SC[lab[0]];
+  const speaker = c => ({'1777':'YB','1873':'YB','1901':'YB','1845':'Luar kamera / pekerja'}[c] || 'Wakil syarikat');
+  // shot timing
+  let t=0; D.video.forEach(v=>{ v.start=t/FPS; t+=Math.round((v.out-v.in)*FPS); v.end=t/FPS; });
+  // stats
+  const st = [['85','klip unik ditonton'],['25:47','minit footage'],['47','shot dipilih'],[fmt(T).replace(/\.\d$/,''),'durasi akhir'],[String(D.dialog.length),'soundbite']];
+  document.getElementById('stats').innerHTML = st.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join('');
+  // strip
+  document.getElementById('strip').innerHTML = D.video.map(v=>{ const [n,c]=scOf(v.label);
+    return `<a href="#row-${v.label}" style="flex:${(v.end-v.start).toFixed(3)};--sc:var(${c})" title="${fmt(v.start)} · IMG_${v.clip} · ${esc(v.note)}" aria-label="${fmt(v.start)} ${esc(n)}"><img src="${D.thumbs[v.label]}" alt=""></a>`; }).join('');
+  const seen = new Set();
+  document.getElementById('legend').innerHTML = Object.entries(SC).filter(([k])=>k!=='t').map(([k,[n,c]])=>`<span style="--sc:var(${c})"><i></i>${n}</span>`).join('');
+  // scenes
+  const groups=[]; D.video.forEach(v=>{ const k=v.label[0]; const g=groups[groups.length-1]; if(g&&g.k===k) g.end=v.end; else groups.push({k,start:v.start,end:v.end}); });
+  document.getElementById('scenes').innerHTML = groups.map(g=>{ const [n,c]=SC[g.k];
+    return `<div class="scene" style="--sc:var(${c})"><span class="t">${fmt(g.start)} – ${fmt(g.end)}</span><h3>${n}</h3><p>${PURPOSE[g.k]}</p></div>`; }).join('');
+  // per-shot audio, text, sfx
+  const within = (a,s,e) => a>=s-1e-3 && a<e-1e-3;
+  const rows = D.video.map((v,i)=>{
+    const [n,c]=scOf(v.label);
+    const dl = D.dialog.filter(d=>{ const ds=d.at, de=d.at+d.out-d.in; return ds<v.end-0.05 && de>v.start+0.05; });
+    let audio = dl.map(d=>{ const sync = d.clip===v.clip; const subs=d.subs.filter(s=>{const a=d.at+s[0];return a<v.end && d.at+s[1]>v.start;}).map(s=>s[2].replace(/\\N/g,' ')).join(' ');
+      return `<span class="sub">${sync?'SYNC':'VO'} IMG_${d.clip}:</span> “${esc(subs)}”`; }).join('<br>');
+    if(v.amb_db===null && !dl.length) audio='<span class="mini">Audio asal dimatikan; muzik sahaja</span>';
+    if(v.amb_db!==null) audio += (audio?'<br>':'') + `<span class="mini">Ambien asal ${v.amb_db} dB${v.amb_db<=-24?' (ada perbualan latar)':''}</span>`;
+    const tx = D.text.filter(x=>within(x.start,v.start,v.end)).map(x=>`<b>${esc(x.lines.join(' / ').replace(/\\N/g,' '))}</b>`);
+    const sf = D.sfx.filter(x=>within(x.at,v.start,v.end)).map(x=>x.type);
+    const fl = D.flash.some(f=>within(f,v.start,v.end)) ? ['flash'] : [];
+    const extra = [...tx, ...[...sf,...fl].map(s=>`<span class="chip">${s}</span>`)].join(' ');
+    return `<tr id="row-${v.label}"><td class="thumb" style="--sc:var(${c})"><img src="${D.thumbs[v.label]}" alt="IMG_${v.clip}"></td>
+      <td class="tc">${fmt(v.start)}<br><span class="mini">${(v.end-v.start).toFixed(1)} s</span></td>
+      <td class="tc">IMG_${v.clip}<br><span class="mini">${n}</span></td><td class="tc">${v.in.toFixed(2)} – ${v.out.toFixed(2)}</td>
+      <td>${esc(v.note)}</td><td>${audio}</td><td>${esc(TRANS[v.label]||'Hard cut')}</td><td>${extra}</td></tr>`; });
+  document.getElementById('edlbody').innerHTML = rows.join('');
+  // text table
+  const TY = {title:'Tajuk',caption:'Kapsyen',lower:'Lower third',end:'Kad akhir'};
+  document.getElementById('textbody').innerHTML = D.text.map(x=>`<tr><td class="tc">${fmt(x.start)} – ${fmt(x.end)}</td><td>${esc(x.lines.join(' / ').replace(/\\N/g,' '))}</td><td>${TY[x.style]}</td></tr>`).join('');
+  // subtitles
+  const subs=[]; D.dialog.forEach(d=>d.subs.forEach(s=>subs.push([d.at+s[0],d.at+s[1],d.clip,d.in+s[0],s[2]])));
+  subs.sort((a,b)=>a[0]-b[0]);
+  document.getElementById('subbody').innerHTML = subs.map(s=>`<tr><td class="tc">${fmt(s[0])} – ${fmt(s[1])}</td><td>${speaker(s[2])}</td><td class="tc">IMG_${s[2]} @ ${s[3].toFixed(1)} s</td><td>${esc(s[4].replace(/\\N/g,' / '))}</td></tr>`).join('');
+  // highlight a row reached from the strip
+  function mark(){ document.querySelectorAll('tr.target').forEach(r=>r.classList.remove('target')); const h=location.hash.slice(1); if(h.startsWith('row-')){ const r=document.getElementById(h); if(r) r.classList.add('target'); } }
+  window.addEventListener('hashchange', mark); mark();
+})();
+</script>
