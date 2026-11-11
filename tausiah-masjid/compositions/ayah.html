@@ -1,8 +1,7 @@
 <template>
   <style>
     @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans.ttf") format("truetype"); font-weight: 200 800; }
-    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf") format("truetype"); font-weight: 400; }
-    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf") format("truetype"); font-weight: 700; }
+    @font-face { font-family: "Amiri Quran"; src: url("assets/fonts/AmiriQuran.ttf") format("truetype"); font-weight: 400; }
     #root { position: absolute; inset: 0; pointer-events: none; }
     #ayah-card { position: absolute; left: 60px; right: 60px; top: 186px; padding: 24px 40px 26px;
       border-radius: 24px; border: 1.5px solid rgba(217, 182, 110, 0.55);
@@ -11,18 +10,18 @@
       color: #D9B66E; font-family: "Plus Jakarta Sans", sans-serif; font-weight: 600; font-size: 28px;
       letter-spacing: 0.12em; text-transform: uppercase; }
     #ayah-head .star { width: 26px; height: 26px; }
-    .line { margin: 0; text-align: center; font-family: "Amiri", serif; font-weight: 700; font-size: 42px;
-      line-height: 1.6; color: rgba(255, 249, 236, 0.9); opacity: 0.24; }
+    .line { margin: 0; text-align: center; font-family: "Amiri Quran", serif; font-weight: 400; font-size: 42px;
+      line-height: 1.78; color: rgba(255, 249, 236, 0.9); opacity: 0.24; }
   </style>
   <div id="root" data-composition-id="ayah" data-width="1080" data-height="1920">
     <div id="ayah-panel" class="clip" data-start="0" data-duration="17.437" data-track-index="1">
       <div id="ayah-card">
         <div id="ayah-head"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="currentColor"/></svg><span>Surah At-Taubah · Ayat 18</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="currentColor"/></svg></div>
-        <p id="ayah-l1" class="line" lang="ar" dir="rtl">إِنَّمَا يَعْمُرُ مَسَاجِدَ اللَّهِ</p>
-        <p id="ayah-l2" class="line" lang="ar" dir="rtl">مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ</p>
-        <p id="ayah-l3" class="line" lang="ar" dir="rtl">وَأَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ</p>
-        <p id="ayah-l4" class="line" lang="ar" dir="rtl">وَلَمْ يَخْشَ إِلَّا اللَّهَ</p>
-        <p id="ayah-l5" class="line" lang="ar" dir="rtl">فَعَسَىٰ أُولَٰئِكَ أَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ</p>
+        <p id="ayah-l1" class="line" lang="ar" dir="rtl" data-layout-allow-overlap>إِنَّمَا يَعْمُرُ مَسَٰجِدَ ٱللَّهِ</p>
+        <p id="ayah-l2" class="line" lang="ar" dir="rtl" data-layout-allow-overlap>مَنْ ءَامَنَ بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ</p>
+        <p id="ayah-l3" class="line" lang="ar" dir="rtl" data-layout-allow-overlap>وَأَقَامَ ٱلصَّلَوٰةَ وَءَاتَى ٱلزَّكَوٰةَ</p>
+        <p id="ayah-l4" class="line" lang="ar" dir="rtl" data-layout-allow-overlap>وَلَمْ يَخْشَ إِلَّا ٱللَّهَ ۖ</p>
+        <p id="ayah-l5" class="line" lang="ar" dir="rtl" data-layout-allow-overlap>فَعَسَىٰٓ أُو۟لَٰٓئِكَ أَن يَكُونُوا۟ مِنَ ٱلْمُهْتَدِينَ ﴿١٨﴾</p>
       </div>
     </div>
   </div>

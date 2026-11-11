@@ -59,7 +59,7 @@ Grade (ffmpeg): yellow/green hue −8° and −40 % sat (wall), 5900 K warm mix,
 
 - Opening: "TAZKIRAH" kicker in gold + "Langkah ke Masjid" (Cormorant Garamond), already on frame 0 for the thumbnail; leaves at 5 s.
 - Subtitles: Plus Jakarta Sans 700, white, selected words soft gold `#EBCB86`, translucent dark box, max 2 lines, bottom of the TikTok safe band (above y = 1330), one group at a time, 0.24 s fade.
-- Verse card: Amiri, all five lines faint from the start; each lights gold as recited, then settles to warm white; "Surah At-Taubah · Ayat 18".
+- Verse card: **Rasm Uthmani** text of At-Taubah 9:18 (Tanzil `quran-uthmani`, cross-checked with Quran.com), set in **Amiri Quran**, with the ayah marker ﴿١٨﴾. All five lines are faint from the start; each lights gold as it is recited, then settles to warm white. Header: "Surah At-Taubah · Ayat 18".
 - Ending: 1.4 s ease to black with a small gold eight-point star.
 
 ## 5. Transcript: points for a human to confirm

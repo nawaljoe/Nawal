@@ -1,39 +1,151 @@
 {
-  "note": "Times are SOURCE seconds. *word* = soft-gold highlight. Words verified by forced-decoding against two Whisper models (OpenAI large-v3 / turbo and Mesolitica Malaysian large-v3-turbo). 'flag' = uncertain, please review.",
-  "groups": [
-    {"s": 3.15,  "e": 5.40,  "t": "Yang *sakit*, yang *sakit*"},
-    {"s": 5.40,  "e": 6.45,  "t": "nak jalan jauh tu,"},
-    {"s": 6.45,  "e": 8.60,  "t": "*kaki* ke *hati*?"},
-    {"s": 12.30, "e": 15.15, "t": "Yang apa nama, yang kalau kita"},
-    {"s": 15.15, "e": 18.40, "t": "kena *ubat*, yang kena *rawat* ni,"},
-    {"s": 18.80, "e": 19.45, "t": "mana?"},
-    {"s": 20.35, "e": 23.05, "t": "*Kaki* kah yang nak kena ubat ni ke,"},
-    {"s": 23.05, "e": 26.70, "t": "ataupun *hati* yang kena kita rawat?"},
-    {"s": 28.20, "e": 30.05, "t": "Justeru pada pagi ini,"},
-    {"s": 30.05, "e": 31.20, "t": "sebab dia sebut tadi,", "flag": "phrase partly unclear"},
-    {"s": 31.20, "e": 33.70, "t": "kuliah saya, kuliah saya…", "flag": "one unclear word after this omitted"},
-    {"s": 34.45, "e": 36.00, "t": "Mengingatkan *langkah ke masjid*,"},
-    {"s": 36.00, "e": 38.15, "t": "ubat bagi *hati yang malas*.", "flag": "spoken as colloquial 'be' hati'"},
-    {"s": 38.70, "e": 40.30, "t": "*Allah SWT* memberikan jawapan"},
-    {"s": 40.30, "e": 41.10, "t": "kepada perkara ini."},
-    {"s": 42.95, "e": 45.70, "t": "Dalam surah *At-Taubah*,"},
-    {"s": 45.70, "e": 47.45, "t": "*ayat 18*."},
-    {"s": 68.42, "e": 69.40, "t": "Itu maksudnya.", "flag": "short unclear fragment after this omitted"},
-    {"s": 71.45, "e": 74.00, "t": "Sesungguhnya, orang yang *memakmurkan masjid*,"},
-    {"s": 75.30, "e": 76.90, "t": "orang yang memakmurkan *masjid Allah* ini"},
-    {"s": 76.90, "e": 79.60, "t": "adalah orang yang dalam hatinya"},
-    {"s": 79.60, "e": 81.05, "t": "*beriman* kepada *Allah*"},
-    {"s": 81.05, "e": 82.50, "t": "dan *hari akhir*."}
-  ],
-  "ayah": {
-    "ref": "Surah At-Taubah · Ayat 18",
-    "lines": [
-      {"s": 51.25, "t": "إِنَّمَا يَعْمُرُ مَسَاجِدَ اللَّهِ"},
-      {"s": 53.90, "t": "مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ"},
-      {"s": 57.25, "t": "وَأَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ"},
-      {"s": 61.20, "t": "وَلَمْ يَخْشَ إِلَّا اللَّهَ"},
-      {"s": 63.85, "t": "فَعَسَىٰ أُولَٰئِكَ أَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ"}
-    ],
-    "end": 67.75
+ "note": "Times are SOURCE seconds. *word* = soft-gold highlight. Words verified by forced-decoding against two Whisper models (OpenAI large-v3 / turbo and Mesolitica Malaysian large-v3-turbo). 'flag' = uncertain, please review.",
+ "groups": [
+  {
+   "s": 3.15,
+   "e": 5.4,
+   "t": "Yang *sakit*, yang *sakit*"
+  },
+  {
+   "s": 5.4,
+   "e": 6.45,
+   "t": "nak jalan jauh tu,"
+  },
+  {
+   "s": 6.45,
+   "e": 8.6,
+   "t": "*kaki* ke *hati*?"
+  },
+  {
+   "s": 12.3,
+   "e": 15.15,
+   "t": "Yang apa nama, yang kalau kita"
+  },
+  {
+   "s": 15.15,
+   "e": 18.4,
+   "t": "kena *ubat*, yang kena *rawat* ni,"
+  },
+  {
+   "s": 18.8,
+   "e": 19.45,
+   "t": "mana?"
+  },
+  {
+   "s": 20.35,
+   "e": 23.05,
+   "t": "*Kaki* kah yang nak kena ubat ni ke,"
+  },
+  {
+   "s": 23.05,
+   "e": 26.7,
+   "t": "ataupun *hati* yang kena kita rawat?"
+  },
+  {
+   "s": 28.2,
+   "e": 30.05,
+   "t": "Justeru pada pagi ini,"
+  },
+  {
+   "s": 30.05,
+   "e": 31.2,
+   "t": "sebab dia sebut tadi,",
+   "flag": "phrase partly unclear"
+  },
+  {
+   "s": 31.2,
+   "e": 33.7,
+   "t": "kuliah saya, kuliah saya…",
+   "flag": "one unclear word after this omitted"
+  },
+  {
+   "s": 34.45,
+   "e": 36.0,
+   "t": "Mengingatkan *langkah ke masjid*,"
+  },
+  {
+   "s": 36.0,
+   "e": 38.15,
+   "t": "ubat bagi *hati yang malas*.",
+   "flag": "spoken as colloquial 'be' hati'"
+  },
+  {
+   "s": 38.7,
+   "e": 40.3,
+   "t": "*Allah SWT* memberikan jawapan"
+  },
+  {
+   "s": 40.3,
+   "e": 41.1,
+   "t": "kepada perkara ini."
+  },
+  {
+   "s": 42.95,
+   "e": 45.7,
+   "t": "Dalam surah *At-Taubah*,"
+  },
+  {
+   "s": 45.7,
+   "e": 47.45,
+   "t": "*ayat 18*."
+  },
+  {
+   "s": 68.42,
+   "e": 69.4,
+   "t": "Itu maksudnya.",
+   "flag": "short unclear fragment after this omitted"
+  },
+  {
+   "s": 71.45,
+   "e": 74.0,
+   "t": "Sesungguhnya, orang yang *memakmurkan masjid*,"
+  },
+  {
+   "s": 75.3,
+   "e": 76.9,
+   "t": "orang yang memakmurkan *masjid Allah* ini"
+  },
+  {
+   "s": 76.9,
+   "e": 79.6,
+   "t": "adalah orang yang dalam hatinya"
+  },
+  {
+   "s": 79.6,
+   "e": 81.05,
+   "t": "*beriman* kepada *Allah*"
+  },
+  {
+   "s": 81.05,
+   "e": 82.5,
+   "t": "dan *hari akhir*."
   }
+ ],
+ "ayah": {
+  "ref": "Surah At-Taubah · Ayat 18",
+  "lines": [
+   {
+    "s": 51.25,
+    "t": "إِنَّمَا يَعْمُرُ مَسَٰجِدَ ٱللَّهِ"
+   },
+   {
+    "s": 53.9,
+    "t": "مَنْ ءَامَنَ بِٱللَّهِ وَٱلْيَوْمِ ٱلْءَاخِرِ"
+   },
+   {
+    "s": 57.25,
+    "t": "وَأَقَامَ ٱلصَّلَوٰةَ وَءَاتَى ٱلزَّكَوٰةَ"
+   },
+   {
+    "s": 61.2,
+    "t": "وَلَمْ يَخْشَ إِلَّا ٱللَّهَ ۖ"
+   },
+   {
+    "s": 63.85,
+    "t": "فَعَسَىٰٓ أُو۟لَٰٓئِكَ أَن يَكُونُوا۟ مِنَ ٱلْمُهْتَدِينَ ﴿١٨﴾"
+   }
+  ],
+  "end": 67.75,
+  "source": "Rasm Uthmani (Tanzil text via api.alquran.cloud, edition quran-uthmani), cross-checked with Quran.com"
+ }
 }

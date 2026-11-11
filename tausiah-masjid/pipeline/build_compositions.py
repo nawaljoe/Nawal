@@ -40,8 +40,7 @@ def words_html(text):
 
 FONTS = """
     @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans.ttf") format("truetype"); font-weight: 200 800; }
-    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf") format("truetype"); font-weight: 400; }
-    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf") format("truetype"); font-weight: 700; }"""
+    @font-face { font-family: "Amiri Quran"; src: url("assets/fonts/AmiriQuran.ttf") format("truetype"); font-weight: 400; }"""
 
 STAR = ('<svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4">'
         '<rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/>'
@@ -106,7 +105,7 @@ open(f"{P}/compositions/captions.html", "w").write(f"""<template>
 lines_html, ltl = [], []
 lt = [round(out_t(l["s"]) - AY_START, 3) for l in ay["lines"]]
 for i, ln in enumerate(ay["lines"]):
-    lines_html.append(f'        <p id="ayah-l{i + 1}" class="line" lang="ar" dir="rtl">{html.escape(ln["t"])}</p>')
+    lines_html.append(f'        <p id="ayah-l{i + 1}" class="line" lang="ar" dir="rtl" data-layout-allow-overlap>{html.escape(ln["t"])}</p>')
     ltl.append(f'      tl.fromTo("#ayah-l{i + 1}", {{ opacity: 0.24, color: "rgba(255, 249, 236, 0.9)", filter: "blur(3px)" }}, {{ opacity: 1, color: "#EBCB86", filter: "blur(0px)", duration: 0.6, ease: "power2.out" }}, {lt[i]:.3f});')
     if i:  # the line just recited settles from gold to warm white
         ltl.append(f'      tl.to("#ayah-l{i}", {{ color: "rgba(255, 249, 236, 0.86)", duration: 0.6, ease: "power1.inOut" }}, {lt[i]:.3f});')
@@ -122,8 +121,8 @@ open(f"{P}/compositions/ayah.html", "w").write(f"""<template>
       color: #D9B66E; font-family: "Plus Jakarta Sans", sans-serif; font-weight: 600; font-size: 28px;
       letter-spacing: 0.12em; text-transform: uppercase; }}
     #ayah-head .star {{ width: 26px; height: 26px; }}
-    .line {{ margin: 0; text-align: center; font-family: "Amiri", serif; font-weight: 700; font-size: 42px;
-      line-height: 1.6; color: rgba(255, 249, 236, 0.9); opacity: 0.24; }}
+    .line {{ margin: 0; text-align: center; font-family: "Amiri Quran", serif; font-weight: 400; font-size: 42px;
+      line-height: 1.78; color: rgba(255, 249, 236, 0.9); opacity: 0.24; }}
   </style>
   <div id="root" data-composition-id="ayah" data-width="1080" data-height="1920">
     <div id="ayah-panel" class="clip" data-start="0" data-duration="{ay_dur}" data-track-index="1">
