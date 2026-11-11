@@ -1,0 +1,14 @@
+{
+  "fps": 30,
+  "note": "Source-frame ranges at 30 fps, [in, out). Every cut sits inside a measured pause (< -48 dB on the enhanced voice), so no word is clipped and the speech order is untouched.",
+  "segments": [
+    {"id": "s1", "in": 92,   "out": 269,  "what": "Hook: Yang sakit... kaki ke hati?"},
+    {"id": "s2", "in": 363,  "out": 812,  "what": "Kaki atau hati yang perlu dirawat"},
+    {"id": "s3", "in": 840,  "out": 1242, "what": "Tajuk kuliah: langkah ke masjid, ubat hati yang malas"},
+    {"id": "s4", "in": 1272, "out": 1432, "what": "Dalam surah At-Taubah ayat 18"},
+    {"id": "s5", "in": 1529, "out": 2114, "what": "Bacaan ayat + Itu maksudnya"},
+    {"id": "s6", "in": 2136, "out": 2230, "what": "Sesungguhnya orang yang memakmurkan masjid"},
+    {"id": "s7", "in": 2253, "out": 2501, "what": "...beriman kepada Allah dan hari akhirat"}
+  ],
+  "tail_hold_s": 1.6
+}

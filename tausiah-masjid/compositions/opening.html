@@ -1,0 +1,45 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Cormorant Garamond"; src: url("assets/fonts/CormorantGaramond.ttf") format("truetype"); font-weight: 300 700; }
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    /* top shade keeps the title legible over the bright wall */
+    #open-shade { position: absolute; left: 0; right: 0; top: 0; height: 620px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.30) 50%, rgba(0,0,0,0) 100%); }
+    #open-block { position: absolute; left: 0; right: 0; top: 214px; text-align: center; }
+    #open-kicker { display: flex; align-items: center; justify-content: center; gap: 18px; color: #D9B66E;
+      font-family: "Plus Jakarta Sans", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 0.40em;
+      text-transform: uppercase; }
+    #open-kicker .star { width: 24px; height: 24px; }
+    #open-kicker span { padding-left: 0.42em; }
+    #open-title { margin: 18px 0 0; color: #ffffff; font-family: "Cormorant Garamond", serif; font-weight: 600;
+      font-size: 92px; line-height: 1.02; letter-spacing: 0.005em; text-shadow: 0 2px 18px rgba(0,0,0,0.45); }
+    #open-title .w { display: inline-block; }
+    #open-rule { width: 150px; height: 2px; margin: 22px auto 0; background: linear-gradient(90deg, rgba(217,182,110,0), #D9B66E, rgba(217,182,110,0)); }
+  </style>
+  <div id="root" data-composition-id="opening" data-width="1080" data-height="1920">
+    <div id="open-card" class="clip" data-start="0" data-duration="5.6" data-track-index="1">
+      <div id="open-shade"></div>
+      <div id="open-block">
+        <div id="open-kicker">
+          <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="currentColor"/></svg>
+          <span>Tazkirah</span>
+          <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="currentColor"/></svg>
+        </div>
+        <h1 id="open-title"><span class="w">Langkah</span> <span class="w">ke</span> <span class="w">Masjid</span></h1>
+        <div id="open-rule"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Frame 0 is the thumbnail, so the title is already landed; only the gold rule draws in.
+      tl.fromTo("#open-rule", { scaleX: 0.2, opacity: 0.4 }, { scaleX: 1, opacity: 1, duration: 1.1, ease: "expo.out" }, 0.15);
+      // leave cleanly before the first wide shot
+      tl.to("#open-block", { opacity: 0, filter: "blur(6px)", duration: 0.4, ease: "power2.in" }, 5.05);
+      tl.to("#open-shade", { opacity: 0, duration: 0.45, ease: "power2.in" }, 5.05);
+      window.__timelines["opening"] = tl;
+    })();
+  </script>
+</template>

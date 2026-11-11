@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Tazkirah: Langkah ke Masjid</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      /* virtual camera: GSAP moves this untimed wrapper, never the timed video */
+      #cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; z-index: 0; }
+      #plate { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      #opening { z-index: 2; } #ayah { z-index: 2; } #captions { z-index: 3; } #ending { z-index: 5; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="72.1" data-width="1080" data-height="1920" data-fps="30">
+      <div id="cam">
+        <video id="plate" class="clip" src="assets/plate.mp4" data-start="0" data-duration="72.1" data-track-index="0" muted playsinline></video>
+      </div>
+      <audio id="voice" class="clip" src="assets/voice_master.wav" data-start="0" data-duration="72.1" data-track-index="6" data-volume="1"></audio>
+      <div id="opening" data-composition-id="opening" data-composition-src="compositions/opening.html"
+        data-start="0" data-duration="5.6" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="ayah" data-composition-id="ayah" data-composition-src="compositions/ayah.html"
+        data-start="39.583" data-duration="17.437" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
+        data-start="0" data-duration="72.1" data-track-index="4" data-track-kind="captions" data-width="1080" data-height="1920"></div>
+      <div id="ending" data-composition-id="ending" data-composition-src="compositions/ending.html"
+        data-start="70.2" data-duration="1.9" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      gsap.set("#cam", { transformOrigin: "0 0" });
+      tl.set("#cam", { x: -238.3, y: -365.9, scale: 1.4 }, 0.0);
+      tl.to("#cam", { x: -271.7, y: -414.5, scale: 1.46, duration: 5.9, ease: "sine.inOut" }, 0.0);
+      tl.set("#cam", { x: 0, y: 0, scale: 1.0 }, 5.9);
+      tl.to("#cam", { x: -22.7, y: -112.7, scale: 1.06, duration: 7.7, ease: "sine.inOut" }, 5.9);
+      tl.set("#cam", { x: -182.7, y: -318.3, scale: 1.3 }, 13.6);
+      tl.to("#cam", { x: -216.1, y: -368.4, scale: 1.36, duration: 7.267, ease: "sine.inOut" }, 13.6);
+      tl.set("#cam", { x: -68.4, y: -187.3, scale: 1.1 }, 20.867);
+      tl.to("#cam", { x: -21.6, y: -38.4, scale: 1.02, duration: 5.9, ease: "sine.inOut" }, 20.867);
+      tl.set("#cam", { x: -120.2, y: -268.8, scale: 1.22 }, 26.767);
+      tl.to("#cam", { x: -217.6, y: -421.8, scale: 1.4, duration: 7.5, ease: "sine.inOut" }, 26.767);
+      tl.set("#cam", { x: -156.1, y: -354.6, scale: 1.3 }, 34.267);
+      tl.to("#cam", { x: -113.2, y: -284.3, scale: 1.22, duration: 5.333, ease: "sine.inOut" }, 34.267);
+      tl.set("#cam", { x: 0, y: 0, scale: 1.0 }, 39.6);
+      tl.to("#cam", { x: -45.2, y: -70.4, scale: 1.1, duration: 17.45, ease: "sine.inOut" }, 39.6);
+      tl.set("#cam", { x: -200.6, y: -408.7, scale: 1.32 }, 57.05);
+      tl.to("#cam", { x: -223.1, y: -444.3, scale: 1.36, duration: 2.05, ease: "sine.inOut" }, 57.05);
+      tl.set("#cam", { x: -242.3, y: -405.0, scale: 1.4 }, 59.1);
+      tl.to("#cam", { x: -270.3, y: -446.9, scale: 1.45, duration: 3.133, ease: "sine.inOut" }, 59.1);
+      tl.set("#cam", { x: -129.6, y: -145.5, scale: 1.12 }, 62.233);
+      tl.to("#cam", { x: -273.1, y: -295.4, scale: 1.3, duration: 9.867, ease: "sine.inOut" }, 62.233);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

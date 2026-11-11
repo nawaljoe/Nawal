@@ -1,0 +1,6 @@
+.work/
+assets/*.mp4
+assets/*.wav
+renders/
+.hyperframes/
+node_modules/

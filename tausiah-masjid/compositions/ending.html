@@ -1,0 +1,23 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #end-black { position: absolute; inset: 0; background: #050504; opacity: 0; }
+    #end-star { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px;
+      color: #D9B66E; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="ending" data-width="1080" data-height="1920">
+    <div id="end-fade" class="clip" data-start="0" data-duration="1.9" data-track-index="1">
+      <div id="end-black"></div>
+      <svg id="end-star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="6" fill="currentColor"/></svg>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // the last word has landed; ease the picture down instead of cutting
+      tl.fromTo("#end-black", { opacity: 0 }, { opacity: 1, duration: 1.35, ease: "power1.inOut" }, 0.1);
+      tl.fromTo("#end-star", { opacity: 0, scale: 0.92 }, { opacity: 0.9, scale: 1, duration: 0.8, ease: "power2.out" }, 0.75);
+      window.__timelines["ending"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,47 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans.ttf") format("truetype"); font-weight: 200 800; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Regular.ttf") format("truetype"); font-weight: 400; }
+    @font-face { font-family: "Amiri"; src: url("assets/fonts/Amiri-Bold.ttf") format("truetype"); font-weight: 700; }
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #ayah-card { position: absolute; left: 60px; right: 60px; top: 186px; padding: 24px 40px 26px;
+      border-radius: 24px; border: 1.5px solid rgba(217, 182, 110, 0.55);
+      background: linear-gradient(180deg, rgba(14, 15, 12, 0.66), rgba(14, 15, 12, 0.54)); opacity: 0; }
+    #ayah-head { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 8px;
+      color: #D9B66E; font-family: "Plus Jakarta Sans", sans-serif; font-weight: 600; font-size: 28px;
+      letter-spacing: 0.12em; text-transform: uppercase; }
+    #ayah-head .star { width: 26px; height: 26px; }
+    .line { margin: 0; text-align: center; font-family: "Amiri", serif; font-weight: 700; font-size: 42px;
+      line-height: 1.6; color: rgba(255, 249, 236, 0.9); opacity: 0.24; }
+  </style>
+  <div id="root" data-composition-id="ayah" data-width="1080" data-height="1920">
+    <div id="ayah-panel" class="clip" data-start="0" data-duration="17.437" data-track-index="1">
+      <div id="ayah-card">
+        <div id="ayah-head"><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="currentColor"/></svg><span>Surah At-Taubah · Ayat 18</span><svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g><circle cx="50" cy="50" r="7" fill="currentColor"/></svg></div>
+        <p id="ayah-l1" class="line" lang="ar" dir="rtl">إِنَّمَا يَعْمُرُ مَسَاجِدَ اللَّهِ</p>
+        <p id="ayah-l2" class="line" lang="ar" dir="rtl">مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ</p>
+        <p id="ayah-l3" class="line" lang="ar" dir="rtl">وَأَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ</p>
+        <p id="ayah-l4" class="line" lang="ar" dir="rtl">وَلَمْ يَخْشَ إِلَّا اللَّهَ</p>
+        <p id="ayah-l5" class="line" lang="ar" dir="rtl">فَعَسَىٰ أُولَٰئِكَ أَنْ يَكُونُوا مِنَ الْمُهْتَدِينَ</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#ayah-card", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+      tl.fromTo("#ayah-l1", { opacity: 0.24, color: "rgba(255, 249, 236, 0.9)", filter: "blur(3px)" }, { opacity: 1, color: "#EBCB86", filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.300);
+      tl.fromTo("#ayah-l2", { opacity: 0.24, color: "rgba(255, 249, 236, 0.9)", filter: "blur(3px)" }, { opacity: 1, color: "#EBCB86", filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 2.950);
+      tl.to("#ayah-l1", { color: "rgba(255, 249, 236, 0.86)", duration: 0.6, ease: "power1.inOut" }, 2.950);
+      tl.fromTo("#ayah-l3", { opacity: 0.24, color: "rgba(255, 249, 236, 0.9)", filter: "blur(3px)" }, { opacity: 1, color: "#EBCB86", filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 6.300);
+      tl.to("#ayah-l2", { color: "rgba(255, 249, 236, 0.86)", duration: 0.6, ease: "power1.inOut" }, 6.300);
+      tl.fromTo("#ayah-l4", { opacity: 0.24, color: "rgba(255, 249, 236, 0.9)", filter: "blur(3px)" }, { opacity: 1, color: "#EBCB86", filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 10.250);
+      tl.to("#ayah-l3", { color: "rgba(255, 249, 236, 0.86)", duration: 0.6, ease: "power1.inOut" }, 10.250);
+      tl.fromTo("#ayah-l5", { opacity: 0.24, color: "rgba(255, 249, 236, 0.9)", filter: "blur(3px)" }, { opacity: 1, color: "#EBCB86", filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 12.900);
+      tl.to("#ayah-l4", { color: "rgba(255, 249, 236, 0.86)", duration: 0.6, ease: "power1.inOut" }, 12.900);
+      tl.to("#ayah-l5", { color: "rgba(255, 249, 236, 0.86)", duration: 0.6, ease: "power1.inOut" }, 16.800);
+      tl.to("#ayah-card", { opacity: 0, duration: 0.42, ease: "power2.in" }, 16.987);
+      window.__timelines["ayah"] = tl;
+    })();
+  </script>
+</template>
