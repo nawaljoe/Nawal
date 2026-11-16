@@ -2,16 +2,28 @@
 
 Usage: python3 timeline.py <edl.json> <out_words.json> <timeline.json>
 Caption text is the verified transcript, lightly tidied for reading; word times come
-from Whisper run on the assembled edit (out_words.json).
+from Whisper run on the assembled, filler-free edit (out_words.json, v1 timeline).
 """
 import json, re, sys
 edl = json.load(open(sys.argv[1])); W = json.load(open(sys.argv[2]))
 P = edl["pieces"]; END = edl["speech_end"]; DUR = edl["duration"]
-# Caption/graphic times below are authored on the v1 cut (with the interviewer's audio).
-# v2 swaps that 5.1 s question for beep + silent question card, so later times shift by DELTA.
-V1P = edl.get("pieces_v1", P); V1_ANS = edl.get("v1_answer_start", P[2]["out_in"]); DELTA = edl.get("delta", 0.0)
-END_V1 = edl.get("speech_end_v1", END)
-sh = lambda t: round(t + DELTA, 4) if t >= V1_ANS - 1e-6 else t
+# Caption/graphic/SFX times below are authored on the original cut ("auth": interviewer audio
+# in, fillers in). sh() maps an authored time to the rendered timeline through source timecode:
+#   auth -> v1 (fillers removed, same range r) -> v2 (beep + silent question card replace the question).
+V1P = edl.get("pieces_v1", P); AUTH = edl.get("pieces_auth", V1P)
+V1_ANS = edl.get("v1_answer_start", P[2]["out_in"]); DELTA = edl.get("delta", 0.0)
+END_V1 = edl.get("speech_end_auth", edl.get("speech_end_v1", END))
+def auth_to_v1(t):
+    a = next((p for p in AUTH if p["out_in"] - 1e-6 <= t < p["out_out"]), None)
+    if a is None: return V1P[-1]["out_out"] + (t - AUTH[-1]["out_out"])
+    src = a["src_in"] + (t - a["out_in"]); cands = [p for p in V1P if p.get("r") == a.get("r")]
+    for p in cands:
+        if p["src_in"] - 1e-6 <= src <= p["src_out"] + 1e-6: return p["out_in"] + (src - p["src_in"])
+    nxt = [p for p in cands if p["src_in"] > src]          # inside a removed filler: snap to what follows
+    return nxt[0]["out_in"] if nxt else cands[-1]["out_out"]
+def sh(t):
+    v = auth_to_v1(t)
+    return round(v + DELTA, 4) if v >= V1_ANS - 1e-6 else round(v, 4)
 BEEP = next(p for p in P if p.get("kind") == "beep"); Q = next(p for p in P if p.get("kind") == "question")
 
 # shots: (id, start, end, beat, zoom keys [(t, z, ease_frames)]) -- v1 times; punch-ins capped at 1.08x
@@ -21,7 +33,7 @@ SHOTS = [
     ("03", Q["out_in"], Q["out_out"], "QUESTION", [(Q["out_in"], 1.00, 0)]),
 ]
 SHOTS_V1 = [
-    ("04", V1_ANS, 14.36, "ANSWER",    [(V1_ANS, 1.00, 0), (V1P[3]["out_in"], 1.06, 0)]),
+    ("04", AUTH[2]["out_in"], 14.36, "ANSWER",    [(AUTH[2]["out_in"], 1.00, 0), (AUTH[3]["out_in"], 1.06, 0)]),
     ("05", 14.36, 18.24, "STRUCTURE",  [(14.36, 1.06, 0)]),
     ("06", 18.24, 24.14, "SYARIAH",    [(18.24, 1.00, 0)]),
     ("07", 24.14, 36.24, "SYARIAH",    [(24.14, 1.00, 0), (30.10, 1.08, 8), (33.50, 1.00, 8)]),
@@ -92,12 +104,16 @@ def word_times(s, e, toks):
             out[k] = t0 + (t1 - t0) * (k - i0) / (i1 - i0)
     return [round(min(max(t, s), e), 3) for t in out]
 
+# Word times come from Whisper on the rendered (filler-free) v1 audio, so cue bounds are mapped
+# auth -> v1 before matching, then shifted onto v2.
+to_v2 = lambda v: round(v + DELTA, 4) if v >= V1_ANS - 1e-6 else round(v, 4)
 caps = []
 for s, e, text, style in CUES:
     toks = text.split()
-    times = word_times(s, e, [t.strip("*") for t in toks])
-    caps.append({"s": sh(s), "e": sh(e), "style": style,
-                 "words": [{"t": tk.strip("*"), "at": sh(at), "em": tk.startswith("*")} for tk, at in zip(toks, times)]})
+    s1, e1 = auth_to_v1(s), auth_to_v1(e)
+    times = word_times(s1, e1, [t.strip("*") for t in toks])
+    caps.append({"s": to_v2(s1), "e": to_v2(e1), "style": style,
+                 "words": [{"t": tk.strip("*"), "at": to_v2(at), "em": tk.startswith("*")} for tk, at in zip(toks, times)]})
 
 GFX = {  # consumed by HyperFrames (typography) and Remotion (infographics)
     "hook": {"s": 0.12, "e": BEEP["out_in"] - 0.06, "lines": ["Ini pun boleh buat", "sijil halal ditarik."]},
@@ -118,7 +134,32 @@ GFX = {  # consumed by HyperFrames (typography) and Remotion (infographics)
     "endCard": {"s": END, "e": DUR, "q": "Pada pendapat anda, kesalahan mana paling kerap berlaku?",
                 "share": "Kongsi dengan rakan yang ada bisnes makanan."},
 }
-json.dump({"fps": edl["fps"], "duration": DUR, "speechEnd": END, "width": 1080, "height": 1920,
+# Sound design (authored times unless noted). kinds are synthesised in audio.py.
+SFX_AUTH = [
+    (0.12, "whoosh", -20, {"pan": -0.5, "dur": 0.45}),           # hook card in
+    (9.45, "swish", -20, {"pan": -0.6}),                          # lower third
+    (14.42, "soft", -22, {}), (16.70, "thock", -17, {"pitch": 1.0}), (17.60, "thock", -17, {"pitch": 1.25}),
+    (18.34, "click", -20, {}),                                    # chapter 1 tag
+    (30.10, "thump", -16, {}), (30.10, "bubble", -20, {"pitch": 1.0}), (31.60, "bubble", -20, {"pitch": 1.12}),
+    (33.50, "bubble", -20, {"pitch": 1.25}),                      # punch on "najis" + keyword chips
+    (42.12, "impact", -15, {"size": 0.6}),                        # punch on "daging babi"
+    (43.50, "whoosh", -14, {"pan": 0.0, "dur": 0.85, "sweep": True}),   # chapter wipe
+    (44.05, "click", -20, {}),                                    # chapter 2 tag
+    (49.68, "paper", -20, {}), (50.98, "stamp", -14, {}), (51.70, "paper", -20, {}), (53.10, "stamp", -14, {}),
+    (54.18, "soft", -22, {}),
+    (55.54, "tick", -18, {"pitch": 1.0}), (58.02, "tick", -18, {"pitch": 1.12}),
+    (61.18, "tick", -18, {"pitch": 1.25}), (66.44, "tick", -17, {"pitch": 1.5}),
+    (71.02, "riser", -22, {"dur": 2.9, "cut": 73.92}),          # builds under the climax line
+    (72.60, "impact", -12, {"size": 1.0}), (72.62, "shimmer", -22, {}),   # SIJIL HALAL DITARIK
+]
+SFX = [{"t": 0.0, "kind": "impact", "gain": -12, "size": 1.0}]  # hook opens on a hit
+SFX += [{"t": sh(t), "kind": k, "gain": g, **({**o, "cut": sh(o["cut"])} if "cut" in o else o)} for t, k, g, o in SFX_AUTH]
+SFX += [{"t": Q["out_in"] + 0.03, "kind": "pop", "gain": -15}, {"t": Q["out_in"] + 0.03, "kind": "swish", "gain": -22, "pan": 0.3},
+        {"t": Q["out_out"] - 0.16, "kind": "swish", "gain": -24, "pan": -0.3},
+        {"t": END, "kind": "whoosh", "gain": -18, "pan": 0.0, "dur": 0.5}, {"t": END + 0.45, "kind": "chime", "gain": -18}]
+FILLER_JOINS = [round(p["out_in"], 4) for p in P if p.get("filler_join")]
+
+json.dump({"fps": edl["fps"], "duration": DUR, "sfx": sorted(SFX, key=lambda x: x["t"]), "fillerJoins": FILLER_JOINS, "speechEnd": END, "width": 1080, "height": 1920,
            "shots": [{"id": a, "s": round(b, 4), "e": round(c, 4), "beat": d, "zoom": z} for a, b, c, d, z in SHOTS],
            "captions": caps, "gfx": GFX}, open(sys.argv[3], "w"), ensure_ascii=False, indent=1)
 print(f"{len(SHOTS)} shots, {len(caps)} caption cues, duration {DUR}s")

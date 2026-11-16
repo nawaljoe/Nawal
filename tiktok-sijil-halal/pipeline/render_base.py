@@ -14,11 +14,18 @@ GRADE = ("eq=contrast=1.14:saturation=0.84:gamma=0.90,"
          "colorbalance=rs=-0.08:gs=-0.015:bs=0.10:rm=0.04:bm=-0.03:rh=0.04:gh=0.01:bh=-0.05,"
          "curves=master='0/0.03 0.25/0.17 0.5/0.42 0.72/0.62 1/0.80'")
 KEY_K, KEY_SOFT = 0.80, 0.85         # studio key-light falloff strength / softness
+SKIN_AMT, SKIN_SIGMA = 0.80, 34       # v3: skin smoothing blend / bilateral colour sigma
+JOIN_STEP, Z_MAX = 1.04, 1.10         # v3: zoom step that masks each filler jump cut; overall cap
 ft, fcx, fcy = np.array(face["t"]), np.array(face["cx"]), np.array(face["cy"])
 FW = float(np.median(face["fw"]))
 
+JOINS = tl.get("fillerJoins", [])
 def zoom_at(t):
     shot = next(s for s in tl["shots"] if s["s"] - 1e-6 <= t < s["e"] + 1e-6)
+    flips = sum(1 for j in JOINS if shot["s"] - 1e-6 <= j <= t + 1e-6)
+    return min(Z_MAX, zoom_base(t, shot) * (JOIN_STEP if flips % 2 else 1.0))
+
+def zoom_base(t, shot):
     keys = shot["zoom"]; z = keys[0][1]
     for i, (kt, kz, ease) in enumerate(keys[1:], 1):
         pt, pz = keys[i - 1][0], keys[i - 1][1]
@@ -42,8 +49,22 @@ def key_light(img, src_t):
     f = np.clip((d - 0.45) / KEY_SOFT, 0, 1); f = f * f * (3 - 2 * f)
     return np.clip(img.astype(np.float32) * (1 - KEY_K * f)[..., None], 0, 255).astype(np.uint8)
 
+def smooth_skin(img, src_t):
+    """Edge-preserving smoothing on skin inside the face ellipse; eyes, brows and beard stay sharp."""
+    cx, cy = np.interp(src_t, ft, fcx), np.interp(src_t, ft, fcy)
+    x0, x1 = int(max(0, cx - FW * 0.75)), int(min(W, cx + FW * 0.75))
+    y0, y1 = int(max(0, cy - FW * 0.85)), int(min(H, cy + FW * 0.95))
+    roi = img[y0:y1, x0:x1]
+    skin = cv2.inRange(cv2.cvtColor(roi, cv2.COLOR_RGB2YCrCb), (40, 133, 77), (245, 178, 130)).astype(np.float32) / 255
+    yy_, xx_ = np.mgrid[y0:y1, x0:x1]
+    ell = ((((xx_ - cx) / (FW * 0.55)) ** 2 + ((yy_ - cy) / (FW * 0.75)) ** 2) < 1).astype(np.float32)
+    m = cv2.GaussianBlur(skin * ell, (0, 0), 9)[..., None] * SKIN_AMT
+    sm = cv2.bilateralFilter(roi, 0, SKIN_SIGMA, 6); sm = cv2.bilateralFilter(sm, 0, SKIN_SIGMA * 0.8, 4)
+    out = img.copy(); out[y0:y1, x0:x1] = np.clip(roi * (1 - m) + sm * m, 0, 255).astype(np.uint8)
+    return out
+
 def frame_for(img, t, src_t):
-    img = key_light(img, src_t)
+    img = key_light(smooth_skin(img, src_t), src_t)
     z = zoom_at(t)
     if z > 1.001:
         cw, ch = W / z, H / z

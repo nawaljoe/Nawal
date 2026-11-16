@@ -17,7 +17,7 @@ ffmpeg -nostdin -v error -y -i "$SRC" -ac 1 -ar 16000 "$WD/audio16k.wav"
 python3 -I "$HERE/edl.py" "$WD/audio16k.wav" "$WD/edl.json"
 python3 -I "$HERE/transcribe_edit.py" "$WD/audio16k.wav" "$WD/edl.json" "$WD/out_words.json"
 python3 -I "$HERE/timeline.py" "$WD/edl.json" "$WD/out_words.json" "$WD/timeline.json"
-python3 -I "$HERE/audio.py" "$SRC" "$WD/edl.json" "$WD" "$BEEP" "$OUTRO"
+python3 -I "$HERE/audio.py" "$SRC" "$WD/edl.json" "$WD/timeline.json" "$WD" "$BEEP" "$OUTRO"
 python3 -I "$HERE/facetrack.py" "$SRC" "$WD/face.json"
 python3 -I "$HERE/render_base.py" "$SRC" "$WD/edl.json" "$WD/timeline.json" "$WD/face.json" "$WD/base.mp4" "$BEEP"
 
