@@ -7,31 +7,39 @@ from Whisper run on the assembled edit (out_words.json).
 import json, re, sys
 edl = json.load(open(sys.argv[1])); W = json.load(open(sys.argv[2]))
 P = edl["pieces"]; END = edl["speech_end"]; DUR = edl["duration"]
+# Caption/graphic times below are authored on the v1 cut (with the interviewer's audio).
+# v2 swaps that 5.1 s question for beep + silent question card, so later times shift by DELTA.
+V1P = edl.get("pieces_v1", P); V1_ANS = edl.get("v1_answer_start", P[2]["out_in"]); DELTA = edl.get("delta", 0.0)
+END_V1 = edl.get("speech_end_v1", END)
+sh = lambda t: round(t + DELTA, 4) if t >= V1_ANS - 1e-6 else t
+BEEP = next(p for p in P if p.get("kind") == "beep"); Q = next(p for p in P if p.get("kind") == "question")
 
-# shots: (id, start, end, beat, zoom keys [(t, z, ease_frames)])
+# shots: (id, start, end, beat, zoom keys [(t, z, ease_frames)]) -- v1 times; punch-ins capped at 1.08x
 SHOTS = [
-    ("01", 0.0,   P[1]["out_in"], "HOOK",      [(0.0, 1.30, 0)]),
-    ("02", P[1]["out_in"], P[2]["out_in"], "SETUP", [(P[1]["out_in"], 1.00, 0), (P[2]["out_in"], 1.05, "lin")]),
-    ("03", P[2]["out_in"], 14.36, "ANSWER",    [(P[2]["out_in"], 1.00, 0), (P[3]["out_in"], 1.15, 0)]),
-    ("04", 14.36, 18.24, "STRUCTURE",          [(14.36, 1.15, 0)]),
-    ("05", 18.24, 24.14, "SYARIAH",            [(18.24, 1.00, 0)]),
-    ("06", 24.14, 36.24, "SYARIAH",            [(24.14, 1.00, 0), (30.10, 1.20, 6), (33.50, 1.00, 6)]),
-    ("07", 36.24, 43.66, "SYARIAH",            [(36.24, 1.00, 0), (42.12, 1.25, 5)]),
-    ("08", 43.66, 49.04, "TEKNIKAL",           [(43.66, 1.00, 0)]),
-    ("09", 49.04, 54.10, "PAYOFF",             [(49.04, 1.30, 0)]),
-    ("10", 54.10, 61.94, "TEKNIKAL",           [(54.10, 1.10, 0), (61.94, 1.13, "lin")]),
-    ("11", 61.94, 68.08, "TEKNIKAL",           [(61.94, 1.00, 0)]),
-    ("12", 68.08, 74.24, "CLIMAX",             [(68.08, 1.00, 0), (74.24, 1.15, "lin")]),
-    ("13", 74.24, END,   "LANDING",            [(74.24, 1.30, 0)]),
-    ("14", END,   DUR,   "ENDING",             [(END, 1.00, 0)]),
+    ("01", 0.0, BEEP["out_in"], "HOOK", [(0.0, 1.08, 0)]),
+    ("02", BEEP["out_in"], Q["out_in"], "BEEP", [(BEEP["out_in"], 1.00, 0)]),
+    ("03", Q["out_in"], Q["out_out"], "QUESTION", [(Q["out_in"], 1.00, 0)]),
 ]
+SHOTS_V1 = [
+    ("04", V1_ANS, 14.36, "ANSWER",    [(V1_ANS, 1.00, 0), (V1P[3]["out_in"], 1.06, 0)]),
+    ("05", 14.36, 18.24, "STRUCTURE",  [(14.36, 1.06, 0)]),
+    ("06", 18.24, 24.14, "SYARIAH",    [(18.24, 1.00, 0)]),
+    ("07", 24.14, 36.24, "SYARIAH",    [(24.14, 1.00, 0), (30.10, 1.08, 8), (33.50, 1.00, 8)]),
+    ("08", 36.24, 43.66, "SYARIAH",    [(36.24, 1.00, 0), (42.12, 1.08, 6)]),
+    ("09", 43.66, 49.04, "TEKNIKAL",   [(43.66, 1.00, 0)]),
+    ("10", 49.04, 54.10, "PAYOFF",     [(49.04, 1.06, 0)]),
+    ("11", 54.10, 61.94, "TEKNIKAL",   [(54.10, 1.03, 0), (61.94, 1.05, "lin")]),
+    ("12", 61.94, 68.08, "TEKNIKAL",   [(61.94, 1.00, 0)]),
+    ("13", 68.08, 74.24, "CLIMAX",     [(68.08, 1.00, 0), (74.24, 1.06, "lin")]),
+    ("14", 74.24, END_V1, "LANDING",   [(74.24, 1.08, 0)]),
+]
+SHOTS += [(i, sh(a), sh(b), beat, [(sh(kt), kz, e) for kt, kz, e in z]) for i, a, b, beat, z in SHOTS_V1]
+SHOTS.append(("15", END, DUR, "ENDING", [(END, 1.00, 0)]))
 
 # captions: (start, end, text, style) ; *word* = gold emphasis
 CUES = [
     (0.00, 1.62, "Syarikat dah tutup, *tak* *bagitahu.*", ""),
     (1.70, 3.80, "Syarikat dah berpindah, *tak* *bagitahu.*", ""),
-    (3.98, 6.54, "Kita nak tahulah, kesalahan apa yang boleh", "q"),
-    (6.56, 9.10, "buat sijil halal kita ni *ditarik* on the spot?", "q"),
     (9.16, 10.90, "Sijil halal boleh *ditarik…*", ""),
     (10.94, 14.30, "disebabkan kesalahan ataupun *ketidakakuran* *serius.*", ""),
     (14.42, 16.16, "Ketidakakuran serius ni terbagi pada dua.", ""),
@@ -60,7 +68,7 @@ CUES = [
     (68.14, 70.36, "Barang yang haram, barang yang tidak halal itu", ""),
     (70.40, 72.56, "boleh menjejaskan sampai tahap", ""),
     (72.60, 74.22, "kena *tarik* *sijil* *halal* di Malaysia.", ""),
-    (74.30, END, "Jaga-jagalah ya.", ""),
+    (74.30, END_V1, "Jaga-jagalah ya.", ""),
 ]
 norm = lambda s: re.sub(r"[^a-z]", "", s.lower())
 def word_times(s, e, toks):
@@ -88,23 +96,25 @@ caps = []
 for s, e, text, style in CUES:
     toks = text.split()
     times = word_times(s, e, [t.strip("*") for t in toks])
-    caps.append({"s": s, "e": e, "style": style,
-                 "words": [{"t": tk.strip("*"), "at": at, "em": tk.startswith("*")} for tk, at in zip(toks, times)]})
+    caps.append({"s": sh(s), "e": sh(e), "style": style,
+                 "words": [{"t": tk.strip("*"), "at": sh(at), "em": tk.startswith("*")} for tk, at in zip(toks, times)]})
 
 GFX = {  # consumed by HyperFrames (typography) and Remotion (infographics)
-    "hook": {"s": 0.12, "e": 3.95, "lines": ["Ini pun boleh buat", "sijil halal ditarik."]},
-    "soalan": {"s": P[1]["out_in"], "e": P[2]["out_in"]},
-    "lowerThird": {"s": 9.45, "e": 14.30, "name": "Mohamad Yusof bin Mahmod", "role": "Auditor Syariah",
+    "hook": {"s": 0.12, "e": BEEP["out_in"] - 0.06, "lines": ["Ini pun boleh buat", "sijil halal ditarik."]},
+    "beep": {"s": BEEP["out_in"], "e": BEEP["out_out"]},
+    "question": {"s": Q["out_in"] + 0.03, "e": Q["out_out"], "label": "SOALAN",
+                 "t": "Kesalahan apa yang boleh buat sijil halal ditarik?"},
+    "lowerThird": {"s": sh(9.45), "e": sh(14.30), "name": "Mohamad Yusof bin Mahmod", "role": "Auditor Syariah",
                    "unit": "Unit Penguatkuasaan dan Pemantauan · Bahagian Pengurusan Halal, JAINJ"},
-    "chapters": [{"s": 18.24, "e": 43.66, "n": "1", "label": "SYARIAH"},
-                 {"s": 43.66, "e": 68.08, "n": "2", "label": "TEKNIKAL", "wipe": 43.50}],
-    "chips": [{"s": 30.10, "t": "Tercemar najis"}, {"s": 31.60, "t": "Bercampur"},
-              {"s": 33.50, "t": "Tiada pengasingan / penyucian"}], "chipsEnd": 36.20,
-    "emphasis": {"s": 72.60, "e": END, "t": "SIJIL HALAL DITARIK"},
-    "duaKategori": {"s": 14.42, "e": 18.20, "a": 16.70, "b": 17.60},
-    "notis": {"s": 49.08, "e": 54.06, "c1": 49.68, "st1": 50.98, "c2": 51.70, "st2": 53.10},
-    "premis": {"s": 54.18, "e": 68.06, "items": [{"at": 55.54, "t": "Gudang"}, {"at": 58.02, "t": "Asrama"},
-                                                   {"at": 61.18, "t": "Kenderaan"}, {"at": 66.44, "t": "Premis"}]},
+    "chapters": [{"s": sh(18.24), "e": sh(43.66), "n": "1", "label": "SYARIAH"},
+                 {"s": sh(43.66), "e": sh(68.08), "n": "2", "label": "TEKNIKAL", "wipe": sh(43.50)}],
+    "chips": [{"s": sh(30.10), "t": "Tercemar najis"}, {"s": sh(31.60), "t": "Bercampur"},
+              {"s": sh(33.50), "t": "Tiada pengasingan / penyucian"}], "chipsEnd": sh(36.20),
+    "emphasis": {"s": sh(72.60), "e": END, "t": "SIJIL HALAL DITARIK"},
+    "duaKategori": {"s": sh(14.42), "e": sh(18.20), "a": sh(16.70), "b": sh(17.60)},
+    "notis": {"s": sh(49.08), "e": sh(54.06), "c1": sh(49.68), "st1": sh(50.98), "c2": sh(51.70), "st2": sh(53.10)},
+    "premis": {"s": sh(54.18), "e": sh(68.06), "items": [{"at": sh(55.54), "t": "Gudang"}, {"at": sh(58.02), "t": "Asrama"},
+                                                         {"at": sh(61.18), "t": "Kenderaan"}, {"at": sh(66.44), "t": "Premis"}]},
     "endCard": {"s": END, "e": DUR, "q": "Pada pendapat anda, kesalahan mana paling kerap berlaku?",
                 "share": "Kongsi dengan rakan yang ada bisnes makanan."},
 }

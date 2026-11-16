@@ -1,7 +1,7 @@
 {
  "fps": 30,
- "duration": 78.4667,
- "speechEnd": 75.4667,
+ "duration": 76.0667,
+ "speechEnd": 73.5667,
  "width": 1080,
  "height": 1920,
  "shots": [
@@ -13,7 +13,7 @@
    "zoom": [
     [
      0.0,
-     1.3,
+     1.08,
      0
     ]
    ]
@@ -21,202 +21,210 @@
   {
    "id": "02",
    "s": 4.0333,
-   "e": 9.1333,
-   "beat": "SETUP",
+   "e": 4.4333,
+   "beat": "BEEP",
    "zoom": [
     [
      4.0333,
      1.0,
      0
-    ],
-    [
-     9.1333,
-     1.05,
-     "lin"
     ]
    ]
   },
   {
    "id": "03",
-   "s": 9.1333,
-   "e": 14.36,
-   "beat": "ANSWER",
+   "s": 4.4333,
+   "e": 7.2333,
+   "beat": "QUESTION",
    "zoom": [
     [
-     9.1333,
+     4.4333,
      1.0,
-     0
-    ],
-    [
-     10.8667,
-     1.15,
      0
     ]
    ]
   },
   {
    "id": "04",
-   "s": 14.36,
-   "e": 18.24,
-   "beat": "STRUCTURE",
+   "s": 7.2333,
+   "e": 12.46,
+   "beat": "ANSWER",
    "zoom": [
     [
-     14.36,
-     1.15,
+     7.2333,
+     1.0,
+     0
+    ],
+    [
+     8.9667,
+     1.06,
      0
     ]
    ]
   },
   {
    "id": "05",
-   "s": 18.24,
-   "e": 24.14,
-   "beat": "SYARIAH",
+   "s": 12.46,
+   "e": 16.34,
+   "beat": "STRUCTURE",
    "zoom": [
     [
-     18.24,
-     1.0,
+     12.46,
+     1.06,
      0
     ]
    ]
   },
   {
    "id": "06",
-   "s": 24.14,
-   "e": 36.24,
+   "s": 16.34,
+   "e": 22.24,
    "beat": "SYARIAH",
    "zoom": [
     [
-     24.14,
+     16.34,
      1.0,
      0
-    ],
-    [
-     30.1,
-     1.2,
-     6
-    ],
-    [
-     33.5,
-     1.0,
-     6
     ]
    ]
   },
   {
    "id": "07",
-   "s": 36.24,
-   "e": 43.66,
+   "s": 22.24,
+   "e": 34.34,
    "beat": "SYARIAH",
    "zoom": [
     [
-     36.24,
+     22.24,
      1.0,
      0
     ],
     [
-     42.12,
-     1.25,
-     5
+     28.2,
+     1.08,
+     8
+    ],
+    [
+     31.6,
+     1.0,
+     8
     ]
    ]
   },
   {
    "id": "08",
-   "s": 43.66,
-   "e": 49.04,
-   "beat": "TEKNIKAL",
+   "s": 34.34,
+   "e": 41.76,
+   "beat": "SYARIAH",
    "zoom": [
     [
-     43.66,
+     34.34,
      1.0,
      0
+    ],
+    [
+     40.22,
+     1.08,
+     6
     ]
    ]
   },
   {
    "id": "09",
-   "s": 49.04,
-   "e": 54.1,
-   "beat": "PAYOFF",
+   "s": 41.76,
+   "e": 47.14,
+   "beat": "TEKNIKAL",
    "zoom": [
     [
-     49.04,
-     1.3,
+     41.76,
+     1.0,
      0
     ]
    ]
   },
   {
    "id": "10",
-   "s": 54.1,
-   "e": 61.94,
-   "beat": "TEKNIKAL",
+   "s": 47.14,
+   "e": 52.2,
+   "beat": "PAYOFF",
    "zoom": [
     [
-     54.1,
-     1.1,
+     47.14,
+     1.06,
      0
-    ],
-    [
-     61.94,
-     1.13,
-     "lin"
     ]
    ]
   },
   {
    "id": "11",
-   "s": 61.94,
-   "e": 68.08,
+   "s": 52.2,
+   "e": 60.04,
    "beat": "TEKNIKAL",
    "zoom": [
     [
-     61.94,
-     1.0,
-     0
-    ]
-   ]
-  },
-  {
-   "id": "12",
-   "s": 68.08,
-   "e": 74.24,
-   "beat": "CLIMAX",
-   "zoom": [
-    [
-     68.08,
-     1.0,
+     52.2,
+     1.03,
      0
     ],
     [
-     74.24,
-     1.15,
+     60.04,
+     1.05,
      "lin"
     ]
    ]
   },
   {
-   "id": "13",
-   "s": 74.24,
-   "e": 75.4667,
-   "beat": "LANDING",
+   "id": "12",
+   "s": 60.04,
+   "e": 66.18,
+   "beat": "TEKNIKAL",
    "zoom": [
     [
-     74.24,
-     1.3,
+     60.04,
+     1.0,
      0
     ]
    ]
   },
   {
+   "id": "13",
+   "s": 66.18,
+   "e": 72.34,
+   "beat": "CLIMAX",
+   "zoom": [
+    [
+     66.18,
+     1.0,
+     0
+    ],
+    [
+     72.34,
+     1.06,
+     "lin"
+    ]
+   ]
+  },
+  {
    "id": "14",
-   "s": 75.4667,
-   "e": 78.4667,
+   "s": 72.34,
+   "e": 73.5667,
+   "beat": "LANDING",
+   "zoom": [
+    [
+     72.34,
+     1.08,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "15",
+   "s": 73.5667,
+   "e": 76.0667,
    "beat": "ENDING",
    "zoom": [
     [
-     75.4667,
+     73.5667,
      1.0,
      0
     ]
@@ -289,998 +297,904 @@
    ]
   },
   {
-   "s": 3.98,
-   "e": 6.54,
-   "style": "q",
-   "words": [
-    {
-     "t": "Kita",
-     "at": 3.98,
-     "em": false
-    },
-    {
-     "t": "nak",
-     "at": 4.42,
-     "em": false
-    },
-    {
-     "t": "tahulah,",
-     "at": 4.58,
-     "em": false
-    },
-    {
-     "t": "kesalahan",
-     "at": 5.1,
-     "em": false
-    },
-    {
-     "t": "apa",
-     "at": 5.78,
-     "em": false
-    },
-    {
-     "t": "yang",
-     "at": 6.02,
-     "em": false
-    },
-    {
-     "t": "boleh",
-     "at": 6.24,
-     "em": false
-    }
-   ]
-  },
-  {
-   "s": 6.56,
-   "e": 9.1,
-   "style": "q",
-   "words": [
-    {
-     "t": "buat",
-     "at": 6.56,
-     "em": false
-    },
-    {
-     "t": "sijil",
-     "at": 6.9,
-     "em": false
-    },
-    {
-     "t": "halal",
-     "at": 7.32,
-     "em": false
-    },
-    {
-     "t": "kita",
-     "at": 7.66,
-     "em": false
-    },
-    {
-     "t": "ni",
-     "at": 7.82,
-     "em": false
-    },
-    {
-     "t": "ditarik",
-     "at": 8.14,
-     "em": true
-    },
-    {
-     "t": "on",
-     "at": 8.76,
-     "em": false
-    },
-    {
-     "t": "the",
-     "at": 8.88,
-     "em": false
-    },
-    {
-     "t": "spot?",
-     "at": 8.915,
-     "em": false
-    }
-   ]
-  },
-  {
-   "s": 9.16,
-   "e": 10.9,
+   "s": 7.26,
+   "e": 9.0,
    "style": "",
    "words": [
     {
      "t": "Sijil",
-     "at": 9.16,
+     "at": 7.26,
      "em": false
     },
     {
      "t": "halal",
-     "at": 9.7,
+     "at": 7.8,
      "em": false
     },
     {
      "t": "boleh",
-     "at": 10.04,
+     "at": 8.14,
      "em": false
     },
     {
      "t": "ditarik…",
-     "at": 10.28,
+     "at": 8.38,
      "em": true
     }
    ]
   },
   {
-   "s": 10.94,
-   "e": 14.3,
+   "s": 9.04,
+   "e": 12.4,
    "style": "",
    "words": [
     {
      "t": "disebabkan",
-     "at": 10.94,
+     "at": 9.04,
      "em": false
     },
     {
      "t": "kesalahan",
-     "at": 11.44,
+     "at": 9.54,
      "em": false
     },
     {
      "t": "ataupun",
-     "at": 12.44,
+     "at": 10.54,
      "em": false
     },
     {
      "t": "ketidakakuran",
-     "at": 12.64,
+     "at": 10.74,
      "em": true
     },
     {
      "t": "serius.",
-     "at": 13.34,
+     "at": 11.44,
      "em": true
     }
    ]
   },
   {
-   "s": 14.42,
-   "e": 16.16,
+   "s": 12.52,
+   "e": 14.26,
    "style": "",
    "words": [
     {
      "t": "Ketidakakuran",
-     "at": 14.42,
+     "at": 12.52,
      "em": false
     },
     {
      "t": "serius",
-     "at": 15.06,
+     "at": 13.16,
      "em": false
     },
     {
      "t": "ni",
-     "at": 15.36,
+     "at": 13.46,
      "em": false
     },
     {
      "t": "terbagi",
-     "at": 15.5,
+     "at": 13.6,
      "em": false
     },
     {
      "t": "pada",
-     "at": 15.8,
+     "at": 13.9,
      "em": false
     },
     {
      "t": "dua.",
-     "at": 15.9,
+     "at": 14.0,
      "em": false
     }
    ]
   },
   {
-   "s": 16.22,
-   "e": 18.2,
+   "s": 14.32,
+   "e": 16.3,
    "style": "",
    "words": [
     {
      "t": "Ada",
-     "at": 16.22,
+     "at": 14.32,
      "em": false
     },
     {
      "t": "syariah,",
-     "at": 16.7,
+     "at": 14.8,
      "em": true
     },
     {
      "t": "ada",
-     "at": 17.26,
+     "at": 15.36,
      "em": false
     },
     {
      "t": "teknikal.",
-     "at": 17.6,
+     "at": 15.7,
      "em": true
     }
    ]
   },
   {
-   "s": 18.3,
-   "e": 20.4,
+   "s": 16.4,
+   "e": 18.5,
    "style": "",
    "words": [
     {
      "t": "Perkara",
-     "at": 18.3,
+     "at": 16.4,
      "em": false
     },
     {
      "t": "berkaitan",
-     "at": 18.86,
+     "at": 16.96,
      "em": false
     },
     {
      "t": "syariah",
-     "at": 19.2,
+     "at": 17.3,
      "em": false
     },
     {
      "t": "ni",
-     "at": 19.54,
+     "at": 17.64,
      "em": false
     },
     {
      "t": "biasanya",
-     "at": 19.72,
+     "at": 17.82,
      "em": false
     },
     {
      "t": "memang",
-     "at": 20.12,
+     "at": 18.22,
      "em": false
     }
    ]
   },
   {
-   "s": 20.42,
-   "e": 21.8,
+   "s": 18.52,
+   "e": 19.9,
    "style": "",
    "words": [
     {
      "t": "melibatkan",
-     "at": 20.42,
+     "at": 18.52,
      "em": false
     },
     {
      "t": "perkara-perkara",
-     "at": 20.92,
+     "at": 19.02,
      "em": false
     }
    ]
   },
   {
-   "s": 21.82,
-   "e": 24.1,
+   "s": 19.92,
+   "e": 22.2,
    "style": "",
    "words": [
     {
      "t": "yang",
-     "at": 21.82,
+     "at": 19.92,
      "em": false
     },
     {
      "t": "kita",
-     "at": 21.82,
+     "at": 19.92,
      "em": false
     },
     {
      "t": "katakan",
-     "at": 22.46,
+     "at": 20.56,
      "em": false
     },
     {
      "t": "tidak",
-     "at": 22.86,
+     "at": 20.96,
      "em": true
     },
     {
      "t": "halal",
-     "at": 23.14,
+     "at": 21.24,
      "em": true
     },
     {
      "t": "ataupun",
-     "at": 23.44,
+     "at": 21.54,
      "em": false
     },
     {
      "t": "haram.",
-     "at": 23.7,
+     "at": 21.8,
      "em": true
     }
    ]
   },
   {
-   "s": 24.18,
-   "e": 28.3,
+   "s": 22.28,
+   "e": 26.4,
    "style": "",
    "words": [
     {
      "t": "Mungkin",
-     "at": 24.18,
+     "at": 22.28,
      "em": false
     },
     {
      "t": "barangan,",
-     "at": 24.88,
+     "at": 22.98,
      "em": false
     },
     {
      "t": "makanan,",
-     "at": 26.94,
+     "at": 25.04,
      "em": false
     },
     {
      "t": "perkhidmatan",
-     "at": 27.58,
+     "at": 25.68,
      "em": false
     },
     {
      "t": "itu",
-     "at": 28.06,
+     "at": 26.16,
      "em": false
     }
    ]
   },
   {
-   "s": 28.36,
-   "e": 30.7,
+   "s": 26.46,
+   "e": 28.8,
    "style": "",
    "words": [
     {
      "t": "tercemar",
-     "at": 28.36,
+     "at": 26.46,
      "em": false
     },
     {
      "t": "dengan",
-     "at": 29.94,
+     "at": 28.04,
      "em": false
     },
     {
      "t": "najis,",
-     "at": 30.1,
+     "at": 28.2,
      "em": true
     }
    ]
   },
   {
-   "s": 31.4,
-   "e": 32.32,
+   "s": 29.5,
+   "e": 30.42,
    "style": "",
    "words": [
     {
      "t": "bercampur,",
-     "at": 31.6,
+     "at": 29.7,
      "em": true
     }
    ]
   },
   {
-   "s": 32.38,
-   "e": 34.7,
+   "s": 30.48,
+   "e": 32.8,
    "style": "",
    "words": [
     {
      "t": "dah",
-     "at": 32.38,
+     "at": 30.48,
      "em": false
     },
     {
      "t": "tak",
-     "at": 32.86,
+     "at": 30.96,
      "em": false
     },
     {
      "t": "boleh",
-     "at": 33.04,
+     "at": 31.14,
      "em": false
     },
     {
      "t": "nak",
-     "at": 33.24,
+     "at": 31.34,
      "em": false
     },
     {
      "t": "buat",
-     "at": 33.36,
+     "at": 31.46,
      "em": false
     },
     {
      "t": "pengasingan",
-     "at": 33.5,
+     "at": 31.6,
      "em": false
     },
     {
      "t": "yang",
-     "at": 34.22,
+     "at": 32.32,
      "em": false
     },
     {
      "t": "jelas",
-     "at": 34.38,
+     "at": 32.48,
      "em": false
     }
    ]
   },
   {
-   "s": 34.74,
-   "e": 36.24,
+   "s": 32.84,
+   "e": 34.34,
    "style": "",
    "words": [
     {
      "t": "ataupun",
-     "at": 34.74,
+     "at": 32.84,
      "em": false
     },
     {
      "t": "penyucian",
-     "at": 35.12,
+     "at": 33.22,
      "em": false
     },
     {
      "t": "dekat",
-     "at": 35.78,
+     "at": 33.88,
      "em": false
     },
     {
      "t": "situ.",
-     "at": 35.88,
+     "at": 33.98,
      "em": false
     }
    ]
   },
   {
-   "s": 36.32,
-   "e": 39.84,
+   "s": 34.42,
+   "e": 37.94,
    "style": "",
    "words": [
     {
      "t": "Kemudian",
-     "at": 36.32,
+     "at": 34.42,
      "em": false
     },
     {
      "t": "adanya",
-     "at": 36.92,
+     "at": 35.02,
      "em": false
     },
     {
      "t": "unsur",
-     "at": 37.76,
+     "at": 35.86,
      "em": false
     },
     {
      "t": "makanan",
-     "at": 38.26,
+     "at": 36.36,
      "em": false
     },
     {
      "t": "yang",
-     "at": 38.98,
+     "at": 37.08,
      "em": false
     },
     {
      "t": "tidak",
-     "at": 39.2,
+     "at": 37.3,
      "em": false
     },
     {
      "t": "halal",
-     "at": 39.42,
+     "at": 37.52,
      "em": false
     }
    ]
   },
   {
-   "s": 39.88,
-   "e": 42.06,
+   "s": 37.98,
+   "e": 40.16,
    "style": "",
    "words": [
     {
      "t": "atau",
-     "at": 39.88,
+     "at": 37.98,
      "em": false
     },
     {
      "t": "bahan",
-     "at": 40.34,
+     "at": 38.44,
      "em": false
     },
     {
      "t": "mentah",
-     "at": 40.62,
+     "at": 38.72,
      "em": false
     },
     {
      "t": "yang",
-     "at": 40.94,
+     "at": 39.04,
      "em": false
     },
     {
      "t": "memang",
-     "at": 41.14,
+     "at": 39.24,
      "em": false
     },
     {
      "t": "dekat",
-     "at": 41.44,
+     "at": 39.54,
      "em": false
     },
     {
      "t": "haram,",
-     "at": 41.62,
+     "at": 39.72,
      "em": false
     }
    ]
   },
   {
-   "s": 42.12,
-   "e": 43.66,
+   "s": 40.22,
+   "e": 41.76,
    "style": "",
    "words": [
     {
      "t": "daging",
-     "at": 42.12,
+     "at": 40.22,
      "em": true
     },
     {
      "t": "babi",
-     "at": 42.46,
+     "at": 40.56,
      "em": true
     },
     {
      "t": "ke,",
-     "at": 42.88,
+     "at": 40.98,
      "em": false
     },
     {
      "t": "arak",
-     "at": 43.08,
+     "at": 41.18,
      "em": true
     },
     {
      "t": "ke.",
-     "at": 43.48,
+     "at": 41.58,
      "em": false
     }
    ]
   },
   {
-   "s": 43.72,
-   "e": 47.26,
+   "s": 41.82,
+   "e": 45.36,
    "style": "",
    "words": [
     {
      "t": "Ataupun",
-     "at": 43.72,
+     "at": 41.82,
      "em": false
     },
     {
      "t": "kalau",
-     "at": 44.44,
+     "at": 42.54,
      "em": false
     },
     {
      "t": "kita",
-     "at": 45.64,
+     "at": 43.74,
      "em": false
     },
     {
      "t": "beralih",
-     "at": 45.92,
+     "at": 44.02,
      "em": false
     },
     {
      "t": "kepada",
-     "at": 46.38,
+     "at": 44.48,
      "em": false
     },
     {
      "t": "teknikal,",
-     "at": 46.5,
+     "at": 44.6,
      "em": true
     }
    ]
   },
   {
-   "s": 47.3,
-   "e": 49.0,
+   "s": 45.4,
+   "e": 47.1,
    "style": "",
    "words": [
     {
      "t": "melibatkan",
-     "at": 47.3,
+     "at": 45.4,
      "em": false
     },
     {
      "t": "undang-undang",
-     "at": 48.04,
+     "at": 46.14,
      "em": false
     },
     {
      "t": "itu",
-     "at": 48.66,
+     "at": 46.76,
      "em": false
     },
     {
      "t": "sendiri.",
-     "at": 48.72,
+     "at": 46.82,
      "em": false
     }
    ]
   },
   {
-   "s": 49.08,
-   "e": 51.62,
+   "s": 47.18,
+   "e": 49.72,
    "style": "",
    "words": [
     {
      "t": "Mungkin",
-     "at": 49.08,
+     "at": 47.18,
      "em": false
     },
     {
      "t": "syarikat",
-     "at": 49.68,
+     "at": 47.78,
      "em": false
     },
     {
      "t": "dah",
-     "at": 50.36,
+     "at": 48.46,
      "em": false
     },
     {
      "t": "tutup,",
-     "at": 50.48,
+     "at": 48.58,
      "em": false
     },
     {
      "t": "tak",
-     "at": 50.98,
+     "at": 49.08,
      "em": true
     },
     {
      "t": "bagitahu.",
-     "at": 51.14,
+     "at": 49.24,
      "em": true
     }
    ]
   },
   {
-   "s": 51.7,
-   "e": 53.95,
+   "s": 49.8,
+   "e": 52.05,
    "style": "",
    "words": [
     {
      "t": "Syarikat",
-     "at": 51.7,
+     "at": 49.8,
      "em": false
     },
     {
      "t": "dah",
-     "at": 52.22,
+     "at": 50.32,
      "em": false
     },
     {
      "t": "berpindah,",
-     "at": 52.44,
+     "at": 50.54,
      "em": false
     },
     {
      "t": "tak",
-     "at": 53.1,
+     "at": 51.2,
      "em": true
     },
     {
      "t": "bagitahu.",
-     "at": 53.26,
+     "at": 51.36,
      "em": true
     }
    ]
   },
   {
-   "s": 54.18,
-   "e": 57.3,
+   "s": 52.28,
+   "e": 55.4,
    "style": "",
    "words": [
     {
      "t": "Sama",
-     "at": 54.18,
+     "at": 52.28,
      "em": false
     },
     {
      "t": "juga",
-     "at": 54.48,
+     "at": 52.58,
      "em": false
     },
     {
      "t": "kena",
-     "at": 54.68,
+     "at": 52.78,
      "em": false
     },
     {
      "t": "tengok",
-     "at": 55.02,
+     "at": 53.12,
      "em": false
     },
     {
      "t": "pada",
-     "at": 55.36,
+     "at": 53.46,
      "em": false
     },
     {
      "t": "pergudangan",
-     "at": 55.54,
+     "at": 53.64,
      "em": true
     }
    ]
   },
   {
-   "s": 57.34,
-   "e": 61.12,
+   "s": 55.44,
+   "e": 59.22,
    "style": "",
    "words": [
     {
      "t": "ataupun",
-     "at": 57.34,
+     "at": 55.44,
      "em": false
     },
     {
      "t": "asrama",
-     "at": 58.02,
+     "at": 56.12,
      "em": true
     },
     {
      "t": "dan",
-     "at": 60.3,
+     "at": 58.4,
      "em": false
     },
     {
      "t": "juga…",
-     "at": 60.86,
+     "at": 58.96,
      "em": false
     }
    ]
   },
   {
-   "s": 61.18,
-   "e": 61.94,
+   "s": 59.28,
+   "e": 60.04,
    "style": "",
    "words": [
     {
      "t": "kenderaan.",
-     "at": 61.18,
+     "at": 59.28,
      "em": true
     }
    ]
   },
   {
-   "s": 61.98,
-   "e": 63.26,
+   "s": 60.08,
+   "e": 61.36,
    "style": "",
    "words": [
     {
      "t": "Tak",
-     "at": 61.98,
+     "at": 60.08,
      "em": false
     },
     {
      "t": "boleh",
-     "at": 62.26,
+     "at": 60.36,
      "em": false
     },
     {
      "t": "ada",
-     "at": 62.46,
+     "at": 60.56,
      "em": false
     },
     {
      "t": "pencampuran,",
-     "at": 62.785,
+     "at": 60.885,
      "em": false
     }
    ]
   },
   {
-   "s": 63.3,
-   "e": 66.1,
+   "s": 61.4,
+   "e": 64.2,
    "style": "",
    "words": [
     {
      "t": "bawa",
-     "at": 64.24,
+     "at": 62.34,
      "em": false
     },
     {
      "t": "masuk",
-     "at": 64.46,
+     "at": 62.56,
      "em": false
     },
     {
      "t": "barang",
-     "at": 64.74,
+     "at": 62.84,
      "em": false
     },
     {
      "t": "yang",
-     "at": 65.32,
+     "at": 63.42,
      "em": false
     },
     {
      "t": "tidak",
-     "at": 65.4,
+     "at": 63.5,
      "em": true
     },
     {
      "t": "halal",
-     "at": 65.78,
+     "at": 63.88,
      "em": true
     }
    ]
   },
   {
-   "s": 66.12,
-   "e": 68.06,
+   "s": 64.22,
+   "e": 66.16,
    "style": "",
    "words": [
     {
      "t": "ke",
-     "at": 66.12,
+     "at": 64.22,
      "em": false
     },
     {
      "t": "dalam",
-     "at": 66.24,
+     "at": 64.34,
      "em": false
     },
     {
      "t": "kawasan",
-     "at": 66.44,
+     "at": 64.54,
      "em": false
     },
     {
      "t": "premis.",
-     "at": 67.175,
+     "at": 65.275,
      "em": true
     }
    ]
   },
   {
-   "s": 68.14,
-   "e": 70.36,
+   "s": 66.24,
+   "e": 68.46,
    "style": "",
    "words": [
     {
      "t": "Barang",
-     "at": 68.14,
+     "at": 66.24,
      "em": false
     },
     {
      "t": "yang",
-     "at": 68.76,
+     "at": 66.86,
      "em": false
     },
     {
      "t": "haram,",
-     "at": 68.88,
+     "at": 66.98,
      "em": false
     },
     {
      "t": "barang",
-     "at": 69.36,
+     "at": 67.46,
      "em": false
     },
     {
      "t": "yang",
-     "at": 69.66,
+     "at": 67.76,
      "em": false
     },
     {
      "t": "tidak",
-     "at": 69.76,
+     "at": 67.86,
      "em": false
     },
     {
      "t": "halal",
-     "at": 69.96,
+     "at": 68.06,
      "em": false
     },
     {
      "t": "itu",
-     "at": 70.3,
+     "at": 68.4,
      "em": false
     }
    ]
   },
   {
-   "s": 70.4,
-   "e": 72.56,
+   "s": 68.5,
+   "e": 70.66,
    "style": "",
    "words": [
     {
      "t": "boleh",
-     "at": 70.4,
+     "at": 68.5,
      "em": false
     },
     {
      "t": "menjejaskan",
-     "at": 70.84,
+     "at": 68.94,
      "em": false
     },
     {
      "t": "sampai",
-     "at": 71.9,
+     "at": 70.0,
      "em": false
     },
     {
      "t": "tahap",
-     "at": 72.16,
+     "at": 70.26,
      "em": false
     }
    ]
   },
   {
-   "s": 72.6,
-   "e": 74.22,
+   "s": 70.7,
+   "e": 72.32,
    "style": "",
    "words": [
     {
      "t": "kena",
-     "at": 72.6,
+     "at": 70.7,
      "em": false
     },
     {
      "t": "tarik",
-     "at": 72.8,
+     "at": 70.9,
      "em": true
     },
     {
      "t": "sijil",
-     "at": 73.14,
+     "at": 71.24,
      "em": true
     },
     {
      "t": "halal",
-     "at": 73.48,
+     "at": 71.58,
      "em": true
     },
     {
      "t": "di",
-     "at": 73.9,
+     "at": 72.0,
      "em": false
     },
     {
      "t": "Malaysia.",
-     "at": 73.92,
+     "at": 72.02,
      "em": false
     }
    ]
   },
   {
-   "s": 74.3,
-   "e": 75.4667,
+   "s": 72.4,
+   "e": 73.5667,
    "style": "",
    "words": [
     {
      "t": "Jaga-jagalah",
-     "at": 74.3,
+     "at": 72.4,
      "em": false
     },
     {
      "t": "ya.",
-     "at": 75.06,
+     "at": 73.16,
      "em": false
     }
    ]
@@ -1289,97 +1203,103 @@
  "gfx": {
   "hook": {
    "s": 0.12,
-   "e": 3.95,
+   "e": 3.9732999999999996,
    "lines": [
     "Ini pun boleh buat",
     "sijil halal ditarik."
    ]
   },
-  "soalan": {
+  "beep": {
    "s": 4.0333,
-   "e": 9.1333
+   "e": 4.4333
+  },
+  "question": {
+   "s": 4.4633,
+   "e": 7.2333,
+   "label": "SOALAN",
+   "t": "Kesalahan apa yang boleh buat sijil halal ditarik?"
   },
   "lowerThird": {
-   "s": 9.45,
-   "e": 14.3,
+   "s": 7.55,
+   "e": 12.4,
    "name": "Mohamad Yusof bin Mahmod",
    "role": "Auditor Syariah",
    "unit": "Unit Penguatkuasaan dan Pemantauan · Bahagian Pengurusan Halal, JAINJ"
   },
   "chapters": [
    {
-    "s": 18.24,
-    "e": 43.66,
+    "s": 16.34,
+    "e": 41.76,
     "n": "1",
     "label": "SYARIAH"
    },
    {
-    "s": 43.66,
-    "e": 68.08,
+    "s": 41.76,
+    "e": 66.18,
     "n": "2",
     "label": "TEKNIKAL",
-    "wipe": 43.5
+    "wipe": 41.6
    }
   ],
   "chips": [
    {
-    "s": 30.1,
+    "s": 28.2,
     "t": "Tercemar najis"
    },
    {
-    "s": 31.6,
+    "s": 29.7,
     "t": "Bercampur"
    },
    {
-    "s": 33.5,
+    "s": 31.6,
     "t": "Tiada pengasingan / penyucian"
    }
   ],
-  "chipsEnd": 36.2,
+  "chipsEnd": 34.3,
   "emphasis": {
-   "s": 72.6,
-   "e": 75.4667,
+   "s": 70.7,
+   "e": 73.5667,
    "t": "SIJIL HALAL DITARIK"
   },
   "duaKategori": {
-   "s": 14.42,
-   "e": 18.2,
-   "a": 16.7,
-   "b": 17.6
+   "s": 12.52,
+   "e": 16.3,
+   "a": 14.8,
+   "b": 15.7
   },
   "notis": {
-   "s": 49.08,
-   "e": 54.06,
-   "c1": 49.68,
-   "st1": 50.98,
-   "c2": 51.7,
-   "st2": 53.1
+   "s": 47.18,
+   "e": 52.16,
+   "c1": 47.78,
+   "st1": 49.08,
+   "c2": 49.8,
+   "st2": 51.2
   },
   "premis": {
-   "s": 54.18,
-   "e": 68.06,
+   "s": 52.28,
+   "e": 66.16,
    "items": [
     {
-     "at": 55.54,
+     "at": 53.64,
      "t": "Gudang"
     },
     {
-     "at": 58.02,
+     "at": 56.12,
      "t": "Asrama"
     },
     {
-     "at": 61.18,
+     "at": 59.28,
      "t": "Kenderaan"
     },
     {
-     "at": 66.44,
+     "at": 64.54,
      "t": "Premis"
     }
    ]
   },
   "endCard": {
-   "s": 75.4667,
-   "e": 78.4667,
+   "s": 73.5667,
+   "e": 76.0667,
    "q": "Pada pendapat anda, kesalahan mana paling kerap berlaku?",
    "share": "Kongsi dengan rakan yang ada bisnes makanan."
   }

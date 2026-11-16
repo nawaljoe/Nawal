@@ -64,15 +64,18 @@ for s, e in pieces:
     edl.append({"src_in": round(s, 4), "src_out": round(s + d, 4), "out_in": round(t, 4), "out_out": round(t + d, 4)})
     t += d
 
-def to_out(src):
-    """Map a source time to output time; None if it falls in a removed span.
-    The hook (piece 0) and the callback share source time, so the LAST match wins
-    unless prefer_first is used by callers."""
-    hits = [p["out_in"] + (src - p["src_in"]) for p in edl if p["src_in"] - 1e-6 <= src <= p["src_out"] + 1e-6]
-    return hits
-
-END_CARD = 3.0
-json.dump({"fps": FPS, "pieces": edl, "speech_end": round(t, 4), "end_card": END_CARD,
-           "duration": round(t + END_CARD, 4)}, open(sys.argv[2], "w"), indent=1)
-print(f"{len(edl)} pieces, speech {t:.2f}s, total {t + END_CARD:.2f}s")
-for p in edl: print(p)
+# v2 (creator feedback): the interviewer's voice is removed. After the hook comes a single
+# short beep over colour bars, then a silent pop-up question card over the Ustaz listening.
+BEEP, QUESTION, END_CARD = 0.4, 2.8, 2.5
+v1 = edl
+v2 = [dict(v1[0], kind="speech"),
+      {"kind": "beep", "dur": BEEP},
+      {"kind": "question", "src_in": v1[1]["src_in"], "dur": QUESTION}] + [dict(p, kind="speech") for p in v1[2:]]
+t2 = 0.0
+for p in v2:
+    d = p.get("dur", round((p.get("src_out", 0) - p.get("src_in", 0)) * FPS) / FPS)
+    p["out_in"], p["out_out"] = round(t2, 4), round(t2 + d, 4); t2 += d
+json.dump({"fps": FPS, "pieces": v2, "pieces_v1": v1, "speech_end": round(t2, 4), "speech_end_v1": round(t, 4),
+           "v1_answer_start": v1[2]["out_in"], "delta": round(v2[3]["out_in"] - v1[2]["out_in"], 4),
+           "end_card": END_CARD, "duration": round(t2 + END_CARD, 4)}, open(sys.argv[2], "w"), indent=1)
+print(f"{len(v2)} pieces, speech {t2:.2f}s, main total {t2 + END_CARD:.2f}s (+ outro)")

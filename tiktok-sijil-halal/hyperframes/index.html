@@ -21,10 +21,16 @@ html,body{margin:0;background:transparent;width:1080px;height:1920px;overflow:hi
 .cap.q{font:italic 500 46px/1.25 "Inter",sans-serif;color:#EEF1F7}
 .w{display:inline-block;opacity:0;margin:0 .13em}
 .w.em{color:var(--gold-lit)}
-.soalan{left:50%;top:1060px;transform:translateX(-50%);font:600 24px "Inter";letter-spacing:.2em;color:var(--gold-lit);
-  border:2px solid var(--gold);border-radius:999px;padding:8px 22px 8px 26px;background:var(--navy-a);opacity:0}
-/* hook */
-.hook{left:72px;top:250px;width:760px;padding:30px 34px 34px;background:var(--navy-a);border-radius:6px;opacity:0;
+/* question pop-up (replaces the interviewer's voice) */
+.qdim{left:0;top:0;width:1080px;height:1920px;background:rgba(8,16,36,.5);opacity:0}
+.qcard{left:90px;width:900px;top:700px;box-sizing:border-box;padding:46px 52px 54px;background:rgba(14,30,63,.92);
+  border-radius:10px;border-top:4px solid var(--gold);box-shadow:0 24px 70px rgba(0,0,0,.5);opacity:0;transform-origin:50% 60%}
+.qcard .lab{display:inline-flex;align-items:center;gap:14px;font:600 26px "Inter";letter-spacing:.22em;color:var(--gold-lit)}
+.qcard .lab i{width:14px;height:14px;border-radius:50%;background:var(--gold)}
+.qcard .qt{margin-top:22px;font:700 64px/1.18 "Sora";color:var(--white)}
+.qcard .qt b{color:var(--gold-lit);font-weight:700}
+/* hook (sits below the logo band at the top) */
+.hook{left:72px;top:300px;width:760px;padding:30px 34px 34px;background:var(--navy-a);border-radius:6px;opacity:0;
   box-shadow:0 10px 40px rgba(0,0,0,.35)}
 .hook .l{display:block;font:700 62px/1.15 "Sora";overflow:hidden}
 .hook .l span{display:inline-block}
@@ -50,14 +56,14 @@ html,body{margin:0;background:transparent;width:1080px;height:1920px;overflow:hi
 .chip{display:flex;align-items:center;gap:14px;background:var(--navy-a);border-radius:999px;padding:12px 26px 12px 20px;font:600 30px "Inter";opacity:0}
 .chip i{width:12px;height:12px;border-radius:50%;background:var(--gold)}
 /* emphasis */
-.emph{left:50%;transform:translateX(-50%);top:280px;display:flex;justify-content:center;align-items:center;gap:22px;opacity:0;
+.emph{left:50%;transform:translateX(-50%);top:310px;display:flex;justify-content:center;align-items:center;gap:22px;opacity:0;
   white-space:nowrap;background:var(--navy-a);padding:18px 34px;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
 .emph .t{font:700 54px "Sora";color:var(--gold-lit);letter-spacing:.06em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
 .emph .r{height:3px;width:70px;background:var(--white);opacity:.85}
 </style>
 </head>
 <body>
-<div id="root" data-composition-id="root" data-start="0" data-duration="78.4667" data-width="1080" data-height="1920"></div>
+<div id="root" data-composition-id="root" data-start="0" data-duration="76.0667" data-width="1080" data-height="1920"></div>
 <script src="assets/gsap.min.js"></script>
 <script src="timeline.js"></script>
 <script>
@@ -76,9 +82,14 @@ html,body{margin:0;background:transparent;width:1080px;height:1920px;overflow:hi
     tl.to(d,{opacity:0,duration:.08},c.e);
   });
 
-  // SOALAN tag for the off-camera interviewer.
-  const so = el("soalan","SOALAN");
-  tl.fromTo(so,{opacity:0,y:10},{opacity:1,y:0,duration:.3,ease:E},G.soalan.s+.05).to(so,{opacity:0,duration:.15},G.soalan.e-.15);
+  // Question pop-up: the interviewer's question as a card, no voice.
+  const Q = G.question;
+  const qd = el("qdim","");
+  const qc = el("qcard",`<div class="lab"><i></i>${Q.label}</div><div class="qt">${Q.t.replace("ditarik?","<b>ditarik?</b>")}</div>`);
+  tl.to(qd,{opacity:1,duration:.15},Q.s)
+    .fromTo(qc,{opacity:0,scale:.82,y:30},{opacity:1,scale:1,y:0,duration:.38,ease:"back.out(1.7)"},Q.s)
+    .to([qc,qd],{opacity:0,duration:.14},Q.e-.14)
+    .to(qc,{scale:.96,duration:.14},Q.e-.14);
 
   // Hook card.
   const h = el("hook",`<span class="l"><span>${G.hook.lines[0]}</span></span><span class="l"><span>sijil halal <span class="gold">ditarik.<i class="ul abs"></i></span></span></span>`);

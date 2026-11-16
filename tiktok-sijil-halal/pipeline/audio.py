@@ -1,13 +1,14 @@
 """Assemble and process the voice track, synthesise SFX, mix to -14 LUFS.
 
-Usage: python3 audio.py <source.mp4> <edl.json> <workdir>
-Writes <workdir>/mix.wav (48 kHz stereo). No music: the creator adds a TikTok sound.
+Usage: python3 audio.py <source.mp4> <edl.json> <workdir> <beep.mp4> <outro.mp4>
+Writes <workdir>/mix.wav (48 kHz stereo): main cut at -14 LUFS followed by the outro's own audio.
+No music: the creator adds a TikTok sound. The interviewer's voice is not used (v2).
 """
 import json, subprocess, sys, wave
 import numpy as np
 
 SR = 48000
-src, edl_path, wd = sys.argv[1:4]
+src, edl_path, wd, beep_src, outro_src = sys.argv[1:6]
 edl = json.load(open(edl_path))
 
 def ff(*args):
@@ -24,23 +25,28 @@ def write_wav(p, x, ch=1):
     w = wave.open(p, "wb"); w.setnchannels(ch); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((x * 32767).astype(np.int16).tobytes()); w.close()
 
-# 1. Two cleaned versions of the source: speaker chain, and a stronger chain for the
-#    off-camera interviewer (quiet, so it gets +19 dB after heavier noise reduction).
+# 1. Clean the speaker's lapel track.
 ff("-i", src, "-vn", "-ac", "1", "-ar", str(SR), f"{wd}/src48.wav")
 ff("-i", f"{wd}/src48.wav", "-af",
    "highpass=f=80,lowpass=f=14000,afftdn=nr=12:nf=-50:tn=1,deesser=i=0.4,"
    "acompressor=threshold=-24dB:ratio=3:attack=8:release=120:makeup=2", f"{wd}/spk.wav")
-ff("-i", f"{wd}/src48.wav", "-af",
-   "highpass=f=120,lowpass=f=9000,afftdn=nr=24:nf=-55:tn=1,volume=19dB,"
-   "acompressor=threshold=-26dB:ratio=3:attack=8:release=150:makeup=1,"
-   "equalizer=f=3000:t=q:w=1:g=3", f"{wd}/int.wav")
-spk, itv = read_wav(f"{wd}/spk.wav"), read_wav(f"{wd}/int.wav")
+spk = read_wav(f"{wd}/spk.wav")
 
 # 2. Assemble pieces with 6 ms fades at every join.
+ff("-i", beep_src, "-vn", "-ac", "1", "-ar", str(SR), f"{wd}/beep_full.wav")
+beep_full = read_wav(f"{wd}/beep_full.wav")
+room = spk[int(93.75 * SR):int(95.05 * SR)]            # quiet room tone from the end of the take
 fade = int(0.006 * SR); voice = []
-for i, p in enumerate(edl["pieces"]):
-    n = int(round((p["out_out"] - p["out_in"]) * SR)); s = int(round(p["src_in"] * SR))
-    seg = (itv if p["src_in"] < 7.0 else spk)[s:s + n].copy()   # piece starting <7 s is the question
+for p in edl["pieces"]:
+    n = int(round((p["out_out"] - p["out_in"]) * SR))
+    if p["kind"] == "beep":                              # one short beep (first tone of the clip, 1 kHz)
+        seg = beep_full[int(0.21 * SR):int(0.21 * SR) + n].copy()
+        seg = seg / (np.max(np.abs(seg)) + 1e-9) * 10 ** (-22 / 20)
+        f2 = int(0.012 * SR); seg[:f2] *= np.linspace(0, 1, f2); seg[-f2:] *= np.linspace(1, 0, f2)
+    elif p["kind"] == "question":                        # silent card: room tone only
+        seg = np.tile(room, n // len(room) + 1)[:n] * 0.8
+    else:
+        s0 = int(round(p["src_in"] * SR)); seg = spk[s0:s0 + n].copy()
     seg[:fade] *= np.linspace(0, 1, fade); seg[-fade:] *= np.linspace(1, 0, fade)
     voice.append(seg)
 voice = np.concatenate(voice)
@@ -83,21 +89,25 @@ def bell(d=2.2):
     return sum(a * np.sin(2 * np.pi * f * t) * np.exp(-t * k) for f, a, k in [(880, .6, 2.2), (1320, .25, 3), (2210, .12, 5), (440, .2, 1.6)])
 
 def at_word(s, i=0): return s
-CUES = [  # (output time, sound, gain dB)
-    (0.00, sub_hit(), -14), (3.93, whoosh(), -22), (9.40, tick(2000), -26),
+D, V1A = edl.get("delta", 0.0), edl.get("v1_answer_start", 0.0)
+sh = lambda t: t + D if t >= V1A - 1e-6 else t
+Q = next(p for p in edl["pieces"] if p["kind"] == "question")
+CUES_V1 = [  # (v1 output time, sound, gain dB); shifted onto the v2 timeline below
+    (9.40, tick(2000), -26),
     (16.70, tick(2600), -24), (17.60, tick(2600), -24), (18.30, tick(1800), -28),
     (30.10, pop(), -24), (31.60, pop(), -24), (33.50, pop(), -24), (42.12, thud(), -16),
     (43.50, whoosh(0.6), -18), (50.98, stamp(), -22), (53.10, stamp(), -22),
     (55.54, tick(), -25), (58.02, tick(), -25), (61.18, tick(), -25), (66.44, tick(), -25),
     (71.02, riser(2.9), -24), (75.50, bell(), -24),
 ]
+CUES = [(0.00, sub_hit(), -14), (Q["out_in"] + 0.03, pop(), -20)] + [(sh(t), snd, g) for t, snd, g in CUES_V1]
 sfx = np.zeros(total)
 for t0, snd, g in CUES:
     s = int(t0 * SR); snd = snd / (np.max(np.abs(snd)) + 1e-9) * 10 ** (g / 20)
     sfx[s:s + len(snd)] += snd[:total - s]
 # riser stops dead on "Malaysia" (output ~73.92 s)
-cut = int(73.92 * SR); sfx[cut:cut + int(0.02 * SR)] *= np.linspace(1, 0, int(0.02 * SR))
-r_end = int((71.02 + 2.9) * SR); sfx[cut + int(0.02 * SR):r_end] = 0
+cut = int(sh(73.92) * SR); sfx[cut:cut + int(0.02 * SR)] *= np.linspace(1, 0, int(0.02 * SR))
+r_end = int((sh(71.02) + 2.9) * SR); sfx[cut + int(0.02 * SR):r_end] = 0
 
 write_wav(f"{wd}/voice.wav", voice); write_wav(f"{wd}/sfx.wav", sfx)
 # 4. Mix and two-pass loudness normalise to -14 LUFS / -1 dBTP.
@@ -110,5 +120,8 @@ m = json.loads(meas[meas.rindex("{"):meas.rindex("}") + 1])
 ff("-i", f"{wd}/premix.wav", "-af",
    f"loudnorm=I=-14:TP=-1:LRA=9:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
    f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,"
-   "aresample=48000", "-ac", "2", f"{wd}/mix.wav")
-print("measured", m["input_i"], "LUFS ->", "-14")
+   "aresample=48000", "-ac", "2", f"{wd}/main_mix.wav")
+# 5. Outro keeps its own sound design, levelled to sit with the main mix, then appended.
+ff("-i", outro_src, "-vn", "-af", "loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000", "-ac", "2", f"{wd}/outro.wav")
+ff("-i", f"{wd}/main_mix.wav", "-i", f"{wd}/outro.wav", "-filter_complex", "[0][1]concat=n=2:v=0:a=1", f"{wd}/mix.wav")
+print("measured", m["input_i"], "LUFS ->", "-14; outro appended")
