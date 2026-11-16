@@ -91,7 +91,7 @@ const Stamp: React.FC<{ at: number }> = ({ at }) => {
   const { frame, fps } = useT();
   const p = interpolate(frame - sec(at, fps), [0, 7], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
   return (
-    <div style={{ position: "absolute", right: 18, bottom: 16, opacity: p, transform: `rotate(-7deg) scale(${1.5 - 0.5 * p})`, border: `3px solid ${GOLD_LIT}`, color: GOLD_LIT, font: "700 22px Inter", letterSpacing: "0.14em", padding: "6px 12px", borderRadius: 4 }}>
+    <div style={{ position: "absolute", right: 18, top: 24, opacity: p, transform: `rotate(-7deg) scale(${1.5 - 0.5 * p})`, border: `3px solid ${GOLD_LIT}`, color: GOLD_LIT, font: "700 22px Inter", letterSpacing: "0.14em", padding: "6px 12px", borderRadius: 4 }}>
       TAK BAGITAHU
     </div>
   );
