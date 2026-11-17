@@ -61,27 +61,27 @@ window.TL = {
    "gain": -20
   },
   {
+   "t": 27.1534,
+   "kind": "swoosh",
+   "gain": -17,
+   "dir": 1
+  },
+  {
    "t": 27.2134,
    "kind": "thump",
-   "gain": -16
+   "gain": -18
   },
   {
-   "t": 27.2134,
-   "kind": "bubble",
-   "gain": -20,
-   "pitch": 1.0
+   "t": 28.14,
+   "kind": "swoosh",
+   "gain": -17,
+   "dir": -1
   },
   {
-   "t": 28.2,
-   "kind": "bubble",
-   "gain": -20,
-   "pitch": 1.12
-  },
-  {
-   "t": 30.1,
-   "kind": "bubble",
-   "gain": -20,
-   "pitch": 1.25
+   "t": 30.04,
+   "kind": "swoosh",
+   "gain": -17,
+   "dir": 1
   },
   {
    "t": 38.72,
