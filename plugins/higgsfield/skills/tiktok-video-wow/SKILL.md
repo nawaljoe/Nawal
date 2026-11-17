@@ -1,6 +1,6 @@
 ---
 name: tiktok-video-wow
-description: Kaji video mentah (MOV/MP4) dan hasilkan pelan suntingan TikTok yang "wow" — hook 3 saat, rentak potongan, teks & subtitle, muzik/SFX, transisi CapCut, dan prompt Higgsfield untuk babak AI. Guna bila Nawal minta kaji, cadang atau edit video untuk TikTok.
+description: Kaji video mentah (MOV/MP4) dan hasilkan pelan suntingan TikTok yang "wow" — hook 3 saat, rentak potongan, teks & subtitle, muzik/SFX, transisi CapCut, dan prompt Higgsfield untuk babak AI. Boleh juga render penuh siri TikTok (pecah jadi beberapa part, buang gagap, suara podcast, latar kabur, B-roll muka real, logo templat, nama penceramah, muzik & SFX) dengan skrip dalam pipeline/. Guna bila Nawal minta kaji, cadang, edit atau render video untuk TikTok.
 ---
 
 # TikTok Video Wow
@@ -111,3 +111,18 @@ ffmpeg -ss <mula> -to <tamat> -i input.mov -filter_complex \
 [0:v]scale=1080:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2,eq=contrast=1.08:saturation=1.15" \
 -c:v libx264 -crf 20 -preset fast -c:a aac -b:a 192k draf.mp4
 ```
+
+## Langkah 5 — Render penuh (bila Nawal mahu video siap, bukan pelan)
+
+Untuk video ceramah / talking-head yang Nawal mahu dipecah jadi siri dan dirender siap
+(dengan logo, B-roll, muzik), ikut **`PIPELINE.md`** dalam folder skill ini. Ia mengandungi:
+- **citarasa Nawal** yang dah ditetapkan (tiada tulisan "Part", buang ayat gagap, suara podcast,
+  latar kabur meja tajam, zoom lembut, logo templat pada setiap frame tanpa tutup muka,
+  nama penceramah, B-roll wanita bertudung bawal labuh & baju longgar, muzik bebas hak cipta);
+- susun atur folder projek, skema `config.json` dan arahan setiap skrip dalam `pipeline/`;
+- contoh projek lengkap: `contoh/config_khidmat_nasihat.json`.
+
+Mula dengan `bash pipeline/sediakan.sh <folder_projek>` untuk pasang alat dan muat turun font
+serta model. Tunjuk pelan (babak setiap part, hook, B-roll) kepada Nawal sebelum render pertama;
+selepas itu ikut maklum balasnya terus.
+

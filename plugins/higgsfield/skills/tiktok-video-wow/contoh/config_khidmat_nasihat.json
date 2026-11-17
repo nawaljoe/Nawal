@@ -1,0 +1,669 @@
+{
+ "drafts": {
+  "Draf1_Tanda_Rumah_Tangga": {
+   "segments": [
+    {
+     "a": 227.0,
+     "b": 235.2,
+     "z0": 1.12,
+     "z1": 1.2
+    },
+    {
+     "a": 211.3,
+     "b": 226.95,
+     "z0": 1.0,
+     "z1": 1.08
+    },
+    {
+     "a": 235.25,
+     "b": 253.5,
+     "z0": 1.06,
+     "z1": 1.0
+    }
+   ],
+   "captions": [
+    [
+     227.02,
+     228.95,
+     "Bila kita sendiri dapat rasa"
+    ],
+    [
+     229.1,
+     231.95,
+     "kenapa setiap kali bergaduh benda yang sama"
+    ],
+    [
+     232.18,
+     235.15,
+     "Kenapa komunikasi kita dah tak macam dulu lagi"
+    ],
+    [
+     211.32,
+     213.15,
+     "kalau kata bila masa sesuai,"
+    ],
+    [
+     213.2,
+     214.9,
+     "jangan tunggu rumah tangga kita"
+    ],
+    [
+     214.94,
+     217.85,
+     "orang cakap, {Y}telur di hujung tanduk{W}"
+    ],
+    [
+     217.9,
+     221.28,
+     "Jangan kata suami dah nak lafazkan cerai"
+    ],
+    [
+     221.32,
+     224.98,
+     "kita dah keluar daripada rumah"
+    ],
+    [
+     225.04,
+     226.03,
+     "suami dah halau kita"
+    ],
+    [
+     226.06,
+     226.95,
+     "jangan sampai macam itu"
+    ],
+    [
+     235.3,
+     238.32,
+     "Kenapa bila kita dah ada {Y}syiqaq{W}"
+    ],
+    [
+     238.36,
+     239.34,
+     "Maksud syiqaq tu apa?"
+    ],
+    [
+     239.38,
+     240.76,
+     "Suami dan isteri bertengkar"
+    ],
+    [
+     240.78,
+     244.1,
+     "tanpa ada rasa perdamaian"
+    ],
+    [
+     244.14,
+     245.22,
+     "Bila bergaduh je,"
+    ],
+    [
+     245.26,
+     246.28,
+     "end up bergaduh tu"
+    ],
+    [
+     246.3,
+     248.5,
+     "tak tahu jalan penyelesaiannya"
+    ],
+    [
+     248.54,
+     251.28,
+     "Bila dah mula rasa begitu dalam rumah tangga"
+    ],
+    [
+     251.32,
+     253.45,
+     "segera dapatkan {Y}khidmat nasihat{W} kaunseling"
+    ]
+   ],
+   "cards": [
+    {
+     "type": "silent",
+     "at": 214.6,
+     "d": 4.0,
+     "clip_nama": "D1_taktegur.mp4",
+     "label": [
+      "Dah tak bertegur...",
+      "jangan tunggu sampai \"telur di hujung tanduk\""
+     ],
+     "clip": "D1_taktegur.mp4"
+    },
+    {
+     "type": "syiqaq",
+     "at": 238.25,
+     "end": 244.12
+    },
+    {
+     "type": "cta",
+     "at": 250.45,
+     "end": 253.5,
+     "clip_nama": "D1_akhir.mp4",
+     "label": [
+      "Jangan tunggu.",
+      "Dapatkan khidmat nasihat segera"
+     ],
+     "clip": "D1_akhir.mp4"
+    },
+    {
+     "type": "nama",
+     "nama": "ASLIENDAH BINTI KUSAI@MOHD ZAIRE",
+     "jawatan": "PENOLONG PENGARAH BAHAGIAN PEMBANGUNAN KELUARGA",
+     "d": 4.8,
+     "at": 227.5
+    }
+   ],
+   "title": [
+    "Tanda rumah tangga",
+    "perlukan bantuan"
+   ],
+   "music_start": 0,
+   "cuts": [
+    [
+     218.31,
+     219.37
+    ],
+    [
+     221.15,
+     224.95
+    ],
+    [
+     241.32,
+     242.5
+    ]
+   ]
+  },
+  "Draf2_Bukan_Gagal": {
+   "segments": [
+    {
+     "a": 56.0,
+     "b": 62.0,
+     "z0": 1.12,
+     "z1": 1.2
+    },
+    {
+     "a": 18.3,
+     "b": 43.15,
+     "z0": 1.0,
+     "z1": 1.08
+    },
+    {
+     "a": 63.6,
+     "b": 101.2,
+     "z0": 1.08,
+     "z1": 1.0
+    }
+   ],
+   "captions": [
+    [
+     56.6,
+     57.65,
+     "Kita kena tahu,"
+    ],
+    [
+     57.68,
+     60.05,
+     "siapa yang datang buat aduan khidmat nasihat"
+    ],
+    [
+     60.12,
+     61.98,
+     "bukan bermakna dia {Y}gagal{W}"
+    ],
+    [
+     18.36,
+     19.85,
+     "Kadang-kadang kita ada stigma"
+    ],
+    [
+     19.88,
+     21.5,
+     "pada aduan khidmat nasihat ni"
+    ],
+    [
+     21.56,
+     23.55,
+     "Nak pergi pejabat agama..."
+    ],
+    [
+     23.6,
+     26.15,
+     "takut orang kata kita nak bercerai"
+    ],
+    [
+     26.2,
+     28.32,
+     "Tapi sebenarnya,"
+    ],
+    [
+     28.36,
+     31.7,
+     "sesi khidmat nasihat di Bahagian Pembangunan Keluarga"
+    ],
+    [
+     31.72,
+     35.05,
+     "ataupun di daerah-daerah di negeri Johor ni"
+    ],
+    [
+     34.94,
+     36.95,
+     "Sebenarnya bukan isu perceraian"
+    ],
+    [
+     38.2,
+     39.82,
+     "Kadang-kadang kita nak meluah"
+    ],
+    [
+     39.86,
+     41.6,
+     "Sebab itulah pegawai khidmat nasihat kita"
+    ],
+    [
+     41.64,
+     43.1,
+     "ada {Y}skill mendengar{W}"
+    ],
+    [
+     63.68,
+     65.0,
+     "Stigma negatif ni"
+    ],
+    [
+     65.04,
+     66.2,
+     "kita kena fahamkan"
+    ],
+    [
+     66.24,
+     68.76,
+     "Sebenarnya dia datang khidmat nasihat"
+    ],
+    [
+     68.8,
+     70.6,
+     "nak dapatkan {Y}ilmu{W}"
+    ],
+    [
+     70.64,
+     72.08,
+     "Dia nak dapatkan info."
+    ],
+    [
+     72.12,
+     74.0,
+     "\"Kalau saya buat macam ni ustazah, apa patut saya buat?\""
+    ],
+    [
+     74.6,
+     77.4,
+     "Kalau bergaduh dengan suami, apa patut saya buat?"
+    ],
+    [
+     77.58,
+     80.18,
+     "Ada perkara yang kita tak tahu"
+    ],
+    [
+     80.22,
+     82.02,
+     "Kita perlu pandangan orang lain"
+    ],
+    [
+     82.06,
+     84.62,
+     "Kadang-kadang kita tahu,"
+    ],
+    [
+     84.66,
+     86.62,
+     "tapi tak tahu macam mana nak buat"
+    ],
+    [
+     86.68,
+     89.64,
+     "Mungkin pegawai khidmat nasihat"
+    ],
+    [
+     89.68,
+     94.0,
+     "atau sesiapa yang profesional dan boleh dipercayai"
+    ],
+    [
+     94.16,
+     95.98,
+     "Mungkin ada ilmu yang kita tak tahu"
+    ],
+    [
+     96.02,
+     97.58,
+     "Mungkin ilmu itu kita tak ada"
+    ],
+    [
+     97.64,
+     99.85,
+     "Sesi khidmat nasihat kaunseling"
+    ],
+    [
+     99.88,
+     101.15,
+     "{Y}kita boleh bantu{W}"
+    ]
+   ],
+   "cards": [
+    {
+     "type": "stamp",
+     "at": 60.0,
+     "d": 3.4
+    },
+    {
+     "type": "stigma",
+     "at": 23.5,
+     "d": 3.0
+    },
+    {
+     "type": "officer",
+     "at": 36.9,
+     "end": 43.15,
+     "clip_nama": "D2_kaunselor.mp4",
+     "label": [
+      "Kemahiran mendengar",
+      "Pegawai sedia mendengar dengan tenang"
+     ],
+     "clip": "D2_kaunselor.mp4"
+    },
+    {
+     "type": "checklist",
+     "at": 66.15,
+     "d": 4.4
+    },
+    {
+     "type": "help",
+     "at": 97.55,
+     "end": 101.2,
+     "clip_nama": "D2_bantu.mp4",
+     "label": [
+      "Kita boleh bantu",
+      "Khidmat nasihat & kaunseling"
+     ],
+     "clip": "D2_bantu.mp4"
+    },
+    {
+     "type": "nama",
+     "nama": "ASLIENDAH BINTI KUSAI@MOHD ZAIRE",
+     "jawatan": "PENOLONG PENGARAH BAHAGIAN PEMBANGUNAN KELUARGA",
+     "d": 4.8,
+     "at": 56.4
+    }
+   ],
+   "title": [
+    "Pergi kaunseling",
+    "bukan bermakna gagal"
+   ],
+   "music_start": 60,
+   "cuts": [
+    [
+     26.26,
+     34.9
+    ],
+    [
+     36.95,
+     38.18
+    ]
+   ]
+  },
+  "Draf3_Cuma_RM10": {
+   "segments": [
+    {
+     "a": 119.9,
+     "b": 122.65,
+     "z0": 1.12,
+     "z1": 1.18
+    },
+    {
+     "a": 122.85,
+     "b": 160.85,
+     "z0": 1.0,
+     "z1": 1.08
+    },
+    {
+     "a": 172.15,
+     "b": 207.5,
+     "z0": 1.08,
+     "z1": 1.0
+    }
+   ],
+   "captions": [
+    [
+     120.02,
+     121.25,
+     "Aduan kita tak mahal."
+    ],
+    [
+     121.28,
+     122.6,
+     "Murah je. {Y}sepuluh ringgit{W} je."
+    ],
+    [
+     122.9,
+     125.62,
+     "Aduan boleh dibuat melalui sistem"
+    ],
+    [
+     125.68,
+     127.98,
+     "boleh je buat dari rumah"
+    ],
+    [
+     128.5,
+     130.78,
+     "Contoh, nak buat aduan umum"
+    ],
+    [
+     130.82,
+     134.55,
+     "atau saya ada masalah kewangan"
+    ],
+    [
+     134.58,
+     136.68,
+     "atau masalah konflik"
+    ],
+    [
+     136.72,
+     138.6,
+     "Layari web"
+    ],
+    [
+     138.64,
+     143.38,
+     "{Y}www.sppim.gov.my{W}"
+    ],
+    [
+     143.42,
+     145.4,
+     "Klik permohonan khidmat nasihat"
+    ],
+    [
+     145.44,
+     147.24,
+     "Masukkan butiran kita"
+    ],
+    [
+     147.28,
+     150.08,
+     "Pilih daerah kita bermastautin"
+    ],
+    [
+     150.12,
+     151.72,
+     "Contoh, daerah Johor Bahru"
+    ],
+    [
+     151.76,
+     154.64,
+     "Klik Pejabat Kadi Daerah Johor Bahru"
+    ],
+    [
+     154.68,
+     157.52,
+     "Nanti ada tarikh-tarikh appointment"
+    ],
+    [
+     157.56,
+     160.8,
+     "yang pegawai dah susun"
+    ],
+    [
+     172.22,
+     174.06,
+     "Terus je letak tarikh"
+    ],
+    [
+     174.1,
+     179.0,
+     "Kemudian pembantu pegawai kita akan call"
+    ],
+    [
+     179.0,
+     180.7,
+     "\"Okay puan, puan boleh datang...\""
+    ],
+    [
+     181.3,
+     183.68,
+     "Nak datang seorang atau dengan pasangan?"
+    ],
+    [
+     183.72,
+     187.95,
+     "Kami galakkan suami isteri datang {Y}berdua{W}"
+    ],
+    [
+     188.72,
+     192.95,
+     "Datang dalam keadaan bersedia untuk bercerita"
+    ],
+    [
+     193.2,
+     194.28,
+     "Jangan risau,"
+    ],
+    [
+     194.32,
+     196.04,
+     "laporan kita adalah {Y}sulit{W}"
+    ],
+    [
+     196.08,
+     198.55,
+     "tak akan dikongsi dengan sesiapa"
+    ],
+    [
+     198.62,
+     201.2,
+     "Hanya {Y}sepuluh ringgit{W} untuk buka fail"
+    ],
+    [
+     201.24,
+     204.84,
+     "Pegawai khidmat nasihat akan bantu"
+    ],
+    [
+     204.88,
+     207.4,
+     "selesaikan masalah kita, insyaAllah"
+    ]
+   ],
+   "cards": [
+    {
+     "type": "rm10",
+     "at": 121.2,
+     "d": 2.6
+    },
+    {
+     "type": "phone",
+     "at": 136.6,
+     "end": 150.12,
+     "cues": [
+      136.72,
+      143.42,
+      145.44,
+      147.28
+     ]
+    },
+    {
+     "type": "call",
+     "at": 174.05,
+     "end": 179.0,
+     "clip_nama": "D3_call.mp4",
+     "label": [
+      "Pegawai akan menghubungi anda",
+      "untuk sahkan temujanji"
+     ],
+     "clip": "D3_call.mp4"
+    },
+    {
+     "type": "couple",
+     "at": 183.65,
+     "end": 187.95,
+     "clip_nama": "D3_berdua.mp4",
+     "label": [
+      "Digalakkan datang berdua",
+      "jika melibatkan masalah suami isteri"
+     ],
+     "clip": "D3_berdua.mp4"
+    },
+    {
+     "type": "lock",
+     "at": 193.15,
+     "end": 198.5
+    },
+    {
+     "type": "nama",
+     "nama": "ASLIENDAH BINTI KUSAI@MOHD ZAIRE",
+     "jawatan": "PENOLONG PENGARAH BAHAGIAN PEMBANGUNAN KELUARGA",
+     "d": 4.8,
+     "at": 124.2
+    }
+   ],
+   "title": [
+    "Kaunseling rumah tangga",
+    "cuma RM10"
+   ],
+   "music_start": 125,
+   "cuts": [
+    [
+     124.47,
+     125.53
+    ],
+    [
+     127.39,
+     128.45
+    ],
+    [
+     130.37,
+     130.77
+    ],
+    [
+     134.59,
+     135.03
+    ],
+    [
+     176.23,
+     177.71
+    ],
+    [
+     189.88,
+     190.5
+    ],
+    [
+     204.28,
+     204.72
+    ]
+   ]
+  }
+ }
+}

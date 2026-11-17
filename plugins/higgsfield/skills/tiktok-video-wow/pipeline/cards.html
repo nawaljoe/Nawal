@@ -1,0 +1,460 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: P; font-weight: 400; src: url(../fonts/Poppins-Regular.ttf); }
+@font-face { font-family: P; font-weight: 500; src: url(../fonts/Poppins-Medium.ttf); }
+@font-face { font-family: P; font-weight: 600; src: url(../fonts/Poppins-SemiBold.ttf); }
+@font-face { font-family: P; font-weight: 700; src: url(../fonts/Poppins-Bold.ttf); }
+@font-face { font-family: P; font-weight: 800; src: url(../fonts/Poppins-ExtraBold.ttf); }
+html, body { margin: 0; padding: 0; background: transparent; width: 1080px; height: 1920px; overflow: hidden; }
+#c { width: 1080px; height: 1920px; }
+text { font-family: P, sans-serif; }
+</style></head>
+<body><div id="c"></div>
+<script>
+const NAVY = '#1E2D7D', NAVY2 = '#13205E', RED = '#E1242B', GOLD = '#F2B705', INK = '#24263A', GREY = '#5E6378';
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const eo = x => 1 - Math.pow(1 - cl(x), 3);               // ease-out cubic
+const back = x => { x = cl(x); const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const seg = (t, s, d) => cl((t - s) / d);                  // progress of a sub-animation
+
+function envelope(t, d) { return Math.min(eo(t / 0.35), eo((d - t) / 0.3)); }
+
+function txt(x, y, s, size, weight, fill, opts = {}) {
+  const anchor = opts.anchor || 'middle', op = opts.op === undefined ? 1 : opts.op, ls = opts.ls || 0;
+  return `<text x="${x}" y="${y}" font-size="${size}" font-weight="${weight}" fill="${fill}" text-anchor="${anchor}" opacity="${op}" letter-spacing="${ls}">${s}</text>`;
+}
+
+function bgLight(t) {
+  const r = 40 * Math.sin(t * 0.8);
+  return `<defs><linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#FBFAF6"/><stop offset="1" stop-color="#E9EDF8"/></linearGradient></defs>
+    <rect width="1080" height="1920" fill="url(#bg)"/>
+    <circle cx="${980 + r}" cy="260" r="260" fill="${NAVY}" opacity="0.05"/>
+    <circle cx="${90 - r}" cy="1700" r="300" fill="${RED}" opacity="0.05"/>
+    <rect x="0" y="1880" width="1080" height="40" fill="${NAVY}"/><rect x="0" y="1872" width="1080" height="8" fill="${RED}"/>`;
+}
+
+function bgNavy(t) {
+  const r = 30 * Math.sin(t);
+  return `<defs><radialGradient id="bgn" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#2A3C99"/><stop offset="1" stop-color="${NAVY2}"/></radialGradient></defs>
+    <rect width="1080" height="1920" fill="url(#bgn)"/>
+    <circle cx="540" cy="800" r="${420 + r}" fill="#fff" opacity="0.04"/>
+    <circle cx="540" cy="800" r="${300 + r}" fill="#fff" opacity="0.05"/>`;
+}
+
+function heart(cx, cy, s, fill) {
+  return `<path transform="translate(${cx} ${cy}) scale(${s})" d="M0 30 C -60 -20, -40 -80, 0 -45 C 40 -80, 60 -20, 0 30 Z" fill="${fill}"/>`;
+}
+
+const CARDS = {
+  title(t, d, p) {
+    const k = eo(t / 0.4), out = eo((d - t) / 0.3), y = 230 - 40 * (1 - k);
+    const w = 860, h = 70 + 78 * p.lines.length;
+    let s = `<g opacity="${Math.min(k, out)}" transform="translate(0 ${y})">
+      <rect x="${540 - w / 2}" y="0" width="${w}" height="${h}" rx="34" fill="${NAVY}" opacity="0.92"/>
+      <rect x="${540 - 70}" y="${h - 22}" width="${140 * eo((t - 0.3) / 0.4)}" height="8" rx="4" fill="${GOLD}"/>`;
+    p.lines.forEach((l, i) => s += txt(540, 92 + i * 78, l, 60, 800, '#fff'));
+    return s + '</g>';
+  },
+
+  titlebar(t, d, p) {
+    const w = 880, h = 64 + 74 * p.lines.length;
+    let s = `<g transform="translate(0 450)">
+      <rect x="${540 - w / 2}" y="0" width="${w}" height="${h}" rx="34" fill="${NAVY}" opacity="0.9"/>
+      <rect x="${540 - 70}" y="${h - 20}" width="140" height="8" rx="4" fill="${GOLD}"/>`;
+    p.lines.forEach((l, i) => s += txt(540, 86 + i * 74, l, 56, 800, '#fff'));
+    return s + '</g>';
+  },
+
+
+  label(t, d, p) {
+    let s = `<defs><linearGradient id="lb" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${NAVY2}" stop-opacity="0.78"/><stop offset="0.7" stop-color="${NAVY2}" stop-opacity="0.35"/>
+        <stop offset="1" stop-color="${NAVY2}" stop-opacity="0"/></linearGradient></defs>
+      <rect width="1080" height="680" fill="url(#lb)"/>`;
+    s += txt(540, 360, p.label[0], Math.min(70, Math.floor(960 / (0.62 * p.label[0].length))), 800, '#fff');  // muat lebar skrin
+    if (p.label[1]) s += txt(540, 432, p.label[1], 38, 600, GOLD);
+    return s;
+  },
+
+
+  nama(t, d, p) {
+    const k = eo(t / 0.45), out = eo((d - t) / 0.35), x = -620 * (1 - k);
+    const w1 = 960, y = 1350;
+    return `<g opacity="${Math.min(1, out)}" transform="translate(${x} 0)">
+      <rect x="60" y="${y}" width="${w1}" height="74" rx="12" fill="${NAVY}" opacity="0.94"/>
+      <rect x="60" y="${y}" width="10" height="74" rx="4" fill="${GOLD}"/>
+      ${txt(92, y + 50, p.nama, 38, 800, '#fff', {anchor: 'start'})}
+      <rect x="60" y="${y + 80}" width="${w1}" height="50" rx="10" fill="#fff" opacity="0.94"/>
+      ${txt(92, y + 114, p.jawatan, 25, 700, NAVY, {anchor: 'start'})}
+    </g>`;
+  },
+
+  egg(t, d) {
+    const grow = eo(t / 0.55), drop = back(seg(t, 0.45, 0.45));
+    const wob = Math.sin(t * 7.5) * (5 + 6 * cl((t - 0.9) / 2)) * cl((t - 0.9) / 0.3);
+    const tipX = 610, tipY = 905;
+    return bgLight(t) + `
+      <defs><linearGradient id="horn" x1="0" y1="1" x2="0.6" y2="0">
+        <stop offset="0" stop-color="#6B4E2E"/><stop offset="0.6" stop-color="#B8925E"/><stop offset="1" stop-color="#F1E2C2"/></linearGradient>
+        <radialGradient id="egg" cx="0.38" cy="0.32" r="0.75">
+        <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.7" stop-color="#F3EBDD"/><stop offset="1" stop-color="#D9CBB3"/></radialGradient></defs>
+      ${txt(540, 330, 'Telur di hujung tanduk', 76, 800, NAVY, {op: eo((t - 0.2) / 0.4)})}
+      ${txt(540, 410, 'jangan tunggu sampai tahap ini', 44, 500, RED, {op: eo((t - 0.6) / 0.4)})}
+      <g transform="translate(0 ${1520 * (1 - grow)}) ">
+        <path d="M 360 1560 C 330 1250, 430 1020, 610 905 C 520 1040, 500 1260, 610 1560 Z" fill="url(#horn)"/>
+        <path d="M 390 1420 Q 470 1400 560 1430 M 400 1300 Q 470 1280 545 1305 M 425 1185 Q 485 1165 545 1185" stroke="#5A4026" stroke-width="7" fill="none" opacity="0.35"/>
+        <rect x="300" y="1540" width="380" height="60" rx="30" fill="#4A3A2A" opacity="0.25"/>
+      </g>
+      <g opacity="${cl(drop * 3)}" transform="translate(0 ${-500 * (1 - drop)}) rotate(${wob} ${tipX} ${tipY})">
+        <ellipse cx="${tipX}" cy="${tipY - 92}" rx="70" ry="92" fill="url(#egg)" stroke="#CDBB9C" stroke-width="3"/>
+      </g>
+      <g opacity="${cl((t - 1.0) / 0.3) * (0.5 + 0.5 * Math.abs(Math.sin(t * 7.5)))}" stroke="${RED}" stroke-width="7" stroke-linecap="round">
+        <path d="M 500 760 L 470 740 M 495 810 L 455 810 M 720 760 L 750 740 M 725 810 L 765 810"/>
+      </g>`;
+  },
+
+
+  silent(t, d) {
+    const br = 3 * Math.sin(t * 1.6);
+    const crack = eo(seg(t, 1.0, 0.5));
+    const push = 1 + 0.03 * cl(t / d);
+    const dots = [0, 1, 2].map(i => `<circle cx="${510 + i * 30}" cy="1030" r="9" fill="#9AA3BC" opacity="${0.3 + 0.7 * Math.max(0, Math.sin(t * 3 - i * 0.7))}"/>`).join('');
+    const person = (x, flip, hij, baju, hat) => `
+      <g transform="translate(${x} ${br}) scale(${flip} 1)">
+        <path d="M -120 1330 Q -125 1180 -20 1160 L 40 1160 Q 135 1180 130 1330 Z" fill="${baju}"/>
+        ${hat
+          ? `<rect x="-32" y="1105" width="64" height="70" rx="18" fill="#E8C29F"/>
+             <ellipse cx="0" cy="1035" rx="74" ry="88" fill="#E8C29F"/>
+             <path d="M -76 1000 Q -74 930 0 925 Q 74 930 76 1000 Z" fill="#2E2A2A"/>
+             <path d="M -70 985 Q -68 915 0 912 Q 68 915 70 985 Q 0 965 -70 985 Z" fill="#F4F1EA" stroke="#D9D3C7" stroke-width="3"/>`
+          : `<path d="M 0 920 C 95 920, 120 990, 118 1060 C 116 1130, 150 1170, 170 1230 L -160 1230 C -140 1170, -116 1130, -118 1060 C -120 990, -95 920, 0 920 Z" fill="${hij}"/>
+             <ellipse cx="0" cy="1045" rx="70" ry="86" fill="#F1C7A3"/>
+             <path d="M -72 1015 C -62 950, 62 950, 72 1015 C 45 985, -45 985, -72 1015 Z" fill="${hij}"/>`}
+        <path d="M -52 1035 q 12 -6 22 0 M 18 1035 q 12 -6 22 0" stroke="#3B2F2C" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="-36" cy="1040" r="5" fill="#3B2F2C"/><circle cx="34" cy="1040" r="5" fill="#3B2F2C"/>
+        <path d="M ${hat ? -16 : -14} 1092 q ${hat ? 16 : 14} -7 ${hat ? 32 : 28} 0" stroke="#9E5A50" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M -95 1230 Q -20 1200 95 1250 L 90 1285 Q -20 1240 -100 1268 Z" fill="${baju}" stroke="#00000022" stroke-width="3"/>
+        <path d="M 95 1230 Q 20 1205 -95 1250 L -90 1285 Q 20 1245 100 1268 Z" fill="${baju}" stroke="#00000033" stroke-width="3"/>
+      </g>`;
+    return `
+      <defs>
+        <linearGradient id="room" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCE1EC"/><stop offset="1" stop-color="#C9CFDD"/></linearGradient>
+        <radialGradient id="lamp" cx="0.82" cy="0.36" r="0.45"><stop offset="0" stop-color="#FFE3B0" stop-opacity="0.65"/><stop offset="1" stop-color="#FFE3B0" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g transform="translate(540 1200) scale(${push}) translate(-540 -1200)">
+        <rect width="1080" height="1920" fill="url(#room)"/>
+        <rect x="120" y="470" width="330" height="380" rx="16" fill="#2B3561" stroke="#B9C0D3" stroke-width="14"/>
+        <circle cx="370" cy="560" r="34" fill="#F3E9C8"/><circle cx="355" cy="550" r="30" fill="#2B3561"/>
+        <line x1="285" y1="470" x2="285" y2="850" stroke="#B9C0D3" stroke-width="10"/>
+        <rect width="1080" height="1920" fill="url(#lamp)"/>
+        <rect x="860" y="560" width="16" height="560" fill="#7D6A58"/><path d="M 800 560 L 936 560 L 900 470 L 836 470 Z" fill="#F2E3C6"/>
+        <rect x="0" y="1480" width="1080" height="440" fill="#A9927C"/>
+        <rect x="70" y="1150" width="940" height="250" rx="60" fill="#5F7F86"/>
+        <rect x="40" y="1280" width="1000" height="230" rx="50" fill="#6E9097"/>
+        <rect x="100" y="1490" width="40" height="70" rx="10" fill="#4C3B2E"/><rect x="940" y="1490" width="40" height="70" rx="10" fill="#4C3B2E"/>
+        ${person(250, -1, '#C98FA0', '#B9697E', false)}
+        ${person(830, 1, '', '#2F5D73', true)}
+        <rect x="905" y="1215" width="46" height="80" rx="8" fill="#1E2430"/><rect x="911" y="1222" width="34" height="62" rx="5" fill="#8FD3FF" opacity="0.8"/>
+        <g opacity="${eo(seg(t, 0.5, 0.4))}">
+          <rect x="465" y="995" width="150" height="70" rx="35" fill="#FFFFFF" opacity="0.85"/>${dots}
+        </g>
+        <g transform="translate(540 860)" opacity="${eo(seg(t, 0.7, 0.4))}">
+          <g transform="translate(${-14 * crack} ${6 * crack}) rotate(${-8 * crack})">
+            <path d="M 0 30 C -60 -20, -40 -80, 0 -45 L -8 -20 L 6 0 L -6 18 Z" fill="${RED}"/></g>
+          <g transform="translate(${14 * crack} ${6 * crack}) rotate(${8 * crack})">
+            <path d="M 0 30 C 60 -20, 40 -80, 0 -45 L -8 -20 L 6 0 L -6 18 Z" fill="${RED}"/></g>
+        </g>
+      </g>
+      ${txt(540, 250, 'Dah tak bertegur...', 78, 800, NAVY, {op: eo((t - 0.2) / 0.4)})}
+      ${txt(540, 325, 'jangan tunggu sampai "telur di hujung tanduk"', 38, 600, RED, {op: eo((t - 0.5) / 0.4)})}`;
+  },
+
+  syiqaq(t, d) {
+    const pulse = 1 + 0.08 * Math.sin(t * 9);
+    const words = ['Pertengkaran berterusan antara', 'suami isteri tanpa ada', 'jalan perdamaian.'];
+    let s = bgLight(t) + `
+      <g opacity="${eo(t / 0.4)}">
+        <rect x="430" y="380" width="220" height="64" rx="32" fill="${RED}"/>
+        ${txt(540, 425, 'ISTILAH', 34, 700, '#fff', {ls: 4})}
+      </g>
+      <g transform="translate(540 700)" opacity="${eo((t - 0.2) / 0.4)}">
+        <circle cx="-170" cy="0" r="95" fill="${NAVY}"/><circle cx="170" cy="0" r="95" fill="${RED}"/>
+        <circle cx="-195" cy="-15" r="11" fill="#fff"/><circle cx="-145" cy="-15" r="11" fill="#fff"/>
+        <path d="M -200 40 Q -170 20 -140 40" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="145" cy="-15" r="11" fill="#fff"/><circle cx="195" cy="-15" r="11" fill="#fff"/>
+        <path d="M 140 40 Q 170 20 200 40" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path transform="scale(${pulse})" d="M -20 -70 L 25 -10 L -5 -5 L 25 70 L -30 0 L 0 -5 Z" fill="${GOLD}"/>
+      </g>
+      ${txt(540, 1000, 'Syiqaq', 150, 800, NAVY, {op: eo((t - 0.4) / 0.4)})}
+      <rect x="${540 - 230}" y="1035" width="${460 * eo((t - 0.7) / 0.5)}" height="12" rx="6" fill="${GOLD}"/>`;
+    words.forEach((w, i) => s += txt(540, 1180 + i * 72, w, 50, 500, INK, {op: eo((t - 1.0 - i * 0.45) / 0.4)}));
+    return s;
+  },
+
+  cta(t, d) {
+    const b = 1 + 0.06 * Math.sin(t * 6);
+    return bgNavy(t) + `
+      <g transform="translate(540 760) scale(${back(t / 0.6) * b})">
+        <circle r="190" fill="#fff"/>${heart(0, 10, 2.3, RED)}
+      </g>
+      ${txt(540, 1150, 'Jangan tunggu.', 92, 800, '#fff', {op: eo((t - 0.3) / 0.4)})}
+      ${txt(540, 1250, 'Dapatkan khidmat nasihat', 52, 600, GOLD, {op: eo((t - 0.6) / 0.4)})}
+      ${txt(540, 1320, 'segera.', 52, 600, GOLD, {op: eo((t - 0.6) / 0.4)})}`;
+  },
+
+  stamp(t, d) {
+    const k = seg(t, 0, 0.28), sc = 2.4 - 1.4 * eo(k), out = eo((d - t) / 0.3);
+    const shake = t > 0.28 && t < 0.5 ? 6 * Math.sin(t * 90) : 0;
+    return `<g opacity="${Math.min(cl(k * 2), out)}" transform="translate(${540 + shake} 1130) rotate(-8) scale(${sc})">
+        <rect x="-400" y="-90" width="800" height="180" rx="26" fill="#fff" opacity="0.88"/>
+        <rect x="-380" y="-72" width="760" height="144" rx="18" fill="none" stroke="${RED}" stroke-width="12"/>
+        ${txt(0, 30, 'BUKAN GAGAL', 86, 800, RED, {ls: 3})}
+      </g>`;
+  },
+
+  stigma(t, d) {
+    const strike = eo(seg(t, 1.1, 0.35)), st = seg(t, 1.45, 0.25);
+    return bgLight(t) + `
+      ${txt(540, 560, 'Apa orang kata...', 46, 500, GREY, {op: eo(t / 0.4)})}
+      <g opacity="${eo((t - 0.15) / 0.4)}" transform="translate(0 ${30 * (1 - eo((t - 0.15) / 0.4))})">
+        <rect x="120" y="640" width="840" height="300" rx="60" fill="#fff" stroke="#D9DDEA" stroke-width="4"/>
+        <path d="M 300 935 L 260 1030 L 400 935 Z" fill="#fff" stroke="#D9DDEA" stroke-width="4"/>
+        <rect x="290" y="925" width="120" height="16" fill="#fff"/>
+        ${txt(540, 765, '"Eh... nak', 72, 700, NAVY)}
+        ${txt(540, 860, 'bercerai ke?"', 72, 700, NAVY)}
+      </g>
+      <path d="M 160 ${940 - 0} L ${160 + 760 * strike} ${640 + 300 * (1 - strike)}" stroke="${RED}" stroke-width="16" stroke-linecap="round" opacity="${strike > 0 ? 1 : 0}"/>
+      <g opacity="${cl(st * 2)}" transform="translate(540 1230) rotate(-6) scale(${2 - eo(st)})">
+        <rect x="-230" y="-75" width="460" height="150" rx="20" fill="none" stroke="${RED}" stroke-width="12"/>
+        ${txt(0, 28, 'STIGMA', 84, 800, RED, {ls: 6})}
+      </g>`;
+  },
+
+  listen(t, d) {
+    let waves = '';
+    for (let i = 0; i < 3; i++) {
+      const ph = ((t * 0.9 + i / 3) % 1);
+      waves += `<circle cx="540" cy="800" r="${170 + ph * 230}" fill="none" stroke="${NAVY}" stroke-width="6" opacity="${0.35 * (1 - ph) * eo(t / 0.4)}"/>`;
+    }
+    let dots = '';
+    for (let i = 0; i < 3; i++) dots += `<circle cx="${480 + i * 60}" cy="${800 - 18 * Math.max(0, Math.sin(t * 8 - i * 0.9))}" r="20" fill="#fff"/>`;
+    return bgLight(t) + waves + `
+      <g transform="translate(540 800) scale(${back(t / 0.5)}) translate(-540 -800)">
+        <rect x="370" y="680" width="340" height="230" rx="70" fill="${NAVY}"/>
+        <path d="M 430 900 L 410 980 L 500 905 Z" fill="${NAVY}"/>${dots}
+      </g>
+      ${txt(540, 1170, 'Ruang selamat', 80, 800, NAVY, {op: eo((t - 0.3) / 0.4)})}
+      ${txt(540, 1260, 'untuk meluah', 80, 800, NAVY, {op: eo((t - 0.3) / 0.4)})}
+      ${txt(540, 1360, 'Pegawai terlatih untuk mendengar', 44, 500, RED, {op: eo((t - 0.7) / 0.4)})}`;
+  },
+
+
+  officer(t, d) {
+    const nod = 2.5 * Math.sin(t * 2.4) * cl((t - 0.6) / 0.4);
+    const breathe = 4 * Math.sin(t * 1.8);
+    const bub = eo(seg(t, 0.5, 0.4));
+    let lines = '';
+    for (let i = 0; i < 3; i++) {
+      const k = eo(seg(t, 0.8 + i * 0.35, 0.3));
+      lines += `<rect x="150" y="${612 + i * 44}" width="${[300, 250, 190][i] * k}" height="18" rx="9" fill="#AEB5CC"/>`;
+    }
+    const heartK = back(seg(t, 1.6, 0.4)) * (1 + 0.08 * Math.sin(t * 5));
+    return `
+      <defs>
+        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EFE6"/><stop offset="1" stop-color="#EADFD2"/></linearGradient>
+        <linearGradient id="win" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF6DF"/><stop offset="1" stop-color="#E8F0F0"/></linearGradient>
+        <radialGradient id="glow" cx="0.75" cy="0.25" r="0.6"><stop offset="0" stop-color="#FFE7B8" stop-opacity="0.75"/><stop offset="1" stop-color="#FFE7B8" stop-opacity="0"/></radialGradient>
+        <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C79A6B"/><stop offset="1" stop-color="#9C7148"/></linearGradient>
+        <linearGradient id="hij" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9D1DF"/><stop offset="1" stop-color="#B9AFC6"/></linearGradient>
+        <linearGradient id="hij2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FA6A0"/><stop offset="1" stop-color="#5E8580"/></linearGradient>
+      </defs>
+      <rect width="1080" height="1920" fill="url(#wall)"/>
+      <rect x="560" y="430" width="400" height="470" rx="18" fill="url(#win)" stroke="#D9CBB8" stroke-width="14"/>
+      <line x1="760" y1="430" x2="760" y2="900" stroke="#D9CBB8" stroke-width="10"/>
+      <line x1="560" y1="650" x2="960" y2="650" stroke="#D9CBB8" stroke-width="10"/>
+      <rect width="1080" height="1920" fill="url(#glow)"/>
+      <g transform="translate(110 860)"><rect x="0" y="120" width="90" height="110" rx="14" fill="#E0D2C0"/>
+        <path d="M45 125 C 10 60, 0 20, 30 0 C 40 40, 50 60, 45 125 Z M45 125 C 80 50, 110 40, 120 10 C 100 70, 70 100, 45 125 Z M45 125 C 40 70, 60 20, 70 -20 C 75 40, 60 90, 45 125 Z" fill="#6E9A77"/></g>
+      <rect x="250" y="760" width="230" height="300" rx="10" fill="#E7DCCD"/>
+      <rect x="270" y="780" width="190" height="16" rx="6" fill="#D2C3AF"/><rect x="270" y="840" width="190" height="16" rx="6" fill="#D2C3AF"/>
+      <!-- pegawai -->
+      <g transform="translate(0 ${breathe * 0.3})">
+        <path d="M 560 1000 Q 560 930 640 915 L 800 915 Q 880 930 880 1000 L 900 1250 L 540 1250 Z" fill="${NAVY}"/>
+        <g transform="rotate(${nod} 720 820)">
+          <path d="M 720 600 C 820 600, 860 680, 858 760 C 856 860, 900 930, 930 1010 L 510 1010 C 540 930, 584 860, 582 760 C 580 680, 620 600, 720 600 Z" fill="url(#hij)"/>
+          <ellipse cx="720" cy="772" rx="78" ry="96" fill="#F1C7A3"/>
+          <path d="M 640 735 C 650 660, 790 660, 800 735 C 770 700, 670 700, 640 735 Z" fill="url(#hij)"/>
+          <circle cx="690" cy="772" r="26" fill="none" stroke="#5A4A44" stroke-width="5"/><circle cx="752" cy="772" r="26" fill="none" stroke="#5A4A44" stroke-width="5"/>
+          <line x1="716" y1="770" x2="726" y2="770" stroke="#5A4A44" stroke-width="5"/>
+          <path d="M 680 776 q 8 -7 16 0 M 742 776 q 8 -7 16 0" stroke="#3B2F2C" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 702 828 q 18 12 36 0" stroke="#B5655A" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <circle cx="672" cy="812" r="12" fill="#EFA48E" opacity="0.5"/><circle cx="770" cy="812" r="12" fill="#EFA48E" opacity="0.5"/>
+        </g>
+      </g>
+      <!-- meja -->
+      <rect x="0" y="1200" width="1080" height="70" fill="url(#desk)"/>
+      <rect x="0" y="1270" width="1080" height="650" fill="#8A623E"/>
+      <rect x="650" y="1150" width="190" height="62" rx="6" fill="#FFFFFF" transform="rotate(-4 745 1180)"/>
+      <rect x="670" y="1166" width="120" height="8" rx="4" fill="#C9CEDC" transform="rotate(-4 745 1180)"/>
+      <ellipse cx="600" cy="1196" rx="70" ry="26" fill="#F1C7A3"/><ellipse cx="840" cy="1196" rx="70" ry="26" fill="#F1C7A3"/>
+      <path d="M 520 1205 Q 560 1150 640 1180 L 640 1215 Z M 920 1205 Q 880 1150 800 1180 L 800 1215 Z" fill="${NAVY}"/>
+      <rect x="900" y="1120" width="70" height="90" rx="14" fill="#FFFFFF"/><path d="M 970 1140 q 30 0 30 25 q 0 25 -30 25" stroke="#FFFFFF" stroke-width="10" fill="none"/>
+      <!-- klien (dari belakang) -->
+      <g transform="translate(0 ${breathe})">
+        <path d="M 0 1920 L 20 1600 Q 40 1470 290 1450 Q 540 1470 560 1600 L 580 1920 Z" fill="#9C6B78"/>
+        <path d="M 290 1170 C 390 1170, 430 1250, 428 1330 C 426 1420, 500 1480, 540 1600 Q 290 1660 40 1600 C 80 1480, 154 1420, 152 1330 C 150 1250, 190 1170, 290 1170 Z" fill="url(#hij2)"/>
+        <path d="M 220 1240 C 250 1210, 330 1210, 360 1240" stroke="#4E716C" stroke-width="8" fill="none" opacity="0.6"/>
+      </g>
+      <!-- gelembung cerita klien -->
+      <g opacity="${bub}" transform="translate(0 ${20 * (1 - bub)})">
+        <rect x="110" y="570" width="390" height="190" rx="44" fill="#FFFFFF"/>
+        <path d="M 230 755 L 250 830 L 300 755 Z" fill="#FFFFFF"/>${lines}
+      </g>
+      <g transform="translate(860 560) scale(${heartK})" opacity="${cl((t - 1.6) * 3)}">
+        <circle r="64" fill="${RED}"/>${heart(0, 6, 0.7, '#fff')}
+      </g>
+      ${txt(540, 230, 'Kemahiran mendengar', 74, 800, NAVY, {op: eo((t - 0.2) / 0.4)})}
+      ${txt(540, 305, 'Pegawai khidmat nasihat sedia mendengar', 40, 600, RED, {op: eo((t - 0.5) / 0.4)})}
+      ${txt(540, 355, 'masalah anda dengan tenang', 40, 600, RED, {op: eo((t - 0.5) / 0.4)})}`;
+  },
+
+  checklist(t, d) {
+    const items = ['Dapatkan ilmu', 'Dapatkan info', 'Pandangan profesional'];
+    let s = bgLight(t) + txt(540, 560, 'Datang khidmat nasihat', 64, 800, NAVY, {op: eo(t / 0.4)})
+      + txt(540, 640, 'untuk...', 64, 800, NAVY, {op: eo(t / 0.4)});
+    items.forEach((it, i) => {
+      const k = seg(t, 0.5 + i * 0.6, 0.35), y = 820 + i * 190;
+      s += `<g opacity="${eo(k)}" transform="translate(${-60 * (1 - eo(k))} 0)">
+        <rect x="150" y="${y - 70}" width="780" height="140" rx="70" fill="#fff" stroke="#DCE1EF" stroke-width="4"/>
+        <circle cx="230" cy="${y}" r="48" fill="${i === 2 ? RED : NAVY}"/>
+        <path d="M 205 ${y} l 18 20 l 34 -40" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"
+          stroke-dasharray="90" stroke-dashoffset="${90 * (1 - eo(seg(t, 0.7 + i * 0.6, 0.3)))}"/>
+        ${txt(310, y + 18, it, 52, 600, INK, {anchor: 'start'})}
+      </g>`;
+    });
+    return s;
+  },
+
+  help(t, d) {
+    const b = 1 + 0.07 * Math.sin(t * 6);
+    let rip = '';
+    for (let i = 0; i < 2; i++) {
+      const ph = ((t * 0.8 + i / 2) % 1);
+      rip += `<circle cx="540" cy="780" r="${200 + ph * 220}" fill="none" stroke="${RED}" stroke-width="6" opacity="${0.3 * (1 - ph)}"/>`;
+    }
+    return bgLight(t) + rip + `
+      <g transform="translate(540 780) scale(${back(t / 0.6) * b})"><circle r="200" fill="${NAVY}"/>${heart(0, 10, 2.4, '#fff')}</g>
+      ${txt(540, 1170, 'Kita boleh bantu', 86, 800, NAVY, {op: eo((t - 0.3) / 0.4)})}
+      ${txt(540, 1260, 'Khidmat nasihat & kaunseling', 48, 600, RED, {op: eo((t - 0.6) / 0.4)})}
+      ${txt(540, 1330, 'Bahagian Pembangunan Keluarga', 40, 500, GREY, {op: eo((t - 0.8) / 0.4)})}`;
+  },
+
+  rm10(t, d) {
+    const sw = 14 * Math.exp(-1.6 * t) * Math.sin(t * 7) ;
+    const k = back(t / 0.45);
+    return `<rect width="1080" height="1920" fill="${RED}" opacity="${envelope(t, d)}"/>` + `<g opacity="${envelope(t, d)}">
+      <line x1="540" y1="0" x2="540" y2="560" stroke="#fff" stroke-width="6" opacity="0.8"/>
+      <g transform="translate(540 560) rotate(${sw}) scale(${k})">
+        <path d="M -330 0 L 330 0 L 330 560 Q 330 600 290 600 L -290 600 Q -330 600 -330 560 Z" fill="#fff"/>
+        <path d="M -330 0 L 0 -150 L 330 0 Z" fill="#fff"/>
+        <circle cx="0" cy="-60" r="34" fill="${RED}"/><circle cx="0" cy="-60" r="20" fill="#fff"/>
+        ${txt(0, 110, 'cuma', 56, 600, GREY)}
+        ${txt(0, 330, 'RM10', 230, 800, NAVY)}
+        <rect x="-200" y="380" width="400" height="10" rx="5" fill="${GOLD}"/>
+        ${txt(0, 470, 'kos aduan', 52, 600, RED)}
+        ${txt(0, 535, 'khidmat nasihat', 52, 600, RED)}
+      </g></g>`;
+  },
+
+  phone(t, d, p) {
+    const cues = p.cues, url = 'www.sppim.gov.my';
+    const typed = url.slice(0, Math.floor(cl(t / 1.8) * url.length));
+    let active = 0; cues.forEach((c, i) => { if (t >= c) active = i; });
+    const steps = ['Layari laman web', 'Klik Permohonan Khidmat Nasihat', 'Masukkan butiran', 'Pilih Pejabat Kadi Daerah'];
+    const pk = eo((t - 0.1) / 0.5);
+    let s = bgLight(t) + txt(540, 330, 'Cara buat permohonan', 60, 800, NAVY, {op: eo(t / 0.4)})
+      + txt(540, 400, 'khidmat nasihat', 60, 800, NAVY, {op: eo(t / 0.4)})
+      + txt(540, 460, 'boleh dari rumah sahaja', 38, 600, RED, {op: eo((t - 0.3) / 0.4)});
+    s += `<g transform="translate(0 ${100 + 120 * (1 - pk)})" opacity="${pk}">
+      <rect x="250" y="410" width="580" height="1300" rx="80" fill="${INK}"/>
+      <rect x="276" y="436" width="528" height="1248" rx="58" fill="#fff"/>
+      <rect x="470" y="456" width="140" height="30" rx="15" fill="${INK}"/>
+      <rect x="306" y="520" width="468" height="78" rx="39" fill="#EEF1F8"/>
+      <circle cx="350" cy="559" r="14" fill="none" stroke="${GREY}" stroke-width="4"/>
+      ${txt(380, 572, typed + (Math.floor(t * 3) % 2 && t < 2.2 ? '|' : ''), 34, 600, INK, {anchor: 'start'})}
+      <rect x="276" y="630" width="528" height="140" fill="${NAVY}"/>
+      ${txt(540, 690, 'SPPIM', 46, 800, '#fff', {ls: 4})}
+      ${txt(540, 740, 'Sistem Pengurusan Perkahwinan Islam', 22, 500, '#C9D0EE')}`;
+    steps.forEach((st, i) => {
+      const y = 830 + i * 190, on = i === active, done = i < active;
+      const k = eo(seg(t, 0.4 + i * 0.12, 0.35));
+      s += `<g opacity="${k}">
+        <rect x="306" y="${y}" width="468" height="160" rx="30" fill="${on ? GOLD : '#F4F6FB'}" stroke="${on ? '#D99E00' : '#E1E5F0'}" stroke-width="3"/>
+        <circle cx="370" cy="${y + 80}" r="36" fill="${done ? '#2E9E5B' : on ? NAVY : '#C5CBDD'}"/>
+        ${done ? `<path d="M 352 ${y + 80} l 12 14 l 24 -28" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`
+               : txt(370, y + 93, String(i + 1), 36, 800, '#fff')}
+        ${txt(426, y + 72, st.split(' ').slice(0, 2).join(' '), 32, 700, INK, {anchor: 'start'})}
+        ${txt(426, y + 114, st.split(' ').slice(2).join(' '), 32, 700, INK, {anchor: 'start'})}
+      </g>`;
+    });
+    const ty = 830 + active * 190 + 110, tap = (t - cues[active]) % 1.4;
+    s += `<circle cx="720" cy="${ty}" r="${26 + 30 * cl(tap / 0.5)}" fill="${NAVY}" opacity="${0.35 * (1 - cl(tap / 0.5)) * cl((t - 0.8) * 3)}"/>
+          <circle cx="720" cy="${ty}" r="22" fill="${NAVY}" opacity="${0.55 * cl((t - 0.8) * 3)}"/></g>`;
+    return s;
+  },
+
+  call(t, d) {
+    const sh = t < 2.6 ? 9 * Math.sin(t * 40) * (Math.sin(t * 5) > 0 ? 1 : 0.2) : 0;
+    let arcs = '';
+    for (let i = 0; i < 3; i++) {
+      const o = (Math.sin(t * 5 - i * 0.8) + 1) / 2 * eo(t / 0.4);
+      arcs += `<path d="M ${660 + i * 45} ${640 - i * 45} A ${150 + i * 64} ${150 + i * 64} 0 0 1 ${780 + i * 64} ${760 + i * 0}" stroke="${RED}" stroke-width="12" fill="none" stroke-linecap="round" opacity="${o}"/>`;
+    }
+    return bgLight(t) + arcs + `
+      <g transform="translate(540 800) rotate(${sh}) scale(${back(t / 0.5)})">
+        <circle r="210" fill="${NAVY}"/>
+        <path transform="translate(-95 -100) scale(7.8)" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#fff"/>
+      </g>
+      ${txt(540, 1180, 'Pegawai akan', 84, 800, NAVY, {op: eo((t - 0.3) / 0.4)})}
+      ${txt(540, 1275, 'menghubungi anda', 84, 800, NAVY, {op: eo((t - 0.3) / 0.4)})}
+      ${txt(540, 1370, 'untuk sahkan temujanji', 46, 600, RED, {op: eo((t - 0.7) / 0.4)})}`;
+  },
+
+  couple(t, d) {
+    const a = eo(seg(t, 0, 0.5)), b = eo(seg(t, 0.2, 0.5)), h = back(seg(t, 0.7, 0.45)) * (1 + 0.08 * Math.sin(t * 6));
+    const person = (x, col, k, dir) => `<g opacity="${k}" transform="translate(${x + dir * 120 * (1 - k)} 0)">
+        <circle cx="0" cy="700" r="95" fill="${col}"/>
+        <path d="M -170 1050 Q -170 840 0 840 Q 170 840 170 1050 Z" fill="${col}"/></g>`;
+    return bgLight(t) + `<g transform="translate(540 0)">${person(-170, NAVY, a, -1)}${person(170, RED, b, 1)}
+      <g transform="translate(0 560) scale(${h})">${heart(0, 0, 1.4, GOLD)}</g></g>
+      ${txt(540, 1210, 'Digalakkan datang', 80, 800, NAVY, {op: eo((t - 0.4) / 0.4)})}
+      ${txt(540, 1305, 'berdua', 80, 800, RED, {op: eo((t - 0.4) / 0.4)})}
+      ${txt(540, 1400, 'jika melibatkan masalah suami isteri', 42, 500, GREY, {op: eo((t - 0.8) / 0.4)})}`;
+  },
+
+  lock(t, d) {
+    const close = eo(seg(t, 0.55, 0.3)), glow = cl((t - 0.85) / 0.3) * (0.5 + 0.5 * Math.sin(t * 5));
+    return bgLight(t) + `
+      <circle cx="540" cy="830" r="${250 + 30 * glow}" fill="${GOLD}" opacity="${0.25 * glow}"/>
+      <g transform="translate(540 830) scale(${back(t / 0.5)})">
+        <path transform="translate(0 ${-90 * (1 - close)})" d="M -120 -60 L -120 -150 A 120 120 0 0 1 120 -150 L 120 ${-60 + 40 * (1 - close)}" stroke="${GREY}" stroke-width="46" fill="none" stroke-linecap="round"/>
+        <rect x="-200" y="-80" width="400" height="320" rx="46" fill="${NAVY}"/>
+        <circle cx="0" cy="50" r="38" fill="${GOLD}"/><rect x="-14" y="60" width="28" height="80" rx="12" fill="${GOLD}"/>
+      </g>
+      ${txt(540, 1290, 'SULIT', 140, 800, NAVY, {op: eo((t - 0.8) / 0.4), ls: 10})}
+      ${txt(540, 1390, 'Laporan tidak dikongsi', 48, 600, RED, {op: eo((t - 1.1) / 0.4)})}
+      ${txt(540, 1455, 'dengan sesiapa', 48, 600, RED, {op: eo((t - 1.1) / 0.4)})}`;
+  },
+};
+
+const OVERLAY = new Set(['title', 'titlebar', 'stamp', 'label', 'nama']);
+window.renderCard = (type, t, d, p) => {
+  const body = CARDS[type](t, d, p || {});
+  const op = OVERLAY.has(type) || type === 'rm10' ? 1 : envelope(t, d);
+  document.getElementById('c').innerHTML =
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920"><g opacity="${op}">${body}</g></svg>`;
+};
+</script></body></html>
