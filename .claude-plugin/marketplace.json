@@ -11,6 +11,11 @@
       "description": "Video TikTok & Higgsfield AI: kaji video mentah dan rancang suntingan TikTok yang \"wow\", katalog 20 efek video (snap zoom, orbit, green screen, liquid glass…), serta jana gambar & video Higgsfield terus melalui connector/CLI (atau tulis prompt siap tampal)."
     },
     {
+      "name": "temubual-tiktok",
+      "source": "./plugins/temubual-tiktok",
+      "description": "Edit video temu bual jadi TikTok premium gaya podcast: buang aaa/emm, beep + kad soalan, warna studio cerah, kulit licin, kapsyen kinetik, infografik, SFX, logo & outro FK — render penuh dengan FFmpeg, HyperFrames & Remotion."
+    },
+    {
       "name": "hyperframes",
       "source": {
         "source": "github",
