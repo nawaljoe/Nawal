@@ -76,6 +76,13 @@ def swish(**_):
     t = T(0.28); u = t / 0.28; n = rng.standard_normal(len(t))
     hp = n - lp(n, 0.25)                         # airy, high-passed
     return norm(lp(hp, 0.05 + 0.5 * u) * np.sin(np.pi * u) ** 2)
+def swoosh(dir=1, **_):
+    """Breathy air swoosh (~0.45 s): band-limited noise whose brightness rises then falls; returns stereo with a pan sweep."""
+    d = 0.45; t = T(d); u = t / d; n = rng.standard_normal(len(t))
+    band = lp(n, 0.04 + 0.30 * np.sin(np.pi * u) ** 2) - lp(n, 0.012)
+    m = norm(band * np.sin(np.pi * u) ** 2.2 * (1 + 0.6 * u))
+    p = np.clip(-0.7 + 1.4 * u, -1, 1) * dir
+    return np.stack([m * np.sqrt((1 - p) / 2) * 1.414, m * np.sqrt((1 + p) / 2) * 1.414], axis=1)
 def pop(**_):
     t = T(0.12); f = 1100 * np.exp(-t * 35) + 260
     return norm(np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 38))
@@ -113,7 +120,7 @@ def riser(dur=2.9, **_):
     tone = 0.5 * np.sin(2 * np.pi * np.cumsum(f) / SR) + 0.25 * np.sin(2 * np.pi * np.cumsum(f * 1.5) / SR)
     return norm((tone + 0.25 * lp(rng.standard_normal(len(t)), 0.05 + 0.4 * u)) * u ** 2.2)
 SYNTH = dict(impact=impact, whoosh=whoosh, swish=swish, pop=pop, bubble=bubble, thock=thock, click=click, soft=soft,
-             thump=thump, paper=paper, stamp=stamp, tick=tick, shimmer=shimmer, chime=chime, riser=riser)
+             thump=thump, swoosh=swoosh, paper=paper, stamp=stamp, tick=tick, shimmer=shimmer, chime=chime, riser=riser)
 
 sfx = np.zeros((total, 2))
 for c in tl["sfx"]:
@@ -122,9 +129,11 @@ for c in tl["sfx"]:
     if "cut" in c:                                   # stop dead at a word (riser into "Malaysia")
         n_cut = int((c["cut"] - c["t"]) * SR); snd = snd[:max(0, n_cut)]
         f2 = min(len(snd), int(0.015 * SR)); snd[-f2:] *= np.linspace(1, 0, f2) if f2 else 1
-    pan = c.get("pan", 0.0); gl, gr = np.sqrt((1 - pan) / 2) * 1.414, np.sqrt((1 + pan) / 2) * 1.414
+    if snd.ndim == 1:                                # mono synth -> static pan
+        pan = c.get("pan", 0.0)
+        snd = np.stack([snd * np.sqrt((1 - pan) / 2) * 1.414, snd * np.sqrt((1 + pan) / 2) * 1.414], axis=1)
     s0 = int(c["t"] * SR); n = min(len(snd), total - s0)
-    if n > 0: sfx[s0:s0 + n, 0] += snd[:n] * gl; sfx[s0:s0 + n, 1] += snd[:n] * gr
+    if n > 0: sfx[s0:s0 + n] += snd[:n]
 
 def write_st(p, x):
     x = np.clip(x, -1, 1); w = wave.open(p, "wb"); w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)

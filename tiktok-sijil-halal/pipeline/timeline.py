@@ -140,8 +140,8 @@ SFX_AUTH = [
     (9.45, "swish", -20, {"pan": -0.6}),                          # lower third
     (14.42, "soft", -22, {}), (16.70, "thock", -17, {"pitch": 1.0}), (17.60, "thock", -17, {"pitch": 1.25}),
     (18.34, "click", -20, {}),                                    # chapter 1 tag
-    (30.10, "thump", -16, {}), (30.10, "bubble", -20, {"pitch": 1.0}), (31.60, "bubble", -20, {"pitch": 1.12}),
-    (33.50, "bubble", -20, {"pitch": 1.25}),                      # punch on "najis" + keyword chips
+    (30.10, "thump", -18, {}), (30.04, "swoosh", -17, {"dir": 1}), (31.54, "swoosh", -17, {"dir": -1}),
+    (33.44, "swoosh", -17, {"dir": 1}),                           # punch on "najis" + keyword chips (v4: swoosh, not bubble)
     (42.12, "impact", -15, {"size": 0.6}),                        # punch on "daging babi"
     (43.50, "whoosh", -14, {"pan": 0.0, "dur": 0.85, "sweep": True}),   # chapter wipe
     (44.05, "click", -20, {}),                                    # chapter 2 tag
