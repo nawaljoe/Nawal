@@ -28,7 +28,7 @@ RANGES = [
     (7.38, 9.20, False, True, False),  # K3 "sijil halal boleh ditarik" (ends before "ni")
     (13.95, 59.60, True, False, True),  # K4 "disebabkan ..." through the technical callback
     (66.74, 74.02, True),    # K5 "Sama juga kena tengok ... dan juga"
-    (75.06, 82.00, True),    # K6 "kenderaan. Tak boleh ada pencampuran ... premis lah"
+    (75.24, 82.00, True, False, True),  # K6 (starts after the "-gi" of "lagi") "kenderaan. Tak boleh ada pencampuran ... premis lah"
     (85.2667, 92.84, True, False, True),  # K7 (skips the slip "barang yang halal") "barang yang haram ... Jaga-jagalah ya."
 ]
 
@@ -40,6 +40,10 @@ FILLERS = [
     (34.84, 35.70),   # "err"            -> "najis, bercampur"
     (50.19, 50.95),   # "emm"            -> "ataupun, kalau kita"
     (77.30, 78.06),   # "ehm, baha-"     -> "pencampuran, bawa masuk"
+    # v4: found by an acoustic scan (steady-pitch voiced islands) + isolated Whisper check
+    (68.92, 69.52),   # "err"            -> "pada pergudangan"
+    (70.66, 72.62),   # "err ... err"    -> "ataupun asrama"
+    (80.66, 81.16),   # "ah"             -> "ke dalam kawasan premis"
 ]
 
 def build(fillers):

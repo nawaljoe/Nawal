@@ -1,7 +1,7 @@
 """Render the graded base picture with face-tracked punch-ins and the end-card freeze.
 
 Usage: python3 render_base.py <source.mp4> <edl.json> <timeline.json> <face.json> <out.mp4> <beep.mp4>
-Look (v2): podcast-studio grade -- cooler shadows, warm skin, rolled-off highlights -- plus a soft
+Look (v4, brightened from v2): fresh studio grade -- cooler shadows, warm skin, rolled-off highlights -- plus a soft
 key-light falloff centred on the speaker's face so the office walls and table drop into shadow.
 """
 import json, subprocess, sys
@@ -10,10 +10,10 @@ import numpy as np, cv2
 src, edl_p, tl_p, face_p, out, beep_src = sys.argv[1:7]
 edl, tl, face = json.load(open(edl_p)), json.load(open(tl_p)), json.load(open(face_p))
 W, H, FPS = 1080, 1920, edl["fps"]
-GRADE = ("eq=contrast=1.14:saturation=0.84:gamma=0.90,"
-         "colorbalance=rs=-0.08:gs=-0.015:bs=0.10:rm=0.04:bm=-0.03:rh=0.04:gh=0.01:bh=-0.05,"
-         "curves=master='0/0.03 0.25/0.17 0.5/0.42 0.72/0.62 1/0.80'")
-KEY_K, KEY_SOFT = 0.80, 0.85         # studio key-light falloff strength / softness
+GRADE = ("eq=contrast=1.08:saturation=0.96:gamma=1.02:brightness=0.02,"      # v4: brighter, fresher
+         "colorbalance=rs=-0.05:gs=-0.01:bs=0.06:rm=0.03:gm=0.01:bm=-0.02:rh=0.03:gh=0.01:bh=-0.02,"
+         "curves=master='0/0.03 0.25/0.23 0.5/0.52 0.75/0.78 1/0.93'")
+KEY_K, KEY_SOFT = 0.50, 0.85         # key-light falloff strength / softness (v4: gentler)
 SKIN_AMT, SKIN_SIGMA = 0.80, 34       # v3: skin smoothing blend / bilateral colour sigma
 JOIN_STEP, Z_MAX = 1.04, 1.10         # v3: zoom step that masks each filler jump cut; overall cap
 ft, fcx, fcy = np.array(face["t"]), np.array(face["cx"]), np.array(face["cy"])
