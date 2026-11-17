@@ -1,0 +1,18 @@
+{
+  "name": "temubual-tiktok",
+  "version": "1.0.0",
+  "description": "Sunting video temu bual mentah menjadi TikTok premium gaya podcast: transkrip Whisper BM, buang filler & gagap, beep + kad soalan, warna studio cerah, kulit licin, kapsyen kinetik HyperFrames, infografik Remotion, SFX, logo & outro FK.",
+  "author": {
+    "name": "Nawal"
+  },
+  "keywords": [
+    "tiktok",
+    "interview",
+    "temu-bual",
+    "whisper",
+    "ffmpeg",
+    "hyperframes",
+    "remotion",
+    "video-editing"
+  ]
+}

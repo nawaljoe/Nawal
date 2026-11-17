@@ -36,7 +36,11 @@ spk = read_wav(f"{wd}/spk.wav")
 # 2. Assemble pieces with 6 ms fades at every join.
 ff("-i", beep_src, "-vn", "-ac", "1", "-ar", str(SR), f"{wd}/beep_full.wav")
 beep_full = read_wav(f"{wd}/beep_full.wav")
-room = spk[int(93.75 * SR):int(95.05 * SR)]            # quiet room tone from the end of the take
+def quietest(x, dur=1.3, hop=0.05):                     # room tone: quietest non-digital-silence stretch
+    h = int(hop * SR); r = np.array([np.sqrt(np.mean(x[i:i + h] ** 2)) for i in range(0, len(x) - h, h)])
+    k = int(dur / hop); m = np.convolve(np.where(r > 1e-5, r, 1.0), np.ones(k) / k, mode="valid")
+    i = int(np.argmin(m)) * h; return x[i:i + int(dur * SR)]
+room = quietest(spk)
 fade = int(0.006 * SR); voice = []
 for p in edl["pieces"]:
     n = int(round((p["out_out"] - p["out_in"]) * SR))
