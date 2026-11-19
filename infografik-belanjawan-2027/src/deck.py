@@ -23,9 +23,6 @@ def s_cover():
     photo(s, 7.75, 0, W - 7.75, H, dark=True,
           desc="Cadangan: Bangunan Dewan Negeri Johor,\nfoto sekolah agama atau masjid negeri\n(landskap, penuh sebelah kanan)")
     rect(s, 7.75, 0, 0.06, H, fill=RED)
-    # decorative concentric rings (Islamic-geometric feel)
-    for d in (5.6, 4.4, 3.2):
-        circle(s, 0.2, 7.3, d, fill=None, line_c="3B54BE", lw=1)
     # red accent strip
     rect(s, 0, 0, 0.14, H, fill=RED)
     # logos on white pill
@@ -82,8 +79,7 @@ def s_soalan():
         # portrait placeholder
         photo_d = 0.95
         px, py = x + 0.35, y + 3.48
-        circle(s, px + photo_d / 2, py + photo_d / 2, photo_d, fill=LIGHT, line_c="A3AEDD", lw=1.25).line.dash_style = MSO_LINE.DASH
-        text(s, px, py + 0.25, photo_d, 0.5, ["GAMBAR", "YB"], size=7.5, bold=True, color=NAVY, align="c", spacing=1)
+        photo(s, px, py, photo_d, photo_d, desc="", label="GAMBAR\nYB", shape=MSO_SHAPE.OVAL)
         text(s, px + 1.15, py + 0.1, cw - 1.6, 0.25, "SOALAN DARIPADA", size=8.5, bold=True, color=RED, spacing=1.5)
         text(s, px + 1.15, py + 0.36, cw - 1.6, 0.3, who, size=13, bold=True, color=NAVY)
         text(s, px + 1.15, py + 0.66, cw - 1.6, 0.3, dun, size=11, color=GRAY)
@@ -120,7 +116,7 @@ def s_lima():
             elbow(s, (cx, cy), (x, y + nh / 2), color=col, w=2, midx=x - 0.45)
     circle(s, cx, cy, d + 0.3, fill=LIGHT)
     circle(s, cx, cy, d, fill=NAVY)
-    text(s, cx - d / 2, cy - 0.72, d, 0.5, "5", size=34, bold=True, color=WHITE, align="c")
+    text(s, cx - d / 2, cy - 0.78, d, 0.62, "5", size=34, bold=True, color=WHITE, align="c")
     text(s, cx - d / 2 + 0.1, cy - 0.05, d - 0.2, 0.7, ["INISIATIF UTAMA", "Pendidikan Islam Johor"],
          size=10, bold=True, color="DDE3FA", align="c", spacing=0.5)
     for no, t, sub, x, y, col in nodes:
@@ -193,7 +189,7 @@ def s_fasa7():
         text(s, x + 0.2, 1.78, sw - 0.3, 0.3, t, size=10, color=GRAY)
     # list
     colw = (R - sx - 0.2) / 2
-    rh, gap = 0.82, 0.1
+    rh, gap = 0.78, 0.08
     for i, sc in enumerate(SCHOOLS[:10]):
         c, r = divmod(i, 5)
         x = sx + c * (colw + 0.2)
@@ -556,11 +552,11 @@ def s_guru2():
     sub = [("42", "guru bukan siswazah (DG9–DG12)", "TBBK 1 selepas 8 thn → DG32 · TBBK 2 selepas 13 thn → DG34"),
            ("612", "guru siswazah (DG5–DG7)", "TBBK 1 & TBBK 2 selepas 8 thn → DG44 & DG48")]
     for i, (v, t, dsc) in enumerate(sub):
-        x = bx + 3.6 + i * 2.5
+        x = bx + 3.55 + i * 2.4
         nwid = 0.6 if v == "42" else 0.8
         text(s, x, y + 0.92, nwid, 0.45, v, size=22, bold=True, color=NAVY)
-        text(s, x + nwid + 0.05, y + 0.97, 2.3 - nwid, 0.45, t, size=8.5, bold=True, color=NAVY, line_sp=1.0)
-        text(s, x, y + 1.42, 2.3, 0.55, dsc, size=8.5, color=GRAY, line_sp=1.05)
+        text(s, x + nwid + 0.05, y + 0.97, 2.2 - nwid, 0.45, t, size=8.5, bold=True, color=NAVY, line_sp=1.0)
+        text(s, x, y + 1.42, 2.2, 0.55, dsc, size=8.5, color=GRAY, line_sp=1.05)
     # c) darjah khas
     y, h = blocks[2]
     leftbar_card(s, bx, y, bw, h, bar=NAVY)
@@ -626,7 +622,7 @@ def s_guru4():
     lw_ = 6.9
     text(s, L, 1.75, lw_, 0.3, "ELAUN GURU KAWASAN PEDALAMAN", size=9.5, bold=True, color=RED, spacing=1.5)
     text(s, L, 2.02, lw_, 0.3, "Mengikut tahap pedalaman & lokaliti  (P = Pedalaman)", size=10, color=GRAY)
-    tiers = [("P1", "RM500", 1.1, BLUE), ("P2", "RM1,000", 1.75, NAVY2), ("P3", "RM1,500", 2.4, NAVY)]
+    tiers = [("P1", "RM500", 1.1, BLUE), ("P2", "RM1,000", 1.75, NAVY2), ("P3", "RM1,500", 2.25, NAVY)]
     base = 5.25
     bw = 1.35
     for i, (p, v, hgt, col) in enumerate(tiers):
@@ -679,7 +675,7 @@ def s_kafa():
     lx, lw_ = L, 4.6
     card(s, lx, 1.8, lw_, 4.85, top=RED, topw=0.07)
     text(s, lx + 0.25, 1.98, lw_ - 0.4, 0.3, "PENINGKATAN ELAUN GURU KAFA", size=9, bold=True, color=RED, spacing=1.2)
-    base, scale = 4.75, 2.25 / 1762
+    base, scale = 4.75, 1.85 / 1762
     for i, (v, lab, col) in enumerate([(1612, "SEBELUM", "A9B6EA"), (1762, "SELEPAS", NAVY)]):
         x = lx + 0.55 + i * 1.75
         hh = v * scale
@@ -751,7 +747,7 @@ def s_pdp():
         ("v", "Penyelarasan Kurikulum Agama", "KPA2027:TAJ diselaraskan dengan Kurikulum Prasekolah 2026 KPM; KPA2028:SAKJ dalam penyediaan.", NAVY),
         ("vi", "Pendidikan Murid MBPK", "Program Pendidikan Inklusif (PPI) dengan kerjasama UPSI & UTM.", RED),
     ]
-    nw, nh, gap = 4.25, 1.4, 0.15
+    nw, nh, gap = 4.05, 1.4, 0.15
     y0 = 2.2
     cx, cy, d = W / 2, 3.1, 1.75
     for k, nd in enumerate(nodes):
@@ -759,12 +755,12 @@ def s_pdp():
         x = L if c == 0 else R - nw
         y = y0 + r * (nh + gap)
         tx = x + nw if c == 0 else x
-        elbow(s, (cx, cy), (tx, y + nh / 2), color=nd[3], w=1.75, midx=(tx + (0.35 if c == 0 else -0.35)))
+        elbow(s, (cx, cy), (tx, y + nh / 2), color=nd[3], w=1.75, midx=(tx + (0.22 if c == 0 else -0.22)))
     circle(s, cx, cy, d + 0.26, fill=LIGHT)
     circle(s, cx, cy, d, fill=NAVY)
     text(s, cx - d / 2 + 0.1, cy - d / 2 + 0.1, d - 0.2, d - 0.2, ["PdP", [("berkesan · interaktif · semasa", {"size": 8.5, "color": "C9D0F0"})]],
          size=24, bold=True, color=WHITE, align="c", anchor="m")
-    photo(s, cx - 1.55, 4.3, 3.1, 2.35, desc="Foto PdP di bilik darjah /\nkelas al-Quran & Jawi")
+    photo(s, cx - 1.35, 4.3, 2.7, 2.35, desc="Foto PdP di bilik darjah /\nkelas al-Quran & Jawi")
     for k, (no, t, dsc, col) in enumerate(nodes):
         c, r = divmod(k, 3)
         x = L if c == 0 else R - nw
@@ -793,7 +789,8 @@ def s_murid():
              ("Nadi Al Ansor", "Pasukan kokurikulum & kesukarelawanan pelajar SAKJ", NAVY)]
     for (x, y), (t, dsc, col) in zip(pos, nodes):
         ny = y + nh if y < cy else y
-        connect(s, (cx, cy), (x + nw / 2, ny), color=col, w=2)
+        nx = x + nw - 0.55 if x < cx else x + 0.55
+        connect(s, (cx, cy), (nx, ny), color=col, w=2)
     circle(s, cx, cy, d + 0.3, fill=LIGHT)
     circle(s, cx, cy, d, fill=RED)
     text(s, cx - d / 2 + 0.1, cy - d / 2 + 0.1, d - 0.2, d - 0.2, ["Modal", "Insan", [("murid SAKJ", {"size": 9, "color": "FFE3E5"})]],

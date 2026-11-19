@@ -2,7 +2,8 @@
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN, MSO_ANCHOR, MSO_AUTO_SIZE
+from PIL import ImageFont
 from pptx.enum.shapes import MSO_SHAPE, MSO_CONNECTOR
 from pptx.enum.dml import MSO_LINE
 from pptx.oxml.ns import qn
@@ -26,10 +27,23 @@ BLUE = "6F86DB"
 PALE_RED = "FCEBEC"
 WHITE = "FFFFFF"
 
-FONT = "Inter"
+FONT = "Arial"  # universal font: same look in PowerPoint, Google Slides, Keynote, Canva
 W, H = 13.333, 7.5
 L, R = 0.55, 12.78  # content margins
 CW = R - L
+
+
+_FONTS = {}
+
+
+def measure(t, size, bold=False, spacing=0):
+    """Width in inches of a single line of text (Arial metrics via Liberation Sans)."""
+    key = (size, bold)
+    if key not in _FONTS:
+        f = "/usr/share/fonts/truetype/liberation/LiberationSans-%s.ttf" % ("Bold" if bold else "Regular")
+        _FONTS[key] = ImageFont.truetype(f, int(size * 20))
+    w = _FONTS[key].getlength(t) / 20 / 72
+    return w + spacing / 72 * len(t)
 
 
 def rgb(h):
@@ -119,6 +133,7 @@ def text(s, x, y, w, h, paras, size=11, color=INK, bold=False, align="l", anchor
     tb = s.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
     tf = tb.text_frame
     tf.word_wrap = True
+    tf.auto_size = MSO_AUTO_SIZE.NONE
     for m in ("margin_left", "margin_right", "margin_top", "margin_bottom"):
         setattr(tf, m, Inches(inset))
     tf.vertical_anchor = {"t": MSO_ANCHOR.TOP, "m": MSO_ANCHOR.MIDDLE, "b": MSO_ANCHOR.BOTTOM}[anchor]
@@ -173,8 +188,8 @@ def header(s, label, accent="", dark=False):
     if accent:
         runs.append(("   " + accent, {"bold": True, "color": RED if not dark else "FF8A92"}))
     text(s, L + 0.2, y - 0.02, 7.5, 0.45, [runs], size=15, anchor="m")
-    est = 0.155 * len(label) + (0.135 * len(accent) + 0.25 if accent else 0)
-    x0 = L + 0.2 + est + 0.2
+    est = measure(label.upper(), 15, True, 1.2) + (measure("   " + accent, 15, True) if accent else 0)
+    x0 = L + 0.2 + est + 0.25
     lx = logos(s)
     line(s, x0, y + 0.2, lx - 0.25, y + 0.2, color=WHITE if dark else NAVY, w=2)
 
@@ -191,18 +206,42 @@ def title(s, t, sub=None, y=1.2, size=24, w=CW, color=NAVY, subcolor=GRAY):
 
 
 def photo(s, x, y, w, h, desc="Foto berkaitan", label="RUANG GAMBAR", dark=False, shape=MSO_SHAPE.RECTANGLE):
+    """ONE shape only (dashed box + text inside) so nothing overlaps the photo.
+    To use: select the box > Format Shape > Fill > Picture, or delete it and insert a photo."""
     fill = "2A3C93" if dark else LIGHT
     ln = "8496E0" if dark else "A3AEDD"
     sh = rect(s, x, y, w, h, fill=fill, line=ln, lw=1.25, dash=True, shape=shape)
-    # simple picture icon: small mountain + sun
-    cx, cy = x + w / 2, y + h / 2 - 0.25
-    ic = "8496E0" if dark else "A3AEDD"
-    rect(s, cx - 0.3, cy - 0.2, 0.6, 0.42, line=ic, lw=1.25, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.12)
-    rect(s, cx + 0.08, cy - 0.12, 0.11, 0.11, fill=ic, shape=MSO_SHAPE.OVAL)
-    tri = rect(s, cx - 0.22, cy - 0.02, 0.32, 0.2, fill=ic, shape=MSO_SHAPE.ISOSCELES_TRIANGLE)
-    text(s, x + 0.1, cy + 0.3, w - 0.2, 0.25, label, size=10, bold=True,
-         color=("D5DCF7" if dark else NAVY), align="c", spacing=1.5)
-    text(s, x + 0.15, cy + 0.55, w - 0.3, 0.6, desc.split("\n"), size=8.5, color=("B7C2EE" if dark else GRAY), align="c")
+    sh.name = "RUANG GAMBAR"
+    tf = sh.text_frame
+    tf.word_wrap = True
+    tf.auto_size = MSO_AUTO_SIZE.NONE
+    tiny = w < 1.3
+    for m in ("margin_left", "margin_right", "margin_top", "margin_bottom"):
+        setattr(tf, m, Inches(0.02 if tiny else 0.1))
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    small = h < 1.3
+    lines = [((("+  " if w > 1.5 else "") + lb), 10 if not small else 9, True, "D5DCF7" if dark else NAVY)
+             for lb in label.split("\n")]
+    for dl in [d for d in desc.split("\n") if d.strip()]:
+        lines.append((dl, 8.5 if not small else 8, False, "B7C2EE" if dark else GRAY))
+    nlab = len(label.split("\n"))
+    if small and len(lines) > nlab + 1:  # keep description to 1 line in small boxes
+        lines = lines[:nlab] + [(" ".join(d[0] for d in lines[nlab:]), 8, False, lines[nlab][3])]
+    for i, (t, sz, b, col) in enumerate(lines):
+        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+        p.alignment = PP_ALIGN.CENTER
+        if i == 0 and not small:
+            p.space_after = Pt(4)
+        r = p.add_run()
+        r.text = t
+        r.font.name = FONT
+        r.font.size = Pt(sz)
+        r.font.bold = b
+        r.font.color.rgb = rgb(col)
+        if tiny:
+            r.font.size = Pt(7)
+        elif i == 0:
+            r._r.get_or_add_rPr().set("spc", "150")
     return sh
 
 
