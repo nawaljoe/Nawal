@@ -18,7 +18,6 @@ def s_cover():
     s = blank(prs, NAVY)
     n = nxt()
     bgr = rect(s, 0, 0, W, H, fill=NAVY)
-    gradient(bgr, [(0, NAVY), (55, NAVY2), (100, "2E47B0")], angle=0)
     # photo area on right (full bleed)
     photo(s, 7.75, 0, W - 7.75, H, dark=True,
           desc="Cadangan: Bangunan Dewan Negeri Johor,\nfoto sekolah agama atau masjid negeri\n(landskap, penuh sebelah kanan)")
@@ -378,29 +377,30 @@ def s_baikpulih():
     first = 1.85
     rest = (CW - first) / 12
     colw = [first] + [rest] * 12
-    t = table(s, L, 2.6, colw, 0.36, 5)
-    # merge year headers
-    set_cell(t.cell(0, 0), "SUMBER", size=9, bold=True, color=WHITE, fill=NAVY)
-    t.cell(0, 0).merge(t.cell(1, 0))
+    # year header band drawn as shapes (no merged cells -> imports cleanly into Canva)
+    rect(s, L, 2.6, first, 0.36, fill=NAVY)
     for j, yv in enumerate(years):
-        c = t.cell(0, 1 + j * 2)
-        c.merge(t.cell(0, 2 + j * 2))
-        set_cell(c, yv, size=10, bold=True, color=WHITE, fill=RED if yv == "JUMLAH" else NAVY, align="c")
+        hx = L + first + j * 2 * rest
+        rect(s, hx, 2.6, 2 * rest, 0.36, fill=RED if yv == "JUMLAH" else NAVY)
+        text(s, hx, 2.6, 2 * rest, 0.36, yv, size=10, bold=True, color=WHITE, align="c", anchor="m")
+    t = table(s, L, 2.96, colw, 0.36, 4)
+    set_cell(t.cell(0, 0), "SUMBER", size=9, bold=True, color=WHITE, fill=NAVY)
+    for j, yv in enumerate(years):
         for k2, lab in enumerate(["PROJEK", "KOS (RM j)"]):
-            cc = t.cell(1, 1 + j * 2 + k2)
+            cc = t.cell(0, 1 + j * 2 + k2)
             set_cell(cc, lab, size=7.5, bold=True, color=NAVY, fill=LIGHT, align="c")
             cell_border(cc, "B", RULE)
     for r, (src, vals) in enumerate(data.items()):
         tot = src == "KESELURUHAN"
         fill = LIGHT2 if not tot else NAVY
         fc = WHITE if tot else INK
-        c = t.cell(2 + r, 0)
+        c = t.cell(1 + r, 0)
         set_cell(c, src, size=9, bold=True, color=WHITE if tot else NAVY, fill=fill)
         cell_border(c, "B", RULE)
         for j, (p, k_) in enumerate(vals):
             jl = j == 5
             f2 = (RED if tot else PALE_RED) if jl else fill
-            c1, c2 = t.cell(2 + r, 1 + j * 2), t.cell(2 + r, 2 + j * 2)
+            c1, c2 = t.cell(1 + r, 1 + j * 2), t.cell(1 + r, 2 + j * 2)
             set_cell(c1, str(p), size=10, bold=tot or jl, color=WHITE if tot else (RED if jl else fc), fill=f2, align="c")
             set_cell(c2, k_, size=10, bold=tot or jl, color=WHITE if tot else (RED if jl else fc), fill=f2, align="c")
             cell_border(c1, "B", RULE)
@@ -697,7 +697,8 @@ def s_kafa():
     text(s, rx, 1.8, rw, 0.3, "BONUS KERAJAAN NEGERI & BANTUAN KHAS KEWANGAN (dipanjangkan kepada Guru KAFA)",
          size=9, bold=True, color=RED, spacing=0.8)
     colw = [2.0] + [(rw - 2.0) / 5] * 5
-    t = table(s, rx, 2.2, colw, 0.42, 5)
+    t = table(s, rx, 2.2, colw, 0.42, 3)
+    t.rows[1].height = t.rows[2].height = Inches(0.8)
     hd = ["INISIATIF", "2022", "2023", "2024", "2025", "2026"]
     for j, h_ in enumerate(hd):
         set_cell(t.cell(0, j), h_, size=9.5, bold=True, color=WHITE, fill=NAVY, align="l" if j == 0 else "c")
@@ -707,19 +708,17 @@ def s_kafa():
         ("Bantuan Khas Kewangan / Hari Raya", ["RM1.8 juta", "RM597,000", "RM2.54 juta", "RM1.977 juta", "RM1.975 juta"],
          ["1,946", "1,991", "1,700", "1,997", "1,990"]),
     ]
-    r = 1
-    for name, amts, pen in rows:
+    for r, (name, amts, pen) in enumerate(rows, 1):
         c = t.cell(r, 0)
-        c.merge(t.cell(r + 1, 0))
         set_cell(c, name, size=10, bold=True, color=NAVY, fill=LIGHT2)
         cell_border(c, "B", RULE)
         for j in range(5):
             a = t.cell(r, j + 1)
-            p = t.cell(r + 1, j + 1)
-            set_cell(a, amts[j], size=10, bold=True, color=RED if j == 3 and r == 1 else NAVY, fill=WHITE, align="c")
-            set_cell(p, (pen[j] + " penerima") if pen[j] != "—" else "—", size=8, color=GRAY, fill=WHITE, align="c")
-            cell_border(p, "B", RULE)
-        r += 2
+            col = RED if j == 3 and r == 1 else NAVY
+            sub = (pen[j] + " penerima") if pen[j] != "—" else ""
+            set_cell(a, [[(amts[j], {"bold": True, "color": col, "size": 10})],
+                         [(sub, {"size": 8, "color": GRAY})]], fill=WHITE, align="c")
+            cell_border(a, "B", RULE)
     # insight boxes
     iy = 4.55
     iw = (rw - 0.15) / 2

@@ -91,7 +91,7 @@ def main(path):
         photos = [(sh.left / EMU, sh.top / EMU, sh.width / EMU, sh.height / EMU) for sh in slide.shapes
                   if sh.name == "RUANG GAMBAR"]
         pics = [(sh.left / EMU, sh.top / EMU, sh.width / EMU, sh.height / EMU) for sh in slide.shapes
-                if sh.shape_type == 13]
+                if sh.shape_type == 13 and sh.name != "RUANG GAMBAR"]
         for pb in photos:
             for pc in pics:
                 if inter(pb, pc):

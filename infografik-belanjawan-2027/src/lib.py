@@ -118,13 +118,19 @@ def gradient(sh, stops, angle=0):
 
 
 def line(s, x1, y1, x2, y2, color=NAVY, w=1.25, dash=False):
-    c = s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(x1), Inches(y1), Inches(x2), Inches(y2))
-    c.line.color.rgb = rgb(color)
-    c.line.width = Pt(w)
-    if dash:
-        c.line.dash_style = MSO_LINE.DASH
-    _nostyle(c)
-    return c
+    """Drawn as a thin rectangle (imports cleanly into Canva; connectors often don't)."""
+    import math
+    t = w / 72  # thickness in inches
+    dx, dy = x2 - x1, y2 - y1
+    if abs(dy) < 1e-6:
+        return rect(s, min(x1, x2), y1 - t / 2, abs(dx) + t / 2, t, fill=color)
+    if abs(dx) < 1e-6:
+        return rect(s, x1 - t / 2, min(y1, y2), t, abs(dy) + t / 2, fill=color)
+    length = math.hypot(dx, dy)
+    cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
+    r = rect(s, cx - length / 2, cy - t / 2, length, t, fill=color)
+    r.rotation = math.degrees(math.atan2(dy, dx))
+    return r
 
 
 def text(s, x, y, w, h, paras, size=11, color=INK, bold=False, align="l", anchor="t",
@@ -205,44 +211,90 @@ def title(s, t, sub=None, y=1.2, size=24, w=CW, color=NAVY, subcolor=GRAY):
         text(s, L, y + 0.5, w, 0.4, sub, size=12, color=subcolor)
 
 
-def photo(s, x, y, w, h, desc="Foto berkaitan", label="RUANG GAMBAR", dark=False, shape=MSO_SHAPE.RECTANGLE):
-    """ONE shape only (dashed box + text inside) so nothing overlaps the photo.
-    To use: select the box > Format Shape > Fill > Picture, or delete it and insert a photo."""
-    fill = "2A3C93" if dark else LIGHT
-    ln = "8496E0" if dark else "A3AEDD"
-    sh = rect(s, x, y, w, h, fill=fill, line=ln, lw=1.25, dash=True, shape=shape)
-    sh.name = "RUANG GAMBAR"
-    tf = sh.text_frame
-    tf.word_wrap = True
-    tf.auto_size = MSO_AUTO_SIZE.NONE
+_PH_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_placeholders")
+_PH_N = [0]
+
+
+def _ph_png(w, h, label, desc, dark, oval):
+    from PIL import Image, ImageDraw
+    import math
+    os.makedirs(_PH_DIR, exist_ok=True)
+    dpi = 150
+    W_, H_ = int(w * dpi), int(h * dpi)
+    fill = "#2A3C93" if dark else "#EEF1FA"
+    ln = "#8496E0" if dark else "#A3AEDD"
+    im = Image.new("RGBA", (W_, H_), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    lw = max(2, int(dpi * 1.25 / 72))
+    if oval:
+        d.ellipse([0, 0, W_ - 1, H_ - 1], fill=fill)
+        steps = 48
+        for k in range(steps):
+            if k % 2:
+                continue
+            a0, a1 = 360 * k / steps, 360 * (k + 1) / steps
+            d.arc([lw // 2, lw // 2, W_ - 1 - lw // 2, H_ - 1 - lw // 2], a0, a1, fill=ln, width=lw)
+    else:
+        d.rectangle([0, 0, W_ - 1, H_ - 1], fill=fill)
+        dash, gap = int(dpi * 0.08), int(dpi * 0.05)
+        for (ax, ay, bx, by) in [(0, 0, W_, 0), (0, H_ - lw, W_, H_ - lw), (0, 0, 0, H_), (W_ - lw, 0, W_ - lw, H_)]:
+            horiz = ay == by
+            n = (bx - ax) if horiz else (by - ay)
+            pos = 0
+            while pos < n:
+                e = min(pos + dash, n)
+                if horiz:
+                    d.rectangle([ax + pos, ay, ax + e, ay + lw - 1], fill=ln)
+                else:
+                    d.rectangle([ax, ay + pos, ax + lw - 1, ay + e], fill=ln)
+                pos += dash + gap
+    fb = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+    fr = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
     tiny = w < 1.3
-    for m in ("margin_left", "margin_right", "margin_top", "margin_bottom"):
-        setattr(tf, m, Inches(0.02 if tiny else 0.1))
-    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     small = h < 1.3
-    lines = [((("+  " if w > 1.5 else "") + lb), 10 if not small else 9, True, "D5DCF7" if dark else NAVY)
-             for lb in label.split("\n")]
-    for dl in [d for d in desc.split("\n") if d.strip()]:
-        lines.append((dl, 8.5 if not small else 8, False, "B7C2EE" if dark else GRAY))
-    nlab = len(label.split("\n"))
-    if small and len(lines) > nlab + 1:  # keep description to 1 line in small boxes
-        lines = lines[:nlab] + [(" ".join(d[0] for d in lines[nlab:]), 8, False, lines[nlab][3])]
-    for i, (t, sz, b, col) in enumerate(lines):
-        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
-        p.alignment = PP_ALIGN.CENTER
-        if i == 0 and not small:
-            p.space_after = Pt(4)
-        r = p.add_run()
-        r.text = t
-        r.font.name = FONT
-        r.font.size = Pt(sz)
-        r.font.bold = b
-        r.font.color.rgb = rgb(col)
-        if tiny:
-            r.font.size = Pt(7)
-        elif i == 0:
-            r._r.get_or_add_rPr().set("spc", "150")
-    return sh
+    lab_pt = 7 if tiny else (9 if small else 10)
+    des_pt = 8 if small else 8.5
+    fl = ImageFont.truetype(fb, int(lab_pt * dpi / 72))
+    fd = ImageFont.truetype(fr, int(des_pt * dpi / 72))
+    lab_col = "#D5DCF7" if dark else "#13257B"
+    des_col = "#B7C2EE" if dark else "#646A80"
+    labs = label.split("\n")
+    descs = [x for x in desc.split("\n") if x.strip()]
+    if small and len(descs) > 1:
+        descs = [" ".join(descs)]
+    rows = []
+    for lb in labs:
+        t = ("+  " if w > 1.5 else "") + lb
+        if not tiny:
+            t = " ".join(t)  # letter-spaced look
+        rows.append((t, fl, lab_col))
+    for dl in descs:
+        rows.append((dl, fd, des_col))
+    lh = [f.getbbox("Ag")[3] + int(dpi * 0.03) for _, f, _ in rows]
+    gap_after_label = int(dpi * 0.05) if descs and not small else 0
+    total = sum(lh) + gap_after_label
+    yy = (H_ - total) / 2
+    for i, ((t, f, c), h_) in enumerate(zip(rows, lh)):
+        tw = f.getlength(t)
+        d.text(((W_ - tw) / 2, yy), t, font=f, fill=c)
+        yy += h_ + (gap_after_label if i == len(labs) - 1 else 0)
+    _PH_N[0] += 1
+    path = os.path.join(_PH_DIR, f"ph_{_PH_N[0]:03d}.png")
+    im.save(path)
+    return path
+
+
+def photo(s, x, y, w, h, desc="Foto berkaitan", label="RUANG GAMBAR", dark=False, shape=MSO_SHAPE.RECTANGLE):
+    """Placeholder IMAGE (one element). Canva: drag a photo onto it to replace.
+    PowerPoint: right-click > Change Picture. Google Slides: right-click > Replace image."""
+    oval = shape == MSO_SHAPE.OVAL
+    png = _ph_png(w, h, label, desc, dark, oval)
+    pic = s.shapes.add_picture(png, Inches(x), Inches(y), Inches(w), Inches(h))
+    pic.name = "RUANG GAMBAR"
+    if oval:  # keep the circular crop when the picture is replaced
+        geom = pic._element.spPr.find(qn("a:prstGeom"))
+        geom.set("prst", "ellipse")
+    return pic
 
 
 def card(s, x, y, w, h, top=NAVY, fill=WHITE, border=RULE, topw=0.05):
