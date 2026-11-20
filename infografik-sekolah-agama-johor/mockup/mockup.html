@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B2A6B;--navy2:#0F1A4A;--red:#D0202E;--gold:#C9A23A;--ink:#1d2433;--line:#9aa3b8;--ph:#E6E9F0;--note:#FFF3B0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#cfd4de;font-family:Inter,sans-serif;color:var(--ink)}
+.slide{width:1920px;height:1080px;background:#fff;position:relative;overflow:hidden;margin:0 auto 40px}
+.wm{position:absolute;top:22px;right:28px;font:700 18px Inter;color:#fff;background:#E5007E;padding:6px 14px;border-radius:6px;letter-spacing:1px;z-index:9}
+.head{position:absolute;left:70px;top:44px;right:70px;height:100px;display:flex;align-items:center;gap:18px}
+.head img{height:92px}
+.head .series{margin-left:auto;font:700 18px Montserrat;color:var(--navy);letter-spacing:3px;border:2px dashed var(--line);padding:10px 18px;border-radius:40px}
+.foot{position:absolute;left:0;right:0;bottom:0;height:96px;display:flex}
+.foot .l{flex:1.3;background:var(--navy);color:#fff;padding:20px 70px;font:800 20px Montserrat;letter-spacing:.5px;white-space:nowrap}
+.foot .l small{display:block;font:500 15px Inter;opacity:.8;margin-top:6px;letter-spacing:.5px}
+.foot .r{flex:.7;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:flex-end;padding:0 70px;font:600 18px Inter;gap:14px}
+.dot{width:40px;height:40px;border-radius:50%;border:2px dashed #fff}
+.ph{background:var(--ph);border:2px dashed var(--line);border-radius:18px;display:flex;align-items:center;justify-content:center;text-align:center;color:#6b7590;font:600 18px Inter;padding:12px}
+.note{position:absolute;background:var(--note);border:1px solid #e3cf62;color:#5a4a00;font:500 15px/1.35 Inter;padding:10px 12px;border-radius:6px;max-width:300px;box-shadow:0 4px 10px rgba(0,0,0,.08);z-index:8}
+.note b{display:block;font-weight:700;margin-bottom:2px}
+h1{font:900 64px/1.02 Montserrat;color:var(--navy);letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--red)}
+.kick{font:800 18px Montserrat;color:var(--red);letter-spacing:4px;margin-bottom:12px}
+.num{font:900 Montserrat;color:var(--navy);line-height:.9}
+.lbl{font:600 18px/1.3 Inter;color:#4b5570}
+</style></head><body>
+
+<!-- ================= SLIDE 1 ================= -->
+<section class="slide" id="s1">
+  <div class="wm">MOCKUP LAYOUT · SLIDE 1/3</div>
+  <div class="head"><img src="../assets/logo-johor.png"><img src="../assets/logo-maju-johor.png"><div class="series">SIRI 1/3 · BELANJAWAN JOHOR 2027</div></div>
+
+  <!-- Photo left -->
+  <div class="ph" style="position:absolute;left:70px;top:170px;width:560px;height:790px;flex-direction:column;gap:10px">
+    FOTO SEBENAR YB<br>(baju Melayu biru, di DUN)<br><span style="font-weight:500;font-size:15px">dipotong separuh badan + gradient navy ke bawah</span>
+  </div>
+  <div style="position:absolute;left:70px;top:860px;width:560px;padding:0 28px">
+    <div style="font:800 20px Montserrat;color:var(--navy)">YB TUAN HAJI MOHD FARED BIN HAJI MOHD KHALID</div>
+    <div style="font:600 14px Inter;color:#4b5570;margin-top:4px">PENGERUSI JAWATANKUASA HAL EHWAL AGAMA ISLAM NEGERI JOHOR</div>
+  </div>
+
+  <!-- Title -->
+  <div style="position:absolute;left:700px;top:180px;right:70px">
+    <div class="kick">BELANJAWAN JOHOR 2027</div>
+    <h1><em>5 LANGKAH</em> MEMPERKASA<br>PENDIDIKAN ISLAM JOHOR</h1>
+  </div>
+
+  <!-- 5 items: 3 + 2 grid -->
+  <div style="position:absolute;left:700px;top:400px;right:70px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+    <script>
+      const items=[["01","INFRASTRUKTUR SEKOLAH","Sekolah baharu, bangunan tambahan & naik taraf kemudahan."],
+      ["02","PEMBANGUNAN & PENYELENGGARAAN","Baik pulih sekolah demi keselamatan & keselesaan belajar."],
+      ["03","KEBAJIKAN & PROFESIONALISME GURU","Elaun, bonus, kenaikan pangkat & latihan profesional."],
+      ["04","KUALITI PENGAJARAN & PEMBELAJARAN","Digitalisasi, PAK-21, PIQJ & Program PraTahfiz."],
+      ["05","PEMBANGUNAN MODAL INSAN MURID","Sahsiah, kepimpinan, kokurikulum & pendidikan inklusif."]];
+      items.forEach(([n,t,d],i)=>document.write(`<div style="border:2px dashed var(--line);border-radius:20px;padding:22px;height:${i<3?260:220}px;${i==3?'grid-column:1/2;':''}">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div class="ph" style="width:70px;height:70px;border-radius:50%;font-size:12px;padding:0">IKON</div>
+        <div style="font:900 40px Montserrat;color:var(--gold)">${n}</div></div>
+        <div style="font:800 20px/1.15 Montserrat;color:var(--navy);margin-bottom:8px">${t}</div>
+        <div class="lbl" style="font-size:16px">${d}</div></div>`));
+    </script>
+    <div style="border-radius:20px;background:var(--navy);color:#fff;padding:26px;height:220px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font:900 30px/1.1 Montserrat">SEKOLAH AGAMA JOHOR <span style="color:var(--gold)">DIPERKASA</span>,</div>
+      <div style="font:700 20px Montserrat;margin-top:8px">MASA DEPAN GENERASI TERBELA!</div>
+    </div>
+  </div>
+
+  <div class="note" style="left:1290px;top:150px"><b>Hierarki</b>Tajuk 64pt Montserrat Black · "5 LANGKAH" merah untuk hook.</div>
+  <div class="note" style="left:1540px;top:870px;max-width:320px"><b>Kad tema kempen</b>Petak ke-6 diisi slogan tema supaya grid 3×2 seimbang.</div>
+  <div class="note" style="left:120px;top:640px"><b>Foto</b>Latar foto DUN dikaburkan sedikit, YB kekal tajam.</div>
+
+  <div class="foot"><div class="l">SEKOLAH AGAMA JOHOR DIPERKASA, MASA DEPAN GENERASI TERBELA!<small>Jawapan Lisan · Persidangan DUN Johor · [tarikh persidangan]</small></div><div class="r"><div class="dot"></div><div class="dot"></div><div class="dot"></div>Mohd Fared Mohd Khalid</div></div>
+</section>
+
+<!-- ================= SLIDE 2 ================= -->
+<section class="slide" id="s2">
+  <div class="wm">MOCKUP LAYOUT · SLIDE 2/3</div>
+  <div class="head"><img src="../assets/logo-johor.png"><img src="../assets/logo-maju-johor.png"><div class="series">SIRI 2/3 · INFRASTRUKTUR</div></div>
+
+  <!-- Hero left -->
+  <div style="position:absolute;left:70px;top:175px;width:820px">
+    <div class="kick">PEMBANGUNAN INFRASTRUKTUR SEKOLAH AGAMA</div>
+    <div style="white-space:nowrap;font:900 170px/0.9 Montserrat;color:var(--red);letter-spacing:-4px">RM191<span style="font-size:80px;color:var(--navy);letter-spacing:0"> JUTA!</span></div>
+    <div style="font:800 40px/1.1 Montserrat;color:var(--navy);margin-top:14px">JOHOR TERUS BANGUNKAN<br>SEKOLAH AGAMA</div>
+  </div>
+  <div style="position:absolute;left:70px;top:600px;width:820px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+    <div style="background:var(--navy);color:#fff;border-radius:22px;padding:26px;height:200px">
+      <div style="font:900 84px/0.9 Montserrat;color:var(--gold)">43</div>
+      <div style="font:800 22px Montserrat;margin-top:6px">BUAH SEKOLAH</div>
+      <div style="font:500 16px/1.3 Inter;opacity:.85;margin-top:6px">Senarai cadangan pembangunan infrastruktur SAKJ</div>
+    </div>
+    <div style="border:2px dashed var(--line);border-radius:22px;padding:26px;height:200px">
+      <div style="white-space:nowrap;font:900 84px/0.9 Montserrat;color:var(--navy)">10 <span style="font-size:22px">SEKOLAH · FASA 7</span></div>
+      <div style="display:flex;gap:10px;margin-top:14px"><div class="ph" style="height:56px;flex:9;font-size:14px">9 ikon sekolah baharu</div><div class="ph" style="height:56px;flex:2;font-size:12px;border-color:var(--gold)">+1</div></div>
+      <div style="font:500 15px Inter;color:#4b5570;margin-top:8px">9 sekolah baharu + 1 bangunan tambahan</div>
+    </div>
+  </div>
+
+  <!-- Right: 333 -->
+  <div style="position:absolute;left:950px;top:175px;right:70px;height:590px;border:2px dashed var(--line);border-radius:26px;padding:34px">
+    <div style="display:flex;gap:34px;align-items:center">
+      <div class="ph" style="width:300px;height:300px;border-radius:50%;flex-direction:column">
+        <div style="font:900 80px Montserrat;color:var(--navy)">333</div>DONUT 3 WARNA<br><span style="font-size:14px">buah sekolah perlu baik pulih</span>
+      </div>
+      <div style="flex:1">
+        <div style="font:800 26px/1.15 Montserrat;color:var(--navy);margin-bottom:20px">333 BUAH SEKOLAH MASIH MEMERLUKAN BAIK PULIH</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:16px"><div style="width:14px;height:56px;background:#D0202E;border-radius:4px"></div><div style="font:900 52px Montserrat;color:#D0202E;width:120px">237</div><div class="lbl">Tahap 1<br><b>Kritikal</b></div></div>
+          <div style="display:flex;align-items:center;gap:16px"><div style="width:14px;height:56px;background:#E8891C;border-radius:4px"></div><div style="font:900 52px Montserrat;color:#E8891C;width:120px">88</div><div class="lbl">Tahap 2<br><b>Separa Kritikal</b></div></div>
+          <div style="display:flex;align-items:center;gap:16px"><div style="width:14px;height:56px;background:#2E8B57;border-radius:4px"></div><div style="font:900 52px Montserrat;color:#2E8B57;width:120px">8</div><div class="lbl">Tahap 3<br><b>Tidak Kritikal</b></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:30px;height:44px;display:flex;border-radius:22px;overflow:hidden">
+      <div style="flex:237;background:#D0202E;color:#fff;font:700 16px Inter;display:flex;align-items:center;padding-left:16px">71% kritikal</div><div style="flex:88;background:#E8891C"></div><div style="flex:8;background:#2E8B57"></div>
+    </div>
+    <div style="font:500 14px Inter;color:#6b7590;margin-top:8px">Bar berkadar sebenar 237 : 88 : 8</div>
+  </div>
+
+  <!-- Bottom ribbon -->
+  <div style="position:absolute;left:950px;right:70px;top:790px;height:170px;display:grid;grid-template-columns:1.25fr 1fr 1.15fr;gap:0;background:var(--navy2);border-radius:22px;color:#fff">
+    <div style="padding:26px 28px;border-right:1px solid rgba(255,255,255,.2)"><div style="font:900 46px Montserrat;color:var(--gold)">RM79.076J</div><div style="font:500 15px/1.3 Inter;opacity:.9">Peruntukan baik pulih<br>2022–2026</div></div>
+    <div style="padding:26px 28px;border-right:1px solid rgba(255,255,255,.2)"><div style="font:900 46px Montserrat;color:#fff">717</div><div style="font:500 15px/1.3 Inter;opacity:.9">Projek baik pulih<br>2022–2026</div></div>
+    <div style="padding:26px 28px"><div style="font:900 46px Montserrat;color:var(--gold)">RM15.66J</div><div style="font:500 15px/1.3 Inter;opacity:.9">Peruntukan 2026<br>bagi 90 sekolah</div></div>
+  </div>
+
+  <div class="note" style="left:620px;top:420px;max-width:260px"><b>Fokus utama</b>RM191 JUTA = angka terbesar slide (190pt).</div>
+  <div class="note" style="left:1480px;top:640px"><b>3 warna tahap</b>Merah = Kritikal · Oren = Separa · Hijau = Tidak Kritikal.</div>
+  <div class="note" style="left:70px;top:830px;max-width:400px"><b>Rekaan akhir</b>Ilustrasi bangunan sekolah agama (kubah + kren) sebagai latar lembut.</div>
+
+  <div class="foot"><div class="l">SEKOLAH AGAMA JOHOR DIPERKASA, MASA DEPAN GENERASI TERBELA!<small>Jawapan Lisan · Persidangan DUN Johor · [tarikh persidangan]</small></div><div class="r"><div class="dot"></div><div class="dot"></div><div class="dot"></div>Mohd Fared Mohd Khalid</div></div>
+</section>
+
+<!-- ================= SLIDE 3 ================= -->
+<section class="slide" id="s3">
+  <div class="wm">MOCKUP LAYOUT · SLIDE 3/3</div>
+  <div class="head"><img src="../assets/logo-johor.png"><img src="../assets/logo-maju-johor.png"><div class="series">SIRI 3/3 · GURU & MURID</div></div>
+
+  <div style="position:absolute;left:70px;top:170px;right:70px">
+    <div class="kick">KEBAJIKAN GURU & PEMBANGUNAN MURID</div>
+    <h1 style="font-size:60px"><em>5,034</em> PENDIDIK, <em>202,431</em> MURID</h1>
+    <div style="font:700 26px Montserrat;color:#4b5570;margin-top:10px">KOMITMEN JOHOR MEMPERKASA PENDIDIKAN ISLAM</div>
+  </div>
+
+  <!-- Left: people -->
+  <div style="position:absolute;left:70px;top:400px;width:860px;height:560px;display:grid;grid-template-rows:1fr 1fr;gap:22px">
+    <div style="display:flex;gap:26px;align-items:center;border:2px dashed var(--line);border-radius:24px;padding:24px">
+      <div class="ph" style="width:200px;height:180px;font-size:15px">ILUSTRASI<br>MURID BELAJAR</div>
+      <div><div style="font:900 96px/0.9 Montserrat;color:var(--navy)">202,431</div><div style="font:800 22px Montserrat;color:var(--red);margin-top:6px">JUMLAH KESELURUHAN MURID</div></div>
+    </div>
+    <div style="display:flex;gap:26px;align-items:center;border:2px dashed var(--line);border-radius:24px;padding:24px">
+      <div class="ph" style="width:200px;height:180px;font-size:15px">ILUSTRASI<br>GURU MENGAJAR</div>
+      <div style="flex:1"><div style="font:900 96px/0.9 Montserrat;color:var(--navy)">5,034 <span style="font-size:22px;color:var(--red)">TENAGA PENGAJAR</span></div>
+        <div style="display:flex;height:40px;border-radius:20px;overflow:hidden;margin-top:16px;font:700 16px Inter;color:#fff">
+          <div style="flex:2995;background:var(--navy);display:flex;align-items:center;padding-left:16px">2,995 Guru SAKJ</div>
+          <div style="flex:2039;background:var(--gold);display:flex;align-items:center;padding-left:16px">2,039 Guru KAFA</div>
+        </div></div>
+    </div>
+  </div>
+
+  <!-- Right: money -->
+  <div style="position:absolute;left:960px;top:400px;right:70px;height:560px;background:var(--navy);border-radius:26px;padding:34px;color:#fff">
+    <div style="font:800 18px Montserrat;letter-spacing:3px;color:var(--gold)">ELAUN GURU KAFA</div>
+    <div style="display:flex;align-items:center;gap:22px;margin-top:16px">
+      <div><div style="font:600 16px Inter;opacity:.7">Sebelum</div><div style="font:800 46px Montserrat;opacity:.7;text-decoration:line-through">RM1,612</div></div>
+      <div class="ph" style="width:110px;height:60px;background:transparent;border-color:#fff;color:#fff;font-size:13px">ANAK PANAH</div>
+      <div><div style="font:600 16px Inter;color:var(--gold)">Kini / sebulan</div><div style="font:900 64px Montserrat">RM1,762</div></div>
+    </div>
+    <div style="display:inline-block;background:var(--red);border-radius:40px;padding:10px 22px;font:900 28px Montserrat;margin-top:14px">+RM150 SEBULAN</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px">
+      <div style="background:rgba(255,255,255,.08);border-radius:18px;padding:22px"><div style="font:900 50px Montserrat;color:var(--gold)">RM5.92J</div><div style="font:500 16px/1.3 Inter;opacity:.9">Peruntukan peningkatan elaun guru KAFA</div></div>
+      <div style="background:rgba(255,255,255,.08);border-radius:18px;padding:22px"><div style="font:600 16px Inter;opacity:.8">HAMPIR</div><div style="font:900 50px/1 Montserrat;color:var(--gold)">RM6J <span style="font-size:20px;color:#fff">setahun</span></div><div style="font:500 16px/1.3 Inter;opacity:.9">Pembangunan profesionalisme guru</div></div>
+    </div>
+  </div>
+
+  <div class="note" style="left:1560px;top:160px"><b>Foto YB</b>Opsyen: potret kecil bulat YB di penjuru kanan atas tajuk.</div>
+  <div class="note" style="left:560px;top:690px;max-width:280px"><b>Bar berkadar</b>2,995 : 2,039 (jumlah = 5,034).</div>
+
+  <div class="foot"><div class="l">SEKOLAH AGAMA JOHOR DIPERKASA, MASA DEPAN GENERASI TERBELA!<small>Jawapan Lisan · Persidangan DUN Johor · [tarikh persidangan]</small></div><div class="r"><div class="dot"></div><div class="dot"></div><div class="dot"></div>Mohd Fared Mohd Khalid</div></div>
+</section>
+</body></html>
