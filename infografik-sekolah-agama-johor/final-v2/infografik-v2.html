@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8">
+<title>Infografik Sekolah Agama Johor v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Questrial&family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2A2A82;--ink:#1C1C3A;--red:#CD1A20}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:Questrial,sans-serif}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden;margin:0 auto 30px;background:#F1F1F2}
+/* glossy diagonal light streaks like the reference */
+.bg{position:absolute;inset:0;overflow:hidden}
+.bg i{position:absolute;display:block;transform-origin:center;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 45%,rgba(255,255,255,.95) 55%,rgba(255,255,255,0))}
+.bg .a{width:520px;height:1600px;left:620px;top:-420px;transform:rotate(-58deg)}
+.bg .b{width:260px;height:1600px;left:980px;top:-560px;transform:rotate(-58deg);opacity:.9}
+.bg .c{width:180px;height:1400px;left:300px;top:-260px;transform:rotate(-58deg);opacity:.75}
+.bg .d{width:340px;height:1600px;left:1260px;top:-300px;transform:rotate(-58deg);opacity:.8}
+.bg .e{width:120px;height:1400px;left:60px;top:80px;transform:rotate(-58deg);opacity:.6}
+.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 8% 95%,rgba(0,0,0,.035),transparent 70%),radial-gradient(50% 45% at 98% 40%,rgba(0,0,0,.03),transparent 70%)}
+
+.logo1{position:absolute;left:30px;top:22px;height:86px}
+.logo2{position:absolute;left:153px;top:18px;height:88px}
+.title{position:absolute;left:262px;right:20px;top:24px;height:80px;display:flex;align-items:center;justify-content:center;gap:22px}
+.title .bar{width:9px;height:46px;background:var(--navy);flex:0 0 9px}
+.title h1{font:800 54px/1 Montserrat;color:var(--ink);letter-spacing:-.6px;white-space:nowrap;text-shadow:2px 3px 4px rgba(0,0,0,.35)}
+
+.ftr{position:absolute;left:0;right:0;bottom:0;height:82px;display:flex}
+.ftr .l{flex:0 0 800px;background:var(--navy);color:#fff;padding:9px 26px 0;font:700 15.5px/1.48 Montserrat;letter-spacing:.2px}
+.ftr .r{flex:1;background:var(--red);position:relative}
+.ftr .soc{position:absolute;right:32px;top:12px;display:flex;gap:6px;align-items:center}
+.ftr .soc svg{width:40px;height:40px}
+.ftr .nm{position:absolute;right:21px;bottom:6px;font:500 13px Kanit;color:#fff;opacity:.95}
+
+/* photo + list layout */
+.photo{position:absolute;left:32px;top:145px;width:559px;height:559px;overflow:hidden;background:#ccc}
+.photo img{position:absolute;height:100%;left:50%;transform:translateX(-50%)}
+.cap{position:absolute;left:12px;width:599px;top:718px;text-align:center}
+.cap .n{font:800 20.5px Montserrat;color:var(--ink);letter-spacing:.1px}
+.cap .r{font:800 14px Montserrat;color:var(--ink);margin-top:5px}
+.list{position:absolute;left:658px;top:142px;right:20px}
+.list .h{font:800 26px/1.45 Montserrat;color:var(--ink);padding-left:28px;letter-spacing:-.2px;display:flex}
+.list .h b{display:inline-block;margin-right:7px;font-weight:600}
+.amp{font-family:Montserrat;font-weight:500;font-size:.92em}
+#s1 .title h1{font-size:49px}
+#s3 .list .gap{height:24px}
+.list .h + *{}
+.list .s{font:400 26px/1.45 Questrial;color:var(--ink);text-transform:uppercase}
+.list ul{list-style:none}
+.list li{font:400 26px/1.45 Questrial;color:var(--ink);padding-left:46px;position:relative;text-transform:uppercase}
+.list li:before{content:"";position:absolute;left:24px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.list .gap{height:16px}
+
+/* table layout */
+table{position:absolute;left:25px;top:121px;width:1549px;border-collapse:collapse;background:#fff;font-family:Kanit}
+th{background:var(--navy);color:#fff;font:600 17.5px Kanit;height:51px;border:1px solid #9a9aa8;letter-spacing:.3px}
+td{border:1px solid #9a9aa8;font:500 17.5px/1.5 Kanit;color:#1b1b2b;padding:9px 8px;vertical-align:middle}
+td.k{text-align:center;font-weight:600;padding:9px 16px}
+td p{margin:0}
+td .big{font-weight:600}
+</style></head><body>
+
+<template id="hdr">
+  <div class="bg"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><i class="e"></i></div>
+  <img class="logo1" src="../assets/logo-johor.png" alt="Jata Negeri Johor">
+  <img class="logo2" src="../assets/logo-maju-johor.png" alt="Maju Johor">
+</template>
+<template id="ftr">
+  <div class="l">PERSIDANGAN DEWAN NEGERI JOHOR KE-15<br>PEMBENTANGAN BELANJAWAN NEGERI JOHOR 2027<br>SEKOLAH AGAMA JOHOR DIPERKASA, MASA DEPAN GENERASI TERBELA!</div>
+  <div class="r"><div class="soc"><svg viewBox="0 0 24 24"><path fill="#fff" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><svg viewBox="0 0 24 24"><path fill="#fff" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#fff"/><g transform="translate(5.5 5.5) scale(.54)"><path fill="#CD1A20" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></g></svg></div><div class="nm">Mohd Fared Mohd Khalid</div></div>
+</template>
+
+<!-- ================= SLIDE 1 ================= -->
+<section class="slide" id="s1">
+  <div class="title"><div class="bar"></div><h1>5 LANGKAH MEMPERKASA PENDIDIKAN ISLAM</h1></div>
+  <div class="photo"><img src="../assets/yb-dun-baju-melayu.jpg" alt="" style="transform:translateX(-49%)"></div>
+  <div class="cap"><div class="n">YB TUAN HAJI MOHD FARED BIN HAJI MOHD KHALID</div><div class="r">PENGERUSI JAWATANKUASA HAL EHWAL AGAMA ISLAM NEGERI JOHOR</div></div>
+  <div class="list">
+    <div class="h"><b>1.</b>INFRASTRUKTUR SEKOLAH</div>
+    <ul><li>Pembinaan sekolah baharu &amp; bangunan tambahan</li><li>Naik taraf kemudahan</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>2.</b>PEMBANGUNAN &amp; PENYELENGGARAAN</div>
+    <ul><li>Baik pulih sekolah</li><li>Keselamatan &amp; kemudahan pembelajaran</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>3.</b>KEBAJIKAN &amp; PROFESIONALISME GURU</div>
+    <ul><li>Elaun, bonus &amp; kenaikan pangkat</li><li>Latihan profesional</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>4.</b>KUALITI PENGAJARAN &amp; PEMBELAJARAN</div>
+    <ul><li>Digitalisasi &amp; PAK-21</li><li>PIQJ &amp; Program PraTahfiz</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>5.</b>PEMBANGUNAN MODAL INSAN MURID</div>
+    <ul><li>Sahsiah, kepimpinan &amp; kokurikulum</li><li>Pendidikan inklusif</li></ul>
+  </div>
+</section>
+
+<!-- ================= SLIDE 2 ================= -->
+<section class="slide" id="s2">
+  <div class="title"><div class="bar"></div><h1>RM191 JUTA BANGUNKAN SEKOLAH AGAMA</h1></div>
+  <table>
+    <colgroup><col style="width:314px"><col style="width:688px"><col style="width:547px"></colgroup>
+    <tr><th>PERKARA</th><th>PERINCIAN</th><th>JUMLAH</th></tr>
+    <tr style="height:165px"><td class="k">Pembangunan Infrastruktur Sekolah Agama Kerajaan Johor</td>
+      <td><p>A. Senarai cadangan pembangunan infrastruktur Sekolah Agama Kerajaan Johor.</p><p>B. Termasuk 10 buah sekolah Fasa 7, iaitu 9 buah sekolah baharu dan 1 bangunan tambahan.</p></td>
+      <td><p>A. 43 buah sekolah.</p><p>B. Belanjawan 2027 sebanyak RM191 juta.</p></td></tr>
+    <tr style="height:185px"><td class="k">Sekolah Agama Memerlukan Baik Pulih</td>
+      <td><p>A. Sekolah agama yang dikenal pasti masih memerlukan kerja-kerja baik pulih.</p><p>B. Dibahagikan mengikut tahap kerosakan.</p></td>
+      <td><p>333 buah sekolah :</p><p>a) Tahap 1 (Kritikal) – 237 buah</p><p>b) Tahap 2 (Separa Kritikal) – 88 buah</p><p>c) Tahap 3 (Tidak Kritikal) – 8 buah</p></td></tr>
+    <tr style="height:140px"><td class="k">Kerja Baik Pulih 2022 – 2026</td>
+      <td><p>A. Kerja-kerja baik pulih sekolah agama sepanjang tahun 2022 hingga 2026.</p></td>
+      <td><p>A. 717 projek.</p><p>B. Jumlah peruntukan RM79.076 juta.</p></td></tr>
+    <tr style="height:120px"><td class="k">Baik Pulih Tahun 2026</td>
+      <td><p>A. Peruntukan baik pulih sekolah agama bagi tahun 2026.</p></td>
+      <td><p>A. RM15.66 juta bagi 90 buah sekolah.</p></td></tr>
+  </table>
+</section>
+
+<!-- ================= SLIDE 3 ================= -->
+<section class="slide" id="s3">
+  <div class="title"><div class="bar"></div><h1>KEBAJIKAN GURU &amp; PEMBANGUNAN MURID</h1></div>
+  <div class="photo"><img src="../assets/yb-dun-sut.jpg" alt=""></div>
+  <div class="cap"><div class="n">YB TUAN HAJI MOHD FARED BIN HAJI MOHD KHALID</div><div class="r">PENGERUSI JAWATANKUASA HAL EHWAL AGAMA ISLAM NEGERI JOHOR</div></div>
+  <div class="list" style="top:150px">
+    <div class="h"><b>1.</b>MURID SEKOLAH AGAMA</div>
+    <ul><li>Jumlah keseluruhan 202,431 murid</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>2.</b>TENAGA PENGAJAR</div>
+    <div class="s">Jumlah 5,034 tenaga pengajar:</div>
+    <ul><li>2,995 guru SAKJ</li><li>2,039 guru KAFA</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>3.</b>ELAUN GURU KAFA</div>
+    <ul><li>Meningkat RM150 sebulan</li><li>Daripada RM1,612 kepada RM1,762</li><li>Peruntukan RM5.92 juta</li></ul>
+    <div class="gap"></div>
+    <div class="h"><b>4.</b>PROFESIONALISME GURU</div>
+    <ul><li>Peruntukan hampir RM6 juta setahun</li></ul>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.list li,.list .s').forEach(e=>e.innerHTML=e.innerHTML.replace(/&amp;/g,'<span class="amp">&amp;</span>'));
+document.querySelectorAll('.slide').forEach(s=>{
+  s.insertAdjacentHTML('afterbegin',document.getElementById('hdr').innerHTML);
+  s.insertAdjacentHTML('beforeend','<div class="ftr">'+document.getElementById('ftr').innerHTML+'</div>');
+});
+</script>
+</body></html>
