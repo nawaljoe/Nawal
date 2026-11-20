@@ -45,7 +45,8 @@ def donut_as_picture(slide, x, y, d, values, colors, hole=60):
 def main():
     build.donut = donut_as_picture
     prs = build.new_deck()
-    for f in (build.slide1, build.slide2, build.slide3, build.slide4):
+    from build_slide_pdp import slide as slide4_pdp
+    for f in (build.slide1, build.slide2, build.slide3, slide4_pdp):
         f(prs)
     path = os.path.join(build.OUT, "Infografik_Belanjawan_Johor_2027_CANVA.pptx")
     prs.save(path)

@@ -560,7 +560,8 @@ def build():
     slide1(prs)
     slide2(prs)
     slide3(prs)
-    slide4(prs)
+    from build_slide_pdp import slide as slide4_pdp  # slide 4: 5 inisiatif + PdP sahaja
+    slide4_pdp(prs)
     path = os.path.join(OUT, "Infografik_Belanjawan_Johor_2027.pptx")
     prs.save(path)
     print("saved", path)
