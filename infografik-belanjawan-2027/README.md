@@ -5,6 +5,7 @@
 | Fail | Kegunaan |
 | --- | --- |
 | `output/Infografik_Belanjawan_Johor_2027.pptx` | Fail boleh diedit: semua teks, kotak, bar dan carta. Boleh dibuka dalam PowerPoint, Google Slides, Keynote, atau di-import ke Canva. |
+| `output/Infografik_Belanjawan_Johor_2027_CANVA.pptx` | Versi untuk Canva: sama seperti di atas tetapi cincin donut 333 sekolah ialah gambar (Canva tidak import carta PowerPoint). Bina dengan `python3 build_canva.py`. |
 | `output/slide-1.png` … `slide-4.png` | Siap untuk dimuat naik (2160 × 2160, 2× untuk ketajaman). |
 
 ## Kandungan
