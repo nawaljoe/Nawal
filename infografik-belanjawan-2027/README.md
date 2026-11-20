@@ -10,7 +10,7 @@
 
 ## Kandungan
 
-1. **RM191 juta** · Projek Pembinaan Fasa 7 · 43 sekolah (26 / 11 / 6) · Smart TV, JPID Al-Bayen, internet
+1. **RM191 juta** · Projek Pembinaan Fasa 7 · 33 sekolah (17 / 11 / 5) · Smart TV, JPID Al-Bayen, internet
 2. **333 sekolah** (237 / 88 / 8) · 717 projek · **RM79.076 juta** · peruntukan 2026 · 3 fokus · sistem pengurusan
 3. **+RM150 elaun KAFA** · perjawatan · TBBK · 7 jenis elaun · bonus & bantuan khas 2022–2026 · Bantuan Kasih Johor · profesionalisme
 4. 5 inisiatif utama · statistik murid/guru/SAKJ · kualiti PdP · modal insan · kepadatan murid · penutup

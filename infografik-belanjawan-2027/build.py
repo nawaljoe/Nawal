@@ -106,24 +106,24 @@ def slide1(prs):
         {"runs": [R("Pengerusi Jawatankuasa Hal Ehwal Agama Islam Negeri Johor", 11, "m", MUTED)], "lh": 1.0},
     ], align="c")
 
-    # --- B. 43 buah sekolah
+    # --- B. 33 buah sekolah
     y1 = 560
     section_label(s, M, y1, "PERANCANGAN PEMBANGUNAN SEKOLAH AGAMA")
-    text(s, M, y1 + 30, 230, 150, [[R("43", 150, "k", NAVY, -4)]], lh=0.85)
+    text(s, M, y1 + 30, 230, 150, [[R("33", 150, "k", NAVY, -4)]], lh=0.85)
     text(s, M + 2, y1 + 168, 230, 70, [
         {"runs": [R("BUAH SAKJ", 20, "k", GOLD_D, 1)], "after": 2},
         {"runs": [R("dikenal pasti JAINJ memerlukan pembangunan infrastruktur", 13, "m", MUTED)], "lh": 1.05},
     ])
     # bar bertindan 26/11/6
     bx, bw = M + 250, CW - 250
-    parts = [(26, NAVY, "Sekolah baharu"), (11, GOLD, "Bangunan tambahan"), (6, ROYAL, "Bangunan gunasama")]
+    parts = [(17, NAVY, "Sekolah baharu"), (11, GOLD, "Bangunan tambahan"), (5, ROYAL, "Bangunan gunasama")]
     cx = bx
     for n, col, _ in parts:
-        w = bw * n / 43
+        w = bw * n / 33
         rect(s, cx, y1 + 44, w - 3, 26, fill=col)
         cx += w
     text(s, bx, y1 + 76, bw, 18, [[R("0", 11, "sb", SLATE)]])
-    text(s, bx, y1 + 76, bw, 18, [[R("43 sekolah", 11, "sb", SLATE)]], align="r")
+    text(s, bx, y1 + 76, bw, 18, [[R("33 sekolah", 11, "sb", SLATE)]], align="r")
     # tiga kotak statistik
     gw = (bw - 2 * 14) / 3
     for i, (n, col, lab) in enumerate(parts):
