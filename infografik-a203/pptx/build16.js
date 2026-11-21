@@ -275,17 +275,7 @@ pres.addSection({ title: 'Garis Panduan' });
   const s = pres.addSlide({ masterName: 'Tajuk Sahaja', sectionTitle: 'Garis Panduan' });
   eyebrow(s, 'GARIS PANDUAN', 'Bil. 1/2024');
   s.addText([{ text: 'BERDASARKAN GARIS PANDUAN', options: { breakLine: true } }, { text: 'KERAJAAN PERSEKUTUAN', options: { color: C.accent3 } }], { placeholder: 'title' });
-  caption(s, 96, 300, 470, 'BINA BAHARU', 'Nisbah ikut lokaliti', { tagW: 180 });
-  const facts = [
-    [352, 'Bil. 1/2024', 'Garis Panduan Permohonan Peruntukan Kerajaan Persekutuan', false],
-    [556, '1 Jan 2024', 'Dikeluarkan oleh Jabatan Perdana Menteri', false],
-    [760, '30%', 'Komitmen Kerajaan Negeri sebelum permohonan dikemukakan kepada Pejabat YAB Perdana Menteri', true],
-  ];
-  for (const [y, h, p, k] of facts) {
-    rect(s, 96, y, 470, 188, k ? H.goldT : 'FFFFFF', 'Kad ' + h);
-    T(s, h, { x: X(124), y: X(y + 20), w: X(420), h: X(60), fontSize: F(k ? 52 : 38), bold: true, color: k ? C.accent3 : C.text2, valign: 'middle', objectName: 'Fakta ' + h });
-    T(s, p, { x: X(124), y: X(y + 88), w: X(420), h: X(90), fontSize: F(23), color: k ? TINT.brown : C.accent5, objectName: 'Keterangan ' + h });
-  }
+  caption(s, 96, 292, 1000, 'BINA BAHARU', 'Nisbah komitmen kewangan mengikut lokaliti', { tagW: 180 });
   const groups = [
     ['Selangor / Pulau Pinang / Johor', true, [['Bandar', '50%', '30%', '20%'], ['Pinggir Bandar', '60%', '30%', '10%'], ['Luar Bandar', '65%', '30%', '5%']]],
     ['Negeri Sembilan / Melaka / Pahang / Perak', false, [['Bandar', '70%', '20%', '10%'], ['Pinggir Bandar', '70%', '20%', '10%'], ['Luar Bandar', '75%', '20%', '5%']]],
@@ -293,7 +283,9 @@ pres.addSection({ title: 'Garis Panduan' });
     ['Sabah / Sarawak', false, [['Bandar', '80%', '15%', '5%'], ['Pinggir Bandar', '85%', '15%', '-'], ['Luar Bandar', '85%', '15%', '-']]],
     ['Wilayah Persekutuan', false, [['Kuala Lumpur & Putrajaya', '80%', '-', '20%'], ['Labuan', '100%', '-', '-']]],
   ];
-  const data = [[thCell('NEGERI'), thCell('LOKALITI'), thCell('PERSEKUTUAN', 'center'), thCell('NEGERI', 'center'), thCell('KARIAH', 'center')]];
+  const th2 = (t, a) => { const c = thCell(t, a); c.options.fontSize = F(16.5); c.options.charSpacing = 0; return c; };
+  const data = [[th2('NEGERI'), th2('LOKALITI'), th2('PERSEKUTUAN', 'center'), th2('NEGERI', 'center'), th2('KARIAH', 'center')]];
+  const rowHs = [46];
   groups.forEach(([g, jh, rows], gi) => {
     const fill = { color: jh ? H.goldT : gi % 2 ? TINT.zebra : 'FFFFFF' };
     rows.forEach((r, ri) => {
@@ -305,11 +297,27 @@ pres.addSection({ title: 'Garis Panduan' });
       const pc = (v, k) => cell(v === '-' ? '–' : v, { fill, align: 'center', bold: v !== '-', color: v === '-' ? TINT.dash : k && jh ? H.goldD : H.navy });
       line.push(cell(r[0], { fill, color: H.ink }), pc(r[1]), pc(r[2]), pc(r[3], true));
       data.push(line);
+      rowHs.push(r[0].length > 16 ? 56 : 38);
     });
   });
-  s.addTable(data, { x: X(600), y: X(300), w: X(1224), colW: [X(300), X(330), X(214), X(180), X(200)], rowH: [X(50), ...Array(14).fill(X(42.5))], fontFace: FONT, fontSize: F(26), color: H.ink, margin: [2, 10, 2, 12], objectName: 'Jadual nisbah bina baharu' });
-  T(s, 'Baris emas: kumpulan negeri yang merangkumi Johor.', { x: X(96), y: X(962), w: X(470), h: X(30), fontSize: F(19), color: C.accent5, valign: 'middle', objectName: 'Nota' });
-  s.addNotes('Garis Panduan Bil. 1/2024 (JPM, 1 Januari 2024), selaras keputusan Mesyuarat Perdana Menteri bersama Menteri Besar dan Ketua Menteri ke-139 pada 28 Jun 2022. Kerajaan Negeri perlu sediakan komitmen 30% sebelum permohonan dikemukakan.');
+  s.addTable(data, { x: X(96), y: X(340), w: X(1000), colW: [X(270), X(240), X(190), X(150), X(150)], rowH: rowHs.map(X), fontFace: FONT, fontSize: F(26), color: H.ink, margin: [2, 10, 2, 12], objectName: 'Jadual nisbah bina baharu' });
+  // right: key points from the reply
+  rect(s, 1136, 292, 688, 644, C.text2, 'Panel perkara penting');
+  T(s, 'PERKARA PENTING', { x: X(1172), y: X(318), w: X(600), h: X(36), fontSize: F(22), bold: true, color: C.accent2, charSpacing: 3, valign: 'middle', objectName: 'Label perkara penting' });
+  const pts = [
+    ['01', [{ text: '30%', options: { color: C.accent2 } }, { text: ' komitmen Kerajaan Negeri' }], 'Daripada jumlah permohonan, sebelum dikemukakan kepada Pejabat YAB Perdana Menteri'],
+    ['02', [{ text: 'Bukan caj', options: { color: C.accent2 } }, { text: ' Kerajaan Negeri' }], 'Sebahagian tanggungjawab pembiayaan garis panduan; tiada pengecualian'],
+    ['03', [{ text: 'Mohon kutipan khairat' }], 'Melalui Pejabat Kadi Daerah, tertakluk garis panduan dan peraturan'],
+    ['04', [{ text: 'Kutipan tidak mencukupi?' }], 'Projek disesuaikan mengikut peruntukan diterima dan kemampuan pembiayaan'],
+  ];
+  pts.forEach(([n, t, sub], i) => {
+    const y = 372 + i * 138;
+    s.addShape(pres.shapes.LINE, { x: X(1172), y: X(y), w: X(616), h: 0, line: { color: H.gold, width: 0.75, transparency: 50 }, objectName: 'Pemisah point ' + n });
+    T(s, n, { x: X(1172), y: X(y + 20), w: X(74), h: X(70), fontSize: F(44), bold: true, color: C.accent2, objectName: 'Nombor point ' + n });
+    s.addText(t, { isTextBox: true, x: X(1262), y: X(y + 18), w: X(530), h: X(44), fontFace: FONT, fontSize: F(32), bold: true, color: C.background1, margin: 0, valign: 'top', objectName: 'Point ' + n });
+    T(s, sub, { x: X(1262), y: X(y + 64), w: X(530), h: X(76), fontSize: F(22), color: TINT.onNavy, objectName: 'Keterangan point ' + n });
+  });
+  s.addNotes('Garis Panduan Bil. 1/2024 (JPM, 1 Januari 2024), selaras keputusan Mesyuarat Perdana Menteri bersama Menteri Besar dan Ketua Menteri ke-139 pada 28 Jun 2022.\n\nKerajaan Negeri juga perlu menyediakan komitmen sebanyak 30% daripada jumlah permohonan peruntukan sebelum dikemukakan kepada Pejabat YAB Perdana Menteri untuk pertimbangan kelulusan.\n\nKomitmen kewangan yang perlu disediakan oleh pihak kariah bukan merupakan caj yang dikenakan oleh Kerajaan Negeri, sebaliknya merupakan sebahagian daripada tanggungjawab pembiayaan yang telah ditetapkan melalui garis panduan berkenaan. Oleh itu, tiada pengecualian diberikan kepada pihak kariah yang tertakluk kepada syarat komitmen tersebut.\n\nBagi membantu pihak kariah mengumpulkan dana, pihak kariah disyorkan untuk memohon kebenaran menjalankan pungutan khairat melalui Pejabat Kadi Daerah masing-masing, tertakluk kepada garis panduan dan peraturan yang berkuat kuasa. Sekiranya jumlah kutipan khairat masih tidak mencukupi untuk menampung keseluruhan kos pembinaan, pelaksanaan projek pembinaan masjid dan surau akan disesuaikan berdasarkan jumlah peruntukan kewangan yang diterima serta kemampuan pembiayaan yang tersedia.');
 }
 
 // ================= 5 — NAIK TARAF =================
