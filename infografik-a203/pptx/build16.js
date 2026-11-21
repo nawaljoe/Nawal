@@ -243,16 +243,14 @@ pres.addSection({ title: 'Garis Panduan' });
   s.addText([{ text: 'BERDASARKAN GARIS PANDUAN', options: { breakLine: true } }, { text: 'KERAJAAN PERSEKUTUAN', options: { color: C.accent3 } }], { placeholder: 'title' });
   caption(s, 96, 300, 470, 'BINA BAHARU', 'Nisbah ikut lokaliti', { tagW: 180 });
   const facts = [
-    [362, 'Bil. 1/2024', 'Garis Panduan Permohonan Peruntukan Kerajaan Persekutuan', false],
-    [562, '1 Jan 2024', 'Dikeluarkan oleh Jabatan Perdana Menteri', false],
-    [762, '30%', 'Komitmen Kerajaan Negeri sebelum permohonan dikemukakan kepada Pejabat YAB Perdana Menteri', true],
+    [352, 'Bil. 1/2024', 'Garis Panduan Permohonan Peruntukan Kerajaan Persekutuan', false],
+    [556, '1 Jan 2024', 'Dikeluarkan oleh Jabatan Perdana Menteri', false],
+    [760, '30%', 'Komitmen Kerajaan Negeri sebelum permohonan dikemukakan kepada Pejabat YAB Perdana Menteri', true],
   ];
   for (const [y, h, p, k] of facts) {
-    const hh = k ? 214 : 180;
-    rect(s, 96, y, 470, hh - 20, 'FFFFFF', 'Kad ' + h);
-    rect(s, 96, y, 470, 5, k ? C.accent2 : C.text2, 'Garis kad ' + h);
-    T(s, h, { x: X(122), y: X(y + 22), w: X(420), h: X(k ? 56 : 42), fontSize: F(k ? 50 : 34), bold: true, color: k ? C.accent3 : C.text2, valign: 'middle', objectName: 'Fakta ' + h });
-    T(s, p, { x: X(122), y: X(y + (k ? 84 : 72)), w: X(420), h: X(90), fontSize: F(23), color: C.accent5, objectName: 'Keterangan ' + h });
+    rect(s, 96, y, 470, 188, k ? H.goldT : 'FFFFFF', 'Kad ' + h);
+    T(s, h, { x: X(124), y: X(y + 20), w: X(420), h: X(60), fontSize: F(k ? 52 : 38), bold: true, color: k ? C.accent3 : C.text2, valign: 'middle', objectName: 'Fakta ' + h });
+    T(s, p, { x: X(124), y: X(y + 88), w: X(420), h: X(90), fontSize: F(23), color: k ? TINT.brown : C.accent5, objectName: 'Keterangan ' + h });
   }
   const groups = [
     ['Selangor / Pulau Pinang / Johor', true, [['Bandar', '50%', '30%', '20%'], ['Pinggir Bandar', '60%', '30%', '10%'], ['Luar Bandar', '65%', '30%', '5%']]],
@@ -276,7 +274,7 @@ pres.addSection({ title: 'Garis Panduan' });
     });
   });
   s.addTable(data, { x: X(600), y: X(300), w: X(1224), colW: [X(300), X(330), X(214), X(180), X(200)], rowH: [X(50), ...Array(14).fill(X(42.5))], fontFace: FONT, fontSize: F(26), color: H.ink, margin: [2, 10, 2, 12], objectName: 'Jadual nisbah bina baharu' });
-  T(s, 'Baris emas: kumpulan negeri yang merangkumi Johor.', { x: X(96), y: X(958), w: X(470), h: X(30), fontSize: F(19), color: C.accent5, valign: 'middle', objectName: 'Nota' });
+  T(s, 'Baris emas: kumpulan negeri yang merangkumi Johor.', { x: X(96), y: X(962), w: X(470), h: X(30), fontSize: F(19), color: C.accent5, valign: 'middle', objectName: 'Nota' });
   s.addNotes('Garis Panduan Bil. 1/2024 (JPM, 1 Januari 2024), selaras keputusan Mesyuarat Perdana Menteri bersama Menteri Besar dan Ketua Menteri ke-139 pada 28 Jun 2022. Kerajaan Negeri perlu sediakan komitmen 30% sebelum permohonan dikemukakan.');
 }
 
