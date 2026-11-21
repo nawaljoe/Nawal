@@ -12,7 +12,6 @@ const A = (f) => path.join(__dirname, 'assets', f);
 const X = (px) => +(px / 144).toFixed(4);
 const F = (px) => +(px * 0.5).toFixed(1);
 const FONT = 'Arial';
-const TOTAL = '10';
 
 const THEME = {
   name: 'Johor Navy Emas',
@@ -41,11 +40,9 @@ const logos = [
   { image: { path: A('jata.png'), x: X(1666), y: X(53), w: X(83), h: X(66) } },
   { image: { path: A('majujohor.png'), x: X(1767), y: X(53), w: X(57), h: X(66) } },
 ];
-const footer = (txt, pg, numX = 1776) => [
+const footer = (txt) => [
   { text: { text: 'JAWAPAN SOALAN LISAN A203', options: { x: X(96), y: X(1010), w: X(800), h: X(40), fontFace: FONT, fontSize: F(20), bold: true, color: txt, charSpacing: 2.5, margin: 0, valign: 'middle' } } },
-  { text: { text: '/ ' + TOTAL, options: { x: X(numX), y: X(1010), w: X(60), h: X(40), fontFace: FONT, fontSize: F(26), bold: true, color: pg, margin: 0, valign: 'middle' } } },
 ];
-const slideNum = (color, numX = 1776) => ({ x: X(numX - 76), y: X(1010), w: X(70), h: X(40), fontFace: FONT, fontSize: F(26), bold: true, color, align: 'right', valign: 'middle', margin: 0 });
 const goldBar = { rect: { x: X(96), y: X(62), w: X(8), h: X(48), fill: { color: C.accent2 } } };
 const ph = (name, type, x, y, w, h, o = {}) => ({ placeholder: { options: { name, type, x: X(x), y: X(y), w: X(w), h: X(h), fontFace: FONT, margin: 0, ...o }, text: o.prompt || '' } });
 const eyebrowPh = ph('eyebrow', 'body', 120, 58, 1340, 56, { fontSize: F(30), bold: true, color: C.text2, charSpacing: 1.5, valign: 'middle', prompt: 'LABEL  Bahagian' });
@@ -54,7 +51,6 @@ const fotoPh = (name, x, y, w, h) => ph(name, 'image', x, y, w, h, { fontSize: 1
 const light = (extra) => ({
   background: { color: H.off },
   objects: [{ image: { path: A('pattern_corner_w.png'), x: 0, y: 0, w: 13.333, h: 7.5 } }, goldBar, ...logos, ...footer(H.mute, H.goldD), eyebrowPh, ...extra],
-  slideNumber: slideNum(H.navy),
 });
 
 // Photo slots — positions shared by layouts and slides
@@ -115,7 +111,6 @@ pres.defineSlideMaster({
     ph('title', 'title', 96, 236, 900, 224, { fontSize: F(80), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 1.0, prompt: 'Tajuk utama' }),
     fotoPh('foto_kulit', ...SLOT.cover),
   ],
-  slideNumber: slideNum('FFFFFF', 916),
 });
 pres.defineSlideMaster({ title: 'Tajuk Sahaja', ...light([titlePh()]) });
 pres.defineSlideMaster({ title: 'Tajuk dan Gambar Kanan', ...light([titlePh(), fotoPh('foto_kanan', ...SLOT.s3)]) });
@@ -142,7 +137,6 @@ pres.defineSlideMaster({
     ph('bank', 'body', 140, 856, 1000, 44, { fontSize: F(32), bold: true, color: C.background1, valign: 'middle', prompt: 'Taip nama bank' }),
     fotoPh('foto_qr', ...SLOT.qr),
   ],
-  slideNumber: slideNum('FFFFFF', 1176),
 });
 
 // ---------- helpers ----------
