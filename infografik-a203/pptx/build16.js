@@ -298,23 +298,14 @@ pres.addSection({ title: 'Garis Panduan' });
     const sep = i === 2 ? [bd(H.navy, 2), NONE, bd(), NONE] : [NONE, NONE, bd(), NONE];
     data.push([
       cell(ng, { bold: true, color: H.navy, fontSize: F(27), border: sep, fill: { color: 'FFFFFF' } }),
-      cell(kos, { bold: true, color: hi ? TINT.brown : H.royal, fontSize: F(27), fill: { color: hi ? H.goldT : TINT.blueT }, valign: 'top', margin: [12, 12, 0, 16], border: sep }),
+      cell(kos, { bold: true, color: hi ? TINT.brown : H.royal, fontSize: F(27), fill: { color: hi ? H.goldT : TINT.blueT }, valign: 'middle', border: sep }),
       cell(fed, { bold: true, color: H.navy, fontSize: F(56), align: 'center', border: sep, fill: { color: 'FFFFFF' } }),
       cell(kar === '-' ? '–' : kar, { bold: true, color: kar === '-' ? TINT.dash : H.goldD, fontSize: F(56), align: 'center', border: sep, fill: { color: 'FFFFFF' } }),
     ]);
   });
   s.addTable(data, { x: X(96), y: X(y0), w: X(1060), colW: colW.map(X), rowH: [hdrH, rowPx, rowPx, rowPx, rowPx].map(X), fontFace: FONT, fontSize: F(27), color: H.ink, margin: [3, 12, 3, 16], objectName: 'Jadual nisbah naik taraf' });
-  rows.forEach((r, i) => {
-    const bx = 96 + colW[0] + 16, bw = colW[1] - 32, by = y0 + hdrH + i * rowPx + 74;
-    rect(s, bx, by, bw * r[4], 14, C.accent1, 'Bar Persekutuan ' + (i + 1));
-    if (r[5]) rect(s, bx + bw * r[4], by, bw * r[5], 14, C.accent2, 'Bar Kariah ' + (i + 1));
-  });
   const ly = y0 + hdrH + 4 * rowPx + 22;
-  rect(s, 96, ly + 7, 20, 20, C.accent1, 'Petunjuk Persekutuan');
-  T(s, 'Kerajaan Persekutuan', { x: X(126), y: X(ly), w: X(300), h: X(34), fontSize: F(23), color: C.accent5, valign: 'middle' });
-  rect(s, 420, ly + 7, 20, 20, C.accent2, 'Petunjuk Kariah');
-  T(s, 'Kariah', { x: X(450), y: X(ly), w: X(150), h: X(34), fontSize: F(23), color: C.accent5, valign: 'middle' });
-  T(s, 'Sumber: Garis Panduan Bil. 1/2024', { x: X(716), y: X(ly), w: X(440), h: X(34), fontSize: F(23), color: C.accent5, align: 'right', valign: 'middle', objectName: 'Sumber' });
+  T(s, 'Sumber: Garis Panduan Bil. 1/2024', { x: X(96), y: X(ly), w: X(640), h: X(34), fontSize: F(23), color: C.accent5, valign: 'middle', objectName: 'Sumber' });
   foto(s, 'foto_kanan', SLOT.s3);
   rect(s, 1196, 714, 628, 226, C.text2, 'Kotak inisiatif negeri');
   s.addImage({ path: A('ic_shield.png'), x: X(1226), y: X(745), w: X(60), h: X(60), altText: 'Ikon perisai', objectName: 'Ikon perisai' });
