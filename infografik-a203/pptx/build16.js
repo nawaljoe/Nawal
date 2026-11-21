@@ -132,13 +132,8 @@ pres.defineSlideMaster({
     { image: { path: A('belanjawan.png'), x: X(116), y: X(84), w: X(128), h: X(64) } },
     { image: { path: A('jata.png'), x: X(262), y: X(84), w: X(81), h: X(64) } },
     { image: { path: A('majujohor.png'), x: X(361), y: X(84), w: X(56), h: X(64) } },
-    { rect: { x: X(1240), y: X(150), w: X(566), h: X(790), fill: { color: 'FFFFFF' } } },
     ...footer(TINT.footDark, H.gold, 1176),
     ph('title', 'title', 96, 234, 1060, 146, { fontSize: F(58), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 1.0, prompt: 'Tajuk' }),
-    ph('nama_akaun', 'body', 140, 640, 1000, 44, { fontSize: F(32), bold: true, color: C.background1, valign: 'middle', prompt: 'Taip nama akaun' }),
-    ph('no_akaun', 'body', 140, 744, 1000, 52, { fontSize: F(44), bold: true, color: C.accent2, valign: 'middle', charSpacing: 2, prompt: 'Taip nombor akaun' }),
-    ph('bank', 'body', 140, 856, 1000, 44, { fontSize: F(32), bold: true, color: C.background1, valign: 'middle', prompt: 'Taip nama bank' }),
-    fotoPh('foto_qr', ...SLOT.qr),
   ],
 });
 
@@ -567,7 +562,7 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   s.addNotes('2. Penyelarasan Peruntukan Melalui Agensi Kerajaan Negeri. Selain peruntukan Kerajaan Persekutuan, Kerajaan Negeri turut mengoptimumkan sumber kewangan melalui kerjasama beberapa agensi, antaranya Majlis Agama Islam Negeri Johor (MAINJ), Pejabat YAB Menteri Besar Johor, Jabatan Agama Islam Negeri Johor (JAINJ) serta Tabung Pembangunan Masjid dan Amal Jariah Johor. Semua permohonan akan dinilai berdasarkan keperluan dan keutamaan sebelum penyelarasan peruntukan dibuat bagi memastikan pengagihan dapat dilaksanakan secara teratur serta mengelakkan pertindihan pembiayaan bagi masjid dan surau yang sama.\n\n3. Pengurusan Kutipan Khairat dan Sumbangan Orang Ramai. Kerajaan Negeri turut membenarkan pengumpulan dana melalui sumbangan orang ramai bagi tujuan pembinaan dan naik taraf masjid serta surau, tertakluk kepada peraturan dan garis panduan yang berkuat kuasa. MAINJ, berdasarkan Seksyen 106 Enakmen Pentadbiran Agama Islam (Negeri Johor) 2003, mempunyai kuasa untuk mengawal selia kutipan khairat di Negeri Johor. Sebanyak 27 permohonan kebenaran kutipan khairat bagi tujuan baik pulih, bina baharu dan bina semula masjid dan surau telah diluluskan bagi tempoh tahun 2025 hingga September 2026. Semua permohonan kutipan hendaklah mematuhi Garis Panduan Permohonan Pungutan Khairat (Negeri Johor) 2020 bagi memastikan kutipan dilaksanakan secara teratur dan tujuan sumbangan dapat dipelihara.\n\nKerajaan Negeri akan terus berusaha meringankan beban pihak kariah dan memastikan institusi masjid serta surau terus dipelihara dan diperkasa di Negeri Johor.');
 }
 
-// ================= 10 — SUMBANGAN (QR & AKAUN) =================
+// ================= 12 — SUMBANGAN (KOD QR) =================
 {
   const s = pres.addSlide({ masterName: 'Sumbangan QR', sectionTitle: 'Pencapaian & Inisiatif' });
   s.addShape(pres.shapes.LINE, { x: X(96), y: X(206), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
@@ -575,25 +570,22 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   s.addText([{ text: 'MARILAH KITA', options: { breakLine: true } }, { text: 'BERSAMA-SAMA MENYUMBANG', options: { color: C.accent2 } }], { placeholder: 'title' });
   s.addText([{ text: 'Menyumbang ke dalam ' }, { text: 'Tabung Pembangunan Masjid dan Amal Jariah Johor', options: { bold: true, color: C.accent2 } }, { text: ' demi memastikan masjid terus terpelihara sebagai pusat ibadah, ilmu dan pembangunan ummah.' }],
     { isTextBox: true, x: X(96), y: X(406), w: X(1060), h: X(140), fontFace: FONT, fontSize: F(29), color: 'E8EDF5', margin: 0, valign: 'top', lineSpacingMultiple: 1.08, objectName: 'Seruan menyumbang' });
-  // account template
-  rect(s, 96, 574, 1060, 380, 'FFFFFF', 'Kotak maklumat akaun', { fill: { color: 'FFFFFF', transparency: 92 } });
-  rect(s, 96, 574, 6, 380, C.accent2, 'Penanda maklumat akaun');
-  const row = (y, label) => {
-    T(s, label, { x: X(140), y: X(y), w: X(400), h: X(28), fontSize: F(19), bold: true, color: C.accent2, charSpacing: 2.5, valign: 'middle', objectName: 'Label ' + label });
-  };
-  row(606, 'NAMA AKAUN'); row(710, 'NO. AKAUN'); row(822, 'BANK');
-  for (const y of [688, 800, 904]) s.addShape(pres.shapes.LINE, { x: X(140), y: X(y), w: X(980), h: 0, line: { color: 'FFFFFF', width: 0.75, dashType: 'dash', transparency: 60 } });
-  s.addText('', { placeholder: 'nama_akaun' });
-  s.addText('', { placeholder: 'no_akaun' });
-  s.addText('', { placeholder: 'bank' });
-  // QR panel
-  rect(s, 1288, 196, 470, 470, 'EFEFF2', 'Latar kod QR');
-  s.addImage({ path: A('ic_qr.png'), x: X(1475), y: X(383), w: X(96), h: X(96), altText: 'Ikon ruang kod QR', objectName: 'Ikon ruang kod QR' });
-  s.addText('', { placeholder: 'foto_qr' });
-  rect(s, 1288, 700, 470, 6, C.accent2, 'Pemisah QR');
-  T(s, 'IMBAS UNTUK MENYUMBANG', { x: X(1264), y: X(728), w: X(518), h: X(48), fontSize: F(34), bold: true, color: C.text2, align: 'center', valign: 'middle', objectName: 'Label imbas' });
-  T(s, 'Sumbangan merupakan amal jariah yang manfaatnya dinikmati masyarakat dan generasi akan datang.', { x: X(1288), y: X(790), w: X(470), h: X(120), fontSize: F(23), color: C.accent5, align: 'center', valign: 'top', objectName: 'Keterangan amal jariah' });
-  s.addNotes('Templat sumbangan: klik ikon dalam kotak putih untuk masukkan imej kod QR, dan taip nama akaun, nombor akaun serta nama bank pada ruang yang disediakan. Seruan berdasarkan penutup jawapan A203.');
+  // what a contribution supports (from the closing of the reply)
+  [
+    ['01', 'Pemugaran, pemuliharaan dan pembangunan masjid', 'Serta penyelenggaraan masjid-masjid di seluruh Negeri Johor'],
+    ['02', 'Memperkasa kerja-kerja amal Islamiah', 'Serta perkara-perkara lain yang berkaitan'],
+    ['03', 'Setiap sumbangan ialah amal jariah', 'Manfaatnya dinikmati masyarakat dan generasi akan datang'],
+  ].forEach(([n, t, sub], i) => {
+    const y = 556 + i * 118;
+    s.addShape(pres.shapes.LINE, { x: X(96), y: X(y), w: X(1000), h: 0, line: { color: H.gold, width: 0.75, transparency: 50 }, objectName: 'Pemisah point ' + n });
+    T(s, n, { x: X(96), y: X(y + 18), w: X(90), h: X(70), fontSize: F(48), bold: true, color: C.accent2, objectName: 'Nombor point ' + n });
+    T(s, t, { x: X(206), y: X(y + 16), w: X(890), h: X(44), fontSize: F(32), bold: true, color: C.background1, valign: 'middle', objectName: 'Point ' + n });
+    T(s, sub, { x: X(206), y: X(y + 62), w: X(890), h: X(36), fontSize: F(23), color: TINT.onNavy, valign: 'middle', objectName: 'Keterangan point ' + n });
+  });
+  T(s, 'IMBAS KOD QR UNTUK MENYUMBANG  →', { x: X(96), y: X(924), w: X(1000), h: X(40), fontSize: F(26), bold: true, color: C.accent2, charSpacing: 3, valign: 'middle', objectName: 'Label imbas' });
+  // DuitNow QR poster (901 x 1280)
+  s.addImage({ path: A('qr_duitnow.jpg'), x: X(1205), y: X(100), w: X(619), h: X(879), altText: 'Kod QR DuitNow Tabung Pembangunan Masjid Johor', objectName: 'Kod QR DuitNow' });
+  s.addNotes('Slaid sumbangan: imbas kod QR DuitNow (Malaysia National QR) Tabung Pembangunan Masjid Johor, rakan peniaga Bank Rakyat. Seruan dan tiga point diambil daripada penutup jawapan A203. Untuk tukar kod QR: klik kanan gambar > Change Picture.');
 }
 
 // pptxgenjs 4.0.1 drops type="pic" on image placeholders (its lookup checks the mapped value as a key).
