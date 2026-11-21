@@ -116,6 +116,7 @@ pres.defineSlideMaster({ title: 'Tajuk Sahaja', ...light([titlePh()]) });
 pres.defineSlideMaster({ title: 'Tajuk dan Gambar Kanan', ...light([titlePh(), fotoPh('foto_kanan', ...SLOT.s3)]) });
 pres.defineSlideMaster({ title: 'Dua Lajur Gambar Kiri', ...light([titlePh({ x: 96, y: 306, w: 620, h: 130, fs: F(33) }), fotoPh('foto_kiri', ...SLOT.side)]) });
 pres.defineSlideMaster({ title: 'Statistik Gambar Kanan', ...light([titlePh({ x: 96, y: 336, w: 1000, h: 54, fs: F(32) }), fotoPh('foto_atas', ...SLOT.s6)]) });
+pres.defineSlideMaster({ title: 'Pendahuluan Dua Panel', ...light([]) });
 pres.defineSlideMaster({
   title: 'Inisiatif 3 Kad',
   ...light([titlePh(), ...SLOT.card.map(([x, y, w, h], i) => fotoPh('foto_kad_' + (i + 1), x, y, w, h))]),
@@ -201,6 +202,41 @@ pres.addSection({ title: 'Pembukaan' });
   s.addShape(pres.shapes.OVAL, { x: X(1432), y: X(148), w: X(346), h: X(346), fill: { color: 'FFFFFF' }, line: { color: REF.indigo, width: 3.5 }, objectName: 'Bingkai bulat potret' });
   s.addImage({ path: A('potret_ashari_bulat.png'), x: X(1450), y: X(166), w: X(310), h: X(310), rounding: true, altText: 'Potret YB Dato\' Ashari bin Md. Sarip', objectName: 'Potret YB Dato Ashari' });
   s.addNotes('Soalan A203 daripada YB Dato\' Ashari bin Md. Sarip (Maharani). Untuk tukar potret: klik kanan gambar > Change Picture.');
+}
+
+// ================= 3 — PENDAHULUAN JAWAPAN =================
+// '**x**' marks highlighted words inside the verbatim text of the reply
+const rich = (text, base, hi) => text.split('**').map((t, i) => ({ text: t, options: i % 2 ? { ...base, ...hi } : base }));
+{
+  const s = pres.addSlide({ masterName: 'Pendahuluan Dua Panel', sectionTitle: 'Pembukaan' });
+  eyebrow(s, 'JAWAPAN', 'Pendahuluan');
+  // left panel: statement of commitment
+  rect(s, 96, 168, 760, 796, C.text2, 'Panel komitmen');
+  s.addImage({ path: A('mosque_small.png'), x: X(588), y: X(752), w: X(250), h: X(197), altText: 'Siluet masjid', objectName: 'Siluet masjid' });
+  T(s, 'KOMITMEN KERAJAAN NEGERI', { x: X(140), y: X(222), w: X(640), h: X(36), fontSize: F(22), bold: true, color: C.accent2, charSpacing: 3, valign: 'middle', objectName: 'Label komitmen' });
+  s.addText(rich('Kerajaan Negeri Johor **sentiasa komited** dalam memastikan institusi **masjid dan surau terus diperkasa**, bukan sahaja dari aspek pengimarahan dan pengurusan, malah meliputi **pembangunan infrastruktur** serta penyediaan **kemudahan yang selesa dan kondusif** untuk kegunaan ahli kariah.',
+    { color: C.background1 }, { bold: true, color: C.accent2 }),
+    { isTextBox: true, x: X(140), y: X(292), w: X(672), h: X(470), fontFace: FONT, fontSize: F(36), margin: 0, valign: 'top', lineSpacingMultiple: 1.12, objectName: 'Ayat komitmen' });
+  // right: where the 10% / 20% come from
+  T(s, 'UNTUK MAKLUMAN YB MAHARANI', { x: X(896), y: X(222), w: X(900), h: X(36), fontSize: F(22), bold: true, color: C.accent3, charSpacing: 3, valign: 'middle', objectName: 'Label makluman' });
+  s.addText(rich('Untuk makluman Yang Berhormat Maharani, keperluan komitmen kewangan sebanyak **10%** bagi pembinaan baharu dan **20%** bagi kerja naik taraf atau baik pulih adalah berdasarkan Garis Panduan Permohonan Peruntukan Kerajaan Persekutuan bagi Projek Bina Baharu, Naik Taraf serta Baik Pulih Masjid dan Surau di Seluruh Negara **Bil. 1/2024** yang dikeluarkan oleh Jabatan Perdana Menteri pada **1 Januari 2024**. Garis Panduan ini dikeluarkan selaras dengan keputusan Mesyuarat yang dipengerusikan oleh YAB Perdana Menteri bersama Menteri Besar dan Ketua Menteri ke-139 pada **28 Jun 2022**.',
+    { color: C.text1 }, { bold: true, color: C.text2 }),
+    { isTextBox: true, x: X(896), y: X(276), w: X(928), h: X(390), fontFace: FONT, fontSize: F(27), margin: 0, valign: 'top', lineSpacingMultiple: 1.1, objectName: 'Ayat makluman' });
+  // timeline built only from the dates and figures in the text
+  T(s, 'DARIPADA KEPUTUSAN KEPADA KETETAPAN', { x: X(896), y: X(690), w: X(928), h: X(30), fontSize: F(18), bold: true, color: C.accent5, charSpacing: 2.5, valign: 'middle', objectName: 'Label garis masa' });
+  s.addShape(pres.shapes.LINE, { x: X(910), y: X(752), w: X(900), h: 0, line: { color: H.gold, width: 2 }, objectName: 'Garis masa' });
+  const tl = [
+    ['28 Jun 2022', 'Keputusan Mesyuarat YAB Perdana Menteri bersama Menteri Besar dan Ketua Menteri ke-139', false],
+    ['1 Jan 2024', 'Garis Panduan Bil. 1/2024 dikeluarkan oleh Jabatan Perdana Menteri', false],
+    ['10% · 20%', 'Komitmen kariah bagi pembinaan baharu dan naik taraf / baik pulih', true],
+  ];
+  tl.forEach(([d, t, k], i) => {
+    const x = 896 + i * 316;
+    s.addShape(pres.shapes.OVAL, { x: X(x + 4), y: X(738), w: X(28), h: X(28), fill: { color: k ? H.gold : H.navy }, line: { color: 'FFFFFF', width: 2 }, objectName: 'Titik ' + d });
+    T(s, d, { x: X(x), y: X(784), w: X(300), h: X(44), fontSize: F(32), bold: true, color: k ? C.accent3 : C.text2, valign: 'middle', objectName: 'Tarikh ' + d });
+    T(s, t, { x: X(x), y: X(832), w: X(290), h: X(110), fontSize: F(21), color: C.accent5, objectName: 'Keterangan ' + d });
+  });
+  s.addNotes('Pendahuluan jawapan A203: komitmen Kerajaan Negeri terhadap masjid dan surau, dan asas ketetapan 10% / 20% iaitu Garis Panduan Bil. 1/2024 (JPM, 1 Januari 2024), selaras keputusan Mesyuarat bersama Menteri Besar dan Ketua Menteri ke-139 pada 28 Jun 2022.');
 }
 
 // ================= 3 — ISU UTAMA =================
