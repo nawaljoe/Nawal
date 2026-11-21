@@ -204,10 +204,9 @@ pres.addSection({ title: 'Pembukaan' });
   s.addText("YB DATO' ASHARI BIN MD. SARIP", { placeholder: 'nama' });
   s.addText('(MAHARANI)', { placeholder: 'dun' });
   s.addText('APAKAH PERNAH DIBINCANGKAN CARA ATAU LANGKAH BAGI MEMUDAHKAN PERUNTUKAN MASJID DAN SURAU DIBERI TANPA DIKENAKAN CAJ SEBANYAK 10% BAGI PEMBINAAN BAHARU DAN 20% BAGI KERJA NAIK TARAF / BAIK PULIH?', { placeholder: 'soalan' });
-  s.addShape(pres.shapes.OVAL, { x: X(1460), y: X(176), w: X(290), h: X(290), fill: { color: 'E4E4EA' }, line: { color: 'FFFFFF', width: 3 }, objectName: 'Latar potret' });
-  s.addImage({ path: A('ic_photo.png'), x: X(1573), y: X(289), w: X(64), h: X(64), altText: 'Ikon ruang potret', objectName: 'Ikon ruang potret' });
-  s.addText('', { placeholder: 'foto_potret' });
-  s.addNotes('Soalan A203 daripada YB Dato\' Ashari bin Md. Sarip (Maharani). Ruang bulat: klik ikon untuk masukkan potret YB.');
+  s.addShape(pres.shapes.OVAL, { x: X(1452), y: X(168), w: X(306), h: X(306), fill: { color: 'FFFFFF' }, line: { type: 'none' }, objectName: 'Bingkai potret' });
+  s.addImage({ path: A('potret_ashari.jpg'), x: X(1460), y: X(176), w: X(290), h: X(290), rounding: true, altText: 'Potret YB Dato\' Ashari bin Md. Sarip', objectName: 'Potret YB Dato Ashari' });
+  s.addNotes('Soalan A203 daripada YB Dato\' Ashari bin Md. Sarip (Maharani). Untuk tukar potret: klik kanan gambar > Change Picture.');
 }
 
 // ================= 3 — ISU UTAMA =================
