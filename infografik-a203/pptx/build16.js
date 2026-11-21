@@ -12,7 +12,7 @@ const A = (f) => path.join(__dirname, 'assets', f);
 const X = (px) => +(px / 144).toFixed(4);
 const F = (px) => +(px * 0.5).toFixed(1);
 const FONT = 'Arial';
-const TOTAL = '08';
+const TOTAL = '09';
 
 const THEME = {
   name: 'Johor Navy Emas',
@@ -25,6 +25,7 @@ const THEME = {
   },
 };
 const H = { navy: '071D3B', royal: '123F70', gold: 'C8A45D', goldD: '94712C', goldT: 'F3E7CB', off: 'F5F3EE', line: 'DCD6C8', mute: '5B6474', ink: '1C2533' };
+const REF = { indigo: '20237A', red: 'D71E26', ink: '1A1A2E' }; // colours of the Soal Jawab reference deck
 const TINT = { zebra: 'F8F6F1', blueT: 'E4ECF6', brown: '6E5220', onNavy: 'B9C4D6', footDark: '8D9BB3', chipBlue: 'E9EEF5', dash: 'A3A9B3', pale: 'C9D3E3', slot: 'E8E4DA' };
 
 const pres = new pptxgen();
@@ -50,7 +51,6 @@ const ph = (name, type, x, y, w, h, o = {}) => ({ placeholder: { options: { name
 const eyebrowPh = ph('eyebrow', 'body', 120, 58, 1340, 56, { fontSize: F(30), bold: true, color: C.text2, charSpacing: 1.5, valign: 'middle', prompt: 'LABEL  Bahagian' });
 const titlePh = (o = {}) => ph('title', 'title', o.x || 96, o.y || 140, o.w || 1728, o.h || 140, { fontSize: o.fs || 30, bold: true, color: C.text2, align: 'left', valign: 'top', lineSpacingMultiple: 0.95, prompt: 'Tajuk slaid' });
 const fotoPh = (name, x, y, w, h) => ph(name, 'image', x, y, w, h, { fontSize: 12, color: C.accent5, align: 'center', valign: 'middle', prompt: 'Klik ikon untuk masukkan gambar' });
-const capPh = (name, x, y, w, h) => ph(name, 'body', x, y, w, h, { fontSize: F(26), bold: true, color: C.text2, valign: 'top', prompt: 'Nama masjid / surau · Daerah' });
 const light = (extra) => ({
   background: { color: H.off },
   objects: [{ image: { path: A('pattern_corner_w.png'), x: 0, y: 0, w: 13.333, h: 7.5 } }, goldBar, ...logos, ...footer(H.mute, H.goldD), eyebrowPh, ...extra],
@@ -63,12 +63,46 @@ const SLOT = {
   s3: [1196, 330, 628, 360],
   side: [96, 520, 620, 448],
   s6: [1136, 140, 688, 400],
-  gal: [0, 1, 2, 3, 4, 5].map((i) => [96 + (i % 3) * 587, 250 + Math.floor(i / 3) * 372, 554, 300]),
   card: [0, 1, 2].map((i) => [96 + i * 587, 290, 554, 170]),
 };
 
+// ---------- Soal Jawab reference style: official cover and question slide ----------
+const refLogos = (y, h, gap) => {
+  const ws = [263 / 132, 158 / 125, 106 / 122].map((r) => Math.round(r * h));
+  let x = Math.round((1920 - ws.reduce((a, b) => a + b, 0) - 2 * gap) / 2);
+  return ['belanjawan.png', 'jata.png', 'majujohor.png'].map((f, i) => { const o = { image: { path: A(f), x: X(x), y: X(y), w: X(ws[i]), h: X(h) } }; x += ws[i] + gap; return o; });
+};
+const refBar = (y) => [
+  { rect: { x: X(816), y: X(y), w: X(144), h: X(16), fill: { color: REF.red } } },
+  { rect: { x: X(960), y: X(y), w: X(144), h: X(16), fill: { color: REF.indigo } } },
+];
 pres.defineSlideMaster({
-  title: 'Kulit Gelap',
+  title: 'Kulit Rasmi',
+  background: { color: 'FFFFFF' },
+  objects: [
+    { image: { path: A('bg_dewan.jpg'), x: 0, y: 0, w: 13.333, h: 7.5 } },
+    ...refLogos(112, 110, 70), ...refBar(340), ...refBar(810),
+    ph('title', 'title', 120, 372, 1680, 420, { fontSize: F(78), bold: true, color: REF.indigo, align: 'center', valign: 'middle', lineSpacingMultiple: 1.0, prompt: 'Tajuk mesyuarat' }),
+    ph('nama', 'body', 120, 862, 1680, 56, { fontFace: 'Times New Roman', fontSize: F(42), bold: true, color: REF.ink, align: 'center', valign: 'middle', prompt: 'Nama YB' }),
+    ph('jawatan', 'body', 120, 922, 1680, 52, { fontFace: 'Times New Roman', fontSize: F(36), bold: true, color: REF.indigo, align: 'center', valign: 'middle', prompt: 'Jawatan' }),
+  ],
+});
+pres.defineSlideMaster({
+  title: 'Soalan Lisan',
+  background: { color: 'FFFFFF' },
+  objects: [
+    { image: { path: A('bg_dewan_lembut.jpg'), x: 0, y: 0, w: 13.333, h: 7.5 } },
+    ...refLogos(52, 84, 48),
+    { rect: { x: X(150), y: X(200), w: X(12), h: X(670), fill: { color: REF.red } } },
+    ph('title', 'title', 206, 196, 1180, 130, { fontSize: F(112), bold: true, color: REF.indigo, charSpacing: 2, align: 'left', valign: 'middle', prompt: 'SOALAN' }),
+    ph('nama', 'body', 210, 340, 1180, 62, { fontFace: 'Times New Roman', fontSize: F(50), bold: true, color: REF.ink, valign: 'middle', prompt: 'NAMA YB' }),
+    ph('dun', 'body', 210, 430, 1180, 60, { fontFace: 'Times New Roman', fontSize: F(48), bold: true, italic: true, color: REF.ink, valign: 'middle', prompt: '(DUN)' }),
+    ph('soalan', 'body', 210, 524, 1520, 350, { fontSize: F(50), bold: true, color: REF.indigo, valign: 'top', lineSpacingMultiple: 1.12, prompt: 'TEKS SOALAN' }),
+    fotoPh('foto_potret', 1460, 176, 290, 290),
+  ],
+});
+pres.defineSlideMaster({
+  title: 'Isu Utama Gelap',
   background: { color: H.navy },
   objects: [
     { image: { path: A('pattern_cover_w.png'), x: 0, y: 0, w: X(1056), h: 7.5 } },
@@ -86,7 +120,6 @@ pres.defineSlideMaster({ title: 'Tajuk Sahaja', ...light([titlePh()]) });
 pres.defineSlideMaster({ title: 'Tajuk dan Gambar Kanan', ...light([titlePh(), fotoPh('foto_kanan', ...SLOT.s3)]) });
 pres.defineSlideMaster({ title: 'Dua Lajur Gambar Kiri', ...light([titlePh({ x: 96, y: 306, w: 620, h: 130, fs: F(33) }), fotoPh('foto_kiri', ...SLOT.side)]) });
 pres.defineSlideMaster({ title: 'Statistik Gambar Kanan', ...light([titlePh({ x: 96, y: 336, w: 1000, h: 54, fs: F(32) }), fotoPh('foto_atas', ...SLOT.s6)]) });
-pres.defineSlideMaster({ title: 'Galeri 6 Gambar', ...light([titlePh({ h: 80 }), ...SLOT.gal.flatMap(([x, y, w, h], i) => [fotoPh('foto_galeri_' + (i + 1), x, y, w, h), capPh('kapsyen_' + (i + 1), x, y + h + 8, w, 48)])]) });
 pres.defineSlideMaster({
   title: 'Penutup 3 Kad',
   background: { color: H.off },
@@ -143,10 +176,33 @@ function donationTable(slide, x, y, w, nameHdr, rows, total, rowH, [dW, aW] = [1
   slide.addTable(data, { x: X(x), y: X(y), w: X(w), colW: [X(80), X(nameW), X(dW), X(aW)], rowH: rowH.map(X), fontFace: FONT, fontSize: F(fs), color: H.ink, margin: [3, 10, 3, 10], objectName: 'Jadual ' + nameHdr });
 }
 
-// ================= 1 — KULIT =================
+// ================= 1 — KULIT RASMI =================
+pres.addSection({ title: 'Pembukaan' });
+{
+  const s = pres.addSlide({ masterName: 'Kulit Rasmi', sectionTitle: 'Pembukaan' });
+  s.addText([{ text: 'MESYUARAT KEDUA', options: { breakLine: true } }, { text: '(BELANJAWAN 2027)', options: { breakLine: true } }, { text: 'BAGI PENGGAL PERSIDANGAN PERTAMA', options: { breakLine: true } }, { text: 'DEWAN NEGERI JOHOR KE-16' }], { placeholder: 'title' });
+  s.addText('YB TUAN HAJI MOHD FARED BIN HAJI MOHD KHALID', { placeholder: 'nama' });
+  s.addText('PENGERUSI JAWATANKUASA HAL EHWAL AGAMA ISLAM NEGERI JOHOR', { placeholder: 'jawatan' });
+  s.addNotes('Mesyuarat Kedua (Belanjawan 2027) bagi Penggal Persidangan Pertama Dewan Negeri Johor Ke-16. Jawapan Soalan Lisan A203 oleh Pengerusi Jawatankuasa Hal Ehwal Agama Islam Negeri Johor.');
+}
+
+// ================= 2 — SOALAN =================
+{
+  const s = pres.addSlide({ masterName: 'Soalan Lisan', sectionTitle: 'Pembukaan' });
+  s.addText('SOALAN A203', { placeholder: 'title' });
+  s.addText("YB DATO' ASHARI BIN MD. SARIP", { placeholder: 'nama' });
+  s.addText('(MAHARANI)', { placeholder: 'dun' });
+  s.addText('APAKAH PERNAH DIBINCANGKAN CARA ATAU LANGKAH BAGI MEMUDAHKAN PERUNTUKAN MASJID DAN SURAU DIBERI TANPA DIKENAKAN CAJ SEBANYAK 10% BAGI PEMBINAAN BAHARU DAN 20% BAGI KERJA NAIK TARAF / BAIK PULIH?', { placeholder: 'soalan' });
+  s.addShape(pres.shapes.OVAL, { x: X(1460), y: X(176), w: X(290), h: X(290), fill: { color: 'E4E4EA' }, line: { color: 'FFFFFF', width: 3 }, objectName: 'Latar potret' });
+  s.addImage({ path: A('ic_photo.png'), x: X(1573), y: X(289), w: X(64), h: X(64), altText: 'Ikon ruang potret', objectName: 'Ikon ruang potret' });
+  s.addText('', { placeholder: 'foto_potret' });
+  s.addNotes('Soalan A203 daripada YB Dato\' Ashari bin Md. Sarip (Maharani). Ruang bulat: klik ikon untuk masukkan potret YB.');
+}
+
+// ================= 3 — ISU UTAMA =================
 pres.addSection({ title: 'Isu Utama' });
 {
-  const s = pres.addSlide({ masterName: 'Kulit Gelap', sectionTitle: 'Isu Utama' });
+  const s = pres.addSlide({ masterName: 'Isu Utama Gelap', sectionTitle: 'Isu Utama' });
   foto(s, 'foto_kulit', SLOT.cover, true);
   s.addShape(pres.shapes.LINE, { x: X(1056), y: 0, w: 0, h: 7.5, line: { color: H.gold, width: 2 } });
   s.addShape(pres.shapes.LINE, { x: X(96), y: X(232), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
@@ -168,7 +224,7 @@ pres.addSection({ title: 'Isu Utama' });
   s.addNotes('Isu: komitmen kewangan kariah 10% (bina baharu) dan 20% (naik taraf/baik pulih). Ia bukan caj Kerajaan Negeri tetapi ditetapkan Garis Panduan Kerajaan Persekutuan Bil. 1/2024. Ruang kanan: masukkan gambar masjid/surau.');
 }
 
-// ================= 2 — GARIS PANDUAN =================
+// ================= 4 — GARIS PANDUAN =================
 pres.addSection({ title: 'Garis Panduan' });
 {
   const s = pres.addSlide({ masterName: 'Tajuk Sahaja', sectionTitle: 'Garis Panduan' });
@@ -213,7 +269,7 @@ pres.addSection({ title: 'Garis Panduan' });
   s.addNotes('Garis Panduan Bil. 1/2024 (JPM, 1 Januari 2024), selaras keputusan Mesyuarat Perdana Menteri bersama Menteri Besar dan Ketua Menteri ke-139 pada 28 Jun 2022. Kerajaan Negeri perlu sediakan komitmen 30% sebelum permohonan dikemukakan.');
 }
 
-// ================= 3 — NAIK TARAF =================
+// ================= 5 — NAIK TARAF =================
 {
   const s = pres.addSlide({ masterName: 'Tajuk dan Gambar Kanan', sectionTitle: 'Garis Panduan' });
   eyebrow(s, 'NISBAH PEMBIAYAAN', 'Naik Taraf');
@@ -258,7 +314,7 @@ pres.addSection({ title: 'Garis Panduan' });
   s.addNotes('Kos <= RM100,000 dibiayai penuh Kerajaan Persekutuan. Semenanjung > RM100,000: 80% Persekutuan, 20% kariah. Sabah, Sarawak dan W.P. Labuan > RM200,000: 90% / 10%.');
 }
 
-// ================= 4 — TPMJ 1/2 =================
+// ================= 6 — TPMJ 1/2 =================
 pres.addSection({ title: 'Sumbangan TPMJ' });
 const sideHead = (s, big, bigColor, unit, title, sub) => {
   s.addText(unit ? [{ text: big }, { text: ' ' + unit, options: { fontSize: F(56), color: C.accent3 } }] : big,
@@ -289,7 +345,7 @@ const sideHead = (s, big, bigColor, unit, title, sub) => {
   s.addNotes('TPMJ memperuntukkan RM6.3 juta bagi komitmen pembinaan baharu masjid dan surau 2025-2026. Jadual 1: 3 surau kritikal (RM739,800). Jadual 2: 6 masjid tahun 2025 (RM3,600,000).');
 }
 
-// ================= 5 — TPMJ 2/2 =================
+// ================= 7 — TPMJ 2/2 =================
 {
   const s = pres.addSlide({ masterName: 'Dua Lajur Gambar Kiri', sectionTitle: 'Sumbangan TPMJ' });
   eyebrow(s, 'SUMBANGAN TPMJ', '2025 & 2026 · 2/2');
@@ -320,7 +376,7 @@ const sideHead = (s, big, bigColor, unit, title, sub) => {
   s.addNotes('Jadual 3: 7 projek masjid/surau (RM2,000,000). Rumusan: 16 projek, RM6,339,800. Nota: jumlah Surau Kritikal RM739,800 berdasarkan pecahan terperinci (dokumen asal mencatat RM739,000 dalam rumusan).');
 }
 
-// ================= 6 — PENCAPAIAN =================
+// ================= 8 — PENCAPAIAN =================
 pres.addSection({ title: 'Pencapaian & Inisiatif' });
 {
   const s = pres.addSlide({ masterName: 'Statistik Gambar Kanan', sectionTitle: 'Pencapaian & Inisiatif' });
@@ -362,16 +418,7 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   s.addNotes('2022 hingga November 2026: RM145.9 juta untuk 2,019 projek/sumbangan. ICU JPM RM79.3 juta (1,031 projek), TPMJ RM20.8 juta (328), Pejabat YAB MB RM12.7 juta (471 sumbangan). DUN N15 Maharani 2024-2026: RM1,867,110 untuk 14 masjid dan surau; ICU JPM RM741,400 (~39.7%).');
 }
 
-// ================= 7 — GALERI =================
-{
-  const s = pres.addSlide({ masterName: 'Galeri 6 Gambar', sectionTitle: 'Pencapaian & Inisiatif' });
-  eyebrow(s, 'GALERI', 'Projek Masjid & Surau');
-  s.addText([{ text: 'GALERI PEMBANGUNAN ' }, { text: 'MASJID DAN SURAU', options: { color: C.accent3 } }], { placeholder: 'title' });
-  SLOT.gal.forEach((sl, i) => { foto(s, 'foto_galeri_' + (i + 1), sl); s.addText('', { placeholder: 'kapsyen_' + (i + 1) }); });
-  s.addNotes('Slaid galeri: masukkan gambar projek pada setiap ruang dan taip nama masjid/surau serta daerah pada kapsyen. Padam slaid ini jika tidak diperlukan.');
-}
-
-// ================= 8 — INISIATIF & PENUTUP =================
+// ================= 9 — INISIATIF & PENUTUP =================
 {
   const s = pres.addSlide({ masterName: 'Penutup 3 Kad', sectionTitle: 'Pencapaian & Inisiatif' });
   eyebrow(s, 'INISIATIF', 'Kerajaan Negeri');
@@ -422,7 +469,11 @@ async function fixPicPlaceholders(file) {
     if (!/^ppt\/(slides|slideLayouts)\/[^/]+\.xml$/.test(name)) continue;
     const xml = await zip.file(name).async('string');
     const out = xml.replace(/<p:ph\s+idx="(\d+)"\s+(hasCustomPrompt="1"\s*)?\/>/g, (m, idx, hp) => { n++; return `<p:ph type="pic" idx="${idx}"${hp ? ' hasCustomPrompt="1"' : ''}/>`; });
-    if (out !== xml) zip.file(name, out);
+    let out2 = out;
+    if (/name="Soalan Lisan"/.test(out) || (name.startsWith('ppt/slides/') && /SOALAN A203/.test(out))) {
+      out2 = out.replace(/(<p:ph type="pic"[^>]*\/>[\s\S]*?<a:prstGeom prst=")rect(")/, '$1ellipse$2');
+    }
+    if (out2 !== xml) zip.file(name, out2);
   }
   fs.writeFileSync(file, await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE' }));
   return n;
