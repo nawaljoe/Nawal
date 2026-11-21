@@ -13,6 +13,7 @@ const items = {
   pattern_band_w: [1920,310,`<div style="width:100%;height:100%;background-image:${TILE};background-size:96px;opacity:.08"></div>`],
   pattern_cover_w: [1056,1080,`<div style="width:100%;height:100%;background-image:${TILE};background-size:96px;opacity:.09;-webkit-mask-image:linear-gradient(160deg,#000 0%,transparent 60%)"></div>`],
   ic_photo: [64,64, ic('#9A9387','<rect x="6" y="10" width="46" height="38" rx="2"/><circle cx="19" cy="22" r="4"/><path d="M6 42l14-12 10 8 8-6 14 12"/>')],
+  ic_qr: [96,96, ic('#9A9387','<rect x="6" y="6" width="16" height="16"/><rect x="36" y="6" width="16" height="16"/><rect x="6" y="36" width="16" height="16"/><path d="M11 11h6v6h-6zM41 11h6v6h-6zM11 41h6v6h-6z"/><path d="M30 6v10M30 22v8h-8M36 30h4M46 30h6M30 36v6h6M42 36h10M36 46v6M44 44h8v8"/>')],
   ic_mosque: [56,56, ic('#071D3B','<path d="M8 50V30h40v20M14 30c0-9 6-14 14-18 8 4 14 9 14 18M28 12V5M4 50h48"/><path d="M24 50v-9a4 4 0 0 1 8 0v9"/>','0 0 56 56')],
   ic_shield: [64,64, `<svg viewBox="0 0 64 64" width="100%" height="100%" fill="none" stroke="#C8A45D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l20 8v15c0 13-8.5 23-20 29C20.5 52 12 42 12 29V14z"/><path d="M23 32l7 7 12-14"/></svg>`],
   ic_fund: [64,64, ic('#071D3B','<rect x="8" y="24" width="42" height="26"/><path d="M22 24v-3h14v3"/><circle cx="29" cy="11" r="7"/><path d="M29 8v6M8 34h42"/>')],

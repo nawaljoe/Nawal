@@ -12,7 +12,7 @@ const A = (f) => path.join(__dirname, 'assets', f);
 const X = (px) => +(px / 144).toFixed(4);
 const F = (px) => +(px * 0.5).toFixed(1);
 const FONT = 'Arial';
-const TOTAL = '09';
+const TOTAL = '10';
 
 const THEME = {
   name: 'Johor Navy Emas',
@@ -63,7 +63,8 @@ const SLOT = {
   s3: [1196, 330, 628, 360],
   side: [96, 520, 620, 448],
   s6: [1136, 140, 688, 400],
-  card: [0, 1, 2].map((i) => [96 + i * 587, 290, 554, 170]),
+  card: [0, 1, 2].map((i) => [96 + i * 587, 296, 554, 320]),
+  qr: [1288, 196, 470, 470],
 };
 
 // ---------- Soal Jawab reference style: official cover and question slide ----------
@@ -111,7 +112,7 @@ pres.defineSlideMaster({
     { image: { path: A('jata.png'), x: X(262), y: X(84), w: X(81), h: X(64) } },
     { image: { path: A('majujohor.png'), x: X(361), y: X(84), w: X(56), h: X(64) } },
     ...footer(TINT.footDark, H.gold, 916),
-    ph('title', 'title', 96, 262, 900, 200, { fontSize: F(88), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 0.95, prompt: 'Tajuk utama' }),
+    ph('title', 'title', 96, 236, 900, 224, { fontSize: F(80), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 1.0, prompt: 'Tajuk utama' }),
     fotoPh('foto_kulit', ...SLOT.cover),
   ],
   slideNumber: slideNum('FFFFFF', 916),
@@ -121,17 +122,27 @@ pres.defineSlideMaster({ title: 'Tajuk dan Gambar Kanan', ...light([titlePh(), f
 pres.defineSlideMaster({ title: 'Dua Lajur Gambar Kiri', ...light([titlePh({ x: 96, y: 306, w: 620, h: 130, fs: F(33) }), fotoPh('foto_kiri', ...SLOT.side)]) });
 pres.defineSlideMaster({ title: 'Statistik Gambar Kanan', ...light([titlePh({ x: 96, y: 336, w: 1000, h: 54, fs: F(32) }), fotoPh('foto_atas', ...SLOT.s6)]) });
 pres.defineSlideMaster({
-  title: 'Penutup 3 Kad',
-  background: { color: H.off },
+  title: 'Inisiatif 3 Kad',
+  ...light([titlePh(), ...SLOT.card.map(([x, y, w, h], i) => fotoPh('foto_kad_' + (i + 1), x, y, w, h))]),
+});
+pres.defineSlideMaster({
+  title: 'Sumbangan QR',
+  background: { color: H.navy },
   objects: [
-    { image: { path: A('pattern_corner_w.png'), x: 0, y: 0, w: 13.333, h: 7.5 } },
-    { rect: { x: 0, y: X(770), w: 13.333, h: X(310), fill: { color: H.navy } } },
-    { image: { path: A('pattern_band_w.png'), x: 0, y: X(770), w: 13.333, h: X(310) } },
-    { image: { path: A('mosque_small.png'), x: X(1610), y: X(812), w: X(214), h: X(169) } },
-    goldBar, ...logos, ...footer(TINT.footDark, H.gold), eyebrowPh, titlePh(),
-    ...SLOT.card.map(([x, y, w, h], i) => fotoPh('foto_kad_' + (i + 1), x, y, w, h)),
+    { image: { path: A('pattern_cover_w.png'), x: 0, y: 0, w: X(1056), h: 7.5 } },
+    { rect: { x: X(96), y: X(72), w: X(341), h: X(88), fill: { color: 'FFFFFF' } } },
+    { image: { path: A('belanjawan.png'), x: X(116), y: X(84), w: X(128), h: X(64) } },
+    { image: { path: A('jata.png'), x: X(262), y: X(84), w: X(81), h: X(64) } },
+    { image: { path: A('majujohor.png'), x: X(361), y: X(84), w: X(56), h: X(64) } },
+    { rect: { x: X(1240), y: X(150), w: X(566), h: X(790), fill: { color: 'FFFFFF' } } },
+    ...footer(TINT.footDark, H.gold, 1176),
+    ph('title', 'title', 96, 234, 1060, 146, { fontSize: F(58), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 1.0, prompt: 'Tajuk' }),
+    ph('nama_akaun', 'body', 140, 640, 1000, 44, { fontSize: F(32), bold: true, color: C.background1, valign: 'middle', prompt: 'Taip nama akaun' }),
+    ph('no_akaun', 'body', 140, 744, 1000, 52, { fontSize: F(44), bold: true, color: C.accent2, valign: 'middle', charSpacing: 2, prompt: 'Taip nombor akaun' }),
+    ph('bank', 'body', 140, 856, 1000, 44, { fontSize: F(32), bold: true, color: C.background1, valign: 'middle', prompt: 'Taip nama bank' }),
+    fotoPh('foto_qr', ...SLOT.qr),
   ],
-  slideNumber: slideNum('FFFFFF'),
+  slideNumber: slideNum('FFFFFF', 1176),
 });
 
 // ---------- helpers ----------
@@ -205,22 +216,22 @@ pres.addSection({ title: 'Isu Utama' });
   const s = pres.addSlide({ masterName: 'Isu Utama Gelap', sectionTitle: 'Isu Utama' });
   foto(s, 'foto_kulit', SLOT.cover, true);
   s.addShape(pres.shapes.LINE, { x: X(1056), y: 0, w: 0, h: 7.5, line: { color: H.gold, width: 2 } });
-  s.addShape(pres.shapes.LINE, { x: X(96), y: X(232), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
-  T(s, 'SOALAN LISAN A203  ·  DUN MAHARANI', { x: X(158), y: X(214), w: X(800), h: X(36), fontSize: F(24), bold: true, color: C.accent2, valign: 'middle', charSpacing: 4, objectName: 'Label soalan' });
+  s.addShape(pres.shapes.LINE, { x: X(96), y: X(206), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
+  T(s, 'SOALAN LISAN A203  ·  DUN MAHARANI', { x: X(158), y: X(188), w: X(800), h: X(36), fontSize: F(24), bold: true, color: C.accent2, valign: 'middle', charSpacing: 4, objectName: 'Label soalan' });
   s.addText([{ text: 'KOMITMEN KARIAH', options: { breakLine: true } }, { text: '10%', options: { color: C.accent2 } }, { text: ' DAN ' }, { text: '20%', options: { color: C.accent2 } }], { placeholder: 'title' });
-  T(s, 'Apa yang perlu kita fahami?', { x: X(96), y: X(464), w: X(880), h: X(50), fontSize: F(36), bold: true, color: TINT.pale, valign: 'middle', objectName: 'Subtajuk' });
+  T(s, 'Apa yang perlu kita fahami?', { x: X(96), y: X(476), w: X(880), h: X(50), fontSize: F(36), bold: true, color: TINT.pale, valign: 'middle', objectName: 'Subtajuk' });
   const big = (x, n, lbl, sub) => {
-    s.addText([{ text: n, options: { fontSize: F(150) } }, { text: '%', options: { fontSize: F(76), superscript: true } }], { isTextBox: true, x: X(x), y: X(540), w: X(420), h: X(160), fontFace: FONT, bold: true, color: C.accent2, valign: 'middle', margin: 0, objectName: 'Angka ' + n + '%' });
-    T(s, lbl, { x: X(x), y: X(706), w: X(420), h: X(40), fontSize: F(28), bold: true, color: C.background1, valign: 'middle', objectName: 'Label ' + n + '%' });
-    T(s, sub, { x: X(x), y: X(750), w: X(400), h: X(66), fontSize: F(24), color: TINT.onNavy, objectName: 'Keterangan ' + n + '%' });
+    s.addText([{ text: n, options: { fontSize: F(128) } }, { text: '%', options: { fontSize: F(64), superscript: true } }], { isTextBox: true, x: X(x), y: X(548), w: X(420), h: X(158), fontFace: FONT, bold: true, color: C.accent2, valign: 'middle', margin: 0, objectName: 'Angka ' + n + '%' });
+    T(s, lbl, { x: X(x), y: X(716), w: X(420), h: X(40), fontSize: F(28), bold: true, color: C.background1, valign: 'middle', objectName: 'Label ' + n + '%' });
+    T(s, sub, { x: X(x), y: X(760), w: X(400), h: X(66), fontSize: F(24), color: TINT.onNavy, objectName: 'Keterangan ' + n + '%' });
   };
   big(96, '10', 'PEMBINAAN BAHARU', 'Komitmen kariah berdasarkan ketetapan garis panduan dan lokaliti');
   big(556, '20', 'NAIK TARAF / BAIK PULIH', 'Di Semenanjung Malaysia bagi kos melebihi RM100,000');
-  s.addShape(pres.shapes.LINE, { x: X(528), y: X(560), w: 0, h: X(250), line: { color: H.gold, width: 1, transparency: 40 } });
-  rect(s, 96, 846, 880, 136, 'FFFFFF', 'Kotak penjelasan', { fill: { color: 'FFFFFF', transparency: 93 } });
-  rect(s, 96, 846, 6, 136, C.accent2, 'Penanda penjelasan');
+  s.addShape(pres.shapes.LINE, { x: X(528), y: X(566), w: 0, h: X(256), line: { color: H.gold, width: 1, transparency: 40 } });
+  rect(s, 96, 852, 880, 136, 'FFFFFF', 'Kotak penjelasan', { fill: { color: 'FFFFFF', transparency: 93 } });
+  rect(s, 96, 852, 6, 136, C.accent2, 'Penanda penjelasan');
   s.addText([{ text: 'Komitmen kewangan kariah ini ' }, { text: 'bukan caj yang dikenakan oleh Kerajaan Negeri', options: { bold: true, color: C.accent2 } }, { text: ', sebaliknya sebahagian daripada tanggungjawab pembiayaan berdasarkan garis panduan Kerajaan Persekutuan.' }],
-    { isTextBox: true, x: X(128), y: X(846), w: X(830), h: X(136), fontFace: FONT, fontSize: F(26), color: 'E8EDF5', valign: 'middle', margin: 0, lineSpacingMultiple: 1.05, objectName: 'Penjelasan bukan caj' });
+    { isTextBox: true, x: X(128), y: X(852), w: X(830), h: X(136), fontFace: FONT, fontSize: F(25), color: 'E8EDF5', valign: 'middle', margin: 0, lineSpacingMultiple: 1.05, objectName: 'Penjelasan bukan caj' });
   s.addNotes('Isu: komitmen kewangan kariah 10% (bina baharu) dan 20% (naik taraf/baik pulih). Ia bukan caj Kerajaan Negeri tetapi ditetapkan Garis Panduan Kerajaan Persekutuan Bil. 1/2024. Ruang kanan: masukkan gambar masjid/surau.');
 }
 
@@ -418,9 +429,9 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   s.addNotes('2022 hingga November 2026: RM145.9 juta untuk 2,019 projek/sumbangan. ICU JPM RM79.3 juta (1,031 projek), TPMJ RM20.8 juta (328), Pejabat YAB MB RM12.7 juta (471 sumbangan). DUN N15 Maharani 2024-2026: RM1,867,110 untuk 14 masjid dan surau; ICU JPM RM741,400 (~39.7%).');
 }
 
-// ================= 9 — INISIATIF & PENUTUP =================
+// ================= 9 — INISIATIF =================
 {
-  const s = pres.addSlide({ masterName: 'Penutup 3 Kad', sectionTitle: 'Pencapaian & Inisiatif' });
+  const s = pres.addSlide({ masterName: 'Inisiatif 3 Kad', sectionTitle: 'Pencapaian & Inisiatif' });
   eyebrow(s, 'INISIATIF', 'Kerajaan Negeri');
   s.addText([{ text: 'USAHA BERTERUSAN MEMPERKASA ' }, { text: 'PEMBANGUNAN MASJID DAN SURAU', options: { color: C.accent3 } }], { placeholder: 'title' });
   const cards = [
@@ -430,34 +441,60 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   ];
   cards.forEach((c, i) => {
     const [x, y, w] = SLOT.card[i];
-    rect(s, x, y, w, 456, 'FFFFFF', 'Kad inisiatif ' + c.no, { shadow: { type: 'outer', color: '000000', opacity: 0.08, blur: 6, offset: 2, angle: 90 } });
+    rect(s, x, y, w, 672, 'FFFFFF', 'Kad inisiatif ' + c.no, { shadow: { type: 'outer', color: '000000', opacity: 0.08, blur: 6, offset: 2, angle: 90 } });
     foto(s, 'foto_kad_' + (i + 1), SLOT.card[i]);
-    rect(s, x, y + 170, w, 6, c.k ? C.accent2 : C.text2, 'Pemisah kad ' + c.no);
-    s.addImage({ path: A(c.icon), x: X(x + 22), y: X(y + 196), w: X(52), h: X(52), altText: 'Ikon inisiatif ' + c.no, objectName: 'Ikon ' + c.no });
-    T(s, c.no, { x: X(x + 22), y: X(y + 252), w: X(52), h: X(22), fontSize: F(18), bold: true, color: C.accent3, align: 'center', valign: 'middle', objectName: 'Nombor ' + c.no });
-    T(s, c.t, { x: X(x + 92), y: X(y + 192), w: X(w - 114), h: X(70), fontSize: F(28), bold: true, color: C.text2, valign: 'top', lineSpacingMultiple: 0.95, objectName: 'Tajuk inisiatif ' + c.no });
-    let by = y + 280;
+    rect(s, x, y + 320, w, 6, c.k ? C.accent2 : C.text2, 'Pemisah kad ' + c.no);
+    s.addImage({ path: A(c.icon), x: X(x + 22), y: X(y + 350), w: X(52), h: X(52), altText: 'Ikon inisiatif ' + c.no, objectName: 'Ikon ' + c.no });
+    T(s, c.no, { x: X(x + 22), y: X(y + 406), w: X(52), h: X(22), fontSize: F(18), bold: true, color: C.accent3, align: 'center', valign: 'middle', objectName: 'Nombor ' + c.no });
+    T(s, c.t, { x: X(x + 92), y: X(y + 346), w: X(w - 114), h: X(76), fontSize: F(28), bold: true, color: C.text2, valign: 'top', lineSpacingMultiple: 0.95, objectName: 'Tajuk inisiatif ' + c.no });
+    let by = y + 440;
     if (c.tags) {
       let tx = x + 22;
       for (const tg of c.tags) {
         const tw = 22 + tg.length * 11.5;
-        rect(s, tx, y + 280, tw, 34, TINT.chipBlue, 'Tag ' + tg);
-        T(s, tg, { x: X(tx), y: X(y + 280), w: X(tw), h: X(34), fontSize: F(16), bold: true, color: C.accent1, align: 'center', valign: 'middle', charSpacing: 0.3 });
+        rect(s, tx, y + 440, tw, 34, TINT.chipBlue, 'Tag ' + tg);
+        T(s, tg, { x: X(tx), y: X(y + 440), w: X(tw), h: X(34), fontSize: F(16), bold: true, color: C.accent1, align: 'center', valign: 'middle', charSpacing: 0.3 });
         tx += tw + 8;
       }
-      by = y + 326;
+      by = y + 490;
     }
-    if (c.body) s.addText(c.body, { isTextBox: true, x: X(x + 22), y: X(by), w: X(w - 44), h: X(y + 446 - by), fontFace: FONT, fontSize: F(25), color: C.text1, margin: 0, valign: 'top', lineSpacingMultiple: 1.05, objectName: 'Isi inisiatif ' + c.no });
+    if (c.body) s.addText(c.body, { isTextBox: true, x: X(x + 22), y: X(by), w: X(w - 44), h: X(y + 656 - by), fontFace: FONT, fontSize: F(26), color: C.text1, margin: 0, valign: 'top', lineSpacingMultiple: 1.05, objectName: 'Isi inisiatif ' + c.no });
     if (c.k) {
-      T(s, '27', { x: X(x + 22), y: X(y + 286), w: X(130), h: X(100), fontSize: F(96), bold: true, color: C.accent3, valign: 'middle', objectName: '27 permohonan' });
+      T(s, '27', { x: X(x + 22), y: X(y + 450), w: X(130), h: X(100), fontSize: F(96), bold: true, color: C.accent3, valign: 'middle', objectName: '27 permohonan' });
       s.addText([{ text: 'permohonan kebenaran kutipan khairat ' }, { text: 'diluluskan', options: { bold: true, color: C.text2 } }, { text: ' bagi tempoh 2025 hingga September 2026' }],
-        { isTextBox: true, x: X(x + 160), y: X(y + 280), w: X(w - 182), h: X(160), fontFace: FONT, fontSize: F(25), color: C.text1, margin: 0, valign: 'middle', lineSpacingMultiple: 1.05, objectName: 'Label 27 permohonan' });
+        { isTextBox: true, x: X(x + 160), y: X(y + 444), w: X(w - 182), h: X(160), fontFace: FONT, fontSize: F(26), color: C.text1, margin: 0, valign: 'middle', lineSpacingMultiple: 1.05, objectName: 'Label 27 permohonan' });
     }
   });
-  T(s, '“', { x: X(96), y: X(784), w: X(80), h: X(60), fontSize: F(100), bold: true, color: C.accent2, valign: 'top', objectName: 'Tanda petik' });
-  s.addText([{ text: 'Marilah kita bersama-sama menyumbang ke dalam ' }, { text: 'Tabung Pembangunan Masjid dan Amal Jariah Johor', options: { bold: true, color: C.accent2 } }, { text: ' demi memastikan masjid terus terpelihara sebagai pusat ibadah, ilmu dan pembangunan ummah.' }],
-    { isTextBox: true, x: X(96), y: X(842), w: X(1460), h: X(150), fontFace: FONT, fontSize: F(34), color: C.background1, margin: 0, valign: 'top', lineSpacingMultiple: 1.05, objectName: 'Seruan menyumbang' });
   s.addNotes('Tiga inisiatif: (1) dana TPMJ RM6.3 juta 2025-2026; (2) penyelarasan MAINJ, Pejabat YAB MB, JAINJ dan TPMJ; (3) 27 permohonan kutipan khairat diluluskan 2025 hingga September 2026 (Seksyen 106 Enakmen Pentadbiran Agama Islam (Negeri Johor) 2003).');
+}
+
+// ================= 10 — SUMBANGAN (QR & AKAUN) =================
+{
+  const s = pres.addSlide({ masterName: 'Sumbangan QR', sectionTitle: 'Pencapaian & Inisiatif' });
+  s.addShape(pres.shapes.LINE, { x: X(96), y: X(206), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
+  T(s, 'TABUNG PEMBANGUNAN MASJID DAN AMAL JARIAH JOHOR', { x: X(158), y: X(188), w: X(1000), h: X(36), fontSize: F(22), bold: true, color: C.accent2, valign: 'middle', charSpacing: 3, objectName: 'Nama tabung' });
+  s.addText([{ text: 'MARILAH KITA', options: { breakLine: true } }, { text: 'BERSAMA-SAMA MENYUMBANG', options: { color: C.accent2 } }], { placeholder: 'title' });
+  s.addText([{ text: 'Menyumbang ke dalam ' }, { text: 'Tabung Pembangunan Masjid dan Amal Jariah Johor', options: { bold: true, color: C.accent2 } }, { text: ' demi memastikan masjid terus terpelihara sebagai pusat ibadah, ilmu dan pembangunan ummah.' }],
+    { isTextBox: true, x: X(96), y: X(406), w: X(1060), h: X(140), fontFace: FONT, fontSize: F(29), color: 'E8EDF5', margin: 0, valign: 'top', lineSpacingMultiple: 1.08, objectName: 'Seruan menyumbang' });
+  // account template
+  rect(s, 96, 574, 1060, 380, 'FFFFFF', 'Kotak maklumat akaun', { fill: { color: 'FFFFFF', transparency: 92 } });
+  rect(s, 96, 574, 6, 380, C.accent2, 'Penanda maklumat akaun');
+  const row = (y, label) => {
+    T(s, label, { x: X(140), y: X(y), w: X(400), h: X(28), fontSize: F(19), bold: true, color: C.accent2, charSpacing: 2.5, valign: 'middle', objectName: 'Label ' + label });
+  };
+  row(606, 'NAMA AKAUN'); row(710, 'NO. AKAUN'); row(822, 'BANK');
+  for (const y of [688, 800, 904]) s.addShape(pres.shapes.LINE, { x: X(140), y: X(y), w: X(980), h: 0, line: { color: 'FFFFFF', width: 0.75, dashType: 'dash', transparency: 60 } });
+  s.addText('', { placeholder: 'nama_akaun' });
+  s.addText('', { placeholder: 'no_akaun' });
+  s.addText('', { placeholder: 'bank' });
+  // QR panel
+  rect(s, 1288, 196, 470, 470, 'EFEFF2', 'Latar kod QR');
+  s.addImage({ path: A('ic_qr.png'), x: X(1475), y: X(383), w: X(96), h: X(96), altText: 'Ikon ruang kod QR', objectName: 'Ikon ruang kod QR' });
+  s.addText('', { placeholder: 'foto_qr' });
+  rect(s, 1288, 700, 470, 6, C.accent2, 'Pemisah QR');
+  T(s, 'IMBAS UNTUK MENYUMBANG', { x: X(1264), y: X(728), w: X(518), h: X(48), fontSize: F(34), bold: true, color: C.text2, align: 'center', valign: 'middle', objectName: 'Label imbas' });
+  T(s, 'Sumbangan merupakan amal jariah yang manfaatnya dinikmati masyarakat dan generasi akan datang.', { x: X(1288), y: X(790), w: X(470), h: X(120), fontSize: F(23), color: C.accent5, align: 'center', valign: 'top', objectName: 'Keterangan amal jariah' });
+  s.addNotes('Templat sumbangan: klik ikon dalam kotak putih untuk masukkan imej kod QR, dan taip nama akaun, nombor akaun serta nama bank pada ruang yang disediakan. Seruan berdasarkan penutup jawapan A203.');
 }
 
 // pptxgenjs 4.0.1 drops type="pic" on image placeholders (its lookup checks the mapped value as a key).
