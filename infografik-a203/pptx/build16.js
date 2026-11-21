@@ -404,14 +404,26 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   s.addText([{ text: 'projek atau sumbangan', options: { bold: true, color: C.text2, breakLine: true } }, { text: 'baik pulih, naik taraf, bina baharu & bina semula' }],
     { isTextBox: true, x: X(430), y: X(414), w: X(666), h: X(78), fontFace: FONT, fontSize: F(26), color: C.text1, margin: 0, valign: 'middle', objectName: 'Label 2,019' });
   T(s, 'TIGA SUMBER PERUNTUKAN TERBESAR', { x: X(96), y: X(522), w: X(800), h: X(30), fontSize: F(20), bold: true, color: C.accent3, charSpacing: 3, valign: 'middle', objectName: 'Label carta' });
-  s.addChart(pres.charts.BAR, [{ name: 'Peruntukan (RM juta)', labels: ['ICU JPM\n1,031 projek', 'TPMJ\n328 projek', 'Pejabat YAB MB Johor\n471 sumbangan'], values: [79.3, 20.8, 12.7] }], {
-    x: X(80), y: X(556), w: X(1016), h: X(340), barDir: 'bar', catAxisOrientation: 'maxMin', chartColors: [H.royal], barGapWidthPct: 45,
-    showValue: true, dataLabelPosition: 'outEnd', dataLabelFormatCode: '"RM"0.0"j"', dataLabelColor: H.navy, dataLabelFontSize: F(30), dataLabelFontBold: true, dataLabelFontFace: '+mn-lt',
-    catAxisLabelColor: H.navy, catAxisLabelFontSize: F(24), catAxisLabelFontFace: '+mn-lt', catAxisLineShow: false,
-    valAxisHidden: true, valAxisMinVal: 0, valAxisMaxVal: 104, valGridLine: { style: 'none' }, catGridLine: { style: 'none' }, showLegend: false, showTitle: false, objectName: 'Carta tiga sumber peruntukan',
+  // three largest sources — detail cards (bar length is proportional to the amount)
+  const src = [
+    { no: '1', nama: 'ICU JPM', penuh: 'Pejabat Pembangunan Negeri Johor', rm: 'RM79.3 juta', v: 79.3, bil: '1,031', unit: 'projek di masjid dan surau' },
+    { no: '2', nama: 'TPMJ', penuh: 'Tabung Pembangunan Masjid dan Amal Jariah Johor', rm: 'RM20.8 juta', v: 20.8, bil: '328', unit: 'projek dan sumbangan kepada masjid dan surau' },
+    { no: '3', nama: 'Pejabat YAB Menteri Besar Johor', penuh: '', rm: 'RM12.7 juta', v: 12.7, bil: '471', unit: 'sumbangan kepada masjid dan surau' },
+  ];
+  src.forEach((r, i) => {
+    const y = 558 + i * 126, h = 118;
+    rect(s, 96, y, 1000, h, 'FFFFFF', 'Kad sumber ' + r.no);
+    rect(s, 96, y, 66, h, i === 0 ? C.text2 : C.accent1, 'Nombor sumber ' + r.no);
+    T(s, r.no, { x: X(96), y: X(y), w: X(66), h: X(h), fontSize: F(46), bold: true, color: C.background1, align: 'center', valign: 'middle', objectName: 'Nombor ' + r.no });
+    T(s, r.nama, { x: X(184), y: X(y + 10), w: X(560), h: X(40), fontSize: F(r.penuh ? 34 : 29), bold: true, color: C.text2, valign: 'middle', objectName: 'Nama sumber ' + r.no });
+    if (r.penuh) T(s, r.penuh, { x: X(184), y: X(y + 50), w: X(560), h: X(28), fontSize: F(20), color: C.accent5, valign: 'middle', objectName: 'Nama penuh ' + r.no });
+    s.addText([{ text: r.bil + ' ', options: { bold: true, color: C.accent3, fontSize: F(30) } }, { text: r.unit, options: { color: C.text1, fontSize: F(21) } }],
+      { isTextBox: true, x: X(184), y: X(y + (r.penuh ? 80 : 56)), w: X(560), h: X(34), fontFace: FONT, margin: 0, valign: 'middle', objectName: 'Bilangan projek ' + r.no });
+    T(s, r.rm, { x: X(752), y: X(y + 12), w: X(328), h: X(54), fontSize: F(40), bold: true, color: C.text2, align: 'right', valign: 'middle', objectName: 'Nilai sumber ' + r.no });
+    rect(s, 752, y + 84, 328, 14, 'E4E4EA', 'Latar bar ' + r.no);
+    rect(s, 752, y + 84, +(328 * r.v / 79.3).toFixed(1), 14, i === 0 ? C.text2 : C.accent1, 'Bar sumber ' + r.no);
   });
-  T(s, 'ICU JPM: Pejabat Pembangunan Negeri Johor · TPMJ: Tabung Pembangunan Masjid dan Amal Jariah Johor. Selebihnya dibiayai pelbagai agensi peringkat Persekutuan dan Negeri.',
-    { x: X(96), y: X(904), w: X(1000), h: X(64), fontSize: F(21), color: C.accent5, objectName: 'Nota carta' });
+  T(s, 'Selebihnya dibiayai oleh pelbagai agensi peringkat Persekutuan dan Negeri.', { x: X(96), y: X(944), w: X(1000), h: X(34), fontSize: F(21), color: C.accent5, valign: 'middle', objectName: 'Nota sumber' });
   foto(s, 'foto_atas', SLOT.s6);
   const px = 1136, py = 566, pw = 688;
   rect(s, px, py, pw, 404, C.text2, 'Panel DUN Maharani');
