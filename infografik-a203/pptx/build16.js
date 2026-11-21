@@ -133,7 +133,7 @@ pres.defineSlideMaster({
     { image: { path: A('jata.png'), x: X(262), y: X(84), w: X(81), h: X(64) } },
     { image: { path: A('majujohor.png'), x: X(361), y: X(84), w: X(56), h: X(64) } },
     ...footer(TINT.footDark, H.gold, 1176),
-    ph('title', 'title', 96, 234, 1060, 146, { fontSize: F(58), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 1.0, prompt: 'Tajuk' }),
+    ph('title', 'title', 96, 300, 980, 300, { fontSize: F(92), bold: true, color: C.background1, align: 'left', valign: 'top', lineSpacingMultiple: 1.0, prompt: 'Tajuk' }),
   ],
 });
 
@@ -565,27 +565,14 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
 // ================= 12 — SUMBANGAN (KOD QR) =================
 {
   const s = pres.addSlide({ masterName: 'Sumbangan QR', sectionTitle: 'Pencapaian & Inisiatif' });
-  s.addShape(pres.shapes.LINE, { x: X(96), y: X(206), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
-  T(s, 'TABUNG PEMBANGUNAN MASJID DAN AMAL JARIAH JOHOR', { x: X(158), y: X(188), w: X(1000), h: X(36), fontSize: F(22), bold: true, color: C.accent2, valign: 'middle', charSpacing: 3, objectName: 'Nama tabung' });
-  s.addText([{ text: 'MARILAH KITA', options: { breakLine: true } }, { text: 'BERSAMA-SAMA MENYUMBANG', options: { color: C.accent2 } }], { placeholder: 'title' });
-  s.addText([{ text: 'Menyumbang ke dalam ' }, { text: 'Tabung Pembangunan Masjid dan Amal Jariah Johor', options: { bold: true, color: C.accent2 } }, { text: ' demi memastikan masjid terus terpelihara sebagai pusat ibadah, ilmu dan pembangunan ummah.' }],
-    { isTextBox: true, x: X(96), y: X(406), w: X(1060), h: X(140), fontFace: FONT, fontSize: F(29), color: 'E8EDF5', margin: 0, valign: 'top', lineSpacingMultiple: 1.08, objectName: 'Seruan menyumbang' });
-  // what a contribution supports (from the closing of the reply)
-  [
-    ['01', 'Pemugaran, pemuliharaan dan pembangunan masjid', 'Serta penyelenggaraan masjid-masjid di seluruh Negeri Johor'],
-    ['02', 'Memperkasa kerja-kerja amal Islamiah', 'Serta perkara-perkara lain yang berkaitan'],
-    ['03', 'Setiap sumbangan ialah amal jariah', 'Manfaatnya dinikmati masyarakat dan generasi akan datang'],
-  ].forEach(([n, t, sub], i) => {
-    const y = 556 + i * 118;
-    s.addShape(pres.shapes.LINE, { x: X(96), y: X(y), w: X(1000), h: 0, line: { color: H.gold, width: 0.75, transparency: 50 }, objectName: 'Pemisah point ' + n });
-    T(s, n, { x: X(96), y: X(y + 18), w: X(90), h: X(70), fontSize: F(48), bold: true, color: C.accent2, objectName: 'Nombor point ' + n });
-    T(s, t, { x: X(206), y: X(y + 16), w: X(890), h: X(44), fontSize: F(32), bold: true, color: C.background1, valign: 'middle', objectName: 'Point ' + n });
-    T(s, sub, { x: X(206), y: X(y + 62), w: X(890), h: X(36), fontSize: F(23), color: TINT.onNavy, valign: 'middle', objectName: 'Keterangan point ' + n });
-  });
-  T(s, 'IMBAS KOD QR UNTUK MENYUMBANG  →', { x: X(96), y: X(924), w: X(1000), h: X(40), fontSize: F(26), bold: true, color: C.accent2, charSpacing: 3, valign: 'middle', objectName: 'Label imbas' });
-  // DuitNow QR poster (901 x 1280)
-  s.addImage({ path: A('qr_duitnow.jpg'), x: X(1205), y: X(100), w: X(619), h: X(879), altText: 'Kod QR DuitNow Tabung Pembangunan Masjid Johor', objectName: 'Kod QR DuitNow' });
-  s.addNotes('Slaid sumbangan: imbas kod QR DuitNow (Malaysia National QR) Tabung Pembangunan Masjid Johor, rakan peniaga Bank Rakyat. Seruan dan tiga point diambil daripada penutup jawapan A203. Untuk tukar kod QR: klik kanan gambar > Change Picture.');
+  s.addImage({ path: A('mosque_cover.png'), x: X(0), y: X(738), w: X(1080), h: X(250), altText: 'Siluet masjid', objectName: 'Siluet masjid' });
+  s.addShape(pres.shapes.LINE, { x: X(96), y: X(250), w: X(46), h: 0, line: { color: H.gold, width: 1.5 } });
+  T(s, 'TABUNG PEMBANGUNAN MASJID JOHOR', { x: X(158), y: X(232), w: X(930), h: X(36), fontSize: F(22), bold: true, color: C.accent2, valign: 'middle', charSpacing: 3, objectName: 'Nama tabung' });
+  s.addText([{ text: 'MARILAH KITA', options: { breakLine: true } }, { text: 'BERSAMA-SAMA', options: { color: C.accent2, breakLine: true } }, { text: 'MENYUMBANG', options: { color: C.accent2 } }], { placeholder: 'title' });
+  T(s, 'IMBAS KOD QR  →', { x: X(96), y: X(676), w: X(900), h: X(50), fontSize: F(34), bold: true, color: C.background1, charSpacing: 3, valign: 'middle', objectName: 'Label imbas' });
+  // DuitNow QR poster (901 x 1280), as large as the slide allows
+  s.addImage({ path: A('qr_duitnow.jpg'), x: X(1120), y: X(40), w: X(704), h: X(1000), altText: 'Kod QR DuitNow Tabung Pembangunan Masjid Johor', objectName: 'Kod QR DuitNow' });
+  s.addNotes('Slaid sumbangan: imbas kod QR DuitNow (Malaysia National QR) Tabung Pembangunan Masjid Johor, rakan peniaga Bank Rakyat. Seruan: "Marilah kita bersama-sama menyumbang ke dalam Tabung Pembangunan Masjid dan Amal Jariah Johor demi memastikan masjid terus terpelihara sebagai pusat ibadah, ilmu dan pembangunan ummah." Untuk tukar kod QR: klik kanan gambar > Change Picture.');
 }
 
 // pptxgenjs 4.0.1 drops type="pic" on image placeholders (its lookup checks the mapped value as a key).
