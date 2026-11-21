@@ -58,6 +58,7 @@ const SLOT = {
   cover: [1056, 0, 864, 1080],
   s3: [1196, 330, 628, 360],
   side: [96, 520, 620, 448],
+  sideT: [96, 540, 620, 420],
   s6: [1136, 140, 688, 400],
   card: [0, 1, 2].map((i) => [96 + i * 587, 296, 554, 320]),
   qr: [1288, 196, 470, 470],
@@ -114,6 +115,7 @@ pres.defineSlideMaster({
 });
 pres.defineSlideMaster({ title: 'Tajuk Sahaja', ...light([titlePh()]) });
 pres.defineSlideMaster({ title: 'Tajuk dan Gambar Kanan', ...light([titlePh(), fotoPh('foto_kanan', ...SLOT.s3)]) });
+pres.defineSlideMaster({ title: 'Tajuk Atas Dua Lajur', ...light([titlePh({ x: 96, y: 138, w: 1728, h: 60, fs: 17 }), fotoPh('foto_kiri', ...SLOT.sideT)]) });
 pres.defineSlideMaster({ title: 'Dua Lajur Gambar Kiri', ...light([titlePh({ x: 96, y: 306, w: 620, h: 130, fs: F(33) }), fotoPh('foto_kiri', ...SLOT.side)]) });
 pres.defineSlideMaster({ title: 'Statistik Gambar Kanan', ...light([titlePh({ x: 96, y: 336, w: 1000, h: 54, fs: F(32) }), fotoPh('foto_atas', ...SLOT.s6)]) });
 pres.defineSlideMaster({ title: 'Pendahuluan Dua Panel', ...light([]) });
@@ -366,25 +368,32 @@ const sideHead = (s, big, bigColor, unit, title, sub) => {
   foto(s, 'foto_kiri', SLOT.side);
 };
 {
-  const s = pres.addSlide({ masterName: 'Dua Lajur Gambar Kiri', sectionTitle: 'Sumbangan TPMJ' });
+  const s = pres.addSlide({ masterName: 'Tajuk Atas Dua Lajur', sectionTitle: 'Sumbangan TPMJ' });
   eyebrow(s, 'SUMBANGAN TPMJ', '2025 & 2026 · 1/2');
-  sideHead(s, 'RM6.3', C.text2, 'JUTA', 'DIPERUNTUKKAN BAGI PEMBANGUNAN MASJID DAN SURAU', 'Tabung Pembangunan Masjid dan Amal Jariah Johor (TPMJ) bagi tahun 2025 dan 2026');
-  caption(s, 756, 140, 1068, 'JADUAL 1', 'Sumbangan Pembinaan Surau Kritikal Negeri Johor');
-  donationTable(s, 756, 194, 1068, 'Nama Surau', [
+  s.addText([{ text: '1. ', options: { color: C.accent3 } }, { text: 'PENYEDIAAN DANA MELALUI TABUNG PEMBANGUNAN MASJID DAN AMAL JARIAH JOHOR' }], { placeholder: 'title' });
+  // left: headline figure
+  s.addText([{ text: 'RM6.3' }, { text: ' JUTA', options: { fontSize: F(56), color: C.accent3 } }],
+    { isTextBox: true, x: X(96), y: X(214), w: X(640), h: X(130), fontFace: FONT, fontSize: F(124), bold: true, color: C.text2, margin: 0, valign: 'bottom', objectName: 'Angka utama' });
+  T(s, 'DIPERUNTUKKAN BAGI PEMBANGUNAN MASJID DAN SURAU', { x: X(96), y: X(350), w: X(620), h: X(96), fontSize: F(33), bold: true, color: C.text2, objectName: 'Tajuk angka' });
+  T(s, 'Tabung Pembangunan Masjid dan Amal Jariah Johor (TPMJ) bagi tahun 2025 dan 2026', { x: X(96), y: X(448), w: X(620), h: X(62), fontSize: F(23), color: C.accent5, objectName: 'Subtajuk' });
+  foto(s, 'foto_kiri', SLOT.sideT);
+  // right: the two tables
+  caption(s, 756, 224, 1068, 'JADUAL 1', 'Sumbangan Pembinaan Surau Kritikal Negeri Johor');
+  donationTable(s, 756, 274, 1068, 'Nama Surau', [
     [1, 'Surau Al-Amir, Lorong Haji Amir, Simpang Renggam', 'Kluang', '259,800'],
     [2, 'Surau Kg. Jelutong Darat', 'Pontian', '240,000'],
     [3, 'Surau Parit Tegong', 'Pontian', '240,000'],
-  ], '739,800', [44, 70, 44, 44, 52]);
-  caption(s, 756, 474, 1068, 'JADUAL 2', 'Sumbangan Pembinaan Semula dan Pembinaan Baharu Masjid Negeri Johor Tahun 2025', { h: 72 });
-  donationTable(s, 756, 556, 1068, 'Nama Masjid', [
+  ], '739,800', [44, 66, 40, 40, 48]);
+  caption(s, 756, 544, 1068, 'JADUAL 2', 'Sumbangan Pembinaan Semula dan Pembinaan Baharu Masjid Negeri Johor Tahun 2025', { h: 66 });
+  donationTable(s, 756, 620, 1068, 'Nama Masjid', [
     [1, 'Masjid An-Nur, Ladang Seri Gading', 'Batu Pahat', '1,000,000'],
     [2, 'Masjid Taman Sri Penawar, Bandar Penawar', 'Kota Tinggi', '1,000,000'],
     [3, 'Masjid Parit Haji Arif, Benut', 'Pontian', '500,000'],
     [4, 'Masjid Kg. Contoh, Kahang', 'Kluang', '400,000'],
     [5, 'Masjid Kg. Melayu, Chamek, Kahang', 'Kluang', '200,000'],
     [6, 'Masjid Al-Ehsan, Taman Wawasan, Kelapa Sawit', 'Kulai', '500,000'],
-  ], '3,600,000', [44, 44, 44, 44, 44, 44, 64, 52]);
-  s.addNotes('TPMJ memperuntukkan RM6.3 juta bagi komitmen pembinaan baharu masjid dan surau 2025-2026. Jadual 1: 3 surau kritikal (RM739,800). Jadual 2: 6 masjid tahun 2025 (RM3,600,000).');
+  ], '3,600,000', [44, 40, 40, 40, 40, 40, 44, 48]);
+  s.addNotes('1. Penyediaan dana melalui Tabung Pembangunan Masjid dan Amal Jariah Johor (TPMJ): RM6.3 juta diperuntukkan bagi menampung komitmen pembinaan baharu masjid dan surau 2025-2026. Jadual 1: 3 surau kritikal (RM739,800). Jadual 2: 6 masjid tahun 2025 (RM3,600,000).');
 }
 
 // ================= 7 — TPMJ 2/2 =================
