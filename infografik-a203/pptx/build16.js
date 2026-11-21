@@ -520,6 +520,53 @@ pres.addSection({ title: 'Pencapaian & Inisiatif' });
   s.addNotes('Tiga inisiatif: (1) dana TPMJ RM6.3 juta 2025-2026; (2) penyelarasan MAINJ, Pejabat YAB MB, JAINJ dan TPMJ; (3) 27 permohonan kutipan khairat diluluskan 2025 hingga September 2026 (Seksyen 106 Enakmen Pentadbiran Agama Islam (Negeri Johor) 2003).');
 }
 
+// ================= 10b — INISIATIF 2 & 3 =================
+{
+  const s = pres.addSlide({ masterName: 'Pendahuluan Dua Panel', sectionTitle: 'Pencapaian & Inisiatif' });
+  eyebrow(s, 'INISIATIF', 'Kerajaan Negeri · 2 & 3');
+  const cols = [
+    { x: 96, no: '2', title: 'PENYELARASAN PERUNTUKAN MELALUI AGENSI KERAJAAN NEGERI' },
+    { x: 984, no: '3', title: 'PENGURUSAN KUTIPAN KHAIRAT DAN SUMBANGAN ORANG RAMAI' },
+  ];
+  cols.forEach(({ x, no, title }) => {
+    rect(s, x, 168, 840, 130, C.text2, 'Kepala perkara ' + no);
+    T(s, no, { x: X(x + 30), y: X(168), w: X(84), h: X(130), fontSize: F(100), bold: true, color: C.accent2, valign: 'middle', objectName: 'Nombor perkara ' + no });
+    T(s, title, { x: X(x + 124), y: X(168), w: X(690), h: X(130), fontSize: F(30), bold: true, color: C.background1, valign: 'middle', objectName: 'Tajuk perkara ' + no });
+    rect(s, x, 298, 840, 552, 'FFFFFF', 'Isi perkara ' + no);
+  });
+  const point = (x, y, no, t, sub) => {
+    s.addShape(pres.shapes.LINE, { x: X(x + 28), y: X(y), w: X(784), h: 0, line: { color: H.line, width: 0.75 }, objectName: 'Pemisah ' + no + ' ' + t.slice(0, 12) });
+    T(s, t, { x: X(x + 28), y: X(y + 18), w: X(784), h: X(40), fontSize: F(30), bold: true, color: C.text2, valign: 'middle', objectName: 'Point ' + no + ' ' + t.slice(0, 16) });
+    T(s, sub, { x: X(x + 28), y: X(y + 62), w: X(784), h: X(66), fontSize: F(23), color: C.accent5, objectName: 'Keterangan ' + no + ' ' + t.slice(0, 16) });
+  };
+  // 2 — agency coordination
+  const x2 = 96;
+  T(s, 'KERJASAMA AGENSI', { x: X(x2 + 28), y: X(326), w: X(500), h: X(30), fontSize: F(19), bold: true, color: C.accent3, charSpacing: 2.5, valign: 'middle', objectName: 'Label kerjasama' });
+  let tx = x2 + 28;
+  ['MAINJ', 'PEJABAT YAB MB JOHOR', 'JAINJ', 'TPMJ'].forEach((tg) => {
+    const tw = 28 + tg.length * 13;
+    rect(s, tx, 368, tw, 42, TINT.chipBlue, 'Tag ' + tg);
+    T(s, tg, { x: X(tx), y: X(368), w: X(tw), h: X(42), fontSize: F(19), bold: true, color: C.accent1, align: 'center', valign: 'middle', objectName: 'Teks tag ' + tg });
+    tx += tw + 10;
+  });
+  T(s, 'Mengoptimumkan sumber kewangan, selain peruntukan Kerajaan Persekutuan', { x: X(x2 + 28), y: X(424), w: X(784), h: X(64), fontSize: F(23), color: C.accent5, objectName: 'Keterangan kerjasama' });
+  point(x2, 506, '2', 'Dinilai ikut keperluan dan keutamaan', 'Semua permohonan, sebelum penyelarasan peruntukan dibuat');
+  point(x2, 664, '2', 'Pengagihan teratur', 'Mengelakkan pertindihan pembiayaan bagi masjid dan surau yang sama');
+  // 3 — khairat collections
+  const x3 = 984;
+  T(s, '27', { x: X(x3 + 28), y: X(318), w: X(190), h: X(110), fontSize: F(100), bold: true, color: C.accent3, valign: 'middle', objectName: '27 permohonan' });
+  s.addText([{ text: 'permohonan kutipan khairat ', options: {} }, { text: 'diluluskan', options: { bold: true, color: C.text2 } }, { text: ', 2025 hingga September 2026', options: {} }],
+    { isTextBox: true, x: X(x3 + 230), y: X(318), w: X(582), h: X(110), fontFace: FONT, fontSize: F(26), color: C.text1, margin: 0, valign: 'middle', objectName: 'Label 27 permohonan' });
+  point(x3, 440, '3', 'Dibenarkan, tertakluk peraturan', 'Sumbangan orang ramai untuk pembinaan dan naik taraf masjid dan surau');
+  point(x3, 576, '3', 'MAINJ mengawal selia kutipan', 'Seksyen 106 Enakmen Pentadbiran Agama Islam (Negeri Johor) 2003');
+  point(x3, 712, '3', 'Patuhi garis panduan pungutan', 'Garis Panduan Permohonan Pungutan Khairat (Negeri Johor) 2020');
+  // closing statement
+  rect(s, 96, 874, 1728, 96, C.text2, 'Penutup perkara');
+  s.addText([{ text: 'Kerajaan Negeri akan terus berusaha ' }, { text: 'meringankan beban pihak kariah', options: { bold: true, color: C.accent2 } }, { text: ' dan memastikan masjid dan surau terus dipelihara dan diperkasa di Negeri Johor.' }],
+    { isTextBox: true, x: X(132), y: X(874), w: X(1656), h: X(96), fontFace: FONT, fontSize: F(30), color: C.background1, margin: 0, valign: 'middle', objectName: 'Kenyataan penutup' });
+  s.addNotes('2. Penyelarasan Peruntukan Melalui Agensi Kerajaan Negeri. Selain peruntukan Kerajaan Persekutuan, Kerajaan Negeri turut mengoptimumkan sumber kewangan melalui kerjasama beberapa agensi, antaranya Majlis Agama Islam Negeri Johor (MAINJ), Pejabat YAB Menteri Besar Johor, Jabatan Agama Islam Negeri Johor (JAINJ) serta Tabung Pembangunan Masjid dan Amal Jariah Johor. Semua permohonan akan dinilai berdasarkan keperluan dan keutamaan sebelum penyelarasan peruntukan dibuat bagi memastikan pengagihan dapat dilaksanakan secara teratur serta mengelakkan pertindihan pembiayaan bagi masjid dan surau yang sama.\n\n3. Pengurusan Kutipan Khairat dan Sumbangan Orang Ramai. Kerajaan Negeri turut membenarkan pengumpulan dana melalui sumbangan orang ramai bagi tujuan pembinaan dan naik taraf masjid serta surau, tertakluk kepada peraturan dan garis panduan yang berkuat kuasa. MAINJ, berdasarkan Seksyen 106 Enakmen Pentadbiran Agama Islam (Negeri Johor) 2003, mempunyai kuasa untuk mengawal selia kutipan khairat di Negeri Johor. Sebanyak 27 permohonan kebenaran kutipan khairat bagi tujuan baik pulih, bina baharu dan bina semula masjid dan surau telah diluluskan bagi tempoh tahun 2025 hingga September 2026. Semua permohonan kutipan hendaklah mematuhi Garis Panduan Permohonan Pungutan Khairat (Negeri Johor) 2020 bagi memastikan kutipan dilaksanakan secara teratur dan tujuan sumbangan dapat dipelihara.\n\nKerajaan Negeri akan terus berusaha meringankan beban pihak kariah dan memastikan institusi masjid serta surau terus dipelihara dan diperkasa di Negeri Johor.');
+}
+
 // ================= 10 — SUMBANGAN (QR & AKAUN) =================
 {
   const s = pres.addSlide({ masterName: 'Sumbangan QR', sectionTitle: 'Pencapaian & Inisiatif' });
