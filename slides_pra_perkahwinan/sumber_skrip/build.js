@@ -492,54 +492,52 @@ async function build() {
     }
   }
 
-  // ======================= SLIDE 7 — PENUTUP =======================
+  // ======================= SLIDE 7 — KESIMPULAN (photo collage) =======================
   {
     const s = pres.addSlide();
     bg(s, "bg_cover.png");
-    const phW = 5.35;
-    await photo(s, 0, 0, phW, H, "Cadangan: Gambar keluarga sebagai visual utama");
-    const x0 = phW + 0.55, wR = RX - x0;
-    T(s, "KESIMPULAN", { x: x0, y: 0.47, w: 3, h: 0.3, fontFace: HEAD, fontSize: 10, bold: true, color: GOLD, charSpacing: 2, valign: "middle" });
+    // ---- photo collage (mixed sizes), left
+    const g = 0.15, cTop = 0.6, cBot = 6.9, cL = MX, cR = 6.6;
+    const bigW = 3.7, bigH = 3.95;
+    const smW = cR - cL - bigW - g;
+    const lowY = cTop + bigH + g, lowH = cBot - lowY;
+    const sH = (bigH - g) / 2;
+    const leftLowW = 1.9;
+    await photo(s, cL, cTop, bigW, bigH, "Gambar utama: keluarga");
+    await photo(s, cL + bigW + g, cTop, smW, sH, "Gambar program");
+    await photo(s, cL + bigW + g, cTop + sH + g, smW, sH, "Gambar peserta kursus");
+    await photo(s, cL, lowY, leftLowW, lowH, "Gambar pasangan");
+    await photo(s, cL + leftLowW + g, lowY, cR - cL - leftLowW - g, lowH, "Gambar aktiviti JAINJ");
+
+    // ---- conclusion, right
+    const x0 = 7.05, wR = RX - x0;
+    T(s, "KESIMPULAN", { x: x0, y: 0.47, w: 3, h: 0.3, fontFace: HEAD, fontSize: 11, bold: true, color: GOLD, charSpacing: 2, valign: "middle" });
     logos(s, { xr: RX, y: 0.38, h: 0.48 });
     T(s, [
       { text: "KE ARAH KELUARGA", options: { color: NAVY, breakLine: true } },
       { text: "SAKINAH, MAWADDAH", options: { color: GOLD, breakLine: true } },
       { text: "WA RAHMAH", options: { color: GOLD } },
-    ], { x: x0, y: 1.05, w: wR, h: 1.55, fontFace: HEAD, fontSize: 30, bold: true, lineSpacingMultiple: 1.0, valign: "middle" });
-    label(s, "MELAHIRKAN PASANGAN YANG LEBIH", x0, 2.85, wR, MUTED, 9.5);
-    const outs = [
-      ["LuBookOpen", "Berilmu", null, P.sage],
-      ["LuSprout", "Matang", null, P.blue],
-      ["LuShieldCheck", "Bertanggungjawab", null, P.peach],
-      ["LuBadgeCheck", "Berkemahiran", "dalam menghadapi cabaran rumah tangga", P.lav],
+    ], { x: x0, y: 1.0, w: wR, h: 1.4, fontFace: HEAD, fontSize: 27, bold: true, valign: "middle" });
+    const pts = [
+      "Kursus Pra Perkahwinan Islam sebagai medium persediaan menyeluruh kepada bakal pasangan",
+      "Melahirkan pasangan yang lebih berilmu, matang dan bertanggungjawab",
+      "Berkemahiran dalam menghadapi cabaran rumah tangga",
+      "Memperkukuh institusi kekeluargaan Islam di Negeri Johor",
     ];
-    const tw = (wR - 0.2) / 2, th = 0.72;
-    for (let i = 0; i < 4; i++) {
-      const [ic, t, sub, c] = outs[i];
-      const tx = x0 + (i % 2) * (tw + 0.2), ty = 3.17 + Math.floor(i / 2) * (th + 0.16);
-      rrect(s, tx, ty, tw, th, CARD, { r: 0.12, shadow: true });
-      await iconCircle(s, ic, c.bg, c.deep, tx + 0.14, ty + 0.12, 0.48);
-      T(s, sub ? [
-        { text: t, options: { bold: true, fontSize: 13, color: NAVY, breakLine: true } },
-        { text: sub, options: { fontSize: 9.5, color: MUTED } },
-      ] : t, { x: tx + 0.74, y: ty, w: tw - 0.84, h: th, fontSize: 13, bold: true, color: NAVY, valign: "middle" });
+    let y = 2.62;
+    const ph = [0.76, 0.76, 0.76, 0.76];
+    for (let i = 0; i < pts.length; i++) {
+      await iconImg(s, "LuCircleCheck", GOLD, x0, y + 0.04, 0.3);
+      T(s, pts[i], { x: x0 + 0.45, y, w: wR - 0.45, h: ph[i] - 0.08, fontSize: 14.5, color: INK });
+      y += ph[i];
     }
-    const y5 = 3.17 + 2 * (th + 0.16);
-    rrect(s, x0, y5, wR, 0.72, P.gold.bg, { r: 0.12 });
-    await iconCircle(s, "LuLandmark", P.gold.deep, "FFFFFF", x0 + 0.14, y5 + 0.12, 0.48);
-    T(s, [
-      { text: "SETERUSNYA", options: { fontFace: HEAD, bold: true, fontSize: 9, color: GOLD, charSpacing: 1.5, breakLine: true } },
-      { text: "Memperkukuh institusi kekeluargaan Islam di Negeri Johor", options: { bold: true, fontSize: 12.5, color: P.gold.deep } },
-    ], { x: x0 + 0.74, y: y5, w: wR - 0.9, h: 0.72, valign: "middle" });
-    // commitment quote
-    const qy = 5.95;
-    rrect(s, x0, qy, wR, 0.9, NAVY, { r: 0.12 });
-    await iconImg(s, "LuQuote", "D9BE86", x0 + 0.22, qy + 0.2, 0.34);
+    const qy = 5.82;
+    rrect(s, x0, qy, wR, 1.0, NAVY, { r: 0.14 });
+    await iconImg(s, "LuQuote", "D9BE86", x0 + 0.22, qy + 0.3, 0.36);
     T(s, "Kerajaan Negeri Johor melalui JAINJ komited untuk terus menambah baik pelaksanaan Kursus Pra Perkahwinan Islam.",
-      { x: x0 + 0.72, y: qy, w: wR - 0.95, h: 0.9, fontSize: 12, italic: true, color: "FFFFFF", valign: "middle" });
+      { x: x0 + 0.75, y: qy, w: wR - 0.95, h: 1.0, fontSize: 12.5, italic: true, color: "FFFFFF", valign: "middle" });
     footer(s, 7, x0, true);
   }
-
   await pres.writeFile({ fileName: OUTFILE });
   console.log("wrote", OUTFILE);
 }
