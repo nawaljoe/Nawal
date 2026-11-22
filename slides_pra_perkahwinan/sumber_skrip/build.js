@@ -103,10 +103,10 @@ function bg(s, file) {
   s.background = { path: path.join(A.OUT, file) };
 }
 const EYEBROW = "SOALAN LISAN A182   ·   BELANJAWAN JOHOR 2027";
-function header(s, title, sub) {
+function header(s, title, sub, tsize = 26) {
   T(s, EYEBROW, { x: MX, y: 0.47, w: 7.5, h: 0.3, fontFace: HEAD, fontSize: 10, bold: true, color: GOLD, charSpacing: 2, valign: "middle" });
   logos(s, { xr: RX, y: 0.38, h: 0.48 });
-  T(s, title, { x: MX, y: 0.92, w: 12.13, h: 0.58, fontFace: HEAD, fontSize: 26, bold: true, color: NAVY, valign: "middle" });
+  T(s, title, { x: MX, y: 0.92, w: 12.13, h: 0.58, fontFace: HEAD, fontSize: tsize, bold: true, color: NAVY, valign: "middle" });
   if (sub) T(s, sub, { x: MX, y: 1.5, w: 12.13, h: 0.34, fontSize: 12.5, italic: true, color: MUTED, valign: "middle" });
 }
 function footer(s, n, xl = MX, short = false) {
@@ -170,7 +170,8 @@ async function build() {
   {
     const s = pres.addSlide();
     bg(s, "bg_content.png");
-    header(s, "9 TAJUK UTAMA, PERSEDIAAN LEBIH MENYELURUH");
+    if (process.env.S2_TITLE) header(s, process.env.S2_TITLE, undefined, 18);
+    else header(s, "9 TAJUK UTAMA, PERSEDIAAN LEBIH MENYELURUH");
     footer(s, 2);
     // ---- left info panel
     const lx = MX, ly = 1.75, lw = 3.7, lh = 5.1;
