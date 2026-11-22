@@ -263,137 +263,100 @@ async function build() {
     });
   }
 
-  // ======================= SLIDE 3 — BAHAGIAN 1 =======================
+  // ======================= SLIDE 3 — BAHAGIAN 1 (clean) =======================
   {
     const s = pres.addSlide();
     bg(s, "bg_content.png");
     header(s, "PERSIAPAN MEMBINA RUMAH TANGGA");
     footer(s, 3);
     const top = 1.75, bot = 6.85;
-    const leftW = 6.85;
-    await photo(s, MX, top, leftW, 1.15, "Cadangan: Gambar peserta Kursus Pra Perkahwinan Islam");
-    const cw = (leftW - 0.3) / 2, cy = top + 1.15 + 0.22, ch = bot - cy;
-    const cards = [
-      { n: 1, c: P.yellow, ic: "LuWallet", t: "PENGURUSAN KEWANGAN KELUARGA DAN TANGGUNGJAWAB NAFKAH",
+    const phW = 3.2;
+    await photo(s, MX, top, phW, bot - top, "Cadangan: Gambar peserta Kursus Pra Perkahwinan Islam");
+    const ax = MX + phW + 0.4, aw = RX - ax;
+    const colw = (aw - 0.4) / 2;
+    const catHead = (n, t, color, x, y, w) => {
+      T(s, String(n).padStart(2, "0"), { x, y, w: 0.62, h: 0.55, fontFace: HEAD, fontSize: 26, bold: true, color: GOLD, valign: "middle" });
+      T(s, t, { x: x + 0.7, y, w: w - 0.7, h: 0.55, fontFace: HEAD, fontSize: 12.5, bold: true, color, valign: "middle" });
+    };
+    const top2 = [
+      { c: P.yellow.deep, t: "PENGURUSAN KEWANGAN KELUARGA DAN TANGGUNGJAWAB NAFKAH",
         pts: ["Perancangan perbelanjaan", "Amalan menabung", "Pengurusan hutang", "Tanggungjawab nafkah", "Hak dan tanggungjawab suami isteri", "Kestabilan kewangan serta kesejahteraan keluarga"] },
-      { n: 2, c: P.sage, ic: "LuMessagesSquare", t: "KOMUNIKASI SUAMI ISTERI",
+      { c: P.sage.deep, t: "KOMUNIKASI SUAMI ISTERI",
         pts: ["Komunikasi yang berkesan", "Komunikasi dalam era digital", "Penggunaan media sosial dan teknologi secara beretika", "Penjagaan privasi", "Pembinaan kepercayaan", "Sikap saling memahami antara pasangan"] },
     ];
-    for (let i = 0; i < 2; i++) {
-      const c = cards[i];
-      const x = MX + i * (cw + 0.3);
-      rrect(s, x, cy, cw, ch, c.c.bg, { r: 0.16 });
-      numBadge(s, c.n, x + 0.22, cy + 0.22, 0.5, c.c.deep);
-      await iconImg(s, c.ic, c.c.deep, x + cw - 0.6, cy + 0.25, 0.4);
-      T(s, c.t, { x: x + 0.22, y: cy + 0.82, w: cw - 0.44, h: 0.62, fontFace: HEAD, fontSize: 11.5, bold: true, color: c.c.deep, valign: "middle" });
-      T(s, bullets(c.pts, 12, INK, 3), { x: x + 0.22, y: cy + 1.55, w: cw - 0.4, h: ch - 1.65 });
-    }
-    // ---- big card 3
-    const x3 = MX + leftW + 0.3, w3 = RX - x3;
-    const c3 = P.blue;
-    rrect(s, x3, top, w3, bot - top, CARD, { r: 0.16, shadow: true, line: "D3DDE9" });
-    numBadge(s, 3, x3 + 0.25, top + 0.25, 0.5, c3.deep);
-    T(s, "PENGURUSAN KESIHATAN MENTAL", { x: x3 + 0.88, y: top + 0.25, w: w3 - 1.6, h: 0.5, fontFace: HEAD, fontSize: 14, bold: true, color: c3.deep, valign: "middle" });
-    await iconImg(s, "LuBrain", c3.deep, x3 + w3 - 0.68, top + 0.28, 0.42);
-    let y = top + 0.82;
-    label(s, "TANDA-TANDA TEKANAN EMOSI", x3 + 0.25, y, 4, c3.deep);
-    y += 0.27;
-    const signs = [["Stres berlebihan", 1.6], ["Keresahan", 1.15], ["Kemurungan", 1.3]];
-    let sx = x3 + 0.25;
-    for (const [t, w] of signs) { chip(s, t, sx, y, w, 0.34, c3.bg, c3.deep, 11.5); sx += w + 0.12; }
-    y += 0.4; sx = x3 + 0.25;
-    for (const [t, w] of [["Mudah marah", 1.35], ["Gangguan tidur", 1.5]]) { chip(s, t, sx, y, w, 0.34, c3.bg, c3.deep, 11.5); sx += w + 0.12; }
-    y += 0.48;
-    label(s, "PENGURUSAN DAN BANTUAN", x3 + 0.25, y, 4, c3.deep);
-    y += 0.27;
-    const half = (w3 - 0.5 - 0.15) / 2;
-    for (const [i, t] of ["Pengurusan emosi", "Sokongan pasangan"].entries()) {
-      rrect(s, x3 + 0.25 + i * (half + 0.15), y, half, 0.36, "EEF2F7", { r: 0.08 });
-      await iconImg(s, i === 0 ? "LuHeart" : "LuHeartHandshake", c3.deep, x3 + 0.36 + i * (half + 0.15), y + 0.07, 0.22);
-      T(s, t, { x: x3 + 0.66 + i * (half + 0.15), y, w: half - 0.5, h: 0.36, fontSize: 12, bold: true, color: INK, valign: "middle" });
-    }
-    y += 0.42;
-    T(s, "Saluran bantuan profesional:", { x: x3 + 0.25, y, w: 4, h: 0.22, fontSize: 11, italic: true, color: MUTED, valign: "middle" });
-    y += 0.24;
-    const help = ["Klinik Kesihatan dan hospital kerajaan", "Pegawai Psikologi", "Kaunselor Berdaftar", "Pakar Psikiatri"];
-    for (let i = 0; i < 4; i++) {
-      const hx = x3 + 0.25 + (i % 2) * (half + 0.15), hy = y + Math.floor(i / 2) * 0.42;
-      await iconImg(s, "LuCircleCheck", c3.deep, hx, hy + 0.05, 0.18);
-      T(s, help[i], { x: hx + 0.26, y: hy - 0.06, w: half - 0.26, h: 0.4, fontSize: 11.5, color: INK, valign: "middle" });
-    }
-    y += 0.8;
-    await iconImg(s, "LuCircleCheck", c3.deep, x3 + 0.25, y + 0.05, 0.18);
+    top2.forEach((c, i) => {
+      const x = ax + i * (colw + 0.4);
+      catHead(i + 1, c.t, c.c, x, top, colw);
+      T(s, bullets(c.pts, 11.5, INK, 2), { x, y: top + 0.66, w: colw, h: 1.6 });
+    });
+    line(s, ax, 4.12, RX, 4.12, LINE, 0.75);
+    // 03 kesihatan mental
+    const c3 = P.blue.deep;
+    catHead(3, "PENGURUSAN KESIHATAN MENTAL", c3, ax, 4.2, aw);
+    const sy = 4.8;
+    const aW = 2.6, bX = ax + aW + 0.3, bW = RX - bX;
+    label(s, "TANDA-TANDA TEKANAN EMOSI", ax, sy, aW, c3, 8.5);
+    T(s, bullets(["Stres berlebihan", "Keresahan", "Kemurungan", "Mudah marah", "Gangguan tidur"], 11.5, INK, 1.5), { x: ax, y: sy + 0.28, w: aW, h: 1.2 });
+    label(s, "PENGURUSAN DAN BANTUAN", bX, sy, bW, c3, 8.5);
+    T(s, "Pengurusan emosi   ·   Sokongan pasangan", { x: bX, y: sy + 0.28, w: bW, h: 0.26, fontSize: 12, bold: true, color: INK, valign: "middle" });
+    T(s, "Saluran bantuan profesional:", { x: bX, y: sy + 0.58, w: bW, h: 0.22, fontSize: 10.5, italic: true, color: MUTED, valign: "middle" });
+    const lw1 = 3.15;
+    T(s, bullets(["Klinik Kesihatan dan hospital kerajaan", "Pegawai Psikologi"], 11.5, INK, 1.5), { x: bX, y: sy + 0.84, w: lw1, h: 0.5 });
+    T(s, bullets(["Kaunselor Berdaftar", "Pakar Psikiatri"], 11.5, INK, 1.5), { x: bX + lw1 + 0.1, y: sy + 0.84, w: bW - lw1 - 0.1, h: 0.5 });
+    T(s, bullets(["Perkhidmatan MENTARI di bawah Kementerian Kesihatan Malaysia"], 11.5, INK, 0), { x: bX, y: sy + 1.34, w: bW, h: 0.24 });
+    await iconImg(s, "LuQuote", GOLD, ax, 6.5, 0.28);
     T(s, [
-      { text: "Perkhidmatan MENTARI", options: { bold: true } },
-      { text: " di bawah Kementerian Kesihatan Malaysia" },
-    ], { x: x3 + 0.51, y: y - 0.02, w: w3 - 0.8, h: 0.42, fontSize: 11.5, color: INK, valign: "top" });
-    // key message
-    const qy = bot - 0.88;
-    rrect(s, x3 + 0.15, qy, w3 - 0.3, 0.75, NAVY, { r: 0.1 });
-    T(s, [
-      { text: "Masalah kesihatan mental bukanlah tanda kelemahan diri", options: { bold: true, fontSize: 11.5, color: "FFFFFF", breakLine: true } },
-      { text: "sebaliknya perlu dikenal pasti dan ditangani dengan sokongan serta bantuan yang bersesuaian", options: { fontSize: 9, color: "D6D8EE" } },
-    ], { x: x3 + 0.32, y: qy, w: w3 - 0.64, h: 0.75, valign: "middle", lineSpacingMultiple: 1.05 });
+      { text: "Masalah kesihatan mental bukanlah tanda kelemahan diri", options: { bold: true, fontSize: 12, color: NAVY, breakLine: true } },
+      { text: "sebaliknya perlu dikenal pasti dan ditangani dengan sokongan serta bantuan yang bersesuaian", options: { fontSize: 10, italic: true, color: MUTED } },
+    ], { x: ax + 0.4, y: 6.43, w: aw - 0.4, h: 0.44, valign: "middle" });
   }
 
-  // ======================= SLIDE 4 — BAHAGIAN 2 =======================
+  // ======================= SLIDE 4 — BAHAGIAN 2 (clean) =======================
   {
     const s = pres.addSlide();
     bg(s, "bg_content.png");
     header(s, "MEMPERKUKUH INSTITUSI KEKELUARGAAN");
     footer(s, 4);
     const top = 1.75, bot = 6.85;
-    const phW = 2.35, phX = RX - phW;
+    const phW = 3.2, phX = RX - phW;
     await photo(s, phX, top, phW, bot - top, "Cadangan: Gambar keluarga atau program kekeluargaan");
-    const areaW = phX - 0.3 - MX;
-    const cw = (areaW - 0.3) / 2, ch = 2.5;
-    const cards = [
-      { n: 4, c: P.peach, ic: "LuHandshake", t: "PENGURUSAN KONFLIK DAN TEKANAN RUMAH TANGGA",
+    const ax = MX, aw = phX - 0.4 - MX;
+    const colw = (aw - 0.4) / 2;
+    const catHead = (n, t, color, x, y, w) => {
+      T(s, String(n).padStart(2, "0"), { x, y, w: 0.62, h: 0.55, fontFace: HEAD, fontSize: 26, bold: true, color: GOLD, valign: "middle" });
+      T(s, t, { x: x + 0.7, y, w: w - 0.7, h: 0.55, fontFace: HEAD, fontSize: 12.5, bold: true, color, valign: "middle" });
+    };
+    const top2 = [
+      { c: P.peach.deep, t: "PENGURUSAN KONFLIK DAN TEKANAN RUMAH TANGGA",
         pts: ["Pengawalan emosi", "Komunikasi berkesan", "Menyelesaikan perselisihan secara matang dan berhemah", "Menghadapi cabaran kehidupan berumah tangga", "Mengelakkan konflik daripada menjejaskan keharmonian keluarga"] },
-      { n: 5, c: P.sage, ic: "LuUsers", t: "KEMAHIRAN KEIBUBAPAAN",
+      { c: P.sage.deep, t: "KEMAHIRAN KEIBUBAPAAN",
         pts: ["Tanggungjawab ibu bapa", "Mendidik dan membimbing anak-anak", "Pembentukan akhlak", "Pendidikan agama", "Pelaksanaan tanggungjawab bersama", "Membina keluarga yang sejahtera"] },
     ];
-    for (let i = 0; i < 2; i++) {
-      const c = cards[i];
-      const x = MX + i * (cw + 0.3);
-      rrect(s, x, top, cw, ch, CARD, { r: 0.16, shadow: true });
-      await iconCircle(s, c.ic, c.c.bg, c.c.deep, x + 0.22, top + 0.2, 0.55);
-      T(s, String(c.n).padStart(2, "0"), { x: x + cw - 0.8, y: top + 0.2, w: 0.6, h: 0.4, fontFace: HEAD, fontSize: 20, bold: true, color: c.c.mid, align: "right", valign: "middle" });
-      T(s, c.t, { x: x + 0.9, y: top + 0.2, w: cw - 1.7, h: 0.55, fontFace: HEAD, fontSize: 11.5, bold: true, color: c.c.deep, valign: "middle" });
-      T(s, bullets(c.pts, 11.5, INK, 2.5), { x: x + 0.22, y: top + 0.88, w: cw - 0.4, h: ch - 0.95 });
-    }
-    // card 6 (emphasis)
-    const y6 = top + ch + 0.25, h6 = bot - y6, c6 = P.lav;
-    rrect(s, MX, y6, areaW, h6, c6.bg, { r: 0.16 });
-    await iconCircle(s, "LuBookOpen", c6.deep, "FFFFFF", MX + 0.22, y6 + 0.2, 0.55);
-    T(s, "PEMANTAPAN AKIDAH DAN TANGGUNGJAWAB SUAMI ISTERI", { x: MX + 0.9, y: y6 + 0.2, w: areaW - 1.8, h: 0.55, fontFace: HEAD, fontSize: 12.5, bold: true, color: c6.deep, valign: "middle" });
-    T(s, "06", { x: MX + areaW - 0.8, y: y6 + 0.2, w: 0.6, h: 0.4, fontFace: HEAD, fontSize: 20, bold: true, color: c6.mid, align: "right", valign: "middle" });
-    const iy = y6 + 0.85, ih = h6 - 1.0;
-    // col A akidah
-    const aW = 3.1;
-    rrect(s, MX + 0.22, iy, aW, ih, CARD, { r: 0.1 });
-    T(s, "PEGANGAN", { x: MX + 0.37, y: iy + 0.1, w: aW - 0.3, h: 0.22, fontFace: HEAD, fontSize: 9, bold: true, color: GOLD, charSpacing: 1.5 });
+    top2.forEach((c, i) => {
+      const x = ax + i * (colw + 0.4);
+      catHead(i + 4, c.t, c.c, x, top, colw);
+      T(s, bullets(c.pts, 11.5, INK, 2), { x, y: top + 0.66, w: colw, h: 1.75 });
+    });
+    line(s, ax, 4.3, ax + aw, 4.3, LINE, 0.75);
+    const c6 = P.lav.deep;
+    catHead(6, "PEMANTAPAN AKIDAH DAN TANGGUNGJAWAB SUAMI ISTERI", c6, ax, 4.42, aw);
+    const sy = 5.1;
+    const aW = 3.55, bX = ax + aW + 0.4, bW = ax + aw - bX;
+    label(s, "PEGANGAN", ax, sy, aW, c6, 8.5);
     T(s, [
-      { text: "Ahli Sunnah Wal Jamaah", options: { bold: true, fontSize: 12, color: c6.deep, breakLine: true } },
-      { text: "aliran Al-Asya'irah dan", options: { fontSize: 11, color: INK, breakLine: true } },
-      { text: "Al-Maturidiyyah", options: { fontSize: 11, color: INK, breakLine: true } },
-      { text: "Asas pembentukan keluarga Islam", options: { fontSize: 10.5, italic: true, color: MUTED } },
-    ], { x: MX + 0.37, y: iy + 0.36, w: aW - 0.3, h: ih - 0.42, lineSpacingMultiple: 1.05, paraSpaceAfter: 3 });
-    // col B qawwam
-    const bX = MX + 0.22 + aW + 0.2, bW = areaW - 0.44 - aW - 0.2;
-    T(s, [
-      { text: "KONSEP LELAKI SEBAGAI ", options: {} },
-      { text: "QAWWAM", options: { color: c6.deep } },
-    ], { x: bX, y: iy - 0.02, w: bW, h: 0.24, fontFace: HEAD, fontSize: 9.5, bold: true, color: GOLD, charSpacing: 1.5, valign: "middle" });
+      { text: "Ahli Sunnah Wal Jamaah", options: { bold: true, fontSize: 13, color: NAVY, breakLine: true } },
+      { text: "aliran Al-Asya'irah dan Al-Maturidiyyah", options: { fontSize: 11.5, color: INK, breakLine: true } },
+      { text: "Asas pembentukan keluarga Islam", options: { fontSize: 11, italic: true, color: MUTED } },
+    ], { x: ax, y: sy + 0.3, w: aW, h: 0.9, paraSpaceAfter: 3 });
+    label(s, "KONSEP LELAKI SEBAGAI QAWWAM", bX, sy, bW, c6, 8.5);
     const roles = [["LuCompass", "Memimpin"], ["LuHandCoins", "Memberikan nafkah"], ["LuShield", "Melindungi"], ["LuUsersRound", "Membimbing keluarga"]];
-    const rw = (bW - 0.15) / 2, rh = 0.36;
+    const rw = bW / 2;
     for (let i = 0; i < 4; i++) {
-      const rx = bX + (i % 2) * (rw + 0.15), ry = iy + 0.3 + Math.floor(i / 2) * (rh + 0.08);
-      rrect(s, rx, ry, rw, rh, CARD, { r: 0.08 });
-      await iconImg(s, roles[i][0], c6.deep, rx + 0.12, ry + 0.07, 0.22);
-      T(s, roles[i][1], { x: rx + 0.42, y: ry, w: rw - 0.5, h: rh, fontSize: 11.5, bold: true, color: INK, valign: "middle" });
+      const rx = bX + (i % 2) * rw, ry = sy + 0.32 + Math.floor(i / 2) * 0.34;
+      await iconImg(s, roles[i][0], c6, rx, ry + 0.04, 0.22);
+      T(s, roles[i][1], { x: rx + 0.32, y: ry, w: rw - 0.35, h: 0.3, fontSize: 12, bold: true, color: INK, valign: "middle" });
     }
-    T(s, "Memahami hak serta peranan masing-masing dalam institusi perkahwinan", { x: bX, y: iy + 1.13, w: bW, h: ih - 1.13, fontSize: 10.5, italic: true, color: c6.deep, valign: "middle" });
+    T(s, "Memahami hak serta peranan masing-masing dalam institusi perkahwinan", { x: bX, y: sy + 1.06, w: bW, h: 0.45, fontSize: 11, italic: true, color: MUTED });
   }
 
   // ======================= SLIDE 5 — TIGA PENDEKATAN =======================
