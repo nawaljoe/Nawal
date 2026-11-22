@@ -1,0 +1,71 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8">
+<title>Slide 3</title><style>
+:root{--navy:#0A1B3D;--navy2:#12295A;--navy3:#07122B;--gold:#D9B45F;--goldd:#9C7424;--ivory:#F5F0E4;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden}
+body{font-family:'Inter','Liberation Sans',sans-serif;position:relative;color:#fff;-webkit-font-smoothing:antialiased}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden}
+.dark{background:radial-gradient(1400px 900px at 78% 20%,#16346F 0%,var(--navy) 55%,var(--navy3) 100%)}
+.light{background:var(--ivory);color:var(--navy)}
+.pattern{position:absolute;inset:0;pointer-events:none;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><g fill='none' stroke='%23D9B45F' stroke-opacity='.10' stroke-width='1.2'><rect x='35' y='35' width='70' height='70'/><rect x='35' y='35' width='70' height='70' transform='rotate(45 70 70)'/><circle cx='70' cy='70' r='49'/></g></svg>");
+ -webkit-mask-image:linear-gradient(115deg,transparent 35%,#000 100%);mask-image:linear-gradient(115deg,transparent 35%,#000 100%)}
+.pattern.l{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><g fill='none' stroke='%230A1B3D' stroke-opacity='.06' stroke-width='1.2'><rect x='35' y='35' width='70' height='70'/><rect x='35' y='35' width='70' height='70' transform='rotate(45 70 70)'/><circle cx='70' cy='70' r='49'/></g></svg>")}
+.serif{font-family:'Caladea','Liberation Serif',serif}
+.gold{color:var(--gold)} .goldd{color:var(--goldd)}
+.abs{position:absolute}
+.eyebrow{font-size:21px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:16px}
+.eyebrow:before{content:"";width:48px;height:3px;background:var(--gold)}
+.light .eyebrow{color:var(--goldd)} .light .eyebrow:before{background:var(--goldd)}
+h1{font-weight:800;letter-spacing:-.015em;line-height:1.06;text-transform:uppercase}
+.ic{display:block;flex:none}
+.ph{position:absolute;border:2.5px dashed var(--gold);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:20px;
+ background:repeating-linear-gradient(135deg,rgba(217,180,95,.07) 0 14px,rgba(217,180,95,.02) 14px 28px);color:var(--gold)}
+.ph b{font-size:22px;font-weight:700;letter-spacing:.04em;line-height:1.3;display:block}
+.ph small{font-size:17px;font-weight:500;opacity:.85;line-height:1.35;color:#fff;display:block;margin-top:6px}
+.light .ph{border-color:var(--goldd);color:var(--goldd);background:repeating-linear-gradient(135deg,rgba(10,27,61,.05) 0 14px,rgba(10,27,61,.02) 14px 28px)}
+.light .ph small{color:var(--navy)}
+.ph.sm{flex-direction:row;gap:16px;padding:12px 18px;text-align:left}
+.ph.sm b{font-size:18px} .ph.sm small{font-size:15px}
+.foot{position:absolute;left:0;right:0;bottom:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;
+ font-size:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--navy3);color:rgba(255,255,255,.72);border-top:2px solid var(--gold)}
+.foot b{color:var(--gold);font-weight:800}
+.foot .pg{font-family:'Caladea',serif;font-size:22px;letter-spacing:.05em;color:var(--gold)}
+
+.s3-title{position:absolute;left:40px;top:62px;font-size:56px}
+.s3-title em{font-style:normal;color:var(--gold)}
+.c3{position:absolute;width:610px;height:270px;background:linear-gradient(160deg,#142E63,#0E2150);border:1.5px solid rgba(217,180,95,.55);border-radius:12px;padding:16px 22px 14px}
+.c3 .hd{display:flex;align-items:center;gap:14px;padding-bottom:10px;border-bottom:1.5px solid rgba(217,180,95,.45);margin-bottom:10px}
+.c3 .num{font-size:42px;line-height:1;color:var(--gold);font-weight:700}
+.c3 .ib{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none}
+.c3 .tt{font-size:24px;line-height:1.15;font-weight:800;text-transform:uppercase;letter-spacing:.01em;color:#fff}
+.c3 ul{list-style:none;display:flex;flex-direction:column;gap:2px}
+.c3 li{font-size:21.5px;line-height:1.24;font-weight:500;color:#E6EBF6;padding-left:22px;position:relative}
+.c3 li:before{content:"";position:absolute;left:2px;top:.52em;width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.core{position:absolute;left:772px;top:408px;width:376px;height:376px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#1B3F86,#0B1F48 70%);border:4px solid var(--gold);box-shadow:0 0 0 12px rgba(217,180,95,.14),0 0 0 14px rgba(217,180,95,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.core small{font-size:19px;font-weight:800;letter-spacing:.24em;color:var(--gold)}
+.core h2{font-size:56px;line-height:1.0;font-weight:800;letter-spacing:-.01em;margin:10px 0 14px}
+.core h2 span{color:var(--gold);display:block}
+.core p{font-size:19px;line-height:1.3;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E6EBF6;width:270px}
+</style></head>
+<body><div class="slide dark"><div class="pattern "></div>
+<svg class="abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080"><path d="M806.0 488.2 C728.0 488.2 728.0 315.0 650 315.0" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/><circle cx="650" cy="315.0" r="7" fill="#D9B45F"/><circle cx="806.0" cy="488.2" r="7" fill="#D9B45F"/><path d="M772 596 L650 596.0" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/><circle cx="650" cy="596.0" r="7" fill="#D9B45F"/><circle cx="772.0" cy="596.0" r="7" fill="#D9B45F"/><path d="M806.0 703.8 C728.0 703.8 728.0 877.0 650 877.0" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/><circle cx="650" cy="877.0" r="7" fill="#D9B45F"/><circle cx="806.0" cy="703.8" r="7" fill="#D9B45F"/><path d="M1114.0 488.2 C1192.0 488.2 1192.0 315.0 1270 315.0" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/><circle cx="1270" cy="315.0" r="7" fill="#D9B45F"/><circle cx="1114.0" cy="488.2" r="7" fill="#D9B45F"/><path d="M1148 596 L1270 596.0" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/><circle cx="1270" cy="596.0" r="7" fill="#D9B45F"/><circle cx="1148.0" cy="596.0" r="7" fill="#D9B45F"/><path d="M1114.0 703.8 C1192.0 703.8 1192.0 877.0 1270 877.0" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/><circle cx="1270" cy="877.0" r="7" fill="#D9B45F"/><circle cx="1114.0" cy="703.8" r="7" fill="#D9B45F"/></svg>
+<div class="abs eyebrow" style="left:40px;top:28px">Versi 5 &nbsp;·&nbsp; Penambahbaikan Modul</div>
+<h1 class="s3-title">6 Penambahbaikan Utama <em>Modul Versi 5</em></h1>
+<div class="ph sm" style="left:1500px;top:30px;width:380px;height:128px;border-radius:8px"><svg class="ic" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="4"/></svg><div><b>[GAMBAR PENCERAMAH / PESERTA]</b><small>Ruang gambar kecil</small></div></div>
+<div class="c3" style="left:40px;top:180px">
+ <div class="hd"><span class="num serif">01</span><span class="ib"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h13v4"/><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="16.5" cy="13.5" r="1.3"/></svg></span><span class="tt">Pengurusan Kewangan &amp; Tanggungjawab Nafkah</span></div>
+ <ul><li>Perancangan perbelanjaan</li><li>Amalan menabung</li><li>Pengurusan hutang</li><li>Tanggungjawab nafkah</li><li>Hak dan tanggungjawab suami isteri</li></ul></div><div class="c3" style="left:40px;top:461px">
+ <div class="hd"><span class="num serif">02</span><span class="ib"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-6l-4 3.5V15H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M21 9.5a2 2 0 0 1 1 1.7V18l-3-2.5h-5"/></svg></span><span class="tt">Komunikasi Suami Isteri</span></div>
+ <ul><li>Komunikasi berkesan</li><li>Komunikasi era digital</li><li>Penggunaan media sosial secara beretika</li><li>Penjagaan privasi</li><li>Pembinaan kepercayaan dan saling memahami</li></ul></div><div class="c3" style="left:40px;top:742px">
+ <div class="hd"><span class="num serif">03</span><span class="ib"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2.5 4 2.5S16 14 16 14"/><path d="M9 9.5h.01M15 9.5h.01"/></svg></span><span class="tt">Pengurusan Kesihatan Mental</span></div>
+ <ul><li>Kesedaran kesihatan mental</li><li>Mengenal pasti stres, keresahan dan kemurungan</li><li>Pengurusan emosi</li><li>Sokongan pasangan</li><li>Mendapatkan bantuan profesional</li></ul></div><div class="c3" style="left:1270px;top:180px">
+ <div class="hd"><span class="num serif">04</span><span class="ib"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="tt">Pengurusan Konflik &amp; Tekanan Rumah Tangga</span></div>
+ <ul><li>Pengawalan emosi</li><li>Komunikasi berkesan</li><li>Penyelesaian perselisihan secara matang</li><li>Pengurusan stres dan konflik</li></ul></div><div class="c3" style="left:1270px;top:461px">
+ <div class="hd"><span class="num serif">05</span><span class="ib"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="2.6"/><circle cx="17" cy="9.5" r="2"/><path d="M3 20v-5a5 5 0 0 1 10 0v5"/><path d="M14.5 20v-3a3 3 0 0 1 5.5 0v3"/></svg></span><span class="tt">Kemahiran Keibubapaan</span></div>
+ <ul><li>Pendidikan agama</li><li>Pembentukan akhlak anak-anak</li><li>Tanggungjawab bersama ibu bapa</li><li>Pembinaan keluarga sejahtera</li></ul></div><div class="c3" style="left:1270px;top:742px">
+ <div class="hd"><span class="num serif">06</span><span class="ib"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2.5"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M3 14h18v7H3z"/><path d="M9.5 21v-3.5a2.5 2.5 0 0 1 5 0V21"/></svg></span><span class="tt">Pemantapan Akidah &amp; Tanggungjawab Suami Isteri</span></div>
+ <ul><li>Pegangan Ahli Sunnah Wal Jamaah</li><li>Aliran Al-Asya'irah dan Al-Maturidiyyah</li><li>Konsep lelaki sebagai qawwam</li><li>Tanggungjawab memimpin, memberikan nafkah, melindungi dan membimbing keluarga</li><li>Memahami hak serta peranan masing-masing</li></ul></div>
+<div class="core"><small>MBKPPI</small><h2>VERSI<span>5</span></h2><p>Persediaan menyeluruh bakal pasangan</p></div>
+<div class="foot" style="height:36px;font-size:14px"><span>Soalan Lisan A182 &nbsp;|&nbsp; Mesyuarat Kedua Belanjawan 2027 &nbsp;|&nbsp; DUN Johor Ke-16</span><span><b>YB Fared Khalid</b></span><span class="pg" style="font-size:19px">03 / 05</span></div>
+</div></body></html>
