@@ -510,21 +510,21 @@ async function build() {
       keb: { c: P.peach, n: "Kebajikan" },
     };
     const ag = [
-      { k: "kel", ic: "LuHouse", ab: null, nm: "Bahagian Pembangunan Keluarga JAINJ", fn: "Program pasca perkahwinan · Pengukuhan hubungan suami isteri · Khidmat nasihat berkaitan masalah rumah tangga" },
+      { k: "kel", ic: "LuHouse", ab: null, nm: "Bahagian Pembangunan Keluarga JAINJ", fn: "Program pasca perkahwinan · Hubungan suami isteri · Khidmat nasihat rumah tangga" },
       { k: "kel", ic: "LuHeartHandshake", ab: "YPKDT", nm: "Yayasan Pembangunan Keluarga Darul Ta'zim", fn: "Bimbingan dan pembangunan institusi keluarga" },
-      { k: "und", ic: "LuScale", ab: "JKSNJ", nm: "Jabatan Kehakiman Syariah Negeri Johor", fn: "Khidmat berkaitan undang-undang keluarga Islam · Penyelesaian konflik rumah tangga" },
+      { k: "und", ic: "LuScale", ab: "JKSNJ", nm: "Jabatan Kehakiman Syariah Negeri Johor", fn: "Undang-undang keluarga Islam · Penyelesaian konflik rumah tangga" },
       { k: "kel", ic: "LuMessageCircleHeart", ab: "LPPKN", nm: "Lembaga Penduduk dan Pembangunan Keluarga Negara", fn: "Khidmat runding cara · Pendidikan kekeluargaan" },
-      { k: "kes", ic: "LuHeartPulse", ab: null, nm: "Jabatan Kesihatan Negeri Johor", fn: "Rujukan berkaitan kesihatan mental · Bantuan profesional" },
-      { k: "keb", ic: "LuHandCoins", ab: "MAINJ", nm: "Majlis Agama Islam Negeri Johor", fn: "Bantuan kewangan dan kebajikan kepada pasangan yang memenuhi syarat kelayakan" },
+      { k: "kes", ic: "LuHeartPulse", ab: null, nm: "Jabatan Kesihatan Negeri Johor", fn: "Rujukan kesihatan mental · Bantuan profesional" },
+      { k: "keb", ic: "LuHandCoins", ab: "MAINJ", nm: "Majlis Agama Islam Negeri Johor", fn: "Bantuan kewangan dan kebajikan (mengikut syarat kelayakan)" },
       { k: "keb", ic: "LuHandHeart", ab: "JKM", nm: "Jabatan Kebajikan Masyarakat", fn: "Bantuan kebajikan · Perlindungan sosial" },
-      { k: "kew", ic: "LuPiggyBank", ab: "AKPK", nm: "Agensi Kaunseling dan Pengurusan Kredit", fn: "Pendidikan kewangan · Khidmat nasihat pengurusan hutang" },
+      { k: "kew", ic: "LuPiggyBank", ab: "AKPK", nm: "Agensi Kaunseling dan Pengurusan Kredit", fn: "Pendidikan kewangan · Nasihat pengurusan hutang" },
     ];
     const top = 1.98, bot = 6.85, gap = 0.16;
     const ch = (bot - top - gap * 3) / 4;
-    const cw = 4.15;
+    const cw = 4.45;
     const xL = MX, xR = RX - cw;
     const spL = xL + cw + 0.22, spR = xR - 0.22;
-    const hubCx = (spL + spR) / 2, hubD = 1.85;
+    const hubCx = (spL + spR) / 2, hubD = 1.8;
     const centers = [0, 1, 2, 3].map(i => top + i * (ch + gap) + ch / 2);
     const hubCy = (centers[0] + centers[3]) / 2 + 0.05;
     // spines
@@ -542,38 +542,38 @@ async function build() {
     circle(s, hubCx - hubD / 2, hubCy - hubD / 2, hubD, NAVY, { shadow: true });
     T(s, [
       { text: "JAINJ", options: { fontFace: HEAD, fontSize: 24, bold: true, color: "FFFFFF", breakLine: true } },
-      { text: "Jabatan Agama Islam Negeri Johor", options: { fontSize: 9, color: "D9BE86" } },
+      { text: "Jabatan Agama Islam Negeri Johor", options: { fontSize: 10, color: "D9BE86" } },
     ], { x: hubCx - hubD / 2 + 0.15, y: hubCy - hubD / 2, w: hubD - 0.3, h: hubD, align: "center", valign: "middle" });
     // photo (small) above hub; legend below hub
     const colX = spL + 0.2, colW = spR - spL - 0.4;
     const phY = top, phH = hubCy - hubD / 2 - 0.3 - top;
     await photo(s, colX, phY, colW, phH, "Cadangan: Gambar aktiviti JAINJ");
-    const lgY = hubCy + hubD / 2 + 0.3;
-    label(s, "KOD WARNA FUNGSI", colX, lgY, colW, GOLD, 8.5);
+    const lgY = hubCy + hubD / 2 + 0.22;
+    label(s, "KOD WARNA FUNGSI", colX + 0.3, lgY, colW, GOLD, 8.5);
     const keys = Object.values(CAT);
     keys.forEach((k, i) => {
-      const lx = colX + (i % 2) * (colW / 2), ly = lgY + 0.3 + Math.floor(i / 2) * 0.27;
-      circle(s, lx, ly + 0.06, 0.15, k.c.deep);
-      T(s, k.n, { x: lx + 0.22, y: ly, w: colW / 2 - 0.22, h: 0.27, fontSize: 9.5, color: INK, valign: "middle" });
+      const lx = colX + 0.3, ly = lgY + 0.28 + i * 0.215;
+      circle(s, lx, ly + 0.035, 0.145, k.c.deep);
+      T(s, k.n, { x: lx + 0.24, y: ly, w: colW - 0.6, h: 0.215, fontSize: 10.5, color: INK, valign: "middle" });
     });
     // agency cards
     for (let i = 0; i < 8; i++) {
       const a = ag[i], c = CAT[a.k].c;
       const x = i < 4 ? xL : xR, y = top + (i % 4) * (ch + gap);
       rrect(s, x, y, cw, ch, CARD, { r: 0.12, shadow: true });
-      rrect(s, x + 0.12, y + 0.12, 0.62, ch - 0.24, c.bg, { r: 0.1 });
-      await iconImg(s, a.ic, c.deep, x + 0.25, y + 0.2, 0.36);
-      T(s, String(i + 1).padStart(2, "0"), { x: x + 0.12, y: y + ch - 0.48, w: 0.62, h: 0.3, fontFace: HEAD, fontSize: 10, bold: true, color: c.deep, align: "center", valign: "middle" });
-      const tx = x + 0.88, tw = cw - 1.0;
+      rrect(s, x + 0.12, y + 0.12, 0.52, ch - 0.24, c.bg, { r: 0.1 });
+      await iconImg(s, a.ic, c.deep, x + 0.22, y + 0.22, 0.32);
+      T(s, String(i + 1).padStart(2, "0"), { x: x + 0.12, y: y + ch - 0.48, w: 0.52, h: 0.3, fontFace: HEAD, fontSize: 10, bold: true, color: c.deep, align: "center", valign: "middle" });
+      const tx = x + 0.78, tw = cw - 0.88;
       const runs = [];
       if (a.ab) {
-        runs.push({ text: a.ab + "  ", options: { fontFace: HEAD, bold: true, fontSize: 12.5, color: c.deep } });
-        runs.push({ text: a.nm, options: { fontSize: 9.5, color: MUTED, breakLine: true } });
+        runs.push({ text: a.ab + "  ", options: { fontFace: HEAD, bold: true, fontSize: 15, color: c.deep } });
+        runs.push({ text: a.nm, options: { fontSize: 10.5, color: MUTED, breakLine: true } });
       } else {
-        runs.push({ text: a.nm, options: { fontFace: HEAD, bold: true, fontSize: 11, color: c.deep, breakLine: true } });
+        runs.push({ text: a.nm, options: { fontFace: HEAD, bold: true, fontSize: 11.5, color: c.deep, breakLine: true } });
       }
-      runs.push({ text: a.fn, options: { fontSize: 10.5, color: INK } });
-      T(s, runs, { x: tx, y: y + 0.08, w: tw, h: ch - 0.16, valign: "middle", paraSpaceAfter: 3 });
+      runs.push({ text: a.fn, options: { fontSize: 12.5, color: INK } });
+      T(s, runs, { x: tx, y: y + 0.06, w: tw, h: ch - 0.12, valign: "middle", paraSpaceAfter: 2 });
     }
   }
 
