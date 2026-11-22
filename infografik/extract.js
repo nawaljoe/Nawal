@@ -47,7 +47,7 @@ const EXTRACT = () => {
       line = { w: bw[0], color: bc[0], dash: bs[0] === 'dashed' };
       x += bw[0] / 2; y += bw[0] / 2; w -= bw[0]; h -= bw[0];
     }
-    items.push({ t: 'rect', x, y, w, h, fill, line, rad, ell, rot: 0 });
+    if (fill || uniform) items.push({ t: 'rect', x, y, w, h, fill, line, rad, ell, rot: 0 });
     if (!uniform) {
       if (has[0]) items.push({ t: 'rect', x: r.left, y: r.top, w: r.width, h: bw[0], fill: bc[0], line: null, rad: 0, ell: false, rot: 0, topRound: rad });
       if (has[2]) items.push({ t: 'rect', x: r.left, y: r.bottom - bw[2], w: r.width, h: bw[2], fill: bc[2], line: null, rad: 0, ell: false, rot: 0 });
@@ -139,7 +139,19 @@ const EXTRACT = () => {
       if (el.classList.contains('ic')) {
         items.push({ t: 'icon', x: r.left, y: r.top, w: r.width, h: r.height, html: el.outerHTML, color: cs.color });
       } else {
-        items.push({ t: 'svgfull', html: el.outerHTML });
+        const groups = [];
+        for (const c of [...el.children]) {
+          const tg = c.tagName.toLowerCase();
+          if (tg === 'circle' && groups.length) groups[groups.length - 1].push(c); else groups.push([c]);
+        }
+        for (const g of groups) {
+          let x1 = 1e9, y1 = 1e9, x2 = -1e9, y2 = -1e9;
+          for (const c of g) { const q = c.getBoundingClientRect(); x1 = Math.min(x1, q.left); y1 = Math.min(y1, q.top); x2 = Math.max(x2, q.right); y2 = Math.max(y2, q.bottom); }
+          x1 -= 4; y1 -= 4; x2 += 4; y2 += 4;
+          const w = x2 - x1, h = y2 - y1;
+          items.push({ t: 'svggrp', x: x1, y: y1, w, h,
+            html: `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="${x1} ${y1} ${w} ${h}">${g.map(c => c.outerHTML).join('')}</svg>` });
+        }
       }
       return;
     }
@@ -189,11 +201,12 @@ const EXTRACT = () => {
         const f = `icon-${n}-${k++}.png`;
         await ip.screenshot({ path: `${OUT}/${f}`, omitBackground: true, clip: { x: 0, y: 0, width: w, height: h } });
         it.file = f; delete it.html;
-      } else if (it.t === 'svgfull') {
+      } else if (it.t === 'svggrp') {
+        await fp.setViewportSize({ width: Math.ceil(it.w), height: Math.ceil(it.h) });
         await fp.setContent(`<body style="margin:0;background:transparent">${it.html}</body>`);
-        const f = `conn-${n}.png`;
-        await fp.screenshot({ path: `${OUT}/${f}`, omitBackground: true });
-        it.file = f; delete it.html;
+        const f = `conn-${n}-${k++}.png`;
+        await fp.screenshot({ path: `${OUT}/${f}`, omitBackground: true, clip: { x: 0, y: 0, width: Math.ceil(it.w), height: Math.ceil(it.h) } });
+        it.t = 'icon'; it.file = f; delete it.html;
       }
     }
     result.push({ n, bg: `bg-${n}.jpg`, items });

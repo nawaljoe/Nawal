@@ -91,7 +91,7 @@ s1_css = """
 .badge small{font-size:20px;font-weight:800;letter-spacing:.22em}
 .badge strong{font-family:'Caladea',serif;font-size:100px;line-height:.95;font-weight:700}
 .label{position:absolute;left:0;right:0;bottom:0;height:112px;background:var(--blue);border-top:6px solid var(--red);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 96px}
-.label .a{font-size:38px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.label .a{font-size:34px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
 .label .b{font-size:22px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:right;line-height:1.45;color:#DCE2F5}
 .frame{position:absolute;left:1118px;top:150px;width:742px;height:740px;border:3px solid var(--red);border-radius:6px}
 """
