@@ -59,7 +59,17 @@ const EXTRACT = () => {
   function pseudo(el, cs, r) {
     const ps = getComputedStyle(el, '::before');
     if (!ps.content || ps.content === 'none' || ps.content === 'normal') return;
-    const bg = col(ps.backgroundColor); if (!bg || bg.a === 0) return;
+    const bg0 = col(ps.backgroundColor);
+    if ((!bg0 || bg0.a === 0) && ps.backgroundImage.includes('gradient')) {
+      const t = [...ps.backgroundImage.matchAll(/rgba?\([^)]+\)/g)].map(m => col(m[0]));
+      if (t.length >= 2) {
+        const w = px(ps.width), h = px(ps.height), x = r.left + px(cs.paddingLeft), y = r.top + (r.height - h) / 2;
+        items.push({ t: 'rect', x, y, w: w / 2, h, fill: t[0], line: null, rad: 0, ell: false, rot: 0 });
+        items.push({ t: 'rect', x: x + w / 2, y, w: w / 2, h, fill: t[t.length - 1], line: null, rad: 0, ell: false, rot: 0 });
+      }
+      return;
+    }
+    const bg = bg0; if (!bg || bg.a === 0) return;
     const w = px(ps.width), h = px(ps.height); let x, y;
     if (ps.position === 'absolute') { x = r.left + px(cs.borderLeftWidth) + px(ps.left); y = r.top + px(cs.borderTopWidth) + px(ps.top); }
     else { x = r.left + px(cs.paddingLeft); y = r.top + (r.height - h) / 2; }
@@ -131,6 +141,11 @@ const EXTRACT = () => {
       } else {
         items.push({ t: 'svgfull', html: el.outerHTML });
       }
+      return;
+    }
+    if (tag === 'img') {
+      const r = el.getBoundingClientRect();
+      items.push({ t: 'img', x: r.left, y: r.top, w: r.width, h: r.height, src: el.currentSrc.replace('file://', '') });
       return;
     }
     if (el.classList.contains('pattern')) return;

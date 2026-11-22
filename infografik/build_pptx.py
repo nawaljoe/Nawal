@@ -61,12 +61,12 @@ for S in layout:
                 shp.line.fill.background()
         elif t == 'text':
             ow = it['w']; T = it['tb']; serif = any(FONT_MAP.get(r['family']) for r in it['paras'][0])
-            sl = (1.10 if serif else 1.04) if not it['single'] else 1.0
+            sl = (1.10 if (serif or it['align'] != 'left') else 1.04) if not it['single'] else 1.0
             nw = T['w'] * sl + (8 if it['single'] else 4)
             if it['align'] == 'right': it['x'] = T['x'] + T['w'] - nw
             elif it['align'] == 'center': it['x'] = T['x'] + T['w'] / 2 - nw / 2
             else: it['x'] = T['x']
-            it['w'] = min(nw, ow / (1.05 if serif else 1.03) - 6) if not it['single'] else nw
+            it['w'] = min(nw, ow / (1.05 if serif else 1.03) - 6) if (not it['single'] and it['align'] == 'left') else nw
             if it['align'] == 'left': it['x'] = T['x']
             tb = s.shapes.add_textbox(px(it['x']), px(it['y']), px(it['w']), px(it['h']))
             tf = tb.text_frame
@@ -83,6 +83,8 @@ for S in layout:
                     f.name = FONT_MAP.get(rn['family'], rn['family'])
                     if rn['color']: f.color.rgb = rgb(rn['color'])
                     if rn['spc']: r._r.get_or_add_rPr().set('spc', str(int(round(rn['spc'] * 50))))
+        elif t == 'img':
+            s.shapes.add_picture(it['src'], px(it['x']), px(it['y']), px(it['w']), px(it['h']))
         elif t == 'icon':
             s.shapes.add_picture(os.path.join(SRC, it['file']), px(it['x']), px(it['y']), px(it['w']), px(it['h']))
         elif t == 'svgfull':
