@@ -380,21 +380,22 @@ async function build() {
     const x2 = x1 + w1 + 0.3, w2 = RX - x2;
     const PAD = 0.28;
     const head = (x, w, n, c, t) => {
-      numBadge(s, n, x + PAD, top + 0.24, 0.5, c.deep);
-      T(s, "PENDEKATAN " + (n === 1 ? "PERTAMA" : "KEDUA"), { x: x + PAD + 0.62, y: top + 0.24, w: w - PAD * 2 - 0.62, h: 0.5, fontFace: HEAD, fontSize: 11, bold: true, color: GOLD, charSpacing: 1.5, valign: "middle" });
-      T(s, t, { x: x + PAD, y: top + 0.88, w: w - PAD * 2, h: 0.62, fontFace: HEAD, fontSize: 15, bold: true, color: c.deep, valign: "middle" });
+      T(s, [
+        { text: n + ".  ", options: { color: GOLD } },
+        { text: t, options: { color: c.deep } },
+      ], { x: x + PAD, y: top + 0.22, w: w - PAD * 2, h: 1.05, fontFace: HEAD, fontSize: 16, bold: true, valign: "middle" });
     };
     // ---- Pendekatan 1
     rrect(s, x1, top, w1, ch, CARD, { r: 0.16, shadow: true });
-    head(x1, w1, 1, P.gold, "Kompetensi Penceramah dan Kaedah Penyampaian");
+    head(x1, w1, 1, P.gold, "Pemantapan Kompetensi Penceramah dan Kaedah Penyampaian");
     T(s, bullets(["Latihan dan penyelarasan penyampaian modul", "Perbincangan", "Kajian kes", "Simulasi", "Perkongsian pengalaman"], 15, INK, 9),
-      { x: x1 + PAD, y: top + 1.75, w: w1 - PAD * 2, h: 2.8 });
+      { x: x1 + PAD, y: top + 1.5, w: w1 - PAD * 2, h: 2.9 });
     // ---- Pendekatan 2
     const c2 = P.blue;
     rrect(s, x2, top, w2, ch, CARD, { r: 0.16, shadow: true });
-    head(x2, w2, 2, c2, "Penilaian dan Pemantauan Peserta");
+    head(x2, w2, 2, c2, "Penambahbaikan Kaedah Penilaian dan Pemantauan Peserta");
     T(s, bullets(["Sistem Pengurusan Perkahwinan Islam (SPPIM)", "Rekod penyertaan, kehadiran dan penilaian peserta", "Ujian penilaian bagi setiap tajuk"], 14, INK, 5),
-      { x: x2 + PAD, y: top + 1.62, w: w2 - PAD * 2, h: 1.45 });
+      { x: x2 + PAD, y: top + 1.45, w: w2 - PAD * 2, h: 1.5 });
     const iy = top + 3.05, ih = bot - 0.18 - iy;
     rrect(s, x2 + 0.18, iy, w2 - 0.36, ih, c2.bg, { r: 0.12 });
     T(s, "4 INDIKATOR PEMANTAUAN", { x: x2 + PAD + 0.1, y: iy + 0.1, w: w2 - PAD * 2, h: 0.3, fontFace: HEAD, fontSize: 11, bold: true, color: c2.deep, charSpacing: 1.5, valign: "middle" });
