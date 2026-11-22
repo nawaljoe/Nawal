@@ -60,10 +60,14 @@ for S in layout:
             else:
                 shp.line.fill.background()
         elif t == 'text':
-            ex = it['w'] * 0.06 if (it['align'] != 'left' and not it['single']) else 0
-            if it['align'] == 'right': it['x'] -= ex
-            elif it['align'] == 'center': it['x'] -= ex / 2
-            it['w'] += ex
+            ow = it['w']; T = it['tb']; serif = any(FONT_MAP.get(r['family']) for r in it['paras'][0])
+            sl = (1.10 if serif else 1.04) if not it['single'] else 1.0
+            nw = T['w'] * sl + (8 if it['single'] else 4)
+            if it['align'] == 'right': it['x'] = T['x'] + T['w'] - nw
+            elif it['align'] == 'center': it['x'] = T['x'] + T['w'] / 2 - nw / 2
+            else: it['x'] = T['x']
+            it['w'] = min(nw, ow / (1.05 if serif else 1.03) - 6) if not it['single'] else nw
+            if it['align'] == 'left': it['x'] = T['x']
             tb = s.shapes.add_textbox(px(it['x']), px(it['y']), px(it['w']), px(it['h']))
             tf = tb.text_frame
             tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
@@ -75,7 +79,7 @@ for S in layout:
                 for rn in para:
                     if not rn['text']: continue
                     r = p.add_run(); r.text = rn['text']
-                    f = r.font; f.size = Pt(rn['size'] * 0.5 * (0.93 if FONT_MAP.get(rn['family']) else 1)); f.bold = rn['bold']; f.italic = rn['italic']
+                    f = r.font; f.size = Pt(rn['size'] * 0.5 * ((0.84 if rn['bold'] else 0.93) if FONT_MAP.get(rn['family']) else 1)); f.bold = rn['bold']; f.italic = rn['italic']
                     f.name = FONT_MAP.get(rn['family'], rn['family'])
                     if rn['color']: f.color.rgb = rgb(rn['color'])
                     if rn['spc']: r._r.get_or_add_rPr().set('spc', str(int(round(rn['spc'] * 50))))

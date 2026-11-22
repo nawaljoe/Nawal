@@ -92,11 +92,11 @@ s1_css = """
 .s1-title em{font-style:normal;color:var(--gold);display:block}
 .s1-sub{position:absolute;left:96px;top:528px;width:900px;font-size:32px;line-height:1.35;font-weight:500;color:#E8ECF5;padding-left:26px;border-left:5px solid var(--gold)}
 .s1-sub b{color:var(--gold);font-weight:700}
-.info{position:absolute;left:96px;top:664px;width:900px;display:flex;flex-direction:column;gap:18px}
+.info{position:absolute;left:96px;top:664px;width:770px;display:flex;flex-direction:column;gap:18px}
 .info div{display:flex;gap:22px;align-items:flex-start;font-size:26px;line-height:1.4;font-weight:500;color:#DDE3F0}
 .info i{flex:none;font-style:normal;font-family:'Caladea',serif;font-size:36px;line-height:1;color:var(--gold);width:48px;margin-top:2px}
 .info b{color:#fff;font-weight:700}
-.badge{position:absolute;left:1040px;top:738px;width:212px;height:212px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;border:8px solid var(--navy);box-shadow:0 0 0 3px var(--gold)}
+.badge{position:absolute;left:890px;top:744px;width:212px;height:212px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;border:8px solid var(--navy);box-shadow:0 0 0 3px var(--gold)}
 .badge small{font-size:20px;font-weight:800;letter-spacing:.22em}
 .badge strong{font-family:'Caladea',serif;font-size:100px;line-height:.95;font-weight:700}
 .label{position:absolute;left:0;right:0;bottom:0;height:112px;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 96px}
@@ -137,7 +137,7 @@ s2_css = """
 .c2 .ib{position:absolute;right:22px;top:20px;width:64px;height:64px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center}
 .c2 .t{position:absolute;left:24px;right:20px;bottom:16px;font-size:28px;line-height:1.18;font-weight:700;color:var(--navy)}
 .quote{position:absolute;left:0;right:0;top:896px;height:138px;background:var(--navy);display:flex;align-items:center;padding:0 70px;gap:34px}
-.quote .q{font-family:'Caladea',serif;font-size:140px;line-height:.7;color:var(--gold);height:60px}
+.quote .q{font-family:'Caladea',serif;font-size:90px;line-height:1;color:var(--gold);padding-top:26px}
 .quote p{font-family:'Caladea',serif;font-style:italic;font-size:38px;line-height:1.28;color:#fff;width:1500px}
 .quote p b{color:var(--gold);font-weight:700}
 """

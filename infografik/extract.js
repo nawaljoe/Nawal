@@ -116,7 +116,8 @@ const EXTRACT = () => {
     const serif = /Caladea|serif/i.test(P[0][0].family);
     const slack = lines > 1 ? (serif ? 1.05 : 1.03) : 1;
     if (align === 'left') w = Math.max(w, 10) * slack;
-    items.push({ t: 'text', x, y, w, h: lines * lh, align, lh, single: lines === 1, paras: P });
+    const tb = { x: left, y: rects[0].top, w: Math.max(...rects.map(q => q.right)) - left, h: Math.max(...rects.map(q => q.bottom)) - rects[0].top };
+    items.push({ t: 'text', tb, x, y, w, h: lines * lh, align, lh, single: lines === 1, paras: P });
   }
 
   function walk(el) {
