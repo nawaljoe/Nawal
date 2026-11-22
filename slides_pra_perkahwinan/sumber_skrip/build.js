@@ -366,103 +366,64 @@ async function build() {
     T(s, "Memahami hak serta peranan masing-masing dalam institusi perkahwinan", { x: bX, y: sy + 0.98, w: bW, h: 0.4, fontSize: 10.5, italic: true, color: MUTED });
   }
 
-  // ======================= SLIDE 5 — TIGA PENDEKATAN =======================
+  // ======================= SLIDE 5 — DUA ASPEK + TIGA PENDEKATAN =======================
   {
     const s = pres.addSlide();
     bg(s, "bg_content.png");
     header(s, "PEMANTAPAN PELAKSANAAN DAN KEBERKESANAN KURSUS");
     footer(s, 5);
-    const w1 = 3.5, w2 = 5.0, w3 = 12.13 - w1 - w2 - 0.6;
-    const xs = [MX, MX + w1 + 0.3, MX + w1 + w2 + 0.6];
-    const ws = [w1, w2, w3];
-    const cols = [P.gold, P.blue, P.sage];
-    const mY = 1.72, cardY = 2.35, bot = 6.85, ch = bot - cardY;
-    // step markers + arrows
+    const top = 1.75, bot = 6.85;
+    // ---- Row A: two aspects (left) + photo (right)
+    const phW = 4.2, phX = RX - phW, rowH = 1.65;
+    await photo(s, phX, top, phW, rowH, "Cadangan: Gambar penceramah atau pelaksanaan kursus");
+    const pw = phX - 0.3 - MX;
+    rrect(s, MX, top, pw, rowH, NAVY, { r: 0.14 });
+    T(s, "JAINJ MEMBERI PERHATIAN KEPADA DUA ASPEK", { x: MX + 0.3, y: top + 0.16, w: pw - 0.6, h: 0.26, fontFace: HEAD, fontSize: 9.5, bold: true, color: "D9BE86", charSpacing: 1.5, valign: "middle" });
+    const asp = [["LuSettings2", "Pelaksanaan kursus"], ["LuTarget", "Keberkesanan penyampaian kursus"]];
+    const aw2 = (pw - 0.6 - 0.2) / 2;
+    for (let i = 0; i < 2; i++) {
+      const x = MX + 0.3 + i * (aw2 + 0.2), y = top + 0.52;
+      rrect(s, x, y, aw2, 0.62, "FFFFFF", { r: 0.1 });
+      await iconImg(s, asp[i][0], NAVY, x + 0.18, y + 0.17, 0.28);
+      T(s, asp[i][1], { x: x + 0.58, y, w: aw2 - 0.7, h: 0.62, fontFace: HEAD, fontSize: 12.5, bold: true, color: NAVY, valign: "middle" });
+    }
+    T(s, "melalui tiga pendekatan utama", { x: MX + 0.3, y: top + 1.22, w: pw - 0.6, h: 0.3, fontSize: 11, italic: true, color: "D6D8EE", valign: "middle" });
+
+    // ---- Row B: three approach cards (points only)
+    const cy = top + rowH + 0.25, ch = bot - cy;
+    const cws = [3.3, 12.13 - 0.6 - 6.6, 3.3];
+    const cxs = [MX, MX + cws[0] + 0.3, MX + cws[0] + cws[1] + 0.6];
+    const cards = [
+      { c: P.gold, t: "Kompetensi Penceramah dan Kaedah Penyampaian",
+        pts: ["Latihan dan penyelarasan penyampaian modul", "Perbincangan", "Kajian kes", "Simulasi", "Perkongsian pengalaman"] },
+      { c: P.blue, t: "Penilaian dan Pemantauan Peserta",
+        pts: ["Sistem Pengurusan Perkahwinan Islam (SPPIM)", "Rekod penyertaan, kehadiran dan penilaian peserta", "Ujian penilaian bagi setiap tajuk"] },
+      { c: P.sage, t: "Mekanisme Rujukan dan Kerjasama Antara Agensi",
+        pts: ["Bimbingan dan sokongan selepas mengikuti kursus", "Bimbingan dan sokongan selepas mendirikan rumah tangga", "Kerjasama strategik dengan agensi berkaitan", "Mengikut keperluan pasangan"] },
+    ];
     for (let i = 0; i < 3; i++) {
-      numBadge(s, i + 1, xs[i], mY, 0.48, i === 1 ? NAVY : cols[i].deep);
-      T(s, "PENDEKATAN " + ["PERTAMA", "KEDUA", "KETIGA"][i], { x: xs[i] + 0.6, y: mY, w: 2.4, h: 0.48, fontFace: HEAD, fontSize: 10, bold: true, color: GOLD, charSpacing: 1.5, valign: "middle" });
-      if (i < 2) line(s, xs[i] + 3.0, mY + 0.24, xs[i + 1] - 0.12, mY + 0.24, LINE, 1.25, { arrow: "triangle", dash: "dash" });
-    }
-    // ---- col 1
-    {
-      const x = xs[0], w = ws[0], c = cols[0];
-      rrect(s, x, cardY, w, ch, CARD, { r: 0.16, shadow: true });
-      await photo(s, x + 0.15, cardY + 0.15, w - 0.3, 1.12, "Cadangan: Gambar penceramah kursus");
-      let y = cardY + 1.42;
-      T(s, "PEMANTAPAN KOMPETENSI PENCERAMAH DAN KAEDAH PENYAMPAIAN", { x: x + 0.22, y, w: w - 0.44, h: 0.52, fontFace: HEAD, fontSize: 11.5, bold: true, color: c.deep, valign: "middle" });
-      y += 0.62;
-      await iconImg(s, "LuPresentation", c.deep, x + 0.22, y + 0.03, 0.26);
-      T(s, "Latihan dan penyelarasan penyampaian modul", { x: x + 0.58, y, w: w - 0.8, h: 0.42, fontSize: 11.5, color: INK, valign: "middle" });
-      y += 0.55;
-      label(s, "KAEDAH PRAKTIKAL & INTERAKTIF", x + 0.22, y, w - 0.44, c.deep, 9);
-      y += 0.3;
-      const cw2 = (w - 0.44 - 0.12) / 2;
-      ["Perbincangan", "Kajian kes", "Simulasi", "Perkongsian pengalaman"].forEach((t, i) => {
-        chip(s, t, x + 0.22 + (i % 2) * (cw2 + 0.12), y + Math.floor(i / 2) * 0.44, cw2, 0.36, c.bg, c.deep, i === 3 ? 10 : 11);
-      });
-      y += 0.98;
-      T(s, "Mengaplikasikan ilmu yang dipelajari dalam situasi sebenar kehidupan berumah tangga", { x: x + 0.22, y, w: w - 0.44, h: bot - y - 0.12, fontSize: 10.5, italic: true, color: MUTED, valign: "middle" });
-    }
-    // ---- col 2 SPPIM
-    {
-      const x = xs[1], w = ws[1], c = cols[1];
-      rrect(s, x, cardY, w, ch, CARD, { r: 0.16, shadow: true, line: c.mid, lineW: 1.25 });
-      let y = cardY + 0.2;
-      T(s, "PENAMBAHBAIKAN KAEDAH PENILAIAN DAN PEMANTAUAN PESERTA", { x: x + 0.25, y, w: w - 0.5, h: 0.48, fontFace: HEAD, fontSize: 11.5, bold: true, color: c.deep, valign: "middle" });
-      y += 0.6;
-      // SPPIM anchor
-      const aw = 1.75, ah = 0.98;
-      rrect(s, x + 0.25, y, aw, ah, NAVY, { r: 0.12 });
-      await iconImg(s, "LuDatabase", "D9BE86", x + 0.38, y + 0.14, 0.26);
-      T(s, "SPPIM", { x: x + 0.7, y: y + 0.08, w: aw - 0.5, h: 0.4, fontFace: HEAD, fontSize: 18, bold: true, color: "FFFFFF", valign: "middle" });
-      T(s, "Sistem Pengurusan Perkahwinan Islam", { x: x + 0.38, y: y + 0.5, w: aw - 0.26, h: 0.42, fontSize: 9.5, color: "D6D8EE", valign: "middle" });
-      const rx = x + 0.25 + aw + 0.2, rw = w - 0.5 - aw - 0.2;
-      T(s, "Pengurusan rekod:", { x: rx, y, w: rw, h: 0.24, fontSize: 10.5, italic: true, color: MUTED, valign: "middle" });
-      chip(s, "Penyertaan", rx, y + 0.3, 1.2, 0.3, c.bg, c.deep, 10.5);
-      chip(s, "Kehadiran", rx + 1.3, y + 0.3, 1.2, 0.3, c.bg, c.deep, 10.5);
-      chip(s, "Penilaian peserta", rx, y + 0.66, 1.6, 0.3, c.bg, c.deep, 10.5);
-      y += ah + 0.12;
-      await iconImg(s, "LuClipboardCheck", c.deep, x + 0.25, y + 0.02, 0.24);
-      T(s, [{ text: "Ujian penilaian", options: { bold: true } }, { text: " dilaksanakan bagi setiap tajuk" }], { x: x + 0.58, y, w: w - 0.8, h: 0.28, fontSize: 11.5, color: INK, valign: "middle" });
-      y += 0.36;
-      // 4 indicators — standout
-      rrect(s, x + 0.15, y, w - 0.3, 1.72, "EEF2F8", { r: 0.12 });
-      T(s, [{ text: "4 ", options: { color: NAVY, fontSize: 13 } }, { text: "INDIKATOR PEMANTAUAN", options: {} }], { x: x + 0.3, y: y + 0.08, w: w - 0.6, h: 0.3, fontFace: HEAD, fontSize: 10, bold: true, color: c.deep, charSpacing: 1.5, valign: "middle" });
-      const inds = [["LuUsers", "Kadar penyertaan"], ["LuChartColumn", "Pencapaian penilaian"], ["LuLightbulb", "Tahap kefahaman"], ["LuSmile", "Kepuasan peserta"]];
-      const tw = (w - 0.6 - 0.14) / 2, th = 0.56;
-      for (let i = 0; i < 4; i++) {
-        const tx = x + 0.3 + (i % 2) * (tw + 0.14), ty = y + 0.44 + Math.floor(i / 2) * (th + 0.1);
-        rrect(s, tx, ty, tw, th, "FFFFFF", { r: 0.1, shadow: true });
-        T(s, String(i + 1), { x: tx + 0.12, y: ty, w: 0.3, h: th, fontFace: HEAD, fontSize: 20, bold: true, color: GOLD, valign: "middle" });
-        await iconImg(s, inds[i][0], NAVY, tx + 0.44, ty + 0.15, 0.26);
-        T(s, inds[i][1], { x: tx + 0.8, y: ty, w: tw - 0.88, h: th, fontSize: 11.5, bold: true, color: NAVY, valign: "middle" });
+      const c = cards[i], x = cxs[i], cw = cws[i];
+      rrect(s, x, cy, cw, ch, CARD, { r: 0.14, shadow: true });
+      numBadge(s, i + 1, x + 0.22, cy + 0.2, 0.42, c.c.deep);
+      T(s, "PENDEKATAN " + ["PERTAMA", "KEDUA", "KETIGA"][i], { x: x + 0.76, y: cy + 0.2, w: cw - 1.0, h: 0.42, fontFace: HEAD, fontSize: 9, bold: true, color: GOLD, charSpacing: 1.5, valign: "middle" });
+      T(s, c.t, { x: x + 0.22, y: cy + 0.72, w: cw - 0.44, h: 0.48, fontFace: HEAD, fontSize: 12, bold: true, color: c.c.deep, valign: "middle" });
+      const bh = i === 1 ? 0.8 : ch - 1.4;
+      T(s, bullets(c.pts, 11.5, INK, 3), { x: x + 0.22, y: cy + 1.3, w: cw - 0.44, h: bh });
+      if (i === 1) {
+        // four monitoring indicators — highlighted
+        const iy = cy + 1.98, ih = ch - 1.98 - 0.15;
+        rrect(s, x + 0.15, iy, cw - 0.3, ih, c.c.bg, { r: 0.1 });
+        T(s, "4 INDIKATOR PEMANTAUAN", { x: x + 0.3, y: iy + 0.08, w: cw - 0.6, h: 0.24, fontFace: HEAD, fontSize: 9, bold: true, color: c.c.deep, charSpacing: 1.5, valign: "middle" });
+        const inds = ["Kadar penyertaan", "Pencapaian penilaian", "Tahap kefahaman", "Kepuasan peserta"];
+        const tw = (cw - 0.6) / 2;
+        inds.forEach((t, k) => {
+          const tx = x + 0.3 + (k % 2) * tw, ty = iy + 0.36 + Math.floor(k / 2) * 0.3;
+          T(s, [
+            { text: (k + 1) + "  ", options: { fontFace: HEAD, bold: true, color: GOLD, fontSize: 12 } },
+            { text: t, options: { bold: true, color: NAVY, fontSize: 11 } },
+          ], { x: tx, y: ty, w: tw, h: 0.28, valign: "middle" });
+        });
       }
-      y += 1.82;
-      T(s, "Data penyertaan, pencapaian penilaian dan maklum balas peserta dijadikan asas pemantauan serta penambahbaikan berterusan", { x: x + 0.25, y, w: w - 0.5, h: bot - y - 0.1, fontSize: 10, italic: true, color: MUTED, valign: "middle" });
-    }
-    // ---- col 3
-    {
-      const x = xs[2], w = ws[2], c = cols[2];
-      rrect(s, x, cardY, w, ch, CARD, { r: 0.16, shadow: true });
-      let y = cardY + 0.2;
-      await iconCircle(s, "LuNetwork", c.bg, c.deep, x + 0.22, y, 0.55);
-      y += 0.66;
-      T(s, "PENGUKUHAN MEKANISME RUJUKAN DAN KERJASAMA ANTARA AGENSI", { x: x + 0.22, y, w: w - 0.44, h: 0.72, fontFace: HEAD, fontSize: 11.5, bold: true, color: c.deep, valign: "middle" });
-      y += 0.8;
-      const pts = [
-        "Bimbingan dan sokongan selepas mengikuti kursus",
-        "Bimbingan dan sokongan selepas mendirikan rumah tangga",
-        "Kerjasama strategik dengan agensi berkaitan mengikut keperluan pasangan",
-      ];
-      const ph = [0.52, 0.72, 0.72];
-      for (const [k, p] of pts.entries()) {
-        await iconImg(s, "LuArrowRight", c.deep, x + 0.22, y + 0.04, 0.2);
-        T(s, p, { x: x + 0.52, y, w: w - 0.72, h: ph[k] - 0.05, fontSize: 11, color: INK });
-        y += ph[k];
-      }
-      rrect(s, x + 0.15, bot - 0.82, w - 0.3, 0.66, c.bg, { r: 0.1 });
-      T(s, "8", { x: x + 0.3, y: bot - 0.82, w: 0.5, h: 0.66, fontFace: HEAD, fontSize: 30, bold: true, color: c.deep, valign: "middle" });
-      T(s, "agensi berkaitan", { x: x + 0.82, y: bot - 0.82, w: w - 1.1, h: 0.66, fontSize: 11, bold: true, color: c.deep, valign: "middle" });
     }
   }
 
