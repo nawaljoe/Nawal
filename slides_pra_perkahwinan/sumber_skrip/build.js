@@ -366,65 +366,47 @@ async function build() {
     T(s, "Memahami hak serta peranan masing-masing dalam institusi perkahwinan", { x: bX, y: sy + 0.98, w: bW, h: 0.4, fontSize: 10.5, italic: true, color: MUTED });
   }
 
-  // ======================= SLIDE 5 — DUA ASPEK + TIGA PENDEKATAN =======================
+  // ======================= SLIDE 5 — PENDEKATAN 1 & 2 (large text) =======================
   {
     const s = pres.addSlide();
     bg(s, "bg_content.png");
     header(s, "PEMANTAPAN PELAKSANAAN DAN KEBERKESANAN KURSUS");
+    T(s, "Aspek pelaksanaan dan keberkesanan penyampaian kursus", { x: MX, y: 1.5, w: 12.13, h: 0.36, fontSize: 14, italic: true, color: MUTED, valign: "middle" });
     footer(s, 5);
-    const top = 1.75, bot = 6.85;
-    // ---- Row A: two aspects (left) + photo (right)
-    const phW = 4.2, phX = RX - phW, rowH = 1.65;
-    await photo(s, phX, top, phW, rowH, "Cadangan: Gambar penceramah atau pelaksanaan kursus");
-    const pw = phX - 0.3 - MX;
-    rrect(s, MX, top, pw, rowH, NAVY, { r: 0.14 });
-    T(s, "JAINJ MEMBERI PERHATIAN KEPADA DUA ASPEK", { x: MX + 0.3, y: top + 0.16, w: pw - 0.6, h: 0.26, fontFace: HEAD, fontSize: 9.5, bold: true, color: "D9BE86", charSpacing: 1.5, valign: "middle" });
-    const asp = [["LuSettings2", "Pelaksanaan kursus"], ["LuTarget", "Keberkesanan penyampaian kursus"]];
-    const aw2 = (pw - 0.6 - 0.2) / 2;
-    for (let i = 0; i < 2; i++) {
-      const x = MX + 0.3 + i * (aw2 + 0.2), y = top + 0.52;
-      rrect(s, x, y, aw2, 0.62, "FFFFFF", { r: 0.1 });
-      await iconImg(s, asp[i][0], NAVY, x + 0.18, y + 0.17, 0.28);
-      T(s, asp[i][1], { x: x + 0.58, y, w: aw2 - 0.7, h: 0.62, fontFace: HEAD, fontSize: 12.5, bold: true, color: NAVY, valign: "middle" });
-    }
-    T(s, "melalui tiga pendekatan utama", { x: MX + 0.3, y: top + 1.22, w: pw - 0.6, h: 0.3, fontSize: 11, italic: true, color: "D6D8EE", valign: "middle" });
-
-    // ---- Row B: three approach cards (points only)
-    const cy = top + rowH + 0.25, ch = bot - cy;
-    const cws = [3.3, 12.13 - 0.6 - 6.6, 3.3];
-    const cxs = [MX, MX + cws[0] + 0.3, MX + cws[0] + cws[1] + 0.6];
-    const cards = [
-      { c: P.gold, t: "Kompetensi Penceramah dan Kaedah Penyampaian",
-        pts: ["Latihan dan penyelarasan penyampaian modul", "Perbincangan", "Kajian kes", "Simulasi", "Perkongsian pengalaman"] },
-      { c: P.blue, t: "Penilaian dan Pemantauan Peserta",
-        pts: ["Sistem Pengurusan Perkahwinan Islam (SPPIM)", "Rekod penyertaan, kehadiran dan penilaian peserta", "Ujian penilaian bagi setiap tajuk"] },
-      { c: P.sage, t: "Mekanisme Rujukan dan Kerjasama Antara Agensi",
-        pts: ["Bimbingan dan sokongan selepas mengikuti kursus", "Bimbingan dan sokongan selepas mendirikan rumah tangga", "Kerjasama strategik dengan agensi berkaitan", "Mengikut keperluan pasangan"] },
-    ];
-    for (let i = 0; i < 3; i++) {
-      const c = cards[i], x = cxs[i], cw = cws[i];
-      rrect(s, x, cy, cw, ch, CARD, { r: 0.14, shadow: true });
-      numBadge(s, i + 1, x + 0.22, cy + 0.2, 0.42, c.c.deep);
-      T(s, "PENDEKATAN " + ["PERTAMA", "KEDUA", "KETIGA"][i], { x: x + 0.76, y: cy + 0.2, w: cw - 1.0, h: 0.42, fontFace: HEAD, fontSize: 9, bold: true, color: GOLD, charSpacing: 1.5, valign: "middle" });
-      T(s, c.t, { x: x + 0.22, y: cy + 0.72, w: cw - 0.44, h: 0.48, fontFace: HEAD, fontSize: 12, bold: true, color: c.c.deep, valign: "middle" });
-      const bh = i === 1 ? 0.8 : ch - 1.4;
-      T(s, bullets(c.pts, 11.5, INK, 3), { x: x + 0.22, y: cy + 1.3, w: cw - 0.44, h: bh });
-      if (i === 1) {
-        // four monitoring indicators — highlighted
-        const iy = cy + 1.98, ih = ch - 1.98 - 0.15;
-        rrect(s, x + 0.15, iy, cw - 0.3, ih, c.c.bg, { r: 0.1 });
-        T(s, "4 INDIKATOR PEMANTAUAN", { x: x + 0.3, y: iy + 0.08, w: cw - 0.6, h: 0.24, fontFace: HEAD, fontSize: 9, bold: true, color: c.c.deep, charSpacing: 1.5, valign: "middle" });
-        const inds = ["Kadar penyertaan", "Pencapaian penilaian", "Tahap kefahaman", "Kepuasan peserta"];
-        const tw = (cw - 0.6) / 2;
-        inds.forEach((t, k) => {
-          const tx = x + 0.3 + (k % 2) * tw, ty = iy + 0.36 + Math.floor(k / 2) * 0.3;
-          T(s, [
-            { text: (k + 1) + "  ", options: { fontFace: HEAD, bold: true, color: GOLD, fontSize: 12 } },
-            { text: t, options: { bold: true, color: NAVY, fontSize: 11 } },
-          ], { x: tx, y: ty, w: tw, h: 0.28, valign: "middle" });
-        });
-      }
-    }
+    const top = 2.05, bot = 6.85, ch = bot - top;
+    const phW = 3.3;
+    await photo(s, MX, top, phW, ch, "Cadangan: Gambar penceramah atau pelaksanaan kursus");
+    const x1 = MX + phW + 0.3, w1 = 3.75;
+    const x2 = x1 + w1 + 0.3, w2 = RX - x2;
+    const PAD = 0.28;
+    const head = (x, w, n, c, t) => {
+      numBadge(s, n, x + PAD, top + 0.24, 0.5, c.deep);
+      T(s, "PENDEKATAN " + (n === 1 ? "PERTAMA" : "KEDUA"), { x: x + PAD + 0.62, y: top + 0.24, w: w - PAD * 2 - 0.62, h: 0.5, fontFace: HEAD, fontSize: 11, bold: true, color: GOLD, charSpacing: 1.5, valign: "middle" });
+      T(s, t, { x: x + PAD, y: top + 0.88, w: w - PAD * 2, h: 0.62, fontFace: HEAD, fontSize: 15, bold: true, color: c.deep, valign: "middle" });
+    };
+    // ---- Pendekatan 1
+    rrect(s, x1, top, w1, ch, CARD, { r: 0.16, shadow: true });
+    head(x1, w1, 1, P.gold, "Kompetensi Penceramah dan Kaedah Penyampaian");
+    T(s, bullets(["Latihan dan penyelarasan penyampaian modul", "Perbincangan", "Kajian kes", "Simulasi", "Perkongsian pengalaman"], 15, INK, 9),
+      { x: x1 + PAD, y: top + 1.75, w: w1 - PAD * 2, h: 2.8 });
+    // ---- Pendekatan 2
+    const c2 = P.blue;
+    rrect(s, x2, top, w2, ch, CARD, { r: 0.16, shadow: true });
+    head(x2, w2, 2, c2, "Penilaian dan Pemantauan Peserta");
+    T(s, bullets(["Sistem Pengurusan Perkahwinan Islam (SPPIM)", "Rekod penyertaan, kehadiran dan penilaian peserta", "Ujian penilaian bagi setiap tajuk"], 14, INK, 5),
+      { x: x2 + PAD, y: top + 1.62, w: w2 - PAD * 2, h: 1.45 });
+    const iy = top + 3.05, ih = bot - 0.18 - iy;
+    rrect(s, x2 + 0.18, iy, w2 - 0.36, ih, c2.bg, { r: 0.12 });
+    T(s, "4 INDIKATOR PEMANTAUAN", { x: x2 + PAD + 0.1, y: iy + 0.1, w: w2 - PAD * 2, h: 0.3, fontFace: HEAD, fontSize: 11, bold: true, color: c2.deep, charSpacing: 1.5, valign: "middle" });
+    const inds = ["Kadar penyertaan", "Pencapaian penilaian", "Tahap kefahaman", "Kepuasan peserta"];
+    const tw = (w2 - 0.36 - 0.3) / 2;
+    inds.forEach((t, k) => {
+      const tx = x2 + PAD + 0.1, ty = iy + 0.42 + k * 0.27;
+      T(s, [
+        { text: String(k + 1), options: { fontFace: HEAD, bold: true, color: GOLD, fontSize: 14 } },
+        { text: "  " + t, options: { bold: true, color: NAVY, fontSize: 13 } },
+      ], { x: tx, y: ty, w: w2 - PAD * 2 - 0.2, h: 0.27, valign: "middle" });
+    });
   }
 
   // ======================= SLIDE 6 — EKOSISTEM AGENSI =======================
