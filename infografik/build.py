@@ -5,6 +5,7 @@ import os, math
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src")
 os.makedirs(OUT, exist_ok=True)
 
+TOTAL = 8
 ICONS = {
  "book": '<path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/>',
  "rings": '<circle cx="8.5" cy="15" r="5"/><circle cx="15.5" cy="15" r="5"/><path d="M9.5 5l2.5-3 2.5 3-2.5 2.5z"/>',
@@ -83,7 +84,7 @@ def footer(n, small=False):
     pg = ' style="font-size:19px"' if small else ''
     return (f'<div class="foot"{st}><span>Soalan Lisan A182 &nbsp;|&nbsp; Mesyuarat Kedua Belanjawan 2027 &nbsp;|&nbsp; DUN Johor Ke-16</span>'
             f'<span><b>YB Fared Khalid</b>{"" if small else " &nbsp;·&nbsp; Pengerusi Jawatankuasa Hal Ehwal Agama Islam Negeri Johor"}</span>'
-            f'<span class="pg"{pg}>0{n} / 05</span></div>')
+            f'<span class="pg"{pg}>{n:02d} / {TOTAL:02d}</span></div>')
 
 # ------------------------------------------------------------------ SLIDE 1
 s1_css = """
@@ -260,7 +261,7 @@ s4 = f"""
 <h1 class="s4-title">Bukan sekadar modul, <em>penyampaian turut diperkasa</em></h1>
 {ph("left:1390px;top:46px;width:460px;height:196px;border-radius:8px","LETAKKAN GAMBAR PENCERAMAH / SESI LATIHAN DI SINI","Penceramah sedang menyampaikan kursus")}
 {p4}
-{footer(4, True)}
+{footer(6, True)}
 """
 
 # ------------------------------------------------------------------ SLIDE 5
@@ -322,7 +323,139 @@ s5 = f"""
 {footer(5, True)}
 """
 
-slides = [(1,"dark",s1,s1_css),(2,"light",s2,s2_css),(3,"dark",s3,s3_css),(4,"light",s4,s4_css),(5,"dark",s5,s5_css)]
+
+# ================================================================ SLIDE 3 (ringkasan mind map)
+OV_H=230; OV_PITCH=290; OV_TOP=190
+OV_CY = OV_TOP + (2*OV_PITCH+OV_H)/2
+def mm_paths(top0, ch, pitch, cyc, R=188, CX=960):
+    out=""
+    for side in (0,1):
+        sgn = -1 if side==0 else 1
+        ex = 650 if side==0 else 1270
+        for row in range(3):
+            y = top0 + row*pitch + ch/2
+            if row==1:
+                sx, sy = CX+sgn*R, cyc
+                d = f"M{sx} {sy} L{ex} {y}"
+            else:
+                ang = math.radians(35 if row==0 else -35)
+                sx = CX + sgn*R*math.cos(ang); sy = cyc - R*math.sin(ang)
+                mx = (sx+ex)/2
+                d = f"M{sx:.1f} {sy:.1f} C{mx:.1f} {sy:.1f} {mx:.1f} {y:.1f} {ex} {y:.1f}"
+            out += f'<path d="{d}" fill="none" stroke="#D9B45F" stroke-width="3" stroke-linecap="round"/>'
+            out += f'<circle cx="{ex}" cy="{y:.1f}" r="7" fill="#D9B45F"/><circle cx="{sx:.1f}" cy="{sy:.1f}" r="7" fill="#D9B45F"/>'
+    return out
+ov=""
+for i,(n,icn,t,kw) in enumerate(branches):
+    col,row = divmod(i,3)
+    x = 40 if col==0 else 1270
+    ov += f"""<div class="ov" style="left:{x}px;top:{OV_TOP+row*OV_PITCH}px"><span class="num serif">{n}</span><span class="ib">{ic(icn,40)}</span><span class="tt">{t}</span></div>"""
+s3n_css = s3_css + """
+.core{top:%dpx}
+.ov{position:absolute;width:610px;height:230px;background:linear-gradient(160deg,#142E63,#0E2150);border:1.5px solid rgba(217,180,95,.55);border-radius:12px;padding:0 28px;display:flex;align-items:center;gap:22px}
+.ov .num{font-size:72px;line-height:1;color:var(--gold);font-weight:700}
+.ov .ib{width:76px;height:76px;border-radius:50%%;border:2.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none}
+.ov .tt{font-size:31px;line-height:1.16;font-weight:800;text-transform:uppercase;color:#fff}
+""" % (OV_CY-188)
+s3n = f"""
+<svg class="abs" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">{mm_paths(OV_TOP,OV_H,OV_PITCH,OV_CY)}</svg>
+<div class="abs eyebrow" style="left:40px;top:28px">Ringkasan &nbsp;·&nbsp; Butiran di slide 4 &amp; 5</div>
+<h1 class="s3-title">6 Penambahbaikan Utama <em>Modul Versi 5</em></h1>
+{ph("left:1500px;top:30px;width:380px;height:128px;border-radius:8px","GAMBAR PENCERAMAH / PESERTA","Ruang gambar kecil","sm")}
+{ov}
+<div class="core"><small>MBKPPI</small><h2>VERSI<span>5</span></h2><p>Persediaan menyeluruh bakal pasangan</p></div>
+{footer(3, True)}
+"""
+
+# ================================================================ SLIDE 4 & 5 (butiran mind map)
+dc_css = """
+.dt{position:absolute;left:70px;top:112px;width:1260px;font-size:52px;line-height:1.06}
+.dt em{font-style:normal;color:var(--gold);display:block}
+.light .dt em{color:var(--goldd)}
+.dc{position:absolute;top:276px;width:573px;height:730px;background:linear-gradient(170deg,#142E63,#0A1B3D);border-top:10px solid var(--gold);border-radius:12px;padding:28px 32px;box-shadow:0 18px 40px rgba(10,27,61,.25);color:#fff;border-left:1.5px solid rgba(217,180,95,.35);border-right:1.5px solid rgba(217,180,95,.35)}
+.dc .top{display:flex;align-items:center;justify-content:space-between}
+.dc .no{font-family:'Caladea',serif;font-size:80px;line-height:.9;font-weight:700;color:var(--gold)}
+.dc .ib{width:76px;height:76px;border-radius:50%;border:2.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center}
+.dc h3{margin-top:16px;font-size:31px;line-height:1.16;font-weight:800;text-transform:uppercase}
+.dc .rule{height:3px;width:90px;background:var(--gold);margin:16px 0 20px}
+.dc ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.dc li{font-size:27.5px;line-height:1.26;font-weight:500;color:#E6EBF6;padding-left:34px;position:relative}
+.dc li:before{content:"";position:absolute;left:3px;top:.5em;width:12px;height:12px;background:var(--gold);transform:rotate(45deg)}
+"""
+def detail(idx, eyebrow, line1, line2, photo_label, photo_sub, n):
+    cards=""
+    for j,k in enumerate(idx):
+        num,icn,t,kw = branches[k]
+        lis = "".join(f"<li>{x}</li>" for x in kw)
+        cards += f"""<div class="dc" style="left:{70+j*603}px"><div class="top"><div class="no">{num}</div><div class="ib">{ic(icn,40)}</div></div>
+<h3>{t}</h3><div class="rule"></div><ul>{lis}</ul></div>"""
+    return f"""
+<div class="abs eyebrow" style="left:70px;top:58px">{eyebrow}</div>
+<h1 class="dt">{line1}<em>{line2}</em></h1>
+{ph("left:1390px;top:46px;width:460px;height:196px;border-radius:8px",photo_label,photo_sub)}
+{cards}
+{footer(n, True)}
+"""
+s4d = detail([0,1,2],"Penambahbaikan Modul Versi 5 &nbsp;·&nbsp; 01 – 03","Kewangan, komunikasi","&amp; kesihatan mental","LETAKKAN GAMBAR KURSUS DI SINI","Penceramah / peserta kursus",4)
+s5d = detail([3,4,5],"Penambahbaikan Modul Versi 5 &nbsp;·&nbsp; 04 – 06","Konflik, keibubapaan","&amp; pemantapan akidah","LETAKKAN GAMBAR KURSUS DI SINI","Penceramah / peserta kursus",5)
+
+# ================================================================ SLIDE 7 & 8 (agensi)
+ag2_css = """
+.ag2{position:absolute;width:905px;background:linear-gradient(160deg,#142E63,#0E2150);border:1.5px solid rgba(217,180,95,.55);border-radius:12px;padding:20px 30px 18px}
+.ag2 .top{display:flex;align-items:center;gap:20px;padding-bottom:14px;border-bottom:1.5px solid rgba(217,180,95,.45);margin-bottom:14px}
+.ag2 .n{font-family:'Caladea',serif;font-size:58px;line-height:1;font-weight:700;color:var(--gold)}
+.ag2 h4{flex:1;font-size:29px;line-height:1.15;font-weight:800;text-transform:uppercase;color:var(--gold)}
+.ag2 .ib{width:68px;height:68px;border-radius:50%;border:2.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none}
+.ag2 ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ag2 li{font-size:27px;line-height:1.26;font-weight:500;color:#fff;padding-left:32px;position:relative}
+.ag2 li:before{content:"";position:absolute;left:3px;top:.5em;width:11px;height:11px;background:var(--gold);transform:rotate(45deg)}
+.hub2{position:absolute;left:40px;top:196px;width:1840px;height:76px;background:var(--gold);color:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:24px}
+.hub2 .t{font-size:28px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;line-height:1.1}
+.hub2 .s{font-size:19px;font-weight:600;margin-top:2px}
+"""
+def ag_cards(ids, tops, h):
+    out=""
+    for k,i in enumerate(ids):
+        icn,name,fn = agencies[i]
+        r,c = divmod(k,2)
+        lis = "".join(f"<li>{f}</li>" for f in fn)
+        out += f"""<div class="ag2" style="left:{40+c*935}px;top:{tops[r]}px;height:{h}px"><div class="top"><span class="n">0{i+1}</span><h4>{name}</h4><span class="ib">{ic(icn,36)}</span></div><ul>{lis}</ul></div>"""
+    return out
+title5 = '<h1 class="s5-title">8 Agensi, Satu Matlamat<span>– Memperkukuh Institusi Kekeluargaan</span></h1>'
+# slide 7
+t7=(304,664); h7=330
+st7=""
+for cx in (40+452.5, 975+452.5):
+    st7 += f'<line x1="{cx}" y1="272" x2="{cx}" y2="304" stroke="#D9B45F" stroke-width="3"/><line x1="{cx}" y1="634" x2="{cx}" y2="664" stroke="#D9B45F" stroke-width="3"/>'
+s7 = f"""
+<svg class="abs" style="left:0;top:0" width="1920" height="1080">{st7}</svg>
+<div class="abs eyebrow" style="left:40px;top:20px;font-size:19px">Agensi Sokongan Strategik &nbsp;·&nbsp; 01 – 04</div>
+{title5}
+{ph("left:1420px;top:36px;width:460px;height:140px;border-radius:8px","GAMBAR YB FARED / AKTIVITI","Ruang gambar","sm")}
+<div class="hub2"><div>{ic("building",46,1.8)}</div><div><div class="t">JAINJ — Pusat Penyelarasan Mekanisme Rujukan</div><div class="s">Agensi di bawah boleh dilibatkan mengikut keperluan pasangan</div></div></div>
+{ag_cards([0,1,2,3], t7, h7)}
+{footer(7, True)}
+"""
+# slide 8
+t8=(190,468); h8=262
+s8_css = """
+.end2{position:absolute;left:40px;top:748px;width:1840px;height:252px;border:2px solid var(--gold);border-radius:12px;background:rgba(7,18,43,.55);display:flex;align-items:center;gap:32px;padding:0 28px}
+.end2 p{font-family:'Caladea',serif;font-size:32px;line-height:1.3;color:#fff;font-style:italic}
+.end2 p b{color:var(--gold);font-weight:700}
+"""
+s8 = f"""
+<div class="abs eyebrow" style="left:40px;top:20px;font-size:19px">Agensi Sokongan Strategik &nbsp;·&nbsp; 05 – 08</div>
+{title5}
+<div class="note">Agensi yang <b>boleh dilibatkan</b> mengikut keperluan pasangan — sebelum dan selepas mendirikan rumah tangga.</div>
+{ag_cards([4,5,6,7], t8, h8)}
+<div class="end2">
+ {ph("position:relative;flex:none;width:340px;height:176px;border-radius:8px","GAMBAR YB FARED / AKTIVITI KURSUS","Ruang gambar","")}
+ <p>“Kerajaan Negeri Johor melalui JAINJ komited untuk terus menambah baik pelaksanaan Kursus Pra Perkahwinan Islam sebagai medium persediaan menyeluruh bagi melahirkan pasangan yang <b>lebih berilmu, matang, bertanggungjawab dan berkemahiran</b> dalam menghadapi cabaran rumah tangga ke arah pembentukan keluarga <b>sakinah, mawaddah wa rahmah.</b>”</p>
+</div>
+{footer(8, True)}
+"""
+slides = [(1,"dark",s1,s1_css),(2,"light",s2,s2_css),(3,"dark",s3n,s3n_css),(4,"light",s4d,dc_css),(5,"dark",s5d,dc_css),
+          (6,"light",s4,s4_css),(7,"dark",s7,s5_css+ag2_css),(8,"dark",s8,s5_css+ag2_css+s8_css)]
 for n,theme,body,css in slides:
     with open(os.path.join(OUT,f"slide-{n}.html"),"w",encoding="utf-8") as f:
         f.write(page(n,theme,body,css))

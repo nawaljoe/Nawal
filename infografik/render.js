@@ -5,13 +5,13 @@ const path = require('path');
   const outDir = process.argv[3] || path.join(__dirname);
   const b = await chromium.launch();
   const p = await b.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
-  for (let n = 1; n <= 5; n++) {
+  for (let n = 1; n <= 8; n++) {
     await p.goto('file://' + path.join(__dirname, 'src', `slide-${n}.html`));
     await p.evaluate(() => document.fonts.ready);
     // semakan limpahan teks
     const issues = await p.evaluate(() => {
       const out = [];
-      document.querySelectorAll('.c2,.c3,.pil,.ag,.end,.hub,.core,.ind').forEach(el => {
+      document.querySelectorAll('.c2,.ov,.dc,.pil,.ag2,.end2,.hub2,.core,.ind').forEach(el => {
         if (el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1)
           out.push(el.className + ' overflow ' + el.scrollHeight + '>' + el.clientHeight);
       });
