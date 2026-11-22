@@ -16,6 +16,11 @@
       "description": "Edit video temu bual jadi TikTok premium gaya podcast: buang aaa/emm, beep + kad soalan, warna studio cerah, kulit licin, kapsyen kinetik, infografik, SFX, logo & outro FK — render penuh dengan FFmpeg, HyperFrames & Remotion."
     },
     {
+      "name": "infografik-kerajaan",
+      "source": "./plugins/infografik-kerajaan",
+      "description": "Infografik & slaid premium Kerajaan Negeri Johor daripada dokumen sumber: PNG 4:5 / PPTX 16:9 boleh sunting, jadual sebenar, ruang gambar, potret bulat, kod QR, dan PPTX satu-slaid yang boleh diimport ke Canva."
+    },
+    {
       "name": "hyperframes",
       "source": {
         "source": "github",

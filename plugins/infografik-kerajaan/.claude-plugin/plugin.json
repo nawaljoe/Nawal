@@ -1,0 +1,17 @@
+{
+  "name": "infografik-kerajaan",
+  "version": "1.0.0",
+  "description": "Bina slaid infografik premium Kerajaan Negeri Johor (navy/emas/putih) daripada dokumen sumber: PNG 4:5 atau PPTX 16:9 boleh sunting, jadual sebenar, ruang gambar, potret bulat, kod QR, dan PPTX satu-slaid yang boleh diimport ke Canva.",
+  "author": {
+    "name": "Nawal"
+  },
+  "keywords": [
+    "infografik",
+    "pptx",
+    "canva",
+    "johor",
+    "kerajaan",
+    "slaid",
+    "pptxgenjs"
+  ]
+}
