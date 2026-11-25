@@ -118,14 +118,41 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   T(s, "Soalan daripada:", 1, 5.5, W - 2, 0.4, { fontSize: 20, align: "center", color: GREY });
   T(s, "YB TUAN NG YAK HOWE (BENTAYAN)", 1, 5.95, W - 2, 0.6, { fontSize: 30, bold: true, align: "center", color: "1F2937" });
 
-  // ===== 2 : 1,298 =====
-  s = slide("JOHOR MELULUSKAN 1,298 PENSIJILAN HALAL BAHARU", "PENCAPAIAN PENSIJILAN", "Pencapaian");
-  T(s, "1,298", L, CT - 0.1, 6.7, 2.1, { fontSize: 140, bold: true, color: RED, valign: "middle" });
-  T(s, "permohonan baharu SPHM diluluskan", L, CT + 2.1, 6.7, 0.95, { fontSize: 26, bold: true });
-  T(s, "sejak PKHNJ 2030 diperkenalkan sehingga 11 November 2026", L, CT + 3.0, 6.7, 0.85, { fontSize: 22 });
-  R(s, L, CT + 3.95, 6.7, 0.55, NAVY);
-  T(s, "Sijil Pengesahan Halal Malaysia (SPHM)", L + 0.25, CT + 3.95, 6.2, 0.55, { fontSize: 20, bold: true, color: WHITE, valign: "middle" });
-  ph(s, L + 7.0, CT, CW - 7.0, CH, "Penyampaian sijil halal / usahawan");
+  // ===== 2 : pencapaian (1,298 + pertumbuhan + Bumiputera) =====
+  s = slide("PENCAPAIAN PENSIJILAN HALAL JOHOR: 1,298 PERMOHONAN BAHARU DILULUSKAN", "PENCAPAIAN PENSIJILAN", "Pencapaian");
+  // col 1: hero
+  const colA = L, wA = 3.2;
+  R(s, colA, CT, wA, 3.05, NAVY, { objectName: "Hero" });
+  T(s, "1,298", colA + 0.2, CT + 0.15, wA - 0.4, 1.25, { fontSize: 66, bold: true, color: GOLD, valign: "middle" });
+  T(s, "permohonan baharu SPHM diluluskan", colA + 0.25, CT + 1.4, wA - 0.5, 0.8, { fontSize: 20, bold: true, color: WHITE });
+  T(s, "sejak PKHNJ 2030 diperkenalkan sehingga 11 November 2026", colA + 0.25, CT + 2.2, wA - 0.5, 0.8, { fontSize: 15, color: "DCE1F5" });
+  ph(s, colA, CT + 3.2, wA, CH - 3.2, "Penyampaian sijil halal");
+  // col 2: growth chart
+  const colB = L + 3.4, wB = 4.6;
+  R(s, colB, CT, wB, CH, LAV, { objectName: "Panel Carta" });
+  T(s, "PENSIJILAN SPHM BAHARU", colB + 0.25, CT + 0.1, wB - 0.5, 0.4, { fontSize: 18, bold: true });
+  s.addChart(pres.charts.BAR, [{ name: "Pensijilan SPHM baharu", labels: ["2024", "2025", "2026*"], values: [133, 561, 737] }], {
+    x: colB + 0.1, y: CT + 0.5, w: wB - 0.2, h: 2.65, barDir: "col", chartColors: [NAVY, NAVY, RED], barGapWidthPct: 45,
+    showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 24, dataLabelFontBold: true, dataLabelColor: NAVY, dataLabelFontFace: "+mn-lt",
+    catAxisLabelFontSize: 18, catAxisLabelColor: NAVY, catAxisLabelFontFace: "+mn-lt", catAxisLabelFontBold: true,
+    valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" }, valAxisMaxVal: 900, valAxisMinVal: 0, showLegend: false,
+  });
+  T(s, "* 2026: setakat 11 November", colB + 0.25, CT + 3.15, wB - 0.5, 0.3, { fontSize: 14, color: GREY });
+  R(s, colB + 0.25, CT + 3.4, wB - 0.5, 0.45, GOLD);
+  T(s, "88% daripada sasaran tahunan 839", colB + 0.25, CT + 3.4, wB - 0.5, 0.45, { fontSize: 17, bold: true, align: "center", valign: "middle" });
+  T(s, "Lebih 4\u00D7 (2025)  |  Lebih 5\u00D7 (2026) berbanding 2024", colB + 0.25, CT + 3.9, wB - 0.5, 0.55, { fontSize: 15, bold: true, align: "center", valign: "middle" });
+  // col 3: Bumiputera
+  const colC = L + 8.2, w3b = CW - 8.2;
+  R(s, colC, CT, w3b, CH, LAV, { objectName: "Panel Bumiputera" });
+  T(s, "USAHAWAN BUMIPUTERA", colC + 0.2, CT + 0.1, w3b - 0.4, 0.4, { fontSize: 18, bold: true, align: "center" });
+  s.addChart(pres.charts.DOUGHNUT, [{ name: "Bumiputera", labels: ["Bumiputera", "Lain-lain"], values: [77.6, 22.4] }], {
+    x: colC + (w3b - 2.2) / 2, y: CT + 0.5, w: 2.2, h: 2.0, holeSize: 74, chartColors: [RED, "D9DCEB"], showLegend: false,
+    showLabel: false, showValue: false, showPercent: false, dataBorder: { pt: 0, color: "EEF0F6" },
+  });
+  T(s, "77.6%", colC + w3b / 2 - 0.6, CT + 1.1, 1.2, 0.85, { fontSize: 20, bold: true, color: RED, align: "center", valign: "middle" });
+  T(s, "342 daripada 441 syarikat baharu 2026 (JAINJ)", colC + 0.2, CT + 2.55, w3b - 0.4, 0.75, { fontSize: 16, bold: true, align: "center" });
+  R(s, colC + 0.2, CT + 3.3, w3b - 0.4, 1.05, NAVY);
+  T(s, [{ text: "38%", options: { fontSize: 32, bold: true, color: GOLD, breakLine: true } }, { text: "pemegang sijil sedia ada ialah Bumiputera", options: { fontSize: 15, color: WHITE } }], colC + 0.35, CT + 3.3, w3b - 0.7, 1.05, { valign: "middle" });
 
   // ===== 3 : kedudukan =====
   s = slide("JOHOR DI KEDUDUKAN KEDUA DI MALAYSIA SELEPAS SELANGOR", "PENCAPAIAN PENSIJILAN");
@@ -136,37 +163,6 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   nb(s, L, CT + h3 + 0.2, w3, h3, RED, "93%", "permohonan diluluskan dalam 30 hari bekerja", { vs: 44, ls: 20 });
   nb(s, L + w3 + 0.2, CT + h3 + 0.2, w3, h3, GOLD, "KEDUA", "di Malaysia selepas Selangor", { vs: 44 });
   ph(s, L + 2 * w3 + 0.4, CT, CW - 2 * w3 - 0.4, CH, "Pegawai / pemohon di kaunter JAINJ");
-
-  // ===== 4 : pertumbuhan =====
-  s = slide("PENSIJILAN HALAL JOHOR MENINGKAT LEBIH LIMA KALI GANDA", "PERTUMBUHAN PENSIJILAN");
-  R(s, L, CT, 7.0, CH, LAV, { objectName: "Panel Carta" });
-  T(s, "PENSIJILAN SPHM BAHARU", L + 0.3, CT + 0.12, 6.4, 0.4, { fontSize: 20, bold: true });
-  s.addChart(pres.charts.BAR, [{ name: "Pensijilan SPHM baharu", labels: ["2024", "2025", "2026*"], values: [133, 561, 737] }], {
-    x: L + 0.1, y: CT + 0.55, w: 6.8, h: 3.4, barDir: "col", chartColors: [NAVY, NAVY, RED], barGapWidthPct: 50,
-    showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 28, dataLabelFontBold: true, dataLabelColor: NAVY, dataLabelFontFace: "+mn-lt",
-    catAxisLabelFontSize: 22, catAxisLabelColor: NAVY, catAxisLabelFontFace: "+mn-lt", catAxisLabelFontBold: true,
-    valAxisHidden: true, valGridLine: { style: "none" }, catGridLine: { style: "none" }, valAxisMaxVal: 900, valAxisMinVal: 0, showLegend: false,
-  });
-  T(s, "* 2026: setakat 11 November", L + 0.3, CT + 4.0, 6.4, 0.4, { fontSize: 16, color: GREY });
-  const rx4 = L + 7.2, rw4 = RE - rx4, h4 = (CH - 0.3) / 3;
-  nb(s, rx4, CT, rw4, h4, NAVY, "LEBIH 4×", "2025 berbanding 2024", { vs: 40, ls: 22, top: 0.1 });
-  nb(s, rx4, CT + h4 + 0.15, rw4, h4, RED, "LEBIH 5×", "2026 berbanding 2024", { vs: 40, ls: 22, top: 0.1 });
-  nb(s, rx4, CT + 2 * (h4 + 0.15), rw4, h4, GOLD, "88%", "daripada sasaran tahunan 839", { vs: 40, ls: 22, top: 0.1 });
-
-  // ===== 5 : Bumiputera =====
-  s = slide("USAHAWAN BUMIPUTERA SEMAKIN YAKIN MENCEBURI INDUSTRI HALAL", "PENGLIBATAN BUMIPUTERA");
-  R(s, L, CT, 5.8, CH, LAV, { objectName: "Panel Donut" });
-  T(s, "SYARIKAT BAHARU 2026", L + 0.2, CT + 0.1, 5.4, 0.4, { fontSize: 20, bold: true, align: "center" });
-  s.addChart(pres.charts.DOUGHNUT, [{ name: "Bumiputera", labels: ["Bumiputera", "Lain-lain"], values: [77.6, 22.4] }], {
-    x: L + 1.3, y: CT + 0.5, w: 3.2, h: 2.95, holeSize: 66, chartColors: [RED, "D9DCEB"], showLegend: false,
-    showLabel: false, showValue: false, showPercent: false, dataBorder: { pt: 0, color: "EEF0F6" },
-  });
-  T(s, "77.6%", L + 2.2, CT + 1.45, 1.4, 0.95, { fontSize: 30, bold: true, color: RED, align: "center", valign: "middle" });
-  R(s, L + 0.3, CT + 3.65, 0.32, 0.32, RED);
-  T(s, "342 daripada 441 syarikat baharu ialah usahawan Bumiputera", L + 0.8, CT + 3.45, 4.8, 0.9, { fontSize: 20, bold: true, valign: "middle" });
-  const r5 = L + 6.0, w5 = RE - r5;
-  nb(s, r5, CT, w5, 2.2, NAVY, "441", "syarikat baharu memohon melalui JAINJ pada tahun 2026", { vs: 60, ls: 22 });
-  nb(s, r5, CT + 2.35, w5, 2.15, LAV, "38%", "pemegang sijil sedia ada ialah usahawan Bumiputera", { vs: 54, ls: 22 });
 
   // ===== 6 : bersih selamat berkualiti =====
   s = slide("HALAL BUKAN SEKADAR LABEL, TETAPI JAMINAN BERSIH, SELAMAT DAN BERKUALITI", "KEPENTINGAN HALAL");
