@@ -346,30 +346,38 @@ placeholder(s, 10.15, 4.65, 2.58, 2.3, "GAMBAR PROGRAM / JOHOR HALAL JOURNEY")
 
 # ---------------------------------------------------------------- SLIDE 7
 s = base("MEMPERKUKUH EKOSISTEM HALAL JOHOR MENUJU SASARAN 2030", "KOMITMEN KERAJAAN NEGERI JOHOR", 7,
-         "33 agensi menganggotai Pasukan Petugas (Task Force) PKHNJ 2030; JAINJ sebagai urus setia. Ayat penutup dipetik daripada dokumen jawapan.")
-text(s, 0.6, 2.05, 3.7, 1.9, "33", size=120, color=RED, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-text(s, 4.2, 2.3, 4.0, 0.9, "agensi menganggotai Pasukan Petugas (Task Force) PKHNJ 2030", size=17, color=CHAR, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-rect(s, 4.2, 3.3, 4.0, 0.55, fill=NAVY)
-text(s, 4.2, 3.3, 4.0, 0.55, "JAINJ sebagai urus setia", size=16, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE,
+         "33 agensi menganggotai Pasukan Petugas (Task Force) PKHNJ 2030; JAINJ sebagai urus setia. Ayat penutup dipetik daripada dokumen jawapan. "
+         "Dua ruang gambar persegi: Belanjawan 2027 dan Johor Halal Champion.")
+text(s, 0.6, 2.05, 3.0, 1.9, "33", size=120, color=RED, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+text(s, 3.55, 2.3, 3.7, 0.9, "agensi menganggotai Pasukan Petugas (Task Force) PKHNJ 2030", size=17, color=CHAR, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+rect(s, 3.6, 3.3, 3.65, 0.55, fill=NAVY)
+text(s, 3.6, 3.3, 3.65, 0.55, "JAINJ sebagai urus setia", size=16, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE,
      shape=s.shapes[-1])
 pill = ["Kerjasama strategik antara agensi", "Pembangunan keupayaan usahawan", "Pemudahcaraan industri",
         "Ekosistem halal menyeluruh, mampan dan berdaya saing"]
 for i, t in enumerate(pill):
-    cx = 0.6 + (i % 2) * 3.9
+    cx = 0.6 + (i % 2) * 3.35
     cy = 4.1 + (i // 2) * 0.68
-    rect(s, cx, cy, 3.8, 0.6, fill=GREY)
+    rect(s, cx, cy, 3.25, 0.6, fill=GREY)
     rect(s, cx, cy, 0.08, 0.6, fill=GOLD)
-    text(s, cx + 0.15, cy, 3.6, 0.6, t, size=13, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
-placeholder(s, 8.6, 2.2, 4.13, 3.55, "GAMBAR YB EXCO BERSAMA AGENSI / AKTIVITI BERKAITAN")
-rect(s, 0.6, 5.55, 7.8, 1.45, fill=DEEP)
+    text(s, cx + 0.15, cy, 3.05, 0.6, t, size=13, color=NAVY, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+# dua ruang gambar persegi
+SQ = 2.5
+for i, (lab, cap) in enumerate([("LETAKKAN GAMBAR BELANJAWAN 2027 DI SINI", "BELANJAWAN 2027"),
+                                ("LETAKKAN GAMBAR JOHOR HALAL CHAMPION DI SINI", "JOHOR HALAL CHAMPION")]):
+    sx = 7.55 + i * (SQ + 0.15)
+    placeholder(s, sx, 2.2, SQ, SQ, lab, "Persegi 1:1")
+    rect(s, sx, 4.8, SQ, 0.42, fill=NAVY)
+    text(s, sx, 4.8, SQ, 0.42, cap, size=12, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, shape=s.shapes[-1])
+rect(s, 0.6, 5.55, 6.65, 1.45, fill=DEEP)
 rect(s, 0.6, 5.55, 0.1, 1.45, fill=RED)
-text(s, 0.85, 5.55, 7.45, 1.45,
-     "“Kerajaan Negeri akan terus memperkukuh pelaksanaan PKHNJ 2030 bagi memastikan ekosistem halal Johor berkembang secara lebih menyeluruh, mampan dan berdaya saing, seterusnya mencapai sasaran yang ditetapkan menjelang tahun 2030.”",
-     size=14, color=WHITE, italic=True, anchor=MSO_ANCHOR.MIDDLE)
-rect(s, 8.6, 5.9, 4.13, 1.1, fill=NAVY)
-rect(s, 8.6, 5.9, 4.13, 0.07, fill=GOLD)
-text(s, 8.6, 5.97, 4.13, 1.03, [[("MAJU JOHOR", {"size": 24, "bold": True, "color": WHITE})],
-                                [("PKHNJ 2030  |  Belanjawan Johor 2027", {"size": 13, "color": GOLD})]],
+text(s, 0.85, 5.55, 6.3, 1.45,
+     "\u201cKerajaan Negeri akan terus memperkukuh pelaksanaan PKHNJ 2030 bagi memastikan ekosistem halal Johor berkembang secara lebih menyeluruh, mampan dan berdaya saing, seterusnya mencapai sasaran yang ditetapkan menjelang tahun 2030.\u201d",
+     size=13, color=WHITE, italic=True, anchor=MSO_ANCHOR.MIDDLE)
+rect(s, 7.55, 5.55, 2 * SQ + 0.15, 1.45, fill=NAVY)
+rect(s, 7.55, 5.55, 2 * SQ + 0.15, 0.07, fill=GOLD)
+text(s, 7.55, 5.62, 2 * SQ + 0.15, 1.38, [[("MAJU JOHOR", {"size": 26, "bold": True, "color": WHITE})],
+                                          [("PKHNJ 2030  |  Belanjawan Johor 2027", {"size": 14, "color": GOLD})]],
      align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 
 out = os.path.join(HERE, "Slaid_A93_PKHNJ2030.pptx")
@@ -384,3 +392,11 @@ for i, sid in reversed(list(enumerate(list(ids)))):
         p2.part.drop_rel(sid.rId)
         ids.remove(sid)
 p2.save(os.path.join(HERE, "Slaid3_A93_Pensijilan.pptx"))
+
+p3 = Presentation(out)
+ids = p3.slides._sldIdLst
+for i, sid in reversed(list(enumerate(list(ids)))):
+    if i != 6:
+        p3.part.drop_rel(sid.rId)
+        ids.remove(sid)
+p3.save(os.path.join(HERE, "Slaid7_A93_Penutup.pptx"))
