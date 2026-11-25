@@ -239,41 +239,48 @@ placeholder(s, 9.45, 5.1, 3.28, 1.85, "GAMBAR USAHAWAN / PREMIS BERSIJIL HALAL")
 
 # ---------------------------------------------------------------- SLIDE 4
 s = base("MEMPERKUKUH PENSIJILAN, MELAHIRKAN TENAGA KERJA MAHIR HALAL", "INISIATIF STRATEGIK", 4,
-         "A) Kerjasama JAINJ dan JHDC; Halal Green Lane secara rintis – lapan permohonan diluluskan dalam 15 hari bekerja, termasuk PRefChem di Pengerang. "
+         "A) Kerjasama JAINJ dan JHDC; Halal Green Lane secara rintis - lapan permohonan diluluskan dalam 15 hari bekerja, termasuk PRefChem di Pengerang. "
          "B) 779 peserta dilatih sepanjang 2025; 206 sehingga April 2026; TVET Halal Johor; PIJ RM200,000 untuk Kursus Profesional Halal dan Auditor Halal (100 peserta).")
-# left
-chip = rect(s, 0.6, 2.2, 5.9, 0.5, fill=NAVY)
-text(s, 0.6, 2.2, 5.9, 0.5, "A.  PEMERKASAAN PENSIJILAN HALAL", size=16, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE, shape=chip)
-text(s, 0.6, 2.8, 5.9, 0.9, "Kerjasama JAINJ dan Johor Halal Development Corporation (JHDC): bimbingan, khidmat nasihat dan pemudahcaraan permohonan.",
-     size=15, color=CHAR)
-steps = [("BIMBINGAN", "JAINJ + JHDC"), ("GREEN LANE", "Halal Green Lane (rintis)"), ("8 PERMOHONAN", "diluluskan dalam 15 hari bekerja")]
-for i, (a, b) in enumerate(steps):
-    xx = 0.6 + i * 1.98
-    col = [NAVY, GOLD, RED][i]
-    sh = rect(s, xx, 3.8, 2.05, 1.25, fill=col, shape=MSO_SHAPE.PENTAGON)
-    text(s, xx + 0.05, 3.8, 1.6, 1.25, [[(a, {"size": 14, "bold": True, "color": WHITE if col != GOLD else CHAR})],
-                                                      [(b, {"size": 11, "color": WHITE if col != GOLD else CHAR})]],
-         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-text(s, 0.6, 5.1, 5.9, 0.4, "Termasuk syarikat petrokimia PRefChem di Pengerang.", size=14, color=NAVY, bold=True)
-placeholder(s, 0.6, 5.55, 5.9, 1.4, "GAMBAR LATIHAN TVET / KURSUS / AUDIT HALAL")
-# right
-rect(s, 6.83, 2.2, 5.9, 0.5, fill=RED)
-text(s, 6.83, 2.2, 5.9, 0.5, "B.  PEMBANGUNAN BAKAT HALAL", size=16, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE,
-     shape=s.shapes[-1])
-rect(s, 6.83, 2.85, 2.85, 1.8, fill=GREY)
-text(s, 6.83, 2.85, 2.85, 1.15, "779", size=60, color=NAVY, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-text(s, 6.9, 3.95, 2.7, 0.7, "peserta dilatih sepanjang tahun 2025", size=14, color=CHAR, align=PP_ALIGN.CENTER)
-rect(s, 9.88, 2.85, 2.85, 1.8, fill=GREY)
-text(s, 9.88, 2.85, 2.85, 1.15, "206", size=60, color=RED, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-text(s, 9.95, 3.95, 2.7, 0.7, "peserta dilatih sehingga April 2026", size=14, color=CHAR, align=PP_ALIGN.CENTER)
-text(s, 6.83, 4.85, 5.9, 1.0, [[("TVET Halal Johor: ", {"bold": True, "color": NAVY}),
-                                 ("kohort awal berjaya menamatkan latihan dan sebahagiannya telah memasuki sektor pekerjaan berkaitan industri halal.", {})]],
-     size=15, color=CHAR)
-rect(s, 6.83, 5.95, 5.9, 1.0, fill=NAVY)
-rect(s, 6.83, 5.95, 0.08, 1.0, fill=GOLD)
-text(s, 7.05, 5.95, 5.6, 1.0, [[("RM200,000", {"size": 26, "bold": True, "color": GOLD})],
-                               [("PIJ – Kursus Profesional Halal dan Auditor Halal (100 peserta)", {"size": 13, "color": WHITE})]],
+# kiri: gambar PRefChem
+PW = 5.7
+PH = PW / (1616 / 1080)
+s.shapes.add_picture(os.path.join(A, "prefchem.jpg"), Inches(0.6), Inches(2.2), Inches(PW), Inches(PH))
+rect(s, 0.6, 2.2, PW, PH, line=NAVY, lw=2)
+cy = 2.2 + PH + 0.05
+rect(s, 0.6, cy, PW, 6.95 - cy, fill=NAVY)
+rect(s, 0.6, cy, PW, 0.06, fill=GOLD)
+text(s, 0.75, cy + 0.06, PW - 0.3, 6.95 - cy - 0.06,
+     [[("PRefChem, Pengerang", {"size": 16, "bold": True, "color": GOLD})],
+      [("Syarikat petrokimia yang diluluskan melalui Halal Green Lane secara rintis", {"size": 13, "color": WHITE})]],
      anchor=MSO_ANCHOR.MIDDLE)
+# kanan
+RX, RW = 6.55, 6.18
+h1 = rect(s, RX, 2.2, RW, 0.42, fill=NAVY)
+text(s, RX, 2.2, RW, 0.42, "A.  PEMERKASAAN PENSIJILAN HALAL", size=15, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE, shape=h1)
+text(s, RX, 2.66, RW, 0.62, "Kerjasama JAINJ dan Johor Halal Development Corporation (JHDC): bimbingan, khidmat nasihat dan pemudahcaraan permohonan.",
+     size=13, color=CHAR)
+steps = [("BIMBINGAN", "JAINJ + JHDC"), ("GREEN LANE", "Halal Green Lane (rintis)"), ("8 PERMOHONAN", "diluluskan dalam 15 hari bekerja")]
+for i, (a_, b_) in enumerate(steps):
+    xx = RX + i * 2.05
+    col = [NAVY, GOLD, RED][i]
+    tc = CHAR if col == GOLD else WHITE
+    rect(s, xx, 3.32, 2.1, 0.85, fill=col, shape=MSO_SHAPE.PENTAGON)
+    text(s, xx + 0.05, 3.32, 1.65, 0.85, [[(a_, {"size": 13, "bold": True, "color": tc})], [(b_, {"size": 11, "color": tc})]],
+         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+h2 = rect(s, RX, 4.3, RW, 0.42, fill=RED)
+text(s, RX, 4.3, RW, 0.42, "B.  PEMBANGUNAN BAKAT HALAL", size=15, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE, shape=h2)
+for i, (n, l, c) in enumerate([("779", "peserta dilatih sepanjang tahun 2025", NAVY), ("206", "peserta dilatih sehingga April 2026", RED)]):
+    xx = RX + i * 3.14
+    rect(s, xx, 4.8, 3.04, 0.9, fill=GREY)
+    text(s, xx, 4.8, 1.45, 0.9, n, size=44, color=c, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, xx + 1.4, 4.8, 1.6, 0.9, l, size=12, color=CHAR, anchor=MSO_ANCHOR.MIDDLE)
+text(s, RX, 5.75, RW, 0.55, [[("TVET Halal Johor: ", {"bold": True, "color": NAVY}),
+                              ("kohort awal berjaya menamatkan latihan; sebahagiannya memasuki sektor pekerjaan berkaitan industri halal.", {})]],
+     size=13, color=CHAR)
+rect(s, RX, 6.3, RW, 0.65, fill=NAVY)
+rect(s, RX, 6.3, 0.08, 0.65, fill=GOLD)
+text(s, RX + 0.2, 6.3, 2.1, 0.65, "RM200,000", size=24, bold=True, color=GOLD, anchor=MSO_ANCHOR.MIDDLE)
+text(s, RX + 2.3, 6.3, 3.8, 0.65, "PIJ – Kursus Profesional Halal dan Auditor Halal (100 peserta)", size=12, color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
 
 # ---------------------------------------------------------------- SLIDE 5
 s = base("HALAL CHAMPION: MEMBIMBING USAHAWAN KE ARAH PERTUMBUHAN LEBIH KOMPETITIF", "PEMBANGUNAN USAHAWAN HALAL", 5,
@@ -404,3 +411,11 @@ for i, sid in reversed(list(enumerate(list(ids)))):
         p4.part.drop_rel(sid.rId)
         ids.remove(sid)
 p4.save(os.path.join(HERE, "Slaid6_A93_Insentif.pptx"))
+
+p5 = Presentation(out)
+ids = p5.slides._sldIdLst
+for i, sid in reversed(list(enumerate(list(ids)))):
+    if i != 3:
+        p5.part.drop_rel(sid.rId)
+        ids.remove(sid)
+p5.save(os.path.join(HERE, "Slaid4_A93_Pensijilan_Bakat.pptx"))
