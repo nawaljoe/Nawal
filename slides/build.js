@@ -301,40 +301,40 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   s = slide(null, "PENDEKATAN KEDUA", "Pendekatan Kedua");
   s.addText([{ text: "KEDUA: HALAL MEMBUKA PASARAN DUNIA", options: { breakLine: true } },
              { text: "Halal bukan lagi soal makanan semata-mata, tetapi pintu ke pasaran global", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
-  const kW = (CW - 0.4) / 3, kH = 0.45, kB = 1.9;
-  const kx = (i) => L + i * (kW + 0.2);
-  ["HALAL GREEN LANE", "PREFCHEM, PENGERANG", "COLORCON MALAYSIA"].forEach((h, i) => {
-    R(s, kx(i), CT, kW, kH, NAVY, { objectName: "Tajuk Lajur" });
-    T(s, h.replace("PREFCHEM", "PRefChem"), kx(i) + 0.2, CT, kW - 0.4, kH, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
+  const kH = 0.45, kB = 2.3;
+  const gxs = [L, L + 3.05, L + 7.7], gws = [2.9, 4.5, 4.43];
+  ["HALAL GREEN LANE", "PRefChem, PENGERANG", "COLORCON MALAYSIA"].forEach((h, i) => {
+    R(s, gxs[i], CT, gws[i], kH, NAVY, { objectName: "Tajuk Lajur" });
+    T(s, h, gxs[i] + 0.2, CT, gws[i] - 0.4, kH, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
   });
-  // A
-  R(s, kx(0), CT + kH, kW, kB, NAVY);
-  T(s, "15 HARI", kx(0) + 0.25, CT + kH + 0.05, kW - 0.5, 0.85, { fontSize: 42, bold: true, color: GOLD, valign: "middle" });
-  T(s, "Halal Green Lane: sijil halal boleh diluluskan dalam tempoh 15 hari bekerja", kx(0) + 0.25, CT + kH + 0.95, kW - 0.5, 0.85, { fontSize: 17, color: WHITE });
-  // B
-  R(s, kx(1), CT + kH, kW, kB, LAV);
-  R(s, kx(1) + 0.15, CT + kH + 0.1, kW - 0.3, 0.55, RED);
-  T(s, [{ text: "42 ", options: { fontSize: 26, bold: true } }, { text: "produk bersijil SPHM", options: { fontSize: 16, bold: true } }], kx(1) + 0.3, CT + kH + 0.1, kW - 0.6, 0.55, { color: WHITE, valign: "middle" });
-  T(s, bl(["Bertindak awal; bersedia jadi pembekal petrokimia halal ke rantau", "Berpotensi hab petrokimia halal serantau"]), kx(1) + 0.2, CT + kH + 0.72, kW - 0.4, 1.15, { fontSize: 14, paraSpaceAfter: 2 });
-  // C
-  R(s, kx(2), CT + kH, kW, kB, LAV);
-  T(s, bl(["Syarikat multinasional dari Amerika Syarikat", "SPHM melalui bimbingan JHDC", "Menembusi pasaran India"]), kx(2) + 0.2, CT + kH, kW - 0.4, kB, { fontSize: 15, valign: "middle", paraSpaceAfter: 5 });
+  // A: Green Lane
+  R(s, gxs[0], CT + kH, gws[0], kB, NAVY);
+  T(s, "15 HARI", gxs[0] + 0.25, CT + kH + 0.1, gws[0] - 0.5, 0.85, { fontSize: 38, bold: true, color: GOLD, valign: "middle" });
+  T(s, "Halal Green Lane: sijil halal boleh diluluskan dalam tempoh 15 hari bekerja", gxs[0] + 0.25, CT + kH + 1.0, gws[0] - 0.5, 1.2, { fontSize: 15, color: WHITE });
+  // B: PRefChem (teks + gambar sebelah)
+  const phw = 1.9, tw = (i) => gws[i] - phw - 0.35;
+  R(s, gxs[1], CT + kH, gws[1], kB, LAV);
+  R(s, gxs[1] + 0.15, CT + kH + 0.1, tw(1), 0.5, RED);
+  T(s, [{ text: "42 ", options: { fontSize: 24, bold: true } }, { text: "produk SPHM", options: { fontSize: 14, bold: true } }], gxs[1] + 0.25, CT + kH + 0.1, tw(1) - 0.2, 0.5, { color: WHITE, valign: "middle" });
+  T(s, bl(["Bertindak awal; bersedia jadi pembekal petrokimia halal ke rantau", "Berpotensi hab petrokimia halal serantau"]), gxs[1] + 0.15, CT + kH + 0.68, tw(1), kB - 0.72, { fontSize: 13, paraSpaceAfter: 3 });
+  ph(s, gxs[1] + gws[1] - phw - 0.1, CT + kH + 0.1, phw, kB - 0.2, "PRefChem", true);
+  // C: Colorcon (teks + gambar sebelah)
+  R(s, gxs[2], CT + kH, gws[2], kB, LAV);
+  T(s, bl(["Syarikat multinasional dari Amerika Syarikat", "SPHM melalui bimbingan JHDC", "Menembusi pasaran India"]), gxs[2] + 0.15, CT + kH, tw(2), kB, { fontSize: 14, valign: "middle", paraSpaceAfter: 5 });
+  ph(s, gxs[2] + gws[2] - phw - 0.1, CT + kH + 0.1, phw, kB - 0.2, "Colorcon", true);
   // investment
   const iy = CT + kH + kB + 0.1;
   R(s, L, iy, CW, 0.4, GOLD);
   T(s, [{ text: "PELABURAN INDUSTRI HALAL  ", options: { fontSize: 16, bold: true } }, { text: "diluluskan sehingga Jun 2026", options: { fontSize: 15 } }], L + 0.2, iy, CW - 0.4, 0.4, { valign: "middle" });
   const by = iy + 0.45, bh = CB - by;
-  R(s, L, by, 2.5, bh, NAVY, { objectName: "Pelaburan" });
-  T(s, "RM790.91 juta", L + 0.2, by + 0.1, 2.2, 0.5, { fontSize: 20, bold: true, color: GOLD, valign: "middle" });
-  T(s, "27 projek; kedudukan kedua di peringkat nasional", L + 0.2, by + 0.65, 2.2, bh - 0.7, { fontSize: 14, color: WHITE });
-  R(s, L + 2.65, by, 2.0, bh, LAV, { objectName: "Contoh" });
-  T(s, [{ text: "CONTOH", options: { fontSize: 12, bold: true, color: GOLD, breakLine: true } }, { text: "Paris Baguette Halal Hub, Nusajaya", options: { fontSize: 14, bold: true, breakLine: true } }, { text: "Ellaziq, Simpang Renggam", options: { fontSize: 14, bold: true } }], L + 2.8, by, 1.75, bh, { valign: "middle", paraSpaceAfter: 3 });
-  R(s, L + 4.8, by, 2.7, bh, RED, { objectName: "HALMAS" });
-  T(s, "RM2.256 bilion", L + 5.0, by + 0.1, 2.35, 0.5, { fontSize: 19, bold: true, color: WHITE, valign: "middle" });
-  T(s, "direalisasikan di Taman HALMAS, POIC Tanjung Langsat; 2,342 peluang pekerjaan", L + 5.0, by + 0.65, 2.35, bh - 0.7, { fontSize: 14, color: WHITE });
-  const pw2 = (CW - 7.65 - 0.15) / 2;
-  ph(s, L + 7.65, by, pw2, bh, "PRefChem", true);
-  ph(s, L + 7.65 + pw2 + 0.15, by, pw2, bh, "Colorcon", true);
+  R(s, L, by, 3.7, bh, NAVY, { objectName: "Pelaburan" });
+  T(s, "RM790.91 juta", L + 0.25, by + 0.08, 3.2, 0.5, { fontSize: 24, bold: true, color: GOLD, valign: "middle" });
+  T(s, "27 projek; kedudukan kedua di peringkat nasional", L + 0.25, by + 0.6, 3.2, bh - 0.62, { fontSize: 14, color: WHITE });
+  R(s, L + 3.85, by, 3.7, bh, LAV, { objectName: "Contoh" });
+  T(s, [{ text: "CONTOH", options: { fontSize: 12, bold: true, color: GOLD, breakLine: true } }, { text: "Paris Baguette Halal Hub, Nusajaya", options: { fontSize: 15, bold: true, breakLine: true } }, { text: "Ellaziq, Simpang Renggam", options: { fontSize: 15, bold: true } }], L + 4.05, by, 3.3, bh, { valign: "middle", paraSpaceAfter: 3 });
+  R(s, L + 7.7, by, CW - 7.7, bh, RED, { objectName: "HALMAS" });
+  T(s, "RM2.256 bilion", L + 7.95, by + 0.08, CW - 8.2, 0.5, { fontSize: 24, bold: true, color: WHITE, valign: "middle" });
+  T(s, "direalisasikan di Taman HALMAS, POIC Tanjung Langsat; 2,342 peluang pekerjaan", L + 7.95, by + 0.6, CW - 8.2, bh - 0.62, { fontSize: 14, color: WHITE });
 
   // ===== 20 : KETIGA (latihan + subsidi + TVET) =====
   s = slide(null, "PENDEKATAN KETIGA", "Pendekatan Ketiga");
