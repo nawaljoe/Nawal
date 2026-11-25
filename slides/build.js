@@ -52,12 +52,12 @@ function tab(s, text) {
   s.addShape(pres.ShapeType.rect, { x: L, y: 0.28, w, h: 0.44, fill: { color: WHITE }, line: { color: RED, width: 1.5 }, objectName: "Label Seksyen" });
   T(s, text, L, 0.28, w, 0.44, { fontSize: 15, bold: true, align: "center", valign: "middle" });
 }
-function ph(s, x, y, w, h, label) {
+function ph(s, x, y, w, h, label, small) {
   s.addShape(pres.ShapeType.rect, { x, y, w, h, fill: { color: PHC }, line: { color: "8A94C4", width: 1.5, dashType: "dash" }, objectName: "Ruang Gambar" });
   T(s, [
-    { text: "GAMBAR", options: { fontSize: 22, bold: true, color: "5A6499", breakLine: true } },
-    { text: label, options: { fontSize: 18, color: "5A6499", breakLine: true } },
-    { text: "Ruang gambar sebenar (boleh diganti)", options: { fontSize: 13, italic: true, color: "6B74A3" } },
+    { text: "GAMBAR", options: { fontSize: small ? 16 : 22, bold: true, color: "5A6499", breakLine: true } },
+    { text: label, options: { fontSize: small ? 14 : 18, color: "5A6499", breakLine: true } },
+    { text: "Ruang gambar sebenar (boleh diganti)", options: { fontSize: small ? 11 : 13, italic: true, color: "6B74A3" } },
   ], x + 0.2, y, w - 0.4, h, { align: "center", valign: "middle" });
 }
 function phBg(s, label) {
@@ -324,15 +324,17 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   R(s, L, iy, CW, 0.4, GOLD);
   T(s, [{ text: "PELABURAN INDUSTRI HALAL  ", options: { fontSize: 16, bold: true } }, { text: "diluluskan sehingga Jun 2026", options: { fontSize: 15 } }], L + 0.2, iy, CW - 0.4, 0.4, { valign: "middle" });
   const by = iy + 0.45, bh = CB - by;
-  R(s, L, by, 2.9, bh, NAVY, { objectName: "Pelaburan" });
-  T(s, "RM790.91 juta", L + 0.2, by + 0.1, 2.5, 0.5, { fontSize: 22, bold: true, color: GOLD, valign: "middle" });
-  T(s, "27 projek; kedudukan kedua di peringkat nasional", L + 0.2, by + 0.65, 2.5, bh - 0.7, { fontSize: 14, color: WHITE });
-  R(s, L + 3.05, by, 2.3, bh, LAV, { objectName: "Contoh" });
-  T(s, [{ text: "CONTOH", options: { fontSize: 12, bold: true, color: GOLD, breakLine: true } }, { text: "Paris Baguette Halal Hub, Nusajaya", options: { fontSize: 14, bold: true, breakLine: true } }, { text: "Ellaziq, Simpang Renggam", options: { fontSize: 14, bold: true } }], L + 3.2, by, 2.0, bh, { valign: "middle", paraSpaceAfter: 3 });
-  R(s, L + 5.5, by, 2.9, bh, RED, { objectName: "HALMAS" });
-  T(s, "RM2.256 bilion", L + 5.7, by + 0.1, 2.5, 0.5, { fontSize: 22, bold: true, color: WHITE, valign: "middle" });
-  T(s, "direalisasikan di Taman HALMAS, POIC Tanjung Langsat; 2,342 peluang pekerjaan", L + 5.7, by + 0.65, 2.5, bh - 0.7, { fontSize: 14, color: WHITE });
-  ph(s, L + 8.55, by, CW - 8.55, bh, "Kilang / projek pelaburan halal");
+  R(s, L, by, 2.5, bh, NAVY, { objectName: "Pelaburan" });
+  T(s, "RM790.91 juta", L + 0.2, by + 0.1, 2.2, 0.5, { fontSize: 20, bold: true, color: GOLD, valign: "middle" });
+  T(s, "27 projek; kedudukan kedua di peringkat nasional", L + 0.2, by + 0.65, 2.2, bh - 0.7, { fontSize: 14, color: WHITE });
+  R(s, L + 2.65, by, 2.0, bh, LAV, { objectName: "Contoh" });
+  T(s, [{ text: "CONTOH", options: { fontSize: 12, bold: true, color: GOLD, breakLine: true } }, { text: "Paris Baguette Halal Hub, Nusajaya", options: { fontSize: 14, bold: true, breakLine: true } }, { text: "Ellaziq, Simpang Renggam", options: { fontSize: 14, bold: true } }], L + 2.8, by, 1.75, bh, { valign: "middle", paraSpaceAfter: 3 });
+  R(s, L + 4.8, by, 2.7, bh, RED, { objectName: "HALMAS" });
+  T(s, "RM2.256 bilion", L + 5.0, by + 0.1, 2.35, 0.5, { fontSize: 19, bold: true, color: WHITE, valign: "middle" });
+  T(s, "direalisasikan di Taman HALMAS, POIC Tanjung Langsat; 2,342 peluang pekerjaan", L + 5.0, by + 0.65, 2.35, bh - 0.7, { fontSize: 14, color: WHITE });
+  const pw2 = (CW - 7.65 - 0.15) / 2;
+  ph(s, L + 7.65, by, pw2, bh, "PRefChem", true);
+  ph(s, L + 7.65 + pw2 + 0.15, by, pw2, bh, "Colorcon", true);
 
   // ===== 20 : KETIGA (latihan + subsidi + TVET) =====
   s = slide(null, "PENDEKATAN KETIGA", "Pendekatan Ketiga");
