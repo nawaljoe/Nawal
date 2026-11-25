@@ -190,38 +190,45 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
     T(s, t, L + i * (w7 + 0.2), CT + 3.9, w7, 0.6, { fontSize: 22, bold: true, align: "center", valign: "middle" });
   });
 
-  // ===== 8 : PKHNJ 2030 =====
-  s = slide("PKHNJ 2030 MENJADI PEMACU PEMBANGUNAN INDUSTRI HALAL JOHOR", "HALA TUJU", "Pelan dan Pendekatan");
-  const w8 = 2.3;
+  // ===== 8 : PKHNJ 2030 + JHDC (satu slide) =====
+  s = slide(null, "PKHNJ 2030 DAN JHDC", "Pelan dan Pendekatan");
+  s.addText([{ text: "PKHNJ 2030 DAN PERANAN JHDC", options: { breakLine: true } },
+             { text: "Pencapaian ini ialah hasil kerjasama banyak pihak", options: { fontSize: 20, bold: false, color: GREY } }], { placeholder: "title" });
+  const topH = 2.55;
+  // col A: PKHNJ 2030 facts
+  const aW = 4.6;
+  R(s, L, CT, aW, topH, NAVY, { objectName: "PKHNJ 2030" });
+  T(s, "PKHNJ 2030", L + 0.25, CT + 0.08, aW - 0.5, 0.35, { fontSize: 16, bold: true, color: GOLD });
   [["7", "hala tuju strategik"], ["21", "inisiatif"], ["33", "agensi dalam Taskforce"]].forEach(([v, l], i) => {
-    nb(s, L + i * (w8 + 0.2), CT, w8, 2.15, NAVY, v, l, { vs: 60, ls: 20, pad: 0.22 });
+    const x = L + 0.25 + i * 1.4;
+    T(s, v, x, CT + 0.45, 1.3, 0.8, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
+    T(s, l, x, CT + 1.28, 1.3, 0.6, { fontSize: 14, color: "DCE1F5" });
   });
-  R(s, L, CT + 2.3, 3 * w8 + 0.4, 0.75, NAVY);
-  T(s, "JAINJ sebagai urus setia", L, CT + 2.3, 3 * w8 + 0.4, 0.75, { fontSize: 28, bold: true, color: WHITE, align: "center", valign: "middle" });
-  const dw = (3 * w8 + 0.4 - 0.2) / 2;
-  R(s, L, CT + 3.2, dw, 1.3, RED);
-  T(s, [{ text: "7 DISEMBER 2025", options: { fontSize: 24, bold: true, breakLine: true } }, { text: "Dipralancarkan oleh YAB Menteri Besar", options: { fontSize: 18 } }], L + 0.2, CT + 3.2, dw - 0.3, 1.3, { color: WHITE, valign: "middle" });
-  R(s, L + dw + 0.2, CT + 3.2, dw, 1.3, RED);
-  T(s, [{ text: "25 FEBRUARI 2026", options: { fontSize: 24, bold: true, breakLine: true } }, { text: "Diluluskan Majlis Mesyuarat Kerajaan Negeri", options: { fontSize: 18 } }], L + dw + 0.4, CT + 3.2, dw - 0.3, 1.3, { color: WHITE, valign: "middle" });
-  ph(s, L + 3 * w8 + 0.7, CT, CW - 3 * w8 - 0.7, CH, "Majlis pra-pelancaran PKHNJ 2030");
-
-  // ===== 9 : JHDC =====
-  s = slide("JHDC MENGGERAKKAN PKHNJ 2030 MELALUI TIGA PERANAN", "PERANAN JHDC");
-  phc(s, L, CT, 4.6, 4.0, 1.5, "YB Exco bersama JHDC", [
-    { text: "JHDC", options: { fontSize: 26, bold: true, color: GOLD, breakLine: true } },
-    { text: "anak syarikat PIJ Holdings", options: { fontSize: 18, color: WHITE } }]);
-  const rx9 = L + 4.8, rw9 = RE - rx9;
-  [["1", "AGENSI FASILITASI HALAL NEGERI JOHOR", "Membimbing pemohon dan memberi sokongan teknikal"],
-   ["2", "PENYELARAS PKHNJ 2030", "Menyelaras 21 inisiatif, memantau KPI dan menyatukan laporan kemajuan"],
-   ["3", "PLATFORM EKOSISTEM HALAL", "Menghubungkan industri dengan agensi, institusi latihan, pelabur dan pembiaya"]].forEach(([n, a, b], i) => {
+  R(s, L + 0.25, CT + 1.95, aW - 0.5, 0.45, "323490");
+  T(s, "JAINJ sebagai urus setia", L + 0.25, CT + 1.95, aW - 0.5, 0.45, { fontSize: 17, bold: true, color: WHITE, align: "center", valign: "middle" });
+  // col B: dates
+  const bX = L + aW + 0.2, bW = 3.9;
+  [["7 DISEMBER 2025", "Dipralancarkan oleh YAB Menteri Besar Johor"], ["25 FEBRUARI 2026", "Diluluskan Majlis Mesyuarat Kerajaan Negeri"]].forEach(([d, t], i) => {
     const y = CT + i * 1.35;
-    R(s, rx9, y, rw9, 0.5, NAVY, { objectName: "Tajuk Peranan" });
-    T(s, [{ text: n + "  ", options: { color: GOLD } }, { text: a, options: { color: WHITE } }], rx9 + 0.2, y, rw9 - 0.4, 0.5, { fontSize: 20, bold: true, valign: "middle" });
-    R(s, rx9, y + 0.5, rw9, 0.75, LAV);
-    T(s, b, rx9 + 0.2, y + 0.5, rw9 - 0.4, 0.75, { fontSize: 20, valign: "middle" });
+    R(s, bX, y, bW, 1.2, RED);
+    T(s, [{ text: d, options: { fontSize: 22, bold: true, breakLine: true } }, { text: t, options: { fontSize: 15 } }], bX + 0.25, y, bW - 0.4, 1.2, { color: WHITE, valign: "middle" });
   });
-  R(s, L, CT + 4.1, CW, 0.4, RED, { objectName: "Nota Kuasa" });
-  T(s, "Kuasa pensijilan kekal pada JAINJ dan JAKIM", L, CT + 4.1, CW, 0.4, { fontSize: 20, bold: true, color: WHITE, align: "center", valign: "middle" });
+  // col C: photo
+  const cX = bX + bW + 0.2;
+  ph(s, cX, CT, RE - cX, topH, "Majlis pra-pelancaran PKHNJ 2030");
+  // JHDC
+  R(s, L, CT + 2.7, CW, 0.4, GOLD);
+  T(s, [{ text: "JHDC  ", options: { fontSize: 17, bold: true } }, { text: "Johor Halal Development Corporation, anak syarikat PIJ Holdings \u2013 tiga peranan", options: { fontSize: 16 } }], L + 0.25, CT + 2.7, CW - 0.5, 0.4, { valign: "middle" });
+  const rW = (CW - 0.4) / 3;
+  [["1", "AGENSI FASILITASI HALAL NEGERI JOHOR", "Membimbing pemohon dan sokongan teknikal; kuasa pensijilan kekal pada JAINJ dan JAKIM"],
+   ["2", "PENYELARAS PKHNJ 2030", "Menyelaras 21 inisiatif, memantau KPI dan menyatukan laporan kemajuan"],
+   ["3", "PLATFORM EKOSISTEM HALAL", "Menghubungkan industri dengan agensi, institusi latihan, pelabur dan pembiaya"]].forEach(([n, h, b], i) => {
+    const x = L + i * (rW + 0.2), y = CT + 3.2;
+    R(s, x, y, rW, 0.5, NAVY);
+    T(s, [{ text: n + "  ", options: { color: GOLD } }, { text: h, options: { color: WHITE } }], x + 0.15, y, rW - 0.3, 0.5, { fontSize: 14, bold: true, valign: "middle" });
+    R(s, x, y + 0.5, rW, 0.8, LAV);
+    T(s, b, x + 0.15, y + 0.5, rW - 0.3, 0.8, { fontSize: 14, valign: "middle" });
+  });
 
   // ===== 10 : lima pendekatan =====
   s = slide("LIMA PENDEKATAN UTAMA KERAJAAN NEGERI", "PENDEKATAN KERAJAAN NEGERI");
