@@ -240,36 +240,42 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   });
   ph(s, L + 8.3, CT, CW - 8.3, 4.48, "Aktiviti Kerajaan Negeri / JAINJ");
 
-  // ===== 11 : kesedaran =====
-  s = slide("KURSUS KESEDARAN HALAL UNTUK PENIAGA KECIL", "PENDEKATAN PERTAMA", "Pendekatan Pertama");
-  sub(s, "PBT BERSAMA JHDC – KURSUS KESEDARAN HALAL", L, CT - 0.05, 7);
+  // ===== 11 : PERTAMA (kesedaran + bimbingan + Halal Kotej) =====
+  s = slide(null, "PENDEKATAN PERTAMA", "Pendekatan Pertama");
+  s.addText([{ text: "PERTAMA: HALAL SAMPAI KEPADA PENIAGA KECIL", options: { breakLine: true } },
+             { text: "Pensijilan halal memerlukan masa, keyakinan dan komitmen. Peniaga diseru ambil peluang ini", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const cW = (CW - 0.4) / 3, hH = 0.45, bH = 2.6, pH = CH - hH - bH - 0.1;
+  const colX = (i) => L + i * (cW + 0.2);
+  [["1  KESEDARAN HALAL", "Kursus kesedaran halal"], ["2  BIMBINGAN BERPERINGKAT", "Peniaga / medan selera"], ["3  HALAL KOTEJ \u2013 JT LAB", "Halal Kotej / usahawan asnaf"]].forEach(([h, p], i) => {
+    R(s, colX(i), CT, cW, hH, NAVY, { objectName: "Tajuk Lajur" });
+    T(s, h, colX(i) + 0.2, CT, cW - 0.4, hH, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
+    R(s, colX(i), CT + hH, cW, bH, LAV, { objectName: "Badan Lajur" });
+    ph(s, colX(i), CT + hH + bH + 0.1, cW, pH, p);
+  });
+  // col 1
+  let x0 = colX(0), y0 = CT + hH;
+  T(s, "PBT bersama JHDC", x0 + 0.2, y0 + 0.08, cW - 0.4, 0.3, { fontSize: 14, bold: true, color: GOLD });
   ["MBJB", "MBPG", "MPKu", "MBIP"].forEach((c, i) => {
-    const x = L + (i % 2) * 3.2, y = CT + 0.4 + Math.floor(i / 2) * 0.95;
-    R(s, x, y, 3.05, 0.82, NAVY); T(s, c, x, y, 3.05, 0.82, { fontSize: 28, bold: true, color: WHITE, align: "center", valign: "middle" });
+    const cx = x0 + 0.2 + (i % 2) * 1.8, cy = y0 + 0.42 + Math.floor(i / 2) * 0.48;
+    R(s, cx, cy, 1.7, 0.42, WHITE); T(s, c, cx, cy, 1.7, 0.42, { fontSize: 17, bold: true, align: "center", valign: "middle" });
   });
-  sub(s, "RAKAN STRATEGIK LATIHAN", L, CT + 2.4, 7);
-  ["JAINJ", "JHDC", "UTM", "JT Lab"].forEach((c, i) => {
-    const x = L + (i % 2) * 3.2, y = CT + 2.85 + Math.floor(i / 2) * 0.95;
-    R(s, x, y, 3.05, 0.82, LAV); T(s, c, x, y, 3.05, 0.82, { fontSize: 28, bold: true, align: "center", valign: "middle" });
+  T(s, "Rakan strategik latihan", x0 + 0.2, y0 + 1.5, cW - 0.4, 0.3, { fontSize: 14, bold: true, color: GOLD });
+  T(s, "JAINJ \u00B7 JHDC \u00B7 UTM \u00B7 JT Lab", x0 + 0.2, y0 + 1.8, cW - 0.4, 0.3, { fontSize: 15, bold: true, valign: "middle" });
+  R(s, x0 + 0.2, y0 + 2.17, cW - 0.4, 0.36, RED);
+  T(s, "Hampir 3,000 peserta tahun ini", x0 + 0.2, y0 + 2.17, cW - 0.4, 0.36, { fontSize: 16, bold: true, color: WHITE, align: "center", valign: "middle" });
+  // col 2
+  x0 = colX(1);
+  [[NAVY, "RM500,000", "MAINJ: 500 peniaga mikro dan kecil"], [NAVY, "44", "peniaga di bawah PBT telah mula dibantu"], [RED, "40", "usahawan medan selera, 2027 (PIJ)"]].forEach(([f, v, l], i) => {
+    const ry = y0 + 0.1 + i * 0.83;
+    R(s, x0 + 0.15, ry, cW - 0.3, 0.77, f);
+    T(s, v, x0 + 0.3, ry, 1.75, 0.77, { fontSize: v.length > 3 ? 22 : 30, bold: true, color: WHITE, valign: "middle" });
+    T(s, l, x0 + 2.05, ry, cW - 2.3, 0.77, { fontSize: 14, color: WHITE, valign: "middle" });
   });
-  nb(s, L + 6.6, CT, CW - 6.6, 1.85, RED, "Hampir 3,000", "peserta latihan kesedaran halal tahun ini", { vs: 48, ls: 22 });
-  ph(s, L + 6.6, CT + 2.0, CW - 6.6, CH - 2.0, "Kursus kesedaran halal peniaga");
-
-  // ===== 12 : bimbingan berperingkat =====
-  s = slide("PENIAGA KECIL DIBIMBING SECARA BERPERINGKAT", "PENDEKATAN PERTAMA");
-  const w12 = (CW - 0.4) / 3;
-  nb(s, L, CT, w12, 2.75, NAVY, "RM500,000", "MAINJ: bantu 500 peniaga mikro dan kecil menyediakan dokumentasi pensijilan halal", { vs: 40, ls: 20 });
-  nb(s, L + w12 + 0.2, CT, w12, 2.75, NAVY, "44", "peniaga di bawah PBT telah mula dibantu; selebihnya secara berperingkat", { vs: 54, ls: 20 });
-  nb(s, L + 2 * (w12 + 0.2), CT, w12, 2.75, RED, "40", "usahawan medan selera dibimbing hingga bersijil halal pada 2027 (peruntukan PIJ)", { vs: 54, ls: 20 });
-  ph(s, L, CT + 2.9, CW, CH - 2.9, "Peniaga kecil / gerai dan medan selera");
-
-  // ===== 13 : Halal Kotej =====
-  s = slide("HALAL KOTEJ: JT LAB MEMBIMBING USAHAWAN ASNAF DAN PENIAGA", "PENDEKATAN PERTAMA");
-  sub(s, "JT LAB – MAKMAL ANALISIS HALAL NEGERI", L, CT - 0.05, 7);
-  T(s, "285", L, CT + 0.35, 6.8, 1.9, { fontSize: 120, bold: true, color: RED, valign: "middle" });
-  T(s, "peserta dibimbing pada tahun 2026", L, CT + 2.25, 6.8, 0.55, { fontSize: 26, bold: true });
-  T(s, bl(["Usahawan asnaf dan peniaga di Larkin Sentral", "Kerjasama KEJORA, Jabatan Pertanian, YAPEIM dan masjid"]), L, CT + 2.95, 6.8, 1.55, { fontSize: 22, paraSpaceAfter: 8 });
-  ph(s, L + 7.1, CT, CW - 7.1, CH, "Bimbingan Halal Kotej / usahawan asnaf");
+  // col 3
+  x0 = colX(2);
+  T(s, "285", x0 + 0.2, y0 + 0.02, cW - 0.4, 1.0, { fontSize: 54, bold: true, color: RED, valign: "middle" });
+  T(s, "peserta dibimbing oleh JT Lab tahun ini", x0 + 0.2, y0 + 0.98, cW - 0.4, 0.5, { fontSize: 14, bold: true });
+  T(s, bl(["Usahawan asnaf dan peniaga di Larkin Sentral", "KEJORA, Jabatan Pertanian, YAPEIM, masjid"]), x0 + 0.2, y0 + 1.55, cW - 0.4, 1.0, { fontSize: 14, paraSpaceAfter: 3 });
 
   // ===== 14 : kantin SAKJ =====
   s = slide("KANTIN SEKOLAH AGAMA KERAJAAN JOHOR (SAKJ) BERSIJIL HALAL", "PENDEKATAN PERTAMA");
