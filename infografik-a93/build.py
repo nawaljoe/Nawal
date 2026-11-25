@@ -333,11 +333,7 @@ rect(s, 6.95, 2.15, 5.78, 0.07, fill=GOLD)
 text(s, 7.1, 2.25, 5.5, 0.4, "JOHOR HALAL JOURNEY", size=16, color=GOLD, bold=True)
 text(s, 7.1, 2.65, 2.2, 1.2, "10", size=84, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE)
 text(s, 7.1, 3.8, 2.4, 0.6, "daerah di Negeri Johor", size=15, color=WHITE)
-for i in range(10):
-    cx = 9.6 + (i % 5) * 0.6
-    cy = 2.95 + (i // 5) * 0.72
-    o = rect(s, cx, cy, 0.5, 0.5, fill=RED, line=WHITE, lw=1.5, shape=MSO_SHAPE.OVAL)
-    text(s, 0, 0, 0, 0, str(i + 1), size=14, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, shape=o)
+placeholder(s, 9.55, 2.75, 3.05, 1.6, "GAMBAR PETA JOHOR / 10 DAERAH")
 text(s, 6.95, 4.65, 3.1, 2.3, [[("•  Mendekati usahawan secara langsung", {})],
                                [("•  Memperluas akses bimbingan dan sokongan industri halal", {})],
                                [("•  Memperkukuh pemasaran; peluang pasaran domestik dan antarabangsa", {})]],
@@ -400,3 +396,11 @@ for i, sid in reversed(list(enumerate(list(ids)))):
         p3.part.drop_rel(sid.rId)
         ids.remove(sid)
 p3.save(os.path.join(HERE, "Slaid7_A93_Penutup.pptx"))
+
+p4 = Presentation(out)
+ids = p4.slides._sldIdLst
+for i, sid in reversed(list(enumerate(list(ids)))):
+    if i != 5:
+        p4.part.drop_rel(sid.rId)
+        ids.remove(sid)
+p4.save(os.path.join(HERE, "Slaid6_A93_Insentif.pptx"))
