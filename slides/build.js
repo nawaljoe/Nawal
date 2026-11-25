@@ -308,19 +308,17 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
     T(s, h.replace("PREFCHEM", "PRefChem"), kx(i) + 0.2, CT, kW - 0.4, kH, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
   });
   // A
-  R(s, kx(0), CT + kH, kW, 0.9, NAVY);
-  T(s, "15 HARI", kx(0) + 0.2, CT + kH, 1.9, 0.9, { fontSize: 28, bold: true, color: GOLD, valign: "middle" });
-  T(s, "sijil halal diluluskan dalam 15 hari bekerja", kx(0) + 2.1, CT + kH, kW - 2.25, 0.9, { fontSize: 14, color: WHITE, valign: "middle" });
-  R(s, kx(0), CT + kH + 0.95, kW, kB - 0.95, LAV);
-  T(s, "Indonesia, pasaran Muslim terbesar dunia, wajibkan halal bagi produk kimia mulai 18 Okt 2026", kx(0) + 0.2, CT + kH + 0.95, kW - 0.4, kB - 0.95, { fontSize: 14, bold: true, valign: "middle" });
+  R(s, kx(0), CT + kH, kW, kB, NAVY);
+  T(s, "15 HARI", kx(0) + 0.25, CT + kH + 0.05, kW - 0.5, 0.85, { fontSize: 42, bold: true, color: GOLD, valign: "middle" });
+  T(s, "Halal Green Lane: sijil halal boleh diluluskan dalam tempoh 15 hari bekerja", kx(0) + 0.25, CT + kH + 0.95, kW - 0.5, 0.85, { fontSize: 17, color: WHITE });
   // B
   R(s, kx(1), CT + kH, kW, kB, LAV);
   R(s, kx(1) + 0.15, CT + kH + 0.1, kW - 0.3, 0.55, RED);
   T(s, [{ text: "42 ", options: { fontSize: 26, bold: true } }, { text: "produk bersijil SPHM", options: { fontSize: 16, bold: true } }], kx(1) + 0.3, CT + kH + 0.1, kW - 0.6, 0.55, { color: WHITE, valign: "middle" });
-  T(s, bl(["Bersedia jadi pembekal petrokimia halal ke Indonesia dan rantau", "Berpotensi hab petrokimia halal serantau"]), kx(1) + 0.2, CT + kH + 0.72, kW - 0.4, 1.15, { fontSize: 14, paraSpaceAfter: 2 });
+  T(s, bl(["Bertindak awal; bersedia jadi pembekal petrokimia halal ke rantau", "Berpotensi hab petrokimia halal serantau"]), kx(1) + 0.2, CT + kH + 0.72, kW - 0.4, 1.15, { fontSize: 14, paraSpaceAfter: 2 });
   // C
   R(s, kx(2), CT + kH, kW, kB, LAV);
-  T(s, bl(["Syarikat multinasional dari Amerika Syarikat", "SPHM melalui bimbingan JHDC", "Menembusi pasaran Indonesia dan India"]), kx(2) + 0.2, CT + kH, kW - 0.4, kB, { fontSize: 15, valign: "middle", paraSpaceAfter: 5 });
+  T(s, bl(["Syarikat multinasional dari Amerika Syarikat", "SPHM melalui bimbingan JHDC", "Menembusi pasaran India"]), kx(2) + 0.2, CT + kH, kW - 0.4, kB, { fontSize: 15, valign: "middle", paraSpaceAfter: 5 });
   // investment
   const iy = CT + kH + kB + 0.1;
   R(s, L, iy, CW, 0.4, GOLD);
