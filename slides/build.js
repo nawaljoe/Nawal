@@ -418,21 +418,27 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
     cx += cw4[i] + 0.1;
   });
 
-  // ===== 27 : geran =====
-  s = slide("LEBIH RM1.3 JUTA GERAN UNTUK MEMPERKASA EKOSISTEM HALAL", "PENDEKATAN KELIMA", "Pendekatan Kelima");
-  R(s, L, CT, CW, 0.85, GOLD, { objectName: "Hero" });
-  T(s, "LEBIH RM1.3 JUTA", L + 0.3, CT, 7.2, 0.85, { fontSize: 44, bold: true, valign: "middle" });
-  T(s, "geran melalui MAINJ dan PIJ", L + 6.6, CT, CW - 6.9, 0.85, { fontSize: 24, bold: true, align: "right", valign: "middle" });
+  // ===== 27 : KELIMA (geran) =====
+  s = slide(null, "PENDEKATAN KELIMA", "Pendekatan Kelima");
+  s.addText([{ text: "KELIMA: GERAN YANG MERINGANKAN BEBAN", options: { breakLine: true } },
+             { text: "Kerajaan Negeri menyalurkan geran secara langsung melalui MAINJ dan PIJ", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const gw = 8.2;
+  R(s, L, CT, gw, 0.8, GOLD, { objectName: "Hero" });
+  T(s, "LEBIH RM1.3 JUTA", L + 0.25, CT, 5.2, 0.8, { fontSize: 36, bold: true, valign: "middle" });
+  T(s, "jumlah geran", L + 5.0, CT, gw - 5.25, 0.8, { fontSize: 18, bold: true, align: "right", valign: "middle" });
   [["MAINJ", "RM500,000", "membantu 500 peniaga mikro dan kecil menyediakan dokumentasi pensijilan halal", NAVY],
    ["PIJ", "RM200,000", "subsidi 50% yuran kursus profesional halal", NAVY],
-   ["PIJ", "RM462,000", "pensijilan halal bagi 154 kantin SAKJ", NAVY],
-   ["PIJ · 2027", "RM200,000", "bagi 40 usahawan medan selera pada tahun 2027", RED]].forEach(([a, v, d, fill], i) => {
-    const y = CT + 0.95 + i * 0.88;
-    R(s, L, y, CW, 0.8, fill, { objectName: "Peruntukan" });
-    tag(s, a, L + 0.25, y + 0.2, a.length > 5 ? 1.6 : 1.1);
-    T(s, v, L + 2.1, y, 3.6, 0.8, { fontSize: 32, bold: true, color: WHITE, valign: "middle" });
-    T(s, d, L + 5.8, y, CW - 6.0, 0.8, { fontSize: 20, color: WHITE, valign: "middle" });
+   ["PIJ", "RM462,000", "pensijilan halal bagi 154 kantin SAKJ (RM3,000 setiap kantin)", NAVY],
+   ["PIJ \u00B7 2027", "RM200,000", "bagi 40 usahawan medan selera pada tahun 2027", RED]].forEach(([a, v, d, fill], i) => {
+    const y = CT + 0.9 + i * 0.72;
+    R(s, L, y, gw, 0.65, fill, { objectName: "Peruntukan" });
+    T(s, a, L + 0.15, y, 1.2, 0.65, { fontSize: 14, bold: true, color: fill === RED ? WHITE : GOLD, valign: "middle" });
+    T(s, v, L + 1.45, y, 2.5, 0.65, { fontSize: 24, bold: true, color: WHITE, valign: "middle" });
+    T(s, d, L + 4.0, y, gw - 4.15, 0.65, { fontSize: 14, color: WHITE, valign: "middle" });
   });
+  ph(s, L + gw + 0.2, CT, CW - gw - 0.2, 3.71, "Penyerahan geran / usahawan");
+  R(s, L, CT + 3.85, CW, 0.65, NAVY, { objectName: "Penutup Geran" });
+  T(s, "Geran ini meringankan beban kos, supaya usahawan kecil, asnaf dan industri tidak tertinggal dalam ekonomi halal", L + 0.25, CT + 3.85, CW - 0.5, 0.65, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
 
   // ===== 28 : sasaran 2030 =====
   s = slide("JOHOR MENYASARKAN INDUSTRI HALAL BERNILAI TINGGI MENJELANG 2030", "SASARAN 2030", "Sasaran dan Penutup");
