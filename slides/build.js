@@ -377,62 +377,37 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   bar(CT + 1.5, 3.0, "KOHORT 2", "50 peserta", [[70, NAVY, "70% bekerja", WHITE], [20, RED, "20%", WHITE], [10, GOLD, "10%", NAVY]], "70% bekerja  |  20% masih menjalani latihan praktikal  |  10% melanjutkan pengajian");
   ph(s, L + 8.4, CT, CW - 8.4, CH, "Graduan TVET Halal");
 
-  // ===== 23a : Halal Champion =====
-  s = slide("HALAL CHAMPION JOHOR: PROGRAM INTERVENSI BAGI 20 PMKS JENAMA ASAL JOHOR", "PENDEKATAN KEEMPAT", "Pendekatan Keempat");
-  R(s, L, CT, 6.2, 2.2, NAVY, { objectName: "Hero" });
-  T(s, "20", L + 0.3, CT, 2.2, 2.2, { fontSize: 100, bold: true, color: GOLD, valign: "middle" });
-  T(s, "PMKS jenama asal Johor", L + 2.5, CT, 3.5, 2.2, { fontSize: 28, bold: true, color: WHITE, valign: "middle" });
-  R(s, L, CT + 2.35, 6.2, 2.15, LAV);
-  T(s, bl(["Dirintis TWRJ dan digerakkan bersama PUJB", "Dicalonkan agensi melalui Majlis Pembangunan Usahawan Negeri Johor (MPUN)"]), L + 0.3, CT + 2.35, 5.7, 2.15, { fontSize: 22, valign: "middle", paraSpaceAfter: 8 });
-  ph(s, L + 6.4, CT, CW - 6.4, CH, "Usahawan Halal Champion");
-
-  // ===== 23b : lima intervensi =====
-  s = slide("LIMA ASPEK INTERVENSI BERSEPADU UNTUK USAHAWAN", "PENDEKATAN KEEMPAT");
-  const w23 = (CW - 0.8) / 5;
+  // ===== 23 : KEEMPAT (Halal Champion + kemajuan) =====
+  s = slide(null, "PENDEKATAN KEEMPAT", "Pendekatan Keempat");
+  s.addText([{ text: "KEEMPAT: USAHAWAN TEMPATAN MENJADI JUARA", options: { breakLine: true } },
+             { text: "Halal Champion Johor: 10 daripada 12 syarikat yang dinilai telah mencatat kemajuan", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const lw = 8.2;
+  R(s, L, CT, 2.6, 1.3, NAVY, { objectName: "Hero" });
+  T(s, "20", L + 0.2, CT, 1.2, 1.3, { fontSize: 48, bold: true, color: GOLD, valign: "middle" });
+  T(s, "PMKS jenama asal Johor", L + 1.35, CT, 1.15, 1.3, { fontSize: 14, bold: true, color: WHITE, valign: "middle" });
+  R(s, L + 2.75, CT, lw - 2.75, 1.3, LAV);
+  T(s, bl(["Dirintis TWRJ, digerakkan bersama PUJB", "Dicalonkan agensi melalui MPUN", "Prestasi dinilai melalui kayu pengukur Majlis Halal Negeri Johor"]), L + 2.95, CT, lw - 3.1, 1.3, { fontSize: 14, valign: "middle", paraSpaceAfter: 2 });
+  T(s, "LIMA ASPEK INTERVENSI BERSEPADU", L, CT + 1.4, lw, 0.3, { fontSize: 14, bold: true, color: GOLD, valign: "middle" });
   ["Pensijilan halal", "Pembiayaan", "Penjenamaan", "Pembungkusan", "Pemasaran"].forEach((t, i) => {
-    const x = L + i * (w23 + 0.2);
-    R(s, x, CT, w23, 1.9, NAVY);
-    s.addShape(pres.ShapeType.ellipse, { x: x + w23 / 2 - 0.35, y: CT + 0.2, w: 0.7, h: 0.7, fill: { color: GOLD }, line: { color: GOLD, width: 0 } });
-    T(s, String(i + 1), x + w23 / 2 - 0.35, CT + 0.2, 0.7, 0.7, { fontSize: 28, bold: true, color: NAVY, align: "center", valign: "middle" });
-    T(s, t, x + 0.05, CT + 1.0, w23 - 0.1, 0.8, { fontSize: 19, bold: true, color: WHITE, align: "center", valign: "middle" });
+    const x = L + i * 1.65;
+    s.addShape(pres.ShapeType.rect, { x, y: CT + 1.75, w: 1.55, h: 0.75, fill: { color: WHITE }, line: { color: NAVY, width: 1.5 }, objectName: "Aspek" });
+    T(s, t, x + 0.02, CT + 1.75, 1.51, 0.75, { fontSize: 13, bold: true, align: "center", valign: "middle" });
   });
-  R(s, L, CT + 2.05, CW, 1.2, RED);
-  T(s, "10 daripada 12 syarikat yang dinilai telah mencatat kemajuan", L + 0.3, CT + 2.05, CW - 0.6, 1.2, { fontSize: 30, bold: true, color: WHITE, align: "center", valign: "middle" });
-  R(s, L, CT + 3.4, CW, 1.1, LAV);
-  T(s, "Prestasi dinilai melalui kayu pengukur yang diluluskan Majlis Halal Negeri Johor", L + 0.3, CT + 3.4, CW - 0.6, 1.1, { fontSize: 24, bold: true, align: "center", valign: "middle" });
-
-  // ===== 24 : jualan =====
-  s = slide("JUALAN USAHAWAN HALAL CHAMPION MENINGKAT", "PENDEKATAN KEEMPAT");
-  const card24 = (x, y, w, h, fill, v, n, d, vs) => {
-    R(s, x, y, w, h, fill);
-    T(s, v, x + 0.3, y + 0.1, w - 0.6, vs / 72 * 1.3, { fontSize: vs, bold: true, color: WHITE, valign: "middle" });
-    T(s, [{ text: n, options: { fontSize: 22, bold: true, breakLine: true } }, { text: d, options: { fontSize: 18 } }], x + 0.3, y + 0.1 + vs / 72 * 1.3, w - 0.6, h - vs / 72 * 1.3 - 0.2, { color: WHITE });
-  };
-  card24(L, CT, 5.3, 2.3, RED, "136%", "S'mores by Alkaff", "naik taraf daripada perusahaan mikro kepada syarikat kecil", 54);
-  card24(L + 5.5, CT, 3.3, 2.3, NAVY, "62%", "Elham-Q Edible Oil", "syarikat kecil", 54);
-  card24(L + 9.0, CT, 3.13, 2.3, NAVY, "50%", "WE1", "syarikat kecil", 54);
-  card24(L, CT + 2.45, 4.0, 2.05, NAVY, "12.6%", "Salleh Food Industries", "syarikat sederhana", 48);
-  card24(L + 4.15, CT + 2.45, 4.0, 2.05, NAVY, "11%", "ADIN Marketing Group", "syarikat sederhana", 48);
-  ph(s, L + 8.3, CT + 2.45, CW - 8.3, 2.05, "Produk Halal Champion");
-
-  // ===== 25 : rangkaian =====
-  s = slide("KOPI RAKYAT DAN MUIZ HOT CHICKEN MELUASKAN RANGKAIAN", "PENDEKATAN KEEMPAT");
-  const w25 = (CW - 0.2) / 2;
-  ph(s, L, CT, w25, 1.9, "Kopi Rakyat");
-  nb(s, L, CT + 2.0, w25, 2.5, NAVY, "55", "cawangan Kopi Rakyat kini beroperasi", { vs: 60, ls: 24 });
-  ph(s, L + w25 + 0.2, CT, w25, 1.9, "Muiz Hot Chicken");
-  nb(s, L + w25 + 0.2, CT + 2.0, w25, 2.5, NAVY, "RM40 juta+", "jualan Muiz Hot Chicken; sasar 50 ejen baharu melalui pembiayaan Bank Islam (i-TEKAD, i-BANGKIT)", { vs: 44, ls: 20 });
-
-  // ===== 26 : eksport + Halal Sukses =====
-  s = slide("USAHAWAN JOHOR MENEMBUSI PASARAN EKSPORT", "PENDEKATAN KEEMPAT");
-  [["ELHAM-Q", "mengeksport ke Jepun, Sudan dan Bangladesh"], ["HIJRAH WATER", "mengeksport ke Singapura"]].forEach(([n, d], i) => {
-    const y = CT + i * 1.65;
-    R(s, L, y, 7.4, 1.5, RED);
-    T(s, [{ text: n, options: { fontSize: 32, bold: true, breakLine: true } }, { text: d, options: { fontSize: 22 } }], L + 0.3, y + 0.05, 6.8, 1.4, { color: WHITE, valign: "middle" });
+  ph(s, L + lw + 0.2, CT, CW - lw - 0.2, 2.5, "Usahawan Halal Champion");
+  R(s, L, CT + 2.65, CW, 0.4, RED);
+  T(s, "10 DARIPADA 12 SYARIKAT YANG DINILAI TELAH MENCATAT KEMAJUAN", L + 0.2, CT + 2.65, CW - 0.4, 0.4, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
+  const cy = CT + 3.1, ch2 = CB - cy;
+  const cw4 = [2.5, 3.7, 3.4, 2.23];
+  let cx = L;
+  [["NAIK TARAF", NAVY, [{ text: "136%", options: { fontSize: 28, bold: true, color: GOLD, breakLine: true } }, { text: "S'mores by Alkaff: mikro kepada syarikat kecil", options: { fontSize: 14, color: WHITE } }]],
+   ["JUALAN MENINGKAT", NAVY, [{ text: "Sederhana: Salleh Food Industries 12.6%, ADIN Marketing Group 11%", options: { fontSize: 14, color: WHITE, breakLine: true } }, { text: "Kecil: Elham-Q Edible Oil 62%, WE1 50%", options: { fontSize: 14, color: WHITE } }]],
+   ["RANGKAIAN BERTAMBAH", NAVY, [{ text: "Kopi Rakyat: 55 cawangan. Muiz Hot Chicken: jualan lebih RM40 juta, sasar 50 ejen baharu (Bank Islam: i-TEKAD, i-BANGKIT)", options: { fontSize: 14, color: WHITE } }]],
+   ["EKSPORT", RED, [{ text: "Elham-Q: Jepun, Sudan, Bangladesh. Hijrah Water: Singapura", options: { fontSize: 14, color: WHITE } }]]].forEach(([h, f, runs], i) => {
+    R(s, cx, cy, cw4[i], ch2, f, { objectName: "Kad Kemajuan" });
+    T(s, h, cx + 0.15, cy + 0.05, cw4[i] - 0.3, 0.3, { fontSize: 13, bold: true, color: i === 3 ? WHITE : GOLD, valign: "middle" });
+    T(s, runs, cx + 0.15, cy + 0.38, cw4[i] - 0.3, ch2 - 0.42, { valign: "top" });
+    cx += cw4[i] + 0.1;
   });
-  ph(s, L + 7.6, CT, CW - 7.6, 3.15, "Produk eksport Johor");
-  R(s, L, CT + 3.3, CW, 1.2, NAVY, { objectName: "Halal Sukses" });
-  T(s, [{ text: "HALAL SUKSES JOHOR  ", options: { fontSize: 22, bold: true, color: GOLD } }, { text: "bersama KUSKOP terus membimbing PMKS Johor memperoleh pensijilan halal", options: { fontSize: 22, color: WHITE } }], L + 0.3, CT + 3.3, CW - 0.6, 1.2, { valign: "middle" });
 
   // ===== 27 : geran =====
   s = slide("LEBIH RM1.3 JUTA GERAN UNTUK MEMPERKASA EKOSISTEM HALAL", "PENDEKATAN KELIMA", "Pendekatan Kelima");
