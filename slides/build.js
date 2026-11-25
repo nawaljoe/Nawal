@@ -440,47 +440,39 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   R(s, L, CT + 3.85, CW, 0.65, NAVY, { objectName: "Penutup Geran" });
   T(s, "Geran ini meringankan beban kos, supaya usahawan kecil, asnaf dan industri tidak tertinggal dalam ekonomi halal", L + 0.25, CT + 3.85, CW - 0.5, 0.65, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
 
-  // ===== 28 : sasaran 2030 =====
-  s = slide("JOHOR MENYASARKAN INDUSTRI HALAL BERNILAI TINGGI MENJELANG 2030", "SASARAN 2030", "Sasaran dan Penutup");
-  const w28 = (CW - 0.4) / 3;
-  [["5,000", "syarikat baharu bersijil halal"], ["4,000", "tenaga kerja mahir halal"], ["RM5 bilion", "pelaburan terkumpul"]].forEach(([v, l], i) => {
-    nb(s, L + i * (w28 + 0.2), CT, w28, 2.1, NAVY, v, l, { vs: 38, ls: 22 });
+  // ===== 28 : PENUTUP (sasaran 2030 + perjalanan + halal bukan sekadar sijil) =====
+  s = slide(null, "SASARAN 2030 DAN PENUTUP", "Sasaran dan Penutup");
+  s.addText([{ text: "SASARAN 2030: HALAL BUKAN SEKADAR SIJIL", options: { breakLine: true } },
+             { text: "Insya-Allah, Kerajaan Negeri akan terus berusaha memperkasa industri halal Johor", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  sub(s, "SASARAN MENJELANG 2030", L, CT - 0.05, 8);
+  const gwT = (CW - 0.4) / 5;
+  [["5,000", "", "syarikat baharu bersijil halal"], ["4,000", "", "tenaga kerja mahir halal"], ["RM5", " bilion", "pelaburan terkumpul"], ["RM18", " bilion", "eksport halal"], ["RM24", " bilion", "sumbangan kepada KDNK negeri"]].forEach(([v, u, l], i) => {
+    const x = L + i * (gwT + 0.1), f = i < 2 ? NAVY : (i === 2 ? NAVY : RED);
+    R(s, x, CT + 0.35, gwT, 1.5, i < 3 ? NAVY : RED, { objectName: "Sasaran" });
+    T(s, [{ text: v, options: { fontSize: 34, bold: true, color: i < 3 ? GOLD : WHITE } }, { text: u, options: { fontSize: 18, bold: true, color: WHITE } }], x + 0.15, CT + 0.42, gwT - 0.3, 0.7, { valign: "middle" });
+    T(s, l, x + 0.15, CT + 1.15, gwT - 0.3, 0.65, { fontSize: 14, color: WHITE });
   });
-  const w28b = (CW - 0.2) / 2;
-  nb(s, L, CT + 2.25, w28b, 2.25, RED, "RM18 bilion", "eksport halal", { vs: 54, ls: 26 });
-  nb(s, L + w28b + 0.2, CT + 2.25, w28b, 2.25, RED, "RM24 bilion", "sumbangan kepada KDNK negeri", { vs: 54, ls: 26 });
-
-  // ===== 29 : perjalanan masih jauh =====
-  s = slide("PERJALANAN MASIH JAUH: USAHA PERLU TERUS DIPERGIATKAN", "SASARAN 2030");
-  R(s, L, CT, 7.8, 2.3, LAV);
-  T(s, [{ text: "1,298 ", options: { fontSize: 44, bold: true, color: RED } }, { text: "syarikat baharu setakat ini daripada sasaran 5,000", options: { fontSize: 22, bold: true } }], L + 0.3, CT + 0.1, 7.3, 1.0, { valign: "middle" });
-  R(s, L + 0.3, CT + 1.3, 7.2, 0.7, "C9CFE6"); R(s, L + 0.3, CT + 1.3, 7.2 * 0.26, 0.7, RED);
-  T(s, "26% daripada sasaran", L + 0.3 + 7.2 * 0.26 + 0.15, CT + 1.3, 4.5, 0.7, { fontSize: 22, bold: true, valign: "middle" });
-  sub(s, "PENGHARGAAN KEPADA", L, CT + 2.45, 6);
-  ["JAINJ", "Agensi dalam Taskforce", "Rakan industri", "Para usahawan"].forEach((t, i) => {
-    const x = L + (i % 2) * 3.95, y = CT + 2.9 + Math.floor(i / 2) * 0.85;
-    R(s, x, y, 3.85, 0.75, NAVY); T(s, t, x, y, 3.85, 0.75, { fontSize: 22, bold: true, color: WHITE, align: "center", valign: "middle" });
+  const ry = CT + 2.0, rh = CB - ry;
+  // left: progress + appreciation
+  const lc = 4.2;
+  R(s, L, ry, lc, 1.5, LAV, { objectName: "Perjalanan" });
+  T(s, [{ text: "1,298 ", options: { fontSize: 30, bold: true, color: RED } }, { text: "syarikat baharu setakat ini", options: { fontSize: 14, bold: true } }], L + 0.2, ry + 0.05, lc - 0.4, 0.55, { valign: "middle" });
+  R(s, L + 0.2, ry + 0.68, lc - 0.4, 0.28, "C9CFE6"); R(s, L + 0.2, ry + 0.68, (lc - 0.4) * 0.26, 0.28, RED);
+  T(s, "26% daripada sasaran 5,000. Perjalanan masih jauh: usaha perlu terus dipergiat", L + 0.2, ry + 1.0, lc - 0.4, 0.48, { fontSize: 13, bold: true });
+  R(s, L, ry + 1.6, lc, rh - 1.6, NAVY, { objectName: "Penghargaan" });
+  T(s, [{ text: "PENGHARGAAN KEPADA", options: { fontSize: 12, bold: true, color: GOLD, breakLine: true } }, { text: "JAINJ, semua agensi dalam Taskforce, rakan industri dan para usahawan", options: { fontSize: 14, bold: true, color: WHITE } }], L + 0.2, ry + 1.6, lc - 0.4, rh - 1.6, { valign: "middle" });
+  // middle: halal bermakna
+  const mx = L + lc + 0.2, mw = 4.23;
+  R(s, mx, ry, mw, 0.4, RED);
+  T(s, "HALAL BERMAKNA", mx + 0.2, ry, mw - 0.4, 0.4, { fontSize: 15, bold: true, color: WHITE, valign: "middle" });
+  [["home", "Makanan yang bersih dan selamat untuk keluarga"], ["store", "Pasaran yang lebih luas untuk usahawan"], ["grad", "Pekerjaan untuk anak muda"], ["help", "Kesejahteraan untuk seluruh rakyat Johor"]].forEach(([k, t], i) => {
+    const iy = ry + 0.45 + i * ((rh - 0.45) / 4);
+    const ih = (rh - 0.45) / 4 - 0.05;
+    R(s, mx, iy, mw, ih, LAV);
+    s.addImage({ data: ic[k], x: mx + 0.12, y: iy + (ih - 0.32) / 2, w: 0.32, h: 0.32 });
+    T(s, t, mx + 0.55, iy, mw - 0.65, ih, { fontSize: 14, bold: true, valign: "middle" });
   });
-  ph(s, L + 8.0, CT, CW - 8.0, CH, "Taskforce PKHNJ 2030 / rakan industri");
-
-  // ===== 30 : PENUTUP =====
-  s = pres.addSlide({ masterName: "PENUTUP", sectionTitle: sec });
-  phBg(s, "Dewan Negeri Johor (hitam putih, pudar)");
-  s.addImage({ path: LOGO, x: 4.87, y: 0.3, w: 3.6, h: 1.09 });
-  twoBar(s, W / 2, 1.5);
-  T(s, "HALAL BUKAN SEKADAR SIJIL", 1, 1.65, W - 2, 0.9, { fontSize: 48, bold: true, align: "center", valign: "middle" });
-  [["home", "Makanan yang bersih dan selamat untuk keluarga"], ["store", "Pasaran yang lebih luas untuk usahawan"],
-   ["grad", "Pekerjaan untuk anak muda"], ["help", "Kesejahteraan untuk seluruh rakyat Johor"]].forEach(([k, t], i) => {
-    const bw15 = (CW - 0.2) / 2, x = L + (i % 2) * (bw15 + 0.2), y = 2.8 + Math.floor(i / 2) * 1.3;
-    s.addShape(pres.ShapeType.rect, { x, y, w: bw15, h: 1.15, fill: { color: WHITE }, line: { color: NAVY, width: 1.5 }, objectName: "Mesej" });
-    s.addShape(pres.ShapeType.ellipse, { x: x + 0.25, y: y + 0.2, w: 0.75, h: 0.75, fill: { color: LAV }, line: { color: LAV, width: 0 } });
-    s.addImage({ data: ic[k], x: x + 0.25 + 0.2, y: y + 0.2 + 0.2, w: 0.35, h: 0.35 });
-    T(s, t, x + 1.25, y, bw15 - 1.4, 1.15, { fontSize: 22, bold: true, valign: "middle" });
-  });
-  twoBar(s, W / 2, 5.55);
-  R(s, L, 5.75, CW, 0.95, NAVY, { objectName: "Komitmen" });
-  T(s, "KOMITMEN KERAJAAN NEGERI JOHOR UNTUK TERUS MEMPERKASA INDUSTRI HALAL", L + 0.3, 5.75, CW - 0.6, 0.95, { fontSize: 24, bold: true, color: WHITE, align: "center", valign: "middle" });
-  T(s, "Sekian, terima kasih.", 1, 6.78, W - 2, 0.35, { fontSize: 18, italic: true, align: "center" });
+  ph(s, mx + mw + 0.2, ry, CW - lc - mw - 0.4, rh, "Usahawan / keluarga Johor");
 
   // ===== APPENDIX 31 =====
   s = slide("LAMPIRAN: PENSIJILAN HALAL BAHARU DI NEGERI JOHOR", "LAMPIRAN", "Lampiran");
