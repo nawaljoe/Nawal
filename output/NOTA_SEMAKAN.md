@@ -1,5 +1,7 @@
 # Nota Semakan – Slaid Penggulungan Hal Ehwal Agama Islam (Belanjawan Johor 2027)
 
+Format: 16:9 (13.333 x 7.5 in, setara 1920 x 1080 px). Fail 4:3 terdahulu masih ada untuk rujukan.
+
 Sumber: V1 - PENGGULUNGAN.docx (draf). Semua angka dikekalkan seperti dokumen. Senarai di bawah ialah perkara yang perlu disahkan sebelum paparan.
 
 ## Perlu pengesahan (angka tidak konsisten)
