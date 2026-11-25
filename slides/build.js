@@ -297,52 +297,44 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   });
   ph(s, L + lW + 0.2, CT, CW - lW - 0.2, CH, "Kantin sekolah / murid menjamah makanan halal");
 
-  // ===== 16 : Green Lane + PRefChem =====
-  s = slide("HALAL GREEN LANE: PRefChem MENEMBUSI PASARAN HALAL KIMIA", "PENDEKATAN KEDUA", "Pendekatan Kedua");
-  R(s, L, CT, 7.4, 1.4, NAVY);
-  T(s, "15 HARI", L + 0.3, CT, 3.2, 1.4, { fontSize: 44, bold: true, color: WHITE, valign: "middle" });
-  T(s, "Halal Green Lane: sijil boleh diluluskan dalam 15 hari bekerja", L + 3.6, CT, 3.6, 1.4, { fontSize: 20, color: WHITE, valign: "middle" });
-  R(s, L, CT + 1.5, 7.4, 1.2, LAV);
-  T(s, "Indonesia mewajibkan pensijilan halal bagi produk kimia mulai 18 Oktober 2026", L + 0.3, CT + 1.5, 6.8, 1.2, { fontSize: 22, bold: true, valign: "middle" });
-  R(s, L, CT + 2.8, 7.4, 1.7, RED);
-  T(s, "42 PRODUK", L + 0.3, CT + 2.8, 3.2, 1.7, { fontSize: 36, bold: true, color: WHITE, valign: "middle" });
-  T(s, "PRefChem, Pengerang, bertindak awal: SPHM bagi 42 produk", L + 3.6, CT + 2.8, 3.6, 1.7, { fontSize: 20, color: WHITE, valign: "middle" });
-  phc(s, L + 7.6, CT, CW - 7.6, CH, 1.35, "Produk / kilang PRefChem, Pengerang", [
-    { text: "Pengerang berpotensi muncul sebagai hab petrokimia halal serantau", options: { fontSize: 18, bold: true, color: WHITE } }]);
-
-  // ===== 17 : Colorcon =====
-  s = slide("COLORCON MALAYSIA MENEMBUSI PASARAN INDONESIA DAN INDIA", "PENDEKATAN KEDUA");
-  phc(s, L, CT, 6.0, CH, 1.3, "Colorcon Malaysia / penerimaan sijil", [
-    { text: "Halal bukan lagi soal makanan semata-mata, tetapi pintu ke pasaran global", options: { fontSize: 20, bold: true, color: WHITE } }]);
-  const rx17 = L + 6.2, rw17 = RE - rx17;
-  [[NAVY, "COLORCON MALAYSIA", "syarikat multinasional dari Amerika Syarikat"], [RED, "SPHM", "diperoleh melalui bimbingan JHDC"], [GOLD, "INDONESIA & INDIA", "pasaran yang kini ditembusi"]].forEach(([f, a, b], i) => {
-    const y = CT + i * 1.54;
-    R(s, rx17, y, rw17, 1.42, f);
-    T(s, [{ text: a, options: { fontSize: 28, bold: true, breakLine: true } }, { text: b, options: { fontSize: 22 } }], rx17 + 0.3, y, rw17 - 0.5, 1.42, { color: f === GOLD ? NAVY : WHITE, valign: "middle" });
+  // ===== 16 : KEDUA (Green Lane + PRefChem + Colorcon + pelaburan) =====
+  s = slide(null, "PENDEKATAN KEDUA", "Pendekatan Kedua");
+  s.addText([{ text: "KEDUA: HALAL MEMBUKA PASARAN DUNIA", options: { breakLine: true } },
+             { text: "Halal bukan lagi soal makanan semata-mata, tetapi pintu ke pasaran global", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const kW = (CW - 0.4) / 3, kH = 0.45, kB = 1.9;
+  const kx = (i) => L + i * (kW + 0.2);
+  ["HALAL GREEN LANE", "PREFCHEM, PENGERANG", "COLORCON MALAYSIA"].forEach((h, i) => {
+    R(s, kx(i), CT, kW, kH, NAVY, { objectName: "Tajuk Lajur" });
+    T(s, h.replace("PREFCHEM", "PRefChem"), kx(i) + 0.2, CT, kW - 0.4, kH, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
   });
-
-  // ===== 18 : pelaburan diluluskan =====
-  s = slide("JOHOR MEREKODKAN RM790.91 JUTA PELABURAN INDUSTRI HALAL", "PELABURAN HALAL");
-  R(s, L, CT, 7.6, 2.5, NAVY, { objectName: "Hero" });
-  tag(s, "DILULUSKAN SEHINGGA JUN 2026", L + 0.3, CT + 0.2, 4.2);
-  T(s, "RM790.91 juta", L + 0.3, CT + 0.7, 7.1, 1.1, { fontSize: 64, bold: true, color: WHITE, valign: "middle" });
-  T(s, "pelaburan industri halal diluluskan", L + 0.3, CT + 1.8, 7.1, 0.5, { fontSize: 24, color: WHITE });
-  nb(s, L + 7.8, CT, CW - 7.8, 2.5, RED, "27 projek", "kedudukan kedua di peringkat nasional", { vs: 44, ls: 24, top: 0.3 });
-  const w18 = (CW - 0.2) / 2;
-  [["Paris Baguette Halal Hub", "Nusajaya", "Paris Baguette"], ["Ellaziq", "Simpang Renggam", "Ellaziq"]].forEach(([n, loc, p], i) => {
-    const x = L + i * (w18 + 0.2);
-    ph(s, x, CT + 2.65, 2.9, 1.85, p);
-    R(s, x + 2.9, CT + 2.65, w18 - 2.9, 1.85, LAV);
-    T(s, [{ text: "CONTOH", options: { fontSize: 16, bold: true, color: GOLD, breakLine: true } }, { text: n, options: { fontSize: 24, bold: true, breakLine: true } }, { text: loc, options: { fontSize: 20 } }], x + 3.15, CT + 2.65, w18 - 3.3, 1.85, { valign: "middle" });
-  });
-
-  // ===== 19 : HALMAS =====
-  s = slide("TAMAN HALMAS DI POIC TANJUNG LANGSAT MEREALISASIKAN PELABURAN BESAR", "PELABURAN HALAL");
-  ph(s, L, CT, 6.4, CH, "Kilang / Taman HALMAS");
-  const rx19 = L + 6.6, rw19 = RE - rx19;
-  tag(s, "PELABURAN DIREALISASIKAN", rx19, CT, 4.4);
-  nb(s, rx19, CT + 0.55, rw19, 1.95, RED, "RM2.256 bilion", "pelaburan direalisasikan", { vs: 40, ls: 24 });
-  nb(s, rx19, CT + 2.65, rw19, 1.85, NAVY, "2,342", "peluang pekerjaan diwujudkan", { vs: 54, ls: 24 });
+  // A
+  R(s, kx(0), CT + kH, kW, 0.9, NAVY);
+  T(s, "15 HARI", kx(0) + 0.2, CT + kH, 1.9, 0.9, { fontSize: 28, bold: true, color: GOLD, valign: "middle" });
+  T(s, "sijil halal diluluskan dalam 15 hari bekerja", kx(0) + 2.1, CT + kH, kW - 2.25, 0.9, { fontSize: 14, color: WHITE, valign: "middle" });
+  R(s, kx(0), CT + kH + 0.95, kW, kB - 0.95, LAV);
+  T(s, "Indonesia, pasaran Muslim terbesar dunia, wajibkan halal bagi produk kimia mulai 18 Okt 2026", kx(0) + 0.2, CT + kH + 0.95, kW - 0.4, kB - 0.95, { fontSize: 14, bold: true, valign: "middle" });
+  // B
+  R(s, kx(1), CT + kH, kW, kB, LAV);
+  R(s, kx(1) + 0.15, CT + kH + 0.1, kW - 0.3, 0.55, RED);
+  T(s, [{ text: "42 ", options: { fontSize: 26, bold: true } }, { text: "produk bersijil SPHM", options: { fontSize: 16, bold: true } }], kx(1) + 0.3, CT + kH + 0.1, kW - 0.6, 0.55, { color: WHITE, valign: "middle" });
+  T(s, bl(["Bersedia jadi pembekal petrokimia halal ke Indonesia dan rantau", "Berpotensi hab petrokimia halal serantau"]), kx(1) + 0.2, CT + kH + 0.72, kW - 0.4, 1.15, { fontSize: 14, paraSpaceAfter: 2 });
+  // C
+  R(s, kx(2), CT + kH, kW, kB, LAV);
+  T(s, bl(["Syarikat multinasional dari Amerika Syarikat", "SPHM melalui bimbingan JHDC", "Menembusi pasaran Indonesia dan India"]), kx(2) + 0.2, CT + kH, kW - 0.4, kB, { fontSize: 15, valign: "middle", paraSpaceAfter: 5 });
+  // investment
+  const iy = CT + kH + kB + 0.1;
+  R(s, L, iy, CW, 0.4, GOLD);
+  T(s, [{ text: "PELABURAN INDUSTRI HALAL  ", options: { fontSize: 16, bold: true } }, { text: "diluluskan sehingga Jun 2026", options: { fontSize: 15 } }], L + 0.2, iy, CW - 0.4, 0.4, { valign: "middle" });
+  const by = iy + 0.45, bh = CB - by;
+  R(s, L, by, 2.9, bh, NAVY, { objectName: "Pelaburan" });
+  T(s, "RM790.91 juta", L + 0.2, by + 0.1, 2.5, 0.5, { fontSize: 22, bold: true, color: GOLD, valign: "middle" });
+  T(s, "27 projek; kedudukan kedua di peringkat nasional", L + 0.2, by + 0.65, 2.5, bh - 0.7, { fontSize: 14, color: WHITE });
+  R(s, L + 3.05, by, 2.3, bh, LAV, { objectName: "Contoh" });
+  T(s, [{ text: "CONTOH", options: { fontSize: 12, bold: true, color: GOLD, breakLine: true } }, { text: "Paris Baguette Halal Hub, Nusajaya", options: { fontSize: 14, bold: true, breakLine: true } }, { text: "Ellaziq, Simpang Renggam", options: { fontSize: 14, bold: true } }], L + 3.2, by, 2.0, bh, { valign: "middle", paraSpaceAfter: 3 });
+  R(s, L + 5.5, by, 2.9, bh, RED, { objectName: "HALMAS" });
+  T(s, "RM2.256 bilion", L + 5.7, by + 0.1, 2.5, 0.5, { fontSize: 22, bold: true, color: WHITE, valign: "middle" });
+  T(s, "direalisasikan di Taman HALMAS, POIC Tanjung Langsat; 2,342 peluang pekerjaan", L + 5.7, by + 0.65, 2.5, bh - 0.7, { fontSize: 14, color: WHITE });
+  ph(s, L + 8.55, by, CW - 8.55, bh, "Kilang / projek pelaburan halal");
 
   // ===== 20 : 3,384 =====
   s = slide("SERAMAI 3,384 PESERTA DILATIH DALAM BIDANG HALAL", "PENDEKATAN KETIGA", "Pendekatan Ketiga");
