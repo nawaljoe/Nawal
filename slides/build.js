@@ -277,23 +277,25 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   T(s, "peserta dibimbing oleh JT Lab tahun ini", x0 + 0.2, y0 + 0.98, cW - 0.4, 0.5, { fontSize: 14, bold: true });
   T(s, bl(["Usahawan asnaf dan peniaga di Larkin Sentral", "KEJORA, Jabatan Pertanian, YAPEIM, masjid"]), x0 + 0.2, y0 + 1.55, cW - 0.4, 1.0, { fontSize: 14, paraSpaceAfter: 3 });
 
-  // ===== 14 : kantin SAKJ =====
-  s = slide("KANTIN SEKOLAH AGAMA KERAJAAN JOHOR (SAKJ) BERSIJIL HALAL", "PENDEKATAN PERTAMA");
-  [[NAVY, "154", "kantin bersijil halal pada tahun 2025"], [NAVY, "RM462,000", "sumbangan PIJ: RM3,000 setiap kantin (Belanjawan Johor 2025)"], [RED, "129/133", "kantin bersijil halal pada 2026; empat lagi dalam proses audit"]].forEach(([f, v, l], i) => {
-    const y = CT + i * 1.52;
-    R(s, L, y, 7.3, 1.42, f, { objectName: "Baris" });
-    T(s, v, L + 0.3, y, 3.2, 1.42, { fontSize: 40, bold: true, color: WHITE, valign: "middle" });
-    T(s, l, L + 3.6, y, 3.5, 1.42, { fontSize: 20, color: WHITE, valign: "middle" });
+  // ===== 14 : kantin SAKJ + KEMAS + rumah sembelihan (satu slide) =====
+  s = slide(null, "PENDEKATAN PERTAMA");
+  s.addText([{ text: "HALAL DI SEKOLAH DAN SUMBER MAKANAN", options: { breakLine: true } },
+             { text: "Anak-anak kita menjamah makanan yang halal, bersih dan selamat; ibu bapa boleh berasa tenang", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const lW = 7.9;
+  R(s, L, CT, lW, 0.45, NAVY);
+  T(s, [{ text: "KANTIN SEKOLAH AGAMA KERAJAAN JOHOR (SAKJ)", options: { color: WHITE } }, { text: "   sumbangan PIJ", options: { color: GOLD } }], L + 0.2, CT, lW - 0.4, 0.45, { fontSize: 15, bold: true, valign: "middle" });
+  [[NAVY, "154", "kantin bersijil halal pada 2025", 36], [NAVY, "RM462,000", "PIJ: RM3,000 setiap kantin (Belanjawan Johor 2025)", 28], [RED, "129/133", "kantin bersijil pada 2026; empat lagi dalam audit", 32]].forEach(([f, v, l, vs], i) => {
+    nb(s, L + i * 2.7, CT + 0.5, 2.5, 1.8, f, v, l, { vs, ls: 14, top: 0.1, pad: 0.2 });
   });
-  ph(s, L + 7.5, CT, CW - 7.5, CH, "Kantin Sekolah Agama Johor");
-
-  // ===== 15 : KEMAS + rumah sembelihan =====
-  s = slide("JAMINAN SUMBER MAKANAN: DAPUR KEMAS DAN RUMAH SEMBELIHAN", "PENDEKATAN PERTAMA");
-  const w15 = (CW - 0.2) / 2;
-  ph(s, L, CT, w15, 2.0, "Dapur KEMAS");
-  nb(s, L, CT + 2.1, w15, 2.4, NAVY, "50", "dapur KEMAS kini di peringkat semakan dokumentasi", { vs: 54, ls: 22 });
-  ph(s, L + w15 + 0.2, CT, w15, 2.0, "Rumah sembelihan");
-  nb(s, L + w15 + 0.2, CT + 2.1, w15, 2.4, RED, "43", "rumah sembelihan Jabatan Perkhidmatan Veterinar bersijil halal; dua lagi dalam tindakan", { vs: 54, ls: 20 });
+  R(s, L, CT + 2.45, lW, 0.45, NAVY);
+  T(s, "PERLUASAN USAHA HALAL", L + 0.2, CT + 2.45, lW - 0.4, 0.45, { fontSize: 15, bold: true, color: WHITE, valign: "middle" });
+  [[NAVY, "50", "dapur KEMAS kini di peringkat semakan dokumentasi"], [RED, "43", "rumah sembelihan Jabatan Perkhidmatan Veterinar bersijil halal; dua lagi dalam tindakan"]].forEach(([f, v, l], i) => {
+    const x = L + i * 4.0;
+    R(s, x, CT + 2.95, 3.9, 1.55, f, { objectName: "Blok" });
+    T(s, v, x + 0.2, CT + 2.95, 1.1, 1.55, { fontSize: 38, bold: true, color: WHITE, valign: "middle" });
+    T(s, l, x + 1.35, CT + 2.95, 2.4, 1.55, { fontSize: 14, color: WHITE, valign: "middle" });
+  });
+  ph(s, L + lW + 0.2, CT, CW - lW - 0.2, CH, "Kantin sekolah / murid menjamah makanan halal");
 
   // ===== 16 : Green Lane + PRefChem =====
   s = slide("HALAL GREEN LANE: PRefChem MENEMBUSI PASARAN HALAL KIMIA", "PENDEKATAN KEDUA", "Pendekatan Kedua");
