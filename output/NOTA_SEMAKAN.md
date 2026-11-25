@@ -21,3 +21,23 @@ Sumber: V1 - PENGGULUNGAN.docx (draf). Semua angka dikekalkan seperti dokumen. S
 - Mukadimah, ucapan penghargaan, ayat Al-Quran mukadimah, penutup politik dan pantun tidak dimasukkan. Ayat at-Taubah 9:18 (dalam jawapan pegawai masjid) ada dalam nota pembentang slaid 5.
 - Logo (Belanjawan Johor 2027, jata Johor, Maju Johor) diekstrak daripada reka bentuk Canva rujukan tanpa diubah nisbahnya.
 - Ruang gambar: kotak bergaris putus-putus. Klik kanan > Format Shape > Fill > Picture untuk memasukkan gambar sebenar (bentuk dan bucu kekal).
+
+## Slaid Teras (slaid 12–17, poster Tekad dari folder Drive)
+Satu slaid setiap teras; Teras 03 dipecah dua kerana 12 Tekad. Jumlah peruntukan setiap teras ialah hasil tambah jumlah pada poster (dikira oleh saya, bukan angka dalam teks penggulungan).
+
+| Teras | Tekad | Jumlah |
+|---|---|---|
+| 01 Tadbir Urus Kerajaan | 6 | RM23.2 juta |
+| 02 Pembangunan Ekonomi | 3 | RM3.9 juta |
+| 03 Jaringan Keselamatan Sosial | 12 | RM319.2 juta |
+| 04 Kemudahan dan Keperluan Asas | 4 | RM222 juta |
+| 06 Orang Muda Johor | 5 | RM54.115 juta |
+| **Jumlah 30 poster** | 30 | **RM622.415 juta** |
+
+Perlu pengesahan:
+1. Jumlah 30 poster (RM622.415 juta) berbeza RM1.8 juta daripada RM620.615 juta dalam teks penggulungan (slaid 11).
+2. Poster bernombor Teras 01, 02, 03, 04 dan 06 (tiada Teras 05), jadi "lima teras" dipaparkan seperti pada poster.
+3. Poster Bantuan One-Off Bilik Guru (Teras 01): RM8.9 juta, 48,000 guru, 1,780 sekolah. Teks penggulungan: RM2.89 juta, 5,000 guru, 578 SAKJ. Skop berbeza atau salah satu perlu dibetulkan.
+4. Nombor Tekad pada poster berulang antara teras (cth. Tekad 27 ada dalam Teras 03 dan 04); dipaparkan seperti pada poster.
+5. Poster Teras 02 Muzium (RM2.7 juta) ialah tangkapan skrin, bukan poster rasmi bersaiz sama.
+6. Poster mempunyai butiran tambahan yang tiada dalam teks (cth. 7,200 penerima perubatan; 110,000 penerima Hari Raya); tidak dimasukkan ke slaid lain.
