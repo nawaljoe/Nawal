@@ -204,26 +204,27 @@ for i, (n, l, c) in enumerate(leg):
     text(s, 3.58, yy, 1.9, 0.8, [[(n, {"size": 24, "bold": True, "color": c if c != GOLD else CHAR})],
                                  [(l, {"size": 12, "color": CHAR})]], anchor=MSO_ANCHOR.MIDDLE)
 # comparison chart
-rect(s, 5.6, 2.2, 3.2, 4.75, fill=GREY)
-text(s, 5.7, 2.25, 3.0, 0.7, "KELULUSAN BAHARU SPHM", size=14, color=NAVY, bold=True)
+rect(s, 5.5, 2.2, 3.75, 4.75, fill=GREY)
+text(s, 5.6, 2.25, 3.55, 0.8, [[("KELULUSAN BAHARU SPHM", {"size": 16, "bold": True, "color": NAVY})], [("2024 berbanding sehingga Oktober 2026", {"size": 12, "color": MID})]])
 cd2 = CategoryChartData()
-cd2.categories = ["2024", "Sehingga Okt 2026"]
+cd2.categories = ["2024", "Okt 2026"]
 cd2.add_series("Kelulusan baharu SPHM", (133, 737))
-gf2 = s.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, Inches(5.7), Inches(2.9), Inches(3.0), Inches(3.95), cd2)
+gf2 = s.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, Inches(5.55), Inches(3.1), Inches(3.65), Inches(3.8), cd2)
 c2 = gf2.chart
 c2.has_legend = False
 c2.has_title = False
 c2.value_axis.visible = False
 c2.value_axis.has_major_gridlines = False
 c2.value_axis.maximum_scale = 900
-c2.category_axis.tick_labels.font.size = Pt(12)
+c2.category_axis.tick_labels.font.size = Pt(16)
+c2.category_axis.tick_labels.font.bold = True
 c2.category_axis.tick_labels.font.name = FONT
 c2.category_axis.format.line.color.rgb = MID
 pl = c2.plots[0]
 pl.gap_width = 45
 pl.has_data_labels = True
 dl = pl.data_labels
-dl.font.size = Pt(26)
+dl.font.size = Pt(48)
 dl.font.bold = True
 dl.font.name = FONT
 dl.position = XL_LABEL_POSITION.OUTSIDE_END
@@ -232,9 +233,9 @@ for i, c in enumerate([NAVY, RED]):
     p.format.fill.solid()
     p.format.fill.fore_color.rgb = c
 # KPI cards
-kpi(s, 9.1, 2.2, 3.63, 1.3, "4,510", "sijil halal aktif sehingga September 2026 (+863 berbanding 2025)", nsize=36, lsize=12)
-kpi(s, 9.1, 3.65, 3.63, 1.3, "93.08%", "permohonan SPHM diluluskan dalam tempoh 30 hari bekerja", fill=RED, nsize=36, lsize=12)
-placeholder(s, 9.1, 5.1, 3.63, 1.85, "GAMBAR USAHAWAN / PREMIS BERSIJIL HALAL")
+kpi(s, 9.45, 2.2, 3.28, 1.3, "4,510", "sijil halal aktif sehingga September 2026 (+863 berbanding 2025)", nsize=34, lsize=12)
+kpi(s, 9.45, 3.65, 3.28, 1.3, "93.08%", "permohonan SPHM diluluskan dalam tempoh 30 hari bekerja", fill=RED, nsize=34, lsize=12)
+placeholder(s, 9.45, 5.1, 3.28, 1.85, "GAMBAR USAHAWAN / PREMIS BERSIJIL HALAL")
 
 # ---------------------------------------------------------------- SLIDE 4
 s = base("MEMPERKUKUH PENSIJILAN, MELAHIRKAN TENAGA KERJA MAHIR HALAL", "INISIATIF STRATEGIK", 4,
@@ -374,3 +375,12 @@ text(s, 8.6, 5.97, 4.13, 1.03, [[("MAJU JOHOR", {"size": 24, "bold": True, "colo
 out = os.path.join(HERE, "Slaid_A93_PKHNJ2030.pptx")
 prs.save(out)
 print(out)
+
+# slaid 3 sahaja
+p2 = Presentation(out)
+ids = p2.slides._sldIdLst
+for i, sid in reversed(list(enumerate(list(ids)))):
+    if i != 2:
+        p2.part.drop_rel(sid.rId)
+        ids.remove(sid)
+p2.save(os.path.join(HERE, "Slaid3_A93_Pensijilan.pptx"))
