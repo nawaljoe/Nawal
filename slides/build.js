@@ -334,48 +334,57 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   T(s, "direalisasikan di Taman HALMAS, POIC Tanjung Langsat; 2,342 peluang pekerjaan", L + 5.7, by + 0.65, 2.5, bh - 0.7, { fontSize: 14, color: WHITE });
   ph(s, L + 8.55, by, CW - 8.55, bh, "Kilang / projek pelaburan halal");
 
-  // ===== 20 : 3,384 =====
-  s = slide("SERAMAI 3,384 PESERTA DILATIH DALAM BIDANG HALAL", "PENDEKATAN KETIGA", "Pendekatan Ketiga");
-  R(s, L, CT, 7.2, CH, NAVY, { objectName: "Hero" });
-  T(s, "3,384", L + 0.4, CT + 0.2, 6.4, 2.0, { fontSize: 110, bold: true, color: GOLD, valign: "middle" });
-  T(s, "peserta dilatih dalam bidang halal pada tahun 2026", L + 0.4, CT + 2.3, 6.4, 1.0, { fontSize: 28, bold: true, color: WHITE });
-  T(s, "melalui enam penyedia latihan di Johor", L + 0.4, CT + 3.4, 6.4, 0.8, { fontSize: 24, color: WHITE });
-  ph(s, L + 7.4, CT, CW - 7.4, CH, "Sesi latihan halal");
-
-  // ===== 21 : subsidi =====
-  s = slide("PIJ MENYUBSIDI YURAN KURSUS PROFESIONAL HALAL", "PENDEKATAN KETIGA");
-  const w21 = (CW - 0.4) / 3;
-  nb(s, L, CT, w21, 1.9, LAV, "50%", "subsidi yuran kursus", { vs: 48, vc: RED, ls: 20 });
-  nb(s, L + w21 + 0.2, CT, w21, 1.9, LAV, "RM1,650", "setiap peserta daripada yuran RM3,300", { vs: 44, vc: RED, ls: 20 });
-  nb(s, L + 2 * (w21 + 0.2), CT, w21, 1.9, RED, "116", "peserta telah menerima manfaat", { vs: 48, ls: 20 });
-  R(s, L, CT + 2.05, 8.1, 2.45, NAVY);
-  T(s, bl(["Kursus Eksekutif Halal dan Kursus Juruaudit Dalaman Halal; meringankan beban industri sederhana dan besar, termasuk pelabur asing, yang diwajibkan JAKIM mempunyai Eksekutif Halal",
-           "Graduan Eksekutif Halal UTM, UTHM dan KUIJSI dipadankan terus dengan industri bersama JTDC"]), L + 0.3, CT + 2.05, 7.5, 2.45, { fontSize: 20, color: WHITE, valign: "middle", paraSpaceAfter: 8 });
-  ph(s, L + 8.3, CT + 2.05, CW - 8.3, 2.45, "Kursus Eksekutif Halal");
-
-  // ===== 22a : TVET =====
-  s = slide("TVET HALAL MELATIH ANAK ASNAF MENJADI TENAGA KERJA MAHIR", "PENDEKATAN KETIGA");
-  nb(s, L, CT, 7.4, 2.15, NAVY, "70", "peserta asnaf dalam dua kohort dilatih sehingga November 2026 (pembiayaan MAINJ)", { vs: 60, ls: 22 });
-  nb(s, L, CT + 2.3, 7.4, 2.2, RED, "55", "orang telah bekerja = 78.6% penempatan pekerjaan", { vs: 60, ls: 24 });
-  ph(s, L + 7.6, CT, CW - 7.6, CH, "Peserta TVET Halal");
-
-  // ===== 22b : kohort =====
-  s = slide("PENEMPATAN PEKERJAAN PESERTA TVET HALAL MENGIKUT KOHORT", "PENDEKATAN KETIGA");
-  const bar = (y, h, tagText, subText, segs, legend) => {
-    R(s, L, y, 8.2, h, LAV);
-    T(s, [{ text: tagText, options: { bold: true, fontSize: 24, color: NAVY, breakLine: true } }, { text: subText, options: { fontSize: 22 } }], L + 0.25, y + 0.1, 2.3, 1.1, { valign: "top" });
-    let x = L + 2.7; const full = 8.2 - 2.9;
-    segs.forEach(([p, col, tx, tc]) => {
-      const w = full * p / 100;
-      R(s, x, y + 0.2, w, 0.85, col, { line: { color: LAV, width: 1 } });
-      T(s, tx, x, y + 0.2, w, 0.85, { fontSize: tx.length <= 3 ? 16 : 20, bold: true, color: tc, align: "center", valign: "middle" });
-      x += w;
+  // ===== 20 : KETIGA (latihan + subsidi + TVET) =====
+  s = slide(null, "PENDEKATAN KETIGA", "Pendekatan Ketiga");
+  s.addText([{ text: "KETIGA: HALAL MENCIPTA PEKERJAAN", options: { breakLine: true } },
+             { text: "Dari latihan kepada penempatan: tenaga kerja mahir halal Johor", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const tW = (CW - 0.4) / 3, tH = 0.45, tB = CH - tH;
+  const tx = (i) => L + i * (tW + 0.2);
+  ["1  LATIHAN HALAL 2026", "2  SUBSIDI PIJ (50% YURAN)", "3  TVET HALAL (MAINJ)"].forEach((h, i) => {
+    R(s, tx(i), CT, tW, tH, NAVY, { objectName: "Tajuk Lajur" });
+    T(s, h, tx(i) + 0.2, CT, tW - 0.4, tH, { fontSize: 16, bold: true, color: WHITE, valign: "middle" });
+  });
+  // col 1
+  R(s, tx(0), CT + tH, tW, 2.2, NAVY, { objectName: "Hero" });
+  T(s, "3,384", tx(0) + 0.25, CT + tH + 0.1, tW - 0.5, 1.1, { fontSize: 58, bold: true, color: GOLD, valign: "middle" });
+  T(s, "peserta dilatih dalam bidang halal tahun ini melalui enam penyedia latihan di Johor", tx(0) + 0.25, CT + tH + 1.25, tW - 0.5, 0.9, { fontSize: 15, color: WHITE });
+  ph(s, tx(0), CT + tH + 2.3, tW, tB - 2.3, "Sesi latihan halal");
+  // col 2
+  let y2 = CT + tH;
+  R(s, tx(1), y2, tW, tB, LAV, { objectName: "Badan Lajur" });
+  T(s, "Kursus Eksekutif Halal dan Kursus Juruaudit Dalaman Halal", tx(1) + 0.2, y2 + 0.05, tW - 0.4, 0.5, { fontSize: 13, bold: true, color: GOLD, valign: "middle" });
+  const hw = (tW - 0.5) / 2;
+  [["50%", "subsidi yuran"], ["RM1,650", "setiap peserta (yuran RM3,300)"]].forEach(([v, l], i) => {
+    const x = tx(1) + 0.2 + i * (hw + 0.1);
+    R(s, x, y2 + 0.6, hw, 1.05, WHITE);
+    T(s, v, x + 0.1, y2 + 0.62, hw - 0.2, 0.5, { fontSize: i ? 22 : 28, bold: true, color: RED, valign: "middle" });
+    T(s, l, x + 0.1, y2 + 1.14, hw - 0.2, 0.5, { fontSize: 13 });
+  });
+  R(s, tx(1) + 0.2, y2 + 1.75, tW - 0.4, 0.45, RED);
+  T(s, "116 peserta menerima manfaat", tx(1) + 0.2, y2 + 1.75, tW - 0.4, 0.45, { fontSize: 15, bold: true, color: WHITE, align: "center", valign: "middle" });
+  T(s, bl(["Meringankan beban industri sederhana dan besar, termasuk pelabur asing (JAKIM wajibkan Eksekutif Halal)", "Graduan Eksekutif Halal UTM, UTHM dan KUIJSI dipadankan dengan industri (JTDC)"]), tx(1) + 0.2, y2 + 2.3, tW - 0.4, tB - 2.35, { fontSize: 14, paraSpaceAfter: 4 });
+  // col 3
+  let y3 = CT + tH;
+  R(s, tx(2), y3, tW, tB, LAV, { objectName: "Badan Lajur" });
+  R(s, tx(2) + 0.15, y3 + 0.1, tW - 0.3, 0.85, NAVY);
+  T(s, "70", tx(2) + 0.3, y3 + 0.1, 0.95, 0.85, { fontSize: 36, bold: true, color: GOLD, valign: "middle" });
+  T(s, "peserta asnaf dalam dua kohort dilatih sehingga November 2026", tx(2) + 1.3, y3 + 0.1, tW - 1.55, 0.85, { fontSize: 13, color: WHITE, valign: "middle" });
+  R(s, tx(2) + 0.15, y3 + 1.03, tW - 0.3, 0.5, RED);
+  T(s, "55 orang telah bekerja = 78.6%", tx(2) + 0.15, y3 + 1.03, tW - 0.3, 0.5, { fontSize: 15, bold: true, color: WHITE, align: "center", valign: "middle" });
+  const bw = tW - 0.3;
+  const kb = (yy, lab, segs, legend) => {
+    T(s, lab, tx(2) + 0.15, yy, bw, 0.28, { fontSize: 13, bold: true, valign: "middle" });
+    let xx = tx(2) + 0.15;
+    segs.forEach(([pc, col, tx2, tc]) => {
+      const w = bw * pc / 100;
+      R(s, xx, yy + 0.3, w, 0.42, col, { line: { color: LAV, width: 1 } });
+      T(s, tx2, xx, yy + 0.3, w, 0.42, { fontSize: tx2.length <= 3 ? 12 : 13, bold: true, color: tc, align: "center", valign: "middle" });
+      xx += w;
     });
-    if (legend) T(s, legend, L + 2.7, y + 1.2, full, 0.8, { fontSize: 20, color: GREY });
+    if (legend) T(s, legend, tx(2) + 0.15, yy + 0.75, bw, 0.45, { fontSize: 12, color: GREY });
   };
-  bar(CT, 1.3, "KOHORT 1", "20 peserta", [[100, NAVY, "100% penempatan pekerjaan", WHITE]]);
-  bar(CT + 1.5, 3.0, "KOHORT 2", "50 peserta", [[70, NAVY, "70% bekerja", WHITE], [20, RED, "20%", WHITE], [10, GOLD, "10%", NAVY]], "70% bekerja  |  20% masih menjalani latihan praktikal  |  10% melanjutkan pengajian");
-  ph(s, L + 8.4, CT, CW - 8.4, CH, "Graduan TVET Halal");
+  kb(y3 + 1.65, "KOHORT 1 \u00B7 20 peserta", [[100, NAVY, "100% penempatan pekerjaan", WHITE]]);
+  kb(y3 + 2.55, "KOHORT 2 \u00B7 50 peserta", [[70, NAVY, "70% bekerja", WHITE], [20, RED, "20%", WHITE], [10, GOLD, "10%", NAVY]], "20% masih menjalani latihan praktikal; 10% melanjutkan pengajian");
 
   // ===== 23 : KEEMPAT (Halal Champion + kemajuan) =====
   s = slide(null, "PENDEKATAN KEEMPAT", "Pendekatan Keempat");
