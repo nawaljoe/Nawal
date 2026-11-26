@@ -480,20 +480,34 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   s = slide(null, "UCAPAN TERIMA KASIH", "Sasaran dan Penutup");
   s.addText([{ text: "TERIMA KASIH ATAS KEPERCAYAAN KEPADA JTLAB", options: { breakLine: true } },
              { text: "Khidmat konsultasi dan perkhidmatan analisis makmal", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
-  const pwk = 4.4;
-  ph(s, L, CT, pwk, CH, "JTLab / makmal analisis halal / pelanggan");
+  const pwk = 3.0;
+  ph(s, L, CT, pwk, 1.9, "JTLab / makmal analisis halal");
+  R(s, L, CT + 2.0, pwk, CH - 2.0, NAVY, { objectName: "Ucapan" });
+  T(s, "atas kepercayaan memilih JTLab bagi khidmat konsultasi dan perkhidmatan analisis makmal. Kepercayaan ini menjadi pemangkin kepada usaha JTLab untuk terus memperkukuh mutu perkhidmatan dan kepakaran yang ditawarkan.", L + 0.2, CT + 2.0, pwk - 0.4, CH - 2.0, { fontSize: 14, color: WHITE, valign: "middle" });
   const rx = L + pwk + 0.2, rw = CW - pwk - 0.2;
   sub(s, "TERIMA KASIH KEPADA", rx, CT - 0.05, rw);
-  const orgs = ["YaPEIM", "KUSKOP", "PUJB", "KEJORA", "Jabatan Perkhidmatan Veterinar", "Jabatan Pertanian", "MAINJ", "JAINJ", "J-Biotech", "MBPG", "MBIP", "Pihak industri"];
-  const gap = 0.1, sq = (rw - 5 * gap) / 6;
-  orgs.forEach((o, i) => {
-    const x = rx + (i % 6) * (sq + gap), y = CT + 0.4 + Math.floor(i / 6) * (sq + gap);
-    s.addShape(pres.ShapeType.rect, { x, y, w: sq, h: sq, fill: { color: WHITE }, line: { color: "8A94C4", width: 1.25, dashType: "dash" }, objectName: "Ruang Logo " + o });
-    T(s, [{ text: o, options: { fontSize: o.length > 20 ? 10 : 12, bold: true, color: NAVY, breakLine: true } }, { text: "(letak logo)", options: { fontSize: 10, italic: true, color: "6B74A3" } }], x + 0.05, y, sq - 0.1, sq, { align: "center", valign: "middle" });
+  const fs = require("fs"), asp = JSON.parse(fs.readFileSync("/home/user/Nawal/slides/assets/ty/aspect.json", "utf8"));
+  const rowsL = [["mbip", "mbpg", "jbiotech", "jainj", "mainj"], ["pertanian", "veterinar", "kejora", "yapeim"], ["kuskop", "pujb", "industri"]];
+  const rowH = 1.28, rgap = 0.08, tgap = 0.1;
+  rowsL.forEach((row, ri) => {
+    const y = CT + 0.4 + ri * (rowH + rgap);
+    const base = row.map((k) => k === "industri" ? 1.7 : Math.min(3.0, Math.max(1.1, asp[k] * (rowH - 0.2) + 0.3)));
+    const k2 = (rw - tgap * (row.length - 1)) / base.reduce((x, y2) => x + y2, 0);
+    let x = rx;
+    row.forEach((k, i) => {
+      const w = base[i] * k2;
+      if (k === "industri") {
+        R(s, x, y, w, rowH, RED, { objectName: "Pihak industri" });
+        T(s, "Pihak industri", x, y, w, rowH, { fontSize: 18, bold: true, color: WHITE, align: "center", valign: "middle" });
+      } else {
+        s.addShape(pres.ShapeType.rect, { x, y, w, h: rowH, fill: { color: WHITE }, line: { color: "C9CFE6", width: 1 }, objectName: "Petak Logo " + k });
+        const ih = rowH - 0.2, iw = w - 0.2, sc = Math.min(iw / asp[k], ih);
+        const dw = asp[k] * sc, dh = sc;
+        s.addImage({ path: "/home/user/Nawal/slides/assets/ty/" + k + ".png", x: x + (w - dw) / 2, y: y + (rowH - dh) / 2, w: dw, h: dh, altText: "Logo " + k });
+      }
+      x += w + tgap;
+    });
   });
-  const my = CT + 0.4 + 2 * (sq + gap) + 0.05;
-  R(s, rx, my, rw, CB - my, NAVY, { objectName: "Ucapan" });
-  T(s, "atas kepercayaan memilih JTLab bagi khidmat konsultasi dan perkhidmatan analisis makmal. Kepercayaan ini menjadi pemangkin kepada usaha JTLab untuk terus memperkukuh mutu perkhidmatan dan kepakaran yang ditawarkan.", rx + 0.3, my, rw - 0.6, CB - my, { fontSize: 17, color: WHITE, valign: "middle" });
 
   // ===== APPENDIX 31 =====
   s = slide("LAMPIRAN: PENSIJILAN HALAL BAHARU DI NEGERI JOHOR", "LAMPIRAN", "Lampiran");
