@@ -476,6 +476,26 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   });
   ph(s, mx + mw + 0.2, ry, CW - lc - mw - 0.4, rh, "Usahawan / keluarga Johor");
 
+  // ===== 29 : Ucapan terima kasih (JTLab) =====
+  s = slide(null, "UCAPAN TERIMA KASIH", "Sasaran dan Penutup");
+  s.addText([{ text: "TERIMA KASIH ATAS KEPERCAYAAN KEPADA JTLAB", options: { breakLine: true } },
+             { text: "Khidmat konsultasi dan perkhidmatan analisis makmal", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const pwk = 5.6;
+  ph(s, L, CT, pwk, CH, "JTLab / makmal analisis halal / pelanggan");
+  const rx = L + pwk + 0.2, rw = CW - pwk - 0.2;
+  sub(s, "TERIMA KASIH KEPADA", rx, CT - 0.05, rw);
+  const orgs = ["YaPEIM", "KUSKOP", "PUJB", "KEJORA", "Jabatan Perkhidmatan Veterinar", "Jabatan Pertanian", "MAINJ", "JAINJ", "J-Biotech", "MBPG", "MBIP", "Pihak industri"];
+  const cw2 = (rw - 0.15) / 2;
+  orgs.forEach((o, i) => {
+    const x = rx + (i % 2) * (cw2 + 0.15), y = CT + 0.38 + Math.floor(i / 2) * 0.46;
+    const last = i === orgs.length - 1;
+    R(s, x, y, cw2, 0.4, last ? RED : LAV);
+    T(s, o, x + 0.1, y, cw2 - 0.2, 0.4, { fontSize: o.length > 22 ? 13 : 15, bold: true, color: last ? WHITE : NAVY, align: "center", valign: "middle" });
+  });
+  const my = CT + 0.38 + 6 * 0.46 + 0.05;
+  R(s, rx, my, rw, CB - my, NAVY, { objectName: "Ucapan" });
+  T(s, "atas kepercayaan memilih JTLab bagi khidmat konsultasi dan perkhidmatan analisis makmal. Kepercayaan ini menjadi pemangkin kepada usaha JTLab untuk terus memperkukuh mutu perkhidmatan dan kepakaran yang ditawarkan.", rx + 0.25, my, rw - 0.5, CB - my, { fontSize: 15, color: WHITE, valign: "middle" });
+
   // ===== APPENDIX 31 =====
   s = slide("LAMPIRAN: PENSIJILAN HALAL BAHARU DI NEGERI JOHOR", "LAMPIRAN", "Lampiran");
   const hd = (t, al) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontSize: 24, align: al || "left" } });
