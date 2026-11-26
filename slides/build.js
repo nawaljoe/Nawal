@@ -480,21 +480,20 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
   s = slide(null, "UCAPAN TERIMA KASIH", "Sasaran dan Penutup");
   s.addText([{ text: "TERIMA KASIH ATAS KEPERCAYAAN KEPADA JTLAB", options: { breakLine: true } },
              { text: "Khidmat konsultasi dan perkhidmatan analisis makmal", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
-  const pwk = 5.6;
+  const pwk = 4.4;
   ph(s, L, CT, pwk, CH, "JTLab / makmal analisis halal / pelanggan");
   const rx = L + pwk + 0.2, rw = CW - pwk - 0.2;
   sub(s, "TERIMA KASIH KEPADA", rx, CT - 0.05, rw);
   const orgs = ["YaPEIM", "KUSKOP", "PUJB", "KEJORA", "Jabatan Perkhidmatan Veterinar", "Jabatan Pertanian", "MAINJ", "JAINJ", "J-Biotech", "MBPG", "MBIP", "Pihak industri"];
-  const cw2 = (rw - 0.15) / 2;
+  const gap = 0.1, sq = (rw - 5 * gap) / 6;
   orgs.forEach((o, i) => {
-    const x = rx + (i % 2) * (cw2 + 0.15), y = CT + 0.38 + Math.floor(i / 2) * 0.46;
-    const last = i === orgs.length - 1;
-    R(s, x, y, cw2, 0.4, last ? RED : LAV);
-    T(s, o, x + 0.1, y, cw2 - 0.2, 0.4, { fontSize: o.length > 22 ? 13 : 15, bold: true, color: last ? WHITE : NAVY, align: "center", valign: "middle" });
+    const x = rx + (i % 6) * (sq + gap), y = CT + 0.4 + Math.floor(i / 6) * (sq + gap);
+    s.addShape(pres.ShapeType.rect, { x, y, w: sq, h: sq, fill: { color: WHITE }, line: { color: "8A94C4", width: 1.25, dashType: "dash" }, objectName: "Ruang Logo " + o });
+    T(s, [{ text: o, options: { fontSize: o.length > 20 ? 10 : 12, bold: true, color: NAVY, breakLine: true } }, { text: "(letak logo)", options: { fontSize: 10, italic: true, color: "6B74A3" } }], x + 0.05, y, sq - 0.1, sq, { align: "center", valign: "middle" });
   });
-  const my = CT + 0.38 + 6 * 0.46 + 0.05;
+  const my = CT + 0.4 + 2 * (sq + gap) + 0.05;
   R(s, rx, my, rw, CB - my, NAVY, { objectName: "Ucapan" });
-  T(s, "atas kepercayaan memilih JTLab bagi khidmat konsultasi dan perkhidmatan analisis makmal. Kepercayaan ini menjadi pemangkin kepada usaha JTLab untuk terus memperkukuh mutu perkhidmatan dan kepakaran yang ditawarkan.", rx + 0.25, my, rw - 0.5, CB - my, { fontSize: 15, color: WHITE, valign: "middle" });
+  T(s, "atas kepercayaan memilih JTLab bagi khidmat konsultasi dan perkhidmatan analisis makmal. Kepercayaan ini menjadi pemangkin kepada usaha JTLab untuk terus memperkukuh mutu perkhidmatan dan kepakaran yang ditawarkan.", rx + 0.3, my, rw - 0.6, CB - my, { fontSize: 17, color: WHITE, valign: "middle" });
 
   // ===== APPENDIX 31 =====
   s = slide("LAMPIRAN: PENSIJILAN HALAL BAHARU DI NEGERI JOHOR", "LAMPIRAN", "Lampiran");
