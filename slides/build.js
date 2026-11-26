@@ -161,33 +161,33 @@ function twoBar(s, cx, y, each = 0.9) { R(s, cx - each, y, each, 0.08, RED); R(s
     nb(s, L + 2.45 + i * (sw + 0.15), sy, sw, sh, f, v, l, { vs, ls: 15, top: 0.1, pad: 0.2 });
   });
 
-  // ===== 6 : bersih selamat berkualiti =====
-  s = slide("HALAL BUKAN SEKADAR LABEL, TETAPI JAMINAN BERSIH, SELAMAT DAN BERKUALITI", "KEPENTINGAN HALAL");
+  // ===== 6 : HALAL ITU BERSIH, SELAMAT DAN BERKUALITI (satu slide) =====
+  s = slide(null, "KEPENTINGAN HALAL");
+  s.addText([{ text: "HALAL ITU BERSIH, SELAMAT DAN BERKUALITI", options: { breakLine: true } },
+             { text: "Halal bukan sekadar label: halalan toyyiban, daripada bahan mentah hinggalah ke pinggan rakyat", options: { fontSize: 18, bold: false, color: GREY } }], { placeholder: "title" });
+  const lw6 = 7.2, bw6 = (lw6 - 0.3) / 3;
   [["BERSIH", "clean"], ["SELAMAT", "safe"], ["BERKUALITI", "qual"]].forEach(([l, k], i) => {
-    const y = CT + i * 1.2;
-    R(s, L, y, 6.6, 1.1, NAVY, { objectName: "Blok" });
-    s.addImage({ data: ic[k], x: L + 0.35, y: y + 0.2, w: 0.7, h: 0.7 });
-    T(s, l, L + 1.4, y, 5.0, 1.1, { fontSize: 36, bold: true, color: WHITE, valign: "middle" });
+    const x = L + i * (bw6 + 0.15);
+    R(s, x, CT, bw6, 1.4, NAVY, { objectName: "Blok" });
+    s.addImage({ data: ic[k], x: x + 0.25, y: CT + 0.2, w: 0.55, h: 0.55 });
+    T(s, l, x + 0.25, CT + 0.8, bw6 - 0.4, 0.5, { fontSize: 20, bold: true, color: WHITE, valign: "middle" });
   });
-  R(s, L, CT + 3.7, 6.6, 0.8, GOLD);
-  T(s, "Halalan Toyyiban: daripada bahan mentah hinggalah ke pinggan rakyat", L + 0.2, CT + 3.7, 6.2, 0.8, { fontSize: 20, bold: true, valign: "middle" });
-  ph(s, L + 6.8, CT, CW - 6.8, 2.3, "Produk halal / pemprosesan makanan");
-  R(s, L + 6.8, CT + 2.45, CW - 6.8, 2.05, LAV);
-  T(s, "Setiap sijil yang dikeluarkan ialah jaminan kepada keluarga di Johor bahawa makanan dan produk yang mereka gunakan disediakan dengan betul.", L + 7.05, CT + 2.45, CW - 7.3, 2.05, { fontSize: 20, bold: true, valign: "middle" });
-
-  // ===== 7 : peluang global =====
-  s = slide("PELUANG INDUSTRI HALAL GLOBAL YANG BESAR", "KEPENTINGAN HALAL");
-  sub(s, "PERBELANJAAN PENGGUNA MUSLIM GLOBAL", L, CT - 0.05, 8);
-  nb(s, L, CT + 0.4, 5.4, 1.9, NAVY, "USD2.60 trilion", "pada tahun 2024", { vs: 40, lb: true, ls: 24 });
-  T(s, "➜", L + 5.4, CT + 0.4, CW - 10.8, 1.9, { fontSize: 54, bold: true, color: GOLD, align: "center", valign: "middle" });
-  nb(s, RE - 5.4, CT + 0.4, 5.4, 1.9, RED, "USD3.56 trilion", "unjuran menjelang 2029", { vs: 40, lb: true, ls: 24 });
-  R(s, L, CT + 2.5, CW, 0.85, GOLD, { objectName: "Indeks" });
-  T(s, "Malaysia kekal di kedudukan pertama Indeks Ekonomi Islam Global", L, CT + 2.5, CW, 0.85, { fontSize: 26, bold: true, align: "center", valign: "middle" });
-  sub(s, "TUGAS KITA DI JOHOR: MENTERJEMAHKAN KELEBIHAN INI KEPADA", L, CT + 3.45, CW);
-  const w7 = (CW - 0.4) / 3;
+  R(s, L, CT + 1.5, lw6, 0.8, LAV);
+  T(s, "Setiap sijil ialah jaminan kepada keluarga di Johor bahawa makanan dan produk yang mereka gunakan disediakan dengan betul", L + 0.25, CT + 1.5, lw6 - 0.5, 0.8, { fontSize: 15, bold: true, valign: "middle" });
+  sub(s, "PELUANG GLOBAL: PERBELANJAAN PENGGUNA MUSLIM", L, CT + 2.38, lw6);
+  nb(s, L, CT + 2.75, 3.2, 1.25, NAVY, "USD2.60 trilion", "pada tahun 2024", { vs: 21, ls: 14, lb: true, top: 0.15 });
+  T(s, "\u279C", L + 3.2, CT + 2.75, 0.8, 1.25, { fontSize: 32, bold: true, color: GOLD, align: "center", valign: "middle" });
+  nb(s, L + 4.0, CT + 2.75, 3.2, 1.25, RED, "USD3.56 trilion", "unjuran menjelang 2029", { vs: 21, ls: 14, lb: true, top: 0.15 });
+  R(s, L, CT + 4.1, lw6, 0.4, GOLD);
+  T(s, "Malaysia kekal di kedudukan pertama Indeks Ekonomi Islam Global", L + 0.15, CT + 4.1, lw6 - 0.3, 0.4, { fontSize: 15, bold: true, align: "center", valign: "middle" });
+  const rx6 = L + lw6 + 0.2, rw6 = CW - lw6 - 0.2;
+  ph(s, rx6, CT, rw6, 2.4, "Produk halal / pemprosesan makanan");
+  R(s, rx6, CT + 2.5, rw6, 2.0, LAV, { objectName: "Tugas Kita" });
+  T(s, [{ text: "TUGAS KITA DI JOHOR", options: { fontSize: 13, bold: true, color: GOLD, breakLine: true } }, { text: "Terjemahkan kelebihan ini kepada:", options: { fontSize: 14, bold: true } }], rx6 + 0.2, CT + 2.55, rw6 - 0.4, 0.6, { valign: "middle" });
   ["PELABURAN", "PEKERJAAN", "PENDAPATAN RAKYAT"].forEach((t, i) => {
-    R(s, L + i * (w7 + 0.2), CT + 3.9, w7, 0.6, LAV);
-    T(s, t, L + i * (w7 + 0.2), CT + 3.9, w7, 0.6, { fontSize: 22, bold: true, align: "center", valign: "middle" });
+    const y = CT + 3.2 + i * 0.43;
+    R(s, rx6 + 0.2, y, rw6 - 0.4, 0.38, NAVY);
+    T(s, t, rx6 + 0.2, y, rw6 - 0.4, 0.38, { fontSize: 14, bold: true, color: WHITE, align: "center", valign: "middle" });
   });
 
   // ===== 8 : PKHNJ 2030 + JHDC (satu slide) =====
