@@ -10,7 +10,7 @@ Sumber: V1 - PENGGULUNGAN.docx (draf). Semua angka dikekalkan seperti dokumen. S
 3. **Slaid 4.** Bilangan penerima kadar baharu (670 + 650 + 1,410 + 1,260 = 3,990) tidak sama dengan 5,701 penerima elaun. Dokumen menyatakan kenaikan hanya "bagi beberapa kategori", jadi ini mungkin betul, tetapi sila sahkan.
 
 ## Maklumat belum lengkap dalam dokumen
-4. **Slaid 6 – Tanah perkuburan.** Bahagian ini masih nota/soalan. Hanya fakta berikut dipaparkan: RM5 juta tanah perkuburan kerajaan; tanah perkuburan kariah diuruskan oleh PMS; hasil kutipan digunakan untuk naik taraf masjid dan surau. Penanda amber (DRAF) pada slaid menandakan: pengurusan & data tanah perkuburan, QR tabung, purata peruntukan tahunan dan hasil TPI, isu JAINJ–PBT, projek Kota Iskandar, perancangan TPI Tanjung Kupang, penyelesaian Parit Besar. "PMS" dan "TPI" dikekalkan seperti dokumen; sila sahkan kepanjangan dan ejaan rasmi.
+4. **Slaid 6–8 – Tanah perkuburan.** Diganti dengan 3 slaid berdasarkan jawapan YB (639 tapak: 608 kariah, 31 kerajaan; RM5 juta; TPKIJ; RM2 juta; projek Kota Iskandar dan Tanjung Kupang). "PMS" dikekalkan seperti dalam jawapan; sila sahkan kepanjangan rasmi.
 5. **Slaid 10 – Surau An Naim.** Dokumen tidak menyenaraikan "beberapa perkara yang perlu dipatuhi". Slaid dipaparkan sebagai "sokongan secara dasar", bukan lulus.
 6. **Slaid 9 – KAFA.** Ayat "guru KAFA menerima tak kurang dari RM2,000" (bonus) dikekalkan; sila sahkan maksud (jumlah termasuk bonus?).
 7. **Slaid 8 – Orang Asli.** "36 masjid dan surau" dan "36 tenaga pengajar" ialah dua angka berasingan dalam dokumen (kebetulan sama).
